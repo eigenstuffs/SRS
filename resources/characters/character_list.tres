@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterList" load_steps=3 format=3 uid="uid://bc5c4s52s0g6n"]
+
+[ext_resource type="Resource" uid="uid://m538pupgirvw" path="res://resources/characters/test_npc.tres" id="1_7e36e"]
+[ext_resource type="Script" path="res://resources/characters/character_list.gd" id="1_525xs"]
+
+[resource]
+script = ExtResource("1_525xs")
+list = {
+"Test": ExtResource("1_7e36e")
+}

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=5 format=3 uid="uid://m538pupgirvw"]
+
+[ext_resource type="Texture2D" uid="uid://cxga2djpadbmr" path="res://assets/talksprite_npc_B.png" id="1_4orgw"]
+[ext_resource type="Script" path="res://resources/characters/character.gd" id="1_21p07"]
+[ext_resource type="Texture2D" uid="uid://bbbny3o3tnsfo" path="res://assets/talksprite_npc_A.png" id="2_pqpms"]
+[ext_resource type="Texture2D" uid="uid://b6nep4hcehuhn" path="res://assets/talksprite_npc_C.png" id="3_po744"]
+
+[resource]
+script = ExtResource("1_21p07")
+name = "Test"
+neutral = ExtResource("2_pqpms")
+happy = ExtResource("1_4orgw")
+sad = ExtResource("3_po744")

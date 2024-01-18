@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://cjnyrap7p4bha"]
+
+[ext_resource type="Script" path="res://resources/stats/player_stats.gd" id="1_4c8px"]
+
+[resource]
+script = ExtResource("1_4c8px")
+wisdom = 0
+intelligence = 0
+charisma = 0
+wellness = 0
+money = 0
+prestige = 0
