@@ -10,3 +10,4 @@ res://player/player.tscn
 res://space/npc.tscn
 res://social_warfare/social_warfare.tscn
 res://dialogue/dialogue_from_strings.tscn
+res://social_warfare/social_warfare.gd

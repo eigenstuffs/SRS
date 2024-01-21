@@ -44,7 +44,7 @@ func _ready():
 	
 	$PlayerMoves.hide()
 	
-	await get_tree().create_timer(10).timeout # wait 0.3 seconds
+	await get_tree().create_timer(0.3).timeout # wait 0.3 seconds
 	
 	## SET HEALTH
 	
