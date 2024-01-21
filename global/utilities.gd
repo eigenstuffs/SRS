@@ -1,7 +1,5 @@
 extends Node
 
-class_name Utilities
-
 signal util_finished
 
 const DIALOGUE_FROM_STRINGS = preload("res://dialogue/dialogue_from_strings.tscn")

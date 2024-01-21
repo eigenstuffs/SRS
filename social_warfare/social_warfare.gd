@@ -1,6 +1,6 @@
 extends Control
 
-const MOVE_LIST : SocialWarfareMoveList = preload("res://social_warfare/SocialWarfareMoveList.tres")
+@onready var MOVE_LIST = preload("res://social_warfare/SocialWarfareMoveList.tres")
 
 @export var player_max_health : int # @export = edit in Inspector
 @export var enemy_max_health : int # basically just for convenience
