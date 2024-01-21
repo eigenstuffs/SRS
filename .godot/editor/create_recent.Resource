@@ -1,5 +1,0 @@
-SocialWarfareMove
-SocialWarfareMoveList
-PlayerStats
-CharacterList
-Character
