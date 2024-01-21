@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SocialWarfareMove" load_steps=2 format=3 uid="uid://xxowyhfgq3pl"]
+
+[ext_resource type="Script" path="res://social_warfare/moves/social_warfare_move.gd" id="1_44bhx"]
+
+[resource]
+script = ExtResource("1_44bhx")
+move_name = "Side Eye"
+move_desc = "Give a nasty look to your opponent."
+move_text_player = Array[String](["You give a mean look to your opponent. How foul!"])
+move_text_enemy = Array[String](["Your opponent glances at you with a distasteful look, and you don't like it."])
+move_power = 2
+move_variance = 1
+move_intensity = 20

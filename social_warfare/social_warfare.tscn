@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dq7piist510w8"]
+[gd_scene load_steps=18 format=3 uid="uid://dq7piist510w8"]
 
 [ext_resource type="Script" path="res://social_warfare/social_warfare.gd" id="1_62gtl"]
 [ext_resource type="Texture2D" uid="uid://bmx38n2g6h7mp" path="res://assets/spritesheet_cecilia.png" id="1_fy2kp"]
 [ext_resource type="Texture2D" uid="uid://cifksca8mdvhi" path="res://assets/spritesheet_enemy.png" id="2_ibno4"]
+[ext_resource type="Script" path="res://social_warfare/move_button.gd" id="4_rio6d"]
 
 [sub_resource type="Animation" id="Animation_5fi3a"]
 resource_name = "Attack"
@@ -152,37 +153,15 @@ _data = {
 "PlayerTalk": SubResource("Animation_1v1gg")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvcex"]
-bg_color = Color(0.831373, 0.788235, 0.529412, 1)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.607843, 0.572549, 0.345098, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dmk3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4lf8"]
-bg_color = Color(0.933333, 0.72549, 0.670588, 1)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.784314, 0.52549, 0.443137, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxuic"]
+bg_color = Color(0.454902, 0.870588, 0.380392, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucwfl"]
-bg_color = Color(0.8, 0.74902, 0.909804, 1)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.533333, 0.45098, 0.705882, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcffu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yp4v"]
-bg_color = Color(0.572549, 0.839216, 0.835294, 1)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.356863, 0.568627, 0.568627, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25auy"]
+bg_color = Color(0.968627, 0.666667, 0.666667, 1)
 
 [node name="SocialWarfare" type="Control"]
 layout_mode = 3
@@ -192,6 +171,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_62gtl")
+player_max_health = 10
+enemy_max_health = 10
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -221,49 +202,108 @@ position = Vector2(1536, 544)
 texture = ExtResource("2_ibno4")
 hframes = 2
 vframes = 3
+frame = 4
 
-[node name="Buttons" type="Control" parent="."]
+[node name="HealthBars" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_top = 32.0
+offset_right = 224.0
+offset_bottom = 224.0
+grow_horizontal = 2
+
+[node name="PlayerHealth" type="ProgressBar" parent="HealthBars"]
+layout_mode = 0
+offset_right = 448.0
+offset_bottom = 64.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5dmk3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oxuic")
+
+[node name="EnemyHealth" type="ProgressBar" parent="HealthBars"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 448.0
+offset_bottom = 160.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vcffu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_25auy")
+
+[node name="PlayerMoves" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -432.0
+offset_right = 512.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PlayerMoves"]
+layout_mode = 0
+offset_left = -448.0
+offset_top = -108.0
+offset_right = 1472.0
+offset_bottom = 980.0
+color = Color(0.0117647, 0.0117647, 0.0117647, 0.45098)
+
+[node name="MoveButton" type="Button" parent="PlayerMoves"]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 192.0
+text = "Name
+Description
+Damage range
+Intensity"
+script = ExtResource("4_rio6d")
+
+[node name="MoveButton2" type="Button" parent="PlayerMoves"]
+layout_mode = 0
+offset_top = 224.0
+offset_right = 1024.0
+offset_bottom = 416.0
+text = "Name
+Description
+Damage range
+Intensity"
+script = ExtResource("4_rio6d")
+
+[node name="MoveButton3" type="Button" parent="PlayerMoves"]
+layout_mode = 0
+offset_top = 448.0
+offset_right = 1024.0
+offset_bottom = 640.0
+text = "Name
+Description
+Damage range
+Intensity"
+script = ExtResource("4_rio6d")
+
+[node name="MoveButton4" type="Button" parent="PlayerMoves"]
+layout_mode = 0
+offset_top = 672.0
+offset_right = 1024.0
+offset_bottom = 864.0
+text = "Name
+Description
+Damage range
+Intensity"
+script = ExtResource("4_rio6d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueHolder" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="Buttons"]
-layout_mode = 0
-offset_left = 768.0
-offset_top = 64.0
-offset_right = 1312.0
-offset_bottom = 192.0
-theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_uvcex")
-
-[node name="Button2" type="Button" parent="Buttons"]
-layout_mode = 0
-offset_left = 768.0
-offset_top = 224.0
-offset_right = 1312.0
-offset_bottom = 352.0
-theme_override_constants/outline_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_p4lf8")
-
-[node name="Button3" type="Button" parent="Buttons"]
-layout_mode = 0
-offset_left = 768.0
-offset_top = 384.0
-offset_right = 1312.0
-offset_bottom = 512.0
-theme_override_constants/outline_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_ucwfl")
-
-[node name="Button4" type="Button" parent="Buttons"]
-layout_mode = 0
-offset_left = 768.0
-offset_top = 544.0
-offset_right = 1312.0
-offset_bottom = 672.0
-theme_override_constants/outline_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_7yp4v")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 384)
-zoom = Vector2(1.5, 1.5)
+[connection signal="pressed" from="PlayerMoves/MoveButton" to="PlayerMoves/MoveButton" method="_on_pressed"]
+[connection signal="pressed" from="PlayerMoves/MoveButton2" to="PlayerMoves/MoveButton2" method="_on_pressed"]
+[connection signal="pressed" from="PlayerMoves/MoveButton3" to="PlayerMoves/MoveButton3" method="_on_pressed"]
+[connection signal="pressed" from="PlayerMoves/MoveButton4" to="PlayerMoves/MoveButton4" method="_on_pressed"]

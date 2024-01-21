@@ -1,3 +1,19 @@
 res://space/space.tscn
 res://resources/characters/character_list.tres
-res://dialogue/Dialogue - Prototype.json
+res://social_warfare/social_warfare.tscn
+res://social_warfare/social_warfare.gd
+res://dialogue/dialogue.tscn
+res://player/player.tscn
+res://space/npc.tscn
+res://social_warfare/moves.gd
+res://social_warfare/move_list.gd
+res://social_warfare/moves/Rumor.tres
+res://social_warfare/moves/social_warfare_move.gd
+res://social_warfare/moves/SideEye.tres
+res://social_warfare/moves/SpillOnDress.tres
+res://social_warfare/moves/ShoulderCheck.tres
+res://social_warfare/SocialWarfareMoveList.tres
+res://social_warfare/move_button.gd
+res://dialogue/dialogue_from_strings.tscn
+res://dialogue/dialogue_from_strings.gd
+res://global/utilities.gd
