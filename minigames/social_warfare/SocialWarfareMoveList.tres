@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SocialWarfareMoveList" load_steps=6 format=3 uid="uid://cp061c8fdau6t"]
+
+[ext_resource type="Resource" uid="uid://ba262pbkdcgy0" path="res://minigames/social_warfare/moves/ShoulderCheck.tres" id="1_lahi7"]
+[ext_resource type="Script" path="res://minigames/social_warfare/social_warfare_move_list.gd" id="1_wfpjg"]
+[ext_resource type="Resource" uid="uid://coupae6pv6o2c" path="res://minigames/social_warfare/moves/Rumor.tres" id="2_g4jos"]
+[ext_resource type="Resource" uid="uid://xxowyhfgq3pl" path="res://minigames/social_warfare/moves/SideEye.tres" id="3_1a3df"]
+[ext_resource type="Resource" uid="uid://cl4lrxe87vtgm" path="res://minigames/social_warfare/moves/SpillOnDress.tres" id="4_rouqi"]
+
+[resource]
+script = ExtResource("1_wfpjg")
+move_list = Array[Resource("res://minigames/social_warfare/moves/social_warfare_move.gd")]([ExtResource("1_lahi7"), ExtResource("2_g4jos"), ExtResource("3_1a3df"), ExtResource("4_rouqi")])

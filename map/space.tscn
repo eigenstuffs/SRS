@@ -1,9 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvtxj6bgvwaq1"]
+[gd_scene load_steps=21 format=3 uid="uid://cvtxj6bgvwaq1"]
 
 [ext_resource type="Texture2D" uid="uid://ucktysloxbk5" path="res://assets/placeholder.png" id="1_vfnrs"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="2_3pibv"]
 [ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://player/player.tscn" id="3_j6c6d"]
-[ext_resource type="PackedScene" uid="uid://0ttabng4vst4" path="res://space/npc.tscn" id="4_5bkec"]
+[ext_resource type="Script" path="res://map/npc.gd" id="4_mkrlg"]
+[ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/spritesheet_mini_npc_idle.png" id="5_ufflc"]
+[ext_resource type="Texture2D" uid="uid://304qv7q1hedd" path="res://assets/spritesheet_mini_selected_idle.png" id="6_s1c72"]
+[ext_resource type="PackedScene" uid="uid://bgh3a41nfgulr" path="res://tools/interaction.tscn" id="7_a7ypq"]
+[ext_resource type="Script" path="res://tools/interaction_minigame.gd" id="8_k2fmi"]
+[ext_resource type="PackedScene" uid="uid://dq7piist510w8" path="res://minigames/social_warfare/social_warfare.tscn" id="9_aipco"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu7o7"]
 albedo_color = Color(0.356863, 0.156863, 0.172549, 1)
@@ -22,6 +27,47 @@ albedo_color = Color(0.686275, 0.537255, 0.541176, 1)
 material = SubResource("StandardMaterial3D_k4y4c")
 size = Vector2(10, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hq8b"]
+size = Vector3(0.5, 1, 0.02)
+
+[sub_resource type="Animation" id="Animation_rl8og"]
+resource_name = "Idle"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_5th0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qbuaw"]
+_data = {
+"Idle": SubResource("Animation_rl8og"),
+"RESET": SubResource("Animation_5th0q")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_uoii5"]
 size = Vector3(10, 10, 0.1)
 
@@ -34,6 +80,12 @@ glow_intensity = 0.07
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueHolder" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MinigameHolder" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -81,9 +133,31 @@ transform = Transform3D(1, 0, 0, 0, 0.906757, 0.421653, 0, -0.421653, 0.906757, 
 [node name="Player" parent="." instance=ExtResource("3_j6c6d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.10098)
 
-[node name="NPC" parent="." instance=ExtResource("4_5bkec")]
+[node name="NPC" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.770629, 0.540338, -2)
+script = ExtResource("4_mkrlg")
+idle = ExtResource("5_ufflc")
+selected = ExtResource("6_s1c72")
 player_node = NodePath("../Player")
+
+[node name="Sprite3D" type="Sprite3D" parent="NPC"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+texture = ExtResource("5_ufflc")
+hframes = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
+shape = SubResource("BoxShape3D_0hq8b")
+
+[node name="Interaction" parent="NPC" instance=ExtResource("7_a7ypq")]
+script = ExtResource("8_k2fmi")
+minigame = ExtResource("9_aipco")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NPC"]
+libraries = {
+"": SubResource("AnimationLibrary_qbuaw")
+}
+autoplay = "Idle"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.84603, 0, 0)

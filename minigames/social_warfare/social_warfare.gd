@@ -1,6 +1,6 @@
 extends Control
 
-@onready var MOVE_LIST = preload("res://social_warfare/SocialWarfareMoveList.tres")
+@onready var MOVE_LIST = preload("res://minigames/social_warfare/SocialWarfareMoveList.tres")
 
 @export var player_max_health : int # @export = edit in Inspector
 @export var enemy_max_health : int # basically just for convenience
@@ -10,8 +10,11 @@ var enemy_health : int = -1
 
 var intensity : int = 0
 
-@onready var player_bar : ProgressBar = $HealthBars/PlayerHealth
-@onready var enemy_bar : ProgressBar = $HealthBars/EnemyHealth
+@onready var player_bar : ProgressBar = $CanvasLayer/HealthBars/PlayerHealth
+@onready var enemy_bar : ProgressBar = $CanvasLayer/HealthBars/EnemyHealth
+@onready var health_bars : Control = $CanvasLayer/HealthBars
+@onready var player_moves : Control = $CanvasLayer/PlayerMoves
+@onready var holder = $CanvasLayer/DialogueHolder
 
 enum PLAYER_STATES {
 	IDLE,
@@ -34,7 +37,7 @@ signal player_turn_completed
 signal enemy_turn_completed
 signal player_won
 signal enemy_won
-signal minigame_finished
+signal minigame_finished(player_won : bool)
 
 func _ready():
 	self.connect("player_won", player_wins)
@@ -42,7 +45,7 @@ func _ready():
 	
 	PLAYER_STATE = PLAYER_STATES.IDLE
 	
-	$PlayerMoves.hide()
+	player_moves.hide()
 	
 	await get_tree().create_timer(0.3).timeout # wait 0.3 seconds
 	
@@ -80,7 +83,7 @@ func turn_loop():
 		
 		# temporary move list so that we can sample w/o replacement
 		
-		for i in $PlayerMoves.get_children():
+		for i in player_moves.get_children():
 			if i is Button:
 				temp_move_list.shuffle()
 				var move = temp_move_list[0]
@@ -90,8 +93,8 @@ func turn_loop():
 				if i.is_connected("move_selected", player_move_selected):
 					i.disconnect("move_selected", player_move_selected)
 				i.connect("move_selected", player_move_selected)
-		$HealthBars.hide()
-		$PlayerMoves.show() # make visible the buttons
+		health_bars.hide()
+		player_moves.show() # make visible the buttons
 		
 		await player_turn_completed # wait for the player move
 		
@@ -109,7 +112,7 @@ func turn_loop():
 		temp_move_list.shuffle()
 		var enemy_move = temp_move_list[0]
 		
-		Util.dialogue_from_strings(enemy_move.move_text_enemy)
+		Util.dialogue_from_strings(holder, enemy_move.move_text_enemy)
 		await Util.util_finished
 		
 		# apply the damage
@@ -119,7 +122,7 @@ func turn_loop():
 		# damage animation
 		PLAYER_STATE = PLAYER_STATES.DAMAGED
 		
-		Util.dialogue_from_strings(["Opponent deals " + str(damage_done) + " damage!"])
+		Util.dialogue_from_strings(holder, ["Opponent deals " + str(damage_done) + " damage!"])
 		await Util.util_finished
 		
 		var a = create_tween()
@@ -161,13 +164,13 @@ func anim_handler():
 
 func player_move_selected(move_resource : SocialWarfareMove):
 	# hide the buttons
-	$PlayerMoves.hide()
-	$HealthBars.show()
+	player_moves.hide()
+	health_bars.show()
 	
 	# update the animation
 	PLAYER_STATE = PLAYER_STATES.TALK
 	
-	Util.dialogue_from_strings(move_resource.move_text_player)
+	Util.dialogue_from_strings(holder, move_resource.move_text_player)
 	await Util.util_finished
 	
 	# apply the move's damage
@@ -177,7 +180,7 @@ func player_move_selected(move_resource : SocialWarfareMove):
 	# update/animate the health bar
 	PLAYER_STATE = PLAYER_STATES.ATTACK
 	
-	Util.dialogue_from_strings(["You deal " + str(damage_done) + " damage!"])
+	Util.dialogue_from_strings(holder, ["You deal " + str(damage_done) + " damage!"])
 	await Util.util_finished
 	
 	var a = create_tween()
@@ -192,11 +195,11 @@ func player_move_selected(move_resource : SocialWarfareMove):
 	else: emit_signal("player_turn_completed")
 
 func player_wins():
-	Util.dialogue_from_strings(["You won!"])
+	Util.dialogue_from_strings(holder, ["You won!"])
 	await Util.util_finished
-	emit_signal("minigame_finished")
+	emit_signal("minigame_finished", true)
 	
 func enemy_wins():
-	Util.dialogue_from_strings(["You lose!"])
+	Util.dialogue_from_strings(holder, ["You lose!"])
 	await Util.util_finished
-	emit_signal("minigame_finished")
+	emit_signal("minigame_finished", false)

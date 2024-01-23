@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://dq7piist510w8"]
 
-[ext_resource type="Script" path="res://social_warfare/social_warfare.gd" id="1_62gtl"]
+[ext_resource type="Script" path="res://minigames/social_warfare/social_warfare.gd" id="1_62gtl"]
 [ext_resource type="Texture2D" uid="uid://bmx38n2g6h7mp" path="res://assets/spritesheet_cecilia.png" id="1_fy2kp"]
 [ext_resource type="Texture2D" uid="uid://cifksca8mdvhi" path="res://assets/spritesheet_enemy.png" id="2_ibno4"]
-[ext_resource type="Script" path="res://social_warfare/move_button.gd" id="4_rio6d"]
+[ext_resource type="Script" path="res://minigames/social_warfare/move_button.gd" id="4_rio6d"]
 
 [sub_resource type="Animation" id="Animation_5fi3a"]
 resource_name = "Attack"
@@ -204,8 +204,10 @@ hframes = 2
 vframes = 3
 frame = 4
 
-[node name="HealthBars" type="Control" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBars" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -215,14 +217,14 @@ offset_right = 224.0
 offset_bottom = 224.0
 grow_horizontal = 2
 
-[node name="PlayerHealth" type="ProgressBar" parent="HealthBars"]
+[node name="PlayerHealth" type="ProgressBar" parent="CanvasLayer/HealthBars"]
 layout_mode = 0
 offset_right = 448.0
 offset_bottom = 64.0
 theme_override_styles/background = SubResource("StyleBoxFlat_5dmk3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_oxuic")
 
-[node name="EnemyHealth" type="ProgressBar" parent="HealthBars"]
+[node name="EnemyHealth" type="ProgressBar" parent="CanvasLayer/HealthBars"]
 layout_mode = 0
 offset_top = 96.0
 offset_right = 448.0
@@ -230,8 +232,8 @@ offset_bottom = 160.0
 theme_override_styles/background = SubResource("StyleBoxFlat_vcffu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_25auy")
 
-[node name="PlayerMoves" type="Control" parent="."]
-layout_mode = 1
+[node name="PlayerMoves" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -244,7 +246,7 @@ offset_bottom = 432.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="PlayerMoves"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayerMoves"]
 layout_mode = 0
 offset_left = -448.0
 offset_top = -108.0
@@ -252,7 +254,7 @@ offset_right = 1472.0
 offset_bottom = 980.0
 color = Color(0.0117647, 0.0117647, 0.0117647, 0.45098)
 
-[node name="MoveButton" type="Button" parent="PlayerMoves"]
+[node name="MoveButton" type="Button" parent="CanvasLayer/PlayerMoves"]
 layout_mode = 0
 offset_right = 1024.0
 offset_bottom = 192.0
@@ -262,7 +264,7 @@ Damage range
 Intensity"
 script = ExtResource("4_rio6d")
 
-[node name="MoveButton2" type="Button" parent="PlayerMoves"]
+[node name="MoveButton2" type="Button" parent="CanvasLayer/PlayerMoves"]
 layout_mode = 0
 offset_top = 224.0
 offset_right = 1024.0
@@ -273,7 +275,7 @@ Damage range
 Intensity"
 script = ExtResource("4_rio6d")
 
-[node name="MoveButton3" type="Button" parent="PlayerMoves"]
+[node name="MoveButton3" type="Button" parent="CanvasLayer/PlayerMoves"]
 layout_mode = 0
 offset_top = 448.0
 offset_right = 1024.0
@@ -284,7 +286,7 @@ Damage range
 Intensity"
 script = ExtResource("4_rio6d")
 
-[node name="MoveButton4" type="Button" parent="PlayerMoves"]
+[node name="MoveButton4" type="Button" parent="CanvasLayer/PlayerMoves"]
 layout_mode = 0
 offset_top = 672.0
 offset_right = 1024.0
@@ -295,15 +297,16 @@ Damage range
 Intensity"
 script = ExtResource("4_rio6d")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
 [node name="DialogueHolder" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[connection signal="pressed" from="PlayerMoves/MoveButton" to="PlayerMoves/MoveButton" method="_on_pressed"]
-[connection signal="pressed" from="PlayerMoves/MoveButton2" to="PlayerMoves/MoveButton2" method="_on_pressed"]
-[connection signal="pressed" from="PlayerMoves/MoveButton3" to="PlayerMoves/MoveButton3" method="_on_pressed"]
-[connection signal="pressed" from="PlayerMoves/MoveButton4" to="PlayerMoves/MoveButton4" method="_on_pressed"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[connection signal="pressed" from="CanvasLayer/PlayerMoves/MoveButton" to="CanvasLayer/PlayerMoves/MoveButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayerMoves/MoveButton2" to="CanvasLayer/PlayerMoves/MoveButton2" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayerMoves/MoveButton3" to="CanvasLayer/PlayerMoves/MoveButton3" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayerMoves/MoveButton4" to="CanvasLayer/PlayerMoves/MoveButton4" method="_on_pressed"]

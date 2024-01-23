@@ -6,7 +6,6 @@ signal start_music
 signal boost_stats
 
 @onready var box = $Box
-@onready var sprite = $Sprite
 @onready var label = $Label
 @onready var button = $Button
 

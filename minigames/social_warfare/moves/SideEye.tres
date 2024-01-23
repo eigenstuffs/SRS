@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SocialWarfareMove" load_steps=2 format=3 uid="uid://xxowyhfgq3pl"]
 
-[ext_resource type="Script" path="res://social_warfare/moves/social_warfare_move.gd" id="1_44bhx"]
+[ext_resource type="Script" path="res://minigames/social_warfare/moves/social_warfare_move.gd" id="1_44bhx"]
 
 [resource]
 script = ExtResource("1_44bhx")
