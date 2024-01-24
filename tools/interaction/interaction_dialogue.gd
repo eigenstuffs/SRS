@@ -2,7 +2,7 @@ extends Interaction
 
 @export_file("*.json") var file
 
-const DIALOGUE = preload("res://dialogue/dialogue.tscn")
+const DIALOGUE = preload("res://tools/dialogue/dialogue.tscn")
 
 func action():
 	if file:

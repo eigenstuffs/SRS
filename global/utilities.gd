@@ -2,7 +2,7 @@ extends Node
 
 signal util_finished
 
-const DIALOGUE_FROM_STRINGS = preload("res://dialogue/dialogue_from_strings.tscn")
+const DIALOGUE_FROM_STRINGS = preload("res://tools/dialogue/dialogue_from_strings.tscn")
 
 func dialogue_from_strings(holder : Control, text_array : Array[String]):
 	var a : DialogueFromStrings = DIALOGUE_FROM_STRINGS.instantiate()

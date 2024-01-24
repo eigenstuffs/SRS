@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://7org3bu61mfu"]
 
-[ext_resource type="Script" path="res://dialogue/dialogue_from_strings.gd" id="1_g772v"]
+[ext_resource type="Script" path="res://tools/dialogue/dialogue_from_strings.gd" id="1_g772v"]
 [ext_resource type="Texture2D" uid="uid://kqpkiycx2vxi" path="res://assets/textbox.png" id="2_wpcrg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rwqr"]
