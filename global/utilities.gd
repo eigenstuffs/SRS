@@ -11,3 +11,6 @@ func dialogue_from_strings(holder : Control, text_array : Array[String]):
 	await a.finished_reading
 	a.queue_free()
 	emit_signal("util_finished")
+
+func create_minigame(holder : Control, minigame : String):
+	pass
