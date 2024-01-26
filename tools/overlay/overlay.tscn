@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dx0l077ip533b"]
+
+[node name="Overlay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1728.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 192.0
+
+[node name="ColorRect" type="ColorRect" parent="TextureButton"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1536.0
+offset_top = 64.0
+offset_right = 1664.0
+offset_bottom = 192.0
+
+[node name="ColorRect" type="ColorRect" parent="TextureButton2"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
