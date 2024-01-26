@@ -1,6 +1,6 @@
 extends Control
 
-@onready var MOVE_LIST = preload("res://minigames/social_warfare/SocialWarfareMoveList.tres")
+const MOVE_LIST = preload("res://tools/minigames/social_warfare/SocialWarfareMoveList.tres")
 
 @export var player_max_health : int # @export = edit in Inspector
 @export var enemy_max_health : int # basically just for convenience
@@ -126,8 +126,9 @@ func turn_loop():
 		await Util.util_finished
 		
 		var a = create_tween()
-		a.tween_property(player_bar, "value", player_health, 3).set_trans(Tween.TRANS_CUBIC)
+		a.tween_property(player_bar, "value", player_health, .5).set_trans(Tween.TRANS_CUBIC)
 		await a.finished
+		await get_tree().create_timer(0.3).timeout
 		
 		# check if anyone lost
 		if enemy_health <= 0: emit_signal("player_won")
@@ -184,8 +185,9 @@ func player_move_selected(move_resource : SocialWarfareMove):
 	await Util.util_finished
 	
 	var a = create_tween()
-	a.tween_property(enemy_bar, "value", enemy_health, 3).set_trans(Tween.TRANS_CUBIC)
+	a.tween_property(enemy_bar, "value", enemy_health, .5).set_trans(Tween.TRANS_CUBIC)
 	await a.finished
+	await get_tree().create_timer(0.3).timeout
 	
 	# check to see if anyone won
 	if enemy_health <= 0: emit_signal("player_won")

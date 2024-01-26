@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://dq7piist510w8"]
 
-[ext_resource type="Script" path="res://minigames/social_warfare/social_warfare.gd" id="1_62gtl"]
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare.gd" id="1_62gtl"]
 [ext_resource type="Texture2D" uid="uid://bmx38n2g6h7mp" path="res://assets/spritesheet_cecilia.png" id="1_fy2kp"]
 [ext_resource type="Texture2D" uid="uid://cifksca8mdvhi" path="res://assets/spritesheet_enemy.png" id="2_ibno4"]
-[ext_resource type="Script" path="res://minigames/social_warfare/move_button.gd" id="4_rio6d"]
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/move_button.gd" id="4_rio6d"]
 
 [sub_resource type="Animation" id="Animation_5fi3a"]
 resource_name = "Attack"

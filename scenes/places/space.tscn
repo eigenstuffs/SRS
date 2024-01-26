@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://ucktysloxbk5" path="res://assets/placeholder.png" id="1_vfnrs"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="2_3pibv"]
-[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://player/player.tscn" id="3_j6c6d"]
-[ext_resource type="Script" path="res://map/npc.gd" id="4_mkrlg"]
+[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="3_j6c6d"]
+[ext_resource type="Script" path="res://scenes/actors/npc.gd" id="4_mkrlg"]
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/spritesheet_mini_npc_idle.png" id="5_ufflc"]
 [ext_resource type="Texture2D" uid="uid://304qv7q1hedd" path="res://assets/spritesheet_mini_selected_idle.png" id="6_s1c72"]
 [ext_resource type="PackedScene" uid="uid://bgh3a41nfgulr" path="res://tools/interaction/interaction.tscn" id="7_a7ypq"]
 [ext_resource type="Script" path="res://tools/interaction/interaction_minigame.gd" id="8_k2fmi"]
-[ext_resource type="PackedScene" uid="uid://dq7piist510w8" path="res://minigames/social_warfare/social_warfare.tscn" id="9_aipco"]
+[ext_resource type="PackedScene" uid="uid://dq7piist510w8" path="res://tools/minigames/social_warfare/social_warfare.tscn" id="9_aipco"]
 [ext_resource type="Script" path="res://tools/interaction/interaction_dialogue.gd" id="10_vttiy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu7o7"]
@@ -178,7 +178,7 @@ shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="NPC2" instance=ExtResource("7_a7ypq")]
 script = ExtResource("10_vttiy")
-file = "res://tools/dialogue/Dialogue - Prototype.json"
+file = "res://tools/dialogue/ft_scripts/Dialogue - Prototype.json"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NPC2"]
 libraries = {
