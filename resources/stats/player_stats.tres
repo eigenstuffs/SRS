@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_4c8px")
-wisdom = 0
+wisdom = 85
 intelligence = 0
 charisma = 0
 wellness = 0
