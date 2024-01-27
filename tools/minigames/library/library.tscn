@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds8qr6whupx03"]
+
+[ext_resource type="Script" path="res://tools/minigames/library/library.gd" id="1_nyx3m"]
+
+[node name="Library" type="Node3D"]
+script = ExtResource("1_nyx3m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueHolder" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MinigameHolder" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
