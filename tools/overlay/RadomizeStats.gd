@@ -6,8 +6,8 @@ extends Button
 signal stats_changed
 
 func _on_pressed():
-	for stats_index in stats_list.size():
-		stats_list[stats_index] = randi_range(0, 100)
-		PLAYER_STATS
-	emit_signal("stats_changed")
-	print(stats_list)
+	var random_stats : Array[int] = []
+	for i: int in PLAYER_STATS.get_main_stats().size():
+		random_stats.append(randi_range(0, 100))
+	PLAYER_STATS.set_stats(random_stats)
+	print(PLAYER_STATS.get_main_stats())

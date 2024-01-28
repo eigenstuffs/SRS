@@ -135,4 +135,3 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="RadomizeStats" to="RadomizeStats" method="_on_pressed"]
-[connection signal="stats_changed" from="RadomizeStats" to="." method="_on_radomize_stats_stats_changed"]

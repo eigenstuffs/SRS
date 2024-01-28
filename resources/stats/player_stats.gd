@@ -10,4 +10,31 @@ class_name PlayerStats
 @export var prestige : int
 
 func set_stats(list : Array[int]):
-	pass
+	wisdom = list[0]
+	intelligence = list[1]
+	charisma = list[2]
+	wellness = list[3]
+	emit_changed()
+
+func get_stat(index : int):
+	match index:
+		0:
+			return wisdom
+		1:
+			return intelligence
+		2:
+			return charisma
+		3: 
+			return wellness
+		4:
+			return money
+		5:
+			return prestige
+		_:
+			print("invalid index!")
+	return
+	
+func get_main_stats() -> Array[int]:
+	var output : Array[int] = [wisdom, intelligence, charisma, wellness]
+	return output
+	
