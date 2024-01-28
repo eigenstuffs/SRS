@@ -1,0 +1,3 @@
+extends CharacterBody3D
+
+class_name NPC_SharkTank

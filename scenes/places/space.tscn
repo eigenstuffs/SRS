@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://cvtxj6bgvwaq1"]
+[gd_scene load_steps=24 format=3 uid="uid://cvtxj6bgvwaq1"]
 
+[ext_resource type="Script" path="res://scenes/places/space.gd" id="1_j16wi"]
 [ext_resource type="PackedScene" uid="uid://dx0l077ip533b" path="res://tools/overlay/overlay.tscn" id="1_q8h7h"]
 [ext_resource type="Texture2D" uid="uid://ucktysloxbk5" path="res://assets/placeholder.png" id="1_vfnrs"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="2_3pibv"]
@@ -78,6 +79,8 @@ glow_enabled = true
 glow_intensity = 0.07
 
 [node name="Space" type="Node3D"]
+script = ExtResource("1_j16wi")
+player = NodePath("Actors/Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

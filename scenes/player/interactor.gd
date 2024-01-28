@@ -4,6 +4,8 @@ class_name Interactor
 
 var current_interaction : Interaction = null
 
+signal interacted
+
 func _on_area_entered(area):
 	if area is Interaction and current_interaction == null:
 		current_interaction = area
@@ -20,3 +22,4 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and Global.can_move:
 		if current_interaction:
 			current_interaction.action()
+			
