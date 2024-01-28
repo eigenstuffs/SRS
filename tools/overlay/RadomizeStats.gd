@@ -8,4 +8,6 @@ signal stats_changed
 func _on_pressed():
 	for stats_index in stats_list.size():
 		stats_list[stats_index] = randi_range(0, 100)
+		PLAYER_STATS
 	emit_signal("stats_changed")
+	print(stats_list)

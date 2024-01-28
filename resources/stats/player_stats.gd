@@ -8,3 +8,6 @@ class_name PlayerStats
 @export var wellness : int
 @export var money : int
 @export var prestige : int
+
+func set_stats(list : Array[int]):
+	pass

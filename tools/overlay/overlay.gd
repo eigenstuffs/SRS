@@ -10,7 +10,6 @@ extends Control
 func _ready():
 	stats_bar_update()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -27,6 +26,7 @@ func stats_bar_update():
 
 func _on_radomize_stats_stats_changed():
 	stats_bar_update()
+	#print(STATS_LIST)
 
 func fetch_stats():
 	PLAYER_STATS = load("res://resources/stats/player_stats.tres")
