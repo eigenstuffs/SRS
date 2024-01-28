@@ -1,0 +1,131 @@
+[gd_scene load_steps=14 format=3 uid="uid://c6m7pyonof3c8"]
+
+[ext_resource type="Script" path="res://tools/minigames/library/library.gd" id="1_yss0f"]
+[ext_resource type="Texture2D" uid="uid://ucktysloxbk5" path="res://assets/placeholder.png" id="2_gtwjr"]
+[ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="3_4fw6x"]
+[ext_resource type="PackedScene" uid="uid://dcfbplcsi22qo" path="res://tools/minigames/shark_tank/npc_sharktank.tscn" id="4_br0lr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkhmw"]
+albedo_texture = ExtResource("2_gtwjr")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_krp85"]
+material = SubResource("StandardMaterial3D_xkhmw")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0qot"]
+albedo_texture = ExtResource("3_4fw6x")
+
+[sub_resource type="BoxMesh" id="BoxMesh_eo85j"]
+material = SubResource("StandardMaterial3D_m0qot")
+size = Vector3(0.5, 6, 8.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnnu8"]
+albedo_texture = ExtResource("3_4fw6x")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ngvxs"]
+material = SubResource("StandardMaterial3D_vnnu8")
+size = Vector3(10, 6, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxk7j"]
+size = Vector3(10, 5, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uh7u6"]
+size = Vector3(0.2, 5, 10)
+
+[node name="SharkTank" type="Node3D"]
+script = ExtResource("1_yss0f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueHolder" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MinigameHolder" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.510077, 0)
+shape = SubResource("BoxShape3D_o262n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_krp85")
+
+[node name="Shelves" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.48397, 0)
+
+[node name="Right Shelf" type="MeshInstance3D" parent="Shelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0.5)
+mesh = SubResource("BoxMesh_eo85j")
+skeleton = NodePath("../Facing Shelf")
+
+[node name="Left Shelf" type="MeshInstance3D" parent="Shelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0.5)
+mesh = SubResource("BoxMesh_eo85j")
+skeleton = NodePath("../Facing Shelf")
+
+[node name="Facing Shelf" type="MeshInstance3D" parent="Shelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+mesh = SubResource("BoxMesh_ngvxs")
+
+[node name="Colliders" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
+
+[node name="Back Wall" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Back Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+shape = SubResource("BoxShape3D_oxk7j")
+
+[node name="Front Wall2" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Front Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+shape = SubResource("BoxShape3D_oxk7j")
+
+[node name="Left Wall" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Left Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
+shape = SubResource("BoxShape3D_uh7u6")
+
+[node name="Right Wall" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Right Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+shape = SubResource("BoxShape3D_uh7u6")
+
+[node name="NPCSpawner" type="Node3D" parent="."]
+
+[node name="NPC_SharkTank" parent="NPCSpawner" instance=ExtResource("4_br0lr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.572128, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.633, 4.109)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
+light_color = Color(1, 0.913725, 0.807843, 1)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+omni_range = 11.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.978, 6.92968)
+light_color = Color(1, 0.933333, 0.811765, 1)
