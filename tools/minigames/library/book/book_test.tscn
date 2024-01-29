@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://di4pnleutw7x8"]
 
 [ext_resource type="PackedScene" uid="uid://cqrvo3iyralqd" path="res://tools/minigames/library/book/book.tscn" id="1_0ejru"]
-[ext_resource type="Script" path="res://tools/minigames/library/book/Spawner.gd" id="2_ugoer"]
+[ext_resource type="Script" path="res://tools/minigames/library/book/spawner.gd" id="2_ugoer"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_blqkv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
