@@ -5,17 +5,20 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_orsp6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yud3w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4n623"]
 render_priority = 0
 shader = ExtResource("2_kla8f")
+shader_parameter/transition_distance_start = 4.95
+shader_parameter/transition_distance = 1.0
 
 [node name="SliderTick" type="Node3D"]
 script = ExtResource("1_q38t6")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.001, 0, 0, 0, 0.1, 0, 0, 0)
+instance_shader_parameters/albedo = Color(1, 0.33, 0, 1)
 mesh = SubResource("PlaneMesh_orsp6")
-surface_material_override/0 = SubResource("ShaderMaterial_yud3w")
+surface_material_override/0 = SubResource("ShaderMaterial_4n623")
 
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.06, 0, 0, 0, 0.15, 0, 0.03, 0)

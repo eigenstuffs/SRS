@@ -5,32 +5,32 @@ const NOTE = preload('res://tools/minigames/rhythm/note/note.tscn')
 const TICK = preload('res://tools/minigames/rhythm/note/hit_slider/slider_tick.tscn')
 
 var length : float
-var spawn_delta : float
-var tick_scale_z : float
+var tick_length : float
 
 var has_been_hit : bool = false
-var next_tick_spawn_time : float = 0
-var tick_spawn_offset_z : float = -0.1 * tick_scale_z
 var tick_queue : Array = []
 var total_ticks : float
-var tick_index : int = 0
 
 @onready var hitbox : Area3D = $Hitbox
 @onready var collider : CollisionShape3D = hitbox.get_node('CollisionShape3D')
 @onready var start_note : Note = spawn_note(0)
-var end_note : Note
+@onready var end_note : Note = spawn_note(-length)
 
-func _on_set_speed() -> void:
-	self.length = speed * duration_seconds
-
-	self.total_ticks = snappedi(length * TICKS_PER_UNIT, 1)
-	self.spawn_delta = duration_seconds / total_ticks
-	self.tick_scale_z = length / total_ticks / 0.2
-
-	# We also consider the length of the endpoint notes
+func _ready() -> void:
+	# We consider the length of the endpoint notes (must be set before ready)
 	collider.shape = collider.get_shape().duplicate()
 	collider.shape.size.z = length + 0.1*2
 	hitbox.position.z -= length / 2 # Offset by half of length
+
+	# TODO: stop this madness, just make a custom mesh :(
+	var tick_start_offset : float = -0.1 * tick_length
+	for i in range(total_ticks):
+		spawn_tick(tick_start_offset - i*0.2*tick_length)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	position += velocity * delta
+	time += delta
 
 func hit(z : float) -> float:
 	has_been_hit = true
@@ -41,7 +41,7 @@ func hit(z : float) -> float:
 func hold(z : float) -> void:
 	if tick_queue.is_empty() or not has_been_hit: return
 
-	if is_instance_valid(end_note) and z - end_note.global_position.z <= 0.1:
+	if z - end_note.global_position.z <= 0.1:
 		end_note.visible = false
 
 	# TODO: this doesn't need to be this reactive
@@ -56,36 +56,29 @@ func release(z : float) -> float:
 		return end_note.hit(z)
 	return 0.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	# TODO: stop this madness, just make a custom mesh :(
-	if tick_index < total_ticks:
-		while time - next_tick_spawn_time > -0.001:
-			spawn_next_tick()
-	elif not is_instance_valid(end_note):
-		end_note = spawn_note(-length)
+func spawn_tick(offset : float) -> void:
+	var tick : HitSliderTick = TICK.instantiate()
+	tick.scale.z = tick_length
+	tick.position += velocity.normalized() * offset
+	tick.key_position = key_position
 
-	position.z += speed * delta
-	time += delta
+	$Ticks.add_child(tick)
+	tick_queue.push_back(tick)
+
+func spawn_note(offset : float) -> Note:
+	var note : Note = NOTE.instantiate()
+	note.position += velocity.normalized() * offset
+	note.key_position = key_position
+
+	$Ticks.add_child(note)
+	return note
 
 func _on_visibility_notifier_screen_exited() -> void:
 	queue_free()
 
-func spawn_next_tick() -> void:
-	tick_index += 1
-	spawn_tick(tick_spawn_offset_z)
-	next_tick_spawn_time += spawn_delta
-	tick_spawn_offset_z -= 0.2 * tick_scale_z
+func _on_set_key_position(value : Vector3) -> void: pass
 
-func spawn_tick(offset_z : float) -> void:
-	var tick : HitSliderTick = TICK.instantiate()
-	$Ticks.add_child(tick)
-	tick_queue.push_back(tick)
-	tick.scale.z = tick_scale_z
-	tick.position.z += offset_z
-
-func spawn_note(offset_z : float) -> Note:
-	var note : Note = NOTE.instantiate()
-	$Ticks.add_child(note)
-	note.position.z += offset_z
-	return note
+func _on_set_velocity() -> void:
+	self.length = velocity.length() * duration_seconds
+	self.total_ticks = snappedi(length * TICKS_PER_UNIT, 1)
+	self.tick_length = length / total_ticks / 0.2

@@ -39,18 +39,20 @@ transform = Transform3D(1.25, 0, 0, 0, 1, 0, 0, 0, 4, 2.08165e-12, -0.25, 2.0816
 mesh = SubResource("PlaneMesh_yvjvo")
 skeleton = NodePath("../..")
 
-[node name="Key Left" parent="." instance=ExtResource("2_8mwsg")]
+[node name="Keys" type="Node" parent="."]
+
+[node name="Key Left" parent="Keys" instance=ExtResource("2_8mwsg")]
 transform = Transform3D(0.215, 0, 0, 0, 0.215, 0, 0, 0, 0.215, -0.75, 0.05, 3.95)
 keybind = "ui_left"
 
-[node name="Key Down" parent="." instance=ExtResource("2_8mwsg")]
+[node name="Key Down" parent="Keys" instance=ExtResource("2_8mwsg")]
 transform = Transform3D(0.215, 0, 0, 0, 0.215, 0, 0, 0, 0.215, -0.25, 0.05, 3.95)
 keybind = "ui_down"
 
-[node name="Key Up" parent="." instance=ExtResource("2_8mwsg")]
+[node name="Key Up" parent="Keys" instance=ExtResource("2_8mwsg")]
 transform = Transform3D(0.215, 0, 0, 0, 0.215, 0, 0, 0, 0.215, 0.25, 0.05, 3.95)
 keybind = "ui_up"
 
-[node name="Key Right" parent="." instance=ExtResource("2_8mwsg")]
+[node name="Key Right" parent="Keys" instance=ExtResource("2_8mwsg")]
 transform = Transform3D(0.215, 0, 0, 0, 0.215, 0, 0, 0, 0.215, 0.75, 0.05, 3.95)
 keybind = "ui_right"

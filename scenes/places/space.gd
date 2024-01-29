@@ -10,7 +10,7 @@ var turns = 5
 
 func _ready():
 	interactor.connect("started_interaction", interacted)
-	
+
 func interacted():
 	overlay.hide()
 	turns -= 1
