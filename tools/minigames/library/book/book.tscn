@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cebw7rtm5cja5"]
+
+[ext_resource type="PackedScene" uid="uid://bc2b8l17xyrso" path="res://tools/minigames/library/book/shadow.tscn" id="1_ekthe"]
+[ext_resource type="Script" path="res://tools/minigames/library/book/book.gd" id="1_koc33"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ygqc5"]
+friction = 0.25
+bounce = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llv7v"]
+size = Vector3(1, 0.2, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wna35"]
+albedo_color = Color(0.505882, 0, 0.168627, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2xd3"]
+material = SubResource("StandardMaterial3D_wna35")
+
+[node name="Book" type="Node3D"]
+script = ExtResource("1_koc33")
+
+[node name="Shadow" parent="." instance=ExtResource("1_ekthe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+
+[node name="RigidBody" type="RigidBody3D" parent="."]
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_ygqc5")
+gravity_scale = 0.5
+freeze = true
+freeze_mode = 1
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="BookCollisionShape" type="CollisionShape3D" parent="RigidBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("BoxShape3D_llv7v")
+
+[node name="BookMesh" type="MeshInstance3D" parent="RigidBody"]
+transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 0.75, 0, 0.2, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_n2xd3")
+skeleton = NodePath("../..")
+
+[connection signal="on_fully_faded" from="Shadow" to="." method="_on_shadow_on_fully_faded"]
+[connection signal="body_entered" from="RigidBody" to="." method="_on_rigid_body_body_entered"]
