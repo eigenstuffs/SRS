@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck4bh1qdwj76a"]
+
+[ext_resource type="Script" path="res://tools/minigames/rhythm/note/hit_note/hit_note.gd" id="1_eh0c7"]
+[ext_resource type="Shader" path="res://tools/minigames/rhythm/note/note.gdshader" id="2_mqcrd"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ptm7h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oxl4s"]
+render_priority = 0
+shader = ExtResource("2_mqcrd")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6pggl"]
+size = Vector3(0.2, 0.3, 0.2)
+
+[node name="HitNote" type="Node3D"]
+script = ExtResource("1_eh0c7")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.001, 0, 0, 0, 0.2, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+mesh = SubResource("CylinderMesh_ptm7h")
+surface_material_override/0 = SubResource("ShaderMaterial_oxl4s")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.06, 0, 0, 0, 0.15, 0, 0.03, 0)
+
+[node name="Hitbox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_6pggl")
+
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]

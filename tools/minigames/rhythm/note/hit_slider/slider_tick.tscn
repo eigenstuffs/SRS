@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch7xnxraha5m7"]
+
+[ext_resource type="Script" path="res://tools/minigames/rhythm/note/hit_slider/slider_tick.gd" id="1_q38t6"]
+[ext_resource type="Shader" path="res://tools/minigames/rhythm/note/note.gdshader" id="2_kla8f"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_orsp6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yud3w"]
+render_priority = 0
+shader = ExtResource("2_kla8f")
+
+[node name="SliderTick" type="Node3D"]
+script = ExtResource("1_q38t6")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.001, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_orsp6")
+surface_material_override/0 = SubResource("ShaderMaterial_yud3w")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.06, 0, 0, 0, 0.15, 0, 0.03, 0)
+
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]
