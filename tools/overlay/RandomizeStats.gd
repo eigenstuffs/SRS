@@ -1,7 +1,6 @@
 extends Button
 
 @onready var PLAYER_STATS : PlayerStats = preload("res://resources/stats/player_stats.tres")
-@onready var stats_list : Array = [PLAYER_STATS.wisdom, PLAYER_STATS.intelligence, PLAYER_STATS.charisma, PLAYER_STATS.wellness]
 
 signal stats_changed
 
@@ -10,4 +9,4 @@ func _on_pressed():
 	for i: int in PLAYER_STATS.get_main_stats().size():
 		random_stats.append(randi_range(0, 100))
 	PLAYER_STATS.set_stats(random_stats)
-	print(PLAYER_STATS.get_main_stats())
+	#print(PLAYER_STATS.get_main_stats())

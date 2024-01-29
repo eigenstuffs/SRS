@@ -1,5 +1,7 @@
 extends Control
 
+class_name Overlay
+
 @onready var PLAYER_STATS : PlayerStats = preload("res://resources/stats/player_stats.tres")
 
 @onready var stats_container = $StatsContainer
@@ -23,5 +25,4 @@ func stats_bar_update():
 		current_bar.get_child(0).text = str(PLAYER_STATS.get_stat(bar_index))
 	
 func on_stats_changed():
-	print(PLAYER_STATS.get_main_stats())
 	stats_bar_update()

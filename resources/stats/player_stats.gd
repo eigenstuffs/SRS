@@ -16,6 +16,7 @@ func set_stats(list : Array[int]):
 	intelligence = list[1]
 	charisma = list[2]
 	wellness = list[3]
+	print("PLAYER STATS CHANGED: " + str(get_main_stats()))
 	emit_changed()
 
 func get_stat(index : int):

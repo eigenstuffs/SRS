@@ -4,15 +4,18 @@ signal noTimeLeft
 
 var turns = 5
 
-@onready var interactor: Interactor = get_tree().current_scene.get_node("Actors/Player/Interactor")
-
+@onready var interactor : Interactor = $Actors/Player.get_node("Interactor")
+@onready var overlay : Overlay = $CanvasLayer/Overlay
+@onready var turn_label : Label = $CanvasLayer/Overlay/Turns/Label
 
 func _ready():
-	interactor.connect("interact", interacted)
+	interactor.connect("started_interaction", interacted)
 	
 func interacted():
+	overlay.hide()
 	turns -= 1
-	get_tree().current_scene.get_node("CanvasLayer/Overlay/Turns/Label").text = str(turns) + " turns left"
+	turn_label.text = str(turns) + " turns left"
+	await interactor.finished_interaction
+	overlay.show()
 	if turns==0:
-		pass
-		#emit_signal("noTimeLeft")
+		emit_signal("noTimeLeft")
