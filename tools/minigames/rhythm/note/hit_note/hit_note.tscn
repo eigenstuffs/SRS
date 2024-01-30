@@ -32,4 +32,3 @@ transform = Transform3D(0.15, 0, 0, 0, 0.06, 0, 0, 0, 0.15, 0, 0.03, 0)
 shape = SubResource("BoxShape3D_6pggl")
 
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]
-[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

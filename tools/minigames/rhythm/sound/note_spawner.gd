@@ -28,7 +28,7 @@ func spawn_note(info : BeatmapParser.ObjectInfo, offset : float) -> void:
 	note.position = Vector3(info.position, 0, offset)
 	note.duration_seconds = info.duration_seconds
 	note.key_position = Vector3(info.position, 0.05, end_position_z)
-	note.velocity *= -note_speed
+	note.velocity = -note_speed * Vector3.FORWARD
 	add_child(note)
 
 func _on_audio_synchronizer_on_beatmap_object_spawn(info : BeatmapParser.ObjectInfo) -> void:

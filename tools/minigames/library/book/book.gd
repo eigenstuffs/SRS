@@ -26,15 +26,15 @@ func _physics_process(delta: float) -> void:
 	if not has_collided:
 		# Fall at constant speed (no acceleration) until colliding
 		rigid_body.translate(fall_speed * delta * Vector3.DOWN)
-	
+
 	if not is_instance_valid(shadow): return
-	
+
 	var physics_position = rigid_body.global_transform.origin
 	var dist = physics_position.y - floor_position_y
 	# Smoothie smoothie blah blah
 	var t = 1 - dist / (origin_y - floor_position_y)
 	t = clampf(1 - pow(2, -10*t), 0, 1)
-	
+
 	shadow.global_position = physics_position
 	shadow.radius = t
 	shadow.alpha = t
@@ -44,7 +44,7 @@ func _on_rigid_body_body_entered(body: Node) -> void:
 	rigid_body.max_contacts_reported = 0
 	rigid_body.freeze = false
 	rigid_body.collision_layer |= 0b01
-	
+
 	# To increase visual clarity, fade out shadow once book has hit the ground
 	shadow.fade_out()
 	has_collided = true
