@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b76o6nrnb0hsp"]
+
+[ext_resource type="Script" path="res://tools/minigames/rhythm/note/hit_slider/hit_slider.gd" id="1_sn0s1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_78usc"]
+size = Vector3(0.2, 0.3, 1)
+
+[node name="Slider" type="Node3D"]
+script = ExtResource("1_sn0s1")
+
+[node name="Ticks" type="Node3D" parent="."]
+
+[node name="Hitbox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_78usc")

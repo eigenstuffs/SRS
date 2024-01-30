@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx0l077ip533b"]
+[gd_scene load_steps=3 format=3 uid="uid://dx0l077ip533b"]
 
 [ext_resource type="Script" path="res://tools/overlay/overlay.gd" id="1_utmfi"]
+[ext_resource type="Script" path="res://tools/overlay/RandomizeStats.gd" id="2_7xqfe"]
 
 [node name="Overlay" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
+mouse_filter = 2
 script = ExtResource("1_utmfi")
 
 [node name="TextureButton" type="TextureButton" parent="."]
@@ -15,6 +17,7 @@ offset_left = 1728.0
 offset_top = 64.0
 offset_right = 1856.0
 offset_bottom = 192.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="TextureButton"]
 layout_mode = 0
@@ -27,6 +30,7 @@ offset_left = 1536.0
 offset_top = 64.0
 offset_right = 1664.0
 offset_bottom = 192.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="TextureButton2"]
 layout_mode = 0
@@ -40,13 +44,13 @@ offset_left = 22.0
 offset_top = 574.0
 offset_right = 522.0
 offset_bottom = 1074.0
+mouse_filter = 2
 theme_override_constants/separation = 15
 alignment = 1
 
 [node name="Wisdom" type="ProgressBar" parent="StatsContainer"]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
-value = 50.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="StatsContainer/Wisdom"]
@@ -60,3 +64,100 @@ theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Intelligence" type="ProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="StatsContainer/Intelligence"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = -13.0
+offset_top = -4.0
+offset_right = 521.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Charisma" type="ProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="StatsContainer/Charisma"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = -13.0
+offset_top = -4.0
+offset_right = 521.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wellness" type="ProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="StatsContainer/Wellness"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = -13.0
+offset_top = -4.0
+offset_right = 521.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RandomizeStats" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.392
+anchor_right = 0.019
+anchor_bottom = 0.392
+offset_left = 0.519998
+offset_top = -0.496021
+offset_right = 476.52
+offset_bottom = 117.504
+script = ExtResource("2_7xqfe")
+
+[node name="Label" type="Label" parent="RandomizeStats"]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 48
+text = "Randomize Stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turns" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 192.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Turns"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+
+[node name="Label" type="Label" parent="Turns"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 40
+text = "5 turns left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="RandomizeStats" to="RandomizeStats" method="_on_pressed"]

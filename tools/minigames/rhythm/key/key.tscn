@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://0itn68rgotyo"]
+
+[ext_resource type="Script" path="res://tools/minigames/rhythm/key/key.gd" id="1_sh4vj"]
+[ext_resource type="FontFile" uid="uid://drjnm84lxkvro" path="res://assets/ArnoPro-Regular.ttf" id="2_83fs5"]
+[ext_resource type="AudioStream" uid="uid://dowyseood26b1" path="res://tools/minigames/rhythm/assets/samples/hit.mp3" id="2_vwk6b"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6mi0p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alhvu"]
+albedo_color = Color(1, 0.188235, 0.188235, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv0qg"]
+size = Vector3(1, 1, 2.75)
+
+[node name="Key" type="Node3D"]
+script = ExtResource("1_sh4vj")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.001, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_6mi0p")
+surface_material_override/0 = SubResource("StandardMaterial3D_alhvu")
+
+[node name="Score" type="Label3D" parent="Mesh"]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 15, 0)
+text = "-"
+font = ExtResource("2_83fs5")
+font_size = 65
+outline_size = 25
+
+[node name="Hitbox" type="Area3D" parent="."]
+
+[node name="Collider" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+shape = SubResource("BoxShape3D_jv0qg")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vwk6b")
+volume_db = -18.0
+max_polyphony = 10
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]

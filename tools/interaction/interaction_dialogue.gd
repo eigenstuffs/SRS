@@ -6,6 +6,7 @@ const DIALOGUE = preload("res://tools/dialogue/dialogue.tscn")
 
 func action():
 	if file:
+		print("Dialogue pop-up")
 		Global.can_move = false
 		var a = DIALOGUE.instantiate()
 		if get_tree().current_scene.has_node("CanvasLayer/DialogueHolder"):

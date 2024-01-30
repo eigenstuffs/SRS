@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://0qt8i17a6sjh"]
+
+[ext_resource type="Texture2D" uid="uid://dnodymyvasg6y" path="res://tools/minigames/rhythm/assets/bg.jpg" id="1_0w44q"]
+[ext_resource type="PackedScene" uid="uid://b4707jscv3wq5" path="res://tools/minigames/rhythm/sound/note_spawner.tscn" id="2_13rkc"]
+[ext_resource type="AudioStream" uid="uid://cp1lq5rjgk282" path="res://tools/minigames/rhythm/assets/beatmaps/shop.mp3" id="3_opcnk"]
+[ext_resource type="PackedScene" uid="uid://6kqupwwsa2f0" path="res://tools/minigames/rhythm/key/board.tscn" id="4_wdsqj"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0rtgb"]
+panorama = ExtResource("1_0w44q")
+
+[sub_resource type="Sky" id="Sky_uc8jg"]
+sky_material = SubResource("PanoramaSkyMaterial_0rtgb")
+
+[sub_resource type="Environment" id="Environment_6e5wd"]
+background_mode = 2
+sky = SubResource("Sky_uc8jg")
+sky_rotation = Vector3(0, 1.39626, -0.567232)
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Game" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.760406, 0.649448, 0, -0.649448, 0.760406, 0, 1.1, 4.35)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6e5wd")
+
+[node name="NoteSpawner" parent="." instance=ExtResource("2_13rkc")]
+stream = ExtResource("3_opcnk")
+
+[node name="Notes" type="Node3D" parent="."]
+
+[node name="Board" parent="." instance=ExtResource("4_wdsqj")]

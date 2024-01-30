@@ -4,6 +4,7 @@ extends Interaction
 
 func action():
 	if minigame:
+		print("Minigame pop-up")
 		Global.can_move = false
 		var a = minigame.instantiate()
 		if get_tree().current_scene.has_node("CanvasLayer/MinigameHolder"):

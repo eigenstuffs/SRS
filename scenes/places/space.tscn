@@ -80,7 +80,6 @@ glow_intensity = 0.07
 
 [node name="Space" type="Node3D"]
 script = ExtResource("1_j16wi")
-player = NodePath("Actors/Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
