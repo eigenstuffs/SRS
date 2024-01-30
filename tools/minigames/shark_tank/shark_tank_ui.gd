@@ -31,3 +31,12 @@ func _on_button_pressed():
 		if i.button_pressed:
 			held_button = i
 			diff = get_global_mouse_position() - i.position
+
+func _on_invest_pressed():
+	pass # Replace with function body.
+
+func _on_negotiate_pressed():
+	pass # Replace with function body.
+
+func _on_pass_pressed():
+	pass # Replace with function body.
