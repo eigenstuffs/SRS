@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b66kvhbp3ppu1"]
+[gd_scene load_steps=4 format=3 uid="uid://cxkg3e05c1jxx"]
 
 [ext_resource type="Script" path="res://tools/settings/TextSpeed.gd" id="1_gsh7i"]
 [ext_resource type="Texture2D" uid="uid://4yblrqe1shl6" path="res://assets/arrow.png" id="1_toopc"]

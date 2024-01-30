@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ds8qr6whupx03"]
+[gd_scene load_steps=15 format=3 uid="uid://ds8qr6whupx03"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library.gd" id="1_nyx3m"]
 [ext_resource type="Texture2D" uid="uid://ucktysloxbk5" path="res://assets/placeholder.png" id="2_1gj0h"]
+[ext_resource type="Script" path="res://tools/minigames/library/Timers.gd" id="2_ffkao"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="3_4d66f"]
 [ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="3_8scwb"]
 
@@ -51,6 +52,64 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Overlay" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 256.0
+
+[node name="Timers" type="Control" parent="CanvasLayer/Overlay"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_ffkao")
+
+[node name="GameTimer" type="Control" parent="CanvasLayer/Overlay/Timers"]
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 192.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay/Timers/GameTimer"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 192.0
+
+[node name="GameTime" type="Timer" parent="CanvasLayer/Overlay/Timers/GameTimer"]
+
+[node name="Label" type="Label" parent="CanvasLayer/Overlay/Timers/GameTimer"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 75
+text = "60s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartTimer" type="Control" parent="CanvasLayer/Overlay/Timers"]
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 192.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay/Timers/StartTimer"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 192.0
+
+[node name="StartTime" type="Timer" parent="CanvasLayer/Overlay/Timers/StartTimer"]
+
+[node name="Label" type="Label" parent="CanvasLayer/Overlay/Timers/StartTimer"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 1280.0
+offset_bottom = 704.0
+theme_override_font_sizes/font_size = 200
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Ground" type="Node3D" parent="."]
 
@@ -127,3 +186,7 @@ light_color = Color(1, 0.933333, 0.811765, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_8scwb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+
+[connection signal="startTimeOver" from="CanvasLayer/Overlay/Timers" to="CanvasLayer/Overlay/Timers" method="_on_start_time_over"]
+[connection signal="timeout" from="CanvasLayer/Overlay/Timers/GameTimer/GameTime" to="CanvasLayer/Overlay/Timers" method="_on_game_time_timeout"]
+[connection signal="timeout" from="CanvasLayer/Overlay/Timers/StartTimer/StartTime" to="CanvasLayer/Overlay/Timers" method="_on_start_time_timeout"]
