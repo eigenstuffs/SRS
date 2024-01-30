@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://ds8qr6whupx03"]
+[gd_scene load_steps=16 format=3 uid="uid://ds8qr6whupx03"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library.gd" id="1_nyx3m"]
 [ext_resource type="Texture2D" uid="uid://ucktysloxbk5" path="res://assets/placeholder.png" id="2_1gj0h"]
 [ext_resource type="Script" path="res://tools/minigames/library/Timers.gd" id="2_ffkao"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="3_4d66f"]
 [ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="3_8scwb"]
+[ext_resource type="PackedScene" uid="uid://c10ia86b7pi7n" path="res://scenes/actors/wandering_npc.tscn" id="5_tfw12"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
 size = Vector3(10, 1, 10)
@@ -186,6 +187,9 @@ light_color = Color(1, 0.933333, 0.811765, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_8scwb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+
+[node name="WanderingNPC" parent="." instance=ExtResource("5_tfw12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82411, 0.388474, 2.59941)
 
 [connection signal="startTimeOver" from="CanvasLayer/Overlay/Timers" to="CanvasLayer/Overlay/Timers" method="_on_start_time_over"]
 [connection signal="timeout" from="CanvasLayer/Overlay/Timers/GameTimer/GameTime" to="CanvasLayer/Overlay/Timers" method="_on_game_time_timeout"]
