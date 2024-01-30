@@ -7,6 +7,7 @@ const JUMP_VELOCITY = 1.5
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var dir = Vector2.RIGHT
+var orientation : Vector3 = Vector3(1, 0, 0)
 var turning = false
 
 func _physics_process(delta):
@@ -14,7 +15,7 @@ func _physics_process(delta):
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 		
-		var direction = Vector3(1, 0, 0).normalized()
+		var direction = orientation.normalized()
 		
 		if direction:
 			velocity.x = direction.x * SPEED

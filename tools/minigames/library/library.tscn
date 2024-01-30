@@ -190,6 +190,8 @@ light_color = Color(1, 0.933333, 0.811765, 1)
 [node name="Player" parent="." instance=ExtResource("3_8scwb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
 
+[node name="NPCs" type="Node3D" parent="."]
+
 [node name="WanderingNPC" parent="." instance=ExtResource("5_tfw12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82411, 0.388474, 2.59941)
 
