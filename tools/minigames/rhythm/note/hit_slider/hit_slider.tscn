@@ -10,6 +10,9 @@ script = ExtResource("1_sn0s1")
 
 [node name="Ticks" type="Node3D" parent="."]
 
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.1, -0.15, 0.5, 0.2, 0.3, -1)
+
 [node name="Hitbox" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

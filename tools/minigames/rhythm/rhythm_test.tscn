@@ -26,9 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 0.760406, 0.649448, 0, -0.649448, 0.760406, 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6e5wd")
 
+[node name="Board" parent="." instance=ExtResource("4_wdsqj")]
+
 [node name="NoteSpawner" parent="." instance=ExtResource("2_13rkc")]
 stream = ExtResource("3_opcnk")
-
-[node name="Notes" type="Node3D" parent="."]
-
-[node name="Board" parent="." instance=ExtResource("4_wdsqj")]

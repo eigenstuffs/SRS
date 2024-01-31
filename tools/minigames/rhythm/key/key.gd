@@ -53,13 +53,13 @@ func _process(delta : float) -> void:
 		$Mesh.position.y = min(y_origin, $Mesh.position.y + (depress_distance / depress_recover_time) * delta)
 
 func _on_hitbox_area_entered(area: Area3D) -> void:
-	if area.get_parent() is AbstractNote:
+	if area.get_parent() is Note:
 		note_queue.push_back(area.get_parent())
 
 func _on_hitbox_area_exited(area: Area3D) -> void:
 	var note = area.get_parent()
-	if not note is AbstractNote: return
-	
+	if not note is Note: return
+
 	# TODO: This is awful way of checking wtf
 	var note_idx = note_queue.find(note)
 	if note_idx >= 0:

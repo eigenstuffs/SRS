@@ -1,17 +1,17 @@
 class_name HitNote extends Note
 
-@export var speed : float = 0 :
-	set(value): 
-		speed = value
-		_on_set_speed()
+@export var velocity : Vector3
 
-func _on_set_speed() -> void:
-	pass
+func _ready() -> void:
+	assert(velocity, 'velocity member must be set before _ready()!')
+	mesh = $Mesh
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	super(delta)
-	global_position.z += speed * delta
+	global_position += velocity * delta
+
+func hit(z : float) -> float:
+	queue_free()
+	return z - global_position.z
 
 func _on_visibility_notifier_screen_exited():
 	queue_free()

@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://tools/minigames/rhythm/sound/note_spawner.gd" id="1_k7dn2"]
 [ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://tools/minigames/rhythm/sound/audio_synchronizer.tscn" id="2_s2ppy"]
 
-[node name="NoteSpawner" type="Node"]
+[node name="NoteSpawner" type="Node3D"]
 script = ExtResource("1_k7dn2")
 
-[node name="Notes" type="Node" parent="."]
+[node name="Notes" type="Node3D" parent="."]
 
 [node name="AudioSynchronizer" parent="." instance=ExtResource("2_s2ppy")]
 use_metronome = true

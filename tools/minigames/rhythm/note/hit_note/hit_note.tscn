@@ -8,6 +8,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oxl4s"]
 render_priority = 0
 shader = ExtResource("2_mqcrd")
+shader_parameter/transition_distance_start = 4.95
+shader_parameter/transition_distance = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6pggl"]
 size = Vector3(0.2, 0.3, 0.2)
@@ -17,6 +19,7 @@ script = ExtResource("1_eh0c7")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.001, 0, 0, 0, 0.2, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+instance_shader_parameters/albedo = Color(1, 0.33, 0, 1)
 mesh = SubResource("CylinderMesh_ptm7h")
 surface_material_override/0 = SubResource("ShaderMaterial_oxl4s")
 
@@ -28,5 +31,4 @@ transform = Transform3D(0.15, 0, 0, 0, 0.06, 0, 0, 0, 0.15, 0, 0.03, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("BoxShape3D_6pggl")
 
-[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]
