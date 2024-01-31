@@ -112,6 +112,35 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="IncreasePoint" type="Button" parent="CanvasLayer/Overlay"]
+layout_mode = 0
+offset_left = 1523.0
+offset_top = 872.0
+offset_right = 1789.0
+offset_bottom = 990.0
+theme_override_font_sizes/font_size = 50
+text = "Add point"
+
+[node name="DecreasePoint" type="Button" parent="CanvasLayer/Overlay"]
+layout_mode = 0
+offset_left = 1237.0
+offset_top = 872.0
+offset_right = 1503.0
+offset_bottom = 990.0
+theme_override_font_sizes/font_size = 50
+text = "Lose point"
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Overlay"]
+layout_mode = 0
+offset_left = 1452.0
+offset_top = 25.0
+offset_right = 1837.0
+offset_bottom = 172.0
+theme_override_font_sizes/font_size = 125
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Walls" type="Node3D" parent="."]
 
 [node name="Ground" type="Node3D" parent="Walls"]
@@ -198,6 +227,9 @@ visible = false
 [node name="WanderingNPC" parent="NPCs" instance=ExtResource("5_tfw12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82411, 0.388474, 2.59941)
 
+[connection signal="gameOver" from="CanvasLayer/Overlay/Timers" to="." method="_on_timers_game_over"]
 [connection signal="startTimeOver" from="CanvasLayer/Overlay/Timers" to="CanvasLayer/Overlay/Timers" method="_on_start_time_over"]
 [connection signal="timeout" from="CanvasLayer/Overlay/Timers/GameTimer/GameTime" to="CanvasLayer/Overlay/Timers" method="_on_game_time_timeout"]
 [connection signal="timeout" from="CanvasLayer/Overlay/Timers/StartTimer/StartTime" to="CanvasLayer/Overlay/Timers" method="_on_start_time_timeout"]
+[connection signal="pressed" from="CanvasLayer/Overlay/IncreasePoint" to="." method="_on_increase_point_pressed"]
+[connection signal="pressed" from="CanvasLayer/Overlay/DecreasePoint" to="." method="_on_decrease_point_pressed"]
