@@ -13,3 +13,4 @@ class_name SharkTankPitches
 @export var second_offer : Array[String]
 @export var third_offer : Array[String]
 @export var fourth_offer : Array[String]
+@export var documents : Array[Texture]

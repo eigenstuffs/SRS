@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4gv04lv2486q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbf7h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v856w"]
+bg_color = Color(0.454902, 0.4, 0.470588, 1)
+
+[node name="Button" type="Button"]
+offset_left = 192.0
+offset_top = 128.0
+offset_right = 448.0
+offset_bottom = 320.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_qbf7h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v856w")
+toggle_mode = true
+action_mode = 0
