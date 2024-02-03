@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/npc_instancer.tscn" id="2_824h7"]
 [ext_resource type="Script" path="res://tools/minigames/library/Timers.gd" id="2_ffkao"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="3_4d66f"]
-[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="3_8scwb"]
+[ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="4_pul8v"]
 [ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="7_08t7k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
 size = Vector3(10, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkhmw"]
+albedo_color = Color(0.0862745, 0.0627451, 0.0588235, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_krp85"]
 material = SubResource("StandardMaterial3D_xkhmw")
@@ -219,14 +220,14 @@ omni_range = 11.0
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.978, 6.92968)
 light_color = Color(1, 0.933333, 0.811765, 1)
 
-[node name="Player" parent="." instance=ExtResource("3_8scwb")]
-transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 3.02058e-16, 0.866025, 0.5, -5.2318e-16, -0.5, 0.866025, 2.08165e-12, 0.55, 2.005)
+[node name="LibraryPlayer" parent="." instance=ExtResource("4_pul8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12359, 1.76488)
 
-[node name="NpcInstancer" parent="." instance=ExtResource("2_824h7")]
+[node name="NPCInstancer" parent="." instance=ExtResource("2_824h7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.5)
 
 [node name="BookInstancer" parent="." instance=ExtResource("7_08t7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 5, 2.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2)
 
 [connection signal="gameOver" from="CanvasLayer/Overlay/Timers" to="." method="_on_timers_game_over"]
 [connection signal="startTimeOver" from="CanvasLayer/Overlay/Timers" to="CanvasLayer/Overlay/Timers" method="_on_start_time_over"]
@@ -234,5 +235,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 5, 2.25)
 [connection signal="timeout" from="CanvasLayer/Overlay/Timers/StartTimer/StartTime" to="CanvasLayer/Overlay/Timers" method="_on_start_time_timeout"]
 [connection signal="pressed" from="CanvasLayer/Overlay/IncreasePoint" to="." method="_on_increase_point_pressed"]
 [connection signal="pressed" from="CanvasLayer/Overlay/DecreasePoint" to="." method="_on_decrease_point_pressed"]
+[connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]
+[connection signal="book_collected" from="LibraryPlayer" to="." method="_on_library_player_book_collected"]
 
-[editable path="NpcInstancer"]
+[editable path="NPCInstancer"]

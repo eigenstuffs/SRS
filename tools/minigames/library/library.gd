@@ -18,11 +18,14 @@ func update_score():
 #by default we gain and lose by 1 point. If we want to make some
 #extra valuable books or damaging bombs, we can adjust that
 #when calling the gain and lose points function
+
 func gain_points(increment : int = 1):
 	points += increment
+	update_score()
 	
 func lose_points(decrease : int = 1):
 	points -= decrease
+	update_score()
 
 func end():
 	emit_signal("minigame_finished", points)
@@ -38,3 +41,9 @@ func _on_decrease_point_pressed():
 
 func _on_timers_game_over():
 	end()
+
+func _on_library_player_book_collected():
+	gain_points(1)
+
+func _on_library_player_bomb_hit():
+	lose_points(1)

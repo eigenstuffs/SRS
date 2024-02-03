@@ -1,4 +1,4 @@
-class_name Book extends Node3D
+class_name Bomb extends Node3D
 ## Webster dictionary
 ##
 ## [b]Note:[/b] While the cull mask for [member Book.RigidBody] is set to 1,
