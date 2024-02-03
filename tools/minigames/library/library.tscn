@@ -218,7 +218,7 @@ shape = SubResource("BoxShape3D_uh7u6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 3.02058e-16, 0.866025, 0.5, -5.2318e-16, -0.5, 0.866025, 2.08165e-12, 7.65, 14)
-fov = 116.6
+fov = 20.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
