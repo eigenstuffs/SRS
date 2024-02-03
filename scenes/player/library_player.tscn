@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cifju81wyjjw4"]
+[gd_scene load_steps=10 format=3 uid="uid://cifju81wyjjw4"]
 
 [ext_resource type="Script" path="res://scenes/player/library_player.gd" id="1_0wy6d"]
 [ext_resource type="Texture2D" uid="uid://bgkaa7x1ip882" path="res://assets/mc.png" id="3_x348f"]
@@ -63,8 +63,11 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_552ey"]
-radius = 0.25
-height = 0.5
+radius = 0.35
+height = 0.7
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n7x5"]
+size = Vector3(0.5, 1, 0.02)
 
 [node name="LibraryPlayer" type="CharacterBody3D"]
 script = ExtResource("1_0wy6d")
@@ -90,4 +93,11 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.381816, 0)
 shape = SubResource("CapsuleShape3D_552ey")
 
+[node name="Hurtbox2" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox2"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, -0.0472371, 0)
+shape = SubResource("BoxShape3D_1n7x5")
+
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="Hurtbox2" to="." method="_on_hurtbox_2_body_entered"]
