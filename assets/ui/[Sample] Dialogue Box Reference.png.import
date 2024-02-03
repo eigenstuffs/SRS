@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k86e0v8fq77w"
-path="res://.godot/imported/Banner Icon Backplate_Click.png-73268430279c3e5f8eb50a8b0d297128.ctex"
+uid="uid://lbjuc4g7iiy4"
+path="res://.godot/imported/[Sample] Dialogue Box Reference.png-72f2b8e4b2e2a4098dc9cde032175873.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Banner Icon Backplate_Click.png"
-dest_files=["res://.godot/imported/Banner Icon Backplate_Click.png-73268430279c3e5f8eb50a8b0d297128.ctex"]
+source_file="res://assets/ui/[Sample] Dialogue Box Reference.png"
+dest_files=["res://.godot/imported/[Sample] Dialogue Box Reference.png-72f2b8e4b2e2a4098dc9cde032175873.ctex"]
 
 [params]
 

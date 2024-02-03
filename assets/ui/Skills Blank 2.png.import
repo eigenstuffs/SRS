@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqitvqydu0aai"
-path="res://.godot/imported/Line.png-743b819b4acd5fcd5c99d2b1ec00024a.ctex"
+uid="uid://ep4la2p10t6k"
+path="res://.godot/imported/Skills Blank 2.png-1ff0a9fe744ca1b6df8c4303463a33b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Line.png"
-dest_files=["res://.godot/imported/Line.png-743b819b4acd5fcd5c99d2b1ec00024a.ctex"]
+source_file="res://assets/ui/Skills Blank 2.png"
+dest_files=["res://.godot/imported/Skills Blank 2.png-1ff0a9fe744ca1b6df8c4303463a33b5.ctex"]
 
 [params]
 

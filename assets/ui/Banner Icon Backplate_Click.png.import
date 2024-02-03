@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://el6nfdj1ams7"
-path="res://.godot/imported/[Sample] Skills Reference.png-526d826738d6bfbc62474fe8228a0502.ctex"
+uid="uid://k86e0v8fq77w"
+path="res://.godot/imported/Banner Icon Backplate_Click.png-27c98d992a5e3456eff57d0fdca782f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/[Sample] Skills Reference.png"
-dest_files=["res://.godot/imported/[Sample] Skills Reference.png-526d826738d6bfbc62474fe8228a0502.ctex"]
+source_file="res://assets/ui/Banner Icon Backplate_Click.png"
+dest_files=["res://.godot/imported/Banner Icon Backplate_Click.png-27c98d992a5e3456eff57d0fdca782f9.ctex"]
 
 [params]
 

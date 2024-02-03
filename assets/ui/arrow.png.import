@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs54kw4ef5h21"
-path="res://.godot/imported/Mini Game Frame.png-89ae96a11932c3c5fbe9cf7daea6fce6.ctex"
+uid="uid://4yblrqe1shl6"
+path="res://.godot/imported/arrow.png-037c4c84d387da566a8e39370a73460a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Mini Game Frame.png"
-dest_files=["res://.godot/imported/Mini Game Frame.png-89ae96a11932c3c5fbe9cf7daea6fce6.ctex"]
+source_file="res://assets/ui/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-037c4c84d387da566a8e39370a73460a.ctex"]
 
 [params]
 

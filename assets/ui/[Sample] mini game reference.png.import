@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i0f003c42o6x"
-path="res://.godot/imported/Skills Blank.png-8266b924421c9788b60138d12a0d6f0c.ctex"
+uid="uid://1pkrtst3jmk2"
+path="res://.godot/imported/[Sample] mini game reference.png-c2b313d36b3eb4e465b54406d5febe35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Skills Blank.png"
-dest_files=["res://.godot/imported/Skills Blank.png-8266b924421c9788b60138d12a0d6f0c.ctex"]
+source_file="res://assets/ui/[Sample] mini game reference.png"
+dest_files=["res://.godot/imported/[Sample] mini game reference.png-c2b313d36b3eb4e465b54406d5febe35.ctex"]
 
 [params]
 

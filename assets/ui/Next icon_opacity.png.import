@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqiuit1uw3nuh"
-path="res://.godot/imported/Turn Backplate.png-b3ff8a9d6bb42bed264da632c62976cd.ctex"
+uid="uid://dn03mio3i5svr"
+path="res://.godot/imported/Next icon_opacity.png-a2384c09face23ddd4c0d99a0e190a7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Turn Backplate.png"
-dest_files=["res://.godot/imported/Turn Backplate.png-b3ff8a9d6bb42bed264da632c62976cd.ctex"]
+source_file="res://assets/ui/Next icon_opacity.png"
+dest_files=["res://.godot/imported/Next icon_opacity.png-a2384c09face23ddd4c0d99a0e190a7b.ctex"]
 
 [params]
 

@@ -45,11 +45,6 @@ func _on_timers_game_over():
 	end()
 	$LibraryPlayer/CollisionShape3D.disabled = true
 	$LibraryPlayer.can_move = false
-	var a = create_tween()
-	a.tween_property($NPCInstancer, "modulate", Color(1,1,1,0), 1)
-	a = create_tween()
-	a.tween_property($BookInstancer, "modulate", Color(1,1,1,0), 1)
-	await a.finished
 	$NPCInstancer.queue_free()
 	$BookInstancer.queue_free()
 

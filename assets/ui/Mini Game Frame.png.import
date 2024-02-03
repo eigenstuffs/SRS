@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1pkrtst3jmk2"
-path="res://.godot/imported/[Sample] mini game reference.png-b3d8598a85cf5cef61a54334236beda1.ctex"
+uid="uid://bs54kw4ef5h21"
+path="res://.godot/imported/Mini Game Frame.png-592dab03461a4b94d74d676e1410c842.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/[Sample] mini game reference.png"
-dest_files=["res://.godot/imported/[Sample] mini game reference.png-b3d8598a85cf5cef61a54334236beda1.ctex"]
+source_file="res://assets/ui/Mini Game Frame.png"
+dest_files=["res://.godot/imported/Mini Game Frame.png-592dab03461a4b94d74d676e1410c842.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@ extends Node3D
 const BOOK = preload('res://tools/minigames/library/book/book.tscn')
 const BOMB = preload("res://tools/minigames/library/book/bomb.tscn")
 
-@export var spawn_interval_seconds : float = 2
+@export var spawn_interval_seconds : float = 1
 @export var floor_position_y : float = 0.55
 
 var time : float = 0

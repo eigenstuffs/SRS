@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7m700boxprsh"
-path="res://.godot/imported/Score backplate.png-5ff67d21231e578a2a59b8fc7b56ed7e.ctex"
+uid="uid://dbc7dotyvg5gg"
+path="res://.godot/imported/Parchment 3.png-4b6c6845cb914795970c2795a5190bbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Score backplate.png"
-dest_files=["res://.godot/imported/Score backplate.png-5ff67d21231e578a2a59b8fc7b56ed7e.ctex"]
+source_file="res://assets/ui/Parchment 3.png"
+dest_files=["res://.godot/imported/Parchment 3.png-4b6c6845cb914795970c2795a5190bbe.ctex"]
 
 [params]
 

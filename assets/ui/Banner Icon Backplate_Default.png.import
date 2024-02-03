@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brn1l82ep7lyr"
-path="res://.godot/imported/Parchment 1.png-3e8c23a6e99194473ea733da59f77024.ctex"
+uid="uid://c2iw8bcynwrpk"
+path="res://.godot/imported/Banner Icon Backplate_Default.png-0d2230557a6fc5a6a724ef12a82190df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Parchment 1.png"
-dest_files=["res://.godot/imported/Parchment 1.png-3e8c23a6e99194473ea733da59f77024.ctex"]
+source_file="res://assets/ui/Banner Icon Backplate_Default.png"
+dest_files=["res://.godot/imported/Banner Icon Backplate_Default.png-0d2230557a6fc5a6a724ef12a82190df.ctex"]
 
 [params]
 

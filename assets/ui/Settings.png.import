@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2iw8bcynwrpk"
-path="res://.godot/imported/Banner Icon Backplate_Default.png-febd170a4bc5718be5288075f429fd90.ctex"
+uid="uid://dmk7lcdgfbd05"
+path="res://.godot/imported/Settings.png-a3b1f1043d2db488755043abeb29ef9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Banner Icon Backplate_Default.png"
-dest_files=["res://.godot/imported/Banner Icon Backplate_Default.png-febd170a4bc5718be5288075f429fd90.ctex"]
+source_file="res://assets/ui/Settings.png"
+dest_files=["res://.godot/imported/Settings.png-a3b1f1043d2db488755043abeb29ef9a.ctex"]
 
 [params]
 

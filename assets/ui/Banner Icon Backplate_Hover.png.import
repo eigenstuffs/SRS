@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt2vhgax20vno"
-path="res://.godot/imported/Score and Mini Game Frame.png-8a383ee8dcd88741d66ac62cd458626f.ctex"
+uid="uid://wc2indpyjym5"
+path="res://.godot/imported/Banner Icon Backplate_Hover.png-74d9e9f9b788fc8471b8c9e2e56cedd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Score and Mini Game Frame.png"
-dest_files=["res://.godot/imported/Score and Mini Game Frame.png-8a383ee8dcd88741d66ac62cd458626f.ctex"]
+source_file="res://assets/ui/Banner Icon Backplate_Hover.png"
+dest_files=["res://.godot/imported/Banner Icon Backplate_Hover.png-74d9e9f9b788fc8471b8c9e2e56cedd5.ctex"]
 
 [params]
 

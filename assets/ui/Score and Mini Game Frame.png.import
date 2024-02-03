@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ep4la2p10t6k"
-path="res://.godot/imported/Skills Blank 2.png-9baea23013b98cdcef464268a7a3f52f.ctex"
+uid="uid://bt2vhgax20vno"
+path="res://.godot/imported/Score and Mini Game Frame.png-51c2523d3f4d32c4653cf9172a81cbae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Skills Blank 2.png"
-dest_files=["res://.godot/imported/Skills Blank 2.png-9baea23013b98cdcef464268a7a3f52f.ctex"]
+source_file="res://assets/ui/Score and Mini Game Frame.png"
+dest_files=["res://.godot/imported/Score and Mini Game Frame.png-51c2523d3f4d32c4653cf9172a81cbae.ctex"]
 
 [params]
 

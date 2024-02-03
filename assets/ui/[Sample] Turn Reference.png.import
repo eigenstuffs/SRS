@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbc7dotyvg5gg"
-path="res://.godot/imported/Parchment 3.png-9a4fa8acbd59d9cbfcb38f1b9f39a7f9.ctex"
+uid="uid://dn0qgbs44vaev"
+path="res://.godot/imported/[Sample] Turn Reference.png-4da16cb136e88afd064d4228c9dd5358.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Parchment 3.png"
-dest_files=["res://.godot/imported/Parchment 3.png-9a4fa8acbd59d9cbfcb38f1b9f39a7f9.ctex"]
+source_file="res://assets/ui/[Sample] Turn Reference.png"
+dest_files=["res://.godot/imported/[Sample] Turn Reference.png-4da16cb136e88afd064d4228c9dd5358.ctex"]
 
 [params]
 
