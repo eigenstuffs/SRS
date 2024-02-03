@@ -8,19 +8,23 @@ var points : int = 0
 
 signal finished(points)
 
-func initiate_minigame(minigame : String):
+func initiate_minigame(which : String):
 	var list : Array = MINIGAME_LIST.minigame_list
-	var resource : Minigame = list[list.find(minigame)]
-	var a = load(resource.scene).instantiate()
-	$Game.add_child(a)
+	var resource
+	for i : Resource in list:
+		if i.minigame == which:
+			resource = i
+			var a = load(resource.scene).instantiate()
+			$Game.add_child(a)
+			a.connect("update_points", update_points)
+		else:
+			print("No such minigame!")
 	
 	if resource.time != 0:
 		$UI.gameTimeCount = resource.time
 		$UI/GameTimer/TextureProgressBar.max_value = resource.time
 		$UI/GameTimer/TextureProgressBar.value = resource.time
 		$UI/GameTimer/TimeLabel.text = str(resource.time)
-	
-	a.connect("update_points", update_points)
 
 func update_points(new : int):
 	points = new

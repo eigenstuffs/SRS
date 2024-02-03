@@ -18,7 +18,7 @@ offset_top = 64.0
 offset_right = 960.0
 offset_bottom = 128.0
 theme_override_font_sizes/font_size = 64
-placeholder_text = "Enter *.tres here"
+placeholder_text = "Enter name (e.g. Library)"
 
 [node name="Skip" type="Button" parent="."]
 layout_mode = 0
@@ -27,7 +27,7 @@ offset_top = 192.0
 offset_right = 320.0
 offset_bottom = 320.0
 theme_override_font_sizes/font_size = 64
-text = "Skip"
+text = "Instance"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

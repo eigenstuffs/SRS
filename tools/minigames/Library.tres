@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_mta4f")
+minigame = "Library"
 scene = "res://tools/minigames/library/library.tscn"
 time = 20
