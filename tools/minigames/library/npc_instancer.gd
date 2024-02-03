@@ -1,6 +1,6 @@
 extends Node3D
 
-const NPC = preload('res://scenes/actors/wandering_npc.tscn')
+const WANDERING_NPC = preload('res://scenes/actors/wandering_npc.tscn')
 
 @export var spawn_interval_seconds : float = 1.0
 
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 			var spawn_pos = area_left.get_random_point() if is_left_start else area_right.get_random_point()
 			var end_pos = area_right.get_random_point() if is_left_start else area_left.get_random_point()
 			
-			var npc : WanderingNPC = NPC.instantiate()
+			var npc : WanderingNPC = WANDERING_NPC.instantiate()
 			add_child(npc)
 			npc.global_position = spawn_pos
 			npc.orientation = (end_pos - spawn_pos).normalized() * WanderingNPC.SPEED

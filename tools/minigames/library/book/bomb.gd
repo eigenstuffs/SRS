@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	shadow.radius = t
 	shadow.alpha = t
 
-func _on_rigid_body_body_entered(body: Node) -> void:
+func _on_rigid_body_body_entered(_body: Node) -> void:
 	rigid_body.call_deferred('set_contact_monitor', false)
 	rigid_body.max_contacts_reported = 0
 	rigid_body.freeze = false

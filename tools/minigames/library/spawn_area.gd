@@ -10,7 +10,7 @@ class_name SpawnArea extends CSGPolygon3D
 var cumulated_areas : Array
 
 func _ready() -> void:
-	var triangle_count: int = tris.size() / 3
+	var triangle_count: float = tris.size() / 3
 	assert(triangle_count > 0)
 	
 	cumulated_areas.resize(triangle_count)
@@ -36,8 +36,8 @@ func get_random_point() -> Vector3:
 func _get_tri(i : int) -> Array:
 	return [self.polygon[tris[3 * i + 0]], self.polygon[tris[3 * i + 1]], self.polygon[tris[3 * i + 2]]]
 
-static func get_tri_area(a: Vector2, b: Vector2, c: Vector2) -> float:
+func get_tri_area(a: Vector2, b: Vector2, c: Vector2) -> float:
 	return 0.5 * abs((c.x - a.x) * (b.y - a.y) - (b.x - a.x) * (c.y - a.y))
 
-static func get_random_tri_point(a: Vector2, b: Vector2, c: Vector2) -> Vector2:
+func get_random_tri_point(a: Vector2, b: Vector2, c: Vector2) -> Vector2:
 	return a + sqrt(randf()) * (-a + b + randf() * (c - b))

@@ -1,21 +1,18 @@
-extends Node3D
+extends SubViewport
 
 class_name LibraryMinigame
 
 signal minigame_finished(num_points : int)
+signal update_points(num : int)
 
 @export var points : int = 0
-
-@onready var score_label : Label = $CanvasLayer/Overlay/ScoreLabel
 
 var started = false
 
 func _ready():
-	points = 0
-	update_score()
-
-func update_score():
-	score_label.text = str(points)
+	await get_tree().create_timer(3).timeout
+	$NPCInstancer.active = true
+	$BookInstancer.active = true
 
 #by default we gain and lose by 1 point. If we want to make some
 #extra valuable books or damaging bombs, we can adjust that
@@ -23,37 +20,22 @@ func update_score():
 
 func gain_points(increment : int = 1):
 	points += increment
-	update_score()
+	update_points.emit(points)
 	
 func lose_points(decrease : int = 1):
 	points -= decrease
-	update_score()
+	update_points.emit(points)
 
 func end():
 	emit_signal("minigame_finished", points)
-	print(points)
-
-func _on_increase_point_pressed():
-	gain_points()
-	update_score()
-
-func _on_decrease_point_pressed():
-	lose_points()
-	update_score()
-
-func _on_timers_game_over():
-	end()
 	$LibraryPlayer/CollisionShape3D.disabled = true
 	$LibraryPlayer.can_move = false
 	$NPCInstancer.queue_free()
 	$BookInstancer.queue_free()
+	print(points)
 
 func _on_library_player_book_collected():
 	gain_points(1)
 
 func _on_library_player_bomb_hit():
 	lose_points(1)
-
-func _on_timers_start_time_over():
-	$NPCInstancer.active = true
-	$BookInstancer.active = true
