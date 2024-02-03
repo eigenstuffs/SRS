@@ -95,6 +95,7 @@ script = ExtResource("1_koc33")
 
 [node name="Shadow" parent="." instance=ExtResource("1_ekthe")]
 transform = Transform3D(0.575, 0, 0, 0, 1, 0, 0, 0, 0.575, 0, -50, 0)
+alpha = 1.0
 
 [node name="RigidBody" type="RigidBody3D" parent="."]
 collision_layer = 0

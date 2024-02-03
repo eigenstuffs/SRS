@@ -2,7 +2,7 @@ extends SubViewport
 
 class_name LibraryMinigame
 
-signal minigame_finished(num_points : int)
+signal minigame_finished(num : int)
 signal update_points(num : int)
 
 @export var points : int = 0

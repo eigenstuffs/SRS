@@ -9,3 +9,7 @@ class_name SharkTankPitches
 @export var second_negotiate : Array[String]
 @export var third_negotiate : Array[String]
 @export var available_negotiations : int
+@export var first_offer : Array[String]
+@export var second_offer : Array[String]
+@export var third_offer : Array[String]
+@export var fourth_offer : Array[String]

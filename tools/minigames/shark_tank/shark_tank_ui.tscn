@@ -4,6 +4,33 @@
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/spritesheet_mini_npc_idle.png" id="2_bequw"]
 [ext_resource type="Script" path="res://tools/minigames/shark_tank/pitch_handler.gd" id="2_xxcir"]
 
+[sub_resource type="Animation" id="Animation_cjcn3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-192, 522)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
+}
+
 [sub_resource type="Animation" id="Animation_0jvab"]
 resource_name = "WalkIn"
 length = 1.5
@@ -30,33 +57,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(2.08165e-12, -10), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -10), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -10), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -10), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -10), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -10), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -10), Vector2(2.08165e-12, 2.08165e-12)]
-}
-
-[sub_resource type="Animation" id="Animation_cjcn3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-192, 522)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2.08165e-12, 2.08165e-12)]
 }
 
 [sub_resource type="Animation" id="Animation_1rjpq"]
@@ -106,6 +106,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_iawdj")
 
 [node name="PitchHandler" type="Node" parent="."]
@@ -115,6 +116,7 @@ script = ExtResource("2_xxcir")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 640.0
+mouse_filter = 2
 color = Color(0.270588, 0.12549, 0.129412, 1)
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -137,6 +139,7 @@ layout_mode = 0
 offset_top = 640.0
 offset_right = 1920.0
 offset_bottom = 1088.0
+mouse_filter = 2
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="Buttons" type="Control" parent="."]
@@ -223,6 +226,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [connection signal="pressed" from="Responses/Invest" to="." method="_on_invest_pressed"]
 [connection signal="pressed" from="Responses/Negotiate" to="." method="_on_negotiate_pressed"]

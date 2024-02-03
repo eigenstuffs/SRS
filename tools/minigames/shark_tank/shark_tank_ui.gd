@@ -7,6 +7,7 @@ const PITCH_LIST : SharkTankPitchList = preload("res://tools/minigames/shark_tan
 @onready var buttons : Control = $Buttons
 @onready var responses : Control = $Responses
 @onready var anim : AnimationPlayer = $Node2D/AnimationPlayer
+@onready var dialogue_holder = $CanvasLayer/DialogueHolder
 
 var following_mouse : bool = false
 var held_button : Button = null
@@ -15,7 +16,10 @@ var diff : Vector2 = Vector2.ZERO
 var current_pitch : SharkTankPitches = null
 var previous_pitches : Array[SharkTankPitches] = []
 
-signal minigame_finished(score : int)
+var points = 0
+
+signal minigame_finished(num : int)
+signal update_points(num : int)
 
 func _ready():
 	for i in buttons.get_children():
@@ -24,6 +28,7 @@ func _ready():
 		# many buttons there will be
 	responses.hide()
 	buttons.hide()
+	new_pitch()
 
 func _input(event):
 	if event.is_action_released("LMB") and held_button:
@@ -42,13 +47,18 @@ func _on_button_pressed():
 			diff = get_global_mouse_position() - i.position
 
 func _on_invest_pressed():
-	$AnimationPlayer.play("WalkIn")
+	$Node2D/AnimationPlayer.play("WalkIn")
+	await $Node2D/AnimationPlayer.animation_finished
+	buttons.show()
+	responses.show()
 
 func _on_negotiate_pressed():
-	$AnimationPlayer.play("WalkOut")
+	pass
 
 func _on_pass_pressed():
-	pass # Replace with function body.
+	$Node2D/AnimationPlayer.play("WalkOut")
+	buttons.hide()
+	responses.hide()
 
 func new_pitch():
 	var list : Array[SharkTankPitches] = PITCH_LIST.pitch_list.duplicate(true)
@@ -57,8 +67,8 @@ func new_pitch():
 	list.shuffle()
 	var pitch = list[0]
 	current_pitch = pitch
-	
-	buttons.show()
-	responses.show()
+	Util.dialogue_from_strings(dialogue_holder,
+		current_pitch.first_offer)
+	await Util.util_finished
 	
 	
