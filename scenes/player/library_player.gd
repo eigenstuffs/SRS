@@ -8,12 +8,13 @@ const JUMP_VELOCITY = 1.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var dir = Vector2.RIGHT
 var turning = false
+var can_move = true
 
 signal book_collected
 signal bomb_hit
 
 func _physics_process(delta):
-	if Global.can_move:
+	if can_move:
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 		
@@ -64,6 +65,8 @@ func _on_hurtbox_body_entered(body):
 	if body.get_parent() is Book:
 		emit_signal("book_collected")
 		body.get_parent().queue_free()
-	elif body.get_parent() is Bomb:
+
+func _on_hurtbox_2_body_entered(body):
+	if body.get_parent() is Bomb:
 		emit_signal("bomb_hit")
 		body.get_parent().queue_free()

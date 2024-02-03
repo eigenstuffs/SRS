@@ -8,6 +8,8 @@ signal minigame_finished(num_points : int)
 
 @onready var score_label : Label = $CanvasLayer/Overlay/ScoreLabel
 
+var started = false
+
 func _ready():
 	points = 0
 	update_score()
@@ -41,9 +43,22 @@ func _on_decrease_point_pressed():
 
 func _on_timers_game_over():
 	end()
+	$LibraryPlayer/CollisionShape3D.disabled = true
+	$LibraryPlayer.can_move = false
+	var a = create_tween()
+	a.tween_property($NPCInstancer, "modulate", Color(1,1,1,0), 1)
+	a = create_tween()
+	a.tween_property($BookInstancer, "modulate", Color(1,1,1,0), 1)
+	await a.finished
+	$NPCInstancer.queue_free()
+	$BookInstancer.queue_free()
 
 func _on_library_player_book_collected():
 	gain_points(1)
 
 func _on_library_player_bomb_hit():
 	lose_points(1)
+
+func _on_timers_start_time_over():
+	$NPCInstancer.active = true
+	$BookInstancer.active = true

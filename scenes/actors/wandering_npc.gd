@@ -56,3 +56,6 @@ func anim_handler():
 		$AnimationPlayer.play("Walk")
 	else:
 		$AnimationPlayer.play("Idle")
+
+func _on_visible_on_screen_enabler_3d_screen_exited():
+	queue_free()

@@ -8,20 +8,22 @@ const BOMB = preload("res://tools/minigames/library/book/bomb.tscn")
 
 var time : float = 0
 var spawn_time_next : float = 0
+var active = false
 
 @onready var area : SpawnArea = $SpawnArea
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if time >= spawn_time_next:
-		spawn_time_next += spawn_interval_seconds
-		var obj
-		if randi_range(0,8) != 0:
-			obj = BOOK.instantiate()
-		else:
-			obj = BOMB.instantiate()
-		add_child(obj)
-		obj.global_position = area.get_random_point()
-		obj.floor_position_y = floor_position_y
-	
-	time += delta
+	if active:
+		if time >= spawn_time_next:
+			spawn_time_next += spawn_interval_seconds
+			var obj
+			if randi_range(0,4) != 0:
+				obj = BOOK.instantiate()
+			else:
+				obj = BOMB.instantiate()
+			add_child(obj)
+			obj.global_position = area.get_random_point()
+			obj.floor_position_y = floor_position_y
+		
+		time += delta

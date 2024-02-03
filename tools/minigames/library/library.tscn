@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://ds8qr6whupx03"]
+[gd_scene load_steps=17 format=3 uid="uid://ds8qr6whupx03"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library.gd" id="1_nyx3m"]
 [ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/npc_instancer.tscn" id="2_824h7"]
 [ext_resource type="Script" path="res://tools/minigames/library/Timers.gd" id="2_ffkao"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="3_4d66f"]
 [ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="4_pul8v"]
+[ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="5_xhnos"]
 [ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="7_08t7k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
@@ -113,6 +114,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="IncreasePoint" type="Button" parent="CanvasLayer/Overlay"]
+visible = false
 layout_mode = 0
 offset_left = 1523.0
 offset_top = 872.0
@@ -122,6 +124,7 @@ theme_override_font_sizes/font_size = 50
 text = "Add point"
 
 [node name="DecreasePoint" type="Button" parent="CanvasLayer/Overlay"]
+visible = false
 layout_mode = 0
 offset_left = 1237.0
 offset_top = 872.0
@@ -210,8 +213,9 @@ transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 3.02058e-16, 0.866025, 0.5,
 fov = 20.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 light_color = Color(1, 0.913725, 0.807843, 1)
+light_energy = 3.01
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 omni_range = 11.0
@@ -223,6 +227,8 @@ light_color = Color(1, 0.933333, 0.811765, 1)
 [node name="LibraryPlayer" parent="." instance=ExtResource("4_pul8v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12359, 1.76488)
 
+[node name="Shadow" parent="LibraryPlayer" instance=ExtResource("5_xhnos")]
+
 [node name="NPCInstancer" parent="." instance=ExtResource("2_824h7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.5)
 
@@ -230,6 +236,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2)
 
 [connection signal="gameOver" from="CanvasLayer/Overlay/Timers" to="." method="_on_timers_game_over"]
+[connection signal="startTimeOver" from="CanvasLayer/Overlay/Timers" to="." method="_on_timers_start_time_over"]
 [connection signal="startTimeOver" from="CanvasLayer/Overlay/Timers" to="CanvasLayer/Overlay/Timers" method="_on_start_time_over"]
 [connection signal="timeout" from="CanvasLayer/Overlay/Timers/GameTimer/GameTime" to="CanvasLayer/Overlay/Timers" method="_on_game_time_timeout"]
 [connection signal="timeout" from="CanvasLayer/Overlay/Timers/StartTimer/StartTime" to="CanvasLayer/Overlay/Timers" method="_on_start_time_timeout"]
