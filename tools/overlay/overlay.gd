@@ -3,8 +3,9 @@ extends Control
 class_name Overlay
 
 @onready var PLAYER_STATS : PlayerStats = preload("res://resources/stats/player_stats.tres")
-
+@onready var SETTINGS = preload("res://tools/settings/settings.tscn")
 @onready var stats_container = $StatsContainer
+@onready var setting_button = $SettingButton
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,3 +27,22 @@ func stats_bar_update():
 	
 func on_stats_changed():
 	stats_bar_update()
+
+func _on_setting_button_pressed():
+	#check if we are in a minigame or other scenes that you shouldn't call settings
+	if Global.can_move == false: 
+		return
+	setting_button.disabled = true
+	Global.can_move = false
+	var a = get_tree().root
+	if a.has_node("/root/Settings"):
+		pass
+	else:
+		var b = SETTINGS.instantiate()
+		a.add_child(b)
+		b.connect("setting_closed", setting_closed_func)
+	print("button pressed")
+
+func setting_closed_func():
+	Global.can_move = true
+	setting_button.disabled = false

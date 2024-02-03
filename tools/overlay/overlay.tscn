@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx0l077ip533b"]
+[gd_scene load_steps=7 format=3 uid="uid://dx0l077ip533b"]
 
 [ext_resource type="Script" path="res://tools/overlay/overlay.gd" id="1_utmfi"]
 [ext_resource type="Script" path="res://tools/overlay/RandomizeStats.gd" id="2_7xqfe"]
+[ext_resource type="Texture2D" uid="uid://c2iw8bcynwrpk" path="res://assets/ui/Banner Icon Backplate_Default.png" id="2_fw7ki"]
+[ext_resource type="Texture2D" uid="uid://k86e0v8fq77w" path="res://assets/ui/Banner Icon Backplate_Click.png" id="3_vec2b"]
+[ext_resource type="Texture2D" uid="uid://wc2indpyjym5" path="res://assets/ui/Banner Icon Backplate_Hover.png" id="4_16uij"]
+[ext_resource type="Texture2D" uid="uid://dmk7lcdgfbd05" path="res://assets/ui/Settings.png" id="5_vj8ua"]
 
 [node name="Overlay" type="Control"]
 layout_mode = 3
@@ -11,31 +15,33 @@ offset_bottom = 1088.0
 mouse_filter = 2
 script = ExtResource("1_utmfi")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="SettingButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1728.0
-offset_top = 64.0
-offset_right = 1856.0
-offset_bottom = 192.0
-mouse_filter = 2
+offset_left = 1718.0
+offset_top = 35.0
+offset_right = 1846.0
+offset_bottom = 163.0
+texture_normal = ExtResource("2_fw7ki")
+texture_pressed = ExtResource("3_vec2b")
+texture_hover = ExtResource("4_16uij")
+texture_disabled = ExtResource("2_fw7ki")
+texture_focused = ExtResource("2_fw7ki")
+stretch_mode = 4
 
-[node name="ColorRect" type="ColorRect" parent="TextureButton"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-
-[node name="TextureButton2" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 1536.0
-offset_top = 64.0
-offset_right = 1664.0
-offset_bottom = 192.0
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="TextureButton2"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
+[node name="Cog" type="TextureRect" parent="SettingButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -45.5
+offset_right = 38.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_vj8ua")
 
 [node name="StatsContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(500, 500)
@@ -160,4 +166,5 @@ text = "5 turns left"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="RandomizeStats" to="RandomizeStats" method="_on_pressed"]
