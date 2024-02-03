@@ -4,14 +4,14 @@
 
 [resource]
 script = ExtResource("1_03i1q")
-pitch = Array[String]([])
-no_deal_dialogue = Array[String]([])
-deal_dialogue = Array[String]([])
-first_negotiate = Array[String]([])
-second_negotiate = Array[String]([])
-third_negotiate = Array[String]([])
+pitch = Array[String](["hello guys today i will", "do a pitch", "please invest"])
+no_deal_dialogue = Array[String](["grrr you will rue the day"])
+deal_dialogue = Array[String](["ok thank you godbye"])
+first_negotiate = Array[String](["ok last offer"])
+second_negotiate = Array[String]([""])
+third_negotiate = Array[String]([""])
 available_negotiations = 1
-first_offer = Array[String]([])
-second_offer = Array[String]([])
+first_offer = Array[String](["i am offering you 10% for one grillion dollars"])
+second_offer = Array[String](["i am offering you..... 12 PERCENt.... for a grillion dollras"])
 third_offer = Array[String]([])
 fourth_offer = Array[String]([])

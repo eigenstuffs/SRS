@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://75bedpy5j0at"]
+[gd_scene load_steps=9 format=3 uid="uid://75bedpy5j0at"]
 
 [ext_resource type="Script" path="res://tools/minigames/shark_tank/shark_tank_ui.gd" id="1_iawdj"]
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/spritesheet_mini_npc_idle.png" id="2_bequw"]
 [ext_resource type="Script" path="res://tools/minigames/shark_tank/pitch_handler.gd" id="2_xxcir"]
+[ext_resource type="PackedScene" uid="uid://c4gv04lv2486q" path="res://tools/minigames/shark_tank/document.tscn" id="4_05llp"]
 
 [sub_resource type="Animation" id="Animation_cjcn3"]
 length = 0.001
@@ -94,11 +95,6 @@ _data = {
 "WalkOut": SubResource("Animation_1rjpq")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbf7h"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v856w"]
-bg_color = Color(0.454902, 0.4, 0.470588, 1)
-
 [node name="SharkTankUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -142,54 +138,14 @@ offset_bottom = 1088.0
 mouse_filter = 2
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
-[node name="Buttons" type="Control" parent="."]
+[node name="Documents" type="Control" parent="."]
 anchors_preset = 0
 offset_top = 640.0
 offset_right = 1920.0
 offset_bottom = 1088.0
 
-[node name="Button" type="Button" parent="Buttons"]
+[node name="Button" parent="Documents" instance=ExtResource("4_05llp")]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 128.0
-offset_right = 448.0
-offset_bottom = 320.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_qbf7h")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v856w")
-toggle_mode = true
-action_mode = 0
-
-[node name="Button2" type="Button" parent="Buttons"]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 64.0
-offset_right = 768.0
-offset_bottom = 320.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_qbf7h")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v856w")
-toggle_mode = true
-action_mode = 0
-
-[node name="Button3" type="Button" parent="Buttons"]
-layout_mode = 0
-offset_left = 960.0
-offset_top = 128.0
-offset_right = 1216.0
-offset_bottom = 384.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_qbf7h")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v856w")
-toggle_mode = true
-action_mode = 0
-
-[node name="Button4" type="Button" parent="Buttons"]
-layout_mode = 0
-offset_left = 1408.0
-offset_right = 1664.0
-offset_bottom = 256.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_qbf7h")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v856w")
-toggle_mode = true
-action_mode = 0
 
 [node name="Responses" type="Control" parent="."]
 layout_mode = 3
