@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SharkTankPitches" load_steps=2 format=3 uid="uid://v0813sfwocb"]
+
+[ext_resource type="Script" path="res://tools/minigames/shark_tank/pitches/pitches.gd" id="1_03i1q"]
+
+[resource]
+script = ExtResource("1_03i1q")
+pitch = Array[String]([])
+no_deal_dialogue = Array[String]([])
+deal_dialogue = Array[String]([])
+first_negotiate = Array[String]([])
+second_negotiate = Array[String]([])
+third_negotiate = Array[String]([])
+available_negotiations = 1
