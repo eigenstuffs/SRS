@@ -30,7 +30,7 @@ func _ready() -> void:
 
 	# --- Retina Screen Resolution Correction ---
 	# Source: https://forum.godotengine.org/t/is-there-some-mismatch-between-godot-window-size-pixels-and-os-x-window-size/40140/4
-	var retina_scale = DisplayServer.screen_get_scale(screen)
+	var retina_scale = 1.0 if SHOULD_INIT_WITH_SCREEN_RESOLUTION else DisplayServer.screen_get_scale(screen)
 	var relative_scale = 1.0
 	if viewport.content_scale_factor != retina_scale:
 		# We need to change, calculate the relative change in scale
