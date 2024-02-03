@@ -8,13 +8,12 @@ signal gameOver
 @onready var sTime: Timer = $StartTimer/StartTime
 @onready var sLabel: Label = $StartTimer/Label
 @onready var gTime: Timer = $GameTimer/GameTime
-@onready var gLabel: Label = $GameTimer/Label
+@onready var gLabel: Label = $GameTimer/TimeLabel
+@onready var gBar : TextureProgressBar = $GameTimer/TextureProgressBar
 
 func _ready():
 	sTime.start()
 	sLabel.show()
-	gLabel.hide()
-
 
 func _on_start_time_timeout():
 	startTimeCount -= 1
@@ -27,11 +26,9 @@ func _on_start_time_timeout():
 	else:
 		sLabel.text = str(startTimeCount)
 
-
 func _on_start_time_over():
 	gLabel.show()
 	gTime.start()
-
 
 func _on_game_time_timeout():
 	gameTimeCount -= 1
@@ -40,8 +37,8 @@ func _on_game_time_timeout():
 		gLabel.hide()
 		sLabel.show()
 		sLabel.text = "Game Over!"
-		await(get_tree().create_timer(1.0).timeout)
-		sLabel.hide()
 		emit_signal("gameOver")
 	else:
-		gLabel.text = str(gameTimeCount)+"s"
+		gLabel.text = str(gameTimeCount)
+		gBar.value = gameTimeCount
+		

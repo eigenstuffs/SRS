@@ -11,7 +11,7 @@ class_name Book extends Node3D
 
 @onready var shadow : Shadow = $Shadow
 @onready var rigid_body : RigidBody3D = $RigidBody
-@onready var mesh : MeshInstance3D = $RigidBody/BookMesh
+#@onready var mesh : MeshInstance3D = $RigidBody/BookMesh
 @onready var origin_y : float = global_position.y
 
 var has_collided : bool = false
@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	shadow.radius = t
 	shadow.alpha = t
 
-func _on_rigid_body_body_entered(body: Node) -> void:
+func _on_rigid_body_body_entered(_body: Node) -> void:
 	rigid_body.call_deferred('set_contact_monitor', false)
 	rigid_body.max_contacts_reported = 0
 	rigid_body.freeze = false
@@ -52,4 +52,5 @@ func _on_rigid_body_body_entered(body: Node) -> void:
 
 func _on_shadow_on_fully_faded() -> void:
 	# Allow shadows on book to increase visual clarity for other falling books.
-	mesh.layers |= 0b10
+	#mesh.layers |= 0b10
+	pass

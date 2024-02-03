@@ -1,17 +1,17 @@
 [gd_scene load_steps=16 format=3 uid="uid://ds8qr6whupx03"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library.gd" id="1_nyx3m"]
-[ext_resource type="Texture2D" uid="uid://ucktysloxbk5" path="res://assets/placeholder.png" id="2_1gj0h"]
-[ext_resource type="Script" path="res://tools/minigames/library/Timers.gd" id="2_ffkao"]
+[ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/npc_instancer.tscn" id="2_824h7"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="3_4d66f"]
-[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="3_8scwb"]
-[ext_resource type="PackedScene" uid="uid://c10ia86b7pi7n" path="res://scenes/actors/wandering_npc.tscn" id="5_tfw12"]
+[ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="4_pul8v"]
+[ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="5_xhnos"]
+[ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="7_gdq75"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
 size = Vector3(10, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkhmw"]
-albedo_texture = ExtResource("2_1gj0h")
+albedo_color = Color(0.0862745, 0.0627451, 0.0588235, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_krp85"]
 material = SubResource("StandardMaterial3D_xkhmw")
@@ -37,123 +37,24 @@ size = Vector3(10, 5, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_uh7u6"]
 size = Vector3(0.2, 5, 10)
 
-[node name="Library" type="Node3D"]
+[node name="Library" type="SubViewport"]
+size = Vector2i(1600, 900)
 script = ExtResource("1_nyx3m")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="DialogueHolder" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MinigameHolder" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Overlay" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 256.0
-offset_bottom = 256.0
-
-[node name="Timers" type="Control" parent="CanvasLayer/Overlay"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_ffkao")
-
-[node name="GameTimer" type="Control" parent="CanvasLayer/Overlay/Timers"]
-anchors_preset = 0
-offset_right = 192.0
-offset_bottom = 192.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay/Timers/GameTimer"]
-layout_mode = 0
-offset_right = 192.0
-offset_bottom = 192.0
-
-[node name="GameTime" type="Timer" parent="CanvasLayer/Overlay/Timers/GameTimer"]
-
-[node name="Label" type="Label" parent="CanvasLayer/Overlay/Timers/GameTimer"]
-layout_mode = 0
-offset_right = 192.0
-offset_bottom = 192.0
-theme_override_font_sizes/font_size = 75
-text = "60s"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StartTimer" type="Control" parent="CanvasLayer/Overlay/Timers"]
-anchors_preset = 0
-offset_right = 192.0
-offset_bottom = 192.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay/Timers/StartTimer"]
-layout_mode = 0
-offset_right = 192.0
-offset_bottom = 192.0
-
-[node name="StartTime" type="Timer" parent="CanvasLayer/Overlay/Timers/StartTimer"]
-
-[node name="Label" type="Label" parent="CanvasLayer/Overlay/Timers/StartTimer"]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 256.0
-offset_right = 1280.0
-offset_bottom = 704.0
-theme_override_font_sizes/font_size = 200
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="IncreasePoint" type="Button" parent="CanvasLayer/Overlay"]
-layout_mode = 0
-offset_left = 1523.0
-offset_top = 872.0
-offset_right = 1789.0
-offset_bottom = 990.0
-theme_override_font_sizes/font_size = 50
-text = "Add point"
-
-[node name="DecreasePoint" type="Button" parent="CanvasLayer/Overlay"]
-layout_mode = 0
-offset_left = 1237.0
-offset_top = 872.0
-offset_right = 1503.0
-offset_bottom = 990.0
-theme_override_font_sizes/font_size = 50
-text = "Lose point"
-
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/Overlay"]
-layout_mode = 0
-offset_left = 1452.0
-offset_top = 25.0
-offset_right = 1837.0
-offset_bottom = 172.0
-theme_override_font_sizes/font_size = 125
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Walls" type="Node3D" parent="."]
 
 [node name="Ground" type="Node3D" parent="Walls"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Ground"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Ground/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.510077, 0)
 shape = SubResource("BoxShape3D_o262n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Ground"]
+layers = 3
 mesh = SubResource("PlaneMesh_krp85")
 
 [node name="Shelves" type="Node3D" parent="Walls"]
@@ -177,39 +78,52 @@ mesh = SubResource("BoxMesh_ngvxs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
 
 [node name="Back Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.623937)
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Back Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 shape = SubResource("BoxShape3D_oxk7j")
 
 [node name="Front Wall2" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.87005)
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Front Wall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 shape = SubResource("BoxShape3D_oxk7j")
 
 [node name="Left Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85, 2.08165e-12, 2.08165e-12)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Left Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 shape = SubResource("BoxShape3D_uh7u6")
 
 [node name="Right Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85, 2.08165e-12, 2.08165e-12)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Right Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 shape = SubResource("BoxShape3D_uh7u6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.961583, 0.274513, 0, -0.274513, 0.961583, 0, 1.80248, 4.02098)
+transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 3.02058e-16, 0.866025, 0.5, -5.2318e-16, -0.5, 0.866025, 2.08165e-12, 7.65, 14)
+current = true
+fov = 20.0
+size = 73.377
+frustum_offset = Vector2(0, 50)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 light_color = Color(1, 0.913725, 0.807843, 1)
+light_energy = 3.01
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 omni_range = 11.0
@@ -218,18 +132,21 @@ omni_range = 11.0
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.978, 6.92968)
 light_color = Color(1, 0.933333, 0.811765, 1)
 
-[node name="Player" parent="." instance=ExtResource("3_8scwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+[node name="LibraryPlayer" parent="." instance=ExtResource("4_pul8v")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.599395, 1.7645)
+collision_mask = 2
 
-[node name="NPCs" type="Node3D" parent="."]
-visible = false
+[node name="Shadow" parent="LibraryPlayer" instance=ExtResource("5_xhnos")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0.25)
+size = Vector3(1, 100, 1)
 
-[node name="WanderingNPC" parent="NPCs" instance=ExtResource("5_tfw12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82411, 0.388474, 2.59941)
+[node name="NPCInstancer" parent="." instance=ExtResource("2_824h7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.5)
 
-[connection signal="gameOver" from="CanvasLayer/Overlay/Timers" to="." method="_on_timers_game_over"]
-[connection signal="startTimeOver" from="CanvasLayer/Overlay/Timers" to="CanvasLayer/Overlay/Timers" method="_on_start_time_over"]
-[connection signal="timeout" from="CanvasLayer/Overlay/Timers/GameTimer/GameTime" to="CanvasLayer/Overlay/Timers" method="_on_game_time_timeout"]
-[connection signal="timeout" from="CanvasLayer/Overlay/Timers/StartTimer/StartTime" to="CanvasLayer/Overlay/Timers" method="_on_start_time_timeout"]
-[connection signal="pressed" from="CanvasLayer/Overlay/IncreasePoint" to="." method="_on_increase_point_pressed"]
-[connection signal="pressed" from="CanvasLayer/Overlay/DecreasePoint" to="." method="_on_decrease_point_pressed"]
+[node name="BookInstancer" parent="." instance=ExtResource("7_gdq75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2.5)
+
+[connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]
+[connection signal="book_collected" from="LibraryPlayer" to="." method="_on_library_player_book_collected"]
+
+[editable path="NPCInstancer"]

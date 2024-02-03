@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MinigameList" load_steps=3 format=3 uid="uid://5hym76i6sluw"]
+
+[ext_resource type="Resource" uid="uid://dcldtrosbjch" path="res://tools/minigames/Library.tres" id="1_djwky"]
+[ext_resource type="Script" path="res://tools/minigames/minigame_list.gd" id="1_w74pb"]
+
+[resource]
+script = ExtResource("1_w74pb")
+minigame_list = Array[Resource("res://tools/minigames/minigame.gd")]([ExtResource("1_djwky")])

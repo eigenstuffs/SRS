@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5hrfmiuluhko"]
-
-[ext_resource type="Script" path="res://tools/minigames/library/book/spawner.gd" id="1_bcsxb"]
-
-[node name="Spawner" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5658, 0)
-script = ExtResource("1_bcsxb")
