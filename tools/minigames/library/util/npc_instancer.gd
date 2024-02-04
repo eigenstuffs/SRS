@@ -26,6 +26,5 @@ func _process(delta: float) -> void:
 			add_child(npc)
 			npc.global_position = spawn_pos
 			npc.orientation = (end_pos - spawn_pos).normalized() * WanderingNPC.SPEED
-			
 		
 		time += delta

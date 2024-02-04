@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://0qt8i17a6sjh"]
+
+[ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_minigame.gd" id="1_pb007"]
+[ext_resource type="Texture2D" uid="uid://dnodymyvasg6y" path="res://tools/minigames/rhythm/assets/bg.jpg" id="2_ahkas"]
+[ext_resource type="PackedScene" uid="uid://6kqupwwsa2f0" path="res://tools/minigames/rhythm/key/board.tscn" id="3_jy8mj"]
+[ext_resource type="PackedScene" uid="uid://b4707jscv3wq5" path="res://tools/minigames/rhythm/sound/note_spawner.tscn" id="4_sd6aa"]
+[ext_resource type="AudioStream" uid="uid://cp1lq5rjgk282" path="res://tools/minigames/rhythm/assets/beatmaps/shop.mp3" id="5_0ssek"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0rtgb"]
+panorama = ExtResource("2_ahkas")
+
+[sub_resource type="Sky" id="Sky_uc8jg"]
+sky_material = SubResource("PanoramaSkyMaterial_0rtgb")
+
+[sub_resource type="Environment" id="Environment_6e5wd"]
+background_mode = 2
+sky = SubResource("Sky_uc8jg")
+sky_rotation = Vector3(0, 1.39626, -0.567232)
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="RhythmMinigame" type="SubViewport"]
+size = Vector2i(1920, 1080)
+script = ExtResource("1_pb007")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.760406, 0.649448, 0, -0.649448, 0.760406, 0, 1.1, 4.35)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6e5wd")
+
+[node name="Board" parent="." instance=ExtResource("3_jy8mj")]
+
+[node name="NoteSpawner" parent="." instance=ExtResource("4_sd6aa")]
+stream = ExtResource("5_0ssek")

@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://ds8qr6whupx03"]
 
-[ext_resource type="Script" path="res://tools/minigames/library/library.gd" id="1_nyx3m"]
-[ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/npc_instancer.tscn" id="2_824h7"]
-[ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="3_4d66f"]
-[ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="4_pul8v"]
-[ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="5_xhnos"]
-[ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="7_gdq75"]
+[ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
+[ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="2_4dmdn"]
+[ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
+[ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="4_q284v"]
+[ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/npc_instancer.tscn" id="5_hbp12"]
+[ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="6_8v8og"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
 size = Vector3(10, 1, 10)
@@ -18,14 +18,14 @@ material = SubResource("StandardMaterial3D_xkhmw")
 size = Vector2(10, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0qot"]
-albedo_texture = ExtResource("3_4d66f")
+albedo_texture = ExtResource("2_4dmdn")
 
 [sub_resource type="BoxMesh" id="BoxMesh_eo85j"]
 material = SubResource("StandardMaterial3D_m0qot")
 size = Vector3(0.5, 6, 8.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnnu8"]
-albedo_texture = ExtResource("3_4d66f")
+albedo_texture = ExtResource("2_4dmdn")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ngvxs"]
 material = SubResource("StandardMaterial3D_vnnu8")
@@ -39,7 +39,8 @@ size = Vector3(0.2, 5, 10)
 
 [node name="Library" type="SubViewport"]
 size = Vector2i(1600, 900)
-script = ExtResource("1_nyx3m")
+script = ExtResource("1_jnejo")
+points = null
 
 [node name="Walls" type="Node3D" parent="."]
 
@@ -132,19 +133,19 @@ omni_range = 11.0
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.978, 6.92968)
 light_color = Color(1, 0.933333, 0.811765, 1)
 
-[node name="LibraryPlayer" parent="." instance=ExtResource("4_pul8v")]
+[node name="LibraryPlayer" parent="." instance=ExtResource("3_jyoxc")]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.599395, 1.7645)
 collision_mask = 2
 
-[node name="Shadow" parent="LibraryPlayer" instance=ExtResource("5_xhnos")]
+[node name="Shadow" parent="LibraryPlayer" instance=ExtResource("4_q284v")]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0.25)
 size = Vector3(1, 100, 1)
 
-[node name="NPCInstancer" parent="." instance=ExtResource("2_824h7")]
+[node name="NPCInstancer" parent="." instance=ExtResource("5_hbp12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.5)
 
-[node name="BookInstancer" parent="." instance=ExtResource("7_gdq75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2.5)
+[node name="BookInstancer" parent="." instance=ExtResource("6_8v8og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2.12845)
 
 [connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]
 [connection signal="book_collected" from="LibraryPlayer" to="." method="_on_library_player_book_collected"]

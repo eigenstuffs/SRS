@@ -1,30 +1,26 @@
-extends Control
+class_name MinigameHolder extends Control
 
-class_name MinigameHolder
-
-const MINIGAME_LIST : MinigameList = preload("res://tools/minigames/MinigameList.tres")
+const MINIGAME_VIEWPORT_DIMS : Vector2 = Vector2(1600, 900)
 
 var points : int = 0
 
 signal finished(points)
 
 func initiate_minigame(which : String):
-	var list : Array = MINIGAME_LIST.minigame_list
-	var resource
-	for i : Resource in list:
-		if i.minigame == which:
-			resource = i
-			var a = load(resource.scene).instantiate()
-			$Game.add_child(a)
-			a.connect("update_points", update_points)
-		else:
-			print("No such minigame!")
-	
-	if resource.time != 0:
-		$UI.gameTimeCount = resource.time
-		$UI/GameTimer/TextureProgressBar.max_value = resource.time
-		$UI/GameTimer/TextureProgressBar.value = resource.time
-		$UI/GameTimer/TimeLabel.text = str(resource.time)
+	if MinigameRegistry.has_key(which):
+		var metadata : MinigameInfo = MinigameRegistry.get_metadata(which)
+		var minigame : Minigame = load(metadata.scene).instantiate()
+		minigame.size = MINIGAME_VIEWPORT_DIMS
+		$Game.add_child(minigame)
+		minigame.connect("update_points", update_points)
+		
+		if metadata.time <= 0: return
+		$UI.gameTimeCount = metadata.time
+		$UI/GameTimer/TextureProgressBar.max_value = metadata.time
+		$UI/GameTimer/TextureProgressBar.value = metadata.time
+		$UI/GameTimer/TimeLabel.text = str(metadata.time)
+	else:
+		printerr("No such minigame %s!" % which)
 
 func update_points(new : int):
 	points = new
