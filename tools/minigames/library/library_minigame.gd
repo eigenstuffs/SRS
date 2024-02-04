@@ -1,11 +1,4 @@
-extends SubViewport
-
-class_name LibraryMinigame
-
-signal minigame_finished(num : int)
-signal update_points(num : int)
-
-@export var points : int = 0
+class_name LibraryMinigame extends Minigame
 
 var started = false
 
@@ -26,7 +19,7 @@ func lose_points(decrease : int = 1):
 	points -= decrease
 	update_points.emit(points)
 
-func end():
+func _end():
 	emit_signal("minigame_finished", points)
 	$LibraryPlayer/CollisionShape3D.disabled = true
 	$LibraryPlayer.can_move = false
