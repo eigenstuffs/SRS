@@ -6,5 +6,5 @@ signal update_points(points : int)
 
 @export var points : int = 0
 
-func _end() -> void:
+func end() -> void:
 	minigame_finished.emit(points)
