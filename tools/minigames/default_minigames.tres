@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MinigameList" load_steps=5 format=3 uid="uid://5hym76i6sluw"]
+
+[ext_resource type="Resource" uid="uid://dcldtrosbjch" path="res://tools/minigames/Library.tres" id="1_djwky"]
+[ext_resource type="Script" path="res://tools/minigames/minigame_list.gd" id="1_w74pb"]
+[ext_resource type="Script" path="res://tools/minigames/minigame_info.gd" id="2_rf6v8"]
+
+[sub_resource type="Resource" id="Resource_1ll60"]
+script = ExtResource("2_rf6v8")
+name = "Rhythm"
+scene = "res://tools/minigames/rhythm/rhythm_minigame.tscn"
+time = 0
+
+[resource]
+script = ExtResource("1_w74pb")
+minigame_list = Array[ExtResource("2_rf6v8")]([ExtResource("1_djwky"), SubResource("Resource_1ll60")])
