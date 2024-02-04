@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://ds8qr6whupx03"]
+[gd_scene load_steps=17 format=3 uid="uid://c2e6h6m72fq5m"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="2_4dmdn"]
 [ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
 [ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="4_q284v"]
+[ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/book/wiggle/book_holder.tscn" id="5_4rr6e"]
 [ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/npc_instancer.tscn" id="5_hbp12"]
 [ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="6_8v8og"]
 
@@ -40,7 +41,6 @@ size = Vector3(0.2, 5, 10)
 [node name="Library" type="SubViewport"]
 size = Vector2i(1600, 900)
 script = ExtResource("1_jnejo")
-points = null
 
 [node name="Walls" type="Node3D" parent="."]
 
@@ -134,12 +134,15 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 light_color = Color(1, 0.933333, 0.811765, 1)
 
 [node name="LibraryPlayer" parent="." instance=ExtResource("3_jyoxc")]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.599395, 1.7645)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 1.765)
 collision_mask = 2
 
 [node name="Shadow" parent="LibraryPlayer" instance=ExtResource("4_q284v")]
-transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.96046e-08, 0.25)
 size = Vector3(1, 100, 1)
+
+[node name="BookHolder" parent="LibraryPlayer" instance=ExtResource("5_4rr6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575, 0)
 
 [node name="NPCInstancer" parent="." instance=ExtResource("5_hbp12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.5)

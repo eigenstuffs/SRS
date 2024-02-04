@@ -29,7 +29,8 @@ func end():
 
 func _on_library_player_book_collected():
 	gain_points(1)
-	#$LibraryPlayer/BookHolder.add_book_bone()
+	if $LibraryPlayer/BookHolder.get_num_books() <= 20: 
+		$LibraryPlayer/BookHolder.add_book_bone()
 
 func _on_library_player_bomb_hit():
 	lose_points(1)

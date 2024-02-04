@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Minigame" load_steps=2 format=3 uid="uid://dcldtrosbjch"]
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=2 format=3 uid="uid://dcldtrosbjch"]
 
 [ext_resource type="Script" path="res://tools/minigames/minigame_info.gd" id="1_mta4f"]
 
 [resource]
 script = ExtResource("1_mta4f")
 name = "Library"
-scene = "res://tools/minigames/library/library.tscn"
-time = 20
+scene = "res://tools/minigames/library/library_minigame.tscn"
+time = 50

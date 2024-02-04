@@ -62,22 +62,21 @@ _data = {
 "Walk": SubResource("Animation_v0qtm")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_552ey"]
-radius = 0.35
-height = 0.7
+[sub_resource type="BoxShape3D" id="BoxShape3D_pduae"]
+size = Vector3(0.6, 0.4, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1n7x5"]
-size = Vector3(0.5, 1, 0.02)
+[sub_resource type="BoxShape3D" id="BoxShape3D_y6bqc"]
+size = Vector3(0.5, 1, 0.3)
 
 [node name="LibraryPlayer" type="CharacterBody3D"]
 script = ExtResource("1_0wy6d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -0.047, 0)
 shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.433013, 0.25, 0, -0.25, 0.433013, 0, 0, 0)
 texture = ExtResource("3_x348f")
 hframes = 8
 vframes = 2
@@ -90,14 +89,14 @@ libraries = {
 [node name="Hurtbox" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.381816, 0)
-shape = SubResource("CapsuleShape3D_552ey")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.2)
+shape = SubResource("BoxShape3D_pduae")
 
 [node name="Hurtbox2" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox2"]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, -0.0472371, 0)
-shape = SubResource("BoxShape3D_1n7x5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
+shape = SubResource("BoxShape3D_y6bqc")
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="Hurtbox2" to="." method="_on_hurtbox_2_body_entered"]

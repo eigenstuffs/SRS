@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkkta3uslyuhp"]
 
-[ext_resource type="Script" path="res://tools/minigames/library/book/bomb.gd" id="1_48fmn"]
+[ext_resource type="Script" path="res://tools/minigames/library/bomb/bomb.gd" id="1_48fmn"]
 [ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="2_ko3ke"]
 [ext_resource type="PackedScene" uid="uid://bxyu5wc6tgciw" path="res://assets/bombwcelusingcycle.glb" id="3_2dybn"]
 
