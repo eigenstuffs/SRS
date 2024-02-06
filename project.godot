@@ -33,6 +33,14 @@ window/vsync/vsync_mode=3
 
 enabled=PackedStringArray("res://addons/wigglebone/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://tools/minigames/": "yellow",
+"res://tools/minigames/fishing/": "pink",
+"res://tools/minigames/library/": "orange"
+}
+
 [gui]
 
 theme/custom_font="res://assets/ArnoPro-Regular.ttf"

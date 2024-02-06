@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjt4skwe1eu5h"]
+
+[ext_resource type="Script" path="res://tools/minigames/fishing/fishing_minigame.gd" id="1_rrich"]
+
+[node name="Fishing" type="SubViewport"]
+script = ExtResource("1_rrich")
+
+[node name="Node3D" type="Node3D" parent="."]
