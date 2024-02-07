@@ -24,7 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_g1vbp")
-text = "res://tools/dialogue/ft_scripts/Dialogue - Prototype.json"
+text = "res://tools/dialogue/vn_scripts/Dialogue - Act1Chapter1.json"
 
 [node name="Sprite" type="TextureRect" parent="."]
 visible = false
@@ -49,7 +49,8 @@ offset_bottom = 974.0
 theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
 theme_override_fonts/font = ExtResource("5_bpopc")
 theme_override_font_sizes/font_size = 32
-text = "Hey, you! Peasant! Fetch me my towel, please."
+text = "(Now though? Well, I’m not so sure. It’s been years since I’ve played. Finding the cartridge while I was cleaning out my room was pure happenstance. Maybe it was nostalgia, or maybe just the anxiety of knowing that I’d be moving out to college come next year. Either way though, I couldn’t help the urge to blow the dust off and see what exactly made me so crazy for this game when I was a preteen.)
+"
 autowrap_mode = 3
 visible_characters_behavior = 1
 

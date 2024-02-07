@@ -103,7 +103,10 @@ func read_line(key : int):
 		if current_line["add"] != null:
 			remember.show()
 			Global.remembered.append(current_line["add"])
-			remember.text = current_line["character"] + " will remember that."
+			if current_line["character"] != null:
+				remember.text = current_line["character"] + " will remember that."
+			else:
+				remember.text = "I will remember that."
 			var c = create_tween()
 			c.tween_property(remember, "position", Vector2(1280,600), 2)
 			c = create_tween()
@@ -125,7 +128,7 @@ func read_line(key : int):
 
 func next_line():
 	if current_line["go to"] != null:
-		read_line(result.keys().find(current_line["go to"]))
+		read_line(result.keys().find(str(current_line["go to"])))
 	else:
 		emit_signal("done")
 		queue_free()
