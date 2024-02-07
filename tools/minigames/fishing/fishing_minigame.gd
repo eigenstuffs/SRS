@@ -1,4 +1,4 @@
-class_name FishingMinigame extends Node3D
+class_name FishingMinigame extends Minigame
 
 # signals and end() are already defined in Minigame class .. see minigame.gd
 
