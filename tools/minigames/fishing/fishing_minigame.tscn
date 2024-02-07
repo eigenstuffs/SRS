@@ -39,7 +39,7 @@ mesh = SubResource("PlaneMesh_rkrhb")
 shape = SubResource("BoxShape3D_c57dh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 1.5, 0)
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 4.70371, 0)
 fov = 112.5
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -90,4 +90,4 @@ mesh = SubResource("CylinderMesh_0n8kw")
 surface_material_override/0 = SubResource("StandardMaterial3D_5e5ks")
 
 [node name="fish_instancer" parent="." instance=ExtResource("2_cead1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
