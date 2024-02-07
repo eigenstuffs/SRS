@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_21p07")
-name = "Test"
+name = "???"
 neutral = ExtResource("2_pqpms")
 happy = ExtResource("1_4orgw")
 sad = ExtResource("3_po744")

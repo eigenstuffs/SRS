@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://04kx0ue4t11g"]
+
+[ext_resource type="Script" path="res://tools/minigames/fishing/fish/Fish.gd" id="1_e25ly"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x45a8"]
+radius = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_8idaw"]
+radius = 0.15
+height = 0.2
+
+[node name="Fish" type="CharacterBody3D"]
+script = ExtResource("1_e25ly")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_x45a8")
+
+[node name="placeholderFish" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_8idaw")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(0.14, 0, 0, 0, 0.1, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_x45a8")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
