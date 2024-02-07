@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://0obt0ysdxga4"]
+[gd_scene load_steps=6 format=3 uid="uid://0obt0ysdxga4"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/fishing_rod.gd" id="1_7vvl0"]
+[ext_resource type="PackedScene" uid="uid://b41yvuuvkashj" path="res://tools/minigames/fishing/fishing_rod/bobber.tscn" id="2_djfgk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jq4nx"]
 
@@ -8,34 +9,34 @@
 material = SubResource("StandardMaterial3D_jq4nx")
 size = Vector2(0.075, 1.3)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_lxw03"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_kfbv7"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_d11io"]
-height = 0.73337
-radius = 0.0506615
+[sub_resource type="BoxShape3D" id="BoxShape3D_vp3r6"]
+size = Vector3(1.01758, 1, 0.151367)
 
 [node name="FishingRod" type="MeshInstance3D"]
 transform = Transform3D(1, 1.32815e-09, 1.51808e-08, 1.5197e-08, -0.0131592, -0.999915, -1.12827e-09, 0.999915, -0.0131591, 0.270332, 0.337995, 0.0667055)
 mesh = SubResource("PlaneMesh_b3g5h")
 script = ExtResource("1_7vvl0")
 
-[node name="Bobber" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 9.33713e-16, 7.27714e-15, -7.22881e-16, 1, 1.33125e-09, 5.63067e-15, -9.21557e-10, 1, 8.9407e-08, -0.00878875, -0.667827)
+[node name="Bobber" parent="." instance=ExtResource("2_djfgk")]
+transform = Transform3D(1, 7.22881e-16, -5.63067e-15, -7.22881e-16, 1, 9.21557e-10, 5.63067e-15, -9.21557e-10, 1, 8.9407e-08, -0.00878875, -0.667827)
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bobber"]
-transform = Transform3D(0.5, 3.45438e-17, 9.78827e-16, -8.07964e-18, 0.5, 1.75159e-10, 2.81744e-15, -1.41934e-10, 0.5, 0, 0, 0)
-shape = SubResource("SphereShape3D_lxw03")
+[node name="Stoppers" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bobber"]
-transform = Transform3D(0.5, 9.0055e-17, 1.86753e-15, -1.19092e-16, 0.5, -2.90461e-10, 1.93072e-15, 3.23728e-10, 0.5, 0, 0, 0)
-mesh = SubResource("SphereMesh_kfbv7")
-skeleton = NodePath("")
+[node name="StaticBody3D" type="StaticBody3D" parent="Stoppers"]
+collision_layer = 3
+collision_mask = 3
 
-[node name="StopPoint" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 6.20941e-16, 1.0833e-14, -3.89844e-16, 1, 1.3315e-09, 2.9722e-16, -4.8063e-10, 1, 0, 0.00397451, 0.302009)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stoppers/StaticBody3D"]
+transform = Transform3D(1, 2.4505e-14, 3.74761e-13, -7.60566e-15, 0.99999, 7.30258e-08, 3.92183e-16, -8.4582e-09, 0.99999, -0.00878906, 0.00170298, -0.294911)
+shape = SubResource("BoxShape3D_vp3r6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StopPoint"]
-transform = Transform3D(2, 3.30179e-08, 2.2176e-15, -6.4331e-16, -8.83371e-08, 2, 3.30179e-08, -2, -8.82116e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_d11io")
+[node name="StaticBody3D2" type="StaticBody3D" parent="Stoppers"]
+transform = Transform3D(1, -1.38526e-08, 1.6509e-08, 1.65089e-08, -4.05747e-08, -0.999999, 1.38526e-08, 0.999999, -4.25567e-08, 1.49012e-07, -0.755393, -0.685222)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stoppers/StaticBody3D2"]
+transform = Transform3D(1, 2.4505e-14, 3.74761e-13, -7.60566e-15, 0.99999, 7.30258e-08, 3.92183e-16, -8.4582e-09, 0.99999, -0.00878906, 0.00170298, -0.294911)
+shape = SubResource("BoxShape3D_vp3r6")

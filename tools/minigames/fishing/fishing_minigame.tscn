@@ -62,8 +62,6 @@ shape = SubResource("BoxShape3D_iucpa")
 
 [node name="Front Wall2" type="StaticBody3D" parent="Colliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.87005)
-collision_layer = 7
-collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Front Wall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0, -7.56678)

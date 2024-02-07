@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b41yvuuvkashj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lxw03"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kfbv7"]
+
+[node name="Bobber" type="RigidBody3D"]
+transform = Transform3D(1, 9.33713e-16, 7.27714e-15, -7.22881e-16, 1, 1.33125e-09, 5.63067e-15, -9.21557e-10, 1, 8.9407e-08, -0.00878875, -0.667827)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 3.45438e-17, 9.78827e-16, -8.07964e-18, 0.5, 1.75159e-10, 2.81744e-15, -1.41934e-10, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_lxw03")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 9.0055e-17, 1.86753e-15, -1.19092e-16, 0.5, -2.90461e-10, 1.93072e-15, 3.23728e-10, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_kfbv7")
+skeleton = NodePath("")
