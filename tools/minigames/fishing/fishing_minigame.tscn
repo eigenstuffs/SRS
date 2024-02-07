@@ -1,95 +1,10 @@
-
-[gd_scene load_steps=11 format=3 uid="uid://bjt4skwe1eu5h"]
+[gd_scene load_steps=3 format=3 uid="uid://bjt4skwe1eu5h"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_minigame.gd" id="1_rrich"]
-[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="2_qmmam"]
-[ext_resource type="Script" path="res://scenes/player/fishing_player.gd" id="3_23yqb"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_06fm6"]
-size = Vector3(10, 1, 4.97107)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkhmw"]
-albedo_color = Color(0.0862745, 0.0627451, 0.0588235, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_wlqyg"]
-material = SubResource("StandardMaterial3D_xkhmw")
-size = Vector2(10, 3)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_2pn41"]
-size = Vector2(0.05, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4u2k7"]
-albedo_color = Color(0.258824, 0.541176, 0.705882, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_erde7"]
-material = SubResource("StandardMaterial3D_4u2k7")
-size = Vector2(20, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rn28a"]
-size = Vector3(10, 5, 0.2)
-
+[ext_resource type="PackedScene" uid="uid://hq67rtu14odh" path="res://tools/minigames/fishing/fish/fish_instancer.tscn" id="2_cead1"]
 
 [node name="Fishing" type="SubViewport"]
 script = ExtResource("1_rrich")
-
-[node name="Ground" type="Node3D" parent="."]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.510077, -2.51447)
-shape = SubResource("BoxShape3D_06fm6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.53776)
-layers = 3
-mesh = SubResource("PlaneMesh_wlqyg")
-
-[node name="FishingPlayer" parent="." instance=ExtResource("2_qmmam")]
-transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.71883, -1.52179)
-script = ExtResource("3_23yqb")
-
-[node name="FishingRod" type="Node3D" parent="FishingPlayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349157, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FishingPlayer/FishingRod"]
-transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0707597, 0.365948, 0)
-mesh = SubResource("PlaneMesh_2pn41")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.757554, 0.652773, 0, -0.652773, 0.757554, 0, 1.79509, 2.70891)
-
-[node name="Water" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27193, 0, 0.916326)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289767, 0, 1.5532)
-mesh = SubResource("PlaneMesh_erde7")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.906757, 0.421653, 0, -0.421653, 0.906757, 0, 1.97825, 2.32794)
-
-[node name="Colliders" type="Node3D" parent="."]
-
-[node name="Front Wall" type="StaticBody3D" parent="Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2832, -0.0842242)
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Front Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shape = SubResource("BoxShape3D_rn28a")
-
-[node name="Back Wall" type="StaticBody3D" parent="Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2832, -2.83391)
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Back Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shape = SubResource("BoxShape3D_rn28a")
 
 [node name="fish_instancer" parent="." instance=ExtResource("2_cead1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
