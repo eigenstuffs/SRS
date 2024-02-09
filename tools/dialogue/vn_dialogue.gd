@@ -6,17 +6,15 @@ signal start_music
 signal boost_stats
 
 const CHARACTER_LIST : CharacterList = preload("res://resources/characters/character_list.tres")
+const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
 
 @onready var box = $Box
+@onready var name_frame = $NameFrame
 @onready var label = $Label
-@onready var character = $Name
+@onready var character_name = $Name
 @onready var remember = $Remember
 @onready var next = $Next
 @onready var choice_ui = $Choice
-@onready var options = $Choice/Options
-@onready var optionOne = $Choice/Options/OptionOne
-@onready var optionTwo = $Choice/Options/OptionTwo
-@onready var optionThree = $Choice/Options/OptionThree
 
 @export_file("*.json") var text
 
@@ -77,29 +75,96 @@ func read_line(key : int):
 		label.hide()
 		next.hide()
 		if current_line["options"] != null:
-			var text = current_line["options"].split(",")
-			$Choice/Backdrop.position = Vector2(-1920,0)
-			$Choice/Graphic.position = Vector2(960,0)
-			options.position = Vector2(0,-960)
+			$Choice/Backdrop.position = Vector2(1950,0)
 			choice_ui.show()
+			var text : Array = current_line["options"].split(",")
 			var a = create_tween()
-			a.tween_property($Choice/Backdrop, "position", Vector2(0,0), .5).set_trans(Tween.TRANS_EXPO)
-			a = create_tween()
-			a.tween_property(options, "position", Vector2(0,0), 0.5).set_trans(Tween.TRANS_EXPO)
-			var b = create_tween()
-			b.tween_property($Choice/Graphic, "position", Vector2(0,0), .5).set_trans(Tween.TRANS_EXPO)
-			next.hide()
+			a.tween_property($Choice/Backdrop, "position", Vector2(960,0), .5).set_trans(Tween.TRANS_EXPO)
+			await get_tree().create_timer(0.1).timeout
+			for i in text:
+				var button : TextureButton = CHOICE_BUTTON.instantiate()
+				button.connect("pressed", choice_pressed)
+				$Choice/Buttons.add_child(button)
+				button.get_node("Label").text = i
+				button.position = Vector2(1140,-180)
+			match $Choice/Buttons.get_child_count():
+				1:
+					var points = $Choice/Control/OneDecision.get_children()
+					var b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(0), "position", points[0].position, 0.5).set_trans(Tween.TRANS_EXPO)
+				2:
+					var points = $Choice/Control/TwoDecisions.get_children()
+					var b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(0), "position", points[0].position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.03).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(1), "position", points[1].position, 0.5).set_trans(Tween.TRANS_EXPO)
+				3:
+					var points = $Choice/Control/ThreeDecisions.get_children()
+					var b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(0), "position", points[0].position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.03).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(1), "position", points[1].position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.03).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(2), "position", points[2].position, 0.5).set_trans(Tween.TRANS_EXPO)
+				4:
+					var points = $Choice/Control/FourDecisions.get_children()
+					var b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(0), "position", points[0].position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.1).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(1), "position", points[1].position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.1).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(2), "position", points[2].position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.1).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(3), "position", points[3].position, 0.5).set_trans(Tween.TRANS_EXPO)
 			await choice
+			match $Choice/Buttons.get_child_count():
+				1:
+					var points = $Choice/AwayPos/OneDecision.get_children()
+					var b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(0), "position", points[0].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+				2:
+					var points = $Choice/AwayPos/TwoDecisions.get_children()
+					var b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(0), "position", points[0].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.03).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(1), "position", points[1].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+				3:
+					var points = $Choice/AwayPos/ThreeDecisions.get_children()
+					var b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(0), "position", points[0].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.03).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(1), "position", points[1].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.03).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(2), "position", points[2].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+				4:
+					var points = $Choice/AwayPos/FourDecisions.get_children()
+					var b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(0), "position", points[0].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.1).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(1), "position", points[1].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.1).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(2), "position", points[2].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+					await get_tree().create_timer(0.1).timeout
+					b = create_tween()
+					b.tween_property($Choice/Buttons.get_child(3), "position", points[3].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+			await get_tree().create_timer(0.1).timeout
 			a = create_tween()
-			a.tween_property($Choice/Backdrop, "position", Vector2(-1920,0), .5).set_trans(Tween.TRANS_EXPO)
-			a = create_tween()
-			a.tween_property(options, "position", Vector2(0,1000), 0.5).set_trans(Tween.TRANS_EXPO)
-			b = create_tween()
-			b.tween_property($Choice/Graphic, "position", Vector2(960,0), .5).set_trans(Tween.TRANS_EXPO)
-			await b.finished
+			a.tween_property($Choice/Backdrop, "position", Vector2(1950,0), .5).set_trans(Tween.TRANS_EXPO)
+			await a.finished
+			for i in $Choice/Buttons.get_children():
+				i.queue_free()
 	else:
-		if current_line["flag"] == "end":
-			current_line["go to"] = null
 		if current_line["add"] != null:
 			remember.show()
 			Global.remembered.append(current_line["add"])
@@ -108,7 +173,7 @@ func read_line(key : int):
 			else:
 				remember.text = "I will remember that."
 			var c = create_tween()
-			c.tween_property(remember, "position", Vector2(1280,600), 2)
+			c.tween_property(remember, "position", Vector2(1097,600), 2)
 			c = create_tween()
 			c.tween_property(remember, "modulate", Color(1,1,1,0), 2)
 		label.visible_characters = 0
@@ -124,6 +189,10 @@ func read_line(key : int):
 		next.disabled = false
 		finished_line.emit()
 		await next_pressed
+		if current_line["flag"] == "crash":
+			get_tree().quit()
+		if current_line["flag"] == "end":
+			current_line["go to"] = null
 	next_line()
 
 func next_line():
@@ -152,13 +221,21 @@ func init_parameters(key : int):
 	var prev_mood = current_mood
 	if line["character"] != null:
 		char = CHARACTER_LIST.list.get(line["character"])
-		character.text = line["character"]
+		character_name.text = line["character"]
+		name_frame.show()
 	else:
-		character.text = ""
+		character_name.text = ""
+		name_frame.hide()
 
 func choice_funnel(which : int):
 	var choice = current_line["options_id"].split(",")[which]
 	current_line["go to"] = choice
+	
+func choice_pressed():
+	for i in $Choice/Buttons.get_children():
+		if i.button_pressed:
+			choice.emit(i.get_index())
+			return
 
 func _on_option_one_pressed():
 	emit_signal("choice", 0)
@@ -169,29 +246,9 @@ func _on_option_two_pressed():
 func _on_option_three_pressed():
 	emit_signal("choice", 2)
 
-func _on_option_one_mouse_entered():
-	var a = create_tween()
-	a.tween_property(optionOne, "scale", Vector2(1.1,1.1), 0.1)
-
-func _on_option_two_mouse_entered():
-	var a = create_tween()
-	a.tween_property(optionTwo, "scale", Vector2(1.1,1.1), 0.1)
-
-func _on_option_three_mouse_entered():
-	var a = create_tween()
-	a.tween_property(optionThree, "scale", Vector2(1.1,1.1), 0.1)
-
-func _on_option_one_mouse_exited():
-	var a = create_tween()
-	a.tween_property(optionOne, "scale", Vector2(1,1), 0.1)
-
-func _on_option_two_mouse_exited():
-	var a = create_tween()
-	a.tween_property(optionTwo, "scale", Vector2(1,1), 0.1)
-
-func _on_option_three_mouse_exited():
-	var a = create_tween()
-	a.tween_property(optionThree, "scale", Vector2(1,1), 0.1)
+#func _on_option_one_mouse_entered():
+	#var a = create_tween()
+	#a.tween_property(optionOne, "scale", Vector2(1.1,1.1), 0.1)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

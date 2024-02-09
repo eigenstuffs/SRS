@@ -41,7 +41,7 @@
   "four": {
 	"character": "Test",
 	"sprite": "sad",
-	"text": "They don't have words on them yet, but they work (trust).",
+	"text": "ashoahsdiosahodhoihiohqiohsoid",
 	"go to": "five",
 	"options": null,
 	"options_id": null,
@@ -54,7 +54,7 @@
   "five": {
 	"character": "Test",
 	"sprite": "neutral",
-	"text": "What role would you like to learn more about? Click the top, middle, or bottom button to learn about the writing, art/music, or programming/UI/UX roles respectively.",
+	"text": "This is an example question to show off decision trees.",
 	"go to": "ask",
 	"options": null,
 	"options_id": null,
@@ -69,7 +69,7 @@
 	"sprite": null,
 	"text": null,
 	"go to": null,
-	"options": "Writing,Art,Programming",
+	"options": "Option 1,Option 2,Option 3 (controversial)",
 	"options_id": "writing1,art1,programming1",
 	"emit": null,
 	"delay": null,
