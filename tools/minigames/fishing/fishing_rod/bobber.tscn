@@ -1,17 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://b41yvuuvkashj"]
+[gd_scene load_steps=5 format=3 uid="uid://b41yvuuvkashj"]
+
+[ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/bobber.gd" id="1_4gvxx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lxw03"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_kfbv7"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8n62w"]
+
 [node name="Bobber" type="RigidBody3D"]
-transform = Transform3D(1, 9.33713e-16, 7.27714e-15, -7.22881e-16, 1, 1.33125e-09, 5.63067e-15, -9.21557e-10, 1, 8.9407e-08, -0.00878875, -0.667827)
+transform = Transform3D(1, 7.22881e-16, -5.63067e-15, -7.22881e-16, 1, 9.21557e-10, 5.63067e-15, -9.21557e-10, 1, 8.9407e-08, -0.00878875, -0.667827)
+script = ExtResource("1_4gvxx")
+float_force = 5.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 3.45438e-17, 9.78827e-16, -8.07964e-18, 0.5, 1.75159e-10, 2.81744e-15, -1.41934e-10, 0.5, 0, 0, 0)
+transform = Transform3D(0.25, 4.03982e-18, -1.40872e-15, -4.03982e-18, 0.25, 7.0967e-11, 1.40872e-15, -7.0967e-11, 0.25, 0, 0, 0)
 shape = SubResource("SphereShape3D_lxw03")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 9.0055e-17, 1.86753e-15, -1.19092e-16, 0.5, -2.90461e-10, 1.93072e-15, 3.23728e-10, 0.5, 0, 0, 0)
+transform = Transform3D(0.25, 5.9546e-17, -9.6536e-16, -5.9546e-17, 0.25, -1.61864e-10, 9.6536e-16, 1.61864e-10, 0.25, 0, 0, 0)
 mesh = SubResource("SphereMesh_kfbv7")
 skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.35, 1.63829e-24, -8.91086e-41, -1.63829e-24, 0.35, 0, 8.91086e-41, 0, 0.35, 0, 0, 0)
+shape = SubResource("BoxShape3D_8n62w")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
