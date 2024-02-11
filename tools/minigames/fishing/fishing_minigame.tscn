@@ -126,9 +126,12 @@ frustum_offset = Vector2(0, 50)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.689253, 0.724521, 0, -0.724521, 0.689253, 0, 3.45416, -0.227573)
 
-[node name="Player" parent="." instance=ExtResource("3_71c5k")]
+[node name="FishingPlayer" parent="." instance=ExtResource("3_71c5k")]
 transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.553977, -4.27631)
 script = ExtResource("4_xoaee")
 
-[node name="FishingRod" parent="Player" instance=ExtResource("5_us6q4")]
+[node name="FishingRod" parent="FishingPlayer" instance=ExtResource("5_us6q4")]
 transform = Transform3D(1, 1.32815e-09, 1.51808e-08, 1.5197e-08, -0.0131591, -0.999915, -1.12827e-09, 0.999915, -0.013159, 0.270332, 0.337995, 0.0667055)
+
+[connection signal="fishing_ends" from="FishingPlayer/FishingRod" to="FishingPlayer" method="_on_fishing_rod_fishing_ends"]
+[connection signal="fishing_starts" from="FishingPlayer/FishingRod" to="FishingPlayer" method="_on_fishing_rod_fishing_starts"]
