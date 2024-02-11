@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MinigameList" load_steps=6 format=3 uid="uid://5hym76i6sluw"]
+[gd_resource type="Resource" script_class="MinigameList" load_steps=7 format=3 uid="uid://5hym76i6sluw"]
 
 [ext_resource type="Resource" uid="uid://dcldtrosbjch" path="res://tools/minigames/Library.tres" id="1_2q3ef"]
 [ext_resource type="Script" path="res://tools/minigames/minigame_info.gd" id="2_gy6q0"]
@@ -16,6 +16,12 @@ name = "Fishing"
 scene = "res://tools/minigames/fishing/fishing_minigame.tscn"
 time = 0
 
+[sub_resource type="Resource" id="Resource_opqmh"]
+script = ExtResource("2_gy6q0")
+name = "Post-Processing Test (NOT A MINIGAME)"
+scene = "res://tools/overlay/post/test_scene/post_test.tscn"
+time = 0
+
 [resource]
 script = ExtResource("2_uxox8")
-minigame_list = Array[ExtResource("2_gy6q0")]([ExtResource("1_2q3ef"), SubResource("Resource_ip00n"), SubResource("Resource_76hxi")])
+minigame_list = Array[ExtResource("2_gy6q0")]([ExtResource("1_2q3ef"), SubResource("Resource_ip00n"), SubResource("Resource_76hxi"), SubResource("Resource_opqmh")])
