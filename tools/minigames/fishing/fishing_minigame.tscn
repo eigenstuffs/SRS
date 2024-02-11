@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0obt0ysdxga4" path="res://tools/minigames/fishing/fishing_rod/fishing_rod.tscn" id="5_us6q4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rve5y"]
-size = Vector3(3.11096, 1, 10)
+size = Vector3(3.13702, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkhmw"]
 albedo_color = Color(0.0862745, 0.0627451, 0.0588235, 1)
@@ -32,7 +32,7 @@ material = SubResource("StandardMaterial3D_r0i2i")
 size = Vector2(10, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jq107"]
-size = Vector3(10.1053, 1, 17.2794)
+size = Vector3(10.6926, 1, 17.2794)
 
 [node name="Fishing" type="SubViewport"]
 script = ExtResource("1_rrich")
@@ -45,7 +45,7 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89093, -0.510077, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8779, -0.510077, 0)
 shape = SubResource("BoxShape3D_rve5y")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
@@ -58,8 +58,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
 
 [node name="Back Wall" type="StaticBody3D" parent="Colliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.623937)
-collision_layer = 7
-collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Back Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0, -5.11944)
@@ -108,7 +106,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water/WaterSurface"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10835, 0, 0.0244763)
+transform = Transform3D(1, 0, 0, 0, 1, -1.12238e-23, 0, -1.12238e-23, 1, 1.81472, 0, 0.0244763)
 shape = SubResource("BoxShape3D_jq107")
 
 [node name="Camera3D" type="Camera3D" parent="."]

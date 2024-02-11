@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://0obt0ysdxga4"]
+[gd_scene load_steps=8 format=3 uid="uid://0obt0ysdxga4"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/fishing_rod.gd" id="1_7vvl0"]
 [ext_resource type="PackedScene" uid="uid://b41yvuuvkashj" path="res://tools/minigames/fishing/fishing_rod/bobber.tscn" id="2_djfgk"]
+[ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/FloatingBobber.gd" id="3_o11d1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jq4nx"]
 
@@ -9,12 +10,31 @@
 material = SubResource("StandardMaterial3D_jq4nx")
 size = Vector2(0.075, 1.3)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_rxajj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_on7hd"]
+
 [node name="FishingRod" type="MeshInstance3D"]
 transform = Transform3D(1, 1.32815e-09, 1.51808e-08, 1.5197e-08, -0.0131592, -0.999915, -1.12827e-09, 0.999915, -0.0131591, 0.270332, 0.337995, 0.0667055)
 mesh = SubResource("PlaneMesh_b3g5h")
 script = ExtResource("1_7vvl0")
 
-[node name="Bobber" parent="." instance=ExtResource("2_djfgk")]
+[node name="MovingBobber" parent="." instance=ExtResource("2_djfgk")]
 transform = Transform3D(1, 2.30657e-15, -3.3768e-15, -2.27706e-15, 1, 2.2629e-09, 5.65113e-15, -1.90235e-09, 1, 2.98023e-07, 0.472233, -0.761109)
 collision_layer = 2
 collision_mask = 2
+
+[node name="FloatingBobber" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 2.64396e-16, 5.50604e-15, -1.67819e-16, 1, 4.00339e-10, 2.94298e-16, -1.86679e-10, 1, 5.96046e-08, -0.00871795, -0.662447)
+script = ExtResource("3_o11d1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingBobber"]
+transform = Transform3D(0.25, 4.03982e-18, -1.40872e-15, -4.03982e-18, 0.25, 7.0967e-11, 1.40872e-15, -7.0967e-11, 0.25, 0, 0, 0)
+shape = SubResource("SphereShape3D_rxajj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloatingBobber"]
+transform = Transform3D(0.25, 5.9546e-17, -9.6536e-16, -5.9546e-17, 0.25, -1.61864e-10, 9.6536e-16, 1.61864e-10, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_on7hd")
+skeleton = NodePath("")
+
+[connection signal="water_entered" from="MovingBobber" to="." method="_on_moving_bobber_water_entered"]
