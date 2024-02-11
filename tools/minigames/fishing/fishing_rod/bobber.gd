@@ -9,10 +9,10 @@ extends RigidBody3D
 const water_height : float = 0.0
 
 var submerged : bool = false
-var in_water : bool = false
+var is_in_water : bool = false
 
 func _physics_process(delta):
-	if in_water:
+	if is_in_water:
 		submerged = false
 		var depth = water_height - global_position.y
 		if depth > 0:
@@ -25,16 +25,16 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 		state.angular_velocity *= 1 - water_angular_drag
 
 func launch(initial_v : Vector3):
-	in_water = false
+	is_in_water = false
 	apply_central_impulse(initial_v)
 	print(linear_velocity)
 
 func _on_area_3d_area_entered(area):
 	if area.get_parent() is Water:
-		in_water = true
+		is_in_water = true
 		linear_velocity = Vector3.ZERO
 		print("water entered")
 
 func _on_area_3d_area_exited(area):
 	if area.get_parent() is Water:
-		in_water = false
+		is_in_water = false
