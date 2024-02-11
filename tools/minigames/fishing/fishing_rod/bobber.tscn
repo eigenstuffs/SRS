@@ -11,7 +11,6 @@
 [node name="Bobber" type="RigidBody3D"]
 transform = Transform3D(1, 7.22881e-16, -5.63067e-15, -7.22881e-16, 1, 9.21557e-10, 5.63067e-15, -9.21557e-10, 1, 8.9407e-08, -0.00878875, -0.667827)
 script = ExtResource("1_4gvxx")
-float_force = 5.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.25, 4.03982e-18, -1.40872e-15, -4.03982e-18, 0.25, 7.0967e-11, 1.40872e-15, -7.0967e-11, 0.25, 0, 0, 0)
