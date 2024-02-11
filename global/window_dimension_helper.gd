@@ -59,6 +59,7 @@ func _process(_delta : float) -> void:
 func _on_timeout() -> void:
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
 		resize_window(get_viewport().size)
+	timer.stop()
 
 func _on_main_window_size_changed() -> void:
 	timer.start(update_interval_seconds)
