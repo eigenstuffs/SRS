@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://3y2qrdia6ibw"]
+[gd_scene load_steps=8 format=3 uid="uid://3y2qrdia6ibw"]
 
 [ext_resource type="Script" path="res://tools/minigame_holder/minigame_holder.gd" id="1_ddtpb"]
 [ext_resource type="Script" path="res://tools/minigames/library/util/timers.gd" id="2_bxee8"]
+[ext_resource type="Script" path="res://tools/minigame_holder/viewport_container.gd" id="2_e8036"]
 [ext_resource type="Texture2D" uid="uid://bs54kw4ef5h21" path="res://assets/ui/Mini Game Frame.png" id="3_r5y12"]
 [ext_resource type="Texture2D" uid="uid://dki4a7c8ecavm" path="res://assets/ui/Score and Timer.png" id="4_adirh"]
 [ext_resource type="Texture2D" uid="uid://c875qeheydn86" path="res://assets/ui/goldcircle.png" id="5_g8jth"]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_ddtpb")
 
 [node name="Game" type="SubViewportContainer" parent="."]
@@ -27,12 +29,14 @@ offset_left = 0.639992
 offset_top = -0.120002
 offset_right = 0.639992
 offset_bottom = -0.120002
+script = ExtResource("2_e8036")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 script = ExtResource("2_bxee8")
 
 [node name="TextureRect" type="TextureRect" parent="UI"]
@@ -49,6 +53,7 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 256.0
 offset_bottom = 256.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="UI/GameTimer"]
 layout_mode = 1
@@ -100,6 +105,7 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 256.0
 offset_bottom = 256.0
+mouse_filter = 2
 
 [node name="StartTime" type="Timer" parent="UI/StartTimer"]
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkenutatqklr3"]
+
+[ext_resource type="Script" path="res://tools/overlay/post/screen_space_mesh.gd" id="2_mgx20"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_tu6ej"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="ScreenSpaceMesh" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83, 0)
+cast_shadow = 0
+extra_cull_margin = 16384.0
+ignore_occlusion_culling = true
+gi_mode = 0
+mesh = SubResource("QuadMesh_tu6ej")
+skeleton = NodePath("../PlayerCharacter/Camera3D")
+script = ExtResource("2_mgx20")

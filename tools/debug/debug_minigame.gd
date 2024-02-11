@@ -14,4 +14,3 @@ func _on_item_list_item_activated(index: int) -> void:
 	var name : String = minigame_list.get_item_text(index).strip_edges()
 	Util.create_minigame($CanvasLayer, name)
 	minigame_list.focus_mode = Control.FOCUS_NONE
-	

@@ -7,26 +7,6 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_n8757")
 
-[node name="TextEdit" type="TextEdit" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 704.0
-offset_bottom = 128.0
-theme_override_font_sizes/font_size = 64
-placeholder_text = "Enter name (e.g. Library)"
-
-[node name="Skip" type="Button" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 77.0
-offset_top = 518.0
-offset_right = 333.0
-offset_bottom = 646.0
-theme_override_font_sizes/font_size = 64
-text = "Instance"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ItemList" type="ItemList" parent="."]
@@ -35,15 +15,12 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 595.0
 offset_bottom = 1024.0
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-theme_override_constants/line_separation = 0
-theme_override_font_sizes/font_size = 64
+mouse_filter = 1
+theme_override_font_sizes/font_size = 48
 auto_height = true
 item_count = 1
 item_0/text = "Select a Minigame!"
 item_0/selectable = false
 item_0/disabled = true
 
-[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]
 [connection signal="item_activated" from="ItemList" to="." method="_on_item_list_item_activated"]

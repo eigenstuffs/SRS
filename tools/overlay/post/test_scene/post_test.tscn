@@ -1,0 +1,66 @@
+[gd_scene load_steps=13 format=3 uid="uid://c13k41j6siwhm"]
+
+[ext_resource type="Script" path="res://tools/overlay/post/test_scene/post_test.gd" id="1_6fs5c"]
+[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://tools/overlay/post/assets/panorama.png" id="1_m045f"]
+[ext_resource type="PackedScene" uid="uid://00mg2rogbacn" path="res://tools/overlay/post/test_scene/player/player_character.tscn" id="2_4asy8"]
+[ext_resource type="Material" uid="uid://uoomn60b1377" path="res://tools/overlay/post/assets/wood_floor_material/wood_floor.tres" id="3_jabyt"]
+[ext_resource type="PackedScene" uid="uid://bkenutatqklr3" path="res://tools/overlay/post/screen_space_mesh.tscn" id="4_klrg5"]
+[ext_resource type="Shader" path="res://tools/overlay/post/assets/examples/rain.gdshader" id="5_8scsq"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_po03n"]
+panorama = ExtResource("1_m045f")
+
+[sub_resource type="Sky" id="Sky_laxh5"]
+sky_material = SubResource("PanoramaSkyMaterial_po03n")
+
+[sub_resource type="Environment" id="Environment_r2gl8"]
+background_mode = 2
+sky = SubResource("Sky_laxh5")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x1cih"]
+top_radius = 8.0
+bottom_radius = 8.0
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2p12f"]
+height = 0.1
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rod1w"]
+render_priority = 0
+shader = ExtResource("5_8scsq")
+shader_parameter/tiling_dimensions = Vector2(160, 5)
+shader_parameter/brightness = 1.0
+
+[node name="Main" type="SubViewport"]
+script = ExtResource("1_6fs5c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.642788, 0.663414, -0.383022, 0, 0.5, 0.866025, 0.766044, 0.556671, -0.321394, -4.5, 10, -3.5)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r2gl8")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_4asy8")]
+
+[node name="Camera3D" type="Camera3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83, 0)
+fov = 90.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("CylinderMesh_x1cih")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_jabyt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("CylinderShape3D_2p12f")
+
+[node name="ScreenSpaceMesh" parent="." instance=ExtResource("4_klrg5")]
+surface_material_override/0 = SubResource("ShaderMaterial_rod1w")

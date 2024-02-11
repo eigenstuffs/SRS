@@ -9,3 +9,8 @@ signal update_points(points : int)
 
 func end() -> void:
 	minigame_finished.emit(points)
+	
+# FIXME: I don't understand viewports and this is the only way I could get mouse
+# inputs to pass through to the child subviewport!
+func unhandled_input(event : InputEvent) -> void:
+	pass
