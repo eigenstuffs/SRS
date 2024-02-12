@@ -26,6 +26,8 @@ collision_mask = 2
 
 [node name="FloatingBobber" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 2.64396e-16, 5.50604e-15, -1.67819e-16, 1, 4.00339e-10, 2.94298e-16, -1.86679e-10, 1, 5.96046e-08, -0.00871795, -0.662447)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("3_o11d1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingBobber"]

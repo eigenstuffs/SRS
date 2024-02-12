@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cac7s21gtcba8"]
+
+[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="1_1afv7"]
+[ext_resource type="Script" path="res://scenes/player/FishingPlayer.gd" id="2_qwu5m"]
+[ext_resource type="PackedScene" uid="uid://0obt0ysdxga4" path="res://tools/minigames/fishing/fishing_rod/fishing_rod.tscn" id="3_ptm30"]
+
+[node name="FishingPlayer" instance=ExtResource("1_1afv7")]
+script = ExtResource("2_qwu5m")
+
+[node name="FishingRod" parent="." index="4" instance=ExtResource("3_ptm30")]

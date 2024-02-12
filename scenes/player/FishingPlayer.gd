@@ -6,13 +6,12 @@ const SPEED = 2.0
 const JUMP_VELOCITY = 1.5
 
 enum FishingState {
-	WALKING, FISHING
+	WALKING, CASTING, FISHING
 }
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var dir = Vector2.RIGHT
 var turning = false
-var local_can_move = true
 var currentState = FishingState.WALKING
 
 func _physics_process(delta):

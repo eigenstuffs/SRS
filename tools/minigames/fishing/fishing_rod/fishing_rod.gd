@@ -24,3 +24,4 @@ func _process(delta):
 func _on_moving_bobber_water_entered():
 	floating_bobber.transform = moving_bobber.transform
 	floating_bobber.visible = true
+	print("bobber moved")
