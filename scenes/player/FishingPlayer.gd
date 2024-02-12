@@ -65,5 +65,6 @@ func anim_handler():
 func _on_fishing_rod_fishing_starts():
 	currentState = FishingState.FISHING
 
+
 func _on_fishing_rod_fishing_ends():
 	currentState = FishingState.WALKING
