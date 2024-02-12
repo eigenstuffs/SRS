@@ -35,6 +35,22 @@ size = Vector3(10.6926, 1, 17.2794)
 [node name="Fishing" type="SubViewport"]
 script = ExtResource("1_rrich")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -8.5
+offset_right = 25.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "HELLO"
+
 [node name="Ground" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0533893, 0, -2.25496)
 
@@ -47,7 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8779, -0.510077, 0)
 shape = SubResource("BoxShape3D_rve5y")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(0.314238, 0, 0, 0, 1, 0, 0, 0, 1, -1.89174, 0.00840366, 0)
+transform = Transform3D(0.212278, 0, 0, 0, 1, 0, 2.85405e-16, 0, 1, -1.4165, 0.00840366, -1.11759e-08)
 layers = 3
 mesh = SubResource("PlaneMesh_d8xei")
 
@@ -58,7 +74,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.623937)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Back Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0, -5.11944)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0, -3.26745)
 shape = SubResource("BoxShape3D_iucpa")
 
 [node name="Front Wall2" type="StaticBody3D" parent="Colliders"]
@@ -116,7 +132,6 @@ frustum_offset = Vector2(0, 50)
 [node name="Camera3D2" type="Camera3D" parent="."]
 transform = Transform3D(0.0344613, -0.0250786, 0.999091, -0.0274462, 0.999284, 0.0260301, -0.999029, -0.0283182, 0.0337483, 5.07454, -0.449683, -1.24189)
 visible = false
-current = true
 size = 73.377
 frustum_offset = Vector2(0, 50)
 
@@ -124,4 +139,4 @@ frustum_offset = Vector2(0, 50)
 transform = Transform3D(1, 0, 0, 0, 0.689253, 0.724521, 0, -0.724521, 0.689253, 0, 3.45416, -0.227573)
 
 [node name="FishingPlayer" parent="." instance=ExtResource("4_y1r0s")]
-transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.57244, -4.141)
+transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.57244, -3.42425)
