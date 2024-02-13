@@ -2,8 +2,12 @@ extends CharacterBody3D
 
 class_name Fish
 
+@export var speed = 0.6
+@export var rarity = 1
+@export var bite_time = 2
+@export var sell_price = 5
+
 #const JUMP_VELOCITY = 4.5
-const SPEED = 0.6
 enum STATES { WANDER, WAIT }
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -13,7 +17,7 @@ var state: STATES = STATES.WANDER
 
 func _physics_process(delta):
 	if state == STATES.WANDER:
-		velocity = Vector3.FORWARD * SPEED
+		velocity = Vector3.FORWARD * speed
 		velocity = velocity.rotated(Vector3.UP, rotation.y)
 	elif state == STATES.WAIT:
 		velocity.x = 0
