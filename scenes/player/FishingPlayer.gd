@@ -2,6 +2,12 @@ extends CharacterBody3D
 
 class_name FishingPlayer
 
+signal casting_time
+signal fishing_time
+signal walking_time
+
+@onready var rod = $FishingRod
+
 const SPEED = 2.0
 const JUMP_VELOCITY = 1.5
 
@@ -15,6 +21,14 @@ var turning = false
 var currentState = FishingState.WALKING
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		if currentState == FishingState.WALKING:
+			currentState = FishingState.CASTING
+			emit_signal("casting_time")
+		elif currentState == FishingState.CASTING:
+			currentState = FishingState.FISHING
+			emit_signal("fishing_time") #the third state depends on the fishing rod
+			
 	if Global.can_move and currentState == FishingState.WALKING:
 		if not is_on_floor():
 			velocity.y -= gravity * delta
@@ -62,9 +76,7 @@ func anim_handler():
 	else:
 		$AnimationPlayer.play("Idle")
 
-func _on_fishing_rod_fishing_starts():
-	currentState = FishingState.FISHING
-
-
 func _on_fishing_rod_fishing_ends():
+	print("hi")
 	currentState = FishingState.WALKING
+	await get_tree().create_timer(0.5).timeout
