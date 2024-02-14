@@ -20,13 +20,13 @@ sky_rotation = Vector3(0, 1.39626, -0.567232)
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7t6o2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_he4ay"]
 viewport_path = NodePath("MeshInstance3D/RhythmBackground")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8hag"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_7t6o2")
+albedo_texture = SubResource("ViewportTexture_he4ay")
 billboard_mode = 1
 billboard_keep_scale = true
 
