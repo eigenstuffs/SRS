@@ -24,3 +24,7 @@ func _on_area_3d_area_entered(area):
 		visible = false
 		transform = original_position
 		linear_velocity = Vector3.ZERO
+
+func disappear():
+	visible = false
+	transform = original_position
