@@ -18,8 +18,8 @@ size = Vector3(0.2, 0.3, 0.2)
 script = ExtResource("1_eh0c7")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.001, 0, 0, 0, 0.2, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-instance_shader_parameters/albedo = Color(1, 0.33, 0, 1)
+transform = Transform3D(0.3, 0, 0, 0, 0.001, 0, 0, 0, 0.3, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+instance_shader_parameters/albedo = Color(0.843137, 0.462745, 0.494118, 1)
 mesh = SubResource("CylinderMesh_ptm7h")
 surface_material_override/0 = SubResource("ShaderMaterial_oxl4s")
 

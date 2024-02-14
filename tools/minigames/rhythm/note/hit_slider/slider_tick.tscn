@@ -15,7 +15,7 @@ shader_parameter/transition_distance = 1.0
 script = ExtResource("1_q38t6")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.001, 0, 0, 0, 0.5, 0, 0, 0)
-instance_shader_parameters/albedo = Color(1, 0.33, 0, 1)
+transform = Transform3D(0.15, 0, 0, 0, 0.001, 0, 0, 0, 0.5, 0, 0, 0)
+instance_shader_parameters/albedo = Color(0.843137, 0.462745, 0.494118, 1)
 mesh = SubResource("PlaneMesh_orsp6")
 surface_material_override/0 = SubResource("ShaderMaterial_4n623")
