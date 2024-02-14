@@ -4,6 +4,7 @@ const FISH = preload('res://tools/minigames/fishing/fish/fish.tscn')
 
 var active = true
 
+@onready var FISH_STATS : FishStats = preload("res://tools/minigames/fishing/fish/fish_stats.tres")
 @onready var area_left : SpawnArea = $SpawnAreaLeft
 @onready var area_right : SpawnArea = $SpawnAreaRight
 @onready var area_top : SpawnArea = $SpawnAreaTop
@@ -15,6 +16,7 @@ var active = true
 func _process(delta: float) -> void:
 	if active and $fish.get_child_count() <= 3:
 		var spawn_pos
+		var type = randi_range(0,9)
 		var side = randi_range(0,3)
 		match side:
 			0:
@@ -27,4 +29,6 @@ func _process(delta: float) -> void:
 				spawn_pos = area_top.get_random_point()
 		var fishie: Fish = FISH.instantiate()
 		$fish.add_child(fishie)
+		FISH_STATS.set_fish_stats(type,fishie)
 		fishie.global_position = spawn_pos
+		

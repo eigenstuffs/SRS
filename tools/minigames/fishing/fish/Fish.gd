@@ -2,10 +2,10 @@ extends CharacterBody3D
 
 class_name Fish
 
-@export var speed = 0.6
-@export var rarity = 1
-@export var bite_time = 2
-@export var sell_price = 5
+var speed : float
+var rarity : float
+var bite_time : int
+var sell_price : int
 
 #const JUMP_VELOCITY = 4.5
 enum STATES { WANDER, WAIT }
@@ -38,5 +38,4 @@ func _on_timer_timeout():
 	$Timer.start(3)
 
 func _on_visible_on_screen_notifier_3d_screen_exited():
-	pass
-	#queue_free()
+	queue_free()
