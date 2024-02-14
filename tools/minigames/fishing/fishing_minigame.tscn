@@ -123,7 +123,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -1.12238e-23, 0, -1.12238e-23, 1, 1.81472
 shape = SubResource("BoxShape3D_jq107")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 2.08165e-12, 4.15793, 1.59188)
+transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 2.08165e-12, 4.15793, 2.40186)
 current = true
 size = 73.377
 frustum_offset = Vector2(0, 50)
