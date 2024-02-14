@@ -31,3 +31,6 @@ func _on_fishing_player_fishing_time():
 		bobber_detached = true
 		moving_bobber.launch(bobber_initial_v)
 		emit_signal("fishing_starts")
+
+func _on_fishing_player_walking_time():
+	pass
