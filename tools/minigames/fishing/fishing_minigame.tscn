@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjt4skwe1eu5h"]
+[gd_scene load_steps=14 format=3 uid="uid://bjt4skwe1eu5h"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_minigame.gd" id="1_rrich"]
 [ext_resource type="PackedScene" uid="uid://hq67rtu14odh" path="res://tools/minigames/fishing/fish/fish_instancer.tscn" id="2_cead1"]
+[ext_resource type="Script" path="res://tools/minigames/fishing/CanvasLayer.gd" id="2_t7pno"]
 [ext_resource type="Script" path="res://tools/minigames/fishing/Water.gd" id="3_slp7l"]
 [ext_resource type="PackedScene" uid="uid://cac7s21gtcba8" path="res://scenes/player/fishing_player.tscn" id="4_y1r0s"]
 
@@ -32,24 +33,26 @@ size = Vector2(10, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jq107"]
 size = Vector3(10.6926, 1, 17.2794)
 
-[node name="Fishing" type="SubViewport"]
+[node name="Fishing" type="Node3D"]
 script = ExtResource("1_rrich")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_t7pno")
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
+[node name="ForceBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.5
-offset_top = -8.5
-offset_right = 25.5
-offset_bottom = 8.5
+offset_left = -247.5
+offset_top = 216.0
+offset_right = 247.5
+offset_bottom = 323.0
 grow_horizontal = 2
-grow_vertical = 2
-text = "HELLO"
+min_value = 30.0
+max_value = 150.0
+step = 1.0
+value = 30.0
+show_percentage = false
 
 [node name="Ground" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0533893, 0, -2.25496)
@@ -86,8 +89,6 @@ shape = SubResource("BoxShape3D_iucpa")
 
 [node name="Left Wall" type="StaticBody3D" parent="Colliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85, 2.08165e-12, 2.08165e-12)
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Left Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.484712, 0, -4.27371)
@@ -95,8 +96,6 @@ shape = SubResource("BoxShape3D_odbwy")
 
 [node name="Right Wall" type="StaticBody3D" parent="Colliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85, 2.08165e-12, 2.08165e-12)
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Right Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0945082, 0, -4.20388)
@@ -140,3 +139,5 @@ transform = Transform3D(1, 0, 0, 0, 0.689253, 0.724521, 0, -0.724521, 0.689253, 
 
 [node name="FishingPlayer" parent="." instance=ExtResource("4_y1r0s")]
 transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.57244, -3.42425)
+
+[connection signal="casting_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_casting_time"]
