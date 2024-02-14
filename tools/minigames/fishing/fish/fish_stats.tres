@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishStats" load_steps=2 format=3 uid="uid://c7frwl4ek2inp"]
+
+[ext_resource type="Script" path="res://tools/minigames/fishing/fish/fish_stats.gd" id="1_yuj2d"]
+
+[resource]
+script = ExtResource("1_yuj2d")
+fishie_one = null
+fishie_two = null
+fishie_three = null
+fishie_four = null
+fish_list = null
