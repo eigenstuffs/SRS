@@ -2,18 +2,20 @@ extends CharacterBody3D
 
 class_name Fish
 
+signal im_hooked
+
 var speed : float
 var rarity : float
 var bite_time : int
 var sell_price : int
 
 #const JUMP_VELOCITY = 4.5
-enum STATES { WANDER, WAIT }
+enum STATES { WANDER, WAIT, PURSUE, STOP}
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 #var direction = Vector3.ZERO
 var state: STATES = STATES.WANDER
-
+var bobber : FloatingBobber
 
 func _physics_process(delta):
 	if state == STATES.WANDER:
@@ -22,7 +24,12 @@ func _physics_process(delta):
 	elif state == STATES.WAIT:
 		velocity.x = 0
 		velocity.z = 0
-		
+	elif state == STATES.PURSUE:
+		var dir : Vector3 = bobber.global_position - self.global_position
+		dir.normalized()
+		velocity.x = dir.x * speed
+		velocity.z = dir.z * speed
+			
 	move_and_slide()
 
 
@@ -39,3 +46,12 @@ func _on_timer_timeout():
 
 func _on_visible_on_screen_notifier_3d_screen_exited():
 	queue_free()
+
+func _on_hurtbox_area_entered(area):
+	if area.get_parent() is FloatingBobber:
+		state = STATES.PURSUE
+		bobber = area.get_parent()
+
+func _on_hurtbox_area_exited(area):
+	if area.get_parent() is FloatingBobber:
+		state = STATES.WANDER

@@ -12,9 +12,10 @@ height = 0.2
 [node name="Fish" type="CharacterBody3D"]
 script = ExtResource("1_e25ly")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_x45a8")
 
 [node name="placeholderFish" type="MeshInstance3D" parent="."]
@@ -30,5 +31,7 @@ autostart = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_x45a8")
 
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_exited" from="Hurtbox" to="." method="_on_hurtbox_area_exited"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

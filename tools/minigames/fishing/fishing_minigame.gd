@@ -4,6 +4,9 @@ extends Node3D #remember to change this back
 @onready var fishing_rod = $FishingPlayer/FishingRod
 @onready var force_bar = $CanvasLayer/ForceBar
 
+signal reeling_minigame
+signal reeling_minigame_end(is_successful : bool)
+
 var force_multiplier : float = 1
 
 func _ready():
@@ -17,3 +20,12 @@ func end() -> void:
 func _process(delta):
 	force_multiplier = force_bar.value / 100
 	fishing_rod.bobber_initial_v.z = 3 * force_multiplier
+
+func _on_fishing_player_fish_hooked():
+	emit_signal("reeling_minigame")
+
+func _on_canvas_layer_reeling_failed():
+	emit_signal("reeling_minigame_end", false)
+
+func _on_canvas_layer_reeling_success():
+	emit_signal("reeling_minigame_end", true)
