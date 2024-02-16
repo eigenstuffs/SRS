@@ -11,4 +11,5 @@ script = ExtResource("2_qwu5m")
 
 [connection signal="fishing_time" from="." to="FishingRod" method="_on_fishing_player_fishing_time"]
 [connection signal="walking_time" from="." to="FishingRod" method="_on_fishing_player_walking_time"]
+[connection signal="fish_hooked" from="FishingRod" to="." method="_on_fishing_rod_fish_hooked"]
 [connection signal="fishing_ends" from="FishingRod" to="." method="_on_fishing_rod_fishing_ends"]

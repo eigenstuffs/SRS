@@ -5,6 +5,7 @@ class_name FishingPlayer
 signal casting_time
 signal fishing_time
 signal walking_time
+signal fish_hooked
 
 @onready var rod = $FishingRod
 
@@ -12,7 +13,7 @@ const SPEED = 2.0
 const JUMP_VELOCITY = 1.5
 
 enum FishingState {
-	WALKING, CASTING, FISHING
+	WALKING, CASTING, FISHING, REELING
 }
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -80,3 +81,14 @@ func _input(event):
 func _on_fishing_rod_fishing_ends():
 	currentState = FishingState.WALKING
 	
+
+func _on_fishing_rod_fish_hooked():
+	emit_signal("fish_hooked")
+
+
+func _on_fishing_reeling_minigame():
+	rod.retractable = false
+
+func _on_fishing_reeling_minigame_end(is_successful):
+	rod.retractable = true
+	rod.retract_bobber()

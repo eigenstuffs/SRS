@@ -1,6 +1,7 @@
 extends Node3D
 
 const FISH = preload('res://tools/minigames/fishing/fish/fish.tscn')
+@export var MAX_FISH_COUNT = 5
 
 var active = true
 
@@ -14,7 +15,7 @@ var active = true
 #h00 4 functions, override return
 
 func _process(delta: float) -> void:
-	if active and $fish.get_child_count() <= 3:
+	if active and $fish.get_child_count() <= MAX_FISH_COUNT:
 		var spawn_pos
 		var type = randi_range(0,9)
 		var side = randi_range(0,3)
