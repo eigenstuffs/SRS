@@ -8,7 +8,7 @@ var active = true
 @onready var FISH_STATS : FishStats = preload("res://tools/minigames/fishing/fish/fish_stats.tres")
 @onready var area_left : SpawnArea = $SpawnAreaLeft
 @onready var area_right : SpawnArea = $SpawnAreaRight
-@onready var area_top : SpawnArea = $SpawnAreaTop
+#@onready var area_top : SpawnArea = $SpawnAreaTop
 @onready var area_bottom : SpawnArea = $SpawnAreaBottom
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	if active and $fish.get_child_count() <= MAX_FISH_COUNT:
 		var spawn_pos
 		var type = randi_range(0,9)
-		var side = randi_range(0,3)
+		var side = randi_range(0,2)
 		match side:
 			0:
 				spawn_pos = area_left.get_random_point()
@@ -26,8 +26,8 @@ func _process(delta: float) -> void:
 				spawn_pos = area_right.get_random_point()
 			2:
 				spawn_pos = area_bottom.get_random_point()
-			3:
-				spawn_pos = area_top.get_random_point()
+			#3:
+				#spawn_pos = area_top.get_random_point()
 		var fishie: Fish = FISH.instantiate()
 		$fish.add_child(fishie)
 		FISH_STATS.set_fish_stats(type,fishie)
