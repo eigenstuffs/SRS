@@ -24,8 +24,6 @@ func _process(delta):
 func _on_fishing_player_fish_hooked():
 	emit_signal("reeling_minigame")
 
-func _on_canvas_layer_reeling_failed():
-	emit_signal("reeling_minigame_end", false)
-
-func _on_canvas_layer_reeling_success():
-	emit_signal("reeling_minigame_end", true)
+func _on_canvas_layer_reeling_ended(is_successful):
+	emit_signal("reeling_minigame_end", is_successful)
+	print("reeling success: " + str(is_successful) + "!")
