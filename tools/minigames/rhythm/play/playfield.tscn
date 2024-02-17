@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr62xw6ofifyl"]
+
+[ext_resource type="Script" path="res://tools/minigames/rhythm/play/playfield.gd" id="1_a1v4t"]
+[ext_resource type="Script" path="res://tools/overlay/post/screen_space_mesh.gd" id="3_fg65l"]
+[ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://tools/minigames/rhythm/util/sound/audio_synchronizer.tscn" id="3_g2rft"]
+
+[node name="Playfield" type="Node3D"]
+script = ExtResource("1_a1v4t")
+
+[node name="AudioSynchronizer" parent="." instance=ExtResource("3_g2rft")]
+use_metronome = true
+
+[node name="Keys" type="Node3D" parent="."]
+
+[node name="ScreenSpaceMesh" type="MeshInstance3D" parent="."]
+script = ExtResource("3_fg65l")

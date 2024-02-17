@@ -1,0 +1,40 @@
+class_name HitNote extends Note
+
+const MISS_ALPHA_TRANSITION_TIME : float = 0.1
+const MISS_ALPHA_MIN : float = 0.4 ## Min alpha during miss transition
+
+var alpha_overwrite : float = 1.0
+
+@onready var death_timer : Timer = $DeathTimer
+
+func _ready() -> void:
+	super()
+	$Mesh.set_instance_shader_parameter('fade_in_position', spawn_point.global_position)
+	$Mesh.set_instance_shader_parameter('fade_plane_normal', hit_point.global_transform.basis.z)
+	$Mesh.set_instance_shader_parameter('fade_in_distance', fade_in_distance * scale.z)
+	$Mesh.set_instance_shader_parameter('albedo', RandomColorGenerator.generate(hash((hit_time * 5.0) as int * 31415)))
+
+func _process(delta: float) -> void:
+	var timings : Array[float] = timings_supplier.call()
+	if not is_missed:
+		var t = (timings[0] - hit_time + timings[1]) / timings[1]
+		position = spawn_point.position.lerp(hit_point.position, t)
+	else:
+		position += (position - hit_point.position).normalized() * 0.01
+		$Mesh.set_instance_shader_parameter('fade_out_factor', 1.0 - death_timer.time_left / death_timer.wait_time)
+		
+	if is_missed and alpha_overwrite > MISS_ALPHA_MIN:
+		alpha_overwrite = max(MISS_ALPHA_MIN, alpha_overwrite - delta / MISS_ALPHA_TRANSITION_TIME)
+		$Mesh.set_instance_shader_parameter('alpha_overwrite', alpha_overwrite)
+
+
+func hit() -> void:
+	queue_free()
+
+func miss() -> void:
+	super.miss()
+	death_timer.start()
+	$Mesh.set_instance_shader_parameter('fade_out_factor', 1.0 - death_timer.time_left / death_timer.wait_time)
+
+func _on_death_timer_timeout() -> void:
+	queue_free()

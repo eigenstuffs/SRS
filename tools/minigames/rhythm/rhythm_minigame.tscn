@@ -1,81 +1,55 @@
-[gd_scene load_steps=13 format=3 uid="uid://0qt8i17a6sjh"]
+[gd_scene load_steps=13 format=3 uid="uid://lmg6p4vssmpw"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_minigame.gd" id="1_pb007"]
-[ext_resource type="Texture2D" uid="uid://dnodymyvasg6y" path="res://tools/minigames/rhythm/assets/bg.jpg" id="2_ahkas"]
-[ext_resource type="PackedScene" uid="uid://6kqupwwsa2f0" path="res://tools/minigames/rhythm/key/board.tscn" id="3_jy8mj"]
-[ext_resource type="PackedScene" uid="uid://b4707jscv3wq5" path="res://tools/minigames/rhythm/sound/note_spawner.tscn" id="4_sd6aa"]
-[ext_resource type="AudioStream" uid="uid://cp1lq5rjgk282" path="res://tools/minigames/rhythm/assets/beatmaps/shop.mp3" id="5_0ssek"]
-[ext_resource type="PackedScene" uid="uid://bykh112oo7d2y" path="res://tools/minigames/rhythm/rhythm_background.tscn" id="6_kxg6i"]
+[ext_resource type="PackedScene" uid="uid://cr62xw6ofifyl" path="res://tools/minigames/rhythm/play/playfield.tscn" id="2_2af6n"]
+[ext_resource type="AudioStream" uid="uid://cw8l5r0kooonq" path="res://tools/minigames/rhythm/assets/beatmaps/nekomata.mp3" id="3_caoh0"]
+[ext_resource type="PackedScene" uid="uid://bkenutatqklr3" path="res://tools/overlay/post/screen_space_mesh.tscn" id="4_hv5b4"]
+[ext_resource type="Shader" path="res://tools/overlay/post/assets/examples/rain.gdshader" id="5_qwkec"]
+[ext_resource type="Script" path="res://tools/minigames/rhythm/environment_test.gd" id="5_yqwvy"]
+[ext_resource type="PackedScene" uid="uid://6kqupwwsa2f0" path="res://tools/minigames/rhythm/play/board.tscn" id="5_yue8y"]
+[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://tools/overlay/post/assets/panorama.png" id="6_luhxe"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0rtgb"]
-panorama = ExtResource("2_ahkas")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ahmv"]
+render_priority = 0
+shader = ExtResource("5_qwkec")
+shader_parameter/tiling_dimensions = Vector2(160, 5)
+shader_parameter/brightness = 1.0
 
-[sub_resource type="Sky" id="Sky_uc8jg"]
-sky_material = SubResource("PanoramaSkyMaterial_0rtgb")
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a8ggx"]
+panorama = ExtResource("6_luhxe")
 
-[sub_resource type="Environment" id="Environment_6e5wd"]
+[sub_resource type="Sky" id="Sky_laxh5"]
+sky_material = SubResource("PanoramaSkyMaterial_a8ggx")
+
+[sub_resource type="Environment" id="Environment_oefpv"]
 background_mode = 2
-sky = SubResource("Sky_uc8jg")
-sky_rotation = Vector3(0, 1.39626, -0.567232)
+sky = SubResource("Sky_laxh5")
+sky_rotation = Vector3(0, -1.5708, -4.71239)
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_he4ay"]
-viewport_path = NodePath("MeshInstance3D/RhythmBackground")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8hag"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_he4ay")
-billboard_mode = 1
-billboard_keep_scale = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_sy6oh"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_k8hag")
-size = Vector2(1.778, 1)
-
 [node name="RhythmMinigame" type="SubViewport"]
-transparent_bg = true
-size = Vector2i(1920, 1080)
 script = ExtResource("1_pb007")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.255, 11.69, 2.19)
-fov = 20.0
+[node name="ScreenSpaceMesh" parent="." instance=ExtResource("4_hv5b4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_1ahmv")
+screen_space_shader = SubResource("ShaderMaterial_1ahmv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6e5wd")
+environment = SubResource("Environment_oefpv")
+script = ExtResource("5_yqwvy")
 
-[node name="Board" parent="." instance=ExtResource("3_jy8mj")]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.642788, 0.663414, -0.383022, 0, 0.5, 0.866026, 0.766044, 0.556671, -0.321394, -4.5, 10, -3.5)
+shadow_enabled = true
 
-[node name="Mesh" parent="Board" index="1"]
-transform = Transform3D(1.105, 0, 0, 0, 1, 0, 0, 0, 4, 0.06, -0.25, 0)
+[node name="Board" parent="." instance=ExtResource("5_yue8y")]
 
-[node name="Key Left" parent="Board/Keys" index="0"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.75, 0.05, 3.95)
+[node name="Playfield" parent="Board" instance=ExtResource("2_2af6n")]
+stream = ExtResource("3_caoh0")
+note_speed = 0.65
 
-[node name="Key Down" parent="Board/Keys" index="1"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.25, 0.05, 3.95)
-
-[node name="Key Up" parent="Board/Keys" index="2"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.25, 0.05, 3.95)
-
-[node name="Key Right" parent="Board/Keys" index="3"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.75, 0.05, 3.95)
-
-[node name="NoteSpawner" parent="." instance=ExtResource("4_sd6aa")]
-stream = ExtResource("5_0ssek")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(23.0249, 0, 0, 0, 23.0249, 0, 0, 0, 23.0249, -2.38, -52.124, 2.32)
-mesh = SubResource("QuadMesh_sy6oh")
-
-[node name="RhythmBackground" parent="MeshInstance3D" instance=ExtResource("6_kxg6i")]
-own_world_3d = true
-transparent_bg = true
-handle_input_locally = false
-use_taa = true
-use_occlusion_culling = true
-
-[editable path="Board"]
+[node name="Camera3D" type="Camera3D" parent="Board"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.53443, -4.031)
+current = true

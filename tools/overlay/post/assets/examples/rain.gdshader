@@ -56,5 +56,7 @@ void fragment() {
 
     float col = rain(st, tiling_dimensions, -PI/8.f, 20.f, 0.05f, 0.015, 0.05);
     // col += rain(st, tiling_dimensions * 1.5, -PI/9.f, 10.f, 0.5f, 0., 0.01);
-	ALPHA = col;
+    float luminance = dot(tex, vec3(0.2126, 0.7152, 0.0722));
+    float target_alpha = col * mix(0.15f, 1.f, luminance);
+	ALPHA = target_alpha;
 }
