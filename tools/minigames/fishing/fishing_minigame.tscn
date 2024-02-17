@@ -106,6 +106,14 @@ page = 3.0
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
 
+[node name="Scoreboard" type="Label" parent="CanvasLayer"]
+offset_left = 70.0
+offset_top = 64.0
+offset_right = 442.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 64
+text = "Fish Caught x 0"
+
 [node name="Ground" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0533893, 0, -2.25496)
 
@@ -197,6 +205,7 @@ transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.6
 [connection signal="reeling_minigame" from="." to="FishingPlayer" method="_on_fishing_reeling_minigame"]
 [connection signal="reeling_minigame_end" from="." to="FishingPlayer" method="_on_fishing_reeling_minigame_end"]
 [connection signal="reeling_ended" from="CanvasLayer" to="." method="_on_canvas_layer_reeling_ended"]
+[connection signal="reeling_ended" from="CanvasLayer" to="CanvasLayer" method="_on_reeling_ended"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
 [connection signal="casting_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_casting_time"]
 [connection signal="fish_hooked" from="FishingPlayer" to="." method="_on_fishing_player_fish_hooked"]

@@ -8,6 +8,7 @@ signal reeling_ended(is_successful : bool)
 @onready var reel_bar : VScrollBar = $ReelBar
 @onready var fish_bar : VScrollBar = $FishBar
 @onready var timer : Timer = $Timer
+@onready var score_board : Label = $Scoreboard
 
 var min_force_val = 30
 var max_force_val = 150
@@ -29,11 +30,13 @@ var fish_val_destination = 50
 @export var fish_move_interval : float = 1
 
 var movable : bool = false
+var fish_caught : int = 0
 
 func _ready():
 	force_bar_reset()
 	distance_bar_reset()
 	reel_bar_reset()
+	fish_caught = 0
 	movable = false
 
 func _process(delta):
@@ -109,3 +112,8 @@ func _on_timer_timeout():
 	#this can be even more polished by making the fish move in a relative range instead of an absolute range
 	var a = create_tween()
 	a.tween_property(fish_bar, "value", randi_range(10, 90), fish_move_interval)
+
+func _on_reeling_ended(is_successful):
+	if is_successful:
+		fish_caught += 1
+		score_board.text = "Fish Caught x" + str(fish_caught)
