@@ -1,15 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1qbfbxp0ditp"]
 
-[ext_resource type="Script" path="res://tools/minigames/rhythm/sound/audio_synchronizer.gd" id="1_v3dvk"]
-[ext_resource type="AudioStream" uid="uid://cxyhwvdovsluw" path="res://tools/minigames/rhythm/assets/samples/metronome.mp3" id="2_xtpsq"]
+[ext_resource type="Script" path="res://tools/minigames/rhythm/util/sound/audio_synchronizer.gd" id="1_gxdpb"]
+[ext_resource type="AudioStream" uid="uid://cxyhwvdovsluw" path="res://tools/minigames/rhythm/assets/samples/metronome.mp3" id="2_v3uwb"]
 
 [node name="AudioSynchronizer" type="Node3D"]
-script = ExtResource("1_v3dvk")
+script = ExtResource("1_gxdpb")
 
 [node name="Track" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
 
 [node name="Metronome" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_xtpsq")
+stream = ExtResource("2_v3uwb")
 
 [node name="BPMLabel" type="Label" parent="."]
 visible = false

@@ -10,12 +10,12 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_po03n"]
 panorama = ExtResource("1_m045f")
 
-[sub_resource type="Sky" id="Sky_laxh5"]
+[sub_resource type="Sky" id="Sky_b38cy"]
 sky_material = SubResource("PanoramaSkyMaterial_po03n")
 
 [sub_resource type="Environment" id="Environment_r2gl8"]
 background_mode = 2
-sky = SubResource("Sky_laxh5")
+sky = SubResource("Sky_b38cy")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -63,4 +63,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("CylinderShape3D_2p12f")
 
 [node name="ScreenSpaceMesh" parent="." instance=ExtResource("4_klrg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_rod1w")

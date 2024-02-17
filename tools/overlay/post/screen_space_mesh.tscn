@@ -13,5 +13,4 @@ extra_cull_margin = 16384.0
 ignore_occlusion_culling = true
 gi_mode = 0
 mesh = SubResource("QuadMesh_tu6ej")
-skeleton = NodePath("../PlayerCharacter/Camera3D")
 script = ExtResource("2_mgx20")

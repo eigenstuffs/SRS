@@ -11,8 +11,6 @@ class_name AudioSynchronizer extends Node3D
 
 ## Called on an interval of every BPS (e.g., when the metronome ticks)
 signal on_beat
-## Called when a hit object is queued to spawn based on [member AudioSynchronizer.spawn_offset_seconds]
-signal on_beatmap_object_spawn(info : BeatmapParser.ObjectInfo)
 
 @export var stream : AudioStream
 
@@ -32,27 +30,23 @@ signal on_beatmap_object_spawn(info : BeatmapParser.ObjectInfo)
 @onready var metronome : AudioStreamPlayer = $Metronome
 @onready var bpm_text : Label = $BPMLabel
 
-var bps : float
 var time : float
+var corrected_time : float # Audio latency-corrected time
 var next_metronome_time : float
 
 var has_played : bool = false
 var beat : int = 0
 var object_idx : int = 0
-var hit_objects : Array
+var beatmap : BeatmapParser.Beatmap
 
 func start():
 	assert(stream.resource_path.ends_with('.mp3'), 'Stream resource must be an .mp3 file!')
 	self.beatmap_path = beatmap_path if beatmap_path else '%s.osu' % stream.resource_path.trim_suffix('.mp3')
-	var beatmap = BeatmapParser.load(beatmap_path)
+	self.beatmap = BeatmapParser.load(beatmap_path)
 
 	# Round time to nearest power of 2 multiple of bps
-	self.bps = 60 / beatmap['bpm']
-	self.time = -(2**(ceil(log(spawn_offset_seconds / bps) / log(2))) * bps)
-
-	self.next_metronome_time = beatmap['offset'] + time
-	self.hit_objects = beatmap['objects']
-
+	self.time = -(2**(ceil(log(spawn_offset_seconds / self.beatmap.bps) / log(2))) * self.beatmap.bps)
+	self.next_metronome_time = beatmap.start_offset + time
 	track.stream = stream
 
 func _process(delta):
@@ -68,15 +62,8 @@ func _process(delta):
 	# Tick metronome ignoring output latency (since it calling play already includes it)
 	if use_metronome and time >= next_metronome_time:
 		bpm_text.visible = true
-		# TODO: 4/4 time only lmao
-		bpm_text.text = '%d / 4' % (beat % 4 + 1)
+		bpm_text.text = '%d / 4' % (beat % 4 + 1) # TODO: 4/4 time only lmao
 		beat += 1
-		next_metronome_time += bps
+		next_metronome_time += self.beatmap.bps
 		on_beat.emit()
 		metronome.play()
-
-	# Compensate for output latency and spawn offset time.
-	var spawn_time = time - AudioServer.get_output_latency() + spawn_offset_seconds
-	while object_idx < len(hit_objects) and spawn_time > hit_objects[object_idx].time_seconds:
-		on_beatmap_object_spawn.emit(hit_objects[object_idx])
-		object_idx += 1

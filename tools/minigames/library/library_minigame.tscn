@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c2e6h6m72fq5m"]
+[gd_scene load_steps=17 format=3 uid="uid://buyuq0kfr1tme"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="2_4dmdn"]
-[ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
+[ext_resource type="PackedScene" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
 [ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="4_q284v"]
 [ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/book/wiggle/book_holder.tscn" id="5_4rr6e"]
 [ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/npc_instancer.tscn" id="5_hbp12"]
