@@ -1,12 +1,11 @@
 class_name HitSlider extends Note
 
-const FADE_OUT_DISTANCE : float = 3.0
 const MISS_ALPHA_TRANSITION_TIME : float = 0.1
 const MISS_ALPHA_MIN : float = 0.4 ## Min alpha during miss transition
+const FADE_OUT_DISTANCE : float = 3.0
 
 var previous_length : float
 var was_hit : bool = false
-var alpha_overwrite : float = 1.0
 
 func _ready() -> void:
 	super()
@@ -15,7 +14,8 @@ func _ready() -> void:
 	_set_shader_parameter('fade_plane_normal', hit_point.global_transform.basis.z)
 	_set_shader_parameter('fade_in_distance', fade_in_distance * scale.z)
 	_set_shader_parameter('fade_out_distance', FADE_OUT_DISTANCE * scale.z)
-	_set_shader_parameter('albedo', RandomColorGenerator.generate(hash((hit_time * 5.0) as int * 31415)))
+	_set_shader_parameter('color_overwrite', color_overwrite)
+	#_set_shader_parameter('albedo', RandomColorGenerator.generate(hash((hit_time * 5.0) as int * 31415)))
 	
 	previous_length = spawn_point.global_position.distance_to(hit_point.global_position) / timings_supplier.call()[1] * duration
 	set_length(previous_length)
@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 	# On miss, transition to lower alpha and increase fade out distance so that
 	# the entire slider is visible on screen. This is done as an additional way
 	# to denote that a missed slider cannot be re-hit.
+	# NOTE: Setting instance uniforms are slow--don't do them often!
 	if is_missed and alpha_overwrite > MISS_ALPHA_MIN:
 		alpha_overwrite = max(MISS_ALPHA_MIN, alpha_overwrite - delta / MISS_ALPHA_TRANSITION_TIME)
 		_set_shader_parameter('alpha_overwrite', alpha_overwrite)

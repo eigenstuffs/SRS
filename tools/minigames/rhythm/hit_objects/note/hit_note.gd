@@ -3,8 +3,6 @@ class_name HitNote extends Note
 const MISS_ALPHA_TRANSITION_TIME : float = 0.1
 const MISS_ALPHA_MIN : float = 0.4 ## Min alpha during miss transition
 
-var alpha_overwrite : float = 1.0
-
 @onready var death_timer : Timer = $DeathTimer
 
 func _ready() -> void:
@@ -12,7 +10,7 @@ func _ready() -> void:
 	$Mesh.set_instance_shader_parameter('fade_in_position', spawn_point.global_position)
 	$Mesh.set_instance_shader_parameter('fade_plane_normal', hit_point.global_transform.basis.z)
 	$Mesh.set_instance_shader_parameter('fade_in_distance', fade_in_distance * scale.z)
-	$Mesh.set_instance_shader_parameter('albedo', RandomColorGenerator.generate(hash((hit_time * 5.0) as int * 31415)))
+	$Mesh.set_instance_shader_parameter('color_overwrite', color_overwrite)
 
 func _process(delta: float) -> void:
 	var timings : Array[float] = timings_supplier.call()

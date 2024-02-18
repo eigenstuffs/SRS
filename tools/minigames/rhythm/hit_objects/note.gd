@@ -5,13 +5,15 @@ enum HitType {HIT, RELEASE, MISS}
 @export var fade_in_distance : float = 1.5
 @export var spawn_point : Node3D
 @export var hit_point : Node3D
+@export var color_overwrite : Color = Color.TRANSPARENT
+@export var hit_time : float = -1
+@export var duration : float = -1
 
 var timings_supplier : Callable ## Shape: () -> [time, scroll_time]
-var hit_time : float = -1
-var duration : float = -1
+var alpha_overwrite : float = 1.0
 var is_held : bool = false
 var is_missed : bool = false
-		
+
 func _ready() -> void:
 	assert(timings_supplier, 'A timings supplier `Callable` must be assigned before _ready()!')
 	assert(spawn_point and hit_point, 'Note endpoints must be assigned before _ready()!')
