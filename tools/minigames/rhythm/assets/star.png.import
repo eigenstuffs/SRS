@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnodymyvasg6y"
-path.s3tc="res://.godot/imported/bg.jpg-d98401da8261c2b3db6d28a1953f0827.s3tc.ctex"
+uid="uid://b60x32s3y1ntt"
+path.s3tc="res://.godot/imported/star.png-b9a59f08c7f69a33a607a9bc1e0ed3c4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://tools/minigames/rhythm/assets/bg.jpg"
-dest_files=["res://.godot/imported/bg.jpg-d98401da8261c2b3db6d28a1953f0827.s3tc.ctex"]
+source_file="res://tools/minigames/rhythm/assets/star.png"
+dest_files=["res://.godot/imported/star.png-b9a59f08c7f69a33a607a9bc1e0ed3c4.s3tc.ctex"]
 
 [params]
 

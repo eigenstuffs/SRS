@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://lmg6p4vssmpw"]
+[gd_scene load_steps=15 format=3 uid="uid://lmg6p4vssmpw"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_minigame.gd" id="1_pb007"]
 [ext_resource type="PackedScene" uid="uid://cr62xw6ofifyl" path="res://tools/minigames/rhythm/play/playfield.tscn" id="2_2af6n"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://tools/minigames/rhythm/environment_test.gd" id="5_yqwvy"]
 [ext_resource type="PackedScene" uid="uid://6kqupwwsa2f0" path="res://tools/minigames/rhythm/play/board.tscn" id="5_yue8y"]
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://tools/overlay/post/assets/panorama.png" id="6_luhxe"]
+[ext_resource type="Script" path="res://tools/minigames/rhythm/assets/fumo/fumofumo.gd" id="7_ej0x1"]
+[ext_resource type="PackedScene" uid="uid://um4ehms87vqw" path="res://tools/minigames/rhythm/assets/fumo/fumofumo.glb" id="9_awo3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ahmv"]
 render_priority = 0
@@ -44,12 +46,27 @@ script = ExtResource("5_yqwvy")
 transform = Transform3D(-0.642788, 0.663414, -0.383022, 0, 0.5, 0.866026, 0.766044, 0.556671, -0.321394, -4.5, 10, -3.5)
 shadow_enabled = true
 
+[node name="fumo" parent="." instance=ExtResource("9_awo3g")]
+transform = Transform3D(0.5, 0, 0, 0, 0.493844, 0.0782172, 0, -0.0782172, 0.493844, 11.61, -4.05, 2.705)
+script = ExtResource("7_ej0x1")
+
+[node name="Sketchfab_model" parent="fumo" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Object_2" parent="fumo/Sketchfab_model/cirno_low_obj_cleaner_materialmerger_gles" index="0"]
+transform = Transform3D(-0.215482, 2.4718e-08, -0.275804, -0.275804, 1.20558e-08, 0.215482, 2.4718e-08, 0.35, 1.20558e-08, 0, 0, 0)
+
 [node name="Board" parent="." instance=ExtResource("5_yue8y")]
 
 [node name="Playfield" parent="Board" instance=ExtResource("2_2af6n")]
 stream = ExtResource("3_caoh0")
-note_speed = 0.65
+note_speed = 1.35
 
 [node name="Camera3D" type="Camera3D" parent="Board"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.53443, -4.031)
 current = true
+
+[connection signal="on_beat" from="Board/Playfield/AudioSynchronizer" to="fumo" method="_on_audio_synchronizer_on_beat"]
+
+[editable path="fumo"]
+[editable path="Board/Playfield"]

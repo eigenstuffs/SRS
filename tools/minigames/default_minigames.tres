@@ -8,7 +8,7 @@
 script = ExtResource("2_gy6q0")
 name = "Rhythm"
 scene = "res://tools/minigames/rhythm/rhythm_minigame.tscn"
-time = 0
+time = 200
 
 [sub_resource type="Resource" id="Resource_76hxi"]
 script = ExtResource("2_gy6q0")
