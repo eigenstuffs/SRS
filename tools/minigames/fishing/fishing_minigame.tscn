@@ -34,7 +34,7 @@ size = Vector2(10, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jq107"]
 size = Vector3(10.6926, 1, 17.2794)
 
-[node name="Fishing" type="Node3D"]
+[node name="Fishing" type="SubViewport"]
 script = ExtResource("1_rrich")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -12,7 +12,7 @@ var bobber_detached : bool = false
 var retractable : bool = false
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept") and retractable == true:
+	if Input.is_action_just_released("ui_accept") and retractable == true:
 		retract_bobber()
 
 func _on_moving_bobber_water_entered():

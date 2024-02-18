@@ -1,5 +1,5 @@
-#class_name FishingMinigame extends Minigame
-extends Node3D #remember to change this back
+class_name FishingMinigame extends Minigame
+#extends Node3D #remember to change this back
 # signals and end() are already defined in Minigame class .. see minigame.gd
 @onready var fishing_rod = $FishingPlayer/FishingRod
 @onready var force_bar = $CanvasLayer/ForceBar
