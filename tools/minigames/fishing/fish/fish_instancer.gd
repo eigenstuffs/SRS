@@ -4,12 +4,15 @@ const FISH = preload('res://tools/minigames/fishing/fish/fish.tscn')
 @export var MAX_FISH_COUNT = 5
 
 var active = true
+var fish_array : Array[Fish] = []
 
 @onready var FISH_STATS : FishStats = preload("res://tools/minigames/fishing/fish/fish_stats.tres")
 @onready var area_left : SpawnArea = $SpawnAreaLeft
 @onready var area_right : SpawnArea = $SpawnAreaRight
 #@onready var area_top : SpawnArea = $SpawnAreaTop
 @onready var area_bottom : SpawnArea = $SpawnAreaBottom
+@onready var fish_folder : Node3D = $fish
+@onready var bobber : FloatingBobber = get_node("../FishingPlayer/FishingRod/FloatingBobber")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #h00 4 functions, override return
@@ -30,6 +33,39 @@ func _process(delta: float) -> void:
 				#spawn_pos = area_top.get_random_point()
 		var fishie: Fish = FISH.instantiate()
 		$fish.add_child(fishie)
+		fishie.connect("im_lured", on_fishie_im_lured.bind(fishie))
 		FISH_STATS.set_fish_stats(type,fishie)
 		fishie.global_position = spawn_pos
 		
+
+func _on_fishing_reeling_minigame():
+	var bobber_pos = bobber.global_position
+	#find the fish with the shortest distance
+	#stop the movement of first fish
+	var min_dist : float = 99999999
+	var closest_fish : Fish
+	for fishie in fish_array:
+		if (bobber_pos - fishie.global_position).length() <= min_dist:
+			closest_fish = fishie
+		fishie.state = Fish.STATES.WANDER	
+	fish_array = []
+	fish_array.append(closest_fish)
+	print(closest_fish.name)
+	closest_fish.state = Fish.STATES.STOP
+
+func _on_fishing_reeling_minigame_end(is_successful):
+	var to_be_freed = fish_array[0]
+	if is_successful:
+		to_be_freed.queue_free()
+		print("gone! fish")
+	else:
+		to_be_freed.state = Fish.STATES.WANDER
+	fish_array = []
+
+func on_fishie_im_lured(fishie):
+	fish_array.append(fishie)
+
+#bugs to fix:
+#fish attracted when bobber is retracted
+#new fish entered during reeling set to stop/pursue
+#closest fish sometimes find no match

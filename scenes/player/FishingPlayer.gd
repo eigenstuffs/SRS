@@ -30,7 +30,6 @@ func _physics_process(delta):
 			currentState = FishingState.CASTING
 			emit_signal("casting_time")
 		elif currentState == FishingState.CASTING:
-			print("player fish")
 			currentState = FishingState.FISHING
 			emit_signal("fishing_time") #the third state depends on the fishing rod
 	if Global.can_move and currentState == FishingState.WALKING:

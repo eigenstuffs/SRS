@@ -9,7 +9,7 @@ func _ready() -> void:
 
 #func _on_skip_pressed():
 	#Util.create_minigame($CanvasLayer, $TextEdit.text)
-
+ 
 func _on_item_list_item_activated(index: int) -> void:
 	var name : String = minigame_list.get_item_text(index).strip_edges()
 	Util.create_minigame($CanvasLayer, name)

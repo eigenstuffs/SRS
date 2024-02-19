@@ -10,6 +10,7 @@ signal fish_hooked
 var bobber_initial_v : Vector3 = Vector3(0, 5, 3)
 var bobber_detached : bool = false
 var retractable : bool = false
+var in_reeling : bool = false
 
 func _process(delta):
 	if Input.is_action_just_released("ui_accept") and retractable == true:
@@ -17,7 +18,7 @@ func _process(delta):
 
 func _on_moving_bobber_water_entered():
 	floating_bobber.transform = moving_bobber.transform
-	floating_bobber.visible = true
+	floating_bobber.activate()
 	retractable = true
 	print("bobber moved")
 
@@ -32,12 +33,15 @@ func _on_fishing_player_walking_time():
 	pass
 
 func _on_floating_bobber_fish_hooked():
-	emit_signal("fish_hooked")
+	if !in_reeling:
+		in_reeling = true
+		emit_signal("fish_hooked")
 
 func retract_bobber():
 	bobber_detached = false
 	retractable = false
+	in_reeling = false
 	moving_bobber.disappear()
-	floating_bobber.visible = false
+	floating_bobber.deactivate()
 	floating_bobber.transform = moving_bobber.transform
 	emit_signal("fishing_ends")
