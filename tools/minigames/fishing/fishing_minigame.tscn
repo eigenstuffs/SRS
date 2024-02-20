@@ -223,6 +223,7 @@ transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.6
 [connection signal="reeling_ended" from="CanvasLayer" to="." method="_on_canvas_layer_reeling_ended"]
 [connection signal="reeling_ended" from="CanvasLayer" to="CanvasLayer" method="_on_reeling_ended"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
+[connection signal="fish_hooked" from="fish_instancer" to="." method="_on_fish_instancer_fish_hooked"]
 [connection signal="casting_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_casting_time"]
-[connection signal="fish_hooked" from="FishingPlayer" to="." method="_on_fishing_player_fish_hooked"]
+[connection signal="fish_hooked" from="FishingPlayer" to="fish_instancer" method="_on_fishing_player_fish_hooked"]
 [connection signal="fishing_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_fishing_time"]

@@ -1,5 +1,7 @@
 extends Node3D
 
+signal fish_hooked
+
 const FISH = preload('res://tools/minigames/fishing/fish/fish.tscn')
 @export var MAX_FISH_COUNT = 5
 
@@ -39,15 +41,18 @@ func _process(delta: float) -> void:
 		
 
 func _on_fishing_reeling_minigame():
+	if fish_array.is_empty():
+		print("array is empty")
 	var bobber_pos = bobber.global_position
 	#find the fish with the shortest distance
 	#stop the movement of first fish
 	var min_dist : float = 99999999
 	var closest_fish : Fish
 	for fishie in fish_array:
+		fishie.state = Fish.STATES.WANDER #release the fish back to wander
+		print(str(fishie.state))
 		if (bobber_pos - fishie.global_position).length() <= min_dist:
 			closest_fish = fishie
-		fishie.state = Fish.STATES.WANDER	
 	fish_array = []
 	fish_array.append(closest_fish)
 	print(closest_fish.name)
@@ -57,15 +62,19 @@ func _on_fishing_reeling_minigame_end(is_successful):
 	var to_be_freed = fish_array[0]
 	if is_successful:
 		to_be_freed.queue_free()
-		print("gone! fish")
 	else:
 		to_be_freed.state = Fish.STATES.WANDER
 	fish_array = []
+	for fish in fish_folder.get_children():
+		fish.state = Fish.STATES.WANDER
 
 func on_fishie_im_lured(fishie):
 	fish_array.append(fishie)
 
 #bugs to fix:
 #fish attracted when bobber is retracted
-#new fish entered during reeling set to stop/pursue
-#closest fish sometimes find no match
+#closest fish find no match when bobber lands directly on top
+
+func _on_fishing_player_fish_hooked():
+	if !fish_array.is_empty():
+		emit_signal("fish_hooked")

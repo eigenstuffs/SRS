@@ -19,6 +19,7 @@ func _process(delta):
 func _on_moving_bobber_water_entered():
 	floating_bobber.transform = moving_bobber.transform
 	floating_bobber.activate()
+	floating_bobber.enable_being_monitored()
 	retractable = true
 	print("bobber moved")
 
@@ -35,13 +36,14 @@ func _on_fishing_player_walking_time():
 func _on_floating_bobber_fish_hooked():
 	if !in_reeling:
 		in_reeling = true
+		floating_bobber.disable_being_monitored()
 		emit_signal("fish_hooked")
 
 func retract_bobber():
-	bobber_detached = false
-	retractable = false
-	in_reeling = false
 	moving_bobber.disappear()
 	floating_bobber.deactivate()
 	floating_bobber.transform = moving_bobber.transform
+	bobber_detached = false
+	retractable = false
+	in_reeling = false
 	emit_signal("fishing_ends")
