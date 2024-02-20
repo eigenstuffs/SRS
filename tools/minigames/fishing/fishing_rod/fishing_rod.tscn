@@ -42,5 +42,23 @@ collision_mask = 2
 transform = Transform3D(1, -1.38526e-08, 1.6509e-08, 1.65089e-08, -3.03312e-08, -0.999999, 1.38526e-08, 0.999999, -3.21651e-08, 0, -0.256762, -0.563387)
 shape = SubResource("BoxShape3D_jd74n")
 
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37113e-08, -0.999913, 0.0131592, 0.999913, 0.00017312, 0.013158, -0.0131592, 0.013158, 0.999826, -0.0573554, -0.00102391, -0.0778039)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, -1.38526e-08, 1.6509e-08, 1.65089e-08, -3.03312e-08, -0.999999, 1.38526e-08, 0.999999, -3.21651e-08, 0, -0.256762, -0.563387)
+shape = SubResource("BoxShape3D_jd74n")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37113e-08, -0.999913, 0.0131592, 0.999913, 0.000173121, 0.013158, -0.0131592, 0.013158, 0.999826, -0.511371, -0.00102391, -0.0778038)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(1, -1.38526e-08, 1.6509e-08, 1.65089e-08, -3.03312e-08, -0.999999, 1.38526e-08, 0.999999, -3.21651e-08, 0, -0.256762, -0.563387)
+shape = SubResource("BoxShape3D_jd74n")
+
 [connection signal="water_entered" from="MovingBobber" to="." method="_on_moving_bobber_water_entered"]
 [connection signal="fish_hooked" from="FloatingBobber" to="." method="_on_floating_bobber_fish_hooked"]

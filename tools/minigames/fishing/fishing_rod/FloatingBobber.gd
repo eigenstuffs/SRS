@@ -10,6 +10,7 @@ signal fish_hooked
 
 @onready var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var CatchField : Area3D = $CatchField
+@onready var AttractionField: Area3D = $AttractionField
 
 const water_height : float = 0.0
 
@@ -34,10 +35,20 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 func activate():
 	visible = true
 	CatchField.monitoring = true
+	AttractionField.monitoring = true
 	
 func deactivate():
 	visible = false
 	CatchField.monitoring = false
+	AttractionField.monitoring = false
+	
+func disable_being_monitored():
+	CatchField.monitorable = false
+	AttractionField.monitorable = false
+
+func enable_being_monitored():
+	CatchField.monitorable = true
+	AttractionField.monitorable = true
 
 func _on_catch_field_area_entered(area):
 	if area.get_parent() is Fish:

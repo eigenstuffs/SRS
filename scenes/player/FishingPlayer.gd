@@ -29,7 +29,8 @@ func _physics_process(delta):
 		if currentState == FishingState.WALKING:
 			currentState = FishingState.CASTING
 			emit_signal("casting_time")
-		elif currentState == FishingState.CASTING:
+	if Input.is_action_just_released("ui_accept"):
+		if currentState == FishingState.CASTING:
 			currentState = FishingState.FISHING
 			emit_signal("fishing_time") #the third state depends on the fishing rod
 	if Global.can_move and currentState == FishingState.WALKING:
