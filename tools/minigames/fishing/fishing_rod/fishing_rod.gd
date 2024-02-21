@@ -16,22 +16,21 @@ func _process(delta):
 	if Input.is_action_just_released("ui_accept") and retractable == true:
 		retract_bobber()
 
+func _on_fishing_player_fishing_time():
+	if !bobber_detached:
+		bobber_detached = true
+		moving_bobber.launch(bobber_initial_v)
+		emit_signal("fishing_starts")
+	#await get_tree().create_timer(2.5).timeout
+	#if !retractable:
+		#retract_bobber()
+
 func _on_moving_bobber_water_entered():
 	floating_bobber.transform = moving_bobber.transform
 	floating_bobber.activate()
 	floating_bobber.enable_being_monitored()
 	retractable = true
 	print("bobber moved")
-
-
-func _on_fishing_player_fishing_time():
-	if !bobber_detached:
-		bobber_detached = true
-		moving_bobber.launch(bobber_initial_v)
-		emit_signal("fishing_starts")
-
-func _on_fishing_player_walking_time():
-	pass
 
 func _on_floating_bobber_fish_hooked():
 	if !in_reeling:
