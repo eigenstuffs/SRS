@@ -49,7 +49,3 @@ func disable_being_monitored():
 func enable_being_monitored():
 	CatchField.monitorable = true
 	AttractionField.monitorable = true
-
-func _on_catch_field_area_entered(area):
-	if area.get_parent() is Fish:
-		emit_signal("fish_hooked")

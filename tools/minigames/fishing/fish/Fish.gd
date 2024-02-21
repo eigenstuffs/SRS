@@ -3,6 +3,7 @@ extends CharacterBody3D
 class_name Fish
 
 signal im_lured
+signal im_hooked
 
 var speed : float
 var rarity : float
@@ -57,3 +58,9 @@ func _on_hurtbox_area_entered(area):
 		state = STATES.PURSUE
 		bobber = area.get_parent()
 		emit_signal("im_lured")
+	if area.get_name() == "CatchField":
+		emit_signal("im_hooked")
+
+func _on_hurtbox_area_exited(area):
+	if area.get_parent() is FloatingBobber and state == STATES.PURSUE:
+		state = STATES.WANDER

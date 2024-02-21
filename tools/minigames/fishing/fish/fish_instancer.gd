@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 		var fishie: Fish = FISH.instantiate()
 		$fish.add_child(fishie)
 		fishie.connect("im_lured", on_fishie_im_lured.bind(fishie))
+		fishie.connect("im_hooked", on_fishie_im_hooked)
 		FISH_STATS.set_fish_stats(type,fishie)
 		fishie.global_position = spawn_pos
 		
@@ -71,10 +72,8 @@ func _on_fishing_reeling_minigame_end(is_successful):
 func on_fishie_im_lured(fishie):
 	fish_array.append(fishie)
 
-#bugs to fix:
-#fish attracted when bobber is retracted
-#closest fish find no match when bobber lands directly on top
-
-func _on_fishing_player_fish_hooked():
+func on_fishie_im_hooked():
 	if !fish_array.is_empty():
 		emit_signal("fish_hooked")
+#bugs to fix:
+#closest fish find no match when bobber lands directly on top

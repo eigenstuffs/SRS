@@ -25,8 +25,7 @@ var base_reel_val = 100
 @export var reel_speed = 60
 @export var reel_size = 20
 
-var base_fish_val = 50
-var fish_val_destination = 50
+var base_fish_val = 55
 @export var fish_move_interval : float = 1
 
 var movable : bool = false
@@ -41,7 +40,6 @@ func _ready():
 
 func _process(delta):
 	if movable == true:
-		fish_val_destination = randi_range(10, 90)
 		if Input.is_action_pressed("ui_accept"):
 			reel_bar.value -= reel_speed * delta
 		else:
@@ -101,6 +99,7 @@ func distance_bar_activate():
 func reel_bar_activate():
 	reel_bar.visible = true
 	fish_bar.visible = true
+	fish_bar.value = base_fish_val
 
 func _on_fishing_reeling_minigame():
 	distance_bar_activate()
@@ -111,9 +110,11 @@ func _on_fishing_reeling_minigame():
 func _on_timer_timeout():
 	#this can be even more polished by making the fish move in a relative range instead of an absolute range
 	var a = create_tween()
-	a.tween_property(fish_bar, "value", randi_range(10, 90), fish_move_interval)
+	var current_value = fish_bar.value
+	a.tween_property(fish_bar, "value", randi_range(current_value - 30, current_value + 30), fish_move_interval)
 
 func _on_reeling_ended(is_successful):
+	timer.stop()
 	if is_successful:
 		fish_caught += 1
 		score_board.text = "Fish Caught x" + str(fish_caught)
