@@ -83,10 +83,6 @@ func anim_handler():
 
 func _on_fishing_rod_fishing_ends():
 	currentState = FishingState.WALKING
-	
-
-func _on_fishing_rod_fish_hooked():
-	emit_signal("fish_hooked")
 
 
 func _on_fishing_reeling_minigame():

@@ -248,7 +248,7 @@ size = 73.377
 frustum_offset = Vector2(0, 50)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.950256, 0.299891, -0.0841366, 0.304605, -0.951166, 0.0499896, -0.0650365, -0.0731313, -0.9952, 0, 3.45416, -0.227573)
+transform = Transform3D(0.950256, 0.299892, -0.0841361, -0.0966315, 0.540646, 0.835682, 0.296102, -0.785981, 0.542731, 0, 3.45416, -0.227573)
 
 [node name="FishingPlayer" parent="." instance=ExtResource("4_y1r0s")]
 transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.57244, -3.42425)
@@ -264,6 +264,6 @@ environment = SubResource("Environment_jjnea")
 [connection signal="reeling_ended" from="CanvasLayer" to="." method="_on_canvas_layer_reeling_ended"]
 [connection signal="reeling_ended" from="CanvasLayer" to="CanvasLayer" method="_on_reeling_ended"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
+[connection signal="fish_hooked" from="fish_instancer" to="." method="_on_fish_instancer_fish_hooked"]
 [connection signal="casting_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_casting_time"]
-[connection signal="fish_hooked" from="FishingPlayer" to="fish_instancer" method="_on_fishing_player_fish_hooked"]
 [connection signal="fishing_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_fishing_time"]
