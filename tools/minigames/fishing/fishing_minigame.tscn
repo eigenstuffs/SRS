@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjt4skwe1eu5h"]
+[gd_scene load_steps=24 format=3 uid="uid://bjt4skwe1eu5h"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_minigame.gd" id="1_rrich"]
 [ext_resource type="PackedScene" uid="uid://hq67rtu14odh" path="res://tools/minigames/fishing/fish/fish_instancer.tscn" id="2_cead1"]
@@ -6,6 +6,9 @@
 [ext_resource type="Theme" uid="uid://clo3cl53bfgy" path="res://tools/minigames/fishing/fish_indicator.tres" id="3_aey5a"]
 [ext_resource type="Script" path="res://tools/minigames/fishing/Water.gd" id="3_slp7l"]
 [ext_resource type="PackedScene" uid="uid://cac7s21gtcba8" path="res://scenes/player/fishing_player.tscn" id="4_y1r0s"]
+[ext_resource type="Material" uid="uid://dcgy7qsnns5qf" path="res://tools/minigames/fishing/water/water.tres" id="6_7is7m"]
+[ext_resource type="Shader" path="res://tools/minigames/fishing/water/sea_floor.gdshader" id="7_kygv1"]
+[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://tools/overlay/post/assets/panorama.png" id="9_i0a1k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rve5y"]
 size = Vector3(3.13702, 1, 10)
@@ -23,16 +26,44 @@ size = Vector3(20, 5, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_odbwy"]
 size = Vector3(0.2, 5, 9)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0i2i"]
-transparency = 1
-albedo_color = Color(0.0745098, 0.541176, 0.607843, 0.356863)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_t6m4j"]
-material = SubResource("StandardMaterial3D_r0i2i")
 size = Vector2(10, 15)
+subdivide_width = 32
+subdivide_depth = 64
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1621q"]
+size = Vector2(15, 20)
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ta24x"]
+noise_type = 4
+frequency = 0.0036
+fractal_gain = 5.715
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4p5nf"]
+noise = SubResource("FastNoiseLite_ta24x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bgbki"]
+render_priority = 0
+shader = ExtResource("7_kygv1")
+shader_parameter/height_map = SubResource("NoiseTexture2D_4p5nf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jq107"]
 size = Vector3(10.6926, 1, 17.2794)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5qk2j"]
+panorama = ExtResource("9_i0a1k")
+
+[sub_resource type="Sky" id="Sky_b38cy"]
+sky_material = SubResource("PanoramaSkyMaterial_5qk2j")
+
+[sub_resource type="Environment" id="Environment_jjnea"]
+background_mode = 2
+sky = SubResource("Sky_b38cy")
+sky_rotation = Vector3(0.00174533, -1.12748, 0.527089)
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="Fishing" type="SubViewport"]
 script = ExtResource("1_rrich")
@@ -187,6 +218,13 @@ script = ExtResource("3_slp7l")
 transform = Transform3D(1.05923, 0, 0, 0, 0.90919, 0, 0, 0, 1.1424, 1.82188, 0, 0)
 layers = 3
 mesh = SubResource("PlaneMesh_t6m4j")
+surface_material_override/0 = ExtResource("6_7is7m")
+
+[node name="SeaFloorMesh (Variation In Height Makes Water Look Better Since It Modulates Between A Deep and Shallow Color) (Feel Free To Change This)" type="MeshInstance3D" parent="Water"]
+transform = Transform3D(1.05923, 0, 0, -8.73503e-22, 0.90919, -9.05278e-24, 0, -1.26083e-23, 1.1424, -0.741774, -3.05772, 1.11759e-08)
+layers = 3
+mesh = SubResource("PlaneMesh_1621q")
+surface_material_override/0 = SubResource("ShaderMaterial_bgbki")
 
 [node name="WaterSurface" type="Area3D" parent="Water"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.12238e-23, 0, -1.12238e-23, 1, 0, -0.588483, 0)
@@ -210,10 +248,13 @@ size = 73.377
 frustum_offset = Vector2(0, 50)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.689253, 0.724521, 0, -0.724521, 0.689253, 0, 3.45416, -0.227573)
+transform = Transform3D(0.950256, 0.299891, -0.0841366, 0.304605, -0.951166, 0.0499896, -0.0650365, -0.0731313, -0.9952, 0, 3.45416, -0.227573)
 
 [node name="FishingPlayer" parent="." instance=ExtResource("4_y1r0s")]
 transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.57244, -3.42425)
+
+[node name="Good Skybox = Good Looking Water (But Feel Free To Delete This)" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jjnea")
 
 [connection signal="reeling_minigame" from="." to="CanvasLayer" method="_on_fishing_reeling_minigame"]
 [connection signal="reeling_minigame" from="." to="fish_instancer" method="_on_fishing_reeling_minigame"]
@@ -223,7 +264,6 @@ transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.6
 [connection signal="reeling_ended" from="CanvasLayer" to="." method="_on_canvas_layer_reeling_ended"]
 [connection signal="reeling_ended" from="CanvasLayer" to="CanvasLayer" method="_on_reeling_ended"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
-[connection signal="fish_hooked" from="fish_instancer" to="." method="_on_fish_instancer_fish_hooked"]
 [connection signal="casting_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_casting_time"]
 [connection signal="fish_hooked" from="FishingPlayer" to="fish_instancer" method="_on_fishing_player_fish_hooked"]
 [connection signal="fishing_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_fishing_time"]

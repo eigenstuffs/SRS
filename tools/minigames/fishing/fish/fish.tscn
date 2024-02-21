@@ -33,5 +33,6 @@ autostart = true
 shape = SubResource("SphereShape3D_x45a8")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_exited" from="Hurtbox" to="." method="_on_hurtbox_area_exited"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
