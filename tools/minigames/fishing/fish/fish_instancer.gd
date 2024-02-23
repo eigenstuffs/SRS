@@ -51,12 +51,10 @@ func _on_fishing_reeling_minigame():
 	var closest_fish : Fish
 	for fishie in fish_array:
 		fishie.state = Fish.STATES.WANDER #release the fish back to wander
-		print(str(fishie.state))
 		if (bobber_pos - fishie.global_position).length() <= min_dist:
 			closest_fish = fishie
 	fish_array = []
 	fish_array.append(closest_fish)
-	print(closest_fish.name)
 	closest_fish.state = Fish.STATES.STOP
 
 func _on_fishing_reeling_minigame_end(is_successful):
