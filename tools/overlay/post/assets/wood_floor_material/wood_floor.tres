@@ -1,19 +1,19 @@
 [gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://uoomn60b1377"]
 
-[ext_resource type="Texture2D" uid="uid://b4u3egt0g3xq8" path="res://tools/overlay/post/assets/wood_floor_material/WoodFloor057_4K-JPG_Color.jpg" id="1_o8wlw"]
-[ext_resource type="Texture2D" uid="uid://ch0jhmhui405f" path="res://tools/overlay/post/assets/wood_floor_material/WoodFloor057_4K-JPG_AmbientOcclusion.jpg" id="2_tef0b"]
-[ext_resource type="Texture2D" uid="uid://d1ucxuhe0y174" path="res://tools/overlay/post/assets/wood_floor_material/WoodFloor057_4K-JPG_Displacement.jpg" id="3_cjy38"]
-[ext_resource type="Texture2D" uid="uid://df8i6u2k1wkgs" path="res://tools/overlay/post/assets/wood_floor_material/WoodFloor057_4K-JPG_NormalGL.jpg" id="4_plv3l"]
-[ext_resource type="Texture2D" uid="uid://bv2pwyokwr3gu" path="res://tools/overlay/post/assets/wood_floor_material/WoodFloor057_4K-JPG_Roughness.jpg" id="5_gxji0"]
+[ext_resource type="Texture2D" uid="uid://y65k82kuu4yl" path="res://tools/overlay/post/assets/wood_floor_material/WoodFloor057_1K-PNG_Color.png" id="1_g7dbj"]
+[ext_resource type="Texture2D" uid="uid://c1qk152b4l6ta" path="res://tools/overlay/post/assets/wood_floor_material/WoodFloor057_1K-PNG_AmbientOcclusion.png" id="2_cipe8"]
+[ext_resource type="Texture2D" uid="uid://ij8k5wwd2mtv" path="res://tools/overlay/post/assets/wood_floor_material/WoodFloor057_1K-PNG_Displacement.png" id="3_pbii4"]
+[ext_resource type="Texture2D" uid="uid://ixulbyg6l2t5" path="res://tools/overlay/post/assets/wood_floor_material/WoodFloor057_1K-PNG_NormalGL.png" id="4_x2a4i"]
+[ext_resource type="Texture2D" uid="uid://dow6wtk7bygkt" path="res://tools/overlay/post/assets/wood_floor_material/WoodFloor057_1K-PNG_Roughness.png" id="5_pr1je"]
 
 [resource]
 albedo_color = Color(0.682353, 0.568627, 0.427451, 1)
-albedo_texture = ExtResource("1_o8wlw")
-roughness_texture = ExtResource("5_gxji0")
+albedo_texture = ExtResource("1_g7dbj")
+roughness_texture = ExtResource("5_pr1je")
 normal_enabled = true
-normal_texture = ExtResource("4_plv3l")
+normal_texture = ExtResource("4_x2a4i")
 ao_enabled = true
-ao_texture = ExtResource("2_tef0b")
+ao_texture = ExtResource("2_cipe8")
 heightmap_enabled = true
-heightmap_texture = ExtResource("3_cjy38")
+heightmap_texture = ExtResource("3_pbii4")
 uv1_scale = Vector3(2.5, 2.5, 2.5)
