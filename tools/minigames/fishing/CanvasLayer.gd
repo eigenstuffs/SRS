@@ -17,15 +17,19 @@ var base_distance_val : float  = 50
 var max_distance_val : float = 100
 @export var dist_dec_speed : float = 30
 @export var dist_inc_speed : float = 45
+var bite_strength_multiplier : float = 1 
+var rod_strength_multiplier : float = 1
 
 var min_reel_val = 0
 var max_reel_val = 100
 var base_reel_val = 100
 @export var reel_speed = 60
 @export var reel_size = 20
+var size_multiplier : float = 1
 
 var base_fish_val = 55
 @export var fish_move_interval : float = 1
+var fish_speed_multiplier : float = 1
 
 var movable : bool = false
 
@@ -41,10 +45,10 @@ func _process(delta):
 			reel_bar.value -= reel_speed * delta
 		else:
 			reel_bar.value += reel_speed * delta
-		if reel_bar.value <= fish_bar.value and reel_bar.value >= fish_bar.value - reel_size:
-			distance_bar.value += dist_inc_speed * delta
+		if reel_bar.value <= fish_bar.value and reel_bar.value >= fish_bar.value - (reel_size * size_multiplier):
+			distance_bar.value += dist_inc_speed * rod_strength_multiplier * delta
 		else:
-			distance_bar.value -= dist_dec_speed * delta
+			distance_bar.value -= dist_dec_speed * bite_strength_multiplier * delta
 
 	if distance_bar.value <= min_distance_val:
 		distance_bar_reset()
@@ -85,7 +89,7 @@ func distance_bar_reset():
 func reel_bar_reset():
 	reel_bar.visible = false
 	reel_bar.value = base_reel_val
-	reel_bar.page = reel_size
+	reel_bar.page = reel_size * size_multiplier
 	fish_bar.visible = false
 	fish_bar.value = base_fish_val
 
@@ -108,7 +112,12 @@ func _on_timer_timeout():
 	#this can be even more polished by making the fish move in a relative range instead of an absolute range
 	var a = create_tween()
 	var current_value = fish_bar.value
-	a.tween_property(fish_bar, "value", randi_range(current_value - 30, current_value + 30), fish_move_interval)
+	a.tween_property(fish_bar, "value", randi_range(current_value - 30, current_value + 30), fish_move_interval * fish_speed_multiplier)
 
 func _on_reeling_ended(is_successful):
 	timer.stop()
+
+#change bite_strength_multiplier
+func _on_fish_instancer_first_fish_info(bite_strength, speed):
+	bite_strength_multiplier = bite_strength
+	fish_speed_multiplier = 1/speed

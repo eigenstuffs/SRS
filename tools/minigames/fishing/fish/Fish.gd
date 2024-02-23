@@ -6,8 +6,8 @@ signal im_lured
 signal im_hooked
 
 var speed : float
-var rarity : float
-var bite_time : int
+var rarity : String
+var bite_strength : float
 var sell_price : int
 @onready var skin : MeshInstance3D = $placeholderFish
 

@@ -8,10 +8,10 @@ const epic_skin = preload("res://tools/minigames/fishing/fish/fish_color/epic_fi
 const legendary_skin = preload("res://tools/minigames/fishing/fish/fish_color/legendary_fish_text.tres")
 
 #i made them all dictionaries in case we want to add names/descriptions here for the inventory; not sure if it's rly necessary tho?? I think using arrays is also possible
-@export var fishie_one : Dictionary = {"bite_time": 2, "rarity": 0.1, "sell_price": 200, "speed": 1.5, "skin": legendary_skin}
-@export var fishie_two : Dictionary = {"bite_time": 2, "rarity": 0.2, "sell_price": 150, "speed": 0.5, "skin": epic_skin}
-@export var fishie_three : Dictionary = {"bite_time": 3, "rarity": 0.3, "sell_price": 100, "speed": 0.3, "skin": rare_skin}
-@export var fishie_four : Dictionary = {"bite_time": 1, "rarity": 0.4, "sell_price": 50, "speed": 0.6, "skin": common_skin}
+@export var fishie_one : Dictionary = {"bite_strength": 3, "rarity": "legendary", "sell_price": 200, "speed": 1.5, "skin": legendary_skin}
+@export var fishie_two : Dictionary = {"bite_strength": 2, "rarity": "epic", "sell_price": 150, "speed": 1.0, "skin": epic_skin}
+@export var fishie_three : Dictionary = {"bite_strength": 2, "rarity": "rare", "sell_price": 100, "speed": 0.3, "skin": rare_skin}
+@export var fishie_four : Dictionary = {"bite_strength": 1, "rarity": "common", "sell_price": 50, "speed": 0.6, "skin": common_skin}
 @export var fish_list : Array[Dictionary] = [fishie_one, fishie_two, fishie_three, fishie_four]
 
 
@@ -27,7 +27,7 @@ func set_fish_stats(fish_type : int, fishie: Fish):
 		6,7,8,9:
 			whatFish = 3
 	fishie.speed = fish_list[whatFish].get("speed")
-	fishie.bite_time = fish_list[whatFish].get("bite_time")
+	fishie.bite_strength = fish_list[whatFish].get("bite_strength")
 	fishie.rarity = fish_list[whatFish].get("rarity")
 	fishie.sell_price = fish_list[whatFish].get("sell_price")
 	fishie.skin.set_surface_override_material(0, fish_list[whatFish].get("skin"))
