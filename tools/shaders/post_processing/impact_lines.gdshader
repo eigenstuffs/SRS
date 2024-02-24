@@ -6,7 +6,7 @@ render_mode unshaded;
  */
 
 const float SUBDIVISIONS = 128.0;
-const float TARGET_ALPHA = 0.18;
+uniform float max_alpha = 0.7;
 const float RELATIVE_SPEED = 7.0;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
@@ -75,7 +75,7 @@ void fragment() {
     // purely on angle.
     float p_rand = mix(0.5f, 1.f, hash(uint(iteration)));
     float luminance = dot(tex, vec3(0.2126, 0.7152, 0.0722));
-    float target_alpha = TARGET_ALPHA * mix(0.15f, 1.f, luminance);
+    float target_alpha = max_alpha * mix(0.15f, 1.f, luminance);
     float line_radius = 1.f - pow(max(0.f, 1.6f * shape - 0.6f), 2.f);
     float line_alpha =  2.f*shape * target_alpha*weight;
 
