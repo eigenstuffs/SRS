@@ -1,0 +1,121 @@
+[gd_scene load_steps=3 format=3 uid="uid://omy50xdo0so6"]
+
+[ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/Inventory.gd" id="1_5pp4c"]
+[ext_resource type="PackedScene" uid="uid://vbalxcrqrwg" path="res://tools/minigames/fishing/inventory_item.tscn" id="2_606hf"]
+
+[node name="Inventory Draft" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5pp4c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 1024.0
+
+[node name="InventoryItem" parent="." instance=ExtResource("2_606hf")]
+offset_left = 960.0
+offset_top = 128.0
+offset_right = 1600.0
+offset_bottom = 768.0
+
+[node name="EquipButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="EquipButton"]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 832.0
+offset_right = 1344.0
+offset_bottom = 896.0
+theme_override_font_sizes/font_size = 36
+text = "Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RodsContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 2
+offset_left = 256.0
+offset_top = 192.0
+offset_right = 896.0
+offset_bottom = 769.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="RodsContainer"]
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RodsContainer/TextureButton"]
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 50
+text = "Default Fishing Rod
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureButton3" type="TextureButton" parent="RodsContainer"]
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RodsContainer/TextureButton3"]
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 50
+text = "Cooler Fishing Rod"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureButton4" type="TextureButton" parent="RodsContainer"]
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RodsContainer/TextureButton4"]
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 50
+text = "Superior Fishing Rod
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureButton5" type="TextureButton" parent="RodsContainer"]
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RodsContainer/TextureButton5"]
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 50
+text = "BEST Fishing Rod
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="EquipButton" to="." method="_on_equip_button_pressed"]
+[connection signal="pressed" from="RodsContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="RodsContainer/TextureButton3" to="." method="_on_texture_button_3_pressed"]
+[connection signal="pressed" from="RodsContainer/TextureButton4" to="." method="_on_texture_button_4_pressed"]
+[connection signal="pressed" from="RodsContainer/TextureButton5" to="." method="_on_texture_button_5_pressed"]
