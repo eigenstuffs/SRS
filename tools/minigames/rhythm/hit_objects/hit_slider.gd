@@ -7,6 +7,10 @@ const FADE_OUT_DISTANCE : float = 3.0
 var previous_length : float
 var was_hit : bool = false
 
+@onready var front_material : MultiPassShaderMaterial = $Meshes/Front.get_surface_override_material(0)
+@onready var body_material : MultiPassShaderMaterial = $Meshes/Body.get_surface_override_material(0)
+@onready var back_material : MultiPassShaderMaterial = $Meshes/Back.get_surface_override_material(0)
+
 func _ready() -> void:
 	super()
 	_set_shader_parameter('fade_in_position', spawn_point.global_position)
@@ -44,7 +48,7 @@ func _process(delta: float) -> void:
 func set_length(length : float) -> void:
 	$Meshes/Body.scale.z *= length
 	$Meshes/Body.position.z = -length * 0.5
-	$Meshes/BackEnd.position.z *= length
+	$Meshes/Back.position.z *= length
 	
 func hit() -> void:
 	super.hit()
@@ -55,7 +59,20 @@ func hit() -> void:
 func release() -> void:
 	queue_free()
 
-func _set_shader_parameter(param_name : String, value : Variant) -> void:
-	$Meshes/FrontEnd.set_instance_shader_parameter(param_name, value)
+func _set_shader_parameter(param_name : StringName, value : Variant) -> void:
+	$Meshes/Front.set_instance_shader_parameter(param_name, value)
 	$Meshes/Body.set_instance_shader_parameter(param_name, value)
-	$Meshes/BackEnd.set_instance_shader_parameter(param_name, value)
+	$Meshes/Back.set_instance_shader_parameter(param_name, value)
+	
+func _on_color_overwrite_changed(value : Color):
+	_set_shader_parameter('color_overwrite', value)
+
+func enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
+	front_material.enable_shader_pass(pass_name, uniforms)
+	body_material.enable_shader_pass(pass_name, uniforms)
+	back_material.enable_shader_pass(pass_name, uniforms)
+	
+func disable_shader_pass(pass_name : StringName):
+	front_material.disable_shader_pass(pass_name)
+	body_material.disable_shader_pass(pass_name)
+	back_material.disable_shader_pass(pass_name)

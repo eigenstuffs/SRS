@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba2qlsbxrfbmv"
-path.bptc="res://.godot/imported/panorama.png-a698f572b7e1171147e09c1be8474eb3.bptc.ctex"
+uid="uid://dshmx1xpwrjel"
+path.s3tc="res://.godot/imported/hit_slider_front.png-1a99c95252b6fbc9c116b79caf9b5732.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://tools/overlay/post/assets/panorama.png"
-dest_files=["res://.godot/imported/panorama.png-a698f572b7e1171147e09c1be8474eb3.bptc.ctex"]
+source_file="res://tools/minigames/rhythm/assets/hit_slider_front.png"
+dest_files=["res://.godot/imported/hit_slider_front.png-1a99c95252b6fbc9c116b79caf9b5732.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cac7s21gtcba8" path="res://scenes/player/fishing_player.tscn" id="4_y1r0s"]
 [ext_resource type="Material" uid="uid://dcgy7qsnns5qf" path="res://tools/minigames/fishing/water/water.tres" id="6_7is7m"]
 [ext_resource type="Shader" path="res://tools/minigames/fishing/water/sea_floor.gdshader" id="7_kygv1"]
-[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://tools/overlay/post/assets/panorama.png" id="9_i0a1k"]
+[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/panorama.png" id="9_i0a1k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rve5y"]
 size = Vector3(3.13702, 1, 10)

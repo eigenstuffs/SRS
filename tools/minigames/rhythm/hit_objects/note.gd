@@ -5,11 +5,14 @@ enum HitType {HIT, RELEASE, MISS}
 @export var fade_in_distance : float = 1.5
 @export var spawn_point : Node3D
 @export var hit_point : Node3D
-@export var color_overwrite : Color = Color.TRANSPARENT
 @export var hit_time : float = -1
 @export var duration : float = -1
+@export var color_overwrite : Color = Color.TRANSPARENT : 
+	set(value):
+		color_overwrite = value
+		_on_color_overwrite_changed(value)
 
-var timings_supplier : Callable ## Shape: () -> [time, scroll_time]
+var timings_supplier : Callable ## Shape: () -> [time : float, scroll_time : float]
 var alpha_overwrite : float = 1.0
 var is_held : bool = false
 var is_missed : bool = false
@@ -23,3 +26,12 @@ func hit() -> void: is_held = true
 func release() -> void: is_held = false
 	
 func miss() -> void: is_missed = true
+
+func _on_color_overwrite_changed(_value : Color):
+	pass
+
+func enable_shader_pass(_pass_name : StringName, _uniforms : Dictionary={}):
+	pass
+	
+func disable_shader_pass(_pass_name : StringName):
+	pass

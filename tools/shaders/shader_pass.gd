@@ -17,24 +17,24 @@ class_name ShaderPass extends Resource
 @export var default_uniforms : Dictionary = {}
 @export var priority_overwrite : int = 999
 
-func _init(name='', shader=null, is_enabled_by_default=false, is_unique_pass=false, default_uniforms={}, priority_overwrite=999) -> void:
-	self.name = name
-	self.shader = shader
-	self.is_enabled_by_default = is_enabled_by_default
-	self.is_unique_pass = is_unique_pass
-	self.default_uniforms = default_uniforms
-	self.priority_overwrite=priority_overwrite
+func _init(name_='', shader_=null, is_enabled_by_default_=false, is_unique_pass_=false, default_uniforms_={}, priority_overwrite_=999) -> void:
+	self.name = name_
+	self.shader = shader_
+	self.is_enabled_by_default = is_enabled_by_default_
+	self.is_unique_pass = is_unique_pass_
+	self.default_uniforms = default_uniforms_
+	self.priority_overwrite=priority_overwrite_
 
-func _on_shader_set(shader : Shader) -> void:
-	if not shader: 
+func _on_shader_set(value : Shader) -> void:
+	if not value: 
 		default_uniforms = {}
 		return
-	else: for uniform in shader.get_shader_uniform_list():
+	else: for uniform in value.get_shader_uniform_list():
 		self.default_uniforms[uniform.name] = null
 		
 	# Set name to be name of shader file (without extension)
 	if self.name.is_empty():
-		self.name = shader.resource_path.get_file().trim_suffix('.gdshader')
+		self.name = value.resource_path.get_file().trim_suffix('.gdshader')
 
 func has_valid_priority_overwrite() -> bool:
 	return priority_overwrite >= -128 and priority_overwrite <= 128

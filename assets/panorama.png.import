@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4hn85ukrhk8v"
-path.s3tc="res://.godot/imported/Star.png-d76a5f84e9649546038096a5f5e40bbe.s3tc.ctex"
+uid="uid://ba2qlsbxrfbmv"
+path.bptc="res://.godot/imported/panorama.png-9b786fa85a6cdfb03a0ebe079173bb8a.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://assets/ui/Star.png"
-dest_files=["res://.godot/imported/Star.png-d76a5f84e9649546038096a5f5e40bbe.s3tc.ctex"]
+source_file="res://assets/panorama.png"
+dest_files=["res://.godot/imported/panorama.png-9b786fa85a6cdfb03a0ebe079173bb8a.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

@@ -1,3 +1,4 @@
+@tool
 extends WorldEnvironment
 
 func _process(delta: float) -> void:

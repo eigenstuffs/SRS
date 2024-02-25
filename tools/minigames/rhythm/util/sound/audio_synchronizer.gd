@@ -1,7 +1,7 @@
 class_name AudioSynchronizer extends Node3D
-## Audio latency-corrected .osu beatmap player.
+## Audio latency-corrected osu! beatmap player.
 ##
-## Based on the provided [class AudioStream], [class AudioSynchronizer] will
+## Based on the provided [AudioStream], [AudioSynchronizer] will
 ## search for a .osu beatmap of the respective name and parse it. Based on the
 ## parsed information, the BPM, start offset, and hit objects of the audio track
 ## will be precalculated and queued for signaling.
@@ -28,21 +28,19 @@ signal on_beat
 
 @onready var track : AudioStreamPlayer = $Track
 @onready var metronome : AudioStreamPlayer = $Metronome
-@onready var bpm_text : Label = $BPMLabel
 
 var time : float
 var corrected_time : float # Audio latency-corrected time
 var next_metronome_time : float
 
 var has_played : bool = false
-var beat : int = 0
 var object_idx : int = 0
-var beatmap : BeatmapParser.Beatmap
+var beatmap : BeatmapLoader.Beatmap
 
 func start():
 	assert(stream.resource_path.ends_with('.mp3'), 'Stream resource must be an .mp3 file!')
 	self.beatmap_path = beatmap_path if beatmap_path else '%s.osu' % stream.resource_path.trim_suffix('.mp3')
-	self.beatmap = BeatmapParser.load(beatmap_path)
+	self.beatmap = BeatmapLoader.load(beatmap_path)
 
 	# Round time to nearest power of 2 multiple of bps
 	self.time = -(2**(ceil(log(spawn_offset_seconds / self.beatmap.bps) / log(2))) * self.beatmap.bps)
@@ -57,13 +55,12 @@ func _process(delta):
 		if time > -AudioServer.get_time_to_next_mix():
 			track.play()
 			has_played = true
+			#track.seek(43.0)
+			#track.volume_db -= 15.0;
 		time += delta
 
 	# Tick metronome ignoring output latency (since it calling play already includes it)
 	if use_metronome and time >= next_metronome_time:
-		bpm_text.visible = true
-		bpm_text.text = '%d / 4' % (beat % 4 + 1) # TODO: 4/4 time only lmao
-		beat += 1
 		next_metronome_time += self.beatmap.bps
 		on_beat.emit()
 		metronome.play()

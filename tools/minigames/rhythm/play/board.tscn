@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://6kqupwwsa2f0"]
 
-[ext_resource type="Shader" path="res://tools/minigames/rhythm/play/board.gdshader" id="1_yo4qn"]
+[ext_resource type="Shader" path="res://tools/minigames/rhythm/assets/shaders/board.gdshader" id="1_yo4qn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ndkug"]
 
@@ -22,7 +22,7 @@ shader_parameter/normalmap = SubResource("NoiseTexture2D_lum83")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yvjvo"]
 material = SubResource("ShaderMaterial_u7w3s")
-size = Vector2(2, 4)
+size = Vector2(1.4, 4)
 subdivide_width = 128
 subdivide_depth = 128
 

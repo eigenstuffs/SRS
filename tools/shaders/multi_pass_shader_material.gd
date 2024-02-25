@@ -2,9 +2,14 @@ class_name MultiPassShaderMaterial extends ShaderMaterial
 ## A material that provides easy scriptable access to shader passes within a
 ## [ShaderMaterial] based on the [ShaderPass]s present within 
 ## [member MultiPassShaderMaterial.shader_passes]
+##
+## A 'base' shader can be specified by setting the first pass of the material.
+## This shader pass will be used when no shader pass labeled 'unique' is enabled.
 
 const CLEAR_SHADER := preload('res://tools/shaders/clear_shader.gdshader')
 const BASE_SHADER_NAME := 'base'
+
+static var enabled_passes : Dictionary = {}
 
 @export var shader_passes : Array[ShaderPass] = []
 
@@ -60,6 +65,7 @@ func enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
 	# Lazy initialization of bindings
 	if not is_initialized: initialize_passes()
 	_enable_shader_pass(pass_name, uniforms)
+	MultiPassShaderMaterial.enabled_passes[pass_name] = null
 
 func _enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
 	assert(self.is_initialized and shader_map[pass_name])
@@ -79,10 +85,9 @@ func _enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
 		var uniform_value : Variant = uniform_dict[uniform_name]
 		# if not uniform: continue
 		material.set_shader_parameter(uniform_name, uniform_value)
-	print(pass_name)
 	material.set_shader_parameter('start_time', Time.get_ticks_usec()*1e-6)
 
-func disable_shader_pass(pass_name : String):
+func disable_shader_pass(pass_name : StringName):
 	assert(pass_name != BASE_SHADER_NAME, 'Shader pass name \'%s\' is reserved!' % BASE_SHADER_NAME)
 	assert(self.is_initialized and shader_map[pass_name])
 	var material : ShaderMaterial = shader_map[pass_name][0]
@@ -92,3 +97,4 @@ func disable_shader_pass(pass_name : String):
 		_enable_shader_pass(BASE_SHADER_NAME)
 	if material.shader != CLEAR_SHADER:
 		material.set_shader(CLEAR_SHADER)
+	MultiPassShaderMaterial.enabled_passes.erase(pass_name)

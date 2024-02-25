@@ -1,21 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://lmg6p4vssmpw"]
+[gd_scene load_steps=12 format=3 uid="uid://lmg6p4vssmpw"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_minigame.gd" id="1_pb007"]
 [ext_resource type="PackedScene" uid="uid://cr62xw6ofifyl" path="res://tools/minigames/rhythm/play/playfield.tscn" id="2_2af6n"]
-[ext_resource type="AudioStream" uid="uid://cw8l5r0kooonq" path="res://tools/minigames/rhythm/assets/beatmaps/nekomata.mp3" id="3_caoh0"]
-[ext_resource type="PackedScene" uid="uid://bkenutatqklr3" path="res://tools/overlay/post/screen_space_mesh.tscn" id="4_hv5b4"]
-[ext_resource type="Shader" path="res://tools/overlay/post/assets/examples/rain.gdshader" id="5_qwkec"]
-[ext_resource type="Script" path="res://tools/minigames/rhythm/environment_test.gd" id="5_yqwvy"]
+[ext_resource type="Script" path="res://tools/minigames/rhythm/environment.gd" id="5_yqwvy"]
 [ext_resource type="PackedScene" uid="uid://6kqupwwsa2f0" path="res://tools/minigames/rhythm/play/board.tscn" id="5_yue8y"]
-[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://tools/overlay/post/assets/panorama.png" id="6_luhxe"]
+[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/panorama.png" id="6_luhxe"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/assets/fumo/fumofumo.gd" id="7_ej0x1"]
 [ext_resource type="PackedScene" uid="uid://um4ehms87vqw" path="res://tools/minigames/rhythm/assets/fumo/fumofumo.glb" id="9_awo3g"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ahmv"]
-render_priority = 0
-shader = ExtResource("5_qwkec")
-shader_parameter/tiling_dimensions = Vector2(160, 5)
-shader_parameter/brightness = 1.0
+[ext_resource type="AudioStream" uid="uid://bu0sf1u4tmtxy" path="res://tools/minigames/rhythm/assets/beatmaps/dungeon.mp3" id="10_f3m8t"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a8ggx"]
 panorama = ExtResource("6_luhxe")
@@ -26,19 +18,15 @@ sky_material = SubResource("PanoramaSkyMaterial_a8ggx")
 [sub_resource type="Environment" id="Environment_oefpv"]
 background_mode = 2
 sky = SubResource("Sky_laxh5")
-sky_rotation = Vector3(0, -1.5708, -4.71239)
+sky_rotation = Vector3(81.6209, -1.5708, -4.71239)
 tonemap_mode = 2
 glow_enabled = true
 
 [node name="RhythmMinigame" type="SubViewport"]
+handle_input_locally = false
 script = ExtResource("1_pb007")
 
-[node name="ScreenSpaceMesh" parent="." instance=ExtResource("4_hv5b4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_1ahmv")
-screen_space_shader = SubResource("ShaderMaterial_1ahmv")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oefpv")
 script = ExtResource("5_yqwvy")
 
@@ -46,27 +34,31 @@ script = ExtResource("5_yqwvy")
 transform = Transform3D(-0.642788, 0.663414, -0.383022, 0, 0.5, 0.866026, 0.766044, 0.556671, -0.321394, -4.5, 10, -3.5)
 shadow_enabled = true
 
-[node name="fumo" parent="." instance=ExtResource("9_awo3g")]
+[node name="fumo (delete later)" parent="." instance=ExtResource("9_awo3g")]
 transform = Transform3D(0.5, 0, 0, 0, 0.493844, 0.0782172, 0, -0.0782172, 0.493844, 11.61, -4.05, 2.705)
 script = ExtResource("7_ej0x1")
 
-[node name="Sketchfab_model" parent="fumo" index="0"]
+[node name="Sketchfab_model" parent="fumo (delete later)" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Object_2" parent="fumo/Sketchfab_model/cirno_low_obj_cleaner_materialmerger_gles" index="0"]
+[node name="Object_2" parent="fumo (delete later)/Sketchfab_model/cirno_low_obj_cleaner_materialmerger_gles" index="0"]
 transform = Transform3D(-0.215482, 2.4718e-08, -0.275804, -0.275804, 1.20558e-08, 0.215482, 2.4718e-08, 0.35, 1.20558e-08, 0, 0, 0)
 
-[node name="Board" parent="." instance=ExtResource("5_yue8y")]
-
-[node name="Playfield" parent="Board" instance=ExtResource("2_2af6n")]
-stream = ExtResource("3_caoh0")
+[node name="Playfield" parent="." instance=ExtResource("2_2af6n")]
+stream = ExtResource("10_f3m8t")
 note_speed = 1.35
+show_debug = true
 
-[node name="Camera3D" type="Camera3D" parent="Board"]
+[node name="AudioSynchronizer" parent="Playfield" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36139, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Playfield"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.53443, -4.031)
 current = true
 
-[connection signal="on_beat" from="Board/Playfield/AudioSynchronizer" to="fumo" method="_on_audio_synchronizer_on_beat"]
+[node name="Board" parent="Playfield" instance=ExtResource("5_yue8y")]
 
-[editable path="fumo"]
-[editable path="Board/Playfield"]
+[connection signal="on_beat" from="Playfield/AudioSynchronizer" to="fumo (delete later)" method="_on_audio_synchronizer_on_beat"]
+
+[editable path="fumo (delete later)"]
+[editable path="Playfield"]
