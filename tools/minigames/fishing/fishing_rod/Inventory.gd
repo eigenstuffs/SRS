@@ -1,22 +1,25 @@
 extends Control
 
-@onready var RODS : FishingRodTypes = preload("res://tools/minigames/fishing/fishing_rod/types_of_rod.tres")
+@onready var ROD_TYPE : FishingRodTypes = preload("res://tools/minigames/fishing/fishing_rod/types_of_rod.tres")
 @onready var rods_container = $RodsContainer
-@onready var inventory_item = $InventoryItem
-
+@onready var inventory_item = $VBoxContainer/InventoryItem
+#is it better to have select button and description in a container? or just separate them
+@onready var rod_chosen : int
 
 func _ready():
 	inventory_item.hide()
 
 
 func _on_texture_button_pressed():
-	RODS.set_rod_stats(0,inventory_item)
+	inventory_item.show_description(0)
 	inventory_item.show()
+	rod_chosen = 0
 
 
 func _on_texture_button_3_pressed():
-	RODS.set_rod_stats(1,inventory_item)
+	inventory_item.show_description(1)
 	inventory_item.show()
+	rod_chosen = 1
 
 
 func _on_texture_button_4_pressed():
@@ -27,11 +30,6 @@ func _on_texture_button_5_pressed():
 	pass
 
 
-
-func _on_button_pressed():
-	print("hi")
-
-
 #equips the fishing rod
 func _on_equip_button_pressed():
-	pass 
+	print("Rod chosen: " + ROD_TYPE.rod_list[rod_chosen].get("name"))
