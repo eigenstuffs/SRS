@@ -1,26 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://omy50xdo0so6"]
+[gd_scene load_steps=4 format=3 uid="uid://omy50xdo0so6"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/Inventory.gd" id="1_5pp4c"]
 [ext_resource type="PackedScene" uid="uid://vbalxcrqrwg" path="res://tools/minigames/fishing/fishing_rod/inventory_item.tscn" id="2_606hf"]
+[ext_resource type="PackedScene" uid="uid://bjt4skwe1eu5h" path="res://tools/minigames/fishing/fishing_minigame.tscn" id="2_supih"]
 
 [node name="Inventory Draft" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_5pp4c")
+fishing_scene = ExtResource("2_supih")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 1856.0
 offset_bottom = 1024.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -33,15 +31,15 @@ offset_bottom = 464.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="InventoryItem" parent="VBoxContainer" instance=ExtResource("2_606hf")]
+[node name="InventoryItem" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_606hf")]
 custom_minimum_size = Vector2(400, 600)
 layout_mode = 2
 
-[node name="EquipButton" type="Button" parent="VBoxContainer"]
+[node name="EquipButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/EquipButton"]
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/EquipButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,8 +57,7 @@ text = "Select"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 1
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -72,16 +69,16 @@ grow_vertical = 2
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="RodsContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="RodsContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
 custom_minimum_size = Vector2(640, 128)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TextureButton" type="Button" parent="ScrollContainer/RodsContainer"]
+[node name="TextureButton" type="Button" parent="CanvasLayer/ScrollContainer/RodsContainer"]
 custom_minimum_size = Vector2(640, 128)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ScrollContainer/RodsContainer/TextureButton"]
+[node name="Label" type="Label" parent="CanvasLayer/ScrollContainer/RodsContainer/TextureButton"]
 custom_minimum_size = Vector2(640, 128)
 layout_mode = 0
 offset_right = 640.0
@@ -93,11 +90,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="TextureButton3" type="Button" parent="ScrollContainer/RodsContainer"]
+[node name="TextureButton3" type="Button" parent="CanvasLayer/ScrollContainer/RodsContainer"]
 custom_minimum_size = Vector2(640, 128)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ScrollContainer/RodsContainer/TextureButton3"]
+[node name="Label" type="Label" parent="CanvasLayer/ScrollContainer/RodsContainer/TextureButton3"]
 custom_minimum_size = Vector2(640, 128)
 layout_mode = 0
 offset_right = 16.0
@@ -108,11 +105,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="TextureButton4" type="Button" parent="ScrollContainer/RodsContainer"]
+[node name="TextureButton4" type="Button" parent="CanvasLayer/ScrollContainer/RodsContainer"]
 custom_minimum_size = Vector2(640, 128)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ScrollContainer/RodsContainer/TextureButton4"]
+[node name="Label" type="Label" parent="CanvasLayer/ScrollContainer/RodsContainer/TextureButton4"]
 custom_minimum_size = Vector2(640, 128)
 layout_mode = 0
 offset_right = 16.0
@@ -124,11 +121,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="TextureButton5" type="Button" parent="ScrollContainer/RodsContainer"]
+[node name="TextureButton5" type="Button" parent="CanvasLayer/ScrollContainer/RodsContainer"]
 custom_minimum_size = Vector2(640, 128)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ScrollContainer/RodsContainer/TextureButton5"]
+[node name="Label" type="Label" parent="CanvasLayer/ScrollContainer/RodsContainer/TextureButton5"]
 custom_minimum_size = Vector2(640, 128)
 layout_mode = 0
 offset_right = 16.0
@@ -140,8 +137,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
+[node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 111.0
 offset_top = 65.0
 offset_right = 803.0
@@ -149,8 +145,11 @@ offset_bottom = 197.0
 theme_override_font_sizes/font_size = 100
 text = "Select Your Rod:"
 
-[connection signal="pressed" from="VBoxContainer/EquipButton" to="." method="_on_equip_button_pressed"]
-[connection signal="pressed" from="ScrollContainer/RodsContainer/TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="ScrollContainer/RodsContainer/TextureButton3" to="." method="_on_texture_button_3_pressed"]
-[connection signal="pressed" from="ScrollContainer/RodsContainer/TextureButton4" to="." method="_on_texture_button_4_pressed"]
-[connection signal="pressed" from="ScrollContainer/RodsContainer/TextureButton5" to="." method="_on_texture_button_5_pressed"]
+[node name="MinigameLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/EquipButton" to="." method="_on_equip_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/RodsContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/RodsContainer/TextureButton3" to="." method="_on_texture_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/RodsContainer/TextureButton4" to="." method="_on_texture_button_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/RodsContainer/TextureButton5" to="." method="_on_texture_button_5_pressed"]
