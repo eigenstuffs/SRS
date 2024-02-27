@@ -1,7 +1,7 @@
 #class_name RodSelection extends Minigame
 extends Control
 
-@onready var ROD_TYPE : FishingRodTypes = preload("res://tools/minigames/fishing/fishing_rod/types_of_rod.tres")
+@onready var ROD_TYPE : FishingRodTypes = preload("res://tools/minigames/fishing/Inventory/types_of_rod.tres")
 @onready var rods_container = $CanvasLayer/ScrollContainer/RodsContainer
 @onready var inventory_item = $CanvasLayer/VBoxContainer/InventoryItem
 #is it better to have select button and description in a container? or just separate them

@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_4c8px")
-wisdom = 85
-intelligence = 24
-charisma = 55
-wellness = 69
+wisdom = 50
+intelligence = 50
+charisma = 50
+wellness = 50
 money = 0
 prestige = 0

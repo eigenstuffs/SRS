@@ -2,7 +2,7 @@ extends Control
 
 class_name InventoryItem
 
-@onready var ROD_TYPE : FishingRodTypes = load("res://tools/minigames/fishing/fishing_rod/types_of_rod.tres")
+@onready var ROD_TYPE : FishingRodTypes = load("res://tools/minigames/fishing/Inventory/types_of_rod.tres")
 @onready var rod_name = $Background/VBoxContainer/HBoxContainer2/Name
 @onready var rod_pic = $Background/VBoxContainer/HBoxContainer2/Photo
 @onready var description = $Background/VBoxContainer/Description

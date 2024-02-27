@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://omy50xdo0so6"]
 
-[ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/Inventory.gd" id="1_5pp4c"]
-[ext_resource type="PackedScene" uid="uid://vbalxcrqrwg" path="res://tools/minigames/fishing/fishing_rod/inventory_item.tscn" id="2_606hf"]
-[ext_resource type="PackedScene" uid="uid://bjt4skwe1eu5h" path="res://tools/minigames/fishing/fishing_minigame.tscn" id="2_supih"]
+[ext_resource type="Script" path="res://tools/minigames/fishing/Inventory/Inventory.gd" id="1_h4uek"]
+[ext_resource type="PackedScene" uid="uid://bjt4skwe1eu5h" path="res://tools/minigames/fishing/fishing_minigame.tscn" id="2_r10mk"]
+[ext_resource type="PackedScene" uid="uid://vbalxcrqrwg" path="res://tools/minigames/fishing/Inventory/inventory_item.tscn" id="3_7al3k"]
 
 [node name="Inventory Draft" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_5pp4c")
-fishing_scene = ExtResource("2_supih")
+script = ExtResource("1_h4uek")
+fishing_scene = ExtResource("2_r10mk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -31,7 +31,7 @@ offset_bottom = 464.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="InventoryItem" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_606hf")]
+[node name="InventoryItem" parent="CanvasLayer/VBoxContainer" instance=ExtResource("3_7al3k")]
 custom_minimum_size = Vector2(400, 600)
 layout_mode = 2
 

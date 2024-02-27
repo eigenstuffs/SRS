@@ -1,0 +1,195 @@
+[gd_scene load_steps=2 format=3 uid="uid://daom8pfxkxqmw"]
+
+[ext_resource type="Script" path="res://tools/minigames/template/reward_scene.gd" id="1_p1o4n"]
+
+[node name="RewardScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p1o4n")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 1915.0
+offset_bottom = 133.0
+theme_override_font_sizes/font_size = 110
+text = "Result"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTally" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_top = 152.0
+offset_right = 1146.0
+offset_bottom = 811.0
+
+[node name="FinalScore" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -265.0
+offset_right = 1142.0
+offset_bottom = 3.0
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="FinalScore"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 20.0
+offset_right = 1151.0
+offset_bottom = 257.0
+color = Color(1, 1, 1, 0.364706)
+
+[node name="StatsTitle" type="Label" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 100)
+layout_mode = 2
+offset_left = 1161.0
+offset_top = 152.0
+offset_right = 1887.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 80
+text = "Stats"
+
+[node name="StatsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -759.0
+offset_top = 228.0
+offset_right = -33.0
+offset_bottom = -222.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Wisdom" type="ProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="StatsContainer/Wisdom"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -393.0
+offset_top = -50.0
+offset_right = 393.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Intelligence" type="ProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="StatsContainer/Intelligence"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -391.5
+offset_top = -50.0
+offset_right = 391.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Charisma" type="ProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="StatsContainer/Charisma"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -391.5
+offset_top = -50.0
+offset_right = 391.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wellness" type="ProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="StatsContainer/Wellness"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.5
+offset_top = -50.0
+offset_right = 390.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -682.0
+offset_top = -180.0
+offset_right = -123.0
+offset_bottom = -37.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "Confirm"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = 275.0
+offset_right = 1108.0
+offset_bottom = 284.0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]

@@ -3,7 +3,7 @@ extends CanvasLayer
 signal stop_loop
 signal reeling_ended(is_successful : bool)
 
-@onready var ROD_TYPE : FishingRodTypes = preload("res://tools/minigames/fishing/fishing_rod/types_of_rod.tres")
+@onready var ROD_TYPE : FishingRodTypes = preload("res://tools/minigames/fishing/Inventory/types_of_rod.tres")
 @onready var force_bar : ProgressBar = $ForceBar
 @onready var distance_bar : ProgressBar = $DistanceBar
 @onready var reel_bar : VScrollBar = $ReelBar

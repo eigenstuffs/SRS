@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://vbalxcrqrwg"]
 
-[ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/inventory_item.gd" id="1_r1jc2"]
+[ext_resource type="Script" path="res://tools/minigames/fishing/Inventory/inventory_item.gd" id="1_r1jc2"]
 
 [node name="InventoryItem" type="Control"]
 layout_mode = 3
