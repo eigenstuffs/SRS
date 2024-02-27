@@ -15,26 +15,30 @@ func _ready():
 func _on_texture_button_pressed():
 	inventory_item.show_description(0)
 	inventory_item.show()
-	rod_chosen = 0
+	ROD_TYPE.set_current_rod(0)
 
 
 func _on_texture_button_3_pressed():
 	inventory_item.show_description(1)
 	inventory_item.show()
-	rod_chosen = 1
+	ROD_TYPE.set_current_rod(1)
 
 
 func _on_texture_button_4_pressed():
-	pass 
+	inventory_item.show_description(2)
+	inventory_item.show()
+	ROD_TYPE.set_current_rod(2)
 
 
 func _on_texture_button_5_pressed():
-	pass
+	inventory_item.show_description(3)
+	inventory_item.show()
+	ROD_TYPE.set_current_rod(3)
 
 
 #equips the fishing rod
 func _on_equip_button_pressed():
-	print("Rod chosen: " + ROD_TYPE.rod_list[rod_chosen].get("name"))
+	print(str(ROD_TYPE.get_current_rod()))
 	Util.create_minigame($MinigameLayer, "Fishing")
 	$CanvasLayer.visible = false
 

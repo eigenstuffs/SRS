@@ -68,7 +68,7 @@ autowrap_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="SellPrice" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
+[node name="ReelStr" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 2.08165e-12)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -77,20 +77,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="BuyPrice" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
+[node name="ReelSize" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 2.08165e-12)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "BUY: 350"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="MaxHeld" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 2.08165e-12)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "HELD: idk"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

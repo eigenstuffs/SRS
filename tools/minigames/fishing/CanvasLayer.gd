@@ -3,6 +3,7 @@ extends CanvasLayer
 signal stop_loop
 signal reeling_ended(is_successful : bool)
 
+@onready var ROD_TYPE : FishingRodTypes = preload("res://tools/minigames/fishing/fishing_rod/types_of_rod.tres")
 @onready var force_bar : ProgressBar = $ForceBar
 @onready var distance_bar : ProgressBar = $DistanceBar
 @onready var reel_bar : VScrollBar = $ReelBar
@@ -34,6 +35,8 @@ var fish_speed_multiplier : float = 1
 var movable : bool = false
 
 func _ready():
+	rod_strength_multiplier = ROD_TYPE.get_current_rod("reel_strength")
+	size_multiplier = ROD_TYPE.get_current_rod("reel_size")
 	force_bar_reset()
 	distance_bar_reset()
 	reel_bar_reset()
