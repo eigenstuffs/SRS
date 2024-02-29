@@ -62,7 +62,10 @@ func initialize_passes():
 	self.is_initialized = true
 
 func has_shader_pass(pass_name : StringName) -> bool:
-	return shader_map.has(pass_name) and shader_map[pass_name]
+	if self.is_initialized:
+		return shader_map.has(pass_name) and shader_map[pass_name] != null
+	else:
+		return not shader_passes.filter(func(shader_pass : ShaderPass): return shader_pass.name == pass_name).is_empty()
 
 func enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
 	assert(pass_name != BASE_SHADER_NAME, 'Shader pass name \'%s\' is reserved!' % BASE_SHADER_NAME)
