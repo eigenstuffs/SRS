@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://c57f558j5tnsc"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/key.gd" id="1_bcnxa"]
-[ext_resource type="PackedScene" uid="uid://bejn8g103mp0u" path="res://tools/minigames/rhythm/util/editor/editor_plane.tscn" id="2_j1vrs"]
-[ext_resource type="PackedScene" uid="uid://dywsugc8b2gts" path="res://tools/minigames/rhythm/util/editor/editor_point.tscn" id="3_yqybd"]
+[ext_resource type="PackedScene" uid="uid://bejn8g103mp0u" path="res://tools/debug/editor/editor_plane.tscn" id="2_j1vrs"]
+[ext_resource type="PackedScene" uid="uid://dywsugc8b2gts" path="res://tools/debug/editor/editor_point.tscn" id="3_yqybd"]
 [ext_resource type="AudioStream" uid="uid://dowyseood26b1" path="res://tools/minigames/rhythm/assets/samples/hit.mp3" id="4_25p1v"]
 [ext_resource type="Texture2D" uid="uid://y40mfo1sv1sd" path="res://tools/minigames/rhythm/assets/key.png" id="4_d8h3b"]
 

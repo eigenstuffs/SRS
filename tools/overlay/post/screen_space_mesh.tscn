@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://btp06nsjls81w"]
 
-[ext_resource type="Script" path="res://tools/shaders/multi_pass_shader_material.gd" id="1_48y1b"]
-[ext_resource type="Script" path="res://tools/shaders/shader_pass.gd" id="2_mj84s"]
-[ext_resource type="Shader" path="res://tools/shaders/post_processing/impact_lines.gdshader" id="3_oay2n"]
+[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="1_48y1b"]
+[ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="2_mj84s"]
+[ext_resource type="Shader" path="res://resources/shaders/post_processing/impact_lines.gdshader" id="3_oay2n"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6tccy"]
 flip_faces = true

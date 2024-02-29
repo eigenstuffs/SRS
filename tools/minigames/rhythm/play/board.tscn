@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://6kqupwwsa2f0"]
 
-[ext_resource type="Shader" path="res://tools/minigames/rhythm/assets/shaders/board.gdshader" id="1_yo4qn"]
+[ext_resource type="Shader" path="res://tools/minigames/rhythm/resources/shaders/board.gdshader" id="1_yo4qn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ndkug"]
 

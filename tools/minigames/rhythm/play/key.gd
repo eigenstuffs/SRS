@@ -19,8 +19,8 @@ class NoteQueue:
 	func front() -> Note:
 		return queue.front() if not queue.is_empty() else null
 
-const HIT_NOTE = preload('res://tools/minigames/rhythm/hit_objects/hit_note.tscn')
-const HIT_SLIDER = preload('res://tools/minigames/rhythm/hit_objects/hit_slider.tscn')
+const HIT_NOTE = preload('res://tools/minigames/rhythm/play/hit_objects/hit_note.tscn')
+const HIT_SLIDER = preload('res://tools/minigames/rhythm/play/hit_objects/hit_slider.tscn')
 const EARLY_HIT_WINDOW : float = 0.2 ## Maximum time early at which a note can be hit
 
 ## Reports the timing offset on hit/released status of a note. Returns `null`
@@ -99,7 +99,7 @@ func register_hit(note : Note, hit_type : Note.HitType, timing_offset : Variant)
 		Note.HitType.MISS:    note.miss()
 	report_hit.emit(timing_offset, hit_type)
 	
-func enqueue_note(info : BeatmapLoader.ObjectInfo) -> void:
+func enqueue_note(info : HitObjectInfo) -> void:
 	var note := HIT_SLIDER.instantiate() if info.is_slider else HIT_NOTE.instantiate()
 	note.position = spawn_position.position
 	note.timings_supplier = func() -> Array[float]: return [corrected_time, scroll_time] 

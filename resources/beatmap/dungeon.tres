@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Beatmap" load_steps=3 format=3 uid="uid://cq1mty6j6rq7j"]
+
+[ext_resource type="Script" path="res://resources/beatmap/beatmap.gd" id="1_yfxvr"]
+[ext_resource type="AudioStream" uid="uid://bu0sf1u4tmtxy" path="res://assets/beatmaps/dungeon.mp3" id="2_hav44"]
+
+[resource]
+script = ExtResource("1_yfxvr")
+title = &"Lilieze to Enryuu Laevateinn"
+track = ExtResource("2_hav44")
+path = "res://assets/beatmaps/dungeon.osu"
+start_offset = 0.518
+bpm = 200.0
+num_keys = 4

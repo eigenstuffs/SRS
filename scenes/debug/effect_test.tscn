@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://y44scqxvcf1b"]
+
+[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/panorama.png" id="1_niisc"]
+[ext_resource type="Script" path="res://scenes/debug/effect_test.gd" id="1_ulp82"]
+[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="2_7jf7y"]
+[ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="3_6pytf"]
+[ext_resource type="Shader" path="res://resources/shaders/color_fade.gdshader" id="4_frb58"]
+[ext_resource type="Shader" path="res://resources/shaders/clear_shader_canvas.gdshader" id="4_oqgjt"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_y2lc3"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_amnx4"]
+panorama = ExtResource("1_niisc")
+
+[sub_resource type="Sky" id="Sky_laxh5"]
+sky_material = SubResource("PanoramaSkyMaterial_amnx4")
+
+[sub_resource type="Environment" id="Environment_110mc"]
+background_mode = 2
+sky = SubResource("Sky_laxh5")
+sky_rotation = Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_r4i7m"]
+script = ExtResource("3_6pytf")
+name = &"color_fade"
+shader = ExtResource("4_frb58")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {
+"duration": null,
+"end_color": null,
+"start_color": null,
+"start_time": null
+}
+priority_overwrite = 999
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jg156"]
+shader = ExtResource("4_oqgjt")
+script = ExtResource("2_7jf7y")
+shader_passes = Array[ExtResource("3_6pytf")]([SubResource("Resource_r4i7m")])
+
+[node name="EffectTest" type="Node3D"]
+script = ExtResource("1_ulp82")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_y2lc3")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_110mc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.642788, 0.663414, -0.383022, 0, 0.5, 0.866026, 0.766044, 0.556671, -0.321394, -4.5, 10, -3.5)
+shadow_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_jg156")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

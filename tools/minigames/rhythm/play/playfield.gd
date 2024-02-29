@@ -24,12 +24,12 @@ const RELEASE_SCORING = [
 	[[150, 200], ['Okay.', Color(0.73, 0.58, 0.84)]],
 	[[200, 1e9], ['Bad', Color(0.71, 0.565, 0.659)]]]
 
-@export var stream : AudioStream
+@export var beatmap : Beatmap
 @export var note_speed : float = 2
 @export var show_debug : bool = false
 
 var keys : Array[RhythmKey] = []
-var hit_objects : Array[BeatmapLoader.ObjectInfo]
+var hit_objects : Array[HitObjectInfo]
 var next_load_idx : int = 0
 var next_timing_action_idx : int = 0
 var beat : int = 0
@@ -38,17 +38,17 @@ var beat : int = 0
 @onready var screen_space_material : MultiPassShaderMaterial = $ScreenSpaceMesh.get_surface_override_material(0)
 @onready var backplane_material : MultiPassShaderMaterial = $BackplaneMesh.get_surface_override_material(0)
 # FIXME : Hardcoded for 'dungeon' beatmap!
-@onready var timing_actions : Variant = DungeonMod.get_timing_actions(self) if stream.resource_path.get_file().trim_suffix('.' + stream.resource_path.get_extension()) == 'dungeon' else []
+@onready var timing_actions : Variant = DungeonMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'dungeon' else []
 
 func _ready() -> void:
 	audio_synchronizer.spawn_offset_seconds = 1.0 # FIXME: Not static for all songs!
-	audio_synchronizer.stream = stream
+	audio_synchronizer.beatmap = self.beatmap
 	audio_synchronizer.start()
-	self.hit_objects = audio_synchronizer.beatmap.objects
+	self.hit_objects = beatmap.objects
 	print('(playfield) initialized audio synchronizer')
 	
 	# Initialize keys based on key count of beatmap
-	var num_keys : int = audio_synchronizer.beatmap.num_keys
+	var num_keys : int = beatmap.num_keys
 	for key_index in range(num_keys):
 		var key : RhythmKey = KEY.instantiate()
 		key.position.x = (-0.5 + key_index / (num_keys - 1.0)) * (num_keys + (1.0/6.0 * (num_keys - 1.0)))
@@ -69,13 +69,13 @@ func _ready() -> void:
 		keys.push_back(key)
 		$Keys.add_child(key)
 		
-	$TitleLabel.text = audio_synchronizer.beatmap.title
+	$TitleLabel.text = beatmap.title
 
 func _process(_delta: float) -> void:
 	# Compensate for output latency and spawn offset time.
 	var corrected_time = audio_synchronizer.time - AudioServer.get_output_latency()
 	while next_load_idx < len(hit_objects) and corrected_time + audio_synchronizer.spawn_offset_seconds > hit_objects[next_load_idx].time:
-		var info : BeatmapLoader.ObjectInfo = hit_objects[next_load_idx]
+		var info := hit_objects[next_load_idx]
 		keys[info.key_index].enqueue_note(info)
 		next_load_idx += 1
 		
@@ -89,7 +89,7 @@ func _process(_delta: float) -> void:
 	$BeatLabel.visible = show_debug
 	if show_debug: 
 		audio_synchronizer.use_metronome = true
-		$BPMLabel.text = 'BPM: %.0f' % audio_synchronizer.beatmap.bpm
+		$BPMLabel.text = 'BPM: %.0f' % beatmap.bpm
 		$FrametimeLabel.text = 'Frametime: %.3fms' % (Performance.get_monitor(Performance.TIME_PROCESS) * 1e3)
 		$EnabledPassesLabel.text = 'Enabled Shader Passes:'
 		for shader_name in MultiPassShaderMaterial.enabled_passes:
