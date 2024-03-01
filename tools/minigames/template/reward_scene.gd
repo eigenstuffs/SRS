@@ -3,7 +3,7 @@ extends Control
 class_name RewardScene
 
 signal preview_done
-signal ready_to_display
+signal display_finished
 
 @onready var PLAYER_STATS : PlayerStats = preload("res://resources/stats/player_stats.tres")
 @onready var stats_container = $StatsContainer
@@ -12,6 +12,7 @@ signal ready_to_display
 
 var scores : Array[int]
 var stats_gained : Array[int]
+var done : bool = false
 
 #set function that should be called after reward scene is instantiated
 #pass the scores gained from the minigame and corresponding stats gained here
@@ -20,13 +21,10 @@ func set_vars(score : Array[int], stats : Array[int]):
 	stats_gained = stats
 
 func _ready(): 
-	set_vars([10, 2, 9, 24], [0, 5, 4, 0]) #placeholder
 	stats_bar_update()
 	PLAYER_STATS.changed.connect(on_stats_changed)
 	hide_tally()
 	hide_final()
-	await get_tree().create_timer(0.5).timeout
-	emit_signal("ready_to_display")
 	
 
 func hide_tally():
@@ -67,15 +65,12 @@ func stats_bar_update():
 func on_stats_changed():
 	stats_bar_update()
 
-func _on_confirm_button_pressed():
-	#the confirm button should take the player back to the main game
-	pass
-
 func modify_stats(points_to_be_modified : Array[int]):
 	var result_stats = PLAYER_STATS.get_main_stats()
 	for i in range(0, points_to_be_modified.size()):
 		result_stats[i] = result_stats[i] + points_to_be_modified[i]
 	PLAYER_STATS.set_stats(result_stats)
+	done = true
 
 func stats_change_preview(change_by : Array[int]):
 	for bar_index in stats_container.get_child_count():
@@ -84,7 +79,7 @@ func stats_change_preview(change_by : Array[int]):
 		await get_tree().create_timer(0.35).timeout
 	emit_signal("preview_done")
 
-func _on_ready_to_display():
+func start_display():
 	display_tally(scores)
 	await preview_done
 	display_final(stats_gained)
@@ -92,3 +87,7 @@ func _on_ready_to_display():
 	stats_change_preview(stats_gained)
 	await preview_done
 	modify_stats(stats_gained)
+
+func _on_confirm_button_pressed():
+	if done:
+		emit_signal("display_finished")

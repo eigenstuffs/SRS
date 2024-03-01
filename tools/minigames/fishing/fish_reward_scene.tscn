@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://daom8pfxkxqmw"]
+[gd_scene load_steps=2 format=3 uid="uid://bvi5w7r00seip"]
 
-[ext_resource type="Script" path="res://tools/minigames/template/reward_scene.gd" id="1_p1o4n"]
+[ext_resource type="Script" path="res://tools/minigames/fishing/fish_reward_scene.gd" id="1_j7q2r"]
 
 [node name="RewardScene" type="Control"]
 layout_mode = 3
@@ -9,10 +9,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_p1o4n")
+script = ExtResource("1_j7q2r")
 
 [node name="Backdrop" type="TextureRect" parent="."]
-layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1083.0
 
@@ -58,7 +57,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Item 1"
+text = "Common Fish"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="ScoreTally/Line"]
@@ -73,7 +72,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Item 2"
+text = "Rare Fish"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="ScoreTally/Line2"]
@@ -88,7 +87,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Item 3"
+text = "Epic Fish"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="ScoreTally/Line3"]
@@ -103,7 +102,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Item 4"
+text = "Legendary Fish"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="ScoreTally/Line4"]
@@ -130,7 +129,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Stats2 Gained"
+text = "Wellness Gained"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="FinalScore/Line"]
@@ -145,7 +144,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Stats3 Gained"
+text = "Charisma Gained"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="FinalScore/Line2"]

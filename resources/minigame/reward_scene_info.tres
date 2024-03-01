@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RewardInfo" load_steps=2 format=3 uid="uid://dfgw3wgoavtly"]
+
+[ext_resource type="Script" path="res://resources/minigame/reward_scene_info.gd" id="1_1xc27"]
+
+[resource]
+script = ExtResource("1_1xc27")
+name = ""
+scene = null

@@ -46,3 +46,7 @@ func _on_setting_button_pressed():
 func setting_closed_func():
 	Global.can_move = true
 	setting_button.disabled = false
+
+
+func _on_reward_test_pressed():
+	Util.create_reward_scene("Fishing", [2, 3, 6, 1], [0, 3, 2, 0])

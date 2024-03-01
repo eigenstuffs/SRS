@@ -166,5 +166,15 @@ text = "5 turns left"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RewardTest" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1539.0
+offset_top = 961.0
+offset_right = 1841.0
+offset_bottom = 1037.0
+theme_override_font_sizes/font_size = 35
+text = "Fish Reward Scene"
+
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="RandomizeStats" to="RandomizeStats" method="_on_pressed"]
+[connection signal="pressed" from="RewardTest" to="." method="_on_reward_test_pressed"]
