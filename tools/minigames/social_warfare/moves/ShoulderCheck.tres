@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SocialWarfareMove" load_steps=2 format=3 uid="uid://ba262pbkdcgy0"]
+
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/moves/social_warfare_move.gd" id="1_hjs26"]
+
+[resource]
+script = ExtResource("1_hjs26")
+move_name = "Shoulder Check"
+move_desc = "Walk by your opponent and bump into them."
+move_text_player = Array[String](["You go to walk away but nudge your opponent, causing them to spill their drink."])
+move_text_enemy = Array[String](["Your opponent walks by you but hits your shoulder, causing you to not spill anything, but still be deeply offended."])
+move_power = 5
+move_variance = 2
+move_intensity = 60

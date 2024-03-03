@@ -9,7 +9,7 @@ uniform sampler2D DEPTH_TEXTURE : source_color, hint_depth_texture;
 uniform float depth_range : hint_range(0.1, 100.0, 0.1);
 
 void vertex(){
-	POSITION = vec4(VERTEX, 1.0); // BASICALLY YOU ONLY NEED THIS LINE
+	POSITION = vec4(VERTEX, 1.0);
 }
 
 void fragment() {

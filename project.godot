@@ -37,12 +37,12 @@ enabled=PackedStringArray("res://addons/wigglebone/plugin.cfg")
 
 folder_colors={
 "res://addons/": "gray",
-"res://scenes/minigames/": "yellow",
-"res://scenes/minigames/fishing/": "pink",
-"res://scenes/minigames/library/": "orange",
-"res://scenes/minigames/shark_tank/": "green",
-"res://scenes/minigames/social_warfare/": "teal",
-"res://scenes/minigames/template/": "gray"
+"res://tools/minigames/": "yellow",
+"res://tools/minigames/fishing/": "pink",
+"res://tools/minigames/library/": "orange",
+"res://tools/minigames/shark_tank/": "green",
+"res://tools/minigames/social_warfare/": "teal",
+"res://tools/minigames/template/": "gray"
 }
 
 [gui]

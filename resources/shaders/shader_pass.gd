@@ -6,7 +6,7 @@ class_name ShaderPass extends Resource
 @export var name : StringName
 @export var shader : Shader :
 	set(value):
-		shader = value
+		shader = value.duplicate() if value else value
 		_on_shader_set(shader)
 			
 @export var is_enabled_by_default : bool = false
