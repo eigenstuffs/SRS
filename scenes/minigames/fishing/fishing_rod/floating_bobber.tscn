@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bridjlku0m8mg"]
+
+[ext_resource type="Script" path="res://scenes/minigames/fishing/fishing_rod/FloatingBobber.gd" id="1_lnayo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rxajj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qy3n"]
+albedo_color = Color(0.996078, 0.415686, 0.439216, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_on7hd"]
+material = SubResource("StandardMaterial3D_0qy3n")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qitnl"]
+
+[node name="FloatingBobber" type="RigidBody3D"]
+transform = Transform3D(1, 1.97987e-15, 3.39162e-14, -1.38896e-15, 0.999999, 4.12473e-09, 3.10369e-16, -5.78137e-10, 0.999999, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_lnayo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("SphereShape3D_rxajj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_on7hd")
+skeleton = NodePath("")
+
+[node name="CatchField" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CatchField"]
+transform = Transform3D(0.5, -1.85933e-22, 2.42539e-23, 1.85933e-22, 0.5, -2.99817e-17, -2.42539e-23, 2.99817e-17, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_qitnl")
+
+[node name="AttractionField" type="Area3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttractionField"]
+transform = Transform3D(0.5, -1.85933e-22, 2.42539e-23, 1.85933e-22, 0.5, -2.99817e-17, -2.42539e-23, 2.99817e-17, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_qitnl")

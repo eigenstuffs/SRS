@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://uxj7rmmh1l6b"]
+
+[ext_resource type="Script" path="res://scenes/minigames/library/book/wiggle/book_holder.gd" id="1_yhans"]
+
+[node name="BookHolder" type="Node3D"]
+script = ExtResource("1_yhans")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="."]

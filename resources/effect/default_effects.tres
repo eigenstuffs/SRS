@@ -1,14 +1,23 @@
-[gd_resource type="Resource" script_class="EffectList" load_steps=4 format=3 uid="uid://oqvaly6qiyv"]
+[gd_resource type="Resource" script_class="EffectList" load_steps=6 format=3 uid="uid://oqvaly6qiyv"]
 
 [ext_resource type="Script" path="res://resources/effect/effect_color_fade.gd" id="1_va1rw"]
+[ext_resource type="Script" path="res://resources/effect/effect_blur.gd" id="2_gmlqt"]
 [ext_resource type="Script" path="res://resources/effect/effect_list.gd" id="2_wi02j"]
 
 [sub_resource type="Resource" id="Resource_qir7n"]
 script = ExtResource("1_va1rw")
 name = "ColorFade"
 duration = 2.0
-on_run = null
+on_start = null
+on_stop = null
+
+[sub_resource type="Resource" id="Resource_tuial"]
+script = ExtResource("2_gmlqt")
+name = "Blur"
+duration = 0.5
+on_start = null
+on_stop = null
 
 [resource]
 script = ExtResource("2_wi02j")
-effect_list = Array[Resource("res://resources/effect/effect.gd")]([SubResource("Resource_qir7n")])
+effect_list = Array[Resource("res://resources/effect/effect.gd")]([SubResource("Resource_qir7n"), SubResource("Resource_tuial")])

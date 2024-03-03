@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_6jcdl")
 name = "Rhythm"
-scene = "res://tools/minigames/rhythm/rhythm_minigame.tscn"
+scene = "res://scenes/minigames/rhythm/rhythm_minigame.tscn"
 time = 150

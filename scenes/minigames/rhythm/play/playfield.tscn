@@ -1,0 +1,249 @@
+[gd_scene load_steps=25 format=3 uid="uid://cr62xw6ofifyl"]
+
+[ext_resource type="Script" path="res://scenes/minigames/rhythm/play/playfield.gd" id="1_a1v4t"]
+[ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://scenes/minigames/rhythm/util/audio_synchronizer.tscn" id="3_g2rft"]
+[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="3_m4kyl"]
+[ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="4_apd5l"]
+[ext_resource type="Shader" path="res://resources/shaders/post_processing/rain.gdshader" id="5_ap68j"]
+[ext_resource type="Shader" path="res://resources/shaders/post_processing/flash.gdshader" id="6_mwlh0"]
+[ext_resource type="Shader" path="res://resources/shaders/post_processing/greyscale.gdshader" id="7_adyhk"]
+[ext_resource type="Shader" path="res://resources/shaders/post_processing/albedo.gdshader" id="8_k4mm8"]
+[ext_resource type="Shader" path="res://resources/shaders/post_processing/impact_lines.gdshader" id="9_5refg"]
+[ext_resource type="Shader" path="res://resources/shaders/spatial/clear_shader_spatial.gdshader" id="10_ckunn"]
+[ext_resource type="Shader" path="res://resources/shaders/spatial/albedo_fade.gdshader" id="10_ji235"]
+[ext_resource type="Shader" path="res://resources/shaders/spatial/radial_pattern.gdshader" id="11_14gwy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_tu6ej"]
+flip_faces = true
+size = Vector2(2, 2)
+subdivide_width = 40
+subdivide_depth = 40
+
+[sub_resource type="Resource" id="Resource_7nrik"]
+script = ExtResource("4_apd5l")
+name = &"rain"
+shader = ExtResource("5_ap68j")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {
+"brightness": null,
+"tiling_dimensions": null
+}
+priority_overwrite = 0
+
+[sub_resource type="Resource" id="Resource_yrrv7"]
+script = ExtResource("4_apd5l")
+name = &"flash"
+shader = ExtResource("6_mwlh0")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {
+"start_time": null
+}
+priority_overwrite = 0
+
+[sub_resource type="Resource" id="Resource_ywrme"]
+script = ExtResource("4_apd5l")
+name = &"greyscale"
+shader = ExtResource("7_adyhk")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {}
+priority_overwrite = 999
+
+[sub_resource type="Resource" id="Resource_d2fem"]
+script = ExtResource("4_apd5l")
+name = &"albedo"
+shader = ExtResource("8_k4mm8")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {
+"albedo": null
+}
+priority_overwrite = 999
+
+[sub_resource type="Resource" id="Resource_wqupw"]
+script = ExtResource("4_apd5l")
+name = &"impact_lines"
+shader = ExtResource("9_5refg")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {
+"bias_angle": null,
+"bias_weight": null,
+"weight": null
+}
+priority_overwrite = 999
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0omd"]
+script = ExtResource("3_m4kyl")
+shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_7nrik"), SubResource("Resource_yrrv7"), SubResource("Resource_ywrme"), SubResource("Resource_d2fem"), SubResource("Resource_wqupw")])
+
+[sub_resource type="GDScript" id="GDScript_1sgvm"]
+script/source = "@tool
+class_name ScreenSpaceMesh extends MeshInstance3D
+## A mesh that runs a screen-space shader... in screen-space.
+##
+## Instantiating as a child of a [code]Camera3D[/code] is not required. The node
+## just needs to be placed within the scene tree.
+
+
+
+#const CLEAR_SHADER := preload('res://tools/minigames/rhythm/util/shader/clear_shader.gdshader')
+#
+#enum { DISABLE=0, ENABLE=1 }
+#
+#class ShaderBinding:
+	#var material : ShaderMaterial
+	#var shader_pass : ShaderPass
+	#
+	#func _init(material : ShaderMaterial, shader_pass : ShaderPass):
+		#self.material = material
+		#self.shader_pass = shader_pass
+#
+#@export var shader_passes : Array[ShaderPass] = []
+#
+#var shader_map : Dictionary = {}
+#
+#func _ready() -> void:
+	#if self.shader_passes.is_empty() or get_surface_override_material_count() == 0: return
+	#
+	#var pass_material := ShaderMaterial.new()
+	#set_surface_override_material(0, pass_material)
+	#for i in range(len(self.shader_passes)):
+		#var shader_pass := self.shader_passes[i]
+		#shader_map[shader_pass.name] = ShaderBinding.new(pass_material, shader_pass)
+		#
+		#pass_material.shader = CLEAR_SHADER
+		#pass_material.render_priority = shader_pass.priority_overwrite if shader_pass.has_valid_priority_overwrite() else -len(self.shader_passes) + i
+		#pass_material.next_pass = ShaderMaterial.new()
+		#pass_material = pass_material.next_pass
+#
+#func enable_shader(pass_name : String, uniforms : Dictionary={}):
+	##var pass_shader = get_surface_override_material(0)
+	##for i in range(index): pass_shader = pass_shader.next_pass
+	#
+	#var binding : ShaderBinding = shader_map[pass_name]
+	#if binding.material.shader == CLEAR_SHADER:
+		#binding.material.set_shader(binding.shader_pass.shader.duplicate())
+	#
+	#var uniform_dict : Dictionary = binding.shader_pass.default_uniforms if uniforms.is_empty() else uniforms
+	#for uniform_name in uniform_dict:
+		#var uniform_value : Variant = uniform_dict[uniform_name]
+		## if not uniform: continue
+		#binding.material.set_shader_parameter(uniform_name, uniform_value)
+#
+#func disable_shader(pass_name : String):
+	#shader_map[pass_name].material.shader = CLEAR_SHADER
+"
+
+[sub_resource type="QuadMesh" id="QuadMesh_noca2"]
+size = Vector2(100, 100)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_5qumv"]
+script = ExtResource("4_apd5l")
+name = &"albedo_fade"
+shader = ExtResource("10_ji235")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {}
+priority_overwrite = 999
+
+[sub_resource type="Resource" id="Resource_k750l"]
+script = ExtResource("4_apd5l")
+name = &"radial_pattern"
+shader = ExtResource("11_14gwy")
+is_enabled_by_default = false
+is_unique_pass = true
+default_uniforms = {}
+priority_overwrite = 999
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5pri"]
+render_priority = 0
+shader = ExtResource("10_ckunn")
+script = ExtResource("3_m4kyl")
+shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), SubResource("Resource_k750l")])
+
+[node name="Playfield" type="Node3D"]
+script = ExtResource("1_a1v4t")
+
+[node name="AudioSynchronizer" parent="." instance=ExtResource("3_g2rft")]
+
+[node name="Keys" type="Node3D" parent="."]
+
+[node name="ScreenSpaceMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_tu6ej")
+surface_material_override/0 = SubResource("ShaderMaterial_m0omd")
+script = SubResource("GDScript_1sgvm")
+
+[node name="BackplaneMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+mesh = SubResource("QuadMesh_noca2")
+surface_material_override/0 = SubResource("ShaderMaterial_l5pri")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 968.0
+offset_bottom = 131.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 40
+text = "Lorem Ipsum"
+vertical_alignment = 1
+
+[node name="BPMLabel" type="Label" parent="."]
+visible = false
+offset_left = 32.0
+offset_top = 152.0
+offset_right = 968.0
+offset_bottom = 219.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 32
+text = "BPM: 0"
+vertical_alignment = 1
+
+[node name="FrametimeLabel" type="Label" parent="."]
+visible = false
+offset_left = 32.0
+offset_top = 192.0
+offset_right = 968.0
+offset_bottom = 259.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 32
+text = "Frametime: 0.00ms"
+vertical_alignment = 1
+
+[node name="EnabledPassesLabel" type="Label" parent="."]
+visible = false
+offset_left = 32.0
+offset_top = 248.0
+offset_right = 968.0
+offset_bottom = 664.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 32
+text = "Enabled Shader Passes:"
+
+[node name="BeatLabel" type="Label" parent="."]
+visible = false
+offset_left = 32.0
+offset_top = 112.0
+offset_right = 260.0
+offset_bottom = 179.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 32
+text = "Beat: 1 / 4 (00 : 00)"
+vertical_alignment = 1
+
+[connection signal="on_beat" from="AudioSynchronizer" to="." method="_on_audio_synchronizer_on_beat"]

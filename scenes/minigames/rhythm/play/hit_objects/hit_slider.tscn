@@ -1,0 +1,103 @@
+[gd_scene load_steps=17 format=3 uid="uid://cerqddygybdld"]
+
+[ext_resource type="Script" path="res://scenes/minigames/rhythm/play/hit_objects/hit_slider.gd" id="1_58qdk"]
+[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="2_kbsh8"]
+[ext_resource type="Shader" path="res://scenes/minigames/rhythm/resources/shaders/slider.gdshader" id="3_tfcjt"]
+[ext_resource type="Texture2D" uid="uid://dshmx1xpwrjel" path="res://scenes/minigames/rhythm/assets/hit_slider_front.png" id="4_55pw2"]
+[ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="5_b2ljq"]
+[ext_resource type="Shader" path="res://scenes/minigames/rhythm/resources/shaders/warp_slider.gdshader" id="6_26x4x"]
+[ext_resource type="Texture2D" uid="uid://cg4m6x2d1nxkg" path="res://scenes/minigames/rhythm/assets/hit_slider_body.png" id="7_fyjog"]
+[ext_resource type="Texture2D" uid="uid://crn7dcukn87j2" path="res://scenes/minigames/rhythm/assets/hit_slider_end.png" id="8_t1gm5"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_7fr1q"]
+
+[sub_resource type="Resource" id="Resource_83mnj"]
+script = ExtResource("5_b2ljq")
+name = &"warp"
+shader = ExtResource("6_26x4x")
+is_enabled_by_default = false
+is_unique_pass = true
+default_uniforms = {
+"fade_out_time": null,
+"miss_color": null,
+"tex": ExtResource("4_55pw2")
+}
+priority_overwrite = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_st2ho"]
+render_priority = 2
+shader = ExtResource("3_tfcjt")
+shader_parameter/miss_color = Color(0.25, 0.085, 0.05, 1)
+shader_parameter/tex = ExtResource("4_55pw2")
+script = ExtResource("2_kbsh8")
+shader_passes = Array[ExtResource("5_b2ljq")]([SubResource("Resource_83mnj")])
+
+[sub_resource type="QuadMesh" id="QuadMesh_lwq8e"]
+subdivide_width = 20
+subdivide_depth = 20
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_erdbj"]
+script = ExtResource("5_b2ljq")
+name = &"warp"
+shader = ExtResource("6_26x4x")
+is_enabled_by_default = false
+is_unique_pass = true
+default_uniforms = {
+"fade_out_time": null,
+"miss_color": null,
+"tex": ExtResource("7_fyjog")
+}
+priority_overwrite = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k37dw"]
+render_priority = 1
+shader = ExtResource("3_tfcjt")
+shader_parameter/miss_color = Color(0.25, 0.085, 0.05, 1)
+shader_parameter/tex = ExtResource("7_fyjog")
+script = ExtResource("2_kbsh8")
+shader_passes = Array[ExtResource("5_b2ljq")]([SubResource("Resource_erdbj")])
+
+[sub_resource type="Resource" id="Resource_p0xkt"]
+script = ExtResource("5_b2ljq")
+name = &"warp"
+shader = ExtResource("6_26x4x")
+is_enabled_by_default = false
+is_unique_pass = true
+default_uniforms = {
+"fade_out_time": null,
+"miss_color": null,
+"tex": ExtResource("8_t1gm5")
+}
+priority_overwrite = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rguhj"]
+render_priority = 1
+shader = ExtResource("3_tfcjt")
+shader_parameter/miss_color = Color(0.25, 0.085, 0.05, 1)
+shader_parameter/tex = ExtResource("8_t1gm5")
+script = ExtResource("2_kbsh8")
+shader_passes = Array[ExtResource("5_b2ljq")]([SubResource("Resource_p0xkt")])
+
+[node name="HitSlider" type="Node3D"]
+script = ExtResource("1_58qdk")
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="Front" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_7fr1q")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_st2ho")
+
+[node name="Body" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("QuadMesh_lwq8e")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_k37dw")
+
+[node name="Back" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1)
+mesh = SubResource("QuadMesh_7fr1q")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_rguhj")

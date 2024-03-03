@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SocialWarfareMove" load_steps=2 format=3 uid="uid://coupae6pv6o2c"]
+
+[ext_resource type="Script" path="res://scenes/minigames/social_warfare/moves/social_warfare_move.gd" id="1_0kr7x"]
+
+[resource]
+script = ExtResource("1_0kr7x")
+move_name = "Rumor"
+move_desc = "Reference a rumor about your opponent."
+move_text_player = Array[String](["You suggest that your opponent's husband may be getting too close to one of his workers. The audacity!"])
+move_text_enemy = Array[String](["Your opponent suggests that your father's financial burden will follow your family for generations. How dare they!"])
+move_power = 4
+move_variance = 1
+move_intensity = 40

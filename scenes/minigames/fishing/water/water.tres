@@ -1,0 +1,55 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://dcgy7qsnns5qf"]
+
+[ext_resource type="Shader" path="res://scenes/minigames/fishing/water/water.gdshader" id="1_kttqy"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_34chc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yrpd6"]
+invert = true
+seamless = true
+bump_strength = 15.3
+noise = SubResource("FastNoiseLite_34chc")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_76qhk"]
+frequency = 0.0025
+fractal_type = 2
+fractal_lacunarity = 4.0
+fractal_gain = 0.205
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_je4sk"]
+width = 1024
+height = 256
+seamless = true
+bump_strength = 3.0
+noise = SubResource("FastNoiseLite_76qhk")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mif6t"]
+noise_type = 2
+cellular_distance_function = 1
+domain_warp_type = 1
+domain_warp_amplitude = 11.62
+domain_warp_fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aoceh"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_mif6t")
+
+[resource]
+render_priority = -1
+shader = ExtResource("1_kttqy")
+shader_parameter/shallow_color = Color(0.12, 0.36, 0.36, 0.95)
+shader_parameter/deep_color = Color(0.01, 0.16, 0.25, 0.988)
+shader_parameter/foam_color = Color(1, 1, 1, 0.713726)
+shader_parameter/depth_factor = 4.0
+shader_parameter/refract_scale = Vector3(0.25, 0.35, 0.005)
+shader_parameter/refract_factor = 0.5
+shader_parameter/foam_scale = Vector3(7, 5, 0.05)
+shader_parameter/foam_factor = 0.8
+shader_parameter/wave_speed = 0.4
+shader_parameter/wave_amplitude = 0.15
+shader_parameter/normal_strength = 0.11
+shader_parameter/roughness = 0.01
+shader_parameter/refract_normal = SubResource("NoiseTexture2D_aoceh")
+shader_parameter/foam_noise_texture = SubResource("NoiseTexture2D_yrpd6")
+shader_parameter/height_texture = SubResource("NoiseTexture2D_je4sk")
