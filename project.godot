@@ -26,7 +26,7 @@ WindowDimensionHelper="res://global/window_dimension_helper.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=3
 
 [editor_plugins]
@@ -37,12 +37,11 @@ enabled=PackedStringArray("res://addons/wigglebone/plugin.cfg")
 
 folder_colors={
 "res://addons/": "gray",
-"res://scenes/minigames/": "yellow",
-"res://scenes/minigames/fishing/": "pink",
-"res://scenes/minigames/library/": "orange",
-"res://scenes/minigames/shark_tank/": "green",
-"res://scenes/minigames/social_warfare/": "teal",
-"res://scenes/minigames/template/": "gray"
+"res://scenes/minigames/fishing/": "red",
+"res://scenes/minigames/library/": "yellow",
+"res://scenes/minigames/rhythm/": "teal",
+"res://scenes/minigames/shark_tank/": "purple",
+"res://scenes/minigames/social_warfare/": "orange"
 }
 
 [gui]

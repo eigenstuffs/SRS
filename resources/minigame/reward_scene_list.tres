@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RewardList" load_steps=4 format=3 uid="uid://cyduh5tusug7w"]
+[gd_resource type="Resource" script_class="RewardList" load_steps=4 format=3 uid="uid://lstcwq5twimw"]
 
 [ext_resource type="Script" path="res://resources/minigame/reward_scene_list.gd" id="1_2l0mq"]
 [ext_resource type="Script" path="res://resources/minigame/reward_scene_info.gd" id="1_flj3g"]
