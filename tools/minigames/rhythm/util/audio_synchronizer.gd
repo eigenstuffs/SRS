@@ -45,7 +45,7 @@ func _process(delta):
 	else:
 		if time > -AudioServer.get_time_to_next_mix():
 			track.play()
-			track.seek(40)
+			#track.seek(40)
 			has_played = true
 		time += delta
 

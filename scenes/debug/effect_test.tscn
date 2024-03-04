@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://y44scqxvcf1b"]
+[gd_scene load_steps=17 format=3 uid="uid://y44scqxvcf1b"]
 
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/panorama.png" id="1_niisc"]
 [ext_resource type="Script" path="res://scenes/debug/effect_test.gd" id="1_ulp82"]
 [ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="2_7jf7y"]
 [ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="3_6pytf"]
-[ext_resource type="Shader" path="res://resources/shaders/color_fade.gdshader" id="4_frb58"]
-[ext_resource type="Shader" path="res://resources/shaders/clear_shader_canvas.gdshader" id="4_oqgjt"]
+[ext_resource type="Shader" path="res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader" id="4_oqgjt"]
+[ext_resource type="PackedScene" uid="uid://btp06nsjls81w" path="res://tools/screen_space_mesh.tscn" id="6_idwb4"]
+[ext_resource type="Shader" path="res://resources/shaders/post_processing/blur.gdshader" id="7_kfw2f"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_y2lc3"]
 
@@ -22,10 +23,55 @@ sky_rotation = Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="Shader" id="Shader_cbl8y"]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+global uniform float cpu_sync_time;
+uniform vec4 start_color : source_color;
+uniform vec4 end_color : source_color;
+uniform float duration;
+uniform float start_time;
+
+// Source: https://www.shadertoy.com/view/ttcyRS
+vec3 oklab_mix(vec3 colA, vec3 colB, float h) {
+    // https://bottosson.github.io/posts/oklab
+    const mat3 kCONEtoLMS = mat3(                
+		vec3( 0.4121656120,  0.2118591070,  0.0883097947),
+		vec3( 0.5362752080,  0.6807189584,  0.2818474174),
+		vec3( 0.0514575653,  0.1074065790,  0.6302613616));
+    const mat3 kLMStoCONE = mat3(
+        vec3( 4.0767245293, -1.2681437731, -0.0041119885),
+        vec3(-3.3072168827,  2.6093323231, -0.7034763098),
+        vec3( 0.2307590544, -0.3411344290,  1.7068625689));
+                    
+    // rgb to cone (arg of pow can't be negative)
+    vec3 lmsA = pow( kCONEtoLMS*colA, vec3(1.0/3.0) );
+    vec3 lmsB = pow( kCONEtoLMS*colB, vec3(1.0/3.0) );
+    // lerp
+    vec3 lms = mix( lmsA, lmsB, h );
+    // gain in the middle (no oaklab anymore, but looks better?)
+  //lms *= 1.0+0.2*h*(1.0-h);
+    // cone to rgb
+    return kLMStoCONE*(lms*lms*lms);
+}
+
+void fragment() {
+	vec4 frag_color = texture(screen_texture, SCREEN_UV);
+	// Just use normal mix() if performance becomes an issue
+	vec3 start_color0 = oklab_mix(frag_color.rgb, start_color.rgb, start_color.a);
+	vec3 end_color0 = oklab_mix(frag_color.rgb, end_color.rgb, end_color.a);
+	
+	float t = min(1.0, (cpu_sync_time - start_time) / duration);
+	COLOR = vec4(oklab_mix(start_color0, end_color0, t), 1.0);
+}
+"
+
 [sub_resource type="Resource" id="Resource_r4i7m"]
 script = ExtResource("3_6pytf")
-name = &"color_fade"
-shader = ExtResource("4_frb58")
+name = &"ColorFade"
+shader = SubResource("Shader_cbl8y")
 is_enabled_by_default = false
 is_unique_pass = false
 default_uniforms = {
@@ -39,7 +85,30 @@ priority_overwrite = 999
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jg156"]
 shader = ExtResource("4_oqgjt")
 script = ExtResource("2_7jf7y")
+is_canvas_item = true
 shader_passes = Array[ExtResource("3_6pytf")]([SubResource("Resource_r4i7m")])
+
+[sub_resource type="Resource" id="Resource_06pvd"]
+script = ExtResource("3_6pytf")
+name = &"Blur"
+shader = ExtResource("7_kfw2f")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {
+"directions": null,
+"duration": null,
+"end_size": null,
+"noise_factor": null,
+"quality": null,
+"start_size": null,
+"start_time": null
+}
+priority_overwrite = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcgic"]
+script = ExtResource("2_7jf7y")
+is_canvas_item = false
+shader_passes = Array[ExtResource("3_6pytf")]([SubResource("Resource_06pvd")])
 
 [node name="EffectTest" type="Node3D"]
 script = ExtResource("1_ulp82")
@@ -66,3 +135,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ScreenSpaceMesh" parent="." instance=ExtResource("6_idwb4")]
+surface_material_override/0 = SubResource("ShaderMaterial_vcgic")

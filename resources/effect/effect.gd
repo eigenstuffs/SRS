@@ -16,10 +16,12 @@ signal interrupted
 			return
 		duration = value
 
-@export var on_run : Callable = func(): pass :
+@export var on_start : Callable = func(): pass :
 	set(value):
 		assert(not self.is_running)
-		on_run = value
+		on_start = value
+		
+@export var on_stop : Callable = func(): pass
 
 var is_running := false
 var timer : Timer
@@ -29,18 +31,20 @@ var timer : Timer
 func start(args : Array=[]) -> void:
 	if not timer: 
 		timer = Timer.new()
-		timer.connect('timeout', stop)
-		timer.wait_time = self.duration
+		timer.connect('timeout', stop if self.duration != 0 else func(): pass) # FIXME: ew!
+		timer.wait_time = self.duration + 0.000001 # FIXME: ew!
 		timer.autostart = true
 		timer.one_shot = true
 	else:
 		timer.start(self.duration)
 		interrupted.emit()
 	
-	on_run.callv(args)
+	on_start.callv(args)
 	is_running = true
 	
 func stop() -> void:
 	timer.queue_free()
 	finished.emit()
+	
+	on_stop.call()
 	is_running = false

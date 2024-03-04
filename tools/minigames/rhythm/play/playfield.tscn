@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cr62xw6ofifyl"]
+[gd_scene load_steps=27 format=3 uid="uid://cr62xw6ofifyl"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/playfield.gd" id="1_a1v4t"]
 [ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://tools/minigames/rhythm/util/audio_synchronizer.tscn" id="3_g2rft"]
@@ -9,9 +9,10 @@
 [ext_resource type="Shader" path="res://resources/shaders/post_processing/greyscale.gdshader" id="7_adyhk"]
 [ext_resource type="Shader" path="res://resources/shaders/post_processing/albedo.gdshader" id="8_k4mm8"]
 [ext_resource type="Shader" path="res://resources/shaders/post_processing/impact_lines.gdshader" id="9_5refg"]
-[ext_resource type="Shader" path="res://resources/shaders/clear_shader.gdshader" id="10_ckunn"]
-[ext_resource type="Shader" path="res://resources/shaders/albedo_fade.gdshader" id="10_ji235"]
-[ext_resource type="Shader" path="res://resources/shaders/radial_pattern.gdshader" id="11_14gwy"]
+[ext_resource type="Shader" path="res://resources/shaders/spatial/clear_shader_spatial.gdshader" id="10_ckunn"]
+[ext_resource type="Shader" path="res://resources/shaders/spatial/albedo_fade.gdshader" id="10_ji235"]
+[ext_resource type="Shader" path="res://resources/shaders/post_processing/blur.gdshader" id="10_mdpw5"]
+[ext_resource type="Shader" path="res://resources/shaders/spatial/radial_pattern.gdshader" id="11_14gwy"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_tu6ej"]
 flip_faces = true
@@ -75,9 +76,27 @@ default_uniforms = {
 }
 priority_overwrite = 999
 
+[sub_resource type="Resource" id="Resource_dm25o"]
+script = ExtResource("4_apd5l")
+name = &"Blur"
+shader = ExtResource("10_mdpw5")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {
+"directions": null,
+"duration": null,
+"end_size": null,
+"noise_factor": null,
+"quality": null,
+"start_size": null,
+"start_time": null
+}
+priority_overwrite = 999
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m0omd"]
 script = ExtResource("3_m4kyl")
-shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_7nrik"), SubResource("Resource_yrrv7"), SubResource("Resource_ywrme"), SubResource("Resource_d2fem"), SubResource("Resource_wqupw")])
+is_canvas_item = false
+shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_7nrik"), SubResource("Resource_yrrv7"), SubResource("Resource_ywrme"), SubResource("Resource_d2fem"), SubResource("Resource_wqupw"), SubResource("Resource_dm25o")])
 
 [sub_resource type="GDScript" id="GDScript_1sgvm"]
 script/source = "@tool
@@ -163,6 +182,7 @@ priority_overwrite = 999
 render_priority = 0
 shader = ExtResource("10_ckunn")
 script = ExtResource("3_m4kyl")
+is_canvas_item = false
 shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), SubResource("Resource_k750l")])
 
 [node name="Playfield" type="Node3D"]

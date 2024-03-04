@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://btp06nsjls81w"]
+
+[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="1_48y1b"]
+[ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="2_mj84s"]
+[ext_resource type="Shader" path="res://resources/shaders/post_processing/impact_lines.gdshader" id="3_oay2n"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6tccy"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="Resource" id="Resource_06pvd"]
+script = ExtResource("2_mj84s")
+name = &"impact_lines"
+shader = ExtResource("3_oay2n")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {
+"bias_angle": null,
+"bias_weight": null,
+"max_alpha": 1.0,
+"weight": 1.0
+}
+priority_overwrite = 999
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sbk6d"]
+script = ExtResource("1_48y1b")
+shader_passes = Array[ExtResource("2_mj84s")]([SubResource("Resource_06pvd")])
+
+[node name="ScreenSpaceMesh" type="MeshInstance3D"]
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_6tccy")
+surface_material_override/0 = SubResource("ShaderMaterial_sbk6d")
