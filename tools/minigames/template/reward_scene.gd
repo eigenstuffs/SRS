@@ -1,6 +1,6 @@
 extends Control
 
-class_name RewardScene
+class_name Reward
 
 signal preview_done
 signal display_finished

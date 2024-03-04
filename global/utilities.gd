@@ -26,7 +26,7 @@ func create_minigame(canvas_layer : CanvasLayer, minigame : String):
 
 func create_reward_scene(minigame : String, scores : Array[int], stats_gained : Array[int]):
 	var desired_scene = REWARD_SCENE_LIST.find_scene(minigame)
-	var a : RewardScene = desired_scene.instantiate()
+	var a : Reward = desired_scene.instantiate()
 	a.set_vars(scores, stats_gained)
 	get_tree().root.add_child(a)
 	a.start_display()

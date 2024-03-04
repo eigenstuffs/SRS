@@ -1,3 +1,3 @@
-extends RewardScene
+extends Reward
 
 class_name FishReward
