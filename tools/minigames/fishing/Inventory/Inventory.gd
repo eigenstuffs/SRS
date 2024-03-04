@@ -1,4 +1,3 @@
-#class_name RodSelection extends Minigame
 extends Control
 
 @onready var ROD_TYPE : FishingRodTypes = preload("res://tools/minigames/fishing/Inventory/types_of_rod.tres")

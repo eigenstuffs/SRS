@@ -2,9 +2,13 @@ class_name MinigameHolder extends Control
 
 const MINIGAME_VIEWPORT_DIMS : Vector2 = Vector2(1600, 900)
 
-var points : int = 0
+var rough_points : int = 0
+var detailed_points : Array = []
 
-signal finished(points)
+signal finished(detailed_points)
+#detailed points should be in the format [array1, array2]
+#array 1 should be the detailed score of that minigame, like how many books caught, how many bombs touched, etc.
+#array 2 should be an array of four numbers which represent the increment in each stat
 
 func initiate_minigame(which : String):
 	if MinigameRegistry.has_key(which):
@@ -23,13 +27,14 @@ func initiate_minigame(which : String):
 		printerr("No such minigame %s!" % which)
 
 func update_points(new : int):
-	points = new
-	$UI/PointLabel.text = str(points)
+	rough_points = new
+	$UI/PointLabel.text = str(rough_points)
 
 func _on_ui_game_over():
 	var game = $Game.get_child(0)
 	game.end()
 	await get_tree().create_timer(2).timeout
-	points = game.points
-	finished.emit(points)
+	rough_points = game.rough_points
+	detailed_points = game.detailed_points
+	finished.emit(detailed_points)
 	game.queue_free()

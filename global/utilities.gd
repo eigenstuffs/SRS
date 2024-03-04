@@ -19,9 +19,11 @@ func create_minigame(canvas_layer : CanvasLayer, minigame : String):
 	canvas_layer.add_child(a)
 	a.initiate_minigame(minigame)
 	await a.finished
-	var points = a.points
+	var points = a.detailed_points
 	a.queue_free()
+	print(points)
 	emit_signal("util_finished")
+	create_reward_scene(minigame, points[0], points[1])
 	return points
 
 func create_reward_scene(minigame : String, scores : Array[int], stats_gained : Array[int]):
@@ -29,6 +31,7 @@ func create_reward_scene(minigame : String, scores : Array[int], stats_gained : 
 	var a : Reward = desired_scene.instantiate()
 	a.set_vars(scores, stats_gained)
 	get_tree().root.add_child(a)
+	await get_tree().create_timer(1).timeout
 	a.start_display()
 	await a.display_finished
 	a.queue_free()

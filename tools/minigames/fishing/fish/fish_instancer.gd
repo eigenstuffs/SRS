@@ -1,7 +1,7 @@
 extends Node3D
 
 signal fish_hooked
-signal first_fish_info(bite_strength, speed)
+signal first_fish_info(bite_strength, speed, rarity)
 
 const FISH = preload('res://tools/minigames/fishing/fish/fish.tscn')
 @export var MAX_FISH_COUNT = 5
@@ -57,11 +57,12 @@ func _on_fishing_reeling_minigame():
 	fish_array = []
 	fish_array.append(closest_fish)
 	closest_fish.state = Fish.STATES.STOP
-	emit_signal("first_fish_info", closest_fish.bite_strength, closest_fish.speed)
+	emit_signal("first_fish_info", closest_fish.bite_strength, closest_fish.speed, closest_fish.rarity)
 
 func _on_fishing_reeling_minigame_end(is_successful):
 	var to_be_freed = fish_array[0]
 	if is_successful:
+		
 		to_be_freed.queue_free()
 	else:
 		to_be_freed.state = Fish.STATES.WANDER

@@ -33,6 +33,7 @@ var base_fish_val = 55
 var fish_speed_multiplier : float = 1
 
 var movable : bool = false
+var current_fish_rarity : String
 
 func _ready():
 	rod_strength_multiplier = ROD_TYPE.get_current_rod("reel_strength")
@@ -57,12 +58,12 @@ func _process(delta):
 		distance_bar_reset()
 		reel_bar_reset()
 		movable = false
-		emit_signal("reeling_ended", false)
+		emit_signal("reeling_ended", false, current_fish_rarity)
 	if distance_bar.value >= max_distance_val:
 		distance_bar_reset()
 		reel_bar_reset()
 		movable = false
-		emit_signal("reeling_ended", true)
+		emit_signal("reeling_ended", true, current_fish_rarity)
 
 func _on_fishing_player_casting_time():
 	force_bar.value = min_force_val
@@ -121,6 +122,7 @@ func _on_reeling_ended(is_successful):
 	timer.stop()
 
 #change bite_strength_multiplier
-func _on_fish_instancer_first_fish_info(bite_strength, speed):
+func _on_fish_instancer_first_fish_info(bite_strength, speed, rarity):
 	bite_strength_multiplier = bite_strength
 	fish_speed_multiplier = 1/speed
+	current_fish_rarity = rarity
