@@ -130,7 +130,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Wellness Gained"
+text = "Charisma Gained"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="FinalScore/Line"]
@@ -145,7 +145,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Charisma Gained"
+text = "Wellness Gained"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="FinalScore/Line2"]

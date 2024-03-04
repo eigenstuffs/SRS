@@ -49,4 +49,4 @@ func update_fish_caught_by_type(type):
 func calculate_stats(fish_types) -> Array[int]:
 	var wellness_gained = roundi(0.1*fish_types[0] + 0.3 * fish_types[1] + 0.4*fish_types[2] + 0.7*fish_types[3])
 	var charisma_gained = roundi(0.05*fish_types[0] + 0.1*fish_types[1] + 0.2*fish_types[2] + 0.4*fish_types[3])
-	return [0, wellness_gained, charisma_gained, 0]
+	return [0, 0, charisma_gained, wellness_gained]
