@@ -105,6 +105,7 @@ func reel_bar_activate():
 	reel_bar.visible = true
 	fish_bar.visible = true
 	fish_bar.value = base_fish_val
+	# FIXME: for some reason fish bar doesn't always start in the middle
 
 func _on_fishing_reeling_minigame():
 	distance_bar_activate()

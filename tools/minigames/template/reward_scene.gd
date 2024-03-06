@@ -14,6 +14,8 @@ var scores : Array
 var stats_gained : Array
 var done : bool = false
 
+var final_bar_ind : Array = [0, 1, 2, 3] #corresponds to wis, int, cha, well
+
 #set function that should be called after reward scene is instantiated
 #pass the scores gained from the minigame and corresponding stats gained here
 func set_vars(score : Array, stats : Array):
@@ -21,11 +23,14 @@ func set_vars(score : Array, stats : Array):
 	stats_gained = stats
 
 func _ready(): 
+	set_final_target()
 	stats_bar_update()
 	PLAYER_STATS.changed.connect(on_stats_changed)
 	hide_tally()
 	hide_final()
 	
+func set_final_target():
+	final_bar_ind = [0, 1, 2, 3]
 
 func hide_tally():
 	for line in score_tally.get_children():
@@ -43,14 +48,8 @@ func hide_final():
 		line.visible = false
 
 func display_final(stats_gained : Array):
-	var non_zero : Array = []
-	
-	for ind in len(stats_gained):
-		if stats_gained[ind] != 0:
-			non_zero.append(stats_gained[ind])
-
 	for line_ind in final_score.get_child_count():
-		final_score.get_child(line_ind).get_child(1).text = "+" + str(non_zero[line_ind])
+		final_score.get_child(line_ind).get_child(1).text = "+" + str(stats_gained[final_bar_ind[line_ind]])
 		final_score.get_child(line_ind).visible = true
 		await get_tree().create_timer(0.65).timeout
 	emit_signal("preview_done")

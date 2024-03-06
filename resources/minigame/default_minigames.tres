@@ -19,7 +19,7 @@ time = 200
 script = ExtResource("1_edpdx")
 name = "Fishing"
 scene = "res://tools/minigames/fishing/fishing_minigame.tscn"
-time = 0
+time = 60
 
 [resource]
 script = ExtResource("2_kofh6")
