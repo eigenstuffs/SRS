@@ -2,6 +2,8 @@ class_name LibraryMinigame extends Minigame
 
 var started = false
 
+var item_caught : Array[int] = [0, 0]
+
 func _ready():
 	await get_tree().create_timer(3).timeout
 	$NPCInstancer.active = true
@@ -12,20 +14,23 @@ func _ready():
 #when calling the gain and lose points function
 
 func gain_points(increment : int = 1):
-	points += increment
-	update_points.emit(points)
+	rough_points += increment
+	update_points.emit(rough_points)
+	update_item_caught("book")
 	
 func lose_points(decrease : int = 1):
-	points -= decrease
-	update_points.emit(points)
+	rough_points -= decrease
+	update_points.emit(rough_points)
+	update_item_caught("bomb")
 
 func end():
-	emit_signal("minigame_finished", points)
+	var stats_gained = compute_stats_gained(item_caught)
+	detailed_points = [item_caught, stats_gained]
+	emit_signal("minigame_finished", detailed_points)
 	$LibraryPlayer/CollisionShape3D.disabled = true
 	$LibraryPlayer.can_move = false
 	$NPCInstancer.queue_free()
 	$BookInstancer.queue_free()
-	print(points)
 
 func _on_library_player_book_collected():
 	gain_points(1)
@@ -34,3 +39,15 @@ func _on_library_player_book_collected():
 
 func _on_library_player_bomb_hit():
 	lose_points(1)
+	
+func update_item_caught(item_type : String):
+	match item_type:
+		"book":
+			item_caught[0] += 1
+		"bomb":
+			item_caught[1] += 1
+
+func compute_stats_gained(item_caught):
+	var int_gained = max(0, roundi(item_caught[0] * 0.3 - item_caught[1] * 0.1))
+	var well_gained = max(0, roundi(item_caught[0] * 0.2 - item_caught[1] * 0.05))
+	return [0, int_gained, 0, well_gained]
