@@ -3,7 +3,7 @@ class_name FishingMinigame extends Minigame
 # signals and end() are already defined in Minigame class .. see minigame.gd
 
 @onready var fishing_rod = $FishingPlayer/FishingRod
-@onready var force_bar = $CanvasLayer/ForceBar
+var force_bar_val
 
 signal reeling_minigame
 signal reeling_minigame_end(is_successful : bool)
@@ -13,6 +13,7 @@ var fish_caught : int = 0
 var fish_caught_by_type : Array[int] = [0, 0, 0, 0]
 
 func _ready():
+	force_bar_val = $CanvasLayer.get_force_bar_val()
 	await get_tree().create_timer(3).timeout # wait for countdown timer
 	
 func end() -> void:
@@ -21,7 +22,8 @@ func end() -> void:
 	emit_signal("minigame_finished", [fish_caught_by_type, stats_gained])
 	
 func _process(delta):
-	force_multiplier = force_bar.value / 100
+	force_bar_val = $CanvasLayer.get_force_bar_val()
+	force_multiplier = force_bar_val / 100
 	fishing_rod.bobber_initial_v.z = 3 * force_multiplier
 
 

@@ -4,10 +4,12 @@ signal stop_loop
 signal reeling_ended(is_successful : bool)
 
 @onready var ROD_TYPE : FishingRodTypes = preload("res://tools/minigames/fishing/Inventory/types_of_rod.tres")
-@onready var force_bar : ProgressBar = $ForceBar
-@onready var distance_bar : ProgressBar = $DistanceBar
-@onready var reel_bar : VScrollBar = $ReelBar
-@onready var fish_bar : VScrollBar = $FishBar
+@onready var force_bar : TextureProgressBar = $ForceBarBackground/ForceBar
+@onready var force_bar_area = $ForceBarBackground
+@onready var distance_bar : TextureProgressBar = $ReelBarBackground/DistanceBar
+@onready var reel_bar_area = $ReelBarBackground
+@onready var reel_bar : VScrollBar = $ReelBarBackground/ReelBar
+@onready var fish_bar : VScrollBar = $ReelBarBackground/FishBar
 @onready var timer : Timer = $Timer
 
 var min_force_val = 30
@@ -39,11 +41,12 @@ func _ready():
 	rod_strength_multiplier = ROD_TYPE.get_current_rod("reel_strength")
 	size_multiplier = ROD_TYPE.get_current_rod("reel_size")
 	force_bar_reset()
-	distance_bar_reset()
 	reel_bar_reset()
 	movable = false
 
 func _process(delta):
+	#FIXME: common fish won't go down :(
+	#FIXME: add some sort of notification whn fish hooked
 	if movable == true:
 		if Input.is_action_pressed("ui_accept"):
 			reel_bar.value -= reel_speed * delta
@@ -55,19 +58,23 @@ func _process(delta):
 			distance_bar.value -= dist_dec_speed * bite_strength_multiplier * delta
 
 	if distance_bar.value <= min_distance_val:
-		distance_bar_reset()
 		reel_bar_reset()
 		movable = false
 		emit_signal("reeling_ended", false, current_fish_rarity)
 	if distance_bar.value >= max_distance_val:
-		distance_bar_reset()
 		reel_bar_reset()
 		movable = false
 		emit_signal("reeling_ended", true, current_fish_rarity)
+		
+	#update the progress bars' tint
+	var force_bar_percentage : float = (force_bar.value - min_force_val) / (max_force_val - min_force_val)
+	force_bar.tint_progress = Color(1 * (1 - max(0, (force_bar_percentage - 0.5) * 2)), force_bar_percentage * 2, 0, 0.75)
+	var dist_bar_percentage : float = (distance_bar.value - min_distance_val) / (max_distance_val - min_distance_val)
+	distance_bar.tint_progress = Color(1 * (1 - max(0, (dist_bar_percentage - 0.5) * 2)), dist_bar_percentage * 2, 0, 0.75)
 
 func _on_fishing_player_casting_time():
 	force_bar.value = min_force_val
-	force_bar.visible = true
+	force_bar_area.visible = true
 	bar_animation()
 
 func bar_animation():
@@ -83,32 +90,24 @@ func _on_fishing_player_fishing_time():
 
 # the resets
 func force_bar_reset():
-	force_bar.visible = false
+	force_bar_area.visible = false
 	force_bar.value = min_force_val
-
-func distance_bar_reset():
-	distance_bar.visible = false
-	distance_bar.value = base_distance_val
+	
 	
 func reel_bar_reset():
-	reel_bar.visible = false
+	reel_bar_area.visible = false
 	reel_bar.value = base_reel_val
 	reel_bar.page = reel_size * size_multiplier
-	fish_bar.visible = false
 	fish_bar.value = base_fish_val
+	distance_bar.value = base_distance_val
 
 # the activate
-func distance_bar_activate():
-	distance_bar.visible = true
 
 func reel_bar_activate():
-	reel_bar.visible = true
-	fish_bar.visible = true
+	reel_bar_area.visible = true
 	fish_bar.value = base_fish_val
-	# FIXME: for some reason fish bar doesn't always start in the middle
 
 func _on_fishing_reeling_minigame():
-	distance_bar_activate()
 	reel_bar_activate()
 	movable = true
 	timer.start(fish_move_interval)
@@ -119,7 +118,7 @@ func _on_timer_timeout():
 	var current_value = fish_bar.value
 	a.tween_property(fish_bar, "value", randi_range(current_value - 30, current_value + 30), fish_move_interval * fish_speed_multiplier)
 
-func _on_reeling_ended(is_successful):
+func _on_reeling_ended(is_successful, current_fish_rarity):
 	timer.stop()
 
 #change bite_strength_multiplier
@@ -127,3 +126,6 @@ func _on_fish_instancer_first_fish_info(bite_strength, speed, rarity):
 	bite_strength_multiplier = bite_strength
 	fish_speed_multiplier = 1/speed
 	current_fish_rarity = rarity
+
+func get_force_bar_val():
+	return force_bar.value

@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjt4skwe1eu5h"]
+[gd_scene load_steps=23 format=3 uid="uid://bjt4skwe1eu5h"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_minigame.gd" id="1_rrich"]
+[ext_resource type="PackedScene" uid="uid://c2a7l04mpfien" path="res://tools/minigames/fishing/canvas_layer.tscn" id="2_1qyje"]
 [ext_resource type="PackedScene" uid="uid://hq67rtu14odh" path="res://tools/minigames/fishing/fish/fish_instancer.tscn" id="2_cead1"]
-[ext_resource type="Script" path="res://tools/minigames/fishing/CanvasLayer.gd" id="2_t7pno"]
-[ext_resource type="Theme" uid="uid://clo3cl53bfgy" path="res://tools/minigames/fishing/fish_indicator.tres" id="3_aey5a"]
 [ext_resource type="Script" path="res://tools/minigames/fishing/Water.gd" id="3_slp7l"]
 [ext_resource type="PackedScene" uid="uid://cac7s21gtcba8" path="res://scenes/player/fishing_player.tscn" id="4_y1r0s"]
 [ext_resource type="Material" uid="uid://dcgy7qsnns5qf" path="res://tools/minigames/fishing/water/water.tres" id="6_7is7m"]
@@ -68,74 +67,7 @@ glow_enabled = true
 [node name="Fishing" type="SubViewport"]
 script = ExtResource("1_rrich")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("2_t7pno")
-
-[node name="ForceBar" type="ProgressBar" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -247.5
-offset_top = 216.0
-offset_right = 247.5
-offset_bottom = 323.0
-grow_horizontal = 2
-min_value = 30.0
-max_value = 150.0
-step = 1.0
-value = 30.0
-show_percentage = false
-
-[node name="DistanceBar" type="ProgressBar" parent="CanvasLayer"]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -225.0
-offset_top = -104.0
-offset_right = -165.0
-offset_bottom = 226.0
-grow_horizontal = 0
-grow_vertical = 2
-value = 30.0
-fill_mode = 3
-show_percentage = false
-
-[node name="ReelBar" type="VScrollBar" parent="CanvasLayer"]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -352.0
-offset_top = -147.0
-offset_right = -263.0
-offset_bottom = 258.0
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 4
-mouse_filter = 2
-page = 20.0
-value = 40.0
-
-[node name="FishBar" type="VScrollBar" parent="CanvasLayer"]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -343.0
-offset_top = -145.0
-offset_right = -272.0
-offset_bottom = 256.0
-grow_horizontal = 0
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("3_aey5a")
-page = 3.0
-
-[node name="Timer" type="Timer" parent="CanvasLayer"]
+[node name="CanvasLayer" parent="." instance=ExtResource("2_1qyje")]
 
 [node name="Ground" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0533893, 0, -2.25496)
@@ -254,8 +186,6 @@ environment = SubResource("Environment_jjnea")
 [connection signal="reeling_minigame_end" from="." to="fish_instancer" method="_on_fishing_reeling_minigame_end"]
 [connection signal="reeling_minigame_end" from="." to="FishingPlayer" method="_on_fishing_reeling_minigame_end"]
 [connection signal="reeling_ended" from="CanvasLayer" to="." method="_on_canvas_layer_reeling_ended"]
-[connection signal="reeling_ended" from="CanvasLayer" to="CanvasLayer" method="_on_reeling_ended"]
-[connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
 [connection signal="first_fish_info" from="fish_instancer" to="CanvasLayer" method="_on_fish_instancer_first_fish_info"]
 [connection signal="fish_hooked" from="fish_instancer" to="." method="_on_fish_instancer_fish_hooked"]
 [connection signal="casting_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_casting_time"]
