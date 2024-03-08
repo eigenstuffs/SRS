@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Beatmap" load_steps=3 format=3 uid="uid://d1diww2j04bn0"]
+
+[ext_resource type="Script" path="res://resources/beatmap/beatmap.gd" id="1_noj65"]
+[ext_resource type="AudioStream" uid="uid://d01apbte2ii38" path="res://assets/beatmaps/cait_sith.mp3" id="2_8jdtm"]
+
+[resource]
+script = ExtResource("1_noj65")
+title = &"Cait Sith"
+track = ExtResource("2_8jdtm")
+path = "res://assets/beatmaps/cait_sith.osu"
+start_offset = 2.561
+bpm = 170.0
+num_keys = 7

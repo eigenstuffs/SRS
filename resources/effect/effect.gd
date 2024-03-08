@@ -31,8 +31,8 @@ var timer : Timer
 func start(args : Array=[]) -> void:
 	if not timer: 
 		timer = Timer.new()
-		timer.connect('timeout', stop)
-		timer.wait_time = self.duration
+		timer.connect('timeout', stop if self.duration != 0 else func(): pass) # FIXME: ew!
+		timer.wait_time = self.duration + 0.000001 # FIXME: ew!
 		timer.autostart = true
 		timer.one_shot = true
 	else:

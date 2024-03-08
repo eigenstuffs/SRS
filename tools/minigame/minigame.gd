@@ -2,13 +2,15 @@ class_name Minigame extends SubViewport
 
 ## An abstract minigame. Should be extended in the main script for each minigame.
 
-signal minigame_finished(points : int)
+signal minigame_finished(detailed_points : int)
 signal update_points(points : int)
 
-@export var points : int = 0
+var rough_points : int = 0
+@export var detailed_points : Array = []
+
 
 func end() -> void:
-	minigame_finished.emit(points)
+	minigame_finished.emit(detailed_points)
 	
 # FIXME: I don't understand viewports and this is the only way I could get mouse
 # inputs to pass through to the child subviewport!

@@ -1,10 +1,26 @@
-[gd_resource type="Resource" script_class="MinigameList" load_steps=5 format=3 uid="uid://5hym76i6sluw"]
+[gd_resource type="Resource" script_class="MinigameList" load_steps=6 format=3 uid="uid://5hym76i6sluw"]
 
-[ext_resource type="Resource" uid="uid://dpmujdqlju0tg" path="res://resources/minigame/library.tres" id="1_q1xqi"]
-[ext_resource type="Resource" uid="uid://csyy05yhxsu5k" path="res://resources/minigame/rhythm.tres" id="2_j27lu"]
+[ext_resource type="Script" path="res://resources/minigame/minigame_info.gd" id="1_edpdx"]
 [ext_resource type="Script" path="res://resources/minigame/minigame_list.gd" id="2_kofh6"]
-[ext_resource type="Resource" uid="uid://ckgkcdf8ppdtj" path="res://resources/minigame/fishing.tres" id="3_tg4jj"]
+
+[sub_resource type="Resource" id="Resource_ubdwe"]
+script = ExtResource("1_edpdx")
+name = "Library"
+scene = "res://tools/minigames/library/library_minigame.tscn"
+time = 10
+
+[sub_resource type="Resource" id="Resource_ip00n"]
+script = ExtResource("1_edpdx")
+name = "Rhythm"
+scene = "res://tools/minigames/rhythm/rhythm_minigame.tscn"
+time = 200
+
+[sub_resource type="Resource" id="Resource_76hxi"]
+script = ExtResource("1_edpdx")
+name = "Fishing"
+scene = "res://tools/minigames/fishing/fishing_minigame.tscn"
+time = 60
 
 [resource]
 script = ExtResource("2_kofh6")
-minigame_list = Array[Resource("res://resources/minigame/minigame_info.gd")]([ExtResource("1_q1xqi"), ExtResource("2_j27lu"), ExtResource("3_tg4jj")])
+minigame_list = Array[ExtResource("1_edpdx")]([SubResource("Resource_ubdwe"), SubResource("Resource_ip00n"), SubResource("Resource_76hxi")])

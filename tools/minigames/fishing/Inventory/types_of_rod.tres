@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="FishingRodTypes" load_steps=2 format=3 uid="uid://dg3ec88n3xtxy"]
+
+[ext_resource type="Script" path="res://tools/minigames/fishing/Inventory/types_of_rod.gd" id="1_g0vsu"]
+
+[resource]
+script = ExtResource("1_g0vsu")

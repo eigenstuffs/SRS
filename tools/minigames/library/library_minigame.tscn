@@ -1,0 +1,156 @@
+[gd_scene load_steps=17 format=3 uid="uid://buyuq0kfr1tme"]
+
+[ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
+[ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="2_4dmdn"]
+[ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
+[ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="4_q284v"]
+[ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/book/wiggle/book_holder.tscn" id="5_4rr6e"]
+[ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/npc_instancer.tscn" id="5_hbp12"]
+[ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="6_8v8og"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jsdi"]
+albedo_color = Color(0.0862745, 0.0627451, 0.0588235, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_krp85"]
+material = SubResource("StandardMaterial3D_3jsdi")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0qot"]
+albedo_texture = ExtResource("2_4dmdn")
+
+[sub_resource type="BoxMesh" id="BoxMesh_eo85j"]
+material = SubResource("StandardMaterial3D_m0qot")
+size = Vector3(0.5, 6, 8.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnnu8"]
+albedo_texture = ExtResource("2_4dmdn")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ngvxs"]
+material = SubResource("StandardMaterial3D_vnnu8")
+size = Vector3(10, 6, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxk7j"]
+size = Vector3(10, 5, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uh7u6"]
+size = Vector3(0.2, 5, 10)
+
+[node name="Library" type="SubViewport"]
+size = Vector2i(1600, 900)
+script = ExtResource("1_jnejo")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Ground" type="Node3D" parent="Walls"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Ground"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.510077, 0)
+shape = SubResource("BoxShape3D_o262n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Ground"]
+layers = 3
+mesh = SubResource("PlaneMesh_krp85")
+
+[node name="Shelves" type="Node3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.48397, 0)
+
+[node name="Right Shelf" type="MeshInstance3D" parent="Walls/Shelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0.5)
+mesh = SubResource("BoxMesh_eo85j")
+skeleton = NodePath("../Facing Shelf")
+
+[node name="Left Shelf" type="MeshInstance3D" parent="Walls/Shelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0.5)
+mesh = SubResource("BoxMesh_eo85j")
+skeleton = NodePath("../Facing Shelf")
+
+[node name="Facing Shelf" type="MeshInstance3D" parent="Walls/Shelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+mesh = SubResource("BoxMesh_ngvxs")
+
+[node name="Colliders" type="Node3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
+
+[node name="Back Wall" type="StaticBody3D" parent="Walls/Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.623937)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Back Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_oxk7j")
+
+[node name="Front Wall2" type="StaticBody3D" parent="Walls/Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.87005)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Front Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_oxk7j")
+
+[node name="Left Wall" type="StaticBody3D" parent="Walls/Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85, 2.08165e-12, 2.08165e-12)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Left Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_uh7u6")
+
+[node name="Right Wall" type="StaticBody3D" parent="Walls/Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85, 2.08165e-12, 2.08165e-12)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Right Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_uh7u6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 3.02058e-16, 0.866025, 0.5, -5.2318e-16, -0.5, 0.866025, 2.08165e-12, 7.65, 14)
+current = true
+fov = 20.0
+size = 73.377
+frustum_offset = Vector2(0, 50)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+light_color = Color(1, 0.913725, 0.807843, 1)
+light_energy = 3.01
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+omni_range = 11.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.978, 6.92968)
+light_color = Color(1, 0.933333, 0.811765, 1)
+
+[node name="LibraryPlayer" parent="." instance=ExtResource("3_jyoxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 1.765)
+collision_mask = 2
+
+[node name="Shadow" parent="LibraryPlayer" instance=ExtResource("4_q284v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.96046e-08, 0.25)
+size = Vector3(1, 100, 1)
+
+[node name="BookHolder" parent="LibraryPlayer" instance=ExtResource("5_4rr6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575, 0)
+
+[node name="NPCInstancer" parent="." instance=ExtResource("5_hbp12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.5)
+
+[node name="BookInstancer" parent="." instance=ExtResource("6_8v8og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2.12845)
+
+[connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]
+[connection signal="book_collected" from="LibraryPlayer" to="." method="_on_library_player_book_collected"]
+
+[editable path="NPCInstancer"]

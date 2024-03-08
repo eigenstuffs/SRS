@@ -1,0 +1,182 @@
+[gd_scene load_steps=17 format=3 uid="uid://c2a7l04mpfien"]
+
+[ext_resource type="Script" path="res://tools/minigames/fishing/CanvasLayer.gd" id="1_6fbr5"]
+[ext_resource type="Texture2D" uid="uid://1rdv05kpp023" path="res://tools/minigames/fishing/assets/Bar.png" id="2_rtpc0"]
+[ext_resource type="Texture2D" uid="uid://j8wjgtciyh5s" path="res://tools/minigames/fishing/assets/Horizontal Bar Colored.png" id="3_aqixm"]
+[ext_resource type="Texture2D" uid="uid://cg3wlamwhwx87" path="res://tools/minigames/fishing/assets/Foreground bar Vertical Non-Colored.png" id="4_6wew6"]
+[ext_resource type="Texture2D" uid="uid://cnpdexig1tp0h" path="res://tools/minigames/fishing/assets/Background.png" id="4_r0ne2"]
+[ext_resource type="Texture2D" uid="uid://bjfut6hbjftyx" path="res://tools/minigames/fishing/assets/Horizontal Bar Not Colored.png" id="4_xos8c"]
+[ext_resource type="Texture2D" uid="uid://cnfvfvyvplg87" path="res://tools/minigames/fishing/assets/Green Thing Fishing.png" id="5_ekrf7"]
+[ext_resource type="Texture2D" uid="uid://84pvbep8uq2t" path="res://tools/minigames/fishing/assets/Foreground.png" id="6_63wkd"]
+[ext_resource type="Texture2D" uid="uid://cldf5mqvevpua" path="res://tools/minigames/fishing/assets/Edge Decorations.png" id="7_m7e7l"]
+[ext_resource type="Texture2D" uid="uid://dh7speq8hb4dy" path="res://tools/minigames/fishing/assets/Fishing pole.png" id="8_fqcbr"]
+[ext_resource type="Theme" uid="uid://clo3cl53bfgy" path="res://tools/minigames/fishing/fish_indicator.tres" id="9_waowt"]
+[ext_resource type="Texture2D" uid="uid://blaxpc0xecclc" path="res://tools/minigames/fishing/assets/Foreground bar Vertical Colored.png" id="11_rc7md"]
+
+[sub_resource type="Theme" id="Theme_3w02b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_awyml"]
+texture = ExtResource("5_ekrf7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3q8s8"]
+texture = ExtResource("6_63wkd")
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+
+[sub_resource type="Theme" id="Theme_sp34n"]
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_awyml")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_3q8s8")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_6fbr5")
+
+[node name="ForceBarBackground" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -265.0
+offset_top = -308.0
+offset_right = 266.0
+offset_bottom = -171.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rtpc0")
+metadata/_edit_group_ = true
+
+[node name="ForceBar" type="TextureProgressBar" parent="ForceBarBackground"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -248.0
+offset_top = 16.0
+offset_right = 247.0
+offset_bottom = 123.0
+grow_horizontal = 2
+min_value = 30.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_aqixm")
+texture_progress = ExtResource("4_xos8c")
+
+[node name="ReelBarBackground" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 591.0
+offset_top = -169.0
+offset_right = 714.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3w02b")
+texture = ExtResource("4_r0ne2")
+expand_mode = 1
+
+[node name="ReelBar" type="VScrollBar" parent="ReelBarBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -202.0
+offset_right = 40.5
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme = SubResource("Theme_sp34n")
+page = 20.0
+value = 40.0
+
+[node name="Edge" type="TextureRect" parent="ReelBarBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -195.0
+offset_right = 57.5
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_m7e7l")
+
+[node name="Rod" type="TextureRect" parent="ReelBarBackground"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -220.0
+offset_right = 7.0
+offset_bottom = 221.0
+grow_vertical = 2
+texture = ExtResource("8_fqcbr")
+expand_mode = 1
+
+[node name="FishBar" type="VScrollBar" parent="ReelBarBackground"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -201.0
+offset_right = -28.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("9_waowt")
+page = 3.0
+
+[node name="DistanceBarBack" type="TextureRect" parent="ReelBarBackground"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -226.0
+offset_right = 37.0
+offset_bottom = 224.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_r0ne2")
+expand_mode = 1
+
+[node name="DistanceBar" type="TextureProgressBar" parent="ReelBarBackground"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -222.0
+offset_right = 33.0
+offset_bottom = 221.0
+grow_horizontal = 0
+grow_vertical = 2
+value = 30.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("11_rc7md")
+texture_progress = ExtResource("4_6wew6")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="reeling_ended" from="." to="." method="_on_reeling_ended"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

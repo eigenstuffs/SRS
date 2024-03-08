@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://clo3cl53bfgy"]
+
+[ext_resource type="Texture2D" uid="uid://cywvjquqs023f" path="res://tools/minigames/fishing/assets/Fish.png" id="1_7t8t2"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_oy3tu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_473pq"]
+texture = ExtResource("1_7t8t2")
+expand_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn3oe"]
+bg_color = Color(0.137255, 0.67451, 0.72549, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pp2i0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+VScrollBar/icons/decrement = SubResource("ImageTexture_oy3tu")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_oy3tu")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_oy3tu")
+VScrollBar/icons/increment = SubResource("ImageTexture_oy3tu")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_oy3tu")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_oy3tu")
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_473pq")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_nn3oe")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_nn3oe")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_pp2i0")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_pp2i0")

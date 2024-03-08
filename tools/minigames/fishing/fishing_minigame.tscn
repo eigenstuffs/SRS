@@ -1,0 +1,192 @@
+[gd_scene load_steps=23 format=3 uid="uid://bjt4skwe1eu5h"]
+
+[ext_resource type="Script" path="res://tools/minigames/fishing/fishing_minigame.gd" id="1_rrich"]
+[ext_resource type="PackedScene" uid="uid://c2a7l04mpfien" path="res://tools/minigames/fishing/canvas_layer.tscn" id="2_1qyje"]
+[ext_resource type="PackedScene" uid="uid://hq67rtu14odh" path="res://tools/minigames/fishing/fish/fish_instancer.tscn" id="2_cead1"]
+[ext_resource type="Script" path="res://tools/minigames/fishing/Water.gd" id="3_slp7l"]
+[ext_resource type="PackedScene" uid="uid://cac7s21gtcba8" path="res://scenes/player/fishing_player.tscn" id="4_y1r0s"]
+[ext_resource type="Material" uid="uid://dcgy7qsnns5qf" path="res://tools/minigames/fishing/water/water.tres" id="6_7is7m"]
+[ext_resource type="Shader" path="res://tools/minigames/fishing/water/sea_floor.gdshader" id="7_kygv1"]
+[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/panorama.png" id="9_i0a1k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rve5y"]
+size = Vector3(3.13702, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkhmw"]
+albedo_color = Color(0.0862745, 0.0627451, 0.0588235, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d8xei"]
+material = SubResource("StandardMaterial3D_xkhmw")
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iucpa"]
+size = Vector3(20, 5, 0.325049)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_odbwy"]
+size = Vector3(0.2, 5, 9)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t6m4j"]
+size = Vector2(10, 15)
+subdivide_width = 32
+subdivide_depth = 64
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1621q"]
+size = Vector2(15, 20)
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ta24x"]
+noise_type = 4
+frequency = 0.0036
+fractal_gain = 5.715
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4p5nf"]
+noise = SubResource("FastNoiseLite_ta24x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bgbki"]
+render_priority = 0
+shader = ExtResource("7_kygv1")
+shader_parameter/height_map = SubResource("NoiseTexture2D_4p5nf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jq107"]
+size = Vector3(10.6926, 1, 17.2794)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5qk2j"]
+panorama = ExtResource("9_i0a1k")
+
+[sub_resource type="Sky" id="Sky_b38cy"]
+sky_material = SubResource("PanoramaSkyMaterial_5qk2j")
+
+[sub_resource type="Environment" id="Environment_jjnea"]
+background_mode = 2
+sky = SubResource("Sky_b38cy")
+sky_rotation = Vector3(0.00174533, -1.12748, 0.527089)
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Fishing" type="SubViewport"]
+script = ExtResource("1_rrich")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_1qyje")]
+
+[node name="Ground" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0533893, 0, -2.25496)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8779, -0.510077, 0)
+shape = SubResource("BoxShape3D_rve5y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(0.212278, 0, 0, 0, 1, 0, 2.85405e-16, 0, 1, -1.4165, 0.00840366, -1.11759e-08)
+layers = 3
+mesh = SubResource("PlaneMesh_d8xei")
+
+[node name="Colliders" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
+
+[node name="Back Wall" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.623937)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Back Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0, -2.9551)
+shape = SubResource("BoxShape3D_iucpa")
+
+[node name="Front Wall2" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.87005)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Front Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0, -7.34694)
+shape = SubResource("BoxShape3D_iucpa")
+
+[node name="Left Wall" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85, 2.08165e-12, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Left Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.484712, 0, -4.27371)
+shape = SubResource("BoxShape3D_odbwy")
+
+[node name="FishLeftWall" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85, 2.08165e-12, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/FishLeftWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51517, 0, 0.726)
+shape = SubResource("BoxShape3D_odbwy")
+
+[node name="Right Wall" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85, 2.08165e-12, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Right Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0945082, 0, -4.20388)
+shape = SubResource("BoxShape3D_odbwy")
+
+[node name="FishRightWall" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85, 0, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/FishRightWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00185251, 0, 0)
+shape = SubResource("BoxShape3D_odbwy")
+
+[node name="fish_instancer" parent="." instance=ExtResource("2_cead1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.053, 1.5, 1.387)
+MAX_FISH_COUNT = 10
+
+[node name="Water" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 0.0533893, 0, 0.867559)
+script = ExtResource("3_slp7l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Water"]
+transform = Transform3D(1.06068, 0, 0, 2.6123e-23, 0.90919, -2.1641e-23, 6.93439e-15, -1.26083e-23, 1.1424, 1.82188, -5.29396e-23, -2.98023e-08)
+layers = 3
+mesh = SubResource("PlaneMesh_t6m4j")
+surface_material_override/0 = ExtResource("6_7is7m")
+
+[node name="SeaFloorMesh (Variation In Height Makes Water Look Better Since It Modulates Between A Deep and Shallow Color) (Feel Free To Change This)" type="MeshInstance3D" parent="Water"]
+transform = Transform3D(1.05923, 0, 0, -8.73503e-22, 0.90919, -9.05278e-24, 0, -1.26083e-23, 1.1424, -0.741774, -3.05772, 1.11759e-08)
+layers = 3
+mesh = SubResource("PlaneMesh_1621q")
+surface_material_override/0 = SubResource("ShaderMaterial_bgbki")
+
+[node name="WaterSurface" type="Area3D" parent="Water"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.12238e-23, 0, -1.12238e-23, 1, 0, -0.588483, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water/WaterSurface"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.12238e-23, 0, -1.12238e-23, 1, 1.81472, 0, 0.0244763)
+shape = SubResource("BoxShape3D_jq107")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 2.08165e-12, 4.15793, 2.40186)
+current = true
+size = 73.377
+frustum_offset = Vector2(0, 50)
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(0.0344613, -0.0250786, 0.999091, -0.0274462, 0.999284, 0.0260301, -0.999029, -0.0283182, 0.0337483, 5.07454, -0.449683, -1.24189)
+visible = false
+size = 73.377
+frustum_offset = Vector2(0, 50)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.950256, 0.299892, -0.0841361, -0.0966315, 0.540646, 0.835682, 0.296102, -0.785981, 0.542731, 0, 3.45416, -0.227573)
+
+[node name="FishingPlayer" parent="." instance=ExtResource("4_y1r0s")]
+transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.57244, -3.26072)
+
+[node name="Good Skybox = Good Looking Water (But Feel Free To Delete This)" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jjnea")
+
+[connection signal="reeling_minigame" from="." to="CanvasLayer" method="_on_fishing_reeling_minigame"]
+[connection signal="reeling_minigame" from="." to="fish_instancer" method="_on_fishing_reeling_minigame"]
+[connection signal="reeling_minigame" from="." to="FishingPlayer" method="_on_fishing_reeling_minigame"]
+[connection signal="reeling_minigame_end" from="." to="fish_instancer" method="_on_fishing_reeling_minigame_end"]
+[connection signal="reeling_minigame_end" from="." to="FishingPlayer" method="_on_fishing_reeling_minigame_end"]
+[connection signal="reeling_ended" from="CanvasLayer" to="." method="_on_canvas_layer_reeling_ended"]
+[connection signal="first_fish_info" from="fish_instancer" to="CanvasLayer" method="_on_fish_instancer_first_fish_info"]
+[connection signal="fish_hooked" from="fish_instancer" to="." method="_on_fish_instancer_fish_hooked"]
+[connection signal="casting_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_casting_time"]
+[connection signal="fishing_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_fishing_time"]

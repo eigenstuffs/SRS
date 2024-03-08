@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_6822c")
 name = "Fishing"
-scene = "res://scenes/minigames/fishing/fishing_minigame.tscn"
+scene = "res://tools/minigames/fishing/fishing_minigame.tscn"
 time = 0
