@@ -161,7 +161,6 @@ shape = SubResource("BoxShape3D_jq107")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 2.08165e-12, 4.15793, 2.40186)
-current = true
 size = 73.377
 frustum_offset = Vector2(0, 50)
 
@@ -176,6 +175,12 @@ transform = Transform3D(0.950256, 0.299892, -0.0841361, -0.0966315, 0.540646, 0.
 
 [node name="FishingPlayer" parent="." instance=ExtResource("4_y1r0s")]
 transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.57244, -3.26072)
+
+[node name="Camera3D3" type="Camera3D" parent="FishingPlayer"]
+transform = Transform3D(1, 1.20891e-22, 2.48728e-22, 3.66061e-24, 1, 3.13492e-08, -2.5351e-23, -3.67663e-08, 1, 2.07936e-12, -0.893195, 6.6425)
+current = true
+size = 73.377
+frustum_offset = Vector2(0, 50)
 
 [node name="Good Skybox = Good Looking Water (But Feel Free To Delete This)" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jjnea")
