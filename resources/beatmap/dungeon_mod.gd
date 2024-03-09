@@ -5,6 +5,8 @@ class_name DungeonMod
 # TODO: erm, delete me and this file later please
 static var TIMING_ACTIONS = [
 	[  1.718,    'screen',  'enable', ['flash', 'albedo']],
+	[  1.718, 'playfield', func(playfield):
+		EffectRegistry.start_effect(playfield, 'BetterCall', [playfield])],
 	[  8.118,      'back',  'enable', ['albedo_fade'], [{'albedo' : Color(0, 0, 0, 1)}]],
 	[ 19.718,    'screen',  'enable', ['flash', 'impact_lines'], [{}, {'weight' : 0.25}]],
 	[ 19.718,      'back', 'disable', ['albedo_fade']],

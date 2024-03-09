@@ -43,7 +43,7 @@ func start(args : Array=[]) -> void:
 	is_running = true
 	
 func stop() -> void:
-	timer.queue_free()
+	if is_instance_valid(timer): timer.queue_free()
 	finished.emit()
 	
 	on_stop.call()

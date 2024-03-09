@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crn7dcukn87j2"
-path.s3tc="res://.godot/imported/hit_slider_end.png-8c821c581ec4162a2cb609a3686c180f.s3tc.ctex"
+uid="uid://ch8o7e1lsyfkp"
+path.s3tc="res://.godot/imported/hit_slider_top.png-ea7b2a3e03460c0a40a4ab11df6a276a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://tools/minigames/rhythm/assets/hit_slider_end.png"
-dest_files=["res://.godot/imported/hit_slider_end.png-8c821c581ec4162a2cb609a3686c180f.s3tc.ctex"]
+source_file="res://tools/minigames/rhythm/assets/hit_slider_top.png"
+dest_files=["res://.godot/imported/hit_slider_top.png-ea7b2a3e03460c0a40a4ab11df6a276a.s3tc.ctex"]
 
 [params]
 

@@ -4,12 +4,12 @@ class_name CaitSithMod
 
 # TODO: erm, delete me and this file later please
 static var TIMING_ACTIONS = [
-	[ 0.000, 'playfield', func(playfield):
-		for key in playfield.keys: 
-			key.enable_note_shader_pass('warp')
-			key.enable_note_color_overwrite(Color(0.2, 0.1, 0.5, 1.0))
-		EffectRegistry.start_effect(playfield, 'Blur', [playfield.screen_space_material])],
-		
+	[ 0.000, 'playfield', func(playfield): pass],
+		#for key in playfield.keys: 
+			#key.enable_note_shader_pass('warp')
+			#key.enable_note_color_overwrite(Color(0.2, 0.1, 0.5, 1.0))
+		#EffectRegistry.start_effect(playfield, 'Blur', [playfield.screen_space_material])],
+		#pass],
 		
 		
 	[ 2.535, 'playfield', func(playfield):

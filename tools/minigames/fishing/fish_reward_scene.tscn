@@ -12,15 +12,14 @@ grow_vertical = 2
 script = ExtResource("1_j7q2r")
 
 [node name="Backdrop" type="TextureRect" parent="."]
-layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1083.0
 
 [node name="ColorRect" type="ColorRect" parent="Backdrop"]
 layout_mode = 0
-offset_right = 1915.0
+offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.392157, 0.392157, 0.392157, 1)
+color = Color(0.301961, 0.301961, 0.301961, 0.815686)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 2
@@ -298,6 +297,5 @@ offset_top = 275.0
 offset_right = 1108.0
 offset_bottom = 284.0
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]

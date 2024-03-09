@@ -7,19 +7,19 @@
 script = ExtResource("1_edpdx")
 name = "Library"
 scene = "res://tools/minigames/library/library_minigame.tscn"
-time = 10
+time = 1
 
 [sub_resource type="Resource" id="Resource_ip00n"]
 script = ExtResource("1_edpdx")
 name = "Rhythm"
 scene = "res://tools/minigames/rhythm/rhythm_minigame.tscn"
-time = 200
+time = 10
 
 [sub_resource type="Resource" id="Resource_76hxi"]
 script = ExtResource("1_edpdx")
 name = "Fishing"
 scene = "res://tools/minigames/fishing/fishing_minigame.tscn"
-time = 60
+time = 1
 
 [resource]
 script = ExtResource("2_kofh6")

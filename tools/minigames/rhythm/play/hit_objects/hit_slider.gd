@@ -7,9 +7,9 @@ const FADE_OUT_DISTANCE : float = 3.0
 var previous_length : float
 var was_hit : bool = false
 
-@onready var front_material : MultiPassShaderMaterial = $Meshes/Front.get_surface_override_material(0)
+@onready var front_material : MultiPassShaderMaterial = $Meshes/Bottom.get_surface_override_material(0)
 @onready var body_material : MultiPassShaderMaterial = $Meshes/Body.get_surface_override_material(0)
-@onready var back_material : MultiPassShaderMaterial = $Meshes/Back.get_surface_override_material(0)
+@onready var back_material : MultiPassShaderMaterial = $Meshes/Top.get_surface_override_material(0)
 
 func _ready() -> void:
 	super()
@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 func set_length(length : float) -> void:
 	$Meshes/Body.scale.z *= length
 	$Meshes/Body.position.z = -length * 0.5
-	$Meshes/Back.position.z *= length
+	$Meshes/Top.position.z *= length
 	
 func hit() -> void:
 	super.hit()
@@ -60,9 +60,9 @@ func release() -> void:
 	queue_free()
 
 func _set_shader_parameter(param_name : StringName, value : Variant) -> void:
-	$Meshes/Front.set_instance_shader_parameter(param_name, value)
+	$Meshes/Bottom.set_instance_shader_parameter(param_name, value)
 	$Meshes/Body.set_instance_shader_parameter(param_name, value)
-	$Meshes/Back.set_instance_shader_parameter(param_name, value)
+	$Meshes/Top.set_instance_shader_parameter(param_name, value)
 	
 func _on_color_overwrite_changed(value : Color):
 	_set_shader_parameter('color_overwrite', value)

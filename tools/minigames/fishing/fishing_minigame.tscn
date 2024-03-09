@@ -1,13 +1,26 @@
 [gd_scene load_steps=23 format=3 uid="uid://bjt4skwe1eu5h"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_minigame.gd" id="1_rrich"]
-[ext_resource type="PackedScene" uid="uid://c2a7l04mpfien" path="res://tools/minigames/fishing/canvas_layer.tscn" id="2_1qyje"]
+[ext_resource type="PackedScene" uid="uid://cj57sfea8xmsy" path="res://tools/minigames/fishing/canvas_layer.tscn" id="2_1qyje"]
 [ext_resource type="PackedScene" uid="uid://hq67rtu14odh" path="res://tools/minigames/fishing/fish/fish_instancer.tscn" id="2_cead1"]
 [ext_resource type="Script" path="res://tools/minigames/fishing/Water.gd" id="3_slp7l"]
 [ext_resource type="PackedScene" uid="uid://cac7s21gtcba8" path="res://scenes/player/fishing_player.tscn" id="4_y1r0s"]
 [ext_resource type="Material" uid="uid://dcgy7qsnns5qf" path="res://tools/minigames/fishing/water/water.tres" id="6_7is7m"]
 [ext_resource type="Shader" path="res://tools/minigames/fishing/water/sea_floor.gdshader" id="7_kygv1"]
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/panorama.png" id="9_i0a1k"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5qk2j"]
+panorama = ExtResource("9_i0a1k")
+
+[sub_resource type="Sky" id="Sky_b38cy"]
+sky_material = SubResource("PanoramaSkyMaterial_5qk2j")
+
+[sub_resource type="Environment" id="Environment_jjnea"]
+background_mode = 2
+sky = SubResource("Sky_b38cy")
+sky_rotation = Vector3(0.00174533, -1.12748, 0.527089)
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rve5y"]
 size = Vector3(3.13702, 1, 10)
@@ -51,23 +64,24 @@ shader_parameter/height_map = SubResource("NoiseTexture2D_4p5nf")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jq107"]
 size = Vector3(10.6926, 1, 17.2794)
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5qk2j"]
-panorama = ExtResource("9_i0a1k")
-
-[sub_resource type="Sky" id="Sky_b38cy"]
-sky_material = SubResource("PanoramaSkyMaterial_5qk2j")
-
-[sub_resource type="Environment" id="Environment_jjnea"]
-background_mode = 2
-sky = SubResource("Sky_b38cy")
-sky_rotation = Vector3(0.00174533, -1.12748, 0.527089)
-tonemap_mode = 2
-glow_enabled = true
-
 [node name="Fishing" type="SubViewport"]
 script = ExtResource("1_rrich")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Good Skybox = Good Looking Water (But Feel Free To Delete This)" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jjnea")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.950256, 0.299892, -0.0841359, -0.0966315, 0.540646, 0.835682, 0.296102, -0.785981, 0.542731, 0, 3.45416, -0.227573)
+
 [node name="CanvasLayer" parent="." instance=ExtResource("2_1qyje")]
+visible = false
 
 [node name="Ground" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0533893, 0, -2.25496)
@@ -170,20 +184,8 @@ visible = false
 size = 73.377
 frustum_offset = Vector2(0, 50)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.950256, 0.299892, -0.0841361, -0.0966315, 0.540646, 0.835682, 0.296102, -0.785981, 0.542731, 0, 3.45416, -0.227573)
-
 [node name="FishingPlayer" parent="." instance=ExtResource("4_y1r0s")]
 transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.57244, -3.26072)
-
-[node name="Camera3D3" type="Camera3D" parent="FishingPlayer"]
-transform = Transform3D(1, 1.20891e-22, 2.48728e-22, 3.66061e-24, 1, 3.13492e-08, -2.5351e-23, -3.67663e-08, 1, 2.07936e-12, -0.893195, 6.6425)
-current = true
-size = 73.377
-frustum_offset = Vector2(0, 50)
-
-[node name="Good Skybox = Good Looking Water (But Feel Free To Delete This)" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_jjnea")
 
 [connection signal="reeling_minigame" from="." to="CanvasLayer" method="_on_fishing_reeling_minigame"]
 [connection signal="reeling_minigame" from="." to="fish_instancer" method="_on_fishing_reeling_minigame"]

@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://6kqupwwsa2f0" path="res://tools/minigames/rhythm/play/board.tscn" id="5_yue8y"]
 [ext_resource type="PackedScene" uid="uid://blv2x4ex2bkn0" path="res://tools/minigames/rhythm/assets/cirno/fumo.tscn" id="6_6fly7"]
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/panorama.png" id="6_luhxe"]
-[ext_resource type="Resource" uid="uid://d1diww2j04bn0" path="res://resources/beatmap/cait_sith.tres" id="7_5dyp6"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/assets/cirno/fumofumo.gd" id="7_ej0x1"]
+[ext_resource type="Resource" uid="uid://cq1mty6j6rq7j" path="res://resources/beatmap/dungeon.tres" id="7_m0kdm"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a8ggx"]
 panorama = ExtResource("6_luhxe")
@@ -18,7 +18,7 @@ sky_material = SubResource("PanoramaSkyMaterial_a8ggx")
 [sub_resource type="Environment" id="Environment_oefpv"]
 background_mode = 2
 sky = SubResource("Sky_eq6kb")
-sky_rotation = Vector3(433.236, -1.5708, -4.71239)
+sky_rotation = Vector3(551.341, -1.5708, -4.71239)
 tonemap_mode = 2
 glow_enabled = true
 
@@ -38,8 +38,8 @@ transform = Transform3D(-0.108362, -1.21676e-08, -0.130987, -0.130987, -5.72563e
 script = ExtResource("7_ej0x1")
 
 [node name="Playfield" parent="." instance=ExtResource("2_2af6n")]
-beatmap = ExtResource("7_5dyp6")
-note_speed = 1.35
+beatmap = ExtResource("7_m0kdm")
+note_speed = 1.0
 show_debug = true
 
 [node name="AudioSynchronizer" parent="Playfield" index="0"]

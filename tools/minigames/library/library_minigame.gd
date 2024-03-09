@@ -29,8 +29,8 @@ func end():
 	emit_signal("minigame_finished", detailed_points)
 	$LibraryPlayer/CollisionShape3D.disabled = true
 	$LibraryPlayer.can_move = false
-	$NPCInstancer.queue_free()
-	$BookInstancer.queue_free()
+	#$NPCInstancer.queue_free()
+	#$BookInstancer.queue_free()
 
 func _on_library_player_book_collected():
 	gain_points(1)

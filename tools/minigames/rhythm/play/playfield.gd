@@ -33,6 +33,7 @@ var hit_objects : Array[HitObjectInfo]
 var next_load_idx : int = 0
 var next_timing_action_idx : int = 0
 var beat : int = 0
+var scores = [0, 0, 0, 0, 0]
 
 @onready var audio_synchronizer : AudioSynchronizer = $AudioSynchronizer
 @onready var screen_space_material : MultiPassShaderMaterial = $ScreenSpaceMesh.get_surface_override_material(0)
@@ -103,14 +104,15 @@ func _on_key_report_hit(timing_offset : Variant, hit_type : Note.HitType):
 		Note.HitType.RELEASE:
 			scoring = _get_scoring(abs(timing_offset*1e3), RELEASE_SCORING)
 		Note.HitType.MISS:
-			scoring = ['Missed!', Color(0.89, 0.25, 0.27)]
+			scoring = ['Missed!', Color(0.89, 0.25, 0.27), len(scores) - 1]
+	self.scores[scoring[2]] += 1
 	_create_score_text(scoring[0], scoring[1])
 
 func _get_scoring(timing_offset : float, scoring : Array):
 	# Just so I can avoid the awful if..elif..elif.. chain...
-	for mapping in scoring:
-		if mapping[0][0] <= timing_offset and timing_offset < mapping[0][1]:
-			return mapping[1]
+	for i in range(len(scoring)):
+		if scoring[i][0][0] <= timing_offset and timing_offset < scoring[i][0][1]:
+			return scoring[i][1] + [i]
 	printerr('A timing offset of %f could not be found in the provided scoring!' % timing_offset)
 	return null
 

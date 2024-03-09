@@ -4,6 +4,10 @@ const MINIGAME_VIEWPORT_DIMS : Vector2 = Vector2(1600, 900)
 
 var rough_points : int = 0
 var detailed_points : Array = []
+var is_finished := false :
+	set(value):
+		is_finished = value
+		#EffectRegistry.start_effect(self, 'Blur', [$CanvasLayer/ScreenSpace.material])
 
 signal finished(detailed_points)
 #detailed points should be in the format [array1, array2]
@@ -26,6 +30,11 @@ func initiate_minigame(which : String):
 	else:
 		printerr("No such minigame %s!" % which)
 
+#func _process(delta: float) -> void:
+	#if is_finished:
+		#self.scale = Vector2(lerp(self.scale.x, 1.75, delta * 15), lerp(self.scale.y, 1.75, delta * 15))
+	
+
 func update_points(new : int):
 	rough_points = new
 	$UI/PointLabel.text = str(rough_points)
@@ -37,4 +46,4 @@ func _on_ui_game_over():
 	rough_points = game.rough_points
 	detailed_points = game.detailed_points
 	finished.emit(detailed_points)
-	game.queue_free()
+	#game.queue_free()
