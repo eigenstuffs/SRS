@@ -8,6 +8,10 @@ var can_move = true
 
 var remembered = []
 
+### MODIFIABLE THROUGH DIALOGUE
+
+var player_name : String = ""
+
 ### OPTIONS
 
 var text_speed = 0.015

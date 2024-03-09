@@ -68,7 +68,14 @@ func read_line(key : int):
 	remember.modulate = Color(1,1,1,1)
 	remember.hide()
 	if current_line["emit"] != null:
-		emit_signal(current_line["emit"])
+		var text = current_line["set"].split(",")
+		for i in text.size():
+			emit_signal(current_line[text[i]])
+	if current_line["set"] != null:
+		var text = current_line["set"].split(",")
+		var variable = text[1]
+		var value = text[2]
+		Global.set(variable, value)
 	if current_line["text"]: label.text = current_line["text"]
 	if current_line["flag"] == "decision":
 		box.hide()
@@ -164,6 +171,11 @@ func read_line(key : int):
 			await a.finished
 			for i in $Choice/Buttons.get_children():
 				i.queue_free()
+	elif current_line["flag"] == "menu":
+		pass
+	elif current_line["flag"] == "quit":
+		var a
+		a.kill()
 	else:
 		if current_line["add"] != null:
 			remember.show()
