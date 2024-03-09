@@ -3,7 +3,7 @@ extends Node
 signal util_finished
 
 const DIALOGUE_FROM_STRINGS = preload("res://tools/dialogue/dialogue_from_strings.tscn")
-const MINIGAME_HOLDER = preload('res://tools/minigame/minigame_holder.tscn')
+const MINIGAME_HOLDER = preload("res://tools/minigame/minigame_holder.tscn")
 const REWARD_SCENE_LIST = preload("res://resources/minigame/reward_scene_list.tres")
 
 func dialogue_from_strings(holder : Control, text_array : Array[String]):
@@ -33,11 +33,9 @@ func create_reward_scene(minigame : String, scores : Array, stats_gained : Array
 	canvas_layer.add_child(a)
 	print('hi')
 	scene.is_finished = true
-	#await get_tree().create_timer(1).timeout
-	#a.start_display()
-	#print('hi2')
-	#await a.display_finished
-	#print('hi3')
-	#a.queue_free()
-	#scene.queue_free()
-	#emit_signal("util_finished")
+	await get_tree().create_timer(1).timeout
+	a.start_display()
+	await a.display_finished
+	a.queue_free()
+	scene.queue_free()
+	emit_signal("util_finished")

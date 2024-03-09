@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bridjlku0m8mg"]
+[gd_scene load_steps=7 format=3 uid="uid://bridjlku0m8mg"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/FloatingBobber.gd" id="1_lnayo"]
 
@@ -9,6 +9,9 @@ albedo_color = Color(0.996078, 0.415686, 0.439216, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_on7hd"]
 material = SubResource("StandardMaterial3D_0qy3n")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rr7dr"]
+height = 2.38878
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qitnl"]
 
@@ -31,7 +34,7 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CatchField"]
 transform = Transform3D(0.5, -1.85933e-22, 2.42539e-23, 1.85933e-22, 0.5, -2.99817e-17, -2.42539e-23, 2.99817e-17, 0.5, 0, 0, 0)
-shape = SubResource("SphereShape3D_qitnl")
+shape = SubResource("CylinderShape3D_rr7dr")
 
 [node name="AttractionField" type="Area3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

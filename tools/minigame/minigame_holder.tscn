@@ -30,6 +30,7 @@ script = ExtResource("2_e8036")
 
 [node name="ScreenSpace" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -967.0
 offset_top = -532.0
 offset_right = 953.0

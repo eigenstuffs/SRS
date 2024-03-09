@@ -23,9 +23,11 @@ func _physics_process(delta):
 	if state == STATES.WANDER:
 		velocity = Vector3.FORWARD * speed
 		velocity = velocity.rotated(Vector3.UP, rotation.y)
+		$AnimationPlayer.play("wander")
 	elif state == STATES.WAIT:
 		velocity.x = 0
 		velocity.z = 0
+		$AnimationPlayer.play("stop")
 	elif state == STATES.PURSUE:
 		look_at(bobber.global_position)
 		var dir : Vector3 = bobber.global_position - self.global_position
@@ -35,8 +37,10 @@ func _physics_process(delta):
 			dir.normalized()
 			velocity.x = dir.x * speed
 			velocity.z = dir.z * speed
+			$AnimationPlayer.play("pursue")
 	elif state == STATES.STOP:
 		velocity = Vector3.ZERO
+		$AnimationPlayer.play("stop")
 	move_and_slide()
 
 
