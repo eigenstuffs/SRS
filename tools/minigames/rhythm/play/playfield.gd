@@ -5,6 +5,8 @@ class_name RhythmPlayfield extends Node3D
 ## Will dynamically initialize an appropriate amount of [class RhythmKey [class AudioSynchronizer] members based on its own
 ## members.
 
+signal report_score(score: int)
+
 const PHYSICS_TEXT = preload('res://tools/minigames/rhythm/util/physics_text.tscn')
 const KEY = preload('res://tools/minigames/rhythm/play/key.tscn')
 const PLAYFIELD_WIDTH : float = 8.0 # FIXME: No more fixed width please!
@@ -14,15 +16,15 @@ const BLUE : Color = Color(0.306, 0.796, 0.851)
 # This is how we organize scoring for different millisecond offsets 
 # (unless someone can come up with a better way!)
 const HIT_SCORING = [
-	[[0, 70], ['Perfect!', Color(0.231, 0.604, 1)]],
-	[[70, 100], ['Great!', Color(0.31, 0.89, 0.369)]],
-	[[100, 150], ['Okay.', Color(0.73, 0.58, 0.84)]],
-	[[150, 1e9], ['Bad', Color(0.71, 0.565, 0.659)]]]
+	[[0, 70], ['Perfect!', Color(0.231, 0.604, 1), 300*0.5]],
+	[[70, 100], ['Great!', Color(0.31, 0.89, 0.369), 200*0.5]],
+	[[100, 150], ['Okay.', Color(0.73, 0.58, 0.84), 100*0.5]],
+	[[150, 1e9], ['Bad', Color(0.71, 0.565, 0.659), 50*0.5]]]
 const RELEASE_SCORING = [
-	[[0, 100], ['Perfect!', Color(0.231, 0.604, 1)]],
-	[[100, 150], ['Great!', Color(0.31, 0.89, 0.369)]],
-	[[150, 200], ['Okay.', Color(0.73, 0.58, 0.84)]],
-	[[200, 1e9], ['Bad', Color(0.71, 0.565, 0.659)]]]
+	[[0, 100], ['Perfect!', Color(0.231, 0.604, 1), 150*0.5]],
+	[[100, 150], ['Great!', Color(0.31, 0.89, 0.369), 100*0.5]],
+	[[150, 200], ['Okay.', Color(0.73, 0.58, 0.84), 50*0.5]],
+	[[200, 1e9], ['Bad', Color(0.71, 0.565, 0.659), 25*0.5]]]
 
 @export var beatmap : Beatmap
 @export var note_speed : float = 2
@@ -44,7 +46,6 @@ var scores = [0, 0, 0, 0, 0]
 func _ready() -> void:
 	audio_synchronizer.spawn_offset_seconds = 1.0 # FIXME: Not static for all songs!
 	audio_synchronizer.beatmap = self.beatmap
-	audio_synchronizer.start()
 	self.hit_objects = beatmap.objects
 	print('(playfield) initialized audio synchronizer')
 	
@@ -72,7 +73,12 @@ func _ready() -> void:
 		
 	$TitleLabel.text = beatmap.title
 
+func start():
+	audio_synchronizer.start()
+
 func _process(_delta: float) -> void:
+	if not audio_synchronizer.has_started: return
+	
 	# Compensate for output latency and spawn offset time.
 	var corrected_time = audio_synchronizer.time - AudioServer.get_output_latency()
 	while next_load_idx < len(hit_objects) and corrected_time + audio_synchronizer.spawn_offset_seconds > hit_objects[next_load_idx].time:
@@ -84,6 +90,7 @@ func _process(_delta: float) -> void:
 		timing_actions[next_timing_action_idx].run()
 		next_timing_action_idx += 1
 		
+func _physics_process(delta: float) -> void:
 	$BPMLabel.visible = show_debug
 	$FrametimeLabel.visible = show_debug
 	$EnabledPassesLabel.visible = show_debug
@@ -96,7 +103,7 @@ func _process(_delta: float) -> void:
 		for shader_name in MultiPassShaderMaterial.enabled_passes:
 			$EnabledPassesLabel.text += '\n |  %s' % shader_name
 
-func _on_key_report_hit(timing_offset : Variant, hit_type : Note.HitType):
+func _on_key_report_hit(timing_offset : Variant, hit_type : Note.HitType):	
 	var scoring = []
 	match hit_type:
 		Note.HitType.HIT:
@@ -104,9 +111,10 @@ func _on_key_report_hit(timing_offset : Variant, hit_type : Note.HitType):
 		Note.HitType.RELEASE:
 			scoring = _get_scoring(abs(timing_offset*1e3), RELEASE_SCORING)
 		Note.HitType.MISS:
-			scoring = ['Missed!', Color(0.89, 0.25, 0.27), len(scores) - 1]
-	self.scores[scoring[2]] += 1
+			scoring = ['Missed!', Color(0.89, 0.25, 0.27), 0, -1]
+	self.scores[scoring[-1]] += 1
 	_create_score_text(scoring[0], scoring[1])
+	report_score.emit(scoring[2])
 
 func _get_scoring(timing_offset : float, scoring : Array):
 	# Just so I can avoid the awful if..elif..elif.. chain...
@@ -126,6 +134,8 @@ func _create_score_text(text : String, color : Color):
 	add_child(score)
 
 func _on_audio_synchronizer_on_beat() -> void:
+	if not audio_synchronizer.has_started: return
+	
 	var time_int := floor(max(audio_synchronizer.time, 0.0)) as int
 	var length := audio_synchronizer.track.stream.get_length() as int
 	$BeatLabel.text = 'Beat: %d / 4  (%02d:%02d / %02d:%02d)' % [(beat % 4 + 1), (time_int / 60) % 60, time_int % 60, (length / 60) % 60, length % 60] # TODO: 4/4 time only lmao

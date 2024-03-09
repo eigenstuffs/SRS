@@ -28,15 +28,15 @@ func _on_start_time_timeout():
 
 func _on_start_time_over():
 	gLabel.show()
-	gTime.start()
+	if is_instance_valid(gTime): gTime.start()
 
 func _on_game_time_timeout():
 	gameTimeCount -= 1
-	if (gameTimeCount==0):
+	if gameTimeCount <= 0:
 		gTime.stop()
 		gLabel.hide()
 		sLabel.show()
-		sLabel.text = "Game Over!"
+		sLabel.text = "Finished!"
 		emit_signal("gameOver")
 	else:
 		gLabel.text = str(gameTimeCount)

@@ -67,13 +67,6 @@ size = Vector3(10.6926, 1, 17.2794)
 [node name="Fishing" type="SubViewport"]
 script = ExtResource("1_rrich")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Good Skybox = Good Looking Water (But Feel Free To Delete This)" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jjnea")
 

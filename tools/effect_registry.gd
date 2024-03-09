@@ -21,7 +21,6 @@ static func start_effect(caller : Node, name_ : StringName, args : Array=[]) -> 
 	effect.start(args)
 	if not effect.timer.get_parent():
 		caller.add_child(effect.timer)
-	caller.connect('tree_exiting', func(): stop_effect(name_))
 	
 static func stop_effect(name_ : StringName) -> void:
 	assert(effects.has(name_) and effects[name_])

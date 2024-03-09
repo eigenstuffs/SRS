@@ -8,8 +8,10 @@ signal update_points(points : int)
 var rough_points : int = 0
 @export var detailed_points : Array = []
 
+var has_ended := false
 
 func end() -> void:
+	has_ended = true
 	minigame_finished.emit(detailed_points)
 	
 # FIXME: I don't understand viewports and this is the only way I could get mouse

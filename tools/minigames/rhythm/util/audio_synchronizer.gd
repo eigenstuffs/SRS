@@ -26,10 +26,10 @@ signal on_beat
 @onready var metronome : AudioStreamPlayer = $Metronome
 
 var time : float
-var corrected_time : float ## Audio latency-corrected time
 var next_metronome_time : float
 
 var has_played : bool = false
+var has_started := false
 var object_idx : int = 0
 
 func start():
@@ -37,11 +37,14 @@ func start():
 	self.time = -(2**(ceil(log(spawn_offset_seconds / self.beatmap.bps) / log(2))) * self.beatmap.bps)
 	self.next_metronome_time = beatmap.start_offset + time
 	track.stream = beatmap.track
+	has_started = true
 
 func _process(delta):
+	if not has_started: return
+	
 	if has_played:
 		# Source: https://docs.godotengine.org/en/stable/tutorials/audio/sync_with_audio.html
-		time = track.get_playback_position() + AudioServer.get_time_since_last_mix()
+		time = max(time, track.get_playback_position() + AudioServer.get_time_since_last_mix())
 	else:
 		if time > -AudioServer.get_time_to_next_mix():
 			track.play()

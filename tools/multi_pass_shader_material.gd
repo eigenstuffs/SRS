@@ -81,8 +81,13 @@ func enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
 
 func _enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
 	assert(self.is_initialized and shader_map[pass_name])
+	
 	var material : ShaderMaterial = shader_map[pass_name][0]
 	var shader_pass : ShaderPass = shader_map[pass_name][1]
+	
+	if self.is_canvas_item:
+		material.set_shader(shader_pass.shader)
+		return
 	
 	if shader_pass.is_unique_pass and unique_enabled_shader_name != shader_pass.name:
 		if shader_map.has(unique_enabled_shader_name):

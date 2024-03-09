@@ -91,6 +91,7 @@ func _input(event : InputEvent) -> void:
 		else: # Handle early release
 			register_hit(note_queue.pop(), Note.HitType.MISS, null)
 		get_viewport().set_input_as_handled()
+	
 
 func register_hit(note : Note, hit_type : Note.HitType, timing_offset : Variant) -> void:
 	match hit_type:

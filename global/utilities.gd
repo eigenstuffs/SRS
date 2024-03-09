@@ -31,13 +31,12 @@ func create_reward_scene(minigame : String, scores : Array, stats_gained : Array
 	a.set_vars(scores, stats_gained)
 
 	canvas_layer.add_child(a)
-	print('hi')
 	scene.is_finished = true
-	#await get_tree().create_timer(1).timeout
-	#a.start_display()
-	#print('hi2')
-	#await a.display_finished
-	#print('hi3')
-	#a.queue_free()
-	#scene.queue_free()
-	#emit_signal("util_finished")
+	await get_tree().create_timer(1).timeout
+	a.start_display()
+
+	await a.display_finished
+
+	a.queue_free()
+	scene.queue_free()
+	emit_signal("util_finished")
