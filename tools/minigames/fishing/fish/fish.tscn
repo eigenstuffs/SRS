@@ -1,15 +1,121 @@
-[gd_scene load_steps=5 format=3 uid="uid://04kx0ue4t11g"]
+[gd_scene load_steps=9 format=3 uid="uid://04kx0ue4t11g"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fish/Fish.gd" id="1_e25ly"]
-[ext_resource type="Material" uid="uid://cpoa5fti02lp5" path="res://tools/minigames/fishing/fish/fish_color/common_fish_text.tres" id="2_0d51l"]
+[ext_resource type="Texture2D" uid="uid://d28td8njhv46f" path="res://tools/minigames/fishing/assets/Fishies/fish_common1_spritesheet.png" id="2_u4jqi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x45a8"]
 radius = 0.2
 
-[sub_resource type="SphereMesh" id="SphereMesh_8idaw"]
-material = ExtResource("2_0d51l")
-radius = 0.15
-height = 0.2
+[sub_resource type="Animation" id="Animation_q0huh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_1di1a"]
+resource_name = "pursue"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.122476),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_w76f8"]
+resource_name = "stop"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_n8pk3"]
+resource_name = "wander"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bebly"]
+_data = {
+"RESET": SubResource("Animation_q0huh"),
+"pursue": SubResource("Animation_1di1a"),
+"stop": SubResource("Animation_w76f8"),
+"wander": SubResource("Animation_n8pk3")
+}
 
 [node name="Fish" type="CharacterBody3D"]
 script = ExtResource("1_e25ly")
@@ -20,10 +126,6 @@ script = ExtResource("1_e25ly")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_x45a8")
 
-[node name="placeholderFish" type="MeshInstance3D" parent="."]
-layers = 3
-mesh = SubResource("SphereMesh_8idaw")
-
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 transform = Transform3D(0.14, 0, 0, 0, 0.1, 0, 0, 0, 0.15, 0, 0, 0)
 
@@ -33,6 +135,17 @@ autostart = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_x45a8")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-2.84124e-09, -0.065, -2.84124e-09, 0, -2.84124e-09, 0.065, -0.065, 2.84124e-09, 1.24195e-16, 0.277625, 0, 0)
+texture = ExtResource("2_u4jqi")
+hframes = 6
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bebly")
+}
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_exited" from="Hurtbox" to="." method="_on_hurtbox_area_exited"]

@@ -24,7 +24,7 @@ signal minigame_finished(num : int)
 signal update_points(num : int)
 
 func _ready():
-	await get_tree().create_timer(10).timeout
+
 	for i in documents.get_children():
 		i.connect("pressed", _on_button_pressed)
 		# i connect it through code cuz we dont know how
