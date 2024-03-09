@@ -30,4 +30,4 @@ func set_fish_stats(fish_type : int, fishie: Fish):
 	fishie.bite_strength = fish_list[whatFish].get("bite_strength")
 	fishie.rarity = fish_list[whatFish].get("rarity")
 	fishie.sell_price = fish_list[whatFish].get("sell_price")
-	fishie.skin.set_surface_override_material(0, fish_list[whatFish].get("skin"))
+	#fishie.skin.set_surface_override_material(0, fish_list[whatFish].get("skin"))
