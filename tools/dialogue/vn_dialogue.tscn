@@ -342,4 +342,8 @@ material = SubResource("ShaderMaterial_qs345")
 mouse_filter = 2
 passes = SubResource("ShaderMaterial_qs345")
 
+[node name="Music" type="AudioStreamPlayer" parent="EffectHandler"]
+
+[node name="SFX" type="AudioStreamPlayer" parent="EffectHandler"]
+
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
