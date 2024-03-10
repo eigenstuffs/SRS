@@ -5,6 +5,24 @@ class_name VisualNovelDialogue
 signal start_music
 signal boost_stats
 
+signal music_ambience
+signal music_chiptune
+signal music_bgm1
+
+signal stop_music
+
+signal sfx_truck
+signal sfx_screams
+
+signal fade_black
+signal fade_red
+
+signal cg_death
+signal cg_gamestart
+signal cg_god
+
+signal name_player
+
 const CHARACTER_LIST : CharacterList = preload("res://resources/characters/character_list.tres")
 const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
 
@@ -46,15 +64,18 @@ func _ready():
 func read_line(key : int):
 	current_line = result.get(result.keys()[key])
 	if current_line["run if"] != null:
-		if Global.remembered.has(current_line["run if"]):
+		var text = current_line["run if"].split(",")
+		var condition = text[1]
+		var target = text[2]
+		if Global.remembered.has(condition):
 			init_parameters(key)
+			current_line["go to"] = target
 		else:
 			next_line()
 			return
 	else:
 		init_parameters(key)
 	if current_line["delay"] != null:
-		box.hide()
 		label.hide()
 		next.hide()
 		choice_ui.hide()
@@ -68,9 +89,10 @@ func read_line(key : int):
 	remember.modulate = Color(1,1,1,1)
 	remember.hide()
 	if current_line["emit"] != null:
-		var text = current_line["set"].split(",")
+		var text = current_line["emit"].split(",")
 		for i in text.size():
-			emit_signal(current_line[text[i]])
+			print(text[i])
+			self.emit_signal(text[i])
 	if current_line["set"] != null:
 		var text = current_line["set"].split(",")
 		var variable = text[1]
@@ -190,7 +212,8 @@ func read_line(key : int):
 			c.tween_property(remember, "modulate", Color(1,1,1,0), 2)
 		label.visible_characters = 0
 		var num_chars = label.text.length()
-		var total_time = Global.text_speed * num_chars
+		#var total_time = Global.text_speed * num_chars
+		var total_time = 0.1
 		var a = create_tween()
 		a.tween_property(label, "visible_characters", num_chars, total_time)
 		await a.finished
