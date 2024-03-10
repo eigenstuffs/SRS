@@ -62,7 +62,6 @@ func _on_fishing_reeling_minigame():
 func _on_fishing_reeling_minigame_end(is_successful):
 	var to_be_freed = fish_array[0]
 	if is_successful:
-		
 		to_be_freed.queue_free()
 	else:
 		to_be_freed.state = Fish.STATES.WANDER

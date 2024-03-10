@@ -11,6 +11,9 @@ signal reeling_ended(is_successful : bool)
 @onready var reel_bar : VScrollBar = $ReelBarBackground/ReelBar
 @onready var fish_bar : VScrollBar = $ReelBarBackground/FishBar
 @onready var timer : Timer = $Timer
+@onready var exclaim : TextureRect = $FishCaught
+@onready var miss : TextureRect = $Miss
+@onready var plus_one : TextureRect = $PlusOne
 
 var min_force_val = 30
 var max_force_val = 150
@@ -18,7 +21,8 @@ var max_force_val = 150
 var min_distance_val : float = 0
 var base_distance_val : float  = 50
 var max_distance_val : float = 100
-@export var dist_dec_speed : float = 30
+@export var default_dist_dec_speed : float = 30
+var starting_dist_dec_speed : float = 10
 @export var dist_inc_speed : float = 45
 var bite_strength_multiplier : float = 1 
 var rod_strength_multiplier : float = 1
@@ -36,8 +40,11 @@ var fish_speed_multiplier : float = 1
 
 var movable : bool = false
 var current_fish_rarity : String
+var reeling_now : bool = false
+var first_entered : bool = false
 
 func _ready():
+	icons_reset()
 	rod_strength_multiplier = ROD_TYPE.get_current_rod("reel_strength")
 	size_multiplier = ROD_TYPE.get_current_rod("reel_size")
 	force_bar_reset()
@@ -46,15 +53,21 @@ func _ready():
 
 func _process(delta):
 	#FIXME: somehow if multipliers too small the bar won't increase/decrease at all (fixed with larger num but still want them to be smaller
-	#FIXME: add some sort of notification whn fish hooked
 	if movable == true:
 		if Input.is_action_pressed("ui_accept"):
 			reel_bar.value -= reel_speed * delta
 		else:
 			reel_bar.value += reel_speed * delta
 		if reel_bar.value <= fish_bar.value and reel_bar.value >= fish_bar.value - (reel_size * size_multiplier):
+			if !first_entered:
+				first_entered = true
 			distance_bar.value += dist_inc_speed * rod_strength_multiplier * delta
 		else:
+			var dist_dec_speed : float
+			if first_entered:
+				dist_dec_speed = default_dist_dec_speed
+			else:
+				dist_dec_speed = starting_dist_dec_speed
 			distance_bar.value -= dist_dec_speed * bite_strength_multiplier * delta
 
 	if distance_bar.value <= min_distance_val:
@@ -106,11 +119,16 @@ func reel_bar_reset():
 func reel_bar_activate():
 	reel_bar_area.visible = true
 	fish_bar.value = base_fish_val
+	first_entered = false
 
 func _on_fishing_reeling_minigame():
-	reel_bar_activate()
-	movable = true
-	timer.start(fish_move_interval)
+	if !reeling_now:
+		reeling_now = true
+		show_and_fade_icon(exclaim)
+		await get_tree().create_timer(0.5).timeout
+		reel_bar_activate()
+		movable = true
+		timer.start(fish_move_interval)
 
 func _on_timer_timeout():
 	#this can be even more polished by making the fish move in a relative range instead of an absolute range
@@ -120,6 +138,11 @@ func _on_timer_timeout():
 
 func _on_reeling_ended(is_successful, current_fish_rarity):
 	timer.stop()
+	reeling_now = false
+	if is_successful:
+		show_and_fade_icon(plus_one)
+	else:
+		show_and_fade_icon(miss)
 
 #change bite_strength_multiplier
 func _on_fish_instancer_first_fish_info(bite_strength, speed, rarity):
@@ -129,3 +152,18 @@ func _on_fish_instancer_first_fish_info(bite_strength, speed, rarity):
 
 func get_force_bar_val():
 	return force_bar.value
+
+func show_and_fade_icon(node : Control):
+	node.self_modulate.a = 1
+	var b = create_tween().set_parallel()
+	b.tween_property(node, "self_modulate:a", 0, 0.75)
+	if node != exclaim:
+		print("moving up!")
+		b.tween_property(node, "position:y", node.position.y - 50, 0.75)
+		await b.finished
+		node.position.y = node.position.y + 50
+
+func icons_reset():
+	exclaim.self_modulate.a = 0
+	miss.self_modulate.a = 0
+	plus_one.self_modulate.a = 0

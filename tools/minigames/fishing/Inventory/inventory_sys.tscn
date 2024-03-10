@@ -84,7 +84,7 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 128.0
 theme_override_font_sizes/font_size = 50
-text = "Default Fishing Rod
+text = "Poor Fishing Rod
 "
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -12,7 +12,7 @@ const legendary_skin = preload("res://tools/minigames/fishing/assets/Fishies/fis
 @export var fishie_one : Dictionary = {"bite_strength": 3, "rarity": "legendary", "sell_price": 200, "speed": 1.5, "skin": legendary_skin}
 @export var fishie_two : Dictionary = {"bite_strength": 2, "rarity": "epic", "sell_price": 150, "speed": 1.0, "skin": epic_skin}
 @export var fishie_three : Dictionary = {"bite_strength": 2, "rarity": "rare", "sell_price": 100, "speed": 0.3, "skin": rare_skin}
-@export var fishie_four : Dictionary = {"bite_strength": 1.5, "rarity": "common", "sell_price": 50, "speed": 0.6, "skin": common_skin}
+@export var fishie_four : Dictionary = {"bite_strength": 1, "rarity": "common", "sell_price": 50, "speed": 0.6, "skin": common_skin}
 @export var fish_list : Array[Dictionary] = [fishie_one, fishie_two, fishie_three, fishie_four]
 
 

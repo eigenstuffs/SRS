@@ -2,7 +2,7 @@ extends Resource
 
 class_name FishingRodTypes
 
-@export var rod_one : Dictionary = {"name": "Default Fishing Rod", "description": "standard fishing rod. it catches fish.", "reel_strength": 1.0, "reel_size": 1.0}
+@export var rod_one : Dictionary = {"name": "Poor Fishing Rod", "description": "a poor fishing rod. it catches fish.", "reel_strength": 1.0, "reel_size": 1.0}
 @export var rod_two : Dictionary = {"name": "Cooler Fishing Rod", "description": "a fishing rod, but cooler.", "reel_strength": 1.1, "reel_size": 1.3}
 @export var rod_three: Dictionary = {"name": "Superior Fishing Rod", "description": "they say that this is the rod of the masters.", "reel_strength": 1.3, "reel_size": 1.5}
 @export var rod_four: Dictionary = {"name": "BEST Fishing Rod", "description": "a rod with faded lettering on the handle. 'Cult de Poisson'...?", "reel_strength": 2, "reel_size": 1.7}
