@@ -9,7 +9,7 @@ var speed : float
 var rarity : String
 var bite_strength : float
 var sell_price : int
-@onready var skin : MeshInstance3D = $placeholderFish
+@onready var skin : Sprite3D = $Sprite3D
 
 #const JUMP_VELOCITY = 4.5
 enum STATES { WANDER, WAIT, PURSUE, STOP}

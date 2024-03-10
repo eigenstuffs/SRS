@@ -45,7 +45,7 @@ func _ready():
 	movable = false
 
 func _process(delta):
-	#FIXME: common fish won't go down :(
+	#FIXME: somehow if multipliers too small the bar won't increase/decrease at all (fixed with larger num but still want them to be smaller
 	#FIXME: add some sort of notification whn fish hooked
 	if movable == true:
 		if Input.is_action_pressed("ui_accept"):
