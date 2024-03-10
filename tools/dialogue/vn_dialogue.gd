@@ -193,23 +193,19 @@ func read_line(key : int):
 			await a.finished
 			for i in $Choice/Buttons.get_children():
 				i.queue_free()
-	elif current_line["flag"] == "menu":
-		pass
-	elif current_line["flag"] == "quit":
-		var a
-		a.kill()
 	else:
 		if current_line["add"] != null:
-			remember.show()
-			Global.remembered.append(current_line["add"])
-			if current_line["character"] != null:
-				remember.text = current_line["character"] + " will remember that."
-			else:
-				remember.text = "I will remember that."
-			var c = create_tween()
-			c.tween_property(remember, "position", Vector2(1097,600), 2)
-			c = create_tween()
-			c.tween_property(remember, "modulate", Color(1,1,1,0), 2)
+			#remember.show()
+			#Global.remembered.append(current_line["add"])
+			#if current_line["character"] != null:
+				#remember.text = current_line["character"] + " will remember that."
+			#else:
+				#remember.text = "I will remember that."
+			#var c = create_tween()
+			#c.tween_property(remember, "position", Vector2(1097,600), 2)
+			#c = create_tween()
+			#c.tween_property(remember, "modulate", Color(1,1,1,0), 2)
+			pass
 		label.visible_characters = 0
 		var num_chars = label.text.length()
 		#var total_time = Global.text_speed * num_chars
@@ -224,10 +220,12 @@ func read_line(key : int):
 		next.disabled = false
 		finished_line.emit()
 		await next_pressed
-		if current_line["flag"] == "crash":
-			get_tree().quit()
 		if current_line["flag"] == "end":
 			current_line["go to"] = null
+		elif current_line["flag"] == "menu":
+			pass
+		elif current_line["flag"] == "quit":
+			get_tree().quit()
 	next_line()
 
 func next_line():
@@ -272,18 +270,6 @@ func choice_pressed():
 			choice.emit(i.get_index())
 			return
 
-func _on_option_one_pressed():
-	emit_signal("choice", 0)
-
-func _on_option_two_pressed():
-	emit_signal("choice", 1)
-
-func _on_option_three_pressed():
-	emit_signal("choice", 2)
-
-#func _on_option_one_mouse_entered():
-	#var a = create_tween()
-	#a.tween_property(optionOne, "scale", Vector2(1.1,1.1), 0.1)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
