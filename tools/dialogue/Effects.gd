@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 @onready var audio = $Music
 @onready var sfx = $SFX
@@ -40,7 +40,7 @@ func _ready():
 #signal name_player
 	#
 func fade_black():
-	EffectRegistry.start_effect(self, "ColorFade", [$MultiPassShaderRect.material])
+	EffectRegistry.start_effect(self, "ColorFade", [$MultiPassShaderRect.material, Color.TRANSPARENT, Color.BLACK])
 
 	
 func fade_red():

@@ -15,6 +15,7 @@ static func register(effect : Effect) -> void:
 	print('(effect_registry) Registered: %s' % effect.name)
 	
 static func start_effect(caller : Node, name_ : StringName, args : Array=[]) -> void:
+	print(name_)
 	assert(effects.has(name_) and effects[name_])
 	var effect : Effect = effects[name_]
 	

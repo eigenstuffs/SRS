@@ -16,6 +16,7 @@ signal sfx_screams
 
 signal fade_black
 signal fade_red
+signal fade_white
 
 signal cg_death
 signal cg_gamestart
