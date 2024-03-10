@@ -1,13 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=16 format=3 uid="uid://drqf7jcr25yqx"]
 
-[ext_resource type="Texture2D" uid="uid://k4ffpebyjyyi" path="res://assets/ui/[Sample] Dialogue UI Reference.png" id="2_1cnkd"]
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/ui/Dialogue Box.png" id="2_eyrgx"]
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
 [ext_resource type="Script" path="res://tools/dialogue/vn_dialogue.gd" id="4_g1vbp"]
 [ext_resource type="Texture2D" uid="uid://bbbny3o3tnsfo" path="res://assets/talksprite_npc_A.png" id="4_hyu8g"]
+[ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/Volkhov-Regular.ttf" id="5_2w2a5"]
 [ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/Galdeano-Regular.ttf" id="5_bpopc"]
+[ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/Volkhov-Bold.ttf" id="6_sww0h"]
 [ext_resource type="Texture2D" uid="uid://bd3vg40yeb7ym" path="res://assets/ui/Next Default.png" id="7_fpcsy"]
+[ext_resource type="FontFile" uid="uid://blo7ft3ovj4yy" path="res://assets/ui/Volkhov-Italic.ttf" id="7_wmtfs"]
 [ext_resource type="Texture2D" uid="uid://d02y3ome74of1" path="res://assets/ui/Character Background_Choice.png" id="8_5rtyy"]
+[ext_resource type="FontFile" uid="uid://b5ootysr42ce3" path="res://assets/ui/Volkhov-BoldItalic.ttf" id="8_nug81"]
+[ext_resource type="PackedScene" uid="uid://5ybyvtcypf1c" path="res://tools/multi_pass_shader_rect.tscn" id="9_xl2b6"]
+[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="10_xt6i2"]
+[ext_resource type="Shader" path="res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader" id="11_r5d2g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qs345"]
+shader = ExtResource("11_r5d2g")
+script = ExtResource("10_xt6i2")
+is_canvas_item = true
+shader_passes = Array[Resource("res://resources/shaders/shader_pass.gd")]([])
 
 [node name="VN_Dialogue" type="Control"]
 layout_mode = 3
@@ -16,14 +28,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("4_g1vbp")
 text = "res://tools/dialogue/vn_scripts/Dialogue - a1c1.json"
-
-[node name="[sample]DialogueUiReference" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.345098)
-position = Vector2(960, 530)
-texture = ExtResource("2_1cnkd")
 
 [node name="Box" type="TextureRect" parent="."]
 layout_mode = 0
@@ -45,24 +52,29 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -720.0
-offset_right = 1200.0
+offset_left = -1920.0
 offset_bottom = 1080.0
 texture = ExtResource("4_hyu8g")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 483.0
+offset_left = 256.0
 offset_top = 725.0
 offset_right = 1620.0
 offset_bottom = 932.0
-theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
-theme_override_constants/line_spacing = 15
-theme_override_fonts/font = ExtResource("5_bpopc")
-theme_override_font_sizes/font_size = 36
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_constants/line_separation = 10
+theme_override_fonts/normal_font = ExtResource("5_2w2a5")
+theme_override_fonts/bold_font = ExtResource("6_sww0h")
+theme_override_fonts/italics_font = ExtResource("7_wmtfs")
+theme_override_fonts/bold_italics_font = ExtResource("8_nug81")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+bbcode_enabled = true
 text = "Lorem ipsum
 ultricies"
-autowrap_mode = 3
 visible_characters_behavior = 1
 
 [node name="Name" type="Label" parent="."]
@@ -112,13 +124,7 @@ metadata/_edit_lock_ = true
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
-
-[node name="Control2" type="Control" parent="Choice"]
-anchors_preset = 0
-offset_left = 966.0
-offset_top = 1100.0
-offset_right = 966.0
-offset_bottom = 1100.0
+mouse_filter = 1
 
 [node name="Backdrop" type="TextureRect" parent="Choice"]
 layout_mode = 0
@@ -308,5 +314,13 @@ offset_bottom = 465.0
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Effects" type="Node" parent="."]
+
+[node name="MultiPassShaderRect" parent="Effects" instance=ExtResource("9_xl2b6")]
+material = SubResource("ShaderMaterial_qs345")
+mouse_filter = 2
+passes = SubResource("ShaderMaterial_qs345")
 
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
