@@ -93,6 +93,7 @@
 [ext_resource type="Texture2D" uid="uid://6gogglh5axjk" path="res://assets/ui/Player Input UI/Letter Input.png" id="91_8htq7"]
 
 [node name="PlayerName" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

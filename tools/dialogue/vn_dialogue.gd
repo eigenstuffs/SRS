@@ -34,6 +34,11 @@ const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
 @onready var next = $Next
 @onready var choice_ui = $Choice
 
+@onready var ui_elements : Array = [
+	box,
+	label
+]
+
 @export_file("*.json") var text
 
 var result : Dictionary
@@ -50,7 +55,6 @@ signal finished_line
 func _ready():
 	if text:
 		choice_ui.hide()
-		
 		self.connect("choice", choice_funnel)
 		
 		var string = FileAccess.get_file_as_string(text)
@@ -76,18 +80,19 @@ func read_line(key : int):
 	else:
 		init_parameters(key)
 	if current_line["delay"] != null:
-		label.hide()
+		for i in ui_elements: i.hide()
 		next.hide()
 		choice_ui.hide()
 		await get_tree().create_timer(int(current_line["delay"])).timeout
-	box.show()
-	label.show()
+	for i in ui_elements: i.show()
 	next.disabled = true
 	next.hide()
 	choice_ui.hide()
 	remember.position = Vector2(1280,672)
 	remember.modulate = Color(1,1,1,1)
 	remember.hide()
+	if current_line["text"] == null:
+		for i in ui_elements: i.hide()
 	if current_line["emit"] != null:
 		var text = current_line["emit"].split(",")
 		for i in text.size():
@@ -100,8 +105,7 @@ func read_line(key : int):
 		Global.set(variable, value)
 	if current_line["text"]: label.text = current_line["text"]
 	if current_line["flag"] == "decision":
-		box.hide()
-		label.hide()
+		for i in ui_elements: i.hide()
 		next.hide()
 		if current_line["options"] != null:
 			$Choice/Backdrop.position = Vector2(1950,0)
@@ -193,6 +197,9 @@ func read_line(key : int):
 			await a.finished
 			for i in $Choice/Buttons.get_children():
 				i.queue_free()
+	elif current_line["flag"] == "name_player":
+			$EffectHandler.player_name_screen()
+			await $EffectHandler.done
 	else:
 		if current_line["add"] != null:
 			#remember.show()
@@ -269,7 +276,6 @@ func choice_pressed():
 		if i.button_pressed:
 			choice.emit(i.get_index())
 			return
-
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

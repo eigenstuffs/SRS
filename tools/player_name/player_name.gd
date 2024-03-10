@@ -6,6 +6,8 @@ var input : String = ""
 @onready var letters = $Letters
 @onready var buttons = $VBoxContainer/Buttons
 
+signal done
+
 func _ready():
 	$VBoxContainer/Buttons/a.grab_focus()
 	for i in buttons.get_children():
@@ -22,6 +24,8 @@ func _on_delete_pressed():
 
 func _on_done_pressed():
 	Global.player_name = input
+	emit_signal("done")
+	queue_free()
 
 func button_pressed():
 	for i in buttons.get_children():

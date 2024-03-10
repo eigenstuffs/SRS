@@ -1,9 +1,13 @@
 extends Node
 
+const PLAYER_NAME = preload("res://tools/player_name/player_name.tscn")
+
 @onready var audio = $Music
 @onready var sfx = $SFX
 
 var song
+
+signal done
 
 func _ready():
 	var vn : VisualNovelDialogue = get_parent()
@@ -16,7 +20,7 @@ func _ready():
 	vn.connect("stop_music", stop_music)
 	vn.connect("sfx_truck", sfx_truck)
 	vn.connect("sfx_screams", sfx_screams)
-	
+	vn.connect("name_player", player_name_screen)
 	
 #signal start_music
 #signal boost_stats
@@ -41,7 +45,6 @@ func _ready():
 	#
 func fade_black():
 	EffectRegistry.start_effect(self, "ColorFade", [$MultiPassShaderRect.material])
-
 	
 func fade_red():
 	EffectRegistry.start_effect(self, "ColorFade", [$MultiPassShaderRect.material, Color.TRANSPARENT, Color(176,11,30)])
@@ -73,6 +76,12 @@ func sfx_screams():
 	sfx.stream = song
 	sfx.play()
 	
-func name_player():
-	pass
+func player_name_screen():
+	var a = PLAYER_NAME.instantiate()
+	get_tree().paused = true
+	add_child(a)
+	await a.done
+	get_tree().paused = false
+	emit_signal("done")
+	
 	
