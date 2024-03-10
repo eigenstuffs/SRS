@@ -49,14 +49,13 @@ theme_override_font_sizes/font_size = 50
 text = "ITEM NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="Photo" type="TextureRect" parent="Background/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 expand_mode = 3
 
 [node name="Description" type="Label" parent="Background/VBoxContainer"]
-custom_minimum_size = Vector2(100, 300)
+custom_minimum_size = Vector2(100, 250)
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "DESCRIPTION HERE"
@@ -66,22 +65,21 @@ autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="ReelStr" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 2.08165e-12)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "SELL: 300"
+text = "Reel Strength: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="ReelSize" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 2.08165e-12)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "BUY: 350"
+text = "Reel Size: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2

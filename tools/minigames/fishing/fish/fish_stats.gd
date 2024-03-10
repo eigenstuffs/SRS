@@ -4,8 +4,8 @@ class_name FishStats
 
 #FIXME: Add more skins and randomize them
 const common_skin = preload("res://tools/minigames/fishing/assets/Fishies/fish_common1_spritesheet.png")
-const rare_skin = preload("res://tools/minigames/fishing/assets/Fishies/fish_rare1_spritesheet.png")
-const epic_skin = preload("res://tools/minigames/fishing/assets/Fishies/fish_epic1_spritesheet.png")
+const rare_skin = preload("res://tools/minigames/fishing/assets/Fishies/fish_rare2_spritesheet.png")
+const epic_skin = preload("res://tools/minigames/fishing/assets/Fishies/fish_epic2_spritesheet.png")
 const legendary_skin = preload("res://tools/minigames/fishing/assets/Fishies/fish_legendary1_spritesheet.png")
 
 #i made them all dictionaries in case we want to add names/descriptions here for the inventory; not sure if it's rly necessary tho?? I think using arrays is also possible
