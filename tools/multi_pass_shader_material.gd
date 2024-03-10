@@ -87,6 +87,12 @@ func _enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
 	
 	if self.is_canvas_item:
 		material.set_shader(shader_pass.shader)
+		
+		var uniform_dict : Dictionary = shader_pass.default_uniforms if uniforms.is_empty() else uniforms
+		for uniform_name in uniform_dict:
+			var uniform_value : Variant = uniform_dict[uniform_name]
+			material.set_shader_parameter(uniform_name, uniform_value)
+		material.set_shader_parameter('start_time', Time.get_ticks_usec()*1e-6)
 		return
 	
 	if shader_pass.is_unique_pass and unique_enabled_shader_name != shader_pass.name:

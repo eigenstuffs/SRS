@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://y44scqxvcf1b"]
+[gd_scene load_steps=21 format=3 uid="uid://y44scqxvcf1b"]
 
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/panorama.png" id="1_niisc"]
 [ext_resource type="Script" path="res://scenes/debug/effect_test.gd" id="1_ulp82"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="3_6pytf"]
 [ext_resource type="Shader" path="res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader" id="4_oqgjt"]
 [ext_resource type="PackedScene" uid="uid://btp06nsjls81w" path="res://tools/screen_space_mesh.tscn" id="6_idwb4"]
+[ext_resource type="PackedScene" uid="uid://5ybyvtcypf1c" path="res://tools/multi_pass_shader_rect.tscn" id="6_rryp6"]
+[ext_resource type="Shader" path="res://resources/shaders/canvas_item/color_fade.gdshader" id="7_fx8kb"]
 [ext_resource type="Shader" path="res://resources/shaders/post_processing/blur.gdshader" id="7_kfw2f"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_y2lc3"]
@@ -88,6 +90,26 @@ script = ExtResource("2_7jf7y")
 is_canvas_item = true
 shader_passes = Array[ExtResource("3_6pytf")]([SubResource("Resource_r4i7m")])
 
+[sub_resource type="Resource" id="Resource_hktjb"]
+script = ExtResource("3_6pytf")
+name = &"ColorFade"
+shader = ExtResource("7_fx8kb")
+is_enabled_by_default = false
+is_unique_pass = false
+default_uniforms = {
+"duration": null,
+"end_color": null,
+"start_color": null,
+"start_time": null
+}
+priority_overwrite = 999
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bftgi"]
+shader = ExtResource("4_oqgjt")
+script = ExtResource("2_7jf7y")
+is_canvas_item = true
+shader_passes = Array[ExtResource("3_6pytf")]([SubResource("Resource_hktjb")])
+
 [sub_resource type="Resource" id="Resource_06pvd"]
 script = ExtResource("3_6pytf")
 name = &"Blur"
@@ -129,12 +151,17 @@ shadow_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_jg156")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MultiPassShaderRect" parent="CanvasLayer" instance=ExtResource("6_rryp6")]
+material = SubResource("ShaderMaterial_bftgi")
+passes = SubResource("ShaderMaterial_bftgi")
 
 [node name="ScreenSpaceMesh" parent="." instance=ExtResource("6_idwb4")]
 surface_material_override/0 = SubResource("ShaderMaterial_vcgic")

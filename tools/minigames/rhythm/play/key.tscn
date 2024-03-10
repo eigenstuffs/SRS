@@ -54,11 +54,12 @@ orientation = 1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxuqm"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(1, 1, 1, 0.27451)
+albedo_color = Color(0.780392, 0.843137, 0.862745, 1)
+disable_receive_shadows = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_bmgil"]
 material = SubResource("StandardMaterial3D_gxuqm")
-size = Vector2(0.075, 1000)
+size = Vector2(0.05, 100)
 orientation = 1
 
 [node name="Key" type="Node3D"]
@@ -68,6 +69,7 @@ script = ExtResource("1_bcnxa")
 
 [node name="KeyPlane" parent="Editor" instance=ExtResource("2_j1vrs")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+visible = false
 
 [node name="NoteSpawnPosition" parent="Editor" instance=ExtResource("3_yqybd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
@@ -88,14 +90,22 @@ fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_3fgsh")
 draw_pass_1 = SubResource("QuadMesh_nua2l")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="KeyMesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -50.445, -0.00100221)
+sorting_offset = -99.0
+cast_shadow = 0
+mesh = SubResource("QuadMesh_bmgil")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="KeyMesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 50.455, -0.000997795)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_bmgil")
+skeleton = NodePath("../..")
+
 [node name="Notes" type="Node3D" parent="."]
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_25p1v")
 volume_db = -18.0
 max_polyphony = 10
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.01, 2.08165e-12)
-top_level = true
-mesh = SubResource("QuadMesh_bmgil")
