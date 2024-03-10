@@ -137,11 +137,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00185251, 0, 0)
 shape = SubResource("BoxShape3D_odbwy")
 
 [node name="fish_instancer" parent="." instance=ExtResource("2_cead1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.053, 1.5, 1.387)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.053, 1.45, 1.387)
 MAX_FISH_COUNT = 10
 
 [node name="Water" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 0.0533893, 0, 0.867559)
+transform = Transform3D(-4.37114e-08, -3.48787e-16, -1.8301, 3.48787e-16, 1, -6.38316e-16, 1, -3.48787e-16, -7.99964e-08, 0.0533893, 0, 0.867559)
 script = ExtResource("3_slp7l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Water"]
@@ -167,12 +167,12 @@ shape = SubResource("BoxShape3D_jq107")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 2.08165e-12, 4.15793, 2.40186)
+current = true
 size = 73.377
 frustum_offset = Vector2(0, 50)
 
 [node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(0.0344613, -0.0250786, 0.999091, -0.0274462, 0.999284, 0.0260301, -0.999029, -0.0283182, 0.0337483, 5.07454, -0.449683, -1.24189)
-visible = false
+transform = Transform3D(0.0345941, -0.0299268, 0.998953, -0.0272787, 0.999151, 0.0308774, -0.999029, -0.0283183, 0.0337483, 5.07454, 0.353256, -1.24189)
 size = 73.377
 frustum_offset = Vector2(0, 50)
 
