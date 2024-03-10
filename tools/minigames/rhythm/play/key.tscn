@@ -52,12 +52,13 @@ size = Vector2(0.25, 0.25)
 orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxuqm"]
+transparency = 1
 shading_mode = 0
-albedo_color = Color(0.764706, 0.764706, 0.764706, 1)
+albedo_color = Color(1, 1, 1, 0.27451)
 
 [sub_resource type="QuadMesh" id="QuadMesh_bmgil"]
 material = SubResource("StandardMaterial3D_gxuqm")
-size = Vector2(0.2, 1000)
+size = Vector2(0.075, 1000)
 orientation = 1
 
 [node name="Key" type="Node3D"]
@@ -95,6 +96,6 @@ volume_db = -18.0
 max_polyphony = 10
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.2, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.01, 2.08165e-12)
 top_level = true
 mesh = SubResource("QuadMesh_bmgil")

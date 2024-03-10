@@ -16,7 +16,7 @@ func _input(event: InputEvent) -> void:
 	#else:
 		#EffectRegistry.start_effect(self, 'ColorFade', [mat_canvas, start_color, end_color])
 		
-	EffectRegistry.start_effect(self, 'Blur', [mat_spatial])
+	#EffectRegistry.start_effect(self, 'Blur', [mat_spatial])
 	#($ScreenSpaceMesh as MeshInstance3D).get_surface_override_material(0).enable_shader_pass('blur')
 
 func _process(delta: float) -> void:

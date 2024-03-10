@@ -76,7 +76,6 @@ func _input(event : InputEvent) -> void:
 	corrected_time = audio_synchronizer.time - AudioServer.get_output_latency()
 	var next_note = note_queue.front()
 	if event.is_action_pressed(keybind):
-		print(audio_synchronizer.time)
 		var offset = next_note.hit_time - corrected_time
 		if offset < early_miss_window: # Handle normal hit
 			register_hit(next_note, Note.HitType.HIT, abs(offset))

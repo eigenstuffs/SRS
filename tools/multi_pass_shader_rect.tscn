@@ -1,11 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://5ybyvtcypf1c"]
+[gd_scene load_steps=5 format=3 uid="uid://5ybyvtcypf1c"]
 
+[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="1_i25up"]
 [ext_resource type="Script" path="res://tools/multi_pass_shader_rect.gd" id="1_myhny"]
+[ext_resource type="Shader" path="res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader" id="2_gsr1a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nh1ng"]
+shader = ExtResource("2_gsr1a")
+script = ExtResource("1_i25up")
+is_canvas_item = true
+shader_passes = Array[Resource("res://resources/shaders/shader_pass.gd")]([])
 
 [node name="MultiPassShaderRect" type="ColorRect"]
+material = SubResource("ShaderMaterial_nh1ng")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_myhny")
+passes = SubResource("ShaderMaterial_nh1ng")

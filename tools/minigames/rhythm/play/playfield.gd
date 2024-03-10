@@ -76,6 +76,7 @@ func _ready() -> void:
 func start():
 	audio_synchronizer.start()
 
+var old_len_hit_objects = 0
 func _process(_delta: float) -> void:
 	if not audio_synchronizer.has_started: return
 	

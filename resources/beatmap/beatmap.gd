@@ -61,6 +61,9 @@ var is_initialized : bool
 ##
 ## [i]Note: At the moment, variable BPMs are not supported![/i]
 static func load(beatmap_file_path : String, beatmap : Beatmap) -> void:
+	if beatmap.is_initialized:
+		return
+	
 	assert(beatmap_file_path.ends_with('.osu'), 'Beatmap pat must be a .osu file!')
 	var file := FileAccess.open(beatmap_file_path, FileAccess.READ)
 	var key_set := {} # (why does gdscript have little data structures??)
