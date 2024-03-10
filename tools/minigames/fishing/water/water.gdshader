@@ -11,8 +11,10 @@ uniform sampler2D refract_normal : hint_normal;
 uniform sampler2D foam_noise_texture : source_color;
 uniform sampler2D height_texture : hint_normal;
 
-uniform vec4 shallow_color : source_color = vec4(0.12, 0.36, 0.36, 0.95);
-uniform vec4 deep_color : source_color = vec4(0.01, 0.16, 0.25, 0.988);
+//uniform vec4 shallow_color : source_color = vec4(0.12, 0.36, 0.36, 0.95);
+uniform vec4 shallow_color : source_color = vec4(0.12, 0.36, 0.75, 0.95);
+//uniform vec4 deep_color : source_color = vec4(0.01, 0.16, 0.25, 0.988);
+uniform vec4 deep_color : source_color = vec4(0.15, 0.16, 0.8, 0.988);
 uniform vec4 foam_color : source_color;
 
 uniform float depth_factor;

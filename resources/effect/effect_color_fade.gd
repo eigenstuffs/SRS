@@ -9,7 +9,7 @@ func _init() -> void:
 		self.end_color = end_color_
 		
 		assert(material.has_shader_pass(self.name))
-		material.enable_shader_pass(self.name, {'start_color' : start_color, 'end_color' : end_color, 'duration' : duration})
+		material._enable_shader_pass(self.name, {'start_color' : start_color, 'end_color' : end_color, 'duration' : duration})
 	
 	self.on_stop = func():
 		assert(material.has_shader_pass(self.name))

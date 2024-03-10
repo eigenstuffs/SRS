@@ -19,6 +19,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var state: STATES = STATES.WANDER
 var bobber : FloatingBobber
 
+func _ready():
+	rotate_y(randf_range(-PI/2, PI/2)) #initialize so that they don't all swim forward together
+	$Timer.start(randf_range(1.5, 3))
+	
 func _physics_process(delta):
 	if state == STATES.WANDER:
 		velocity = Vector3.FORWARD * speed
@@ -44,7 +48,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-#makes the fish switch states every 3 seconds i think
+#makes the fish switch states every 2-3 seconds i think
 func _on_timer_timeout():
 	if state == STATES.WANDER:
 		state = STATES.WAIT
@@ -53,7 +57,7 @@ func _on_timer_timeout():
 		#is this line needed??
 		rotation = rotation.normalized()
 		rotate_y(randf_range(0, 2*PI))
-	$Timer.start(3)
+	$Timer.start(randf_range(2, 3))
 
 func _on_visible_on_screen_notifier_3d_screen_exited():
 	queue_free()

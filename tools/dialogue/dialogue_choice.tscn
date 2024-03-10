@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://beok278f8oqvb" path="res://assets/ui/Dialogue Choice_Default.png" id="1_golb5"]
 [ext_resource type="Texture2D" uid="uid://dyl8upa31t634" path="res://assets/ui/Dialogue Choice_hover.png" id="2_xwhd2"]
-[ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/Galdeano-Regular.ttf" id="3_26sn3"]
+[ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/Volkhov-Regular.ttf" id="3_d7gxc"]
 
 [node name="DialogueChoice" type="TextureButton"]
 offset_right = 40.0
@@ -20,7 +20,7 @@ offset_right = 653.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
 theme_override_constants/line_spacing = 15
-theme_override_fonts/font = ExtResource("3_26sn3")
+theme_override_fonts/font = ExtResource("3_d7gxc")
 theme_override_font_sizes/font_size = 36
 text = "This is a choice
 "

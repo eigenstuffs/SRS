@@ -10,7 +10,7 @@ var remembered = []
 
 ### MODIFIABLE THROUGH DIALOGUE
 
-var player_name : String = ""
+var player_name : String = "Seraphina"
 
 ### OPTIONS
 
