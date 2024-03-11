@@ -1,6 +1,6 @@
 class_name EffectBetterCall extends Effect
 		
-const BETTER_CALL_EFFECT := preload('res://scenes/debug/better_call/better_call_effect.tscn')
+const BETTER_CALL_EFFECT := preload('res://resources/effect/better_call_effect/better_call_effect.tscn')
 		
 var effect;
 		

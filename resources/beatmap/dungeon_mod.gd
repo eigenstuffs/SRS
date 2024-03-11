@@ -5,8 +5,6 @@ class_name DungeonMod
 # TODO: erm, delete me and this file later please
 static var TIMING_ACTIONS = [
 	[  1.718,    'screen',  'enable', ['flash', 'albedo']],
-	[  1.718, 'playfield', func(playfield):
-		EffectRegistry.start_effect(playfield, 'BetterCall', [playfield])],
 	[  8.118,      'back',  'enable', ['albedo_fade'], [{'albedo' : Color(0, 0, 0, 1)}]],
 	[ 19.718,    'screen',  'enable', ['flash', 'impact_lines'], [{}, {'weight' : 0.25}]],
 	[ 19.718,      'back', 'disable', ['albedo_fade']],
@@ -18,7 +16,8 @@ static var TIMING_ACTIONS = [
 	[ 44.143, 'playfield', func(playfield):
 		for key in playfield.keys: 
 			key.enable_note_shader_pass('warp')
-			key.enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))],
+			key.enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
+		EffectRegistry.start_effect(playfield, 'BetterCall', [playfield])],
 	[ 63.518,    'screen',  'enable', ['flash', 'rain']],
 	[ 73.133,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
 	[ 73.712,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],

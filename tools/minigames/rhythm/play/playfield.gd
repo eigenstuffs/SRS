@@ -131,7 +131,7 @@ func _create_score_text(text : String, color : Color):
 	score.fake_torque = randf_range(-0.25, 0.25)
 	score.text = text
 	score.text_color = color
-	score.position.x = randi_range(125, 225)
+	score.position.x = randi_range(175, 275)
 	add_child(score)
 
 func _on_audio_synchronizer_on_beat() -> void:

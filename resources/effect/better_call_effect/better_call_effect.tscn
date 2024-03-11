@@ -1,22 +1,22 @@
 [gd_scene load_steps=21 format=3 uid="uid://ca6d3w0k87ywp"]
 
-[ext_resource type="Texture2D" uid="uid://l56iq68xxd0t" path="res://tools/minigames/rhythm/assets/cirno/circle.bmp" id="1_ryuiu"]
-[ext_resource type="Shader" path="res://scenes/debug/better_call/circle_crop.gdshader" id="2_yre6c"]
-[ext_resource type="PackedScene" uid="uid://co6hmar6c0n07" path="res://scenes/debug/better_call/better_call_camera.tscn" id="3_ytjv7"]
-[ext_resource type="Texture2D" uid="uid://0h4uj7oiikdh" path="res://tools/minigames/rhythm/assets/cirno/better_call.png" id="4_ehdr4"]
-[ext_resource type="Texture2D" uid="uid://dbvipclobix1b" path="res://tools/minigames/rhythm/assets/cirno/cirno_0.jpg" id="5_sj54g"]
-[ext_resource type="Texture2D" uid="uid://bs1lbqahjmwul" path="res://tools/minigames/rhythm/assets/cirno/cirno_1.png" id="6_sfm7s"]
-[ext_resource type="Texture2D" uid="uid://d32g1sdg8j1sb" path="res://tools/minigames/rhythm/assets/cirno/cirno_2.png" id="7_gwjik"]
-[ext_resource type="Shader" path="res://scenes/debug/better_call/blink.gdshader" id="8_fc017"]
-[ext_resource type="Texture2D" uid="uid://bua7ri4s4hvbb" path="res://tools/minigames/rhythm/assets/cirno/brainrot.png" id="8_jefg6"]
-[ext_resource type="AudioStream" uid="uid://r18tiodbr5hj" path="res://scenes/debug/better_call/vine.mp3" id="10_f1hm0"]
-[ext_resource type="AudioStream" uid="uid://b2xvrhqgb0a2s" path="res://scenes/debug/better_call/better_call.mp3" id="11_cemb3"]
+[ext_resource type="Texture2D" uid="uid://l56iq68xxd0t" path="res://tools/minigames/rhythm/assets/cirno/circle.bmp" id="1_pjnb6"]
+[ext_resource type="Shader" path="res://resources/effect/better_call_effect/blink.gdshader" id="2_ui3eh"]
+[ext_resource type="Texture2D" uid="uid://bua7ri4s4hvbb" path="res://tools/minigames/rhythm/assets/cirno/brainrot.png" id="3_c3ioj"]
+[ext_resource type="Shader" path="res://resources/effect/better_call_effect/circle_crop.gdshader" id="4_wcd2a"]
+[ext_resource type="PackedScene" uid="uid://co6hmar6c0n07" path="res://resources/effect/better_call_effect/better_call_camera.tscn" id="5_lw5wt"]
+[ext_resource type="Texture2D" uid="uid://0h4uj7oiikdh" path="res://tools/minigames/rhythm/assets/cirno/better_call.png" id="6_b4yaj"]
+[ext_resource type="Texture2D" uid="uid://dbvipclobix1b" path="res://tools/minigames/rhythm/assets/cirno/cirno_0.jpg" id="7_ogtnq"]
+[ext_resource type="Texture2D" uid="uid://bs1lbqahjmwul" path="res://tools/minigames/rhythm/assets/cirno/cirno_1.png" id="8_s8me5"]
+[ext_resource type="Texture2D" uid="uid://d32g1sdg8j1sb" path="res://tools/minigames/rhythm/assets/cirno/cirno_2.png" id="9_oocuw"]
+[ext_resource type="AudioStream" uid="uid://r18tiodbr5hj" path="res://resources/effect/better_call_effect/vine.mp3" id="10_uw15k"]
+[ext_resource type="AudioStream" uid="uid://b2xvrhqgb0a2s" path="res://resources/effect/better_call_effect/better_call.mp3" id="11_de8po"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ixu4h"]
-shader = ExtResource("8_fc017")
+shader = ExtResource("2_ui3eh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ews22"]
-shader = ExtResource("2_yre6c")
+shader = ExtResource("4_wcd2a")
 
 [sub_resource type="World3D" id="World3D_kk7il"]
 
@@ -24,7 +24,7 @@ shader = ExtResource("2_yre6c")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_giy3i"]
 shading_mode = 0
-albedo_texture = ExtResource("4_ehdr4")
+albedo_texture = ExtResource("6_b4yaj")
 
 [sub_resource type="SphereMesh" id="SphereMesh_78r1e"]
 
@@ -32,20 +32,20 @@ albedo_texture = ExtResource("4_ehdr4")
 resource_name = "cirno_low_Material_u1_v1"
 cull_mode = 2
 albedo_color = Color(0.631373, 0.494118, 0.458824, 1)
-albedo_texture = ExtResource("5_sj54g")
+albedo_texture = ExtResource("7_ogtnq")
 metallic_specular = 0.0
-metallic_texture = ExtResource("6_sfm7s")
+metallic_texture = ExtResource("8_s8me5")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("6_sfm7s")
+roughness_texture = ExtResource("8_s8me5")
 roughness_texture_channel = 1
-emission_texture = ExtResource("5_sj54g")
+emission_texture = ExtResource("7_ogtnq")
 normal_enabled = true
 normal_scale = 0.1
-normal_texture = ExtResource("7_gwjik")
+normal_texture = ExtResource("9_oocuw")
 rim_enabled = true
 rim = 0.01
 ao_enabled = true
-ao_texture = ExtResource("6_sfm7s")
+ao_texture = ExtResource("8_s8me5")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_swpkw"]
 _surfaces = [{
@@ -88,7 +88,7 @@ offset_left = 30.0
 offset_top = 30.0
 offset_right = 410.0
 offset_bottom = 410.0
-texture = ExtResource("1_ryuiu")
+texture = ExtResource("1_pjnb6")
 expand_mode = 1
 
 [node name="Arrow" type="TextureRect" parent="."]
@@ -98,7 +98,7 @@ offset_top = 136.0
 offset_right = 747.0
 offset_bottom = 404.0
 rotation = 0.365738
-texture = ExtResource("8_jefg6")
+texture = ExtResource("3_c3ioj")
 expand_mode = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -120,7 +120,7 @@ use_taa = true
 size = Vector2i(80, 80)
 render_target_update_mode = 4
 
-[node name="Camera3D" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_ytjv7")]
+[node name="Camera3D" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_lw5wt")]
 
 [node name="Background" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Camera3D"]
 transform = Transform3D(75, 0, 0, 0, 25, 0, 0, 0, 1, 0, 0, -50)
@@ -164,10 +164,9 @@ light_bake_mode = 1
 spot_angle = 35.31
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_f1hm0")
+stream = ExtResource("10_uw15k")
 autoplay = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_cemb3")
+stream = ExtResource("11_de8po")
 volume_db = 10.0
-autoplay = true

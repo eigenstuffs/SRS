@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://tools/minigames/rhythm/util/physics_text.gd" id="1_2k5il"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i1i3y"]
-font_size = 48
+font_size = 35
 font_color = Color(0, 0, 0, 1)
-outline_size = 20
+outline_size = 15
 outline_color = Color(0.92549, 0.92549, 0.92549, 1)
 
 [node name="PhysicsText" type="Node2D"]

@@ -72,6 +72,13 @@ func has_shader_pass(pass_name : StringName) -> bool:
 	else:
 		return not shader_passes.filter(func(shader_pass : ShaderPass): return shader_pass.name == pass_name).is_empty()
 
+func enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
+	assert(pass_name != BASE_SHADER_NAME, 'Shader pass name \'%s\' is reserved!' % BASE_SHADER_NAME)
+	# Lazy initialization of bindings
+	if not is_initialized: initialize_passes()
+	_enable_shader_pass(pass_name, uniforms)
+	MultiPassShaderMaterial.enabled_passes[pass_name] = null
+
 func _enable_shader_pass(pass_name : StringName, uniforms : Dictionary = {}):
 	assert(self.is_initialized and shader_map[pass_name])
 	
