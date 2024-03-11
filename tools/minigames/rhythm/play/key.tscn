@@ -107,5 +107,5 @@ skeleton = NodePath("../..")
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_25p1v")
-volume_db = -18.0
+volume_db = -32.0
 max_polyphony = 10

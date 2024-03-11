@@ -41,7 +41,7 @@ var scores = [0, 0, 0, 0, 0]
 @onready var screen_space_material : MultiPassShaderMaterial = $ScreenSpaceMesh.get_surface_override_material(0)
 @onready var backplane_material : MultiPassShaderMaterial = $BackplaneMesh.get_surface_override_material(0)
 # FIXME : Hardcoded for 'dungeon' beatmap!
-@onready var timing_actions : Variant = DungeonMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'dungeon' else CaitSithMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'cait_sith' else []
+@onready var timing_actions : Variant = WaltzMod.get_timing_actions(self) #DungeonMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'dungeon' else CaitSithMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'cait_sith' else WaltzMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'waltz' else []
 
 func _ready() -> void:
 	audio_synchronizer.spawn_offset_seconds = 1.0 # FIXME: Not static for all songs!
@@ -76,7 +76,6 @@ func _ready() -> void:
 func start():
 	audio_synchronizer.start()
 
-var old_len_hit_objects = 0
 func _process(_delta: float) -> void:
 	if not audio_synchronizer.has_started: return
 	
@@ -92,13 +91,14 @@ func _process(_delta: float) -> void:
 		next_timing_action_idx += 1
 		
 func _physics_process(delta: float) -> void:
+
 	$BPMLabel.visible = show_debug
 	$FrametimeLabel.visible = show_debug
 	$EnabledPassesLabel.visible = show_debug
 	$BeatLabel.visible = show_debug
 	if show_debug: 
 		audio_synchronizer.use_metronome = true
-		$BPMLabel.text = 'BPM: %.0f' % beatmap.bpm
+		$BPMLabel.text = 'BPM: %.0f' % (audio_synchronizer.current_bps * 60.0)
 		$FrametimeLabel.text = 'Frametime: %.3fms' % (Performance.get_monitor(Performance.TIME_PROCESS) * 1e3)
 		$EnabledPassesLabel.text = 'Enabled Shader Passes:'
 		for shader_name in MultiPassShaderMaterial.enabled_passes:
@@ -139,5 +139,5 @@ func _on_audio_synchronizer_on_beat() -> void:
 	
 	var time_int := floor(max(audio_synchronizer.time, 0.0)) as int
 	var length := audio_synchronizer.track.stream.get_length() as int
-	$BeatLabel.text = 'Beat: %d / 4  (%02d:%02d / %02d:%02d)' % [(beat % 4 + 1), (time_int / 60) % 60, time_int % 60, (length / 60) % 60, length % 60] # TODO: 4/4 time only lmao
+	$BeatLabel.text = 'Beat: %d / %d  (%02d:%02d / %02d:%02d)' % [(beat % audio_synchronizer.current_beats_per_measure + 1), audio_synchronizer.current_beats_per_measure, (time_int / 60) % 60, time_int % 60, (length / 60) % 60, length % 60]
 	beat += 1

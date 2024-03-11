@@ -11,3 +11,4 @@ volume_db = -5.0
 
 [node name="Metronome" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_om135")
+volume_db = -8.0

@@ -82,6 +82,7 @@ func _input(event : InputEvent) -> void:
 		elif offset < EARLY_HIT_WINDOW: # Handle early hit
 			register_hit(note_queue.pop(), Note.HitType.MISS, null)
 		get_viewport().set_input_as_handled()
+		print(corrected_time)
 			
 	elif event.is_action_released(keybind) and next_note.is_held:
 		var offset = abs(next_note.hit_time + next_note.duration - corrected_time)

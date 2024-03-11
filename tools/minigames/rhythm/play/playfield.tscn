@@ -204,10 +204,10 @@ mesh = SubResource("QuadMesh_noca2")
 surface_material_override/0 = SubResource("ShaderMaterial_l5pri")
 
 [node name="TitleLabel" type="Label" parent="."]
-offset_left = 36.0
-offset_top = 77.0
-offset_right = 972.0
-offset_bottom = 144.0
+offset_left = 40.0
+offset_top = 107.0
+offset_right = 976.0
+offset_bottom = 174.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
@@ -217,10 +217,10 @@ text = "Lorem Ipsum"
 vertical_alignment = 1
 
 [node name="BeatLabel" type="Label" parent="."]
-offset_left = 37.0
-offset_top = 142.0
-offset_right = 309.0
-offset_bottom = 209.0
+offset_left = 41.0
+offset_top = 172.0
+offset_right = 313.0
+offset_bottom = 239.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
@@ -229,10 +229,10 @@ text = "Beat: 1 / 4 (00 : 00)"
 vertical_alignment = 1
 
 [node name="BeatLabel2" type="Label" parent="."]
-offset_left = 38.0
-offset_top = 117.0
-offset_right = 310.0
-offset_bottom = 184.0
+offset_left = 42.0
+offset_top = 147.0
+offset_right = 314.0
+offset_bottom = 214.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
@@ -241,10 +241,10 @@ text = "----------- Debug ------------"
 vertical_alignment = 1
 
 [node name="BPMLabel" type="Label" parent="."]
-offset_left = 36.0
-offset_top = 167.0
-offset_right = 972.0
-offset_bottom = 234.0
+offset_left = 40.0
+offset_top = 197.0
+offset_right = 976.0
+offset_bottom = 264.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
@@ -253,10 +253,10 @@ text = "BPM: 0"
 vertical_alignment = 1
 
 [node name="FrametimeLabel" type="Label" parent="."]
-offset_left = 36.0
-offset_top = 193.0
-offset_right = 972.0
-offset_bottom = 260.0
+offset_left = 40.0
+offset_top = 223.0
+offset_right = 976.0
+offset_bottom = 290.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
@@ -265,10 +265,10 @@ text = "Frametime: 0.00ms"
 vertical_alignment = 1
 
 [node name="EnabledPassesLabel" type="Label" parent="."]
-offset_left = 35.0
-offset_top = 238.0
-offset_right = 971.0
-offset_bottom = 654.0
+offset_left = 39.0
+offset_top = 268.0
+offset_right = 975.0
+offset_bottom = 684.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
