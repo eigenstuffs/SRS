@@ -6,6 +6,8 @@ signal casting_time
 signal fishing_time
 signal walking_time
 signal fish_hooked
+signal casting_anim_done
+signal releasing_rod
 
 @onready var rod = $FishingRod
 
@@ -13,7 +15,7 @@ const SPEED = 2.0
 const JUMP_VELOCITY = 1.5
 
 enum FishingState {
-	WALKING, CASTING, FISHING, REELING
+	WALKING, CASTING, RELEASE, WAITING, FISHING, REELING
 }
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -31,8 +33,8 @@ func _physics_process(delta):
 			emit_signal("casting_time")
 	if Input.is_action_just_released("ui_accept"):
 		if currentState == FishingState.CASTING:
-			currentState = FishingState.FISHING
-			emit_signal("fishing_time") #the third state depends on the fishing rod
+			currentState = FishingState.RELEASE
+			emit_signal("releasing_rod")
 	if Global.can_move and currentState == FishingState.WALKING:
 		if not is_on_floor():
 			velocity.y -= gravity * delta
@@ -53,9 +55,11 @@ func _physics_process(delta):
 				
 			if dir != last_dir:
 				if dir == Vector2.RIGHT:
-					$Sprite3D.scale = Vector3(0.5,0.5,0.5)
+					$AnimatedSprite3D.scale = Vector3(0.5,0.5,0.5)
+					$FishingRod.position = Vector3(0.27, $FishingRod.position.y, $FishingRod.position.z)
 				else:
-					$Sprite3D.scale = Vector3(-0.5,0.5,0.5)
+					$AnimatedSprite3D.scale = Vector3(-0.5,0.5,0.5)
+					$FishingRod.position = Vector3(-0.27, $FishingRod.position.y, $FishingRod.position.z)
 				if not turning:
 					var a = create_tween()
 					turning = true
@@ -76,9 +80,17 @@ func _physics_process(delta):
 
 func anim_handler():
 	if velocity != Vector3.ZERO:
-		$AnimationPlayer.play("Walk")
+		$AnimatedSprite3D.play("walk")
+	elif currentState == FishingState.RELEASE:
+		$AnimatedSprite3D.play("fishing_cast")
+		await $AnimatedSprite3D.animation_finished
+		emit_signal("casting_anim_done")
+	elif currentState == FishingState.WAITING:
+		pass
+	elif currentState == FishingState.FISHING:
+		$AnimatedSprite3D.play("fishing_idle")
 	else:
-		$AnimationPlayer.play("Idle")
+		$AnimatedSprite3D.play("idle")
 
 
 func _on_fishing_rod_fishing_ends():
@@ -91,3 +103,10 @@ func _on_fishing_reeling_minigame():
 func _on_fishing_reeling_minigame_end(is_successful):
 	rod.retractable = true
 	rod.retract_bobber()
+
+func _on_casting_anim_done(): #send the bobber out after casting animation is done
+	currentState = FishingState.WAITING
+	emit_signal("fishing_time") #the third state depends on the fishing rod
+
+func _on_fishing_rod_bobber_enter_water():
+	currentState = FishingState.FISHING

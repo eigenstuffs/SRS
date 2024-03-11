@@ -26,7 +26,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 shape = SubResource("SphereShape3D_rxajj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(0.25, -4.80375e-23, 1.21322e-22, 2.61497e-23, 0.25, -6.53454e-17, -5.4116e-24, 9.3928e-19, 0.25, 0, 0, 0)
 mesh = SubResource("SphereMesh_on7hd")
 skeleton = NodePath("")
 

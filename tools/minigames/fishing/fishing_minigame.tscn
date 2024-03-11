@@ -194,4 +194,5 @@ frustum_offset = Vector2(0, 50)
 [connection signal="first_fish_info" from="fish_instancer" to="CanvasLayer" method="_on_fish_instancer_first_fish_info"]
 [connection signal="fish_hooked" from="fish_instancer" to="." method="_on_fish_instancer_fish_hooked"]
 [connection signal="casting_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_casting_time"]
-[connection signal="fishing_time" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_fishing_time"]
+[connection signal="releasing_rod" from="FishingPlayer" to="." method="_on_fishing_player_releasing_rod"]
+[connection signal="releasing_rod" from="FishingPlayer" to="CanvasLayer" method="_on_fishing_player_releasing_rod"]

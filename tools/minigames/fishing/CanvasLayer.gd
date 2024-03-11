@@ -95,11 +95,7 @@ func bar_animation():
 	a.tween_property(force_bar, "value", max_force_val, 1)
 	a.tween_property(force_bar, "value", min_force_val, 1)
 	await stop_loop
-	a.kill()
-
-func _on_fishing_player_fishing_time():
-	emit_signal("stop_loop")
-	force_bar_reset()
+	a.kill()	
 
 # the resets
 func force_bar_reset():
@@ -167,3 +163,8 @@ func icons_reset():
 	exclaim.self_modulate.a = 0
 	miss.self_modulate.a = 0
 	plus_one.self_modulate.a = 0
+
+
+func _on_fishing_player_releasing_rod():
+	emit_signal("stop_loop")
+	force_bar_reset()
