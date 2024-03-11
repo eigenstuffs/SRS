@@ -12,12 +12,12 @@ transform = Transform3D(1, 1.32815e-09, 1.51808e-08, 1.5197e-08, -0.0131592, -0.
 script = ExtResource("1_7vvl0")
 
 [node name="MovingBobber" parent="." instance=ExtResource("2_djfgk")]
-transform = Transform3D(1, 3.2417e-15, 9.05245e-15, -3.38718e-15, 1, 4.12514e-09, 5.66574e-15, -2.49025e-09, 1, 4.47035e-07, -0.00192124, -0.701239)
+transform = Transform3D(1, 1.65089e-08, 1.38527e-08, -1.38526e-08, -6.5587e-08, 1, 1.65089e-08, -1, 3.5694e-08, 6.25849e-07, -0.00192124, -0.701239)
 collision_layer = 2
 collision_mask = 2
 
 [node name="FloatingBobber" parent="." instance=ExtResource("3_sxnjn")]
-transform = Transform3D(1, 3.07616e-15, 4.63349e-14, -2.16604e-15, 0.999999, 7.84878e-09, 3.20596e-16, -1.5575e-09, 0.999999, 1.49012e-07, -0.0128306, -0.974956)
+transform = Transform3D(1, 1.65089e-08, 1.38527e-08, -1.38526e-08, -8.79356e-08, 0.999999, 1.65089e-08, -0.999999, -7.37597e-08, 3.27826e-07, -0.0128306, -0.974955)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 2
