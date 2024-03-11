@@ -27,7 +27,7 @@ func _on_fishing_player_fishing_time():
 		#retract_bobber()
 
 func _on_moving_bobber_water_entered():
-	floating_bobber.transform = moving_bobber.transform
+	floating_bobber.global_position = moving_bobber.global_position
 	floating_bobber.activate()
 	floating_bobber.enable_being_monitored()
 	retractable = true

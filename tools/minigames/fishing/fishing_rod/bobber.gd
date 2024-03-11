@@ -15,7 +15,9 @@ func launch(initial_v : Vector3):
 	transform = original_position
 	visible = true
 	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
 	apply_central_impulse(initial_v)
+	angular_velocity = Vector3.ZERO
 
 func _on_area_3d_area_entered(area):
 	if area.get_parent() is Water:

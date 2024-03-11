@@ -36,6 +36,9 @@ func activate():
 	visible = true
 	CatchField.monitoring = true
 	AttractionField.monitoring = true
+	$Sprite3D.global_rotation = Vector3(0, 0, 0)
+	$Sprite3D.scale = Vector3(0.1, 0.1, 0.1)
+
 	
 func deactivate():
 	visible = false
