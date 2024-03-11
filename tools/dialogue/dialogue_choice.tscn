@@ -16,13 +16,14 @@ texture_focused = ExtResource("2_xwhd2")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 653.0
+offset_left = 64.0
+offset_right = 576.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
 theme_override_constants/line_spacing = 15
 theme_override_fonts/font = ExtResource("3_d7gxc")
-theme_override_font_sizes/font_size = 36
-text = "This is a choice
-"
+theme_override_font_sizes/font_size = 24
+text = "This is a choice "
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3

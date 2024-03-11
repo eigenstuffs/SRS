@@ -1,51 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj4bi5x25av1g"]
+[gd_scene load_steps=9 format=3 uid="uid://bj4bi5x25av1g"]
 
-[ext_resource type="Texture2D" uid="uid://coepn74t4hxru" path="res://assets/IMG_2206.png" id="1_w8i43"]
+[ext_resource type="Script" path="res://scenes/menus/title.gd" id="1_bsgjf"]
+[ext_resource type="Texture2D" uid="uid://vjj45nftrne" path="res://assets/cgs/title.png" id="2_3w1qb"]
 [ext_resource type="Texture2D" uid="uid://ccsrql5pidcqv" path="res://assets/ui/Button_Default.png" id="2_jk8cj"]
 [ext_resource type="Texture2D" uid="uid://c8jonukq0ek4k" path="res://assets/ui/Button_Click.png" id="3_rhqcb"]
 [ext_resource type="Texture2D" uid="uid://dcjb5khfra1y2" path="res://assets/ui/Button_Hover.png" id="4_ie6dy"]
+[ext_resource type="Texture2D" uid="uid://be34lpcu247he" path="res://assets/fish.png" id="6_ncctf"]
+[ext_resource type="Texture2D" uid="uid://f1bl0di56y1u" path="res://assets/book.png" id="7_rfqxi"]
+[ext_resource type="Texture2D" uid="uid://x4lgsbode5j6" path="res://assets/rhythm.png" id="8_u63tl"]
 
 [node name="Title" type="Control"]
+z_index = -1
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bsgjf")
 
-[node name="Img2206" type="Sprite2D" parent="."]
-position = Vector2(1000, 440)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_w8i43")
-
-[node name="TextureButton3" type="TextureButton" parent="."]
-layout_mode = 2
-offset_left = 840.0
-offset_top = 920.0
-offset_right = 1325.0
-offset_bottom = 1062.0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("2_jk8cj")
-texture_pressed = ExtResource("3_rhqcb")
-texture_hover = ExtResource("4_ie6dy")
-texture_focused = ExtResource("4_ie6dy")
-
-[node name="Label" type="Label" parent="TextureButton3"]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 480.0
-offset_bottom = 141.0
-theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
-theme_override_font_sizes/font_size = 32
-text = "Options"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.145098, 0.109804, 0.180392, 1)
+
+[node name="TitleScreenStackedButtons" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_3w1qb")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
-offset_left = 717.5
-offset_top = 756.0
-offset_right = 1202.5
-offset_bottom = 898.0
+offset_left = 160.0
+offset_top = 600.0
+offset_right = 645.0
+offset_bottom = 742.0
+scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("2_jk8cj")
 texture_pressed = ExtResource("3_rhqcb")
 texture_hover = ExtResource("4_ie6dy")
@@ -60,3 +51,37 @@ theme_override_font_sizes/font_size = 32
 text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Library" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 720.0
+offset_right = 1953.0
+offset_bottom = 1994.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("6_ncctf")
+
+[node name="Fishing" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 720.0
+offset_right = 1793.0
+offset_bottom = 1994.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("7_rfqxi")
+
+[node name="Rhythm" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 720.0
+offset_right = 1633.0
+offset_bottom = 1994.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("8_u63tl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Library" to="." method="_on_library_pressed"]
+[connection signal="pressed" from="Fishing" to="." method="_on_fishing_pressed"]
+[connection signal="pressed" from="Rhythm" to="." method="_on_rhythm_pressed"]

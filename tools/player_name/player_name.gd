@@ -23,7 +23,7 @@ func _on_delete_pressed():
 	update_name()
 
 func _on_done_pressed():
-	Global.player_name = input
+	Global.rename_player(input)
 	emit_signal("done")
 	queue_free()
 

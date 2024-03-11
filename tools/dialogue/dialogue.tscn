@@ -1,22 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://bppl4k2rd867r"]
+[gd_scene load_steps=13 format=3 uid="uid://bjpkv1mr3mj18"]
 
-[ext_resource type="Script" path="res://tools/dialogue/dialogue.gd" id="1_gclfa"]
-[ext_resource type="Texture2D" uid="uid://kqpkiycx2vxi" path="res://assets/textbox.png" id="2_5rhqi"]
-[ext_resource type="Texture2D" uid="uid://b6nep4hcehuhn" path="res://assets/talksprite_npc_C.png" id="3_q155s"]
-[ext_resource type="Texture2D" uid="uid://b5vxsdpo2j5aq" path="res://assets/choice_overlay.png" id="4_dlrj0"]
-[ext_resource type="Texture2D" uid="uid://7bl0mmfp1em5" path="res://assets/choice_graphic.png" id="5_igsdk"]
-[ext_resource type="Texture2D" uid="uid://bqicj2kxtgfbh" path="res://assets/choice1_normal.png" id="6_k1pjs"]
-[ext_resource type="Texture2D" uid="uid://c5nvhsfmkfp6d" path="res://assets/choice1_focus.png" id="7_j8el4"]
-[ext_resource type="BitMap" uid="uid://bug5jjtm6s26s" path="res://assets/bitmap_1.bmp" id="8_e7lwg"]
-[ext_resource type="Texture2D" uid="uid://cpprxig8dgffn" path="res://assets/choice2_normal.png" id="9_eae00"]
-[ext_resource type="Texture2D" uid="uid://c445ypl3cb421" path="res://assets/choice2_focus.png" id="10_wimji"]
-[ext_resource type="BitMap" uid="uid://drfv01w7j2n32" path="res://assets/bitmap_2.bmp" id="11_6qjxx"]
-[ext_resource type="Texture2D" uid="uid://bpq6o7jyebeo6" path="res://assets/choice3_normal.png" id="12_qyn1f"]
-[ext_resource type="Texture2D" uid="uid://c36wt2xdvv4ws" path="res://assets/choice3_focus.png" id="13_f0ql6"]
-[ext_resource type="BitMap" uid="uid://dlkha7dvelgxr" path="res://assets/bitmap_3.bmp" id="14_bxm42"]
+[ext_resource type="Script" path="res://tools/dialogue/dialogue_from_strings.gd" id="1_xx3lg"]
+[ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="2_6v40r"]
+[ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/ui/Dialogue Box.png" id="4_1bef5"]
+[ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="5_huhuf"]
+[ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/Volkhov-Regular.ttf" id="7_yo456"]
+[ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/Volkhov-Bold.ttf" id="8_b5tqi"]
+[ext_resource type="FontFile" uid="uid://blo7ft3ovj4yy" path="res://assets/ui/Volkhov-Italic.ttf" id="9_7i8fd"]
+[ext_resource type="FontFile" uid="uid://b5ootysr42ce3" path="res://assets/ui/Volkhov-BoldItalic.ttf" id="10_6g1ht"]
+[ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/Galdeano-Regular.ttf" id="11_1fdxp"]
+[ext_resource type="Texture2D" uid="uid://bd3vg40yeb7ym" path="res://assets/ui/Next Default.png" id="12_0w8jp"]
+[ext_resource type="Texture2D" uid="uid://d02y3ome74of1" path="res://assets/ui/Character Background_Choice.png" id="13_jx8b3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rwqr"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="BitMap" id="BitMap_3kbno"]
 
 [node name="Dialogue" type="Control"]
 layout_mode = 3
@@ -25,131 +21,294 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_gclfa")
+mouse_filter = 1
+script = ExtResource("1_xx3lg")
+
+[node name="EffectHandler" type="Node" parent="."]
+script = ExtResource("2_6v40r")
+
+[node name="Music" type="AudioStreamPlayer" parent="EffectHandler"]
+
+[node name="SFX" type="AudioStreamPlayer" parent="EffectHandler"]
 
 [node name="Box" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1088.0
-texture = ExtResource("2_5rhqi")
+offset_left = 104.5
+offset_top = 650.0
+offset_right = 1815.5
+offset_bottom = 995.0
+texture = ExtResource("4_1bef5")
+metadata/_edit_lock_ = true
 
-[node name="Sprite" type="TextureRect" parent="."]
+[node name="NameFrame" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1088.0
-texture = ExtResource("3_q155s")
+offset_left = 1214.0
+offset_top = 598.0
+offset_right = 1705.0
+offset_bottom = 697.0
+texture = ExtResource("5_huhuf")
+metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 672.0
-offset_top = 800.0
-offset_right = 1504.0
-offset_bottom = 1024.0
-theme_override_font_sizes/font_size = 48
-text = "Asodihasdoihasdoihasd"
-autowrap_mode = 3
+offset_left = 256.0
+offset_top = 725.0
+offset_right = 1620.0
+offset_bottom = 932.0
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_constants/line_separation = 10
+theme_override_fonts/normal_font = ExtResource("7_yo456")
+theme_override_fonts/bold_font = ExtResource("8_b5tqi")
+theme_override_fonts/italics_font = ExtResource("9_7i8fd")
+theme_override_fonts/bold_italics_font = ExtResource("10_6g1ht")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+bbcode_enabled = true
+text = "Lorem ipsum
+ultricies"
 visible_characters_behavior = 1
 
-[node name="Remember" type="Label" parent="."]
+[node name="Name" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1280.0
-offset_top = 672.0
-offset_right = 1888.0
-offset_bottom = 717.0
+offset_left = 1269.0
+offset_top = 622.0
+offset_right = 1653.0
+offset_bottom = 674.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_fonts/font = ExtResource("11_1fdxp")
+theme_override_font_sizes/font_size = 48
+text = "Rose Violet"
+horizontal_alignment = 1
+autowrap_mode = 3
+visible_characters_behavior = 1
+metadata/_edit_lock_ = true
+
+[node name="Remember" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1097.0
+offset_top = 543.0
+offset_right = 1705.0
+offset_bottom = 588.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_fonts/font = ExtResource("11_1fdxp")
 theme_override_font_sizes/font_size = 32
 text = "Character will remember that."
 horizontal_alignment = 2
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="Next" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0.54902)
 layout_mode = 0
-offset_left = 1568.0
-offset_top = 928.0
-offset_right = 1824.0
-offset_bottom = 992.0
-theme_override_colors/font_color = Color(0.101961, 0.0235294, 0.105882, 1)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_1rwqr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_1rwqr")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_1rwqr")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1rwqr")
-theme_override_styles/focus = SubResource("StyleBoxFlat_1rwqr")
-
-[node name="Next" type="Label" parent="Button"]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 256.0
-offset_bottom = 69.0
-theme_override_colors/font_color = Color(0.101961, 0.0235294, 0.105882, 1)
-theme_override_font_sizes/font_size = 32
-text = "Next"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+offset_left = 1663.0
+offset_top = 904.0
+offset_right = 1703.0
+offset_bottom = 948.0
+disabled = true
+texture_normal = ExtResource("12_0w8jp")
+texture_pressed = ExtResource("12_0w8jp")
+texture_hover = ExtResource("12_0w8jp")
+texture_disabled = ExtResource("12_0w8jp")
+texture_focused = ExtResource("12_0w8jp")
+texture_click_mask = SubResource("BitMap_3kbno")
+metadata/_edit_lock_ = true
 
 [node name="Choice" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
+mouse_filter = 1
 
 [node name="Backdrop" type="TextureRect" parent="Choice"]
-modulate = Color(1, 1, 1, 0.454902)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_dlrj0")
+offset_left = 450.0
+offset_top = 1110.0
+offset_right = 1420.0
+offset_bottom = 2210.0
+texture = ExtResource("13_jx8b3")
 
-[node name="Graphic" type="TextureRect" parent="Choice"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-texture = ExtResource("5_igsdk")
-
-[node name="Options" type="Control" parent="Choice"]
+[node name="Control" type="Control" parent="Choice"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="OptionOne" type="TextureButton" parent="Choice/Options"]
-layout_mode = 0
-offset_left = 576.0
-offset_top = 64.0
-offset_right = 1158.0
-offset_bottom = 538.0
-texture_normal = ExtResource("6_k1pjs")
-texture_hover = ExtResource("7_j8el4")
-texture_click_mask = ExtResource("8_e7lwg")
+[node name="FourDecisions" type="Control" parent="Choice/Control"]
+anchors_preset = 0
 
-[node name="OptionTwo" type="TextureButton" parent="Choice/Options"]
-layout_mode = 0
-offset_left = 352.0
-offset_top = 320.0
-offset_right = 1161.0
-offset_bottom = 676.0
-texture_normal = ExtResource("9_eae00")
-texture_hover = ExtResource("10_wimji")
-texture_click_mask = ExtResource("11_6qjxx")
+[node name="Pos1" type="Control" parent="Choice/Control/FourDecisions"]
+anchors_preset = 0
+offset_left = 870.0
+offset_top = 150.0
+offset_right = 870.0
+offset_bottom = 150.0
 
-[node name="OptionThree" type="TextureButton" parent="Choice/Options"]
-layout_mode = 0
-offset_left = 544.0
-offset_top = 640.0
-offset_right = 1159.0
-offset_bottom = 948.0
+[node name="Pos2" type="Control" parent="Choice/Control/FourDecisions"]
+anchors_preset = 0
+offset_left = 780.0
+offset_top = 360.0
+offset_right = 780.0
+offset_bottom = 360.0
+
+[node name="Pos3" type="Control" parent="Choice/Control/FourDecisions"]
+anchors_preset = 0
+offset_left = 690.0
+offset_top = 570.0
+offset_right = 690.0
+offset_bottom = 570.0
+
+[node name="Pos4" type="Control" parent="Choice/Control/FourDecisions"]
+anchors_preset = 0
+offset_left = 600.0
+offset_top = 780.0
+offset_right = 600.0
+offset_bottom = 780.0
+
+[node name="TwoDecisions" type="Control" parent="Choice/Control"]
+anchors_preset = 0
+
+[node name="Pos1" type="Control" parent="Choice/Control/TwoDecisions"]
+anchors_preset = 0
+offset_left = 780.0
+offset_top = 360.0
+offset_right = 780.0
+offset_bottom = 360.0
+
+[node name="Pos2" type="Control" parent="Choice/Control/TwoDecisions"]
+anchors_preset = 0
+offset_left = 690.0
+offset_top = 570.0
+offset_right = 690.0
+offset_bottom = 570.0
+
+[node name="ThreeDecisions" type="Control" parent="Choice/Control"]
+anchors_preset = 0
+
+[node name="Pos1" type="Control" parent="Choice/Control/ThreeDecisions"]
+anchors_preset = 0
+offset_left = 825.0
+offset_top = 255.0
+offset_right = 825.0
+offset_bottom = 255.0
+
+[node name="Pos2" type="Control" parent="Choice/Control/ThreeDecisions"]
+anchors_preset = 0
+offset_left = 735.0
+offset_top = 465.0
+offset_right = 735.0
+offset_bottom = 465.0
+
+[node name="Pos3" type="Control" parent="Choice/Control/ThreeDecisions"]
+anchors_preset = 0
+offset_left = 645.0
+offset_top = 675.0
+offset_right = 645.0
+offset_bottom = 675.0
+
+[node name="OneDecision" type="Control" parent="Choice/Control"]
+anchors_preset = 0
+
+[node name="Pos" type="Control" parent="Choice/Control/OneDecision"]
+anchors_preset = 0
+offset_left = 735.0
+offset_top = 465.0
+offset_right = 735.0
+offset_bottom = 465.0
+
+[node name="AwayPos" type="Control" parent="Choice"]
+anchors_preset = 0
+offset_left = -450.0
+offset_top = 1050.0
+offset_right = -410.0
+offset_bottom = 1090.0
+
+[node name="FourDecisions" type="Control" parent="Choice/AwayPos"]
+anchors_preset = 0
+
+[node name="Pos1" type="Control" parent="Choice/AwayPos/FourDecisions"]
+anchors_preset = 0
+offset_left = 870.0
+offset_top = 150.0
+offset_right = 870.0
+offset_bottom = 150.0
+
+[node name="Pos2" type="Control" parent="Choice/AwayPos/FourDecisions"]
+anchors_preset = 0
+offset_left = 780.0
+offset_top = 360.0
+offset_right = 780.0
+offset_bottom = 360.0
+
+[node name="Pos3" type="Control" parent="Choice/AwayPos/FourDecisions"]
+anchors_preset = 0
+offset_left = 690.0
+offset_top = 570.0
+offset_right = 690.0
+offset_bottom = 570.0
+
+[node name="Pos4" type="Control" parent="Choice/AwayPos/FourDecisions"]
+anchors_preset = 0
+offset_left = 600.0
+offset_top = 780.0
+offset_right = 600.0
+offset_bottom = 780.0
+
+[node name="TwoDecisions" type="Control" parent="Choice/AwayPos"]
+anchors_preset = 0
+
+[node name="Pos1" type="Control" parent="Choice/AwayPos/TwoDecisions"]
+anchors_preset = 0
+offset_left = 780.0
+offset_top = 360.0
+offset_right = 780.0
+offset_bottom = 360.0
+
+[node name="Pos2" type="Control" parent="Choice/AwayPos/TwoDecisions"]
+anchors_preset = 0
+offset_left = 690.0
+offset_top = 570.0
+offset_right = 690.0
+offset_bottom = 570.0
+
+[node name="ThreeDecisions" type="Control" parent="Choice/AwayPos"]
+anchors_preset = 0
+
+[node name="Pos1" type="Control" parent="Choice/AwayPos/ThreeDecisions"]
+anchors_preset = 0
+offset_left = 825.0
+offset_top = 255.0
+offset_right = 825.0
+offset_bottom = 255.0
+
+[node name="Pos2" type="Control" parent="Choice/AwayPos/ThreeDecisions"]
+anchors_preset = 0
+offset_left = 735.0
+offset_top = 465.0
+offset_right = 735.0
+offset_bottom = 465.0
+
+[node name="Pos3" type="Control" parent="Choice/AwayPos/ThreeDecisions"]
+anchors_preset = 0
+offset_left = 645.0
+offset_top = 675.0
+offset_right = 645.0
+offset_bottom = 675.0
+
+[node name="OneDecision" type="Control" parent="Choice/AwayPos"]
+anchors_preset = 0
+
+[node name="Pos" type="Control" parent="Choice/AwayPos/OneDecision"]
+anchors_preset = 0
+offset_left = 735.0
+offset_top = 465.0
+offset_right = 735.0
+offset_bottom = 465.0
+
+[node name="Buttons" type="Control" parent="Choice"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 1
-texture_normal = ExtResource("12_qyn1f")
-texture_hover = ExtResource("13_f0ql6")
-texture_click_mask = ExtResource("14_bxm42")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="mouse_entered" from="Choice/Options/OptionOne" to="." method="_on_option_one_mouse_entered"]
-[connection signal="mouse_exited" from="Choice/Options/OptionOne" to="." method="_on_option_one_mouse_exited"]
-[connection signal="pressed" from="Choice/Options/OptionOne" to="." method="_on_option_one_pressed"]
-[connection signal="mouse_entered" from="Choice/Options/OptionTwo" to="." method="_on_option_two_mouse_entered"]
-[connection signal="mouse_exited" from="Choice/Options/OptionTwo" to="." method="_on_option_two_mouse_exited"]
-[connection signal="pressed" from="Choice/Options/OptionTwo" to="." method="_on_option_two_pressed"]
-[connection signal="mouse_entered" from="Choice/Options/OptionThree" to="." method="_on_option_three_mouse_entered"]
-[connection signal="mouse_exited" from="Choice/Options/OptionThree" to="." method="_on_option_three_mouse_exited"]
-[connection signal="pressed" from="Choice/Options/OptionThree" to="." method="_on_option_three_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

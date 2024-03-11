@@ -3,6 +3,7 @@ extends MeshInstance3D
 signal fishing_starts
 signal fishing_ends
 signal fish_hooked
+signal bobber_enter_water
 
 @onready var moving_bobber : RigidBody3D = $MovingBobber
 @onready var floating_bobber : RigidBody3D = $FloatingBobber
@@ -26,11 +27,11 @@ func _on_fishing_player_fishing_time():
 		#retract_bobber()
 
 func _on_moving_bobber_water_entered():
-	floating_bobber.transform = moving_bobber.transform
+	floating_bobber.global_position = moving_bobber.global_position
 	floating_bobber.activate()
 	floating_bobber.enable_being_monitored()
 	retractable = true
-	print("bobber moved")
+	emit_signal("bobber_enter_water")
 
 func _on_floating_bobber_fish_hooked():
 	if !in_reeling:

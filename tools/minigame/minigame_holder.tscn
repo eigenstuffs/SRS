@@ -48,6 +48,38 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_ddtpb")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -800.0
+offset_bottom = 580.0
+color = Color(0, 0, 0, 0.717647)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 580.0
+color = Color(0, 0, 0, 0.717647)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -800.0
+offset_top = 454.0
+offset_right = 800.0
+offset_bottom = 614.0
+color = Color(0, 0, 0, 0.717647)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -800.0
+offset_top = -601.0
+offset_right = 800.0
+offset_bottom = -441.0
+color = Color(0, 0, 0, 0.717647)
+
 [node name="Game" type="SubViewportContainer" parent="."]
 layout_mode = 0
 offset_left = -800.0

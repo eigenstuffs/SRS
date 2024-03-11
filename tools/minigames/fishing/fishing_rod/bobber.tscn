@@ -1,14 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b41yvuuvkashj"]
+[gd_scene load_steps=5 format=3 uid="uid://b41yvuuvkashj"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/bobber.gd" id="1_4gvxx"]
+[ext_resource type="Texture2D" uid="uid://chbw40rkc3heq" path="res://tools/minigames/fishing/assets/hook.png" id="2_kon8o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lxw03"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0nuj"]
-albedo_color = Color(0.996078, 0.415686, 0.439216, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_kfbv7"]
-material = SubResource("StandardMaterial3D_n0nuj")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8n62w"]
 
@@ -20,10 +15,9 @@ script = ExtResource("1_4gvxx")
 transform = Transform3D(0.25, 4.03982e-18, -1.40872e-15, -4.03982e-18, 0.25, 7.0967e-11, 1.40872e-15, -7.0967e-11, 0.25, 0, 0, 0)
 shape = SubResource("SphereShape3D_lxw03")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.25, 5.9546e-17, -9.6536e-16, -5.9546e-17, 0.25, -1.61864e-10, 9.6536e-16, 1.61864e-10, 0.25, 0, 0, 0)
-mesh = SubResource("SphereMesh_kfbv7")
-skeleton = NodePath("")
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, -5.18898e-25, 1.89783e-23, -7.65211e-25, 0.1, -1.37323e-18, 0, 0, 0.1, 2.08165e-12, -0.16, 2.08165e-12)
+texture = ExtResource("2_kon8o")
 
 [node name="Area3D" type="Area3D" parent="."]
 
