@@ -15,9 +15,20 @@ signal sfx_truck
 signal sfx_screams
 
 signal fade_black
-signal fade_red
-signal fade_white
+signal fade_blacktowhite
+signal fade_blacktored
 
+signal fade_red
+signal fade_redtowhite
+signal fade_redtoblack
+
+signal fade_white
+signal fade_whitetored
+signal fade_whitetoblack
+
+signal fade_trans
+
+signal cg_sky
 signal cg_death
 signal cg_gamestart
 signal cg_god
@@ -54,6 +65,14 @@ signal choice(which : int)
 signal finished_line
 
 func _ready():
+	for i in ui_elements: i.hide()
+	name_frame.hide()
+	character_name.hide()
+	next.hide()
+	
+	text = Global.return_current_text()
+	EffectAnim.play_backwards("FadeBlack")
+	await EffectAnim.animation_finished
 	if text:
 		choice_ui.hide()
 		self.connect("choice", choice_funnel)
@@ -70,8 +89,8 @@ func read_line(key : int):
 	current_line = result.get(result.keys()[key])
 	if current_line["run if"] != null:
 		var text = current_line["run if"].split(",")
-		var condition = text[1]
-		var target = text[2]
+		var condition = text[0]
+		var target = text[1]
 		if Global.remembered.has(condition):
 			init_parameters(key)
 			current_line["go to"] = target
@@ -199,12 +218,15 @@ func read_line(key : int):
 			for i in $Choice/Buttons.get_children():
 				i.queue_free()
 	elif current_line["flag"] == "name_player":
-			$EffectHandler.player_name_screen()
-			await $EffectHandler.done
+		$EffectHandler.player_name_screen()
+		await $EffectHandler.done
+	elif current_line["flag"] == "name_seraphina":
+		$EffectHandler.seraphina_name_screen()
+		await $EffectHandler.done
 	else:
 		if current_line["add"] != null:
 			#remember.show()
-			#Global.remembered.append(current_line["add"])
+			Global.remembered.append(current_line["add"])
 			#if current_line["character"] != null:
 				#remember.text = current_line["character"] + " will remember that."
 			#else:
@@ -216,8 +238,8 @@ func read_line(key : int):
 			pass
 		label.visible_characters = 0
 		var num_chars = label.text.length()
-		#var total_time = Global.text_speed * num_chars
-		var total_time = 0.1
+		var total_time = Global.text_speed * num_chars
+		#var total_time = 0.1
 		var a = create_tween()
 		a.tween_property(label, "visible_characters", num_chars, total_time)
 		await a.finished
@@ -231,7 +253,9 @@ func read_line(key : int):
 		if current_line["flag"] == "end":
 			current_line["go to"] = null
 		elif current_line["flag"] == "menu":
-			pass
+			EffectAnim.play("FadeBlack")
+			await EffectAnim.animation_finished
+			get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 		elif current_line["flag"] == "quit":
 			get_tree().quit()
 	next_line()
@@ -262,10 +286,15 @@ func init_parameters(key : int):
 	var prev_mood = current_mood
 	if line["character"] != null:
 		char = CHARACTER_LIST.list.get(line["character"])
-		character_name.text = line["character"]
+		if line["character"] == "Player":
+			character_name.text = Global.player_name
+		else:
+			character_name.text = line["character"]
+		character_name.show()
 		name_frame.show()
 	else:
 		character_name.text = ""
+		character_name.hide()
 		name_frame.hide()
 
 func choice_funnel(which : int):

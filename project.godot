@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SRS"
-run/main_scene="res://scenes/places/space.tscn"
+run/main_scene="res://scenes/menus/title.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 run/max_fps=144
 config/icon="res://assets/IMG_4946.jpeg"
@@ -21,6 +21,7 @@ config/icon="res://assets/IMG_4946.jpeg"
 Global="*res://global/global.gd"
 Util="*res://global/utilities.gd"
 WindowDimensionHelper="res://global/window_dimension_helper.gd"
+EffectAnim="*res://tools/effect_anim/effect_anim.tscn"
 
 [display]
 

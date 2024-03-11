@@ -1,21 +1,41 @@
-extends Control
+extends Node
+
+signal done
+
+const PLAYER_NAME = preload("res://tools/player_name/player_name.tscn")
+
+const SKY_CG = preload("res://assets/image0-2.jpg")
 
 @onready var audio = $Music
 @onready var sfx = $SFX
 
 var song
+var last_fade = ""
 
 func _ready():
 	var vn : VisualNovelDialogue = get_parent()
 	
 	vn.connect("fade_black", fade_black)
+	vn.connect("fade_blacktored", fade_blacktored)
+	vn.connect("fade_blacktowhite", fade_blacktowhite)
 	vn.connect("fade_red", fade_red)
+	vn.connect("fade_redtowhite", fade_redtowhite)
+	vn.connect("fade_redtoblack", fade_redtoblack)
+	vn.connect("fade_white", fade_white)
+	vn.connect("fade_whitetored", fade_whitetored)
+	vn.connect("fade_whitetoblack", fade_whitetoblack)
+	
+	vn.connect("fade_trans", fade_trans)
+	
 	vn.connect("music_ambience", music_ambience)
 	vn.connect("music_chiptune", music_chiptune)
 	vn.connect("music_bgm1", music_bgm1)
 	vn.connect("stop_music", stop_music)
 	vn.connect("sfx_truck", sfx_truck)
 	vn.connect("sfx_screams", sfx_screams)
+	
+	vn.connect("cg_sky", cg_sky)
+	
 	
 	
 #signal start_music
@@ -40,14 +60,62 @@ func _ready():
 #signal name_player
 	#
 func fade_black():
-	EffectRegistry.start_effect(self, "ColorFade", [$MultiPassShaderRect.material, Color.TRANSPARENT, Color.BLACK])
-
+	EffectAnim.play("FadeBlack")
+	last_fade = "black"
+	await EffectAnim.animation_finished
+	
+func fade_blacktowhite():
+	EffectAnim.play("FadeBlackToWhite")
+	last_fade = "white"
+	await EffectAnim.animation_finished
+	
+func fade_blacktored():
+	EffectAnim.play("FadeBlackToRed")
+	last_fade = "red"
+	await EffectAnim.animation_finished
 	
 func fade_red():
-	EffectRegistry.start_effect(self, "ColorFade", [$MultiPassShaderRect.material, Color.TRANSPARENT, Color(176,11,30)])
-	await get_tree().create_timer(2).timeout
-	EffectRegistry.start_effect(self, "ColorFade", [$MultiPassShaderRect.material, Color(176,11,30), Color.TRANSPARENT])
+	EffectAnim.play("FadeRed")
+	last_fade = "red"
+	await EffectAnim.animation_finished
 	
+func fade_redtowhite():
+	EffectAnim.play("FadeRedToWhite")
+	last_fade = "white"
+	await EffectAnim.animation_finished
+	
+func fade_redtoblack():
+	EffectAnim.play("FadeRedToBlack")
+	last_fade = "black"
+	await EffectAnim.animation_finished
+	
+func fade_white():
+	EffectAnim.play("FadeWhite")
+	last_fade = "white"
+	await EffectAnim.animation_finished
+	
+func fade_whitetoblack():
+	EffectAnim.play("FadeWhiteToBlack")
+	last_fade = "black"
+	await EffectAnim.animation_finished
+
+func fade_whitetored():
+	EffectAnim.play("FadeWhiteToRed")
+	last_fade = "red"
+	await EffectAnim.animation_finished
+	
+func fade_trans():
+	match last_fade:
+		"white":
+			EffectAnim.play_backwards("FadeWhite")
+		"black":
+			EffectAnim.play_backwards("FadeBlack")
+		"red":
+			EffectAnim.play_backwards("FadeRed")
+		_:
+			print("no last fade")
+	await EffectAnim.animation_finished
+
 func music_ambience():
 	print("music ambience")
 	audio.stream = song
@@ -73,6 +141,19 @@ func sfx_screams():
 	sfx.stream = song
 	sfx.play()
 	
-func name_player():
-	pass
+func cg_sky():
+	$CG.texture = SKY_CG
+	$CG.show()
+
+func player_name_screen():
+	var a = PLAYER_NAME.instantiate()
+	$Priority.add_child(a)
+	await a.done
+	done.emit()
+	
+func seraphina_name_screen():
+	var a = PLAYER_NAME.instantiate()
+	$Priority.add_child(a)
+	await a.done
+	done.emit()
 	

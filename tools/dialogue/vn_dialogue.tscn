@@ -1,42 +1,20 @@
-[gd_scene load_steps=20 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=15 format=3 uid="uid://drqf7jcr25yqx"]
 
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/ui/Dialogue Box.png" id="2_eyrgx"]
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
+[ext_resource type="Texture2D" uid="uid://e83c35i6e8tu" path="res://assets/image0-2.jpg" id="3_5rv38"]
 [ext_resource type="Script" path="res://tools/dialogue/vn_dialogue.gd" id="4_g1vbp"]
 [ext_resource type="Texture2D" uid="uid://bbbny3o3tnsfo" path="res://assets/talksprite_npc_A.png" id="4_hyu8g"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/Volkhov-Regular.ttf" id="5_2w2a5"]
 [ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/Galdeano-Regular.ttf" id="5_bpopc"]
 [ext_resource type="Texture2D" uid="uid://bd3vg40yeb7ym" path="res://assets/ui/Next Default.png" id="7_fpcsy"]
 [ext_resource type="Texture2D" uid="uid://d02y3ome74of1" path="res://assets/ui/Character Background_Choice.png" id="8_5rtyy"]
-[ext_resource type="PackedScene" uid="uid://5ybyvtcypf1c" path="res://tools/multi_pass_shader_rect.tscn" id="9_xl2b6"]
-[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="10_xt6i2"]
-[ext_resource type="Shader" path="res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader" id="11_r5d2g"]
 [ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="12_17eel"]
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/Volkhov-Bold.ttf" id="12_elsoh"]
 [ext_resource type="FontFile" uid="uid://blo7ft3ovj4yy" path="res://assets/ui/Volkhov-Italic.ttf" id="13_61dic"]
 [ext_resource type="FontFile" uid="uid://b5ootysr42ce3" path="res://assets/ui/Volkhov-BoldItalic.ttf" id="14_q7m4c"]
-[ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="16_il55r"]
-[ext_resource type="Shader" path="res://resources/shaders/canvas_item/color_fade.gdshader" id="17_0ewry"]
 
-[sub_resource type="Resource" id="Resource_jrxnm"]
-script = ExtResource("16_il55r")
-name = &"ColorFade"
-shader = ExtResource("17_0ewry")
-is_enabled_by_default = false
-is_unique_pass = false
-default_uniforms = {
-"duration": null,
-"end_color": null,
-"start_color": null,
-"start_time": null
-}
-priority_overwrite = 999
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qs345"]
-shader = ExtResource("11_r5d2g")
-script = ExtResource("10_xt6i2")
-is_canvas_item = true
-shader_passes = Array[ExtResource("16_il55r")]([SubResource("Resource_jrxnm")])
+[sub_resource type="BitMap" id="BitMap_3kbno"]
 
 [node name="VN_Dialogue" type="Control"]
 layout_mode = 3
@@ -49,21 +27,27 @@ mouse_filter = 1
 script = ExtResource("4_g1vbp")
 text = "res://tools/dialogue/vn_scripts/Dialogue - a1c1.json"
 
-[node name="EffectHandler" type="Control" parent="."]
-z_index = -1
-z_as_relative = false
-anchors_preset = 0
+[node name="EffectHandler" type="Node" parent="."]
 script = ExtResource("12_17eel")
-
-[node name="MultiPassShaderRect" parent="EffectHandler" instance=ExtResource("9_xl2b6")]
-material = SubResource("ShaderMaterial_qs345")
-layout_mode = 1
-mouse_filter = 2
-passes = SubResource("ShaderMaterial_qs345")
 
 [node name="Music" type="AudioStreamPlayer" parent="EffectHandler"]
 
 [node name="SFX" type="AudioStreamPlayer" parent="EffectHandler"]
+
+[node name="CG" type="TextureRect" parent="EffectHandler"]
+z_index = -1
+offset_right = 1920.0
+offset_bottom = 1088.0
+mouse_filter = 2
+texture = ExtResource("3_5rv38")
+
+[node name="Priority" type="Control" parent="EffectHandler"]
+z_index = 1
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Box" type="TextureRect" parent="."]
 layout_mode = 0
@@ -152,6 +136,7 @@ texture_pressed = ExtResource("7_fpcsy")
 texture_hover = ExtResource("7_fpcsy")
 texture_disabled = ExtResource("7_fpcsy")
 texture_focused = ExtResource("7_fpcsy")
+texture_click_mask = SubResource("BitMap_3kbno")
 metadata/_edit_lock_ = true
 
 [node name="Choice" type="Control" parent="."]
