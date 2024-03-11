@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/spritesheet_mini_npc_idle.png" id="7_11k2p"]
 [ext_resource type="Texture2D" uid="uid://304qv7q1hedd" path="res://assets/spritesheet_mini_selected_idle.png" id="8_q2j1r"]
 [ext_resource type="PackedScene" uid="uid://bgh3a41nfgulr" path="res://tools/interaction/interaction.tscn" id="9_csk0s"]
-[ext_resource type="Script" path="res://tools/interaction/interaction_dialogue.gd" id="12_5iofh"]
+[ext_resource type="Script" path="res://tools/interaction/interaction_minigame.gd" id="15_a0gab"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uoii5"]
 size = Vector3(10, 10, 0.1)
@@ -96,12 +96,6 @@ script = ExtResource("1_mux7q")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueHolder" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MinigameHolder" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -291,8 +285,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
 shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="Actors/NPC" instance=ExtResource("9_csk0s")]
-script = ExtResource("12_5iofh")
-text = Array[String]([])
+script = ExtResource("15_a0gab")
+minigame = "Fishing"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC"]
 libraries = {
@@ -317,8 +311,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
 shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="Actors/NPC2" instance=ExtResource("9_csk0s")]
-script = ExtResource("12_5iofh")
-text = Array[String]([])
+script = ExtResource("15_a0gab")
+minigame = "Library"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC2"]
 libraries = {
@@ -343,8 +337,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
 shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="Actors/NPC3" instance=ExtResource("9_csk0s")]
-script = ExtResource("12_5iofh")
-text = Array[String]([])
+script = ExtResource("15_a0gab")
+minigame = "Rhythm"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC3"]
 libraries = {

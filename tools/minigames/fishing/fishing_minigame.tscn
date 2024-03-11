@@ -26,11 +26,11 @@ glow_enabled = true
 size = Vector3(3.13702, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkhmw"]
-albedo_color = Color(0.0862745, 0.0627451, 0.0588235, 1)
+albedo_color = Color(0.87451, 0.72549, 0.243137, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d8xei"]
 material = SubResource("StandardMaterial3D_xkhmw")
-size = Vector2(10, 10)
+size = Vector2(200, 200)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iucpa"]
 size = Vector3(20, 5, 0.325049)
@@ -87,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8779, -0.510077, 0)
 shape = SubResource("BoxShape3D_rve5y")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(0.212278, 0, 0, 0, 1, 0, 2.85405e-16, 0, 1, -1.4165, 0.00840366, -1.11759e-08)
+transform = Transform3D(0.212278, 0, 0, 0, 1, 0, -2.47384e-16, 0, 1, -21.5094, 0.00840366, 8.86619e-07)
 layers = 3
 mesh = SubResource("PlaneMesh_d8xei")
 
@@ -145,7 +145,7 @@ transform = Transform3D(-4.37114e-08, -3.48787e-16, -1.8301, 3.48787e-16, 1, -6.
 script = ExtResource("3_slp7l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Water"]
-transform = Transform3D(1.06068, 0, 0, 2.6123e-23, 0.90919, -2.1641e-23, 6.93439e-15, -1.26083e-23, 1.1424, 1.82188, -5.29396e-23, -2.98023e-08)
+transform = Transform3D(1.06068, 1.89014e-23, -1.65828e-15, 3.59271e-23, 0.90919, 4.18376e-24, 8.50075e-15, -2.28734e-23, 1.1424, 1.82188, -1.05879e-22, -2.79397e-08)
 layers = 3
 mesh = SubResource("PlaneMesh_t6m4j")
 surface_material_override/0 = ExtResource("6_7is7m")
@@ -165,22 +165,11 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, -1.12238e-23, 0, -1.12238e-23, 1, 1.81472, 0, 0.0244763)
 shape = SubResource("BoxShape3D_jq107")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 2.08165e-12, 4.15793, 2.40186)
-current = true
-size = 73.377
-frustum_offset = Vector2(0, 50)
-
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(0.0345941, -0.0299268, 0.998953, -0.0272787, 0.999151, 0.0308774, -0.999029, -0.0283183, 0.0337483, 5.07454, 0.353256, -1.24189)
-size = 73.377
-frustum_offset = Vector2(0, 50)
-
 [node name="FishingPlayer" parent="." instance=ExtResource("4_y1r0s")]
 transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 0, 0.57244, -3.11056)
 
 [node name="Camera3D3" type="Camera3D" parent="FishingPlayer"]
-transform = Transform3D(1, 1.20891e-22, 2.48728e-22, 3.66061e-24, 1, 3.13492e-08, -2.5351e-23, -3.67663e-08, 1, 2.07936e-12, -0.893195, 6.6425)
+transform = Transform3D(1, 1.20891e-22, 3.73394e-22, 1.87789e-23, 1, -6.96394e-09, -1.59399e-22, -6.96394e-09, 1, 2.07857e-12, -2.45131, 6.23892)
 current = true
 size = 73.377
 frustum_offset = Vector2(0, 50)

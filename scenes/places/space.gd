@@ -18,4 +18,8 @@ func interacted():
 	await interactor.finished_interaction
 	overlay.show()
 	if turns==0:
-		emit_signal("noTimeLeft")
+		Global.can_move = false
+		EffectAnim.play("FadeBlack")
+		await EffectAnim.animation_finished
+		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
+		Global.can_move = true
