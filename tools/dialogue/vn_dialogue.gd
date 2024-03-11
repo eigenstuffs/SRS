@@ -8,6 +8,7 @@ signal boost_stats
 signal music_ambience
 signal music_chiptune
 signal music_bgm1
+signal music_bgm2
 
 signal stop_music
 
@@ -29,11 +30,14 @@ signal fade_whitetoblack
 signal fade_trans
 
 signal cg_sky
+signal cg_black
 signal cg_death
 signal cg_gamestart
 signal cg_god
+signal cg_room
 
-signal name_player
+signal add_OPP
+signal add_OOC
 
 const CHARACTER_LIST : CharacterList = preload("res://resources/characters/character_list.tres")
 const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
@@ -51,7 +55,7 @@ const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
 	label
 ]
 
-@export_file("*.json") var text
+var text
 
 var result : Dictionary
 var lines : Dictionary = {}
@@ -87,23 +91,15 @@ func _ready():
 
 func read_line(key : int):
 	current_line = result.get(result.keys()[key])
-	if current_line["run if"] != null:
-		var text = current_line["run if"].split(",")
-		var condition = text[0]
-		var target = text[1]
-		if Global.remembered.has(condition):
-			init_parameters(key)
-			current_line["go to"] = target
-		else:
-			next_line()
-			return
-	else:
-		init_parameters(key)
+	init_parameters(key)
 	if current_line["delay"] != null:
 		for i in ui_elements: i.hide()
 		next.hide()
 		choice_ui.hide()
 		await get_tree().create_timer(int(current_line["delay"])).timeout
+	if current_line["add"] != null:
+		Global.add_event(current_line["add"])
+		print(Global.remembered)
 	for i in ui_elements: i.show()
 	next.disabled = true
 	next.hide()
@@ -111,8 +107,6 @@ func read_line(key : int):
 	remember.position = Vector2(1280,672)
 	remember.modulate = Color(1,1,1,1)
 	remember.hide()
-	if current_line["text"] == null:
-		for i in ui_elements: i.hide()
 	if current_line["emit"] != null:
 		var text = current_line["emit"].split(",")
 		for i in text.size():
@@ -120,10 +114,9 @@ func read_line(key : int):
 			self.emit_signal(text[i])
 	if current_line["set"] != null:
 		var text = current_line["set"].split(",")
-		var variable = text[1]
-		var value = text[2]
+		var variable = text[0]
+		var value = text[1]
 		Global.set(variable, value)
-	if current_line["text"]: label.text = current_line["text"]
 	if current_line["flag"] == "decision":
 		for i in ui_elements: i.hide()
 		next.hide()
@@ -223,23 +216,14 @@ func read_line(key : int):
 	elif current_line["flag"] == "name_seraphina":
 		$EffectHandler.seraphina_name_screen()
 		await $EffectHandler.done
+	if current_line["text"] == null:
+		for i in ui_elements: i.hide()
 	else:
-		if current_line["add"] != null:
-			#remember.show()
-			Global.remembered.append(current_line["add"])
-			#if current_line["character"] != null:
-				#remember.text = current_line["character"] + " will remember that."
-			#else:
-				#remember.text = "I will remember that."
-			#var c = create_tween()
-			#c.tween_property(remember, "position", Vector2(1097,600), 2)
-			#c = create_tween()
-			#c.tween_property(remember, "modulate", Color(1,1,1,0), 2)
-			pass
+		label.text = current_line["text"]
 		label.visible_characters = 0
 		var num_chars = label.text.length()
-		var total_time = Global.text_speed * num_chars
-		#var total_time = 0.1
+		#var total_time = Global.text_speed * num_chars
+		var total_time = 0.1
 		var a = create_tween()
 		a.tween_property(label, "visible_characters", num_chars, total_time)
 		await a.finished
@@ -253,11 +237,23 @@ func read_line(key : int):
 		if current_line["flag"] == "end":
 			current_line["go to"] = null
 		elif current_line["flag"] == "menu":
+			for i in ui_elements: i.hide()
+			name_frame.hide()
+			character_name.hide()
+			next.hide()
 			EffectAnim.play("FadeBlack")
 			await EffectAnim.animation_finished
 			get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 		elif current_line["flag"] == "quit":
 			get_tree().quit()
+			
+	if current_line["run if"] != null:
+		var text = current_line["run if"].split(",")
+		var condition = text[0]
+		var target = text[1]
+		if Global.remembered.has(condition):
+			print("HAS CONDITION MET")
+			current_line["go to"] = target
 	next_line()
 
 func next_line():
@@ -265,7 +261,6 @@ func next_line():
 		read_line(result.keys().find(str(current_line["go to"])))
 	else:
 		emit_signal("done")
-		queue_free()
 		
 func next_anim():
 	if !next.disabled:
@@ -308,10 +303,7 @@ func choice_pressed():
 			return
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		emit_signal("done")
-		queue_free()
-	elif event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("LMB"):
 		if !next.disabled:
 			var a = create_tween()
 			a.tween_property(next, "modulate:a", 0, 0.2)

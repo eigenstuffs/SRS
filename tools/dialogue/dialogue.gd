@@ -193,9 +193,6 @@ func _on_option_three_mouse_exited():
 	a.tween_property(optionThree, "scale", Vector2(1,1), 0.1)
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		emit_signal("done")
-		queue_free()
-	elif event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("LMB"):
 		if $Button/Next.visible:
 			emit_signal("next")

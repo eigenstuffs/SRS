@@ -23,7 +23,7 @@ func _on_delete_pressed():
 	update_name()
 
 func _on_done_pressed():
-	Global.seraphina_name = input
+	Global.rename_seraphina(input)
 	emit_signal("done")
 	queue_free()
 

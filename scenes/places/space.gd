@@ -2,11 +2,11 @@ extends Node3D
 
 signal noTimeLeft
 
-var turns = 5
+@export var turns : int = 5
 
 @onready var interactor : Interactor = $Actors/Player.get_node("Interactor")
-@onready var overlay : Overlay = $CanvasLayer/Overlay
-@onready var turn_label : Label = $CanvasLayer/Overlay/Turns/Label
+@onready var overlay = $CanvasLayer/Overlay
+@onready var turn_label : Label = $CanvasLayer/Overlay/Turns/TextureRect/Label
 
 func _ready():
 	interactor.connect("started_interaction", interacted)
