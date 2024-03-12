@@ -9,6 +9,7 @@ const SKY_CG = preload("res://assets/image0-2.jpg")
 const BLACK_CG = preload("res://assets/cgs/New Project.png")
 const GOD_CG = preload("res://assets/cgs/IMG_5160.png")
 const ROOM_CG = preload("res://assets/cgs/IMG_0552.png")
+const DINING_CG = preload("res://assets/cgs/dininghall.png")
 
 @onready var audio = $Music
 @onready var sfx = $SFX
@@ -20,12 +21,24 @@ func _ready():
 	match Global.return_current_text():
 		Global.ACT1_CHAPTER1_PART1:
 			cg_sky()
+			var a = create_tween()
+			a.tween_property($SFX, "volume_db", -10, 3)
+			$SFX.play()
 		Global.ACT1_CHAPTER1_PART2:
 			cg_room()
+			var a = create_tween()
+			a.tween_property($SFX, "volume_db", -10, 3)
+			$SFX.play()
 		Global.ACT1_CHAPTER2_PART1:
 			cg_room()
-		_:
-			cg_black()
+			var a = create_tween()
+			a.tween_property($Music, "volume_db", -15, 3)
+			$Music.play()
+		Global.ACT1_CHAPTER2_PART2:
+			cg_dining()
+			var a = create_tween()
+			a.tween_property($Music, "volume_db", -15, 3)
+			$Music.play()
 	
 	var vn : VisualNovelDialogue = get_parent()
 	
@@ -44,6 +57,7 @@ func _ready():
 	vn.connect("music_ambience", music_ambience)
 	vn.connect("music_chiptune", music_chiptune)
 	vn.connect("music_bgm1", music_bgm1)
+	vn.connect("music_bgm2", music_bgm1)
 	vn.connect("stop_music", stop_music)
 	vn.connect("sfx_truck", sfx_truck)
 	vn.connect("sfx_screams", sfx_screams)
@@ -51,6 +65,7 @@ func _ready():
 	vn.connect("cg_sky", cg_sky)
 	vn.connect("cg_god", cg_god)
 	vn.connect("cg_black", cg_black)
+	vn.connect("cg_dining", cg_dining)
 	
 	vn.connect("add_OOC", add_OOC)
 	vn.connect("add_OPP", add_OPP)
@@ -136,18 +151,13 @@ func fade_trans():
 	await EffectAnim.animation_finished
 
 func music_ambience():
-	print("music ambience")
-	audio.stream = song
-	audio.play()
+	$SFX.play()
 	
 func music_chiptune():
-	print("music chiptune")
-	audio.stream = song
-	audio.play()
+	pass
 	
 func music_bgm1():
-	audio.stream = song
-	audio.play()
+	pass
 	
 func stop_music():
 	audio.stop()
@@ -170,6 +180,10 @@ func cg_black():
 	
 func cg_room():
 	$CG.texture = ROOM_CG
+	$CG.show()
+	
+func cg_dining():
+	$CG.texture = DINING_CG
 	$CG.show()
 	
 func cg_god():

@@ -6,7 +6,7 @@
 	"go to": 2,
 	"options": null,
 	"options_id": null,
-	"emit": "cg_room,music_ambience",
+	"emit": "cg_room",
 	"delay": 2,
 	"run if": null,
 	"add": null,

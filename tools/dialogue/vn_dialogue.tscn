@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=22 format=3 uid="uid://drqf7jcr25yqx"]
 
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/ui/Dialogue Box.png" id="2_eyrgx"]
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
+[ext_resource type="AudioStream" uid="uid://1ouwyjtdtbi2" path="res://assets/music/pavane.wav" id="3_4yjk8"]
 [ext_resource type="Texture2D" uid="uid://e83c35i6e8tu" path="res://assets/image0-2.jpg" id="3_5rv38"]
 [ext_resource type="Script" path="res://tools/dialogue/vn_dialogue.gd" id="4_g1vbp"]
 [ext_resource type="Texture2D" uid="uid://bbbny3o3tnsfo" path="res://assets/talksprite_npc_A.png" id="4_hyu8g"]
 [ext_resource type="Texture2D" uid="uid://vuwpph6vx6un" path="res://assets/cgs/god.jpg" id="4_ng0gx"]
+[ext_resource type="AudioStream" uid="uid://b2b171hiuslon" path="res://assets/music/ambience.mp3" id="4_tjx41"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/Volkhov-Regular.ttf" id="5_2w2a5"]
 [ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/Galdeano-Regular.ttf" id="5_bpopc"]
 [ext_resource type="Texture2D" uid="uid://ckm7kx76fmepa" path="res://assets/cgs/IMG_5160.png" id="5_j5n5r"]
@@ -94,8 +96,13 @@ script = ExtResource("4_g1vbp")
 script = ExtResource("12_17eel")
 
 [node name="Music" type="AudioStreamPlayer" parent="EffectHandler"]
+stream = ExtResource("3_4yjk8")
+volume_db = -80.0
+pitch_scale = 0.9
 
 [node name="SFX" type="AudioStreamPlayer" parent="EffectHandler"]
+stream = ExtResource("4_tjx41")
+volume_db = -10.0
 
 [node name="CG" type="TextureRect" parent="EffectHandler"]
 modulate = Color(0.592157, 0.592157, 0.592157, 1)

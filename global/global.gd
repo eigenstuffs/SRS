@@ -6,7 +6,7 @@ var can_move = true
 
 ### GAME
 
-var remembered = ["a1c1_1","a1c1_2"]
+var remembered = []
 var ooc = 0
 var opp = 1
 
@@ -14,6 +14,9 @@ var opp = 1
 
 var player_name : String = "You"
 var seraphina_name : String = "Seraphina"
+
+var og_ro : String
+
 
 ### OPTIONS
 
@@ -25,10 +28,11 @@ var volume = 0.5
 const ACT1_CHAPTER1_PART1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1.json"
 const ACT1_CHAPTER1_PART2 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_2.json"
 const ACT1_CHAPTER2_PART1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_1.json"
+const ACT1_CHAPTER2_PART2 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_2.json"
 
 func return_current_text():
 	if remembered.has("a1c2_1"):
-		pass
+		return ACT1_CHAPTER2_PART2
 	elif remembered.has("a1c1_2"):
 		return ACT1_CHAPTER2_PART1
 	elif remembered.has("a1c1_1"):

@@ -35,6 +35,7 @@ signal cg_death
 signal cg_gamestart
 signal cg_god
 signal cg_room
+signal cg_dining
 
 signal add_OPP
 signal add_OOC
@@ -222,8 +223,7 @@ func read_line(key : int):
 		label.text = current_line["text"]
 		label.visible_characters = 0
 		var num_chars = label.text.length()
-		#var total_time = Global.text_speed * num_chars
-		var total_time = 0.1
+		var total_time = Global.text_speed * num_chars
 		var a = create_tween()
 		a.tween_property(label, "visible_characters", num_chars, total_time)
 		await a.finished

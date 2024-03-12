@@ -100,7 +100,7 @@ shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_7nrik"), Su
 
 [sub_resource type="GDScript" id="GDScript_1sgvm"]
 script/source = "@tool
-class_name ScreenSpaceMesh extends MeshInstance3D
+class_name ScreenSpaceMesh2 extends MeshInstance3D
 ## A mesh that runs a screen-space shader... in screen-space.
 ##
 ## Instantiating as a child of a [code]Camera3D[/code] is not required. The node
