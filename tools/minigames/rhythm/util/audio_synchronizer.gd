@@ -61,7 +61,7 @@ func _process(delta):
 			has_played = true
 		time += delta
 
-	if time >= beatmap.timings[timing_idx].start_time:
+	if timing_idx < len(beatmap.timings) and time >= beatmap.timings[timing_idx].start_time:
 		var timing_point = self.beatmap.timings[timing_idx]
 		current_beat_interval = timing_point.beat_interval
 		current_bps = 1.0 / current_beat_interval
