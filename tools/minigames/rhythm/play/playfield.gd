@@ -41,7 +41,7 @@ var scores = [0, 0, 0, 0, 0]
 @onready var screen_space_material : MultiPassShaderMaterial = $ScreenSpaceMesh.get_surface_override_material(0)
 @onready var backplane_material : MultiPassShaderMaterial = $BackplaneMesh.get_surface_override_material(0)
 # FIXME : Hardcoded for 'dungeon' beatmap!
-@onready var timing_actions : Variant = WaltzMod.get_timing_actions(self) #DungeonMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'dungeon' else CaitSithMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'cait_sith' else WaltzMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'waltz' else []
+@onready var timing_actions : Variant = DungeonMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'dungeon' else CaitSithMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'cait_sith' else WaltzMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'waltz' else []
 
 func _ready() -> void:
 	audio_synchronizer.spawn_offset_seconds = 1.0 # FIXME: Not static for all songs!

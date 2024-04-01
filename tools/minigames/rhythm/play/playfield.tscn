@@ -187,6 +187,8 @@ shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), Su
 
 [node name="Playfield" type="Node3D"]
 script = ExtResource("1_a1v4t")
+note_speed = null
+show_debug = null
 
 [node name="AudioSynchronizer" parent="." instance=ExtResource("3_g2rft")]
 

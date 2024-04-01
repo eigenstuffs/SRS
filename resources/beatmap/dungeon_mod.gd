@@ -16,8 +16,7 @@ static var TIMING_ACTIONS = [
 	[ 44.143, 'playfield', func(playfield):
 		for key in playfield.keys: 
 			key.enable_note_shader_pass('warp')
-			key.enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		EffectRegistry.start_effect(playfield, 'BetterCall', [playfield])],
+			key.enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))],
 	[ 63.518,    'screen',  'enable', ['flash', 'rain']],
 	[ 73.133,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
 	[ 73.712,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],

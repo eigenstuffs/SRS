@@ -42,7 +42,7 @@ func _ready() -> void:
 	# Keep resized window centered if set in project settings
 	if _get_window_size_setting('initial_position_type') == 1:
 		var centered_position = (screen_size - viewport.size) * 0.5
-		DisplayServer.window_set_position(centered_position, screen)
+		DisplayServer.window_set_position(centered_position)
 
 	last_window_size = viewport.size
 	main_window_size_changed.connect(_on_main_window_size_changed)

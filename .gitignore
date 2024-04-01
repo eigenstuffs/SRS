@@ -23,3 +23,9 @@ mono_crash.*.json
 
 # MacOS
 *.DS_Store
+
+# JetBrains
+**/.idea/**/
+
+# Builds
+build/*
