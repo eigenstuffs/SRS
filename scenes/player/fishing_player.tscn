@@ -226,9 +226,10 @@ script = ExtResource("2_qwu5m")
 visible = false
 
 [node name="FishingRod" parent="." index="4" instance=ExtResource("3_ptm30")]
+transform = Transform3D(-4.37114e-08, 1, 1.19292e-16, -0.34202, -1.49502e-08, -0.939694, -0.939693, -4.10753e-08, 0.342021, 0.270332, 0.337995, 0.0667055)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." index="5"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_pq85j")
 animation = &"fishing_cast"
 frame = 5
