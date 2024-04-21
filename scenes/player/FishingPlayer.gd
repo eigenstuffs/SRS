@@ -54,12 +54,6 @@ func _physics_process(delta):
 				dir = Vector2.LEFT
 				
 			if dir != last_dir:
-				if dir == Vector2.RIGHT:
-					$AnimatedSprite3D.scale = Vector3(0.5,0.5,0.5)
-					$FishingRod.position = Vector3(0.27, $FishingRod.position.y, $FishingRod.position.z)
-				else:
-					$AnimatedSprite3D.scale = Vector3(-0.5,0.5,0.5)
-					$FishingRod.position = Vector3(-0.27, $FishingRod.position.y, $FishingRod.position.z)
 				if not turning:
 					var a = create_tween()
 					turning = true

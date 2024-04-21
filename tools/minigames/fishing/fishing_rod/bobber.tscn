@@ -16,7 +16,7 @@ transform = Transform3D(0.25, 4.03982e-18, -1.40872e-15, -4.03982e-18, 0.25, 7.0
 shape = SubResource("SphereShape3D_lxw03")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.1, -5.18898e-25, 1.89783e-23, -7.65211e-25, 0.1, -1.37323e-18, 0, 0, 0.1, 2.08165e-12, -0.16, 2.08165e-12)
+transform = Transform3D(0.1, -2.89916e-18, -3.25111e-16, 1.26282e-17, 0.1, -8.31212e-18, 1.23793e-16, -6.93889e-18, 0.1, 2.08189e-12, -0.16, 0)
 texture = ExtResource("2_kon8o")
 
 [node name="Area3D" type="Area3D" parent="."]
