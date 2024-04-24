@@ -1,10 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://btxyikyec8li1"]
+[gd_scene load_steps=12 format=3 uid="uid://btxyikyec8li1"]
 
 [ext_resource type="Script" path="res://tools/minigames/maze/MazeGenerator.gd" id="1_wltr6"]
 [ext_resource type="Script" path="res://tools/minigames/maze/maze_minigame.gd" id="1_xvgb3"]
+[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="3_w5pfi"]
+[ext_resource type="Script" path="res://tools/minigames/maze/Goal.gd" id="4_v5a44"]
 
 [sub_resource type="Environment" id="Environment_pm51m"]
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fx42x"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5g5e"]
+albedo_color = Color(0.54902, 0.392157, 0.258824, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_id6dk"]
+material = SubResource("StandardMaterial3D_i5g5e")
+size = Vector3(20, 1, 20)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qn3x3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lf32"]
+albedo_color = Color(0.729412, 0.615686, 0.211765, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kj010"]
+material = SubResource("StandardMaterial3D_1lf32")
 
 [node name="MazeMinigame" type="Node3D"]
 script = ExtResource("1_xvgb3")
@@ -14,12 +34,38 @@ script = ExtResource("1_wltr6")
 mazeWidth = 10
 mazeLength = 10
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 4, 10, 4)
-current = true
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.740582, 0.671966, 0, -0.671966, 0.740582, 0, 12.1276, 9.07798)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pm51m")
+
+[node name="Player" parent="." instance=ExtResource("3_w5pfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.00292, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, -6.97574e-16, -1.08064e-23, 3.59882e-16, 0.515905, 0.856646, -5.97574e-16, -0.856646, 0.515905, 0.439032, 4.51742, 5.98558)
+current = true
+
+[node name="Ground" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.08165e-12, 5)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_fx42x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_id6dk")
+
+[node name="Goal" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 9)
+script = ExtResource("4_v5a44")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
+shape = SubResource("SphereShape3D_qn3x3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Goal"]
+mesh = SubResource("SphereMesh_kj010")
+
+[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]

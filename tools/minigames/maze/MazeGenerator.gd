@@ -1,5 +1,6 @@
 extends Node3D
 
+#credit to: https://www.youtube.com/watch?v=_aeYq5BmDMg
 class_name MazeGenerator
 
 @onready var mazeCell = preload("res://tools/minigames/maze/maze_cell.tscn")
@@ -22,7 +23,7 @@ func _ready():
 func generateMaze(previousCell : MazeCell, currentCell : MazeCell):
 	currentCell.visit()
 	clearWalls(previousCell, currentCell)
-	await get_tree().create_timer(0.1).timeout
+	#await get_tree().create_timer(0.1).timeout
 	
 	var nextCell = getNextUnvisitedCell(currentCell)
 	while nextCell != null:
