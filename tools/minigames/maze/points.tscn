@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4kth0y6jr8bm"]
+
+[ext_resource type="Script" path="res://tools/minigames/maze/Points.gd" id="1_a011f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_adfbv"]
+radius = 0.834241
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b77aq"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.301961)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6r3t3"]
+material = SubResource("StandardMaterial3D_b77aq")
+
+[node name="Points" type="Area3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_a011f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_adfbv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_6r3t3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

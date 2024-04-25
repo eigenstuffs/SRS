@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://btxyikyec8li1"]
+[gd_scene load_steps=13 format=3 uid="uid://btxyikyec8li1"]
 
 [ext_resource type="Script" path="res://tools/minigames/maze/MazeGenerator.gd" id="1_wltr6"]
 [ext_resource type="Script" path="res://tools/minigames/maze/maze_minigame.gd" id="1_xvgb3"]
 [ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="3_w5pfi"]
+[ext_resource type="Script" path="res://tools/minigames/maze/FollowingCamera.gd" id="4_ohvxp"]
 [ext_resource type="Script" path="res://tools/minigames/maze/Goal.gd" id="4_v5a44"]
 
 [sub_resource type="Environment" id="Environment_pm51m"]
@@ -43,9 +44,13 @@ environment = SubResource("Environment_pm51m")
 [node name="Player" parent="." instance=ExtResource("3_w5pfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.00292, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, -6.97574e-16, -1.08064e-23, 3.59882e-16, 0.515905, 0.856646, -5.97574e-16, -0.856646, 0.515905, 0.439032, 4.51742, 5.98558)
+[node name="FollowingCamera" type="Camera3D" parent="Player"]
+transform = Transform3D(1, -6.97574e-16, -4.32585e-23, 3.59882e-16, 0.515905, 0.856646, -5.97574e-16, -0.856646, 0.515905, 0.439032, 4.51742, 5.98558)
 current = true
+script = ExtResource("4_ohvxp")
+MAX_X = 10.0
+MIN_Z = 5.0
+MAX_Z = 10.0
 
 [node name="Ground" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.08165e-12, 5)

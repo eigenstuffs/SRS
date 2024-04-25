@@ -4,19 +4,30 @@ extends Node3D
 class_name MazeGenerator
 
 @onready var mazeCell = preload("res://tools/minigames/maze/maze_cell.tscn")
+@onready var points = preload("res://tools/minigames/maze/points.tscn")
 
 @export var mazeWidth : int
 @export var mazeLength : int
 var mazeGrid : Array
+var pointGrid : Array
 
 func _ready():
 	for i in range(mazeWidth):
 		mazeGrid.append([])
+		pointGrid.append([])
 		for j in range(mazeLength):
 			var newCell : MazeCell = mazeCell.instantiate()
 			newCell.position = Vector3(i, 0.5, j)
 			add_child(newCell)
 			mazeGrid[i].append(newCell)
+			if (i == mazeWidth - 1 and j == mazeLength - 1) or (i == 0 && j == 0):
+				#add a point if it's not starting and ending block
+				pass
+			else:
+				var newPoint : Points = points.instantiate()
+				newPoint.position = Vector3(i, 1, j)
+				add_child(newPoint)
+				pointGrid[i].append(newPoint)
 	
 	generateMaze(null, mazeGrid[0][0])
 
