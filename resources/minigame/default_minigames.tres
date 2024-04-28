@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MinigameList" load_steps=6 format=3 uid="uid://5hym76i6sluw"]
+[gd_resource type="Resource" script_class="MinigameList" load_steps=7 format=3 uid="uid://5hym76i6sluw"]
 
 [ext_resource type="Script" path="res://resources/minigame/minigame_info.gd" id="1_edpdx"]
 [ext_resource type="Script" path="res://resources/minigame/minigame_list.gd" id="2_kofh6"]
@@ -21,6 +21,12 @@ name = "Fishing"
 scene = "res://tools/minigames/fishing/fishing_minigame.tscn"
 time = 60
 
+[sub_resource type="Resource" id="Resource_mlqhr"]
+script = ExtResource("1_edpdx")
+name = "Maze"
+scene = "res://tools/minigames/maze/maze_minigame.tscn"
+time = 60
+
 [resource]
 script = ExtResource("2_kofh6")
-minigame_list = Array[ExtResource("1_edpdx")]([SubResource("Resource_ubdwe"), SubResource("Resource_ip00n"), SubResource("Resource_76hxi")])
+minigame_list = Array[ExtResource("1_edpdx")]([SubResource("Resource_ubdwe"), SubResource("Resource_ip00n"), SubResource("Resource_76hxi"), SubResource("Resource_mlqhr")])

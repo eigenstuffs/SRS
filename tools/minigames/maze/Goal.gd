@@ -1,7 +1,7 @@
 extends Area3D
 
-
+signal goal_touched
 
 func _on_body_entered(body):
 	if body is Player:
-		print("END!")
+		emit_signal("goal_touched")

@@ -22,18 +22,19 @@ size = Vector3(20, 1, 20)
 [sub_resource type="SphereShape3D" id="SphereShape3D_qn3x3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lf32"]
-albedo_color = Color(0.729412, 0.615686, 0.211765, 1)
+albedo_color = Color(0, 0.960784, 0.517647, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_kj010"]
 material = SubResource("StandardMaterial3D_1lf32")
 
-[node name="MazeMinigame" type="Node3D"]
+[node name="MazeMinigame" type="SubViewport"]
 script = ExtResource("1_xvgb3")
 
 [node name="MazeGenerator" type="Node3D" parent="."]
 script = ExtResource("1_wltr6")
 mazeWidth = 10
 mazeLength = 10
+keyN = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.740582, 0.671966, 0, -0.671966, 0.740582, 0, 12.1276, 9.07798)
@@ -73,4 +74,9 @@ shape = SubResource("SphereShape3D_qn3x3")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Goal"]
 mesh = SubResource("SphereMesh_kj010")
 
+[node name="EnemySpawner" type="Node3D" parent="."]
+
+[connection signal="all_key_collected" from="MazeGenerator" to="." method="_on_maze_generator_all_key_collected"]
+[connection signal="key_collected" from="MazeGenerator" to="." method="_on_maze_generator_key_collected"]
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
+[connection signal="goal_touched" from="Goal" to="." method="_on_goal_goal_touched"]

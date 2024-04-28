@@ -3,33 +3,52 @@ extends Node3D
 #credit to: https://www.youtube.com/watch?v=_aeYq5BmDMg
 class_name MazeGenerator
 
+signal key_collected
+signal all_key_collected
+
 @onready var mazeCell = preload("res://tools/minigames/maze/maze_cell.tscn")
-@onready var points = preload("res://tools/minigames/maze/points.tscn")
+@onready var keys = preload("res://tools/minigames/maze/keys.tscn")
 
 @export var mazeWidth : int
 @export var mazeLength : int
+@export var keyN : int
 var mazeGrid : Array
-var pointGrid : Array
+var keysCollected : int = 0
 
 func _ready():
 	for i in range(mazeWidth):
 		mazeGrid.append([])
-		pointGrid.append([])
 		for j in range(mazeLength):
 			var newCell : MazeCell = mazeCell.instantiate()
 			newCell.position = Vector3(i, 0.5, j)
 			add_child(newCell)
 			mazeGrid[i].append(newCell)
-			if (i == mazeWidth - 1 and j == mazeLength - 1) or (i == 0 && j == 0):
-				#add a point if it's not starting and ending block
-				pass
-			else:
-				var newPoint : Points = points.instantiate()
-				newPoint.position = Vector3(i, 1, j)
-				add_child(newPoint)
-				pointGrid[i].append(newPoint)
 	
 	generateMaze(null, mazeGrid[0][0])
+	
+	#place keys at random places
+	var place_coords : Array = [[0, 0], [mazeWidth-1, mazeLength-1]]
+	for i in range(keyN):
+		var random_coords : Array = [randi_range(0, mazeWidth-1), randi_range(0, mazeLength-1)]
+		while coords_too_close(place_coords, random_coords):
+			#see if repeated location or too close to the starting point
+			random_coords = [randi_range(0, mazeWidth-1), randi_range(0, mazeLength-1)]
+		print(random_coords)
+		place_coords.append(random_coords)
+		var newKey : Keys = keys.instantiate()
+		newKey.position = Vector3(random_coords[0], 0.8, random_coords[1])
+		add_child(newKey)
+		newKey.connect("collected", on_key_collected)
+		
+
+func coords_too_close(coords_array : Array, new_coords : Array) -> bool:
+	var answer : bool = false
+	for old_coords in coords_array:
+		if abs(new_coords[0] - old_coords[0])^2 + abs(new_coords[1] - old_coords[1])^2 < 4:
+			#radius of two
+			answer = true
+	
+	return answer
 
 func generateMaze(previousCell : MazeCell, currentCell : MazeCell):
 	currentCell.visit()
@@ -94,3 +113,9 @@ func clearWalls(previousCell, currentCell):
 		previousCell.clearBack()
 		currentCell.clearFront()
 		return
+
+func on_key_collected():
+	keysCollected += 1
+	emit_signal("key_collected")
+	if keysCollected == keyN:
+		emit_signal("all_key_collected")
