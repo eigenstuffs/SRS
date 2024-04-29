@@ -4,6 +4,7 @@ class_name Minigame extends SubViewport
 
 signal minigame_finished(detailed_points : int)
 signal update_points(points : int)
+signal update_time(seconds : int) #call this to add or deduct time from the minigame
 
 var rough_points : int = 0
 @export var detailed_points : Array = []

@@ -42,3 +42,8 @@ func _on_game_time_timeout():
 		gLabel.text = str(gameTimeCount)
 		gBar.value = gameTimeCount
 		
+
+func modify_game_time(delta : int):
+	gameTimeCount += delta
+	gLabel.text = str(gameTimeCount)
+	gBar.value = gameTimeCount

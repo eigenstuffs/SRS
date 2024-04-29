@@ -5,9 +5,11 @@ class_name MazeGenerator
 
 signal key_collected
 signal all_key_collected
+signal enemy_met_player
 
 @onready var mazeCell = preload("res://tools/minigames/maze/maze_cell.tscn")
 @onready var keys = preload("res://tools/minigames/maze/keys.tscn")
+@onready var enemies = preload("res://tools/minigames/maze/maze_enemy.tscn")
 
 @export var mazeWidth : int
 @export var mazeLength : int
@@ -40,6 +42,13 @@ func _ready():
 		add_child(newKey)
 		newKey.connect("collected", on_key_collected)
 		
+	#spawn enemies around the keys
+	var key_coords : Array = place_coords.slice(2)
+	for coords in key_coords:
+		var newEnemy : MazeEnemy = enemies.instantiate()
+		newEnemy.position = Vector3(coords[0], 0.8, coords[1])
+		add_child(newEnemy)
+		newEnemy.connect("met_player", on_enemy_met_player)
 
 func coords_too_close(coords_array : Array, new_coords : Array) -> bool:
 	var answer : bool = false
@@ -119,3 +128,6 @@ func on_key_collected():
 	emit_signal("key_collected")
 	if keysCollected == keyN:
 		emit_signal("all_key_collected")
+
+func on_enemy_met_player():
+	emit_signal("enemy_met_player")

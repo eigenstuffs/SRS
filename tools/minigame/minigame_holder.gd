@@ -35,6 +35,7 @@ func initiate_minigame(which : String):
 		minigame.size = MINIGAME_VIEWPORT_DIMS
 		$Game.add_child(minigame)
 		minigame.connect("update_points", update_points)
+		minigame.connect("update_time", update_time)
 		
 		if metadata.time <= 0: return
 		ui.gameTimeCount = metadata.time
@@ -52,6 +53,9 @@ func _process(delta: float) -> void:
 func update_points(new : int):
 	rough_points = new
 	$UI/PointLabel.text = str(rough_points)
+	
+func update_time(delta : int):
+	$UI.modify_game_time(delta)
 
 func _on_ui_game_over():
 	assert(game)

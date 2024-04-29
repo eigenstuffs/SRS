@@ -77,6 +77,7 @@ mesh = SubResource("SphereMesh_kj010")
 [node name="EnemySpawner" type="Node3D" parent="."]
 
 [connection signal="all_key_collected" from="MazeGenerator" to="." method="_on_maze_generator_all_key_collected"]
+[connection signal="enemy_met_player" from="MazeGenerator" to="." method="_on_maze_generator_enemy_met_player"]
 [connection signal="key_collected" from="MazeGenerator" to="." method="_on_maze_generator_key_collected"]
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="goal_touched" from="Goal" to="." method="_on_goal_goal_touched"]
