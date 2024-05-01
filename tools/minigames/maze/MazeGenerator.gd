@@ -10,11 +10,13 @@ signal enemy_met_player
 @onready var mazeCell = preload("res://tools/minigames/maze/maze_cell.tscn")
 @onready var keys = preload("res://tools/minigames/maze/keys.tscn")
 @onready var enemies = preload("res://tools/minigames/maze/maze_enemy.tscn")
+@export var enemyFolder : Node3D
 
 @export var mazeWidth : int
 @export var mazeLength : int
 @export var keyN : int
 var mazeGrid : Array
+var enemyArray : Array[MazeEnemy] = []
 var keysCollected : int = 0
 
 func _ready():
@@ -47,8 +49,11 @@ func _ready():
 	for coords in key_coords:
 		var newEnemy : MazeEnemy = enemies.instantiate()
 		newEnemy.position = Vector3(coords[0], 0.8, coords[1])
-		add_child(newEnemy)
+		enemyFolder.add_child(newEnemy)
 		newEnemy.connect("met_player", on_enemy_met_player)
+		enemyArray.append(newEnemy)
+	
+	emit_signal("setup_complete")
 
 func coords_too_close(coords_array : Array, new_coords : Array) -> bool:
 	var answer : bool = false

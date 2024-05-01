@@ -4,17 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/spritesheet_mini_npc_idle.png" id="2_whn68"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpcfu"]
-size = Vector3(1.32715, 2.25043, 1)
+size = Vector3(1.5, 2.3, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hacuu"]
-size = Vector3(1.80612, 2.08551, 1.39098)
+size = Vector3(2, 2.086, 2)
 
 [node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_4egut")
+dir_cooldown = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0288086, 0.0589256, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0979008, 0.140029, 0)
 shape = SubResource("BoxShape3D_wpcfu")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -24,7 +25,8 @@ hframes = 7
 [node name="Hurtbox" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0070343, -0.0100403, -0.0459404)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119042, -0.0100403, -0.0437043)
 shape = SubResource("BoxShape3D_hacuu")
 
+[connection signal="direction_cooldown" from="." to="." method="_on_direction_cooldown"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
