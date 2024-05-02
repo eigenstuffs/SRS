@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://tools/minigames/maze/MazeGenerator.gd" id="1_wltr6"]
 [ext_resource type="Script" path="res://tools/minigames/maze/maze_minigame.gd" id="1_xvgb3"]
-[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="3_w5pfi"]
 [ext_resource type="Script" path="res://tools/minigames/maze/FollowingCamera.gd" id="4_ohvxp"]
+[ext_resource type="PackedScene" uid="uid://dhyrf6dyl1s8c" path="res://scenes/player/maze_player.tscn" id="4_pj1vw"]
 [ext_resource type="Script" path="res://tools/minigames/maze/Goal.gd" id="4_v5a44"]
 
 [sub_resource type="Environment" id="Environment_pm51m"]
@@ -36,19 +36,10 @@ transform = Transform3D(1, 0, 0, 0, 0.740582, 0.671966, 0, -0.671966, 0.740582, 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pm51m")
 
-[node name="Player" parent="." instance=ExtResource("3_w5pfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.00292, 0)
-
-[node name="FollowingCamera" type="Camera3D" parent="Player"]
-transform = Transform3D(1, -6.97574e-16, -4.32585e-23, 3.59882e-16, 0.515905, 0.856646, -5.97574e-16, -0.856646, 0.515905, 0.439032, 4.51742, 5.98558)
-current = true
-script = ExtResource("4_ohvxp")
-MAX_X = 10.0
-MIN_Z = 5.0
-MAX_Z = 10.0
-
 [node name="Goal" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 9)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("4_v5a44")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
@@ -70,12 +61,25 @@ keyN = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.08165e-12, 5)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("BoxShape3D_fx42x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_id6dk")
+
+[node name="MazePlayer" parent="." instance=ExtResource("4_pj1vw")]
+transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.173648, -4.09353e-16, -0.173648, 0.984808, 2.08165e-12, 3, 2.08165e-12)
+
+[node name="FollowingCamera" type="Camera3D" parent="MazePlayer"]
+transform = Transform3D(1, -5.55059e-16, -1.62111e-17, 3.60362e-16, 0.626467, 0.779448, -4.22484e-16, -0.779448, 0.626467, 0.439, 4.36, 3.1)
+current = true
+script = ExtResource("4_ohvxp")
+MAX_X = 10.0
+MIN_Z = 3.0
+MAX_Z = 10.0
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="goal_touched" from="Goal" to="." method="_on_goal_goal_touched"]

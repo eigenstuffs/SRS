@@ -14,6 +14,8 @@ material = SubResource("StandardMaterial3D_b77aq")
 
 [node name="Keys" type="Area3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_nb7fw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

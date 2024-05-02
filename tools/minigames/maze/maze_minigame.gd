@@ -11,6 +11,7 @@ func _on_maze_generator_key_collected():
 
 func _on_maze_generator_all_key_collected():
 	all_keys_got = true
+	$Goal.show_and_monitor()
 
 func _on_goal_goal_touched():
 	if all_keys_got:
