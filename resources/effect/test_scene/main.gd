@@ -17,6 +17,12 @@ func _on_item_list_item_activated(index: int) -> void:
 	var effect_name : String = entry[0]
 	var is_effect_started := len(entry) > 1
 
+	# I hardcoded some special transitions for certain effects below. For example
+	# ColorFade will go from black->transparent if it has already been triggered (transparent->black).
+	
+	# For some effects like ColorFade, certain parameters can have it auto-disable (and cleanup).
+	# In the case of ColorFade, it will disable if the end fade color is transparent.
+	# In the case of Blur, it will disable if the end blur amount is 0.0, etc.
 	if is_effect_started:
 		match effect_name:
 			'ColorFade': EffectRegistry.start_effect(self, effect_name, [$PostProcessing, Color.BLACK, Color.TRANSPARENT])

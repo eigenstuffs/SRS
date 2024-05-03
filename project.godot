@@ -22,6 +22,7 @@ Global="*res://global/global.gd"
 Util="*res://global/utilities.gd"
 WindowDimensionHelper="res://global/window_dimension_helper.gd"
 EffectAnim="*res://tools/effect_anim/effect_anim.tscn"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [display]
 
@@ -32,7 +33,7 @@ window/vsync/vsync_mode=3
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/wigglebone/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/wigglebone/plugin.cfg")
 
 [file_customization]
 
