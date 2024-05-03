@@ -6,8 +6,8 @@ class_name MultiPassShaderMaterial extends ShaderMaterial
 ## A 'base' shader can be specified by setting the first pass of the material.
 ## This shader pass will be used when no shader pass labeled 'unique' is enabled.
 
-const CLEAR_SHADER_SPATIAL := preload('res://resources/shaders/spatial/clear_shader_spatial.gdshader')
-const CLEAR_SHADER_CANVAS := preload('res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader')
+const CLEAR_SHADER_SPATIAL := preload('../resources/shaders/spatial/clear_shader_spatial.gdshader')
+const CLEAR_SHADER_CANVAS := preload('../resources/shaders/canvas_item/clear_shader_canvas_item.gdshader')
 const BASE_SHADER_NAME := 'base'
 
 static var enabled_passes : Dictionary = {}

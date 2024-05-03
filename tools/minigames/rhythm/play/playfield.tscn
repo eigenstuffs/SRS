@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://resources/shaders/post_processing/impact_lines.gdshader" id="9_5refg"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/clear_shader_spatial.gdshader" id="10_ckunn"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/albedo_fade.gdshader" id="10_ji235"]
-[ext_resource type="Shader" path="res://resources/shaders/post_processing/blur.gdshader" id="10_mdpw5"]
+[ext_resource type="Shader" path="res://resources/shaders/canvas_item/blur.gdshader" id="10_mdpw5"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/radial_pattern.gdshader" id="11_14gwy"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_tu6ej"]

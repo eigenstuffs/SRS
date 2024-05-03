@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://eduvc4orfyn5"]
+
+[ext_resource type="Shader" path="res://resources/shaders/canvas_item/fake_glow.gdshader" id="1_17uf4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_scvf0"]
+shader = ExtResource("1_17uf4")
+
+[sub_resource type="Curve" id="Curve_c3g1n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.118721, 1), 0.0, 0.0, 0, 0, Vector2(0.872146, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yii3v"]
+curve = SubResource("Curve_c3g1n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j61g8"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 540, 0)
+direction = Vector3(1, 1, 0)
+spread = 180.0
+initial_velocity_min = 6.0
+initial_velocity_max = 20.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.4
+scale_over_velocity_max = 1.0
+color = Color(1, 1, 1, 0.168627)
+alpha_curve = SubResource("CurveTexture_yii3v")
+
+[sub_resource type="Gradient" id="Gradient_kcddy"]
+offsets = PackedFloat32Array(0, 0.520737)
+colors = PackedColorArray(0.772549, 0.454902, 0.360784, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_43qyt"]
+gradient = SubResource("Gradient_kcddy")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="InteriorWarmEffect" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_scvf0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DustParticles" type="GPUParticles2D" parent="."]
+position = Vector2(960, 540)
+amount = 256
+process_material = SubResource("ParticleProcessMaterial_j61g8")
+texture = SubResource("GradientTexture2D_43qyt")
+lifetime = 20.0

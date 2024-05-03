@@ -7,28 +7,30 @@ signal interrupted
 
 @export var name : String
 ## The duration the effect in seconds. A duration time of 0 indicates that the 
-## effect does not end automatically. Not thread-safe!
-@export var duration := 0.0 :
-	set(value):
-		if self.is_running:
-			printerr('An attempt to change effect %s duration was made, but duration cannot be " + \
-				"changed while the effect is running!' % self.name)
-			return
-		duration = value
+## effect does not end automatically.
+@export var duration := 0.0
 
-@export var on_start : Callable = func(): pass :
-	set(value):
-		assert(not self.is_running)
-		on_start = value
+## Called before timer logic is set up, `duration` should be modified here if needed.
+var on_start : Callable
 		
-@export var on_stop : Callable = func(): pass
+var on_stop : Callable
 
-var is_running := false
+var on_queue_free : Callable
+
+var should_free_when_stopped := false
 var timer : Timer
-	
+
+func _init(name_ := 'NO_NAME', duration_ := 0.0, on_start_ := func(): pass, on_stop_ := func(): pass, on_queue_free_ := func(): pass) -> void:
+	self.name = name_
+	self.duration = duration_
+	self.on_start = on_start_
+	self.on_stop = on_stop_
+	self.on_queue_free = on_queue_free_
+
 ## Starts the effect calling [member on_run] supplied with the provided arguments.
 ## If called while the effect is already running, it will restart.
 func start(args : Array=[]) -> void:
+	on_start.callv(args)
 	if not timer: 
 		timer = Timer.new()
 		timer.connect('timeout', stop if self.duration != 0 else func(): pass) # FIXME: ew!
@@ -39,12 +41,15 @@ func start(args : Array=[]) -> void:
 		timer.start(self.duration)
 		interrupted.emit()
 	
-	on_start.callv(args)
-	is_running = true
-	
 func stop() -> void:
-	if is_instance_valid(timer): timer.queue_free()
+	if on_stop: on_stop.call()
 	finished.emit()
 	
-	on_stop.call()
-	is_running = false
+	if should_free_when_stopped:
+		queue_free()
+	elif is_instance_valid(timer): 
+		timer.queue_free()
+
+func queue_free() -> void:
+	if on_queue_free: on_queue_free.call()
+	if is_instance_valid(timer): timer.queue_free()

@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://c13k41j6siwhm"]
+
+[ext_resource type="Script" path="res://resources/effect/test_scene/main.gd" id="1_s2b5u"]
+[ext_resource type="PackedScene" uid="uid://00mg2rogbacn" path="res://resources/effect/test_scene/player_character.tscn" id="3_xh2un"]
+[ext_resource type="Texture2D" uid="uid://dibw0mfx41sra" path="res://assets/bg.png" id="5_75iyg"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x1cih"]
+top_radius = 8.0
+bottom_radius = 8.0
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2p12f"]
+height = 0.1
+radius = 8.0
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_s2b5u")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(-0.642788, 0.663414, -0.383022, 0, 0.5, 0.866025, 0.766044, 0.556671, -0.321394, -4.5, 10, -3.5)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="World"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("CylinderMesh_x1cih")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("CylinderShape3D_2p12f")
+
+[node name="PlayerCharacter" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_xh2un")]
+camera = NodePath("Camera")
+
+[node name="Camera" type="Camera3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83, 0)
+fov = 90.0
+
+[node name="Background2D" type="CanvasLayer" parent="."]
+layer = 0
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Background2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_75iyg")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="PostProcessing" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="EffectListTitle" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 469.0
+offset_bottom = 112.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Effects"
+
+[node name="EffectList" type="ItemList" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 91.0
+offset_right = 469.0
+offset_bottom = 779.0
+theme_override_font_sizes/font_size = 30
+
+[node name="EnvironmentListTitle" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 794.0
+offset_right = 469.0
+offset_bottom = 866.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Environments
+"
+
+[node name="EnvironmentList" type="ItemList" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 846.0
+offset_right = 469.0
+offset_bottom = 1020.0
+theme_override_font_sizes/font_size = 30
+item_count = 1
+item_0/text = "Background2D"
+
+[connection signal="item_activated" from="CanvasLayer/EffectList" to="." method="_on_item_list_item_activated"]
+[connection signal="item_activated" from="CanvasLayer/EnvironmentList" to="." method="_on_environment_list_item_activated"]

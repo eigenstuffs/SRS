@@ -1,8 +1,9 @@
 shader_type canvas_item;
 render_mode unshaded;
 
-uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 global uniform float cpu_sync_time;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+
 uniform vec4 start_color : source_color;
 uniform vec4 end_color : source_color;
 uniform float duration;

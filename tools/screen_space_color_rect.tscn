@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdhy2h2ckncup"]
+
+[ext_resource type="Shader" path="res://resources/shaders/canvas_item/blur_horizontal.gdshader" id="1_52mnf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l52k6"]
+shader = ExtResource("1_52mnf")
+
+[node name="ScreenSpaceColorRect" type="ColorRect"]
+material = SubResource("ShaderMaterial_l52k6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

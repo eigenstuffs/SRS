@@ -10,31 +10,32 @@ static func _static_init() -> void:
 		register(effect)
 	
 static func register(effect : Effect) -> void:
-	assert(effect.name)
+	assert(effect.name, 'Effect#name is not set!')
 	effects[effect.name] = effect
 	print('(effect_registry) Registered: %s' % effect.name)
 	
-static func start_effect(caller : Node, name_ : StringName, args : Array=[]) -> void:
-	print(name_)
-	assert(effects.has(name_) and effects[name_])
-	var effect : Effect = effects[name_]
+static func start_effect(caller : Node, effect_name : StringName, args : Array=[]) -> void:
+	assert(effects.has(effect_name) and effects[effect_name])
+	var effect : Effect = effects[effect_name]
 	
 	effect.start(args)
 	if not effect.timer.get_parent():
 		caller.add_child(effect.timer)
 	
-static func stop_effect(name_ : StringName) -> void:
-	assert(effects.has(name_) and effects[name_])
-	var effect : Effect = effects[name_]
+static func stop_effect(effect_name : StringName) -> void:
+	assert(effects.has(effect_name) and effects[effect_name])
+	effects[effect_name].stop()
 	
-	effect.stop()
+static func free_effect(effect_name : StringName) -> void:
+	assert(effects.has(effect_name) and effects[effect_name])
+	effects[effect_name].queue_free()
 
-static func get_effect(name_ : StringName) -> Effect:
-	return effects[name_]
+static func get_effect(effect_name : StringName) -> Effect:
+	return effects[effect_name]
 
-static func get_effect_progress(name_ : StringName) -> float:
-	var timer : Timer = effects[name_].timer
-	return 1.0 - (timer.time_left / timer.wait_time) if timer else 0.0
+static func get_effect_progress(effect_name : StringName) -> float:
+	var timer = effects[effect_name].timer
+	return 1.0 - (timer.time_left / timer.wait_time) if is_instance_valid(timer) else 0.0
 
-static func has_key(name_ : StringName) -> bool:
-	return effects.has(name_)
+static func has_key(effect_name : StringName) -> bool:
+	return effects.has(effect_name)

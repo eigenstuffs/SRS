@@ -1,7 +1,7 @@
 @tool
 class_name MultiPassShaderRect extends ColorRect
 
-const CLEAR_SHADER := preload('res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader')
+const CLEAR_SHADER := preload('../resources/shaders/canvas_item/clear_shader_canvas_item.gdshader')
 
 @export var anchor_preset : LayoutPreset = PRESET_FULL_RECT :
 	set(value):
