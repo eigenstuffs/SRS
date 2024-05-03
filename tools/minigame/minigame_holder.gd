@@ -22,7 +22,7 @@ var game : Minigame
 func initiate_minigame(which : String):
 	# FIXME: cursed shader effect is visible for a split second before disabling!
 	$MultiPassShaderRect.visible = false
-	EffectRegistry.start_effect(self, 'Blur', [$MultiPassShaderRect.material, 0, 0])
+	EffectRegistry.start_effect(self, 'Blur', [$MultiPassShaderRect, 0, 0])
 	var timer := Timer.new()
 	timer.connect('timeout', func(): $MultiPassShaderRect.visible = true)
 	timer.one_shot = true

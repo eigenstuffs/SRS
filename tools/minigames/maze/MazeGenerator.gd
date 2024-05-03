@@ -40,7 +40,7 @@ func _ready():
 		print(random_coords)
 		place_coords.append(random_coords)
 		var newKey : Keys = keys.instantiate()
-		newKey.position = Vector3(random_coords[0], 0.8, random_coords[1])
+		newKey.position = Vector3(random_coords[0], 1, random_coords[1])
 		add_child(newKey)
 		newKey.connect("collected", on_key_collected)
 		
@@ -136,3 +136,7 @@ func on_key_collected():
 
 func on_enemy_met_player():
 	emit_signal("enemy_met_player")
+
+func set_all_enemy_speed_modifier(new : float):
+	for enemy in enemyArray:
+		enemy.set_speed_modifier(new)

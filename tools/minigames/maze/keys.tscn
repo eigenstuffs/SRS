@@ -5,12 +5,11 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_adfbv"]
 radius = 0.834241
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b77aq"]
-transparency = 1
-albedo_color = Color(0.729412, 0.615686, 0.211765, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_af2kx"]
+albedo_color = Color(0.835294, 0.682353, 0.235294, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_6r3t3"]
-material = SubResource("StandardMaterial3D_b77aq")
+[sub_resource type="BoxMesh" id="BoxMesh_6x0g0"]
+material = SubResource("StandardMaterial3D_af2kx")
 
 [node name="Keys" type="Area3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -22,6 +21,7 @@ script = ExtResource("1_nb7fw")
 shape = SubResource("SphereShape3D_adfbv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_6r3t3")
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_6x0g0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

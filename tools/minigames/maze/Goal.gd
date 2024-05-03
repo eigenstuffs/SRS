@@ -13,3 +13,5 @@ func show_and_monitor():
 func _on_body_entered(body):
 	if body is Player:
 		emit_signal("goal_touched")
+
+#pop up particle effect (to attract player attention)

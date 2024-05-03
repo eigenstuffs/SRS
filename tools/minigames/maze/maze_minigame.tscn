@@ -30,6 +30,12 @@ size = Vector3(20, 1, 20)
 [node name="MazeMinigame" type="SubViewport"]
 script = ExtResource("1_xvgb3")
 
+[node name="EffectNode" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.740582, 0.671966, 0, -0.671966, 0.740582, 0, 12.1276, 9.07798)
 
@@ -74,7 +80,7 @@ mesh = SubResource("BoxMesh_id6dk")
 transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.173648, -4.09353e-16, -0.173648, 0.984808, 2.08165e-12, 3, 2.08165e-12)
 
 [node name="FollowingCamera" type="Camera3D" parent="MazePlayer"]
-transform = Transform3D(1, -5.55059e-16, -1.62111e-17, 3.60362e-16, 0.626467, 0.779448, -4.22484e-16, -0.779448, 0.626467, 0.439, 4.36, 3.1)
+transform = Transform3D(1, -6.2061e-16, 2.18551e-16, 2.18551e-16, 0.626604, 0.779338, -6.2061e-16, -0.779338, 0.626604, 0.439, 4.23765, 3.79349)
 current = true
 script = ExtResource("4_ohvxp")
 MAX_X = 10.0

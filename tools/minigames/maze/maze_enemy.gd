@@ -19,6 +19,7 @@ var spawn_point : Vector3 = Vector3()
 var possible_dirs : Array[Vector3] = [Vector3.RIGHT, Vector3.LEFT, Vector3.FORWARD, Vector3.BACK]
 var can_change : bool = true
 @export var dir_cooldown : float = 0.5
+var speed_modifier : float = 1
 
 func _ready():
 	spawn_point = global_position
@@ -26,17 +27,19 @@ func _ready():
 	#player = get_node(player_node)
 
 func _physics_process(delta):
-	if not is_on_floor():
+	if Global.can_move:
+		if not is_on_floor():
 			velocity.y -= gravity * delta
-	
-	if is_on_wall() and can_change:
-		dir = possible_dirs.pick_random()
-		can_change = false
-		emit_signal("direction_cooldown")
 		
-	
-	velocity = dir*SPEED
-	move_and_slide()
+		if is_on_wall() and can_change:
+			dir = possible_dirs.pick_random()
+			can_change = false
+			emit_signal("direction_cooldown")
+			
+		
+		velocity.x = dir.x * SPEED * speed_modifier
+		velocity.z = dir.z * SPEED * speed_modifier
+		move_and_slide()
 
 func _on_hurtbox_body_entered(body):
 	if body is Player:
@@ -45,3 +48,6 @@ func _on_hurtbox_body_entered(body):
 func _on_direction_cooldown():
 	await get_tree().create_timer(dir_cooldown).timeout
 	can_change = true
+
+func set_speed_modifier(new: float):
+	speed_modifier = new
