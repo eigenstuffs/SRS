@@ -11,15 +11,18 @@ signal enemy_met_player
 @onready var keys = preload("res://tools/minigames/maze/keys.tscn")
 @onready var enemies = preload("res://tools/minigames/maze/maze_enemy.tscn")
 @export var enemyFolder : Node3D
+@onready var maze_metadata : MazeMeta = preload("res://tools/minigames/maze/maze_metadata.tres")
 
 @export var mazeWidth : int
 @export var mazeLength : int
 @export var keyN : int
+@export var minimum_radius : int
 var mazeGrid : Array
 var enemyArray : Array[MazeEnemy] = []
 var keysCollected : int = 0
 
 func _ready():
+	get_metadata()
 	for i in range(mazeWidth):
 		mazeGrid.append([])
 		for j in range(mazeLength):
@@ -57,10 +60,12 @@ func _ready():
 
 func coords_too_close(coords_array : Array, new_coords : Array) -> bool:
 	var answer : bool = false
+	var new_vector : Vector2 = Vector2(new_coords[0], new_coords[1])
 	for old_coords in coords_array:
-		if abs(new_coords[0] - old_coords[0])^2 + abs(new_coords[1] - old_coords[1])^2 < 4:
-			#radius of two
+		var old_vector : Vector2 = Vector2(old_coords[0], old_coords[1])
+		if new_vector.distance_to(old_vector) < minimum_radius:
 			answer = true
+			break
 	
 	return answer
 
@@ -140,3 +145,10 @@ func on_enemy_met_player():
 func set_all_enemy_speed_modifier(new : float):
 	for enemy in enemyArray:
 		enemy.set_speed_modifier(new)
+
+func get_metadata():
+	var all_data : Array = maze_metadata.get_metadata()
+	mazeWidth = all_data[0]
+	mazeLength = all_data[1]
+	keyN = all_data[2]
+	minimum_radius = all_data[3]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MazeMeta" load_steps=2 format=3 uid="uid://cspkx3i4ckmhn"]
+
+[ext_resource type="Script" path="res://tools/minigames/maze/maze_metadata.gd" id="1_v2rmy"]
+
+[resource]
+script = ExtResource("1_v2rmy")
+mazeWidth = 10
+mazeLength = 10
+keyN = 3
+min_radius = 3
+diffMult = 2

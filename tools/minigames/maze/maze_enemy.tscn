@@ -11,6 +11,8 @@ size = Vector3(1.75, 2.086, 1.75)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kwt0"]
 albedo_color = Color(1, 0.145098, 0.145098, 1)
+billboard_mode = 2
+billboard_keep_scale = true
 
 [sub_resource type="TorusMesh" id="TorusMesh_pqpta"]
 material = SubResource("StandardMaterial3D_5kwt0")

@@ -22,6 +22,7 @@ size = Vector3(20, 1, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncyor"]
 albedo_color = Color(0.54902, 0.392157, 0.258824, 1)
+billboard_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_id6dk"]
 material = SubResource("StandardMaterial3D_ncyor")
@@ -42,11 +43,12 @@ transform = Transform3D(1, 0, 0, 0, 0.740582, 0.671966, 0, -0.671966, 0.740582, 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pm51m")
 
-[node name="Goal" type="Area3D" parent="."]
+[node name="Goal" type="Area3D" parent="." node_paths=PackedStringArray("mg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 9)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_v5a44")
+mg = NodePath("../MazeGenerator")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
 shape = SubResource("SphereShape3D_qn3x3")
@@ -59,9 +61,10 @@ mesh = SubResource("SphereMesh_kj010")
 [node name="MazeGenerator" type="Node3D" parent="." node_paths=PackedStringArray("enemyFolder")]
 script = ExtResource("1_wltr6")
 enemyFolder = NodePath("../EnemyFolder")
-mazeWidth = 10
-mazeLength = 10
-keyN = 3
+mazeWidth = 13
+mazeLength = 13
+keyN = 5
+minimum_radius = 4
 
 [node name="Ground" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.08165e-12, 5)
@@ -79,13 +82,14 @@ mesh = SubResource("BoxMesh_id6dk")
 [node name="MazePlayer" parent="." instance=ExtResource("4_pj1vw")]
 transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.173648, -4.09353e-16, -0.173648, 0.984808, 2.08165e-12, 3, 2.08165e-12)
 
-[node name="FollowingCamera" type="Camera3D" parent="MazePlayer"]
+[node name="FollowingCamera" type="Camera3D" parent="MazePlayer" node_paths=PackedStringArray("maze_generator")]
 transform = Transform3D(1, -6.2061e-16, 2.18551e-16, 2.18551e-16, 0.626604, 0.779338, -6.2061e-16, -0.779338, 0.626604, 0.439, 4.23765, 3.79349)
 current = true
 script = ExtResource("4_ohvxp")
 MAX_X = 10.0
 MIN_Z = 3.0
 MAX_Z = 10.0
+maze_generator = NodePath("../../MazeGenerator")
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="goal_touched" from="Goal" to="." method="_on_goal_goal_touched"]

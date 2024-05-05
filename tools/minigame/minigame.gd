@@ -8,6 +8,7 @@ signal update_time(seconds : int) #call this to add or deduct time from the mini
 
 var rough_points : int = 0
 @export var detailed_points : Array = []
+var remaining_time : int #for specific minigames that can end early
 
 var has_ended := false
 

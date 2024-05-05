@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://b274o4jlip3rw"]
+
+[ext_resource type="Script" path="res://tools/minigames/maze/difficulty_select.gd" id="1_t68w4"]
+
+[node name="DifficultySelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t68w4")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.0
+offset_top = 242.0
+offset_right = 291.0
+offset_bottom = 349.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Select A Difficulty"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -657.0
+offset_top = -431.0
+offset_right = 706.0
+offset_bottom = -207.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Easy" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Easy"
+
+[node name="Medium" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Medium"
+
+[node name="Hard" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Hard"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="pressed" from="HBoxContainer/Easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="HBoxContainer/Medium" to="." method="_on_medium_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_hard_pressed"]

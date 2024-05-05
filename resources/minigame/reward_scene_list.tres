@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RewardList" load_steps=6 format=3 uid="uid://cyduh5tusug7w"]
+[gd_resource type="Resource" script_class="RewardList" load_steps=7 format=3 uid="uid://cyduh5tusug7w"]
 
 [ext_resource type="Script" path="res://resources/minigame/reward_scene_list.gd" id="1_2l0mq"]
 [ext_resource type="Script" path="res://resources/minigame/reward_scene_info.gd" id="1_flj3g"]
@@ -18,6 +18,11 @@ script = ExtResource("1_flj3g")
 name = "Rhythm"
 scene = "res://tools/minigames/rhythm/rhythm_reward_screen.tscn"
 
+[sub_resource type="Resource" id="Resource_1qcdo"]
+script = ExtResource("1_flj3g")
+name = "Maze"
+scene = "res://tools/minigames/maze/maze_reward_scene.tscn"
+
 [resource]
 script = ExtResource("1_2l0mq")
-reward_scene_list = Array[ExtResource("1_flj3g")]([SubResource("Resource_i6p0o"), SubResource("Resource_a353u"), SubResource("Resource_8jc4f")])
+reward_scene_list = Array[ExtResource("1_flj3g")]([SubResource("Resource_i6p0o"), SubResource("Resource_a353u"), SubResource("Resource_8jc4f"), SubResource("Resource_1qcdo")])

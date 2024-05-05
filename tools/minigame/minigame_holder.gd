@@ -10,7 +10,7 @@ var is_finished := false :
 	set(value):
 		is_finished = value
 		ui.sLabel.visible = false
-		EffectRegistry.start_effect(self, 'Blur', [$MultiPassShaderRect.material, 0, 64])
+		EffectRegistry.start_effect(self, 'Blur', [$MultiPassShaderRect, 0, 64])
 
 signal finished(detailed_points)
 #detailed points should be in the format [array1, array2]
@@ -36,6 +36,7 @@ func initiate_minigame(which : String):
 		$Game.add_child(minigame)
 		minigame.connect("update_points", update_points)
 		minigame.connect("update_time", update_time)
+		minigame.connect("ended", game_end_early)
 		
 		if metadata.time <= 0: return
 		ui.gameTimeCount = metadata.time
@@ -56,9 +57,13 @@ func update_points(new : int):
 	
 func update_time(delta : int):
 	$UI.modify_game_time(delta)
+	
+func get_remaining_time() -> int:
+	return $UI.gameTimeCount
 
 func _on_ui_game_over():
 	assert(game)
+	game.remaining_time = get_remaining_time()
 	game.end()
 	await get_tree().create_timer(2).timeout
 	rough_points = game.rough_points
@@ -68,3 +73,11 @@ func _on_ui_game_over():
 
 func _on_game_child_entered_tree(node: Node) -> void:
 	if node is Minigame: game = node
+
+func game_end_early(): #assuming that game calls its own end early
+	print("game ends early")
+	game.remaining_time = get_remaining_time()
+	await get_tree().create_timer(2).timeout
+	rough_points = game.rough_points
+	detailed_points = game.detailed_points
+	finished.emit(detailed_points)

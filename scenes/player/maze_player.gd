@@ -6,6 +6,7 @@ var can_dash : bool = true
 var is_dashing : bool = false
 var DASH_SPEED : float = 10
 var dashing_dir : Vector3
+var last_input_dir : Vector3
 var speed_modifier : float = 1
 
 func _physics_process(delta):
@@ -21,12 +22,17 @@ func _physics_process(delta):
 
 		var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			last_input_dir = direction
 		
 		#BUG: space bar press not registered when two direction keys is held down at the same time
 		if Input.is_action_just_pressed("ui_accept") and can_dash: 
 			can_dash = false
 			is_dashing = true
-			dashing_dir = direction
+			if last_input_dir:
+				dashing_dir = last_input_dir
+			else:
+				dashing_dir = Vector3.RIGHT
 			collision_layer = 2
 			collision_mask = 2
 			dash_timer()
