@@ -25,6 +25,7 @@ func end():
 	emit_signal("minigame_finished", detailed_points)
 
 func _on_maze_generator_key_collected():
+	$KeyGetSound.play()
 	point_get += 1
 	update_points.emit(point_get)
 
@@ -40,6 +41,7 @@ func _on_maze_generator_all_key_collected():
 	$MazePlayer/FollowingCamera.original_view()
 	emit_signal("update_time", 2)
 	#start the effect
+	$SpeedUpSound.play()
 	EffectRegistry.start_effect(self, "ImpactLines", [$EffectNode, 1.0])
 	#increase speed for both enemies and player
 	$MazePlayer.set_speed_modifier(2)
@@ -54,6 +56,7 @@ func _on_goal_goal_touched():
 func _on_maze_generator_enemy_met_player():
 	EffectRegistry.start_effect(self, "Flash", [$EffectNode, Color(0.6, 0, 0, 0.4)])
 	emit_signal("update_time", time_penalty)
+	$PlayerHurtSound.play()
 
 func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)

@@ -13,6 +13,7 @@ func show_and_monitor():
 	global_position = Vector3(mg.mazeWidth-1, 0.5, mg.mazeLength-1)
 	visible = true
 	monitoring = true
+	$AudioStreamPlayer.play()
 
 func _on_body_entered(body):
 	if body is Player:
