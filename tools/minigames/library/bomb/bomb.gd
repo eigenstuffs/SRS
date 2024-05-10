@@ -48,6 +48,9 @@ func _on_rigid_body_body_entered(_body: Node) -> void:
 	# To increase visual clarity, fade out shadow once book has hit the ground
 	shadow.fade_out()
 	has_collided = true
+	if not (_body is LibraryPlayer):
+		#add explosion here
+		queue_free()
 
 
 func _on_shadow_on_fully_faded() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://buyuq0kfr1tme"]
+[gd_scene load_steps=21 format=3 uid="uid://buyuq0kfr1tme"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="2_4dmdn"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/book/wiggle/book_holder.tscn" id="5_4rr6e"]
 [ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/npc_instancer.tscn" id="5_hbp12"]
 [ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="6_8v8og"]
+[ext_resource type="Script" path="res://tools/minigames/library/Bookshelf.gd" id="8_lbiij"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
 size = Vector3(10, 1, 10)
@@ -37,6 +38,15 @@ size = Vector3(10, 5, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uh7u6"]
 size = Vector3(0.2, 5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4t3gm"]
+size = Vector3(1, 1.71545, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0ak3"]
+albedo_color = Color(0.509804, 0.176471, 0.0588235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h0o6u"]
+material = SubResource("StandardMaterial3D_h0ak3")
 
 [node name="Library" type="SubViewport"]
 size = Vector2i(1600, 900)
@@ -115,7 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.0
 shape = SubResource("BoxShape3D_uh7u6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 3.02058e-16, 0.866025, 0.5, -5.2318e-16, -0.5, 0.866025, 2.08165e-12, 7.65, 14)
+transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 4.92944e-16, 0.995699, 0.0926489, -3.49231e-16, -0.0926489, 0.995699, 2.08165e-12, 2.61608, 14.3369)
 current = true
 fov = 20.0
 size = 73.377
@@ -134,7 +144,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 light_color = Color(1, 0.933333, 0.811765, 1)
 
 [node name="LibraryPlayer" parent="." instance=ExtResource("3_jyoxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 1.765)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.6849, 0.747878, 2.02868)
 collision_mask = 2
 
 [node name="Shadow" parent="LibraryPlayer" instance=ExtResource("4_q284v")]
@@ -148,9 +158,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.5)
 
 [node name="BookInstancer" parent="." instance=ExtResource("6_8v8og")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2.12845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.906572, -0.33627, 5, 2.03018)
+
+[node name="Bookshelf" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.70081, 0.82556, 2.0901)
+script = ExtResource("8_lbiij")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0598755, 0)
+shape = SubResource("BoxShape3D_4t3gm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_h0o6u")
 
 [connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]
 [connection signal="book_collected" from="LibraryPlayer" to="." method="_on_library_player_book_collected"]
+[connection signal="body_entered" from="Bookshelf" to="Bookshelf" method="_on_body_entered"]
+[connection signal="player_entered" from="Bookshelf" to="." method="_on_bookshelf_player_entered"]
 
 [editable path="NPCInstancer"]
