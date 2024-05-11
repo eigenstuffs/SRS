@@ -25,3 +25,9 @@ func add_book_bone() -> void:
 
 func get_num_books() -> int:
 	return skeleton.get_bone_count()
+
+func clear_all_books() -> void:
+	skeleton.clear_bones()
+	for child in skeleton.get_children():
+		child.queue_free()
+	print("cleared")

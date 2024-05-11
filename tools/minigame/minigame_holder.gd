@@ -37,6 +37,7 @@ func initiate_minigame(which : String):
 		minigame.connect("update_points", update_points)
 		minigame.connect("update_time", update_time)
 		minigame.connect("ended", game_end_early)
+		minigame.connect("get_remaining_game", set_game_remaining_time)
 		
 		if metadata.time <= 0: return
 		ui.gameTimeCount = metadata.time
@@ -77,7 +78,11 @@ func _on_game_child_entered_tree(node: Node) -> void:
 func game_end_early(): #assuming that game calls its own end early
 	print("game ends early")
 	game.remaining_time = get_remaining_time()
+	$UI.display_message("Finished!")
 	await get_tree().create_timer(2).timeout
 	rough_points = game.rough_points
 	detailed_points = game.detailed_points
 	finished.emit(detailed_points)
+
+func set_game_remaining_time():
+	game.remaining_time = get_remaining_time()

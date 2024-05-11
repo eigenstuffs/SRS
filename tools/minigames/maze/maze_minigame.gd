@@ -14,7 +14,6 @@ class_name MazeMinigame extends Minigame
 var point_get : int = 0
 var all_keys_got : bool = false
 
-signal ended
 
 func end():
 	Global.can_move = false
