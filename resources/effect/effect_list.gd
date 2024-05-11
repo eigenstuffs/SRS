@@ -170,8 +170,9 @@ class EffectBloom extends CanvasItemEffect:
 		render_passes.push_back(CanvasItemRenderPass.new(BLOOM_SHADER)) # Vertical pass
 		
 		super('Bloom', 0.2,
-			func(t0 := 0.0, t1 := 1.0, strength := 0.35):
+			func(t0 := 0.0, t1 := 1.0, strength := 0.35, duration_overwrite = null):
 				self.should_free_when_stopped = t1 <= 0.0
+				self.duration = duration_overwrite if duration_overwrite else self.duration
 				render_passes[0].enable({'t0' : t0, 't1' : t1, 'duration': duration, 'direction': Vector2(1, 0), 'strength': strength*0.5})
 				render_passes[1].enable({'t0' : t0, 't1' : t1, 'duration': duration, 'direction': Vector2(0, 1), 'strength': strength*0.5}))
 
@@ -188,12 +189,14 @@ class EffectExplosion extends Effect:
 				
 				# Hit stop!
 				Engine.time_scale = 0.001
-				EffectRegistry.start_effect(parent, 'Flash', [flash_node, Color(0.98, 0.98, 0.98, 0.5), 99999.0])
+				EffectRegistry.start_effect(parent, 'Bloom', [flash_node, 1.0, 1.0, 0.3, 99999.0])
+				EffectRegistry.start_effect(parent, 'Flash', [flash_node, Color(0.98, 0.98, 0.98, 0.3), 99999.0])
 				self.effect_node.start_anticiation()
 				await parent.get_tree().create_timer(0.4*Engine.time_scale).timeout
 				
 				Engine.time_scale = 1.0
-				EffectRegistry.start_effect(parent, 'Flash', [flash_node, Color(0.98, 0.98, 0.98, 0.6), 0.1])
+				EffectRegistry.start_effect(parent, 'Bloom', [flash_node, 1.0, 0.0, 0.5, 0.4])
+				EffectRegistry.start_effect(parent, 'Flash', [flash_node, Color(0.98, 0.98, 0.98, 0.6), 0.2])
 				self.effect_node.start_explosion(),
 			func(): queue_free(),
 			func(): pass)
