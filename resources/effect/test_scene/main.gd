@@ -33,6 +33,7 @@ func _on_item_list_item_activated(index: int) -> void:
 			_: EffectRegistry.free_effect(effect_name)
 	else: # Effect is stopped
 		match effect_name:
+			'Explosion': EffectRegistry.start_effect(self, effect_name, [$SpawnPoint, $PostProcessing])
 			'BetterCall': EffectRegistry.start_effect(self, effect_name, [self])
 			'InteriorWarm': EffectRegistry.start_effect(self, effect_name, [self])
 			_:

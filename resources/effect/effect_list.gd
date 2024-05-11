@@ -175,6 +175,29 @@ class EffectBloom extends CanvasItemEffect:
 				render_passes[0].enable({'t0' : t0, 't1' : t1, 'duration': duration, 'direction': Vector2(1, 0), 'strength': strength*0.5})
 				render_passes[1].enable({'t0' : t0, 't1' : t1, 'duration': duration, 'direction': Vector2(0, 1), 'strength': strength*0.5}))
 
+class EffectExplosion extends Effect:
+	const EXPLOSION_EFFECT := preload('./explosion_effect/explosion_effect.tscn')
+		
+	var effect_node : ExplosionEffect
+		
+	func _init() -> void:
+		super('Explosion', 3.0, 
+			func(parent : Node3D, flash_node : Control):
+				self.effect_node = EXPLOSION_EFFECT.instantiate()
+				parent.add_child(self.effect_node)
+				
+				# Hit stop!
+				Engine.time_scale = 0.001
+				EffectRegistry.start_effect(parent, 'Flash', [flash_node, Color(0.98, 0.98, 0.98, 0.5), 99999.0])
+				self.effect_node.start_anticiation()
+				await parent.get_tree().create_timer(0.4*Engine.time_scale).timeout
+				
+				Engine.time_scale = 1.0
+				EffectRegistry.start_effect(parent, 'Flash', [flash_node, Color(0.98, 0.98, 0.98, 0.6), 0.1])
+				self.effect_node.start_explosion(),
+			func(): queue_free(),
+			func(): pass)
+
 static func _static_init() -> void:
 	EffectRegistry.register(EffectImpactLines.new())  # Impact lines for zooming!
 	EffectRegistry.register(EffectSlideWhistle.new()) # Transition for signed distance field
@@ -189,3 +212,4 @@ static func _static_init() -> void:
 	EffectRegistry.register(EffectSphereRaytraced.new())
 	EffectRegistry.register(EffectSphereRaymarched.new())
 	EffectRegistry.register(EffectBloom.new())
+	EffectRegistry.register(EffectExplosion.new())
