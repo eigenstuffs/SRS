@@ -25,5 +25,6 @@ func _process(delta: float) -> void:
 			add_child(obj)
 			obj.global_position = area.get_random_point()
 			obj.floor_position_y = floor_position_y
+			obj.fall_speed = max(1, spawn_time_next/7)
 		
 		time += delta

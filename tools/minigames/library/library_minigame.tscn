@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://buyuq0kfr1tme"]
+[gd_scene load_steps=22 format=3 uid="uid://buyuq0kfr1tme"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="2_4dmdn"]
+[ext_resource type="PackedScene" uid="uid://cnujinydfucuo" path="res://tools/minigames/library/canvas_layer.tscn" id="2_7cbig"]
 [ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
 [ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="4_q284v"]
 [ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/book/wiggle/book_holder.tscn" id="5_4rr6e"]
@@ -51,6 +52,8 @@ material = SubResource("StandardMaterial3D_h0ak3")
 [node name="Library" type="SubViewport"]
 size = Vector2i(1600, 900)
 script = ExtResource("1_jnejo")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_7cbig")]
 
 [node name="Walls" type="Node3D" parent="."]
 
@@ -171,6 +174,12 @@ shape = SubResource("BoxShape3D_4t3gm")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bookshelf"]
 transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_h0o6u")
+
+[node name="EffectNode" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]
 [connection signal="book_collected" from="LibraryPlayer" to="." method="_on_library_player_book_collected"]

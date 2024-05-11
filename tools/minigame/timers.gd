@@ -47,3 +47,7 @@ func modify_game_time(delta : int):
 	gameTimeCount += delta
 	gLabel.text = str(gameTimeCount)
 	gBar.value = gameTimeCount
+	
+func display_message(msg : String):
+	sLabel.text = msg
+	sLabel.show()
