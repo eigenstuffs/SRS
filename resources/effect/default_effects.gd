@@ -1,6 +1,6 @@
-class_name EffectList extends Resource
+extends Resource
 
-@export var effect_list : Array[Effect]
+@export var effects : Array[Effect]
 
 class EffectSlideWhistle extends CanvasItemEffect:
 	const SDF_TRANSITION_SHADER := preload('../shaders/canvas_item/sdf_transition.gdshader')
@@ -138,7 +138,7 @@ class EffectInteriorWarm extends Effect:
 		
 	func _init() -> void:
 		super('InteriorWarm', 0.0, 
-			func(parent : Node3D):
+			func(parent : Node):
 				self.effect_node = INTERIOR_WARM_EFFECT.instantiate()
 				parent.add_child(self.effect_node),
 			func(): 
@@ -183,36 +183,38 @@ class EffectExplosion extends Effect:
 		
 	func _init() -> void:
 		super('Explosion', 3.0, 
-			func(parent : Node3D, flash_node : Control):
+			func(parent : Node, control : Control, global_position:=Vector3.ZERO):
 				self.effect_node = EXPLOSION_EFFECT.instantiate()
 				parent.add_child(self.effect_node)
+				if global_position != Vector3.ZERO:
+					self.effect_node.global_position = global_position
 				
 				# Hit stop!
-				Engine.time_scale = 0.001
-				EffectRegistry.start_effect(parent, 'Bloom', [flash_node, 1.0, 1.0, 0.3, 99999.0])
-				EffectRegistry.start_effect(parent, 'Flash', [flash_node, Color(0.98, 0.98, 0.98, 0.3), 99999.0])
+				Engine.set_time_scale(1e-5)
+				EffectRegistry.start_effect(parent, 'Bloom', [control, 1.0, 1.0, 0.3, 99999.0])
+				EffectRegistry.start_effect(parent, 'Flash', [control, Color(0.98, 0.98, 0.98, 0.3), 99999.0])
 				self.effect_node.start_anticiation()
-				await parent.get_tree().create_timer(0.4*Engine.time_scale).timeout
+				await parent.get_tree().create_timer(0.4, true, false, true).timeout
 				
-				Engine.time_scale = 1.0
-				EffectRegistry.start_effect(parent, 'Bloom', [flash_node, 1.0, 0.0, 0.5, 0.4])
-				EffectRegistry.start_effect(parent, 'Flash', [flash_node, Color(0.98, 0.98, 0.98, 0.6), 0.2])
+				Engine.set_time_scale(1.0)
+				EffectRegistry.start_effect(parent, 'Bloom', [control, 1.0, 0.0, 0.5, 0.4])
+				EffectRegistry.start_effect(parent, 'Flash', [control, Color(0.98, 0.98, 0.98, 0.6), 0.2])
 				self.effect_node.start_explosion(),
 			func(): queue_free(),
 			func(): pass)
 
-static func _static_init() -> void:
-	EffectRegistry.register(EffectImpactLines.new())  # Impact lines for zooming!
-	EffectRegistry.register(EffectSlideWhistle.new()) # Transition for signed distance field
-	EffectRegistry.register(EffectBlur.new())         # Blurs everything behind
-	EffectRegistry.register(EffectColorFade.new())    # Fades to a chosen color
-	EffectRegistry.register(EffectFlash.new())        # Flash!
-	EffectRegistry.register(EffectBetterCall.new())
-	EffectRegistry.register(EffectKuwahara.new())     # Emulates a 'painted' appearance (good for blending 3D objects with 2D art)
-	EffectRegistry.register(EffectSepia.new())        # Adds a sepia filter
-	EffectRegistry.register(EffectVignette.new())     # Adds a vignette (goes well with sepia filter)
-	EffectRegistry.register(EffectInteriorWarm.new()) # Adds fake glow and particles emulating dust (for more cohesive scenes)
-	EffectRegistry.register(EffectSphereRaytraced.new())
-	EffectRegistry.register(EffectSphereRaymarched.new())
-	EffectRegistry.register(EffectBloom.new())
-	EffectRegistry.register(EffectExplosion.new())
+func _init() -> void:
+	effects.push_back(EffectImpactLines.new())  # Impact lines for zooming!
+	effects.push_back(EffectSlideWhistle.new()) # Transition for signed distance field
+	effects.push_back(EffectBlur.new())         # Blurs everything behind
+	effects.push_back(EffectColorFade.new())    # Fades to a chosen color
+	effects.push_back(EffectFlash.new())        # Flash!
+	effects.push_back(EffectBetterCall.new())
+	effects.push_back(EffectKuwahara.new())     # Emulates a 'painted' appearance (good for blending 3D objects with 2D art)
+	effects.push_back(EffectSepia.new())        # Adds a sepia filter
+	effects.push_back(EffectVignette.new())     # Adds a vignette (goes well with sepia filter)
+	effects.push_back(EffectInteriorWarm.new()) # Adds fake glow and particles emulating dust (for more cohesive scenes)
+	effects.push_back(EffectSphereRaytraced.new())
+	effects.push_back(EffectSphereRaymarched.new())
+	effects.push_back(EffectBloom.new())
+	effects.push_back(EffectExplosion.new())

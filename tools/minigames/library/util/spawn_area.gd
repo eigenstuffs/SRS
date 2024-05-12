@@ -10,7 +10,7 @@ class_name SpawnArea extends CSGPolygon3D
 var cumulated_areas : Array
 
 func _ready() -> void:
-	var triangle_count: float = tris.size() / 3
+	var triangle_count := int(tris.size() / 3.0)
 	assert(triangle_count > 0)
 	
 	cumulated_areas.resize(triangle_count)

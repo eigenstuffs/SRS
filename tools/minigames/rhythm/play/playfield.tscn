@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/playfield.gd" id="1_a1v4t"]
 [ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://tools/minigames/rhythm/util/audio_synchronizer.tscn" id="3_g2rft"]
-[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="3_m4kyl"]
+[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_material.gd" id="3_m4kyl"]
 [ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="4_apd5l"]
 [ext_resource type="Shader" path="res://resources/shaders/post_processing/rain.gdshader" id="5_ap68j"]
 [ext_resource type="Shader" path="res://resources/shaders/post_processing/flash.gdshader" id="6_mwlh0"]

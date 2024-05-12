@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="EffectList" load_steps=2 format=3 uid="uid://oqvaly6qiyv"]
-
-[ext_resource type="Script" path="res://resources/effect/effect_list.gd" id="2_wi02j"]
-
-[resource]
-script = ExtResource("2_wi02j")
-effect_list = Array[Resource("res://resources/effect/effect.gd")]([])

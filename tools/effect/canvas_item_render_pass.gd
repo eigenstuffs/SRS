@@ -1,7 +1,6 @@
 class_name CanvasItemRenderPass extends CanvasLayer
 
-const CLEAR_SHADER := preload('../resources/shaders/canvas_item/clear_shader_canvas_item.gdshader')
-const SCREEN_SPACE_COLOR_RECT := preload('./screen_space_color_rect.tscn')
+const CLEAR_SHADER := preload('res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader')
 
 @export var priority : int
 @export var shader : Shader

@@ -21,8 +21,17 @@ config/icon="res://assets/IMG_4946.jpeg"
 Global="*res://global/global.gd"
 Util="*res://global/utilities.gd"
 WindowDimensionHelper="res://global/window_dimension_helper.gd"
-EffectAnim="*res://tools/effect_anim/effect_anim.tscn"
+EffectAnim="*res://tools/effect/effect_anim.tscn"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+EffectRegistry="*res://global/effect_registry.gd"
+
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/shadowed_variable=0
+gdscript/warnings/shadowed_variable_base_class=0
+gdscript/warnings/incompatible_ternary=0
 
 [display]
 

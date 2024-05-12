@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://cerqddygybdld"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/hit_objects/hit_slider.gd" id="1_58qdk"]
-[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="2_kbsh8"]
+[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_material.gd" id="2_kbsh8"]
 [ext_resource type="Shader" path="res://tools/minigames/rhythm/resources/shaders/slider.gdshader" id="3_tfcjt"]
 [ext_resource type="Texture2D" uid="uid://ch8o7e1lsyfkp" path="res://tools/minigames/rhythm/assets/hit_slider_top.png" id="4_qxbhb"]
 [ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="5_b2ljq"]

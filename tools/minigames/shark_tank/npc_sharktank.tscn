@@ -60,7 +60,7 @@ shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="." instance=ExtResource("4_pnpea")]
 script = ExtResource("5_yqs5k")
-file = "res://dialogue/Dialogue - Prototype.json"
+text = Array[String]([])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

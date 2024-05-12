@@ -14,7 +14,7 @@ var collision_box_increment = 0.15
 var original_hurtbox_y : float
 var speed_multiplier : float = 1
 
-signal book_collected
+signal book_collected(book : Book)
 signal bomb_hit
 
 func _ready():
@@ -70,16 +70,17 @@ func anim_handler():
 		$AnimationPlayer.play("Idle")
 
 func _on_hurtbox_body_entered(body):
-	if body.get_parent() is Book:
-		emit_signal("book_collected")
-		body.get_parent().queue_free()
+	var parent = body.get_parent()
+	if parent is Book:
+		emit_signal("book_collected", parent)
+		parent.queue_free()
 		move_hurtbox($Hurtbox.position.y + collision_box_increment)
 		print([$Hurtbox.position.y, $Hurtbox/CollisionShape3D.position.y])
 
 func _on_hurtbox_2_body_entered(body):
-	if body.get_parent() is Bomb:
+	var parent = body.get_parent()
+	if parent is Bomb:
 		emit_signal("bomb_hit")
-		body.get_parent().queue_free()
 		#move_collision_box(0.4)
 
 func move_hurtbox(new_pos = original_hurtbox_y):

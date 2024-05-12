@@ -6,8 +6,8 @@ class_name MultiPassShaderMaterial extends ShaderMaterial
 ## A 'base' shader can be specified by setting the first pass of the material.
 ## This shader pass will be used when no shader pass labeled 'unique' is enabled.
 
-const CLEAR_SHADER_SPATIAL := preload('../resources/shaders/spatial/clear_shader_spatial.gdshader')
-const CLEAR_SHADER_CANVAS := preload('../resources/shaders/canvas_item/clear_shader_canvas_item.gdshader')
+const CLEAR_SHADER_SPATIAL := preload('res://resources/shaders/spatial/clear_shader_spatial.gdshader')
+const CLEAR_SHADER_CANVAS := preload('res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader')
 const BASE_SHADER_NAME := 'base'
 
 static var enabled_passes : Dictionary = {}
@@ -88,9 +88,9 @@ func _enable_shader_pass(pass_name : StringName, uniforms : Dictionary = {}):
 	if self.is_canvas_item:
 		material.set_shader(shader_pass.shader)
 		
-		var uniform_dict : Dictionary = shader_pass.default_uniforms if uniforms.is_empty() else uniforms
-		for uniform_name in uniform_dict:
-			var uniform_value : Variant = uniform_dict[uniform_name]
+		var uniform_dict_canvas : Dictionary = shader_pass.default_uniforms if uniforms.is_empty() else uniforms
+		for uniform_name in uniform_dict_canvas:
+			var uniform_value : Variant = uniform_dict_canvas[uniform_name]
 			material.set_shader_parameter(uniform_name, uniform_value)
 		material.set_shader_parameter('start_time', Time.get_ticks_usec()*1e-6)
 		return

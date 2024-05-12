@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://5ybyvtcypf1c"]
 
-[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="1_i25up"]
-[ext_resource type="Script" path="res://tools/multi_pass_shader_rect.gd" id="1_myhny"]
+[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_material.gd" id="1_i25up"]
+[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_rect.gd" id="1_myhny"]
 [ext_resource type="Shader" path="res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader" id="2_gsr1a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nh1ng"]

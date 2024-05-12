@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://btp06nsjls81w"]
 
-[ext_resource type="Script" path="res://tools/multi_pass_shader_material.gd" id="1_48y1b"]
+[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_material.gd" id="1_48y1b"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6tccy"]
 flip_faces = true

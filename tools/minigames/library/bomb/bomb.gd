@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	shadow.radius = t
 	shadow.alpha = t
 
-func _on_rigid_body_body_entered(_body: Node) -> void:
+func _on_rigid_body_body_entered(body: Node) -> void:
 	rigid_body.call_deferred('set_contact_monitor', false)
 	rigid_body.max_contacts_reported = 0
 	rigid_body.freeze = false
@@ -48,9 +48,16 @@ func _on_rigid_body_body_entered(_body: Node) -> void:
 	# To increase visual clarity, fade out shadow once book has hit the ground
 	shadow.fade_out()
 	has_collided = true
-	if not (_body is LibraryPlayer):
+	if not (body is LibraryPlayer):
 		#add explosion here
 		queue_free()
+	else:
+		shadow.visible = false
+		$RigidBody/bombwcelusingcycle.visible = false
+		EffectRegistry.start_effect(EffectRegistry, 'Explosion', [rigid_body, EffectRegistry])
+		EffectRegistry.get_effect('Explosion').connect('finished', func():
+			queue_free())
+		
 
 
 func _on_shadow_on_fully_faded() -> void:

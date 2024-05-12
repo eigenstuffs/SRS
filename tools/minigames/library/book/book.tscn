@@ -98,6 +98,7 @@ transform = Transform3D(0.575, 0, 0, 0, 1, 0, 0, 0, 0.575, 0, -50, 0)
 alpha = 1.0
 
 [node name="RigidBody" type="RigidBody3D" parent="."]
+collision_layer = 0
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_ygqc5")
 gravity_scale = 0.5

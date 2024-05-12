@@ -33,21 +33,22 @@ func end():
 	#$NPCInstancer.queue_free()
 	#$BookInstancer.queue_free()
 
-func _on_library_player_book_collected():
+func _on_library_player_book_collected(book : Book):
 	#gain_points(1)
 	if $LibraryPlayer/BookHolder.get_num_books() < 10: 
-		$LibraryPlayer/BookHolder.add_book_bone()
+		$LibraryPlayer/BookHolder.add_book_bone(book)
 	elif $LibraryPlayer/BookHolder.get_num_books() == 10:
 		EffectRegistry.start_effect(self, "Vignette", [$EffectNode])
 
 func _on_library_player_bomb_hit():
-	EffectRegistry.start_effect(self, "Explosion", [$LibraryPlayer, $EffectNode])
 	$LibraryPlayer/BookHolder.clear_all_books()
 	$LibraryPlayer.move_hurtbox()
 	$CanvasLayer.remove_heart()
 	#EffectRegistry.start_effect(self, "Flash", [$E])
 	player_health -= 1
-	if player_health < 1:
+	if player_health == 0:
+		$LibraryPlayer.can_move = false
+		await get_tree().create_timer(0.4).timeout
 		end()
 	
 func update_item_caught(item_type : String):
