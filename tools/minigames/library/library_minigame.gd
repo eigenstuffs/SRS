@@ -35,13 +35,17 @@ func end():
 
 func _on_library_player_book_collected():
 	#gain_points(1)
-	if $LibraryPlayer/BookHolder.get_num_books() <= 20: 
+	if $LibraryPlayer/BookHolder.get_num_books() < 10: 
 		$LibraryPlayer/BookHolder.add_book_bone()
+	elif $LibraryPlayer/BookHolder.get_num_books() == 10:
+		EffectRegistry.start_effect(self, "Vignette", [$EffectNode])
 
 func _on_library_player_bomb_hit():
+	EffectRegistry.start_effect(self, "Explosion", [$LibraryPlayer, $EffectNode])
 	$LibraryPlayer/BookHolder.clear_all_books()
+	$LibraryPlayer.move_hurtbox()
 	$CanvasLayer.remove_heart()
-	EffectRegistry.start_effect(self, "Flash", [$EffectNode, Color(0.6, 0, 0, 0.4)])
+	#EffectRegistry.start_effect(self, "Flash", [$E])
 	player_health -= 1
 	if player_health < 1:
 		end()
@@ -61,7 +65,9 @@ func compute_stats_gained(item_caught):
 func _on_bookshelf_player_entered():
 	var num_of_books = $LibraryPlayer/BookHolder.get_num_books()
 	gain_points(num_of_books)
+	emit_signal("update_time", num_of_books)
 	$LibraryPlayer/BookHolder.clear_all_books()
+	$LibraryPlayer.move_hurtbox()
 
 func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)

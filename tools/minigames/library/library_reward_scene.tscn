@@ -13,6 +13,7 @@ script = ExtResource("1_m85fr")
 
 [node name="Backdrop" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1083.0
 

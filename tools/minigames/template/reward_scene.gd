@@ -38,7 +38,7 @@ func hide_tally():
 
 func display_tally(scores : Array):
 	for line_ind in score_tally.get_child_count():
-		score_tally.get_child(line_ind).get_child(1).text = "x" + str(scores[line_ind])
+		score_tally.get_child(line_ind).get_child(1).text = str(scores[line_ind])
 		score_tally.get_child(line_ind).visible = true
 		await get_tree().create_timer(0.65).timeout
 	emit_signal("preview_done")

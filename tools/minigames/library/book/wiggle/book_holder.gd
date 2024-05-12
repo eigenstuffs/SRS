@@ -14,7 +14,6 @@ func add_book_bone() -> void:
 	bone.bone_name = 'bone%d' % bone_idx
 	bone.bone_idx = bone_idx
 	bone.properties.max_degrees = max(5, 15 - bone_idx*bone_idx/36)
-	print(bone.properties.max_degrees)
 	
 	skeleton.add_bone(bone.bone_name)
 	skeleton.set_bone_parent(bone_idx, bone_idx - 1)
@@ -27,7 +26,8 @@ func get_num_books() -> int:
 	return skeleton.get_bone_count()
 
 func clear_all_books() -> void:
+	if get_num_books() > 10:
+		EffectRegistry.stop_effect("Vignette")
 	skeleton.clear_bones()
 	for child in skeleton.get_children():
 		child.queue_free()
-	print("cleared")

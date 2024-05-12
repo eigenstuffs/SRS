@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 class_name LibraryPlayer
 
+@onready var timer : Timer = $Timer
 const SPEED = 2.0
 const JUMP_VELOCITY = 1.5
 
@@ -9,10 +10,16 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var dir = Vector2.RIGHT
 var turning = false
 var can_move = true
-var collision_box_increment = 0.4
+var collision_box_increment = 0.15
+var original_hurtbox_y : float
+var speed_multiplier : float = 1
 
 signal book_collected
 signal bomb_hit
+
+func _ready():
+	original_hurtbox_y = $Hurtbox.position.y
+	timer.start(3) #unused timer
 
 func _physics_process(delta):
 	if can_move:
@@ -23,8 +30,8 @@ func _physics_process(delta):
 		var direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
 		
 		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
+			velocity.x = direction.x * SPEED *speed_multiplier
+			velocity.z = direction.z * SPEED *speed_multiplier
 			
 			var last_dir = dir
 			
@@ -48,8 +55,8 @@ func _physics_process(delta):
 					await a.finished
 					turning = false
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, SPEED*speed_multiplier)
+			velocity.z = move_toward(velocity.z, 0, SPEED*speed_multiplier)
 			
 		move_and_slide()
 	else:
@@ -66,7 +73,8 @@ func _on_hurtbox_body_entered(body):
 	if body.get_parent() is Book:
 		emit_signal("book_collected")
 		body.get_parent().queue_free()
-		#move_collision_box($Hurtbox/CollisionShape3D.position.y + collision_box_increment)
+		move_hurtbox($Hurtbox.position.y + collision_box_increment)
+		print([$Hurtbox.position.y, $Hurtbox/CollisionShape3D.position.y])
 
 func _on_hurtbox_2_body_entered(body):
 	if body.get_parent() is Bomb:
@@ -74,5 +82,5 @@ func _on_hurtbox_2_body_entered(body):
 		body.get_parent().queue_free()
 		#move_collision_box(0.4)
 
-func move_collision_box(new_pos):
-	$Hurtbox/CollisionShape3D.position.y = new_pos
+func move_hurtbox(new_pos = original_hurtbox_y):
+	$Hurtbox.position.y = new_pos
