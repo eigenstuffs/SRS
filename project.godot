@@ -18,12 +18,12 @@ config/icon="res://assets/IMG_4946.jpeg"
 
 [autoload]
 
+EffectRegistry="*res://global/effect_registry.gd"
+EffectAnim="*res://tools/effect/effect_anim.tscn"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 Global="*res://global/global.gd"
 Util="*res://global/utilities.gd"
 WindowDimensionHelper="res://global/window_dimension_helper.gd"
-EffectAnim="*res://tools/effect/effect_anim.tscn"
-DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
-EffectRegistry="*res://global/effect_registry.gd"
 
 [debug]
 

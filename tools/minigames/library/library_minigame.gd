@@ -16,12 +16,10 @@ func _ready():
 func gain_points(increment : int = 1):
 	rough_points += increment
 	update_points.emit(rough_points)
-	update_item_caught("book")
+	update_item_caught("book", increment)
 	
 func lose_points(decrease : int = 1):
-	rough_points -= decrease
-	update_points.emit(rough_points)
-	update_item_caught("bomb")
+	update_item_caught("bomb", decrease)
 
 func end():
 	var stats_gained = compute_stats_gained(item_caught)
@@ -41,17 +39,18 @@ func _on_library_player_book_collected(book : Book):
 		EffectRegistry.start_effect(self, "Vignette", [$EffectNode])
 
 func _on_library_player_bomb_hit(bomb : Bomb):
+	lose_points(1)
 	$LibraryPlayer/BookHolder.clear_all_books()
 	$LibraryPlayer.move_hurtbox()
 	$CanvasLayer.remove_heart()
 	#EffectRegistry.start_effect(self, "Flash", [$E])
 	player_health -= 1
+	do_explosion(bomb)
+	bomb.queue_free()
 	if player_health == 0:
 		$LibraryPlayer.can_move = false
 		await get_tree().create_timer(0.4, true, false, true).timeout
 		end()
-	do_explosion(bomb)
-	bomb.queue_free()
 		
 func do_explosion(bomb : Bomb): 
 	var bomb_position := bomb.rigid_body.global_position
@@ -65,12 +64,12 @@ func do_explosion(bomb : Bomb):
 		rigidbody.freeze = false
 		rigidbody.apply_central_impulse(impulse_direction.normalized() * 0.1)
 	
-func update_item_caught(item_type : String):
+func update_item_caught(item_type : String, increment : int):
 	match item_type:
 		"book":
-			item_caught[0] += 1
+			item_caught[0] += increment
 		"bomb":
-			item_caught[1] += 1
+			item_caught[1] += increment
 
 func compute_stats_gained(item_caught):
 	var int_gained = max(0, roundi(item_caught[0] * 0.3 - item_caught[1] * 0.1))

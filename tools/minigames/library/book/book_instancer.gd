@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 			add_child(obj)
 			obj.global_position = area.get_random_point()
 			obj.floor_position_y = floor_position_y
-			obj.fall_speed = max(1.0, spawn_time_next/7.0)
+			obj.fall_speed = min(max(1.0, spawn_time_next/7.0), 3.0)
 			obj.quaternion = Quaternion.from_euler(Vector3(0.035, 30, -0.035) * randf_range(-1, 1))
 		
 		time += delta

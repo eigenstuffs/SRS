@@ -194,7 +194,7 @@ class EffectExplosion extends Effect:
 				EffectRegistry.start_effect(parent, 'Bloom', [control, 1.0, 1.0, 0.3, 99999.0])
 				EffectRegistry.start_effect(parent, 'Flash', [control, Color(0.98, 0.98, 0.98, 0.3), 99999.0])
 				self.effect_node.start_anticiation()
-				await parent.get_tree().create_timer(0.4, true, false, true).timeout
+				await parent.get_tree().create_timer(0.07, true, false, true).timeout
 				
 				Engine.set_time_scale(1.0)
 				EffectRegistry.start_effect(parent, 'Bloom', [control, 1.0, 0.0, 0.5, 0.4])

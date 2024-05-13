@@ -7,7 +7,7 @@
 script = ExtResource("1_edpdx")
 name = "Library"
 scene = "res://tools/minigames/library/library_minigame.tscn"
-time = 1
+time = 30
 
 [sub_resource type="Resource" id="Resource_ip00n"]
 script = ExtResource("1_edpdx")
