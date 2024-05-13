@@ -17,8 +17,8 @@ func add_book_bone(book : Book) -> void:
 	skeleton.add_bone(bone.bone_name)
 	skeleton.set_bone_parent(bone_idx, bone_idx - 1)
 	skeleton.add_child(bone)
+	skeleton.set_bone_pose_rotation(bone_idx, book.quaternion)
 	if bone_idx > 0: 
-		skeleton.set_bone_pose_rotation(bone_idx, book.quaternion)
 		skeleton.set_bone_pose_position(bone_idx, Vector3(0, 0.185, 0))
 
 func get_num_books() -> int:

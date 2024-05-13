@@ -40,7 +40,7 @@ func _on_library_player_book_collected(book : Book):
 	elif $LibraryPlayer/BookHolder.get_num_books() == 10:
 		EffectRegistry.start_effect(self, "Vignette", [$EffectNode])
 
-func _on_library_player_bomb_hit():
+func _on_library_player_bomb_hit(bomb : Bomb):
 	$LibraryPlayer/BookHolder.clear_all_books()
 	$LibraryPlayer.move_hurtbox()
 	$CanvasLayer.remove_heart()
@@ -48,8 +48,22 @@ func _on_library_player_bomb_hit():
 	player_health -= 1
 	if player_health == 0:
 		$LibraryPlayer.can_move = false
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(0.4, true, false, true).timeout
 		end()
+	do_explosion(bomb)
+	bomb.queue_free()
+		
+func do_explosion(bomb : Bomb): 
+	var bomb_position := bomb.rigid_body.global_position
+	EffectRegistry.start_effect(self, 'Explosion', [self, EffectRegistry, bomb_position])
+		
+	for obj in $BookInstancer.get_children().slice(1):
+		if obj == bomb: continue
+		var rigidbody : RigidBody3D = obj.rigid_body
+		var impulse_direction := rigidbody.global_position - bomb_position
+		impulse_direction.y = minf(impulse_direction.y, 0.02) # Limit vertical force
+		rigidbody.freeze = false
+		rigidbody.apply_central_impulse(impulse_direction.normalized() * 0.1)
 	
 func update_item_caught(item_type : String):
 	match item_type:

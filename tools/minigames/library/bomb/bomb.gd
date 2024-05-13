@@ -51,12 +51,6 @@ func _on_rigid_body_body_entered(body: Node) -> void:
 	if not (body is LibraryPlayer):
 		#add explosion here
 		queue_free()
-	else:
-		shadow.visible = false
-		$RigidBody/bombwcelusingcycle.visible = false
-		EffectRegistry.start_effect(EffectRegistry, 'Explosion', [rigid_body, EffectRegistry])
-		EffectRegistry.get_effect('Explosion').connect('finished', func():
-			queue_free())
 		
 
 

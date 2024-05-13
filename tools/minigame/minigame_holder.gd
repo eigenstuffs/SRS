@@ -10,7 +10,6 @@ var is_finished := false :
 	set(value):
 		is_finished = value
 		ui.sLabel.visible = false
-		EffectRegistry.start_effect(self, 'Blur', [$MultiPassShaderRect, 0, 64])
 
 signal finished(detailed_points)
 #detailed points should be in the format [array1, array2]
@@ -19,16 +18,7 @@ signal finished(detailed_points)
 
 var game : Minigame
 
-func initiate_minigame(which : String):
-	# FIXME: cursed shader effect is visible for a split second before disabling!
-	$MultiPassShaderRect.visible = false
-	EffectRegistry.start_effect(self, 'Blur', [$MultiPassShaderRect, 0, 0])
-	var timer := Timer.new()
-	timer.connect('timeout', func(): $MultiPassShaderRect.visible = true)
-	timer.one_shot = true
-	timer.autostart = true
-	add_child(timer)
-	
+func initiate_minigame(which : String):	
 	if MinigameRegistry.has_key(which):
 		var metadata : MinigameInfo = MinigameRegistry.get_metadata(which)
 		var minigame : Minigame = load(metadata.scene).instantiate()

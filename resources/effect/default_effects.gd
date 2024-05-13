@@ -190,7 +190,7 @@ class EffectExplosion extends Effect:
 					self.effect_node.global_position = global_position
 				
 				# Hit stop!
-				Engine.set_time_scale(1e-5)
+				Engine.set_time_scale(1e-8)
 				EffectRegistry.start_effect(parent, 'Bloom', [control, 1.0, 1.0, 0.3, 99999.0])
 				EffectRegistry.start_effect(parent, 'Flash', [control, Color(0.98, 0.98, 0.98, 0.3), 99999.0])
 				self.effect_node.start_anticiation()

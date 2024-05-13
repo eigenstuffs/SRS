@@ -90,6 +90,7 @@ libraries = {
 }
 
 [node name="Hurtbox" type="Area3D" parent="."]
+collision_mask = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.0034668)

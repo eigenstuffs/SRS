@@ -98,17 +98,18 @@ transform = Transform3D(0.575, 0, 0, 0, 1, 0, 0, 0, 0.575, 0, -50, 0)
 alpha = 1.0
 
 [node name="RigidBody" type="RigidBody3D" parent="."]
-collision_layer = 0
+collision_layer = 8
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_ygqc5")
 gravity_scale = 0.5
 freeze = true
 freeze_mode = 1
+continuous_cd = true
 max_contacts_reported = 1
 contact_monitor = true
 
 [node name="BookCollisionShape" type="CollisionShape3D" parent="RigidBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.00635143, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 shape = SubResource("BoxShape3D_llv7v")
 
 [node name="bookwcel" type="Node3D" parent="RigidBody"]

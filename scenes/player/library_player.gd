@@ -15,7 +15,7 @@ var original_hurtbox_y : float
 var speed_multiplier : float = 1
 
 signal book_collected(book : Book)
-signal bomb_hit
+signal bomb_hit(bomb : Bomb)
 
 func _ready():
 	original_hurtbox_y = $Hurtbox.position.y
@@ -80,7 +80,7 @@ func _on_hurtbox_body_entered(body):
 func _on_hurtbox_2_body_entered(body):
 	var parent = body.get_parent()
 	if parent is Bomb:
-		emit_signal("bomb_hit")
+		emit_signal("bomb_hit", parent)
 		#move_collision_box(0.4)
 
 func move_hurtbox(new_pos = original_hurtbox_y):

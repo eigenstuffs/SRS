@@ -1,40 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://3y2qrdia6ibw"]
+[gd_scene load_steps=8 format=3 uid="uid://3y2qrdia6ibw"]
 
 [ext_resource type="Script" path="res://tools/minigame/minigame_holder.gd" id="1_ddtpb"]
 [ext_resource type="Script" path="res://tools/minigame/timers.gd" id="2_bxee8"]
 [ext_resource type="Script" path="res://tools/minigame/viewport_container.gd" id="2_e8036"]
-[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_material.gd" id="3_0linf"]
 [ext_resource type="Texture2D" uid="uid://bs54kw4ef5h21" path="res://assets/ui/Mini Game Frame.png" id="3_r5y12"]
 [ext_resource type="Texture2D" uid="uid://dki4a7c8ecavm" path="res://assets/ui/Score and Timer.png" id="4_adirh"]
-[ext_resource type="Shader" path="res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader" id="4_hue63"]
 [ext_resource type="Texture2D" uid="uid://c875qeheydn86" path="res://assets/ui/goldcircle.png" id="5_g8jth"]
-[ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="5_r6xlx"]
-[ext_resource type="Shader" path="res://resources/shaders/canvas_item/blur.gdshader" id="6_8i53r"]
 [ext_resource type="FontFile" uid="uid://drk6ai4vky8ih" path="res://assets/ui/Halant-Bold.ttf" id="6_tlmbc"]
-[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_rect.gd" id="7_an4oh"]
-
-[sub_resource type="Resource" id="Resource_rf13x"]
-script = ExtResource("5_r6xlx")
-name = &"Blur"
-shader = ExtResource("6_8i53r")
-is_enabled_by_default = false
-is_unique_pass = false
-default_uniforms = {
-"directions": null,
-"duration": null,
-"end_size": null,
-"noise_factor": null,
-"quality": null,
-"start_size": null,
-"start_time": null
-}
-priority_overwrite = 999
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mvwmm"]
-shader = ExtResource("4_hue63")
-script = ExtResource("3_0linf")
-is_canvas_item = true
-shader_passes = Array[ExtResource("5_r6xlx")]([SubResource("Resource_rf13x")])
 
 [node name="MinigameHolder" type="Control"]
 layout_mode = 3
@@ -87,21 +59,6 @@ offset_top = -444.0
 offset_right = 800.0
 offset_bottom = 456.0
 script = ExtResource("2_e8036")
-
-[node name="MultiPassShaderRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_mvwmm")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -800.0
-offset_top = -444.0
-offset_right = 800.0
-offset_bottom = 456.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_an4oh")
-passes = SubResource("ShaderMaterial_mvwmm")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 1
@@ -220,7 +177,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="child_entered_tree" from="Game" to="." method="_on_game_child_entered_tree"]
-[connection signal="tree_exiting" from="MultiPassShaderRect" to="." method="_on_multi_pass_shader_rect_tree_exiting"]
 [connection signal="gameOver" from="UI" to="." method="_on_ui_game_over"]
 [connection signal="startTimeOver" from="UI" to="UI" method="_on_start_time_over"]
 [connection signal="timeout" from="UI/GameTimer/GameTime" to="UI" method="_on_game_time_timeout"]
