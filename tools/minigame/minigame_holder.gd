@@ -60,7 +60,7 @@ func _on_ui_game_over():
 	rough_points = game.rough_points
 	detailed_points = game.detailed_points
 	finished.emit(detailed_points)
-	#game.queue_free()
+	EffectRegistry.start_effect(self, 'Blur', [self])
 
 func _on_game_child_entered_tree(node: Node) -> void:
 	if node is Minigame: game = node
