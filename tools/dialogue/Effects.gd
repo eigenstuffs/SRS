@@ -40,7 +40,9 @@ func _ready():
 			a.tween_property($Music, "volume_db", -15, 3)
 			$Music.play()
 	
-	var vn : VisualNovelDialogue = get_parent()
+	#to be changed back to VisualNovelDialogue
+	#var vn : VisualNovelDialogue = get_parent()
+	var vn : EffectTestScene = get_parent()
 	
 	vn.connect("fade_black", fade_black)
 	vn.connect("fade_blacktored", fade_blacktored)
@@ -61,6 +63,14 @@ func _ready():
 	vn.connect("stop_music", stop_music)
 	vn.connect("sfx_truck", sfx_truck)
 	vn.connect("sfx_screams", sfx_screams)
+	vn.connect("sfx_door_knock", play_sfx.bind("SfxDoorKnock"))
+	vn.connect("sfx_glass_break", play_sfx.bind("SfxGlassBreak"))
+	vn.connect("sfx_page_flip", play_sfx.bind("SfxPageFlip"))
+	vn.connect("sfx_door_open", play_sfx.bind("SfxDoorOpen"))
+	vn.connect("sfx_door_close", play_sfx.bind("SfxDoorClose"))
+	vn.connect("sfx_creepy_stinger", play_sfx.bind("SfxCreepyStinger")) 
+	vn.connect("sfx_whoosh", play_sfx.bind("SfxWhoosh"))
+	vn.connect("sfx_boom", play_sfx.bind("SfxBoom"))
 		
 	vn.connect("cg_sky", cg_sky)
 	vn.connect("cg_god", cg_god)
@@ -150,6 +160,7 @@ func fade_trans():
 			print("no last fade")
 	await EffectAnim.animation_finished
 
+## MUSIC
 func music_ambience():
 	$SFX.play()
 	
@@ -162,6 +173,7 @@ func music_bgm1():
 func stop_music():
 	audio.stop()
 	
+## SFX
 func sfx_truck():
 	sfx.stream = song
 	sfx.play()
@@ -170,6 +182,11 @@ func sfx_screams():
 	sfx.stream = song
 	sfx.play()
 	
+func play_sfx(effect_name : String):
+	EffectAnim.play(effect_name)
+	await EffectAnim.animation_finished
+	
+## CG
 func cg_sky():
 	$CG.texture = SKY_CG
 	$CG.show()

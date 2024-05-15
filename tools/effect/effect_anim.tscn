@@ -1,4 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8of8aacla8xa"]
+[gd_scene load_steps=27 format=3 uid="uid://b8of8aacla8xa"]
+
+[ext_resource type="AudioStream" uid="uid://dnjh53hgbrrep" path="res://assets/sfx/person-knocking-18474.mp3" id="1_5h3gj"]
+[ext_resource type="AudioStream" uid="uid://pdey1lyinx55" path="res://assets/sfx/Bluezone_BC0274_glass_impact_break_016.wav" id="2_dxgoe"]
+[ext_resource type="AudioStream" uid="uid://cmne1gjnbmtj3" path="res://assets/sfx/tm2_book000.ogg" id="3_np1sr"]
+[ext_resource type="AudioStream" uid="uid://wlg7o7j30pdm" path="res://assets/sfx/open-and-closed-door-156814.mp3" id="4_ow8kk"]
+[ext_resource type="AudioStream" uid="uid://fexnykt1rxya" path="res://assets/sfx/creepy_stinger.wav" id="5_cvvsq"]
+[ext_resource type="AudioStream" uid="uid://btmowveaxnhwk" path="res://assets/sfx/woosh.mp3" id="6_jm32a"]
+[ext_resource type="AudioStream" uid="uid://bp37f37mq056y" path="res://assets/sfx/big-impact-7054.mp3" id="7_3fmwd"]
 
 [sub_resource type="Animation" id="Animation_w53sw"]
 resource_name = "FadeBlack"
@@ -149,6 +157,196 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectAnim/AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_stuk1"]
+resource_name = "SfxDoorClose"
+length = 2.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnim/AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.1,
+"start_offset": 2.94,
+"stream": ExtResource("4_ow8kk")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_8eh7w"]
+resource_name = "SfxDoorKnock"
+length = 3.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnim/AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_5h3gj")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_5h3gj")
+}],
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_o1c5r"]
+resource_name = "SfxDoorOpen"
+length = 2.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnim/AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 3.444,
+"start_offset": 0.0,
+"stream": ExtResource("4_ow8kk")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_y3f00"]
+resource_name = "SfxGlassBreak"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnim/AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_dxgoe")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectAnim/AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-9.0]
+}
+
+[sub_resource type="Animation" id="Animation_tm648"]
+resource_name = "SfxPageFlip"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnim/AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_np1sr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_nwu11"]
+resource_name = "SfxCreepyStinger"
+length = 7.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnim/AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_cvvsq")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectAnim/AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-9.0]
+}
+
+[sub_resource type="Animation" id="Animation_qgspa"]
+resource_name = "SfxWhoosh"
+length = 5.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnim/AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 5.9429,
+"stream": ExtResource("6_jm32a")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_2tvla"]
+resource_name = "SfxBoom"
+length = 4.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnim/AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_3fmwd")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_303pa"]
 _data = {
@@ -161,7 +359,15 @@ _data = {
 "FadeWhite": SubResource("Animation_kbmje"),
 "FadeWhiteToBlack": SubResource("Animation_wia8j"),
 "FadeWhiteToRed": SubResource("Animation_o0fni"),
-"RESET": SubResource("Animation_bsm8s")
+"RESET": SubResource("Animation_bsm8s"),
+"SfxBoom": SubResource("Animation_2tvla"),
+"SfxCreepyStinger": SubResource("Animation_nwu11"),
+"SfxDoorClose": SubResource("Animation_stuk1"),
+"SfxDoorKnock": SubResource("Animation_8eh7w"),
+"SfxDoorOpen": SubResource("Animation_o1c5r"),
+"SfxGlassBreak": SubResource("Animation_y3f00"),
+"SfxPageFlip": SubResource("Animation_tm648"),
+"SfxWhoosh": SubResource("Animation_qgspa")
 }
 
 [node name="EffectAnim" type="AnimationPlayer"]
@@ -174,4 +380,7 @@ autoplay = "RESET"
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -9.0
