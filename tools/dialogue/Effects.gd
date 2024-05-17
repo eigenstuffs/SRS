@@ -5,6 +5,12 @@ signal done
 const PLAYER_NAME = preload("res://tools/player_name/player_name.tscn")
 const SERAPHINA_NAME = preload("res://tools/player_name/seraphina_name.tscn")
 
+const SFX_DOOR_KNOCK = preload("res://assets/sfx/person_knocking_1.mp3")
+const SFX_GLASS_BREAK = preload("res://assets/sfx/breaking_glass_1.wav")
+const SFX_RAIN_LOOPING = preload("res://assets/sfx/rain_loop_1.ogg")
+const SFX_SWITCH_CLICK = preload("res://assets/sfx/switch_1.ogg")
+const SFX_AMBIANCE_ECHOES = preload("res://assets/sfx/ambiance_1.mp3")
+
 const SKY_CG = preload("res://assets/image0-2.jpg")
 const BLACK_CG = preload("res://assets/cgs/New Project.png")
 const GOD_CG = preload("res://assets/cgs/IMG_5160.png")
@@ -61,16 +67,23 @@ func _ready():
 	vn.connect("music_bgm1", music_bgm1)
 	vn.connect("music_bgm2", music_bgm1)
 	vn.connect("stop_music", stop_music)
-	vn.connect("sfx_truck", sfx_truck)
-	vn.connect("sfx_screams", sfx_screams)
-	vn.connect("sfx_door_knock", play_sfx.bind("SfxDoorKnock"))
-	vn.connect("sfx_glass_break", play_sfx.bind("SfxGlassBreak"))
+	
+	vn.connect("sfx_door_knock", play_sfx.bind(SFX_DOOR_KNOCK))
+	vn.connect("sfx_glass_break", play_sfx.bind(SFX_GLASS_BREAK))
 	vn.connect("sfx_page_flip", play_sfx.bind("SfxPageFlip"))
 	vn.connect("sfx_door_open", play_sfx.bind("SfxDoorOpen"))
 	vn.connect("sfx_door_close", play_sfx.bind("SfxDoorClose"))
 	vn.connect("sfx_creepy_stinger", play_sfx.bind("SfxCreepyStinger")) 
-	vn.connect("sfx_whoosh", play_sfx.bind("SfxWhoosh"))
+	vn.connect("sfx_reverse_cymbal_ominous", play_sfx.bind("SfxReverseCymbalOminous"))
 	vn.connect("sfx_boom", play_sfx.bind("SfxBoom"))
+	vn.connect("sfx_church_bell", play_sfx.bind("SfxChurchBell"))
+	vn.connect("sfx_impact_1", play_sfx.bind("SfxImpact1"))
+	vn.connect("sfx_impact_2", play_sfx.bind("SfxImpact2"))
+	vn.connect("sfx_school_bell", play_sfx.bind("SfxSchoolBell"))
+	vn.connect("sfx_battle_start", play_sfx.bind("SfxBattleStart"))
+	vn.connect("sfx_rain_looping", play_sfx_looping.bind(SFX_RAIN_LOOPING))
+	vn.connect("sfx_switch_click", play_sfx.bind(SFX_SWITCH_CLICK))
+	vn.connect("sfx_ambiance_echoes", play_sfx_looping.bind(SFX_AMBIANCE_ECHOES))
 		
 	vn.connect("cg_sky", cg_sky)
 	vn.connect("cg_god", cg_god)
@@ -174,17 +187,14 @@ func stop_music():
 	audio.stop()
 	
 ## SFX
-func sfx_truck():
-	sfx.stream = song
-	sfx.play()
+
+func play_sfx(effect_name):
+	EffectAnim.SfxPlayer.stream = effect_name
+	EffectAnim.SfxPlayer.play()
 	
-func sfx_screams():
-	sfx.stream = song
-	sfx.play()
-	
-func play_sfx(effect_name : String):
-	EffectAnim.play(effect_name)
-	await EffectAnim.animation_finished
+func play_sfx_looping(effect_name):
+	EffectAnim.LoopPlayer.stream = effect_name
+	EffectAnim.LoopPlayer.play()
 	
 ## CG
 func cg_sky():
