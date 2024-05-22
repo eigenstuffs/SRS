@@ -37,4 +37,4 @@ shape = SubResource("SphereShape3D_qitnl")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.08165e-12, -0.16, 2.08164e-12)
 texture = ExtResource("2_f0jyk")
 
-[connection signal="area_entered" from="CatchField" to="." method="_on_catch_field_area_entered"]
+[connection signal="area_entered" from="AttractionField" to="." method="_on_attraction_field_area_entered"]

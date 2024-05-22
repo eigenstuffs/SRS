@@ -18,7 +18,7 @@ const water_height : float = 0.0
 var submerged : bool = false
 
 func _ready():
-	CatchField.monitoring = true
+	CatchField.monitoring = false
 	$Sprite3D.set_global_rotation_degrees(Vector3(-45, -90, 0))
 	$Sprite3D.set_scale(Vector3(0.1, 0.1, 0.1))
 
@@ -46,7 +46,7 @@ func enable_being_monitored():
 	CatchField.monitorable = true
 	AttractionField.monitorable = true
 
-func _on_catch_field_area_entered(area):
+func _on_attraction_field_area_entered(area):
 	if area.get_parent() is Water:
 		emit_signal("water_entered")
 		angular_velocity = Vector3.ZERO
@@ -54,3 +54,4 @@ func _on_catch_field_area_entered(area):
 		set_global_rotation_degrees(Vector3(0, 0, 0))
 		$Sprite3D.set_rotation_degrees(Vector3(-45, -90, 0))
 		$Sprite3D.set_scale(Vector3(0.1, 0.1, 0.1))
+		enable_being_monitored()
