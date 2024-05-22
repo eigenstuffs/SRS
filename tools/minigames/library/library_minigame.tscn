@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://buyuq0kfr1tme"]
+[gd_scene load_steps=23 format=3 uid="uid://buyuq0kfr1tme"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="2_4dmdn"]
 [ext_resource type="PackedScene" uid="uid://cnujinydfucuo" path="res://tools/minigames/library/canvas_layer.tscn" id="2_7cbig"]
 [ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
+[ext_resource type="Texture2D" uid="uid://f2y3dba0olvy" path="res://assets/librarybg.png" id="4_hf356"]
 [ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="4_q284v"]
 [ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/book/wiggle/book_holder.tscn" id="5_4rr6e"]
 [ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/npc_instancer.tscn" id="5_hbp12"]
@@ -44,7 +45,7 @@ size = Vector3(0.2, 5, 10)
 size = Vector3(1, 1.71545, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0ak3"]
-albedo_color = Color(0.509804, 0.176471, 0.0588235, 1)
+albedo_color = Color(0.509804, 0.176471, 0.0588235, 0.345098)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h0o6u"]
 material = SubResource("StandardMaterial3D_h0ak3")
@@ -64,10 +65,11 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Ground/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.510077, 0)
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.510077, 0)
 shape = SubResource("BoxShape3D_o262n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Ground"]
+visible = false
 layers = 3
 mesh = SubResource("PlaneMesh_krp85")
 
@@ -76,17 +78,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.48397, 0)
 
 [node name="Right Shelf" type="MeshInstance3D" parent="Walls/Shelves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0.5)
+visible = false
 mesh = SubResource("BoxMesh_eo85j")
 skeleton = NodePath("../Facing Shelf")
 
 [node name="Left Shelf" type="MeshInstance3D" parent="Walls/Shelves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0.5)
+visible = false
 mesh = SubResource("BoxMesh_eo85j")
 skeleton = NodePath("../Facing Shelf")
 
 [node name="Facing Shelf" type="MeshInstance3D" parent="Walls/Shelves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+visible = false
 mesh = SubResource("BoxMesh_ngvxs")
+
+[node name="Sprite3D" type="Sprite3D" parent="Walls/Shelves"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 2.08165e-12)
+texture = ExtResource("4_hf356")
 
 [node name="Colliders" type="Node3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
@@ -110,18 +119,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.0
 shape = SubResource("BoxShape3D_oxk7j")
 
 [node name="Left Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85, 2.08165e-12, 2.08165e-12)
-collision_layer = 3
-collision_mask = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45616, 0, 2.08165e-12)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Left Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 shape = SubResource("BoxShape3D_uh7u6")
 
 [node name="Right Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85, 2.08165e-12, 2.08165e-12)
-collision_layer = 3
-collision_mask = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57812, 0, 2.08165e-12)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Right Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -148,7 +153,7 @@ light_color = Color(1, 0.933333, 0.811765, 1)
 
 [node name="LibraryPlayer" parent="." instance=ExtResource("3_jyoxc")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.6849, 0.747878, 2.02868)
-collision_mask = 2
+collision_mask = 3
 
 [node name="Shadow" parent="LibraryPlayer" instance=ExtResource("4_q284v")]
 size = Vector3(1, 100, 1)
@@ -159,27 +164,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575, 0)
 [node name="NPCInstancer" parent="." instance=ExtResource("5_hbp12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.5)
 
+[node name="SpawnAreaLeft" parent="NPCInstancer" index="0"]
+transform = Transform3D(1, -2.99891e-30, 2.91303e-38, 0, -1.96701e-07, -1, 6.66424e-31, 4.5, -4.37114e-08, -5.10274, 2.08165e-12, 2.8374)
+visible = true
+
+[node name="SpawnAreaRight" parent="NPCInstancer" index="1"]
+transform = Transform3D(1, -2.99891e-30, 2.91303e-38, 0, -1.96701e-07, -1, 6.66424e-31, 4.5, -4.37114e-08, 5.35962, 2.08165e-12, 2.8374)
+visible = true
+
 [node name="BookInstancer" parent="." instance=ExtResource("6_8v8og")]
-transform = Transform3D(0.857961, 0, 0, 0, 1, 0, 0, 0, 0.906572, -0.106403, 5, 2.03018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.907, -0.106403, 5, 2.03018)
 
 [node name="Bookshelf" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.70081, 0.82556, 2.0901)
+visible = false
 script = ExtResource("8_lbiij")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0598755, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.119757, 0.0598755, 0)
 shape = SubResource("BoxShape3D_4t3gm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, -0.119757, 0, 0)
 mesh = SubResource("BoxMesh_h0o6u")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.56007, 0.0598755, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.16349, 0.0598755, 0)
 shape = SubResource("BoxShape3D_4t3gm")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, -7.56007, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, -7.16349, 0, 0)
 mesh = SubResource("BoxMesh_h0o6u")
 
 [node name="EffectNode" type="Control" parent="."]

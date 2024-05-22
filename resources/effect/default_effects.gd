@@ -35,7 +35,7 @@ class EffectImpactLines extends CanvasItemEffect:
 			func(): 
 				queue_free())
 
-class EffectBlur extends CanvasItemEffect:
+class EffectBlurNew extends CanvasItemEffect:
 	const BLUR_SHADER := preload('../shaders/canvas_item/blur.gdshader')
 	const SCREEN_NOISE_SHADER := preload('../shaders/canvas_item/screen_noise.gdshader')
 
@@ -51,7 +51,7 @@ class EffectBlur extends CanvasItemEffect:
 				render_passes[1].enable({'t0' : t0, 't1' : t1, 'duration': duration, 'direction': Vector2(0, 1)})
 				render_passes[2].enable({'t0' : t0, 't1' : t1, 'duration': duration}))
 
-class EffectColorFade extends CanvasItemEffect:
+class EffectColorFadeNew extends CanvasItemEffect:
 	const COLOR_FADE_SHADER := preload('../shaders/canvas_item/color_fade.gdshader')
 
 	func _init() -> void:
@@ -62,7 +62,7 @@ class EffectColorFade extends CanvasItemEffect:
 				self.should_free_when_stopped = to.a <= 0.0
 				render_passes[0].enable({'start_color' : from, 'end_color' : to, 'duration' : duration}))
 
-class EffectFlash extends EffectColorFade:
+class EffectFlashNew extends EffectColorFadeNew:
 	func _init() -> void:
 		super()
 		self.name = 'Flash'
@@ -116,7 +116,7 @@ class EffectVignette extends CanvasItemEffect:
 			func(): render_passes[0].enable(),
 			func(): queue_free())
 			
-class EffectBetterCall extends Effect:
+class EffectBetterCallNew extends Effect:
 	const BETTER_CALL_EFFECT := preload('./better_call_effect/better_call_effect.tscn')
 		
 	var effect_node : Node
@@ -206,10 +206,10 @@ class EffectExplosion extends Effect:
 func _init() -> void:
 	effects.push_back(EffectImpactLines.new())  # Impact lines for zooming!
 	effects.push_back(EffectSlideWhistle.new()) # Transition for signed distance field
-	effects.push_back(EffectBlur.new())         # Blurs everything behind
-	effects.push_back(EffectColorFade.new())    # Fades to a chosen color
-	effects.push_back(EffectFlash.new())        # Flash!
-	effects.push_back(EffectBetterCall.new())
+	effects.push_back(EffectBlurNew.new())         # Blurs everything behind
+	effects.push_back(EffectColorFadeNew.new())    # Fades to a chosen color
+	effects.push_back(EffectFlashNew.new())        # Flash!
+	effects.push_back(EffectBetterCallNew.new())
 	effects.push_back(EffectKuwahara.new())     # Emulates a 'painted' appearance (good for blending 3D objects with 2D art)
 	effects.push_back(EffectSepia.new())        # Adds a sepia filter
 	effects.push_back(EffectVignette.new())     # Adds a vignette (goes well with sepia filter)
