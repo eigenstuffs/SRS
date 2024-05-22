@@ -27,10 +27,10 @@ transform = Transform3D(0.5, -1.85933e-22, 2.42539e-23, 1.85933e-22, 0.5, -2.998
 shape = SubResource("CylinderShape3D_rr7dr")
 
 [node name="AttractionField" type="Area3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttractionField"]
-transform = Transform3D(0.5, -1.85933e-22, 2.42539e-23, 1.85933e-22, 0.5, -2.99817e-17, -2.42539e-23, 2.99817e-17, 0.5, 0, 0, 0)
+transform = Transform3D(1, -5.81055e-22, 4.80883e-22, 5.81055e-22, 1, -6.50114e-16, -4.80883e-22, 6.50114e-16, 1, 0, 0, 0)
 shape = SubResource("SphereShape3D_qitnl")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
