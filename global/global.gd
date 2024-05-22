@@ -19,7 +19,7 @@ var og_ro : String
 
 ### OPTIONS
 
-var text_speed = 0.015
+var text_speed = 0.01
 var volume = 0.5
 
 ### DIALOGUE FILES

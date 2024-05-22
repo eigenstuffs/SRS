@@ -79,7 +79,7 @@ func _ready():
 	
 	#to be changed back to VisualNovelDialogue
 	#var vn : VisualNovelDialogue = get_parent()
-	var vn : EffectTestScene = get_parent()
+	var vn : VisualNovelDialogue = get_parent()
 	
 	vn.connect("fade_black", fade_black)
 	vn.connect("fade_blacktored", fade_blacktored)

@@ -64,6 +64,9 @@ var current_line : Dictionary
 var restorable_choices
 var current_mood
 
+var a : Tween
+var current_time : float
+
 signal next_pressed
 signal done
 signal choice(which : int)
@@ -221,10 +224,11 @@ func read_line(key : int):
 		for i in ui_elements: i.hide()
 	else:
 		label.text = current_line["text"]
-		label.visible_characters = 0
+		label.visible_characters = 1
 		var num_chars = label.text.length()
 		var total_time = Global.text_speed * num_chars
-		var a = create_tween()
+		current_time = total_time
+		a = create_tween()
 		a.tween_property(label, "visible_characters", num_chars, total_time)
 		await a.finished
 		var b = create_tween()
@@ -309,6 +313,9 @@ func _input(event):
 			a.tween_property(next, "modulate:a", 0, 0.2)
 			await a.finished
 			emit_signal("next_pressed")
+		elif a.is_running():
+			a.pause()
+			a.custom_step(current_time)
 
 func _on_next_pressed():
 	var a = create_tween()

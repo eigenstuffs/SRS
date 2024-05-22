@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bppl4k2rd867r"]
+[gd_scene load_steps=16 format=3 uid="uid://4iy631ruiq6r"]
 
 [ext_resource type="Script" path="res://tools/dialogue/dialogue.gd" id="1_8kgwo"]
 [ext_resource type="Texture2D" uid="uid://kqpkiycx2vxi" path="res://assets/textbox.png" id="2_bkbk1"]
