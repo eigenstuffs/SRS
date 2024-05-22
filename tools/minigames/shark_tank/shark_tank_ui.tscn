@@ -1,9 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://75bedpy5j0at"]
+[gd_scene load_steps=18 format=3 uid="uid://75bedpy5j0at"]
 
 [ext_resource type="Script" path="res://tools/minigames/shark_tank/shark_tank_ui.gd" id="1_iawdj"]
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/spritesheet_mini_npc_idle.png" id="2_bequw"]
 [ext_resource type="Script" path="res://tools/minigames/shark_tank/pitch_handler.gd" id="2_xxcir"]
 [ext_resource type="PackedScene" uid="uid://c4gv04lv2486q" path="res://tools/minigames/shark_tank/document.tscn" id="4_05llp"]
+[ext_resource type="Texture2D" uid="uid://b2ed0lhpepjev" path="res://assets/sharktank/Invest Button Default.png" id="5_q1qqf"]
+[ext_resource type="Texture2D" uid="uid://dt1s71rgic50h" path="res://assets/sharktank/Invest_Click.png" id="6_mrbxa"]
+[ext_resource type="Texture2D" uid="uid://c5crtvtiyafme" path="res://assets/sharktank/Invest_Hover.png" id="7_3y2ql"]
+[ext_resource type="Texture2D" uid="uid://bp8gpw146ls4e" path="res://assets/sharktank/Negotiate_Default.png" id="8_br6sr"]
+[ext_resource type="Texture2D" uid="uid://q5s02sgcyhiq" path="res://assets/sharktank/Negotiate_Click.png" id="9_osvx1"]
+[ext_resource type="Texture2D" uid="uid://cpv5atvqw2pbu" path="res://assets/sharktank/Negotiate_Hover.png" id="10_kfed1"]
+[ext_resource type="Texture2D" uid="uid://dcwgkx7cfn7bb" path="res://assets/sharktank/Pass Button Default.png" id="11_rc5no"]
+[ext_resource type="Texture2D" uid="uid://igipxdob5f1f" path="res://assets/sharktank/Pass_Click.png" id="12_kkacw"]
+[ext_resource type="Texture2D" uid="uid://c5nr167tsg1mq" path="res://assets/sharktank/Pass_Hover.png" id="13_ls4aq"]
 
 [sub_resource type="Animation" id="Animation_cjcn3"]
 length = 0.001
@@ -95,7 +104,7 @@ _data = {
 "WalkOut": SubResource("Animation_1rjpq")
 }
 
-[node name="SharkTankUI" type="Control"]
+[node name="SharkTank" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -159,25 +168,37 @@ offset_top = 64.0
 offset_right = 1856.0
 offset_bottom = 576.0
 
-[node name="Invest" type="Button" parent="Responses"]
+[node name="Invest" type="TextureButton" parent="Responses"]
 layout_mode = 0
-offset_right = 576.0
-offset_bottom = 128.0
-text = "invest"
+offset_left = 128.0
+offset_right = 564.0
+offset_bottom = 102.0
+texture_normal = ExtResource("5_q1qqf")
+texture_pressed = ExtResource("6_mrbxa")
+texture_hover = ExtResource("7_3y2ql")
+texture_disabled = ExtResource("5_q1qqf")
 
-[node name="Negotiate" type="Button" parent="Responses"]
+[node name="Negotiate" type="TextureButton" parent="Responses"]
 layout_mode = 0
+offset_left = 128.0
 offset_top = 192.0
-offset_right = 576.0
-offset_bottom = 320.0
-text = "negotiate"
+offset_right = 564.0
+offset_bottom = 294.0
+texture_normal = ExtResource("8_br6sr")
+texture_pressed = ExtResource("9_osvx1")
+texture_hover = ExtResource("10_kfed1")
+texture_disabled = ExtResource("8_br6sr")
 
-[node name="Pass" type="Button" parent="Responses"]
+[node name="Pass" type="TextureButton" parent="Responses"]
 layout_mode = 0
+offset_left = 128.0
 offset_top = 384.0
-offset_right = 576.0
-offset_bottom = 512.0
-text = "pass"
+offset_right = 564.0
+offset_bottom = 486.0
+texture_normal = ExtResource("11_rc5no")
+texture_pressed = ExtResource("12_kkacw")
+texture_hover = ExtResource("13_ls4aq")
+texture_disabled = ExtResource("11_rc5no")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -187,7 +208,3 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-
-[connection signal="pressed" from="Responses/Invest" to="." method="_on_invest_pressed"]
-[connection signal="pressed" from="Responses/Negotiate" to="." method="_on_negotiate_pressed"]
-[connection signal="pressed" from="Responses/Pass" to="." method="_on_pass_pressed"]
