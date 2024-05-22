@@ -43,7 +43,7 @@ func _on_rigid_body_body_entered(_body: Node) -> void:
 	rigid_body.call_deferred('set_contact_monitor', false)
 	rigid_body.max_contacts_reported = 0
 	rigid_body.freeze = false
-	rigid_body.collision_layer |= 0b01
+	#rigid_body.collision_layer |= 0b01
 	
 	# To increase visual clarity, fade out shadow once book has hit the ground
 	shadow.fade_out()
