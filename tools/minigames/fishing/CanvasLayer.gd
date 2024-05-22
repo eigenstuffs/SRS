@@ -154,7 +154,6 @@ func show_and_fade_icon(node : Control):
 	var b = create_tween().set_parallel()
 	b.tween_property(node, "self_modulate:a", 0, 0.75)
 	if node != exclaim:
-		print("moving up!")
 		b.tween_property(node, "position:y", node.position.y - 50, 0.75)
 		await b.finished
 		node.position.y = node.position.y + 50

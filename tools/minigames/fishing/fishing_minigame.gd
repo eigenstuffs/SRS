@@ -35,6 +35,7 @@ func _on_canvas_layer_reeling_ended(is_successful, rarity):
 		
 
 func _on_fish_instancer_fish_hooked():
+	print("minigame start")
 	emit_signal("reeling_minigame")
 
 func update_fish_caught_by_type(type):
@@ -54,4 +55,4 @@ func calculate_stats(fish_types) -> Array[int]:
 
 
 func _on_fishing_player_releasing_rod():
-	fishing_rod.bobber_initial_v.z = 3 * force_multiplier
+	fishing_rod.bobber_initial_v.z = 5 * force_multiplier
