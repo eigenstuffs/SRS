@@ -99,7 +99,6 @@ alpha = 1.0
 
 [node name="RigidBody" type="RigidBody3D" parent="."]
 collision_layer = 8
-collision_mask = 0
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_ygqc5")
 gravity_scale = 0.5
