@@ -53,7 +53,7 @@ folder_colors={
 "res://tools/minigames/library/": "orange",
 "res://tools/minigames/maze/": "teal",
 "res://tools/minigames/shark_tank/": "green",
-"res://tools/minigames/social_warfare/": "teal",
+"res://tools/minigames/social_warfare/": "blue",
 "res://tools/minigames/template/": "gray"
 }
 
