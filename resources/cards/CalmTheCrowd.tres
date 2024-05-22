@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://dmyqbve6hnuty"]
+
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_y2wwo"]
+
+[resource]
+script = ExtResource("1_y2wwo")
+points_req = 0
+title = "Calm The Crowd"
+effect = null
+target_stat = null
+type = 0
+effect_num = 0.0
+desc = ""
+intensity_mod = 0
+move_dialogue = Array[String]([])

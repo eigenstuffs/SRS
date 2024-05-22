@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://cmorefbnj7gir"]
+
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_fx8sk"]
+
+[resource]
+script = ExtResource("1_fx8sk")
+points_req = 0
+title = "Gaslight"
+effect = 3
+target_stat = 0
+type = 1
+effect_num = 0.75
+desc = ""
+intensity_mod = 0
+move_dialogue = Array[String]([])

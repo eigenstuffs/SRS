@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://ccinl4dlimddt"]
+
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_io2s8"]
+
+[resource]
+script = ExtResource("1_io2s8")
+points_req = 0
+title = "Spill Your Drink"
+effect = 0
+target_stat = null
+type = null
+effect_num = 0
+desc = ""

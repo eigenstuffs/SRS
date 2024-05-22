@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://vwonb5t67loq"]
+
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_yfrsq"]
+
+[resource]
+script = ExtResource("1_yfrsq")
+points_req = 0
+title = ""
+type = null
+desc = ""

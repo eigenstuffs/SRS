@@ -17,7 +17,6 @@ var seraphina_name : String = "Seraphina"
 
 var og_ro : String
 
-
 ### OPTIONS
 
 var text_speed = 0.015

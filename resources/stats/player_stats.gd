@@ -9,6 +9,11 @@ class_name PlayerStats
 @export var money : int
 @export var prestige : int
 
+@export var cards : Array[Card]
+@export var poise : int
+@export var mp : int
+@export var repute : int
+
 #currently it's only setting the four main stats,
 #feel free to extend it to the other two stats when we need them
 func set_stats(list : Array[int]):

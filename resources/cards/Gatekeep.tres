@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://bhkx8n7aqsp7b"]
+
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_svhto"]
+
+[resource]
+script = ExtResource("1_svhto")
+points_req = 0
+title = "Apathetic Look"
+effect = 3
+target_stat = 0
+type = 1
+effect_num = 0.75
+desc = ""
+intensity_mod = 0
+move_dialogue = Array[String]([])

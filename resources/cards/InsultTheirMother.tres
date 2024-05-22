@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://da2e7ur6ypyxh"]
+
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_lhpno"]
+
+[resource]
+script = ExtResource("1_lhpno")
+points_req = 0
+title = "Insult Their Mother"
+effect = 0
+target_stat = null
+type = 0
+effect_num = 0
+desc = ""
+move_dialogue = Array[String]([])

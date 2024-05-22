@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://b33acxy032q5y"]
+
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_p18ue"]
+
+[resource]
+script = ExtResource("1_p18ue")
+points_req = 0
+title = "Self Fanning"
+effect = 2
+target_stat = 1
+type = 0
+effect_num = 1.15
+desc = ""
+intensity_mod = 0
+move_dialogue = Array[String]([])

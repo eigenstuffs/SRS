@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://2isk2o8w0alx"]
+
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_kaskg"]
+
+[resource]
+script = ExtResource("1_kaskg")
+points_req = 0
+title = "Um, Actually"
+effect = 3
+target_stat = 0
+type = 2
+effect_num = 0.75
+desc = ""
+intensity_mod = 0
+move_dialogue = Array[String]([])
