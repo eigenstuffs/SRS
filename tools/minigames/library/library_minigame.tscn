@@ -42,7 +42,7 @@ size = Vector3(10, 5, 0.2)
 size = Vector3(0.2, 5, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4t3gm"]
-size = Vector3(1, 1.71545, 1)
+size = Vector3(1, 1.71545, 3.31683)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0ak3"]
 albedo_color = Color(0.509804, 0.176471, 0.0588235, 0.345098)
@@ -62,7 +62,7 @@ script = ExtResource("1_jnejo")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Ground"]
 collision_layer = 7
-collision_mask = 7
+collision_mask = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Ground/StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.510077, 0)
@@ -181,7 +181,7 @@ visible = false
 script = ExtResource("8_lbiij")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.119757, 0.0598755, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.119757, 0.0598755, 0.244781)
 shape = SubResource("BoxShape3D_4t3gm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bookshelf"]
