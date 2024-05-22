@@ -15,7 +15,6 @@ var fish_array : Array[Fish] = []
 #@onready var area_top : SpawnArea = $SpawnAreaTop
 @onready var area_bottom : SpawnArea = $SpawnAreaBottom
 @onready var fish_folder : Node3D = $fish
-@onready var bobber : FloatingBobber = get_node("../FishingPlayer/FishingRod/FloatingBobber")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #h00 4 functions, override return
@@ -45,6 +44,7 @@ func _process(delta: float) -> void:
 func _on_fishing_reeling_minigame():
 	if fish_array.is_empty():
 		print("array is empty")
+	var bobber : FloatingBobber = get_node("../FishingPlayer/FishingRod/FloatingBobber")
 	var bobber_pos = bobber.global_position
 	#find the fish with the shortest distance
 	#stop the movement of first fish

@@ -1,66 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cifju81wyjjw4"]
+[gd_scene load_steps=35 format=3 uid="uid://cifju81wyjjw4"]
 
 [ext_resource type="Script" path="res://scenes/player/library_player.gd" id="1_0wy6d"]
-[ext_resource type="Texture2D" uid="uid://bgkaa7x1ip882" path="res://assets/mc.png" id="3_x348f"]
+[ext_resource type="Texture2D" uid="uid://bixewrnfcu3pn" path="res://assets/cecelia_spritesheets/Cecilia_Idle_Sheet.png" id="2_7w2t8"]
+[ext_resource type="Texture2D" uid="uid://bbmghnsaolthq" path="res://assets/cecelia_spritesheets/Cecilia_Library_Fail_Sheet.png" id="2_gn5hl"]
+[ext_resource type="Texture2D" uid="uid://deyxjtpwdgsxu" path="res://assets/cecelia_spritesheets/Cecilia_Damage_Sheet.png" id="2_vk51n"]
+[ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="3_lbixs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hq8b"]
 size = Vector3(0.5, 1, 0.02)
-
-[sub_resource type="Animation" id="Animation_ckuo8"]
-resource_name = "Idle"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11, 12, 13, 14]
-}
-
-[sub_resource type="Animation" id="Animation_pufkb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_v0qtm"]
-resource_name = "Walk"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_phpi8"]
-_data = {
-"Idle": SubResource("Animation_ckuo8"),
-"RESET": SubResource("Animation_pufkb"),
-"Walk": SubResource("Animation_v0qtm")
-}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pduae"]
 size = Vector3(0.6, 0.4, 1.39307)
@@ -71,23 +18,203 @@ size = Vector3(0.6, 0.4, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_y6bqc"]
 size = Vector3(0.5, 1, 0.3)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtkxq"]
+atlas = ExtResource("2_gn5hl")
+region = Rect2(0, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3246e"]
+atlas = ExtResource("2_gn5hl")
+region = Rect2(1920, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqfjc"]
+atlas = ExtResource("2_gn5hl")
+region = Rect2(3840, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn4ix"]
+atlas = ExtResource("2_gn5hl")
+region = Rect2(5760, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mk2m"]
+atlas = ExtResource("2_gn5hl")
+region = Rect2(7680, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dagac"]
+atlas = ExtResource("2_gn5hl")
+region = Rect2(9600, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aji14"]
+atlas = ExtResource("2_vk51n")
+region = Rect2(0, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yjas"]
+atlas = ExtResource("2_vk51n")
+region = Rect2(1920, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlm4w"]
+atlas = ExtResource("2_vk51n")
+region = Rect2(3840, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixwb3"]
+atlas = ExtResource("2_7w2t8")
+region = Rect2(0, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oicgx"]
+atlas = ExtResource("2_7w2t8")
+region = Rect2(1920, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iggug"]
+atlas = ExtResource("2_7w2t8")
+region = Rect2(3840, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxymt"]
+atlas = ExtResource("2_7w2t8")
+region = Rect2(5760, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e52q"]
+atlas = ExtResource("2_7w2t8")
+region = Rect2(7680, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eft3q"]
+atlas = ExtResource("2_7w2t8")
+region = Rect2(9600, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjs3x"]
+atlas = ExtResource("2_7w2t8")
+region = Rect2(11520, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iib05"]
+atlas = ExtResource("3_lbixs")
+region = Rect2(0, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkr4i"]
+atlas = ExtResource("3_lbixs")
+region = Rect2(1920, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlr7f"]
+atlas = ExtResource("3_lbixs")
+region = Rect2(3840, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g014w"]
+atlas = ExtResource("3_lbixs")
+region = Rect2(5760, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxtvg"]
+atlas = ExtResource("3_lbixs")
+region = Rect2(7680, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxwo6"]
+atlas = ExtResource("3_lbixs")
+region = Rect2(9600, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydmo4"]
+atlas = ExtResource("3_lbixs")
+region = Rect2(11520, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s20c"]
+atlas = ExtResource("3_lbixs")
+region = Rect2(13440, 0, 1920, 2000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xw15x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtkxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3246e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqfjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn4ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mk2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dagac")
+}],
+"loop": true,
+"name": &"Fail",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aji14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yjas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlm4w")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixwb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oicgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iggug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxymt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e52q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eft3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjs3x")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iib05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkr4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlr7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g014w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxtvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxwo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydmo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s20c")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 8.0
+}]
+
 [node name="LibraryPlayer" type="CharacterBody3D"]
 script = ExtResource("1_0wy6d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.16602e-07, 0, -2.08616e-07, 1, 0, -0.047, 0)
 shape = SubResource("BoxShape3D_0hq8b")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, -1.49012e-07, 0, 1.49012e-07, 0.5, 0, 0, 0)
-texture = ExtResource("3_x348f")
-hframes = 8
-vframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_phpi8")
-}
 
 [node name="Hurtbox" type="Area3D" parent="."]
 collision_mask = 9
@@ -108,6 +235,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
 shape = SubResource("BoxShape3D_y6bqc")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0182938, -0.0168544, 0)
+sprite_frames = SubResource("SpriteFrames_xw15x")
+animation = &"Fail"
+frame = 3
+frame_progress = 0.746432
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="Hurtbox2" to="." method="_on_hurtbox_2_body_entered"]

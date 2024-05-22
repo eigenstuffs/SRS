@@ -2,6 +2,8 @@ extends Player
 
 class_name MazePlayer
 
+@onready var DASH_SFX = preload("res://tools/minigames/maze/sound/dash.wav")
+
 var can_dash : bool = true
 var is_dashing : bool = false
 var DASH_SPEED : float = 10
@@ -29,6 +31,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_accept") and can_dash: 
 			can_dash = false
 			is_dashing = true
+			$SfxPlayer.stream = DASH_SFX
+			$SfxPlayer.play()
 			if last_input_dir:
 				dashing_dir = last_input_dir
 			else:

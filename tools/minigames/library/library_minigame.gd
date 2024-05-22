@@ -1,5 +1,8 @@
 class_name LibraryMinigame extends Minigame
 
+@onready var BOOK_CAUGHT_SFX = preload("res://tools/minigames/library/sound/book_caught.mp3")
+@onready var SUBMIT_SFX = preload("res://tools/minigames/library/sound/submit_chime.mp3")
+
 var started = false
 @export var player_health = 3
 var item_caught : Array[int] = [0, 0]
@@ -35,11 +38,15 @@ func _on_library_player_book_collected(book : Book):
 	#gain_points(1)
 	if $LibraryPlayer/BookHolder.get_num_books() < 10: 
 		$LibraryPlayer/BookHolder.add_book_bone(book)
+		$SfxPlayer.stream = BOOK_CAUGHT_SFX
+		$SfxPlayer.play()
 	elif $LibraryPlayer/BookHolder.get_num_books() == 10:
 		EffectRegistry.start_effect(self, "Vignette", [$EffectNode])
 
 func _on_library_player_bomb_hit(bomb : Bomb):
 	lose_points(1)
+	$LibraryPlayer.can_move = false
+	$LibraryPlayer.hurt = true
 	$LibraryPlayer/BookHolder.clear_all_books()
 	$LibraryPlayer.move_hurtbox()
 	$CanvasLayer.remove_heart()
@@ -48,9 +55,14 @@ func _on_library_player_bomb_hit(bomb : Bomb):
 	do_explosion(bomb)
 	bomb.queue_free()
 	if player_health == 0:
-		$LibraryPlayer.can_move = false
+		$LibraryPlayer.hurt = false
+		$LibraryPlayer.fail = true
 		await get_tree().create_timer(0.4, true, false, true).timeout
 		end()
+	else:
+		await get_tree().create_timer(0.3).timeout
+		$LibraryPlayer.hurt = false
+		$LibraryPlayer.can_move = true
 		
 func do_explosion(bomb : Bomb): 
 	var bomb_position := bomb.rigid_body.global_position
@@ -78,10 +90,13 @@ func compute_stats_gained(item_caught):
 
 func _on_bookshelf_player_entered():
 	var num_of_books = $LibraryPlayer/BookHolder.get_num_books()
-	gain_points(num_of_books)
-	emit_signal("update_time", num_of_books)
-	$LibraryPlayer/BookHolder.clear_all_books()
-	$LibraryPlayer.move_hurtbox()
+	if num_of_books > 0:
+		$SfxPlayer.stream = SUBMIT_SFX
+		$SfxPlayer.play()
+		gain_points(num_of_books)
+		emit_signal("update_time", num_of_books)
+		$LibraryPlayer/BookHolder.clear_all_books()
+		$LibraryPlayer.move_hurtbox()
 
 func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)

@@ -1,7 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://b41yvuuvkashj"]
+[gd_scene load_steps=5 format=3 uid="uid://b8famqtdjgl6r"]
 
-[ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/bobber.gd" id="1_4gvxx"]
 [ext_resource type="Texture2D" uid="uid://chbw40rkc3heq" path="res://tools/minigames/fishing/assets/hook.png" id="2_kon8o"]
+
+[sub_resource type="GDScript" id="GDScript_aj1nt"]
+script/source = "extends RigidBody3D
+
+signal water_entered
+
+@onready var gravity : float = ProjectSettings.get_setting(\"physics/3d/default_gravity\")
+
+var is_in_water : bool = false
+var original_position : Transform3D = transform
+
+func _ready():
+	visible = false
+	
+func launch(initial_v : Vector3):
+	is_in_water = false
+	transform = original_position
+	visible = true
+	linear_velocity = Vector3.ZERO
+	apply_central_impulse(initial_v)
+	angular_velocity = Vector3.ZERO
+
+func _on_area_3d_area_entered(area):
+	if area.get_parent() is Water:
+		is_in_water = true
+		emit_signal(\"water_entered\")
+		visible = false
+		transform = original_position
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+
+func disappear():
+	visible = false
+	transform = original_position
+"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lxw03"]
 
@@ -9,7 +43,9 @@
 
 [node name="Bobber" type="RigidBody3D"]
 transform = Transform3D(1, 7.22881e-16, -5.63067e-15, -7.22881e-16, 1, 9.21557e-10, 5.63067e-15, -9.21557e-10, 1, 8.9407e-08, -0.00878875, -0.667827)
-script = ExtResource("1_4gvxx")
+collision_layer = 2
+collision_mask = 2
+script = SubResource("GDScript_aj1nt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.25, 4.03982e-18, -1.40872e-15, -4.03982e-18, 0.25, 7.0967e-11, 1.40872e-15, -7.0967e-11, 0.25, 0, 0, 0)

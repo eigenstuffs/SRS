@@ -3,6 +3,7 @@ extends RigidBody3D
 class_name FloatingBobber
 
 signal fish_hooked
+signal water_entered
 
 @export var float_force : float = 8
 @export var water_drag : float = 0.05
@@ -17,8 +18,9 @@ const water_height : float = 0.0
 var submerged : bool = false
 
 func _ready():
-	visible = false
-	CatchField.monitoring = false
+	CatchField.monitoring = true
+	$Sprite3D.set_global_rotation_degrees(Vector3(-45, -90, 0))
+	$Sprite3D.set_scale(Vector3(0.1, 0.1, 0.1))
 
 func _physics_process(delta):
 	submerged = false
@@ -33,17 +35,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 		state.angular_velocity *= 1 - water_angular_drag
 
 func activate():
-	visible = true
 	CatchField.monitoring = true
 	AttractionField.monitoring = true
-	$Sprite3D.global_rotation = Vector3(0, 0, 0)
-	$Sprite3D.scale = Vector3(0.1, 0.1, 0.1)
-
-	
-func deactivate():
-	visible = false
-	CatchField.monitoring = false
-	AttractionField.monitoring = false
 	
 func disable_being_monitored():
 	CatchField.monitorable = false
@@ -52,3 +45,12 @@ func disable_being_monitored():
 func enable_being_monitored():
 	CatchField.monitorable = true
 	AttractionField.monitorable = true
+
+func _on_catch_field_area_entered(area):
+	if area.get_parent() is Water:
+		emit_signal("water_entered")
+		angular_velocity = Vector3.ZERO
+		linear_velocity = Vector3.ZERO
+		set_global_rotation_degrees(Vector3(0, 0, 0))
+		$Sprite3D.set_rotation_degrees(Vector3(-45, -90, 0))
+		$Sprite3D.set_scale(Vector3(0.1, 0.1, 0.1))

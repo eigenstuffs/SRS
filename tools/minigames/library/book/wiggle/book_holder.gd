@@ -25,7 +25,7 @@ func get_num_books() -> int:
 	return skeleton.get_bone_count()
 
 func clear_all_books() -> void:
-	if get_num_books() > 10:
+	if get_num_books() >= 10:
 		EffectRegistry.stop_effect("Vignette")
 	skeleton.clear_bones()
 	for child in skeleton.get_children():

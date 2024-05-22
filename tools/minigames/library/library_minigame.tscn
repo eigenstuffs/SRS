@@ -188,6 +188,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]
 [connection signal="book_collected" from="LibraryPlayer" to="." method="_on_library_player_book_collected"]
 [connection signal="body_entered" from="Bookshelf" to="Bookshelf" method="_on_body_entered"]

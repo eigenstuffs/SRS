@@ -10,13 +10,19 @@ class_name MazeMinigame extends Minigame
 #Medium: W = L = 10, NKey = 3, r = 3
 #Hard: W = L = 13, NKey = 5, r = 4
 @onready var maze_metadata : MazeMeta = preload("res://tools/minigames/maze/maze_metadata.tres")
+@onready var GAME_FINISHED_SFX = preload("res://tools/minigames/maze/sound/maze_game_finished.wav")
+@onready var HURT_SFX = preload("res://tools/minigames/maze/sound/player_hurt.wav")
+@onready var SPEED_UP_SFX = preload("res://tools/minigames/maze/sound/speed_up.wav")
+@onready var KEY_SFX = preload("res://tools/minigames/maze/sound/key_get.wav")
+@onready var DOOR_OPEN_SFX = preload("res://tools/minigames/maze/sound/door_open.wav")
 @export var time_penalty : int = -5
 var point_get : int = 0
 var all_keys_got : bool = false
 
-
 func end():
 	Global.can_move = false
+	$SfxPlayer.stream = GAME_FINISHED_SFX
+	$SfxPlayer.play()
 	emit_signal("ended")
 	has_ended = true
 	var stats_gained = calculate_stats(remaining_time, maze_metadata.diffMult)
@@ -24,7 +30,8 @@ func end():
 	emit_signal("minigame_finished", detailed_points)
 
 func _on_maze_generator_key_collected():
-	$KeyGetSound.play()
+	$SfxPlayer.stream = KEY_SFX
+	$SfxPlayer.play()
 	point_get += 1
 	update_points.emit(point_get)
 
@@ -40,7 +47,8 @@ func _on_maze_generator_all_key_collected():
 	$MazePlayer/FollowingCamera.original_view()
 	emit_signal("update_time", 2)
 	#start the effect
-	$SpeedUpSound.play()
+	$SfxPlayer.stream = SPEED_UP_SFX
+	$SfxPlayer.play()
 	EffectRegistry.start_effect(self, "ImpactLines", [$EffectNode, 1.0])
 	#increase speed for both enemies and player
 	$MazePlayer.set_speed_modifier(2)
@@ -55,7 +63,8 @@ func _on_goal_goal_touched():
 func _on_maze_generator_enemy_met_player():
 	EffectRegistry.start_effect(self, "Flash", [$EffectNode, Color(0.6, 0, 0, 0.4)])
 	emit_signal("update_time", time_penalty)
-	$PlayerHurtSound.play()
+	$SfxPlayer.stream = HURT_SFX
+	$SfxPlayer.play()
 
 func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)

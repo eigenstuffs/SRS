@@ -13,6 +13,8 @@ var can_move = true
 var collision_box_increment = 0.15
 var original_hurtbox_y : float
 var speed_multiplier : float = 1
+var hurt : bool = false
+var fail : bool = false
 
 signal book_collected(book : Book)
 signal bomb_hit(bomb : Bomb)
@@ -42,16 +44,16 @@ func _physics_process(delta):
 				
 			if dir != last_dir:
 				if dir == Vector2.RIGHT:
-					$Sprite3D.scale = Vector3(0.5,0.5,0.5)
+					$AnimatedSprite3D.scale = Vector3(0.1,0.1,0.1) #adujsted because of sprite sheet size
 				else:
-					$Sprite3D.scale = Vector3(-0.5,0.5,0.5)
+					$AnimatedSprite3D.scale = Vector3(-0.1,0.1,0.1)
 				if not turning:
 					var a = create_tween()
 					turning = true
-					a.tween_property($Sprite3D, "position", $Sprite3D.position + Vector3(0,.1,0), 0.1)
+					a.tween_property($AnimatedSprite3D, "position", $AnimatedSprite3D.position + Vector3(0,.1,0), 0.1)
 					await a.finished
 					a = create_tween()
-					a.tween_property($Sprite3D, "position", $Sprite3D.position - Vector3(0,.1,0), 0.1)
+					a.tween_property($AnimatedSprite3D, "position", $AnimatedSprite3D.position - Vector3(0,.1,0), 0.1)
 					await a.finished
 					turning = false
 		else:
@@ -65,9 +67,13 @@ func _physics_process(delta):
 
 func anim_handler():
 	if velocity != Vector3.ZERO:
-		$AnimationPlayer.play("Walk")
+		$AnimatedSprite3D.play("Walk")
+	elif hurt:
+		$AnimatedSprite3D.play("Hurt")
+	elif fail:
+		$AnimatedSprite3D.play("Fail")
 	else:
-		$AnimationPlayer.play("Idle")
+		$AnimatedSprite3D.play("Idle")
 
 func _on_hurtbox_body_entered(body):
 	var parent = body.get_parent()

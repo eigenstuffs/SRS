@@ -1,57 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://0obt0ysdxga4"]
+[gd_scene load_steps=2 format=3 uid="uid://0obt0ysdxga4"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/fishing_rod.gd" id="1_7vvl0"]
-[ext_resource type="PackedScene" uid="uid://b41yvuuvkashj" path="res://tools/minigames/fishing/fishing_rod/bobber.tscn" id="2_djfgk"]
-[ext_resource type="PackedScene" uid="uid://bridjlku0m8mg" path="res://tools/minigames/fishing/fishing_rod/floating_bobber.tscn" id="3_sxnjn"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jd74n"]
-size = Vector3(1, 0.474854, 0.158203)
 
 [node name="FishingRod" type="MeshInstance3D"]
 transform = Transform3D(1, 1.32815e-09, 1.51808e-08, 1.5197e-08, -0.0131592, -0.999915, -1.12827e-09, 0.999915, -0.0131591, 0.270332, 0.337995, 0.0667055)
 script = ExtResource("1_7vvl0")
-
-[node name="MovingBobber" parent="." instance=ExtResource("2_djfgk")]
-transform = Transform3D(1, 1.65089e-08, 1.38527e-08, -1.38526e-08, -6.5587e-08, 1, 1.65089e-08, -1, 3.5694e-08, 6.25849e-07, -0.00192124, -0.701239)
-collision_layer = 2
-collision_mask = 2
-
-[node name="FloatingBobber" parent="." instance=ExtResource("3_sxnjn")]
-transform = Transform3D(1, 1.65089e-08, 1.38527e-08, -1.38526e-08, -8.79356e-08, 0.999999, 1.65089e-08, -0.999999, -7.37597e-08, 3.27826e-07, -0.0128306, -0.974955)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 7.60566e-15, -3.92165e-16, -7.60566e-15, 1, 1.02601e-08, 3.92165e-16, -1.02601e-08, 1, 0, -0.0250252, -0.420898)
-shape = SubResource("BoxShape3D_jd74n")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(1, -1.38526e-08, 1.6509e-08, 1.65089e-08, -3.03312e-08, -0.999999, 1.38526e-08, 0.999999, -3.21651e-08, 0, -0.256762, -0.563387)
-shape = SubResource("BoxShape3D_jd74n")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
-transform = Transform3D(-4.37113e-08, -0.999913, 0.0131592, 0.999913, 0.00017312, 0.013158, -0.0131592, 0.013158, 0.999826, -0.0573554, -0.00102391, -0.0778039)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
-transform = Transform3D(1, -1.38526e-08, 1.6509e-08, 1.65089e-08, -3.03312e-08, -0.999999, 1.38526e-08, 0.999999, -3.21651e-08, 0, -0.256762, -0.563387)
-shape = SubResource("BoxShape3D_jd74n")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="."]
-transform = Transform3D(-4.37113e-08, -0.999913, 0.0131592, 0.999913, 0.000173121, 0.013158, -0.0131592, 0.013158, 0.999826, -0.511371, -0.00102391, -0.0778038)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
-transform = Transform3D(1, -1.38526e-08, 1.6509e-08, 1.65089e-08, -3.03312e-08, -0.999999, 1.38526e-08, 0.999999, -3.21651e-08, 0, -0.256762, -0.563387)
-shape = SubResource("BoxShape3D_jd74n")
-
-[connection signal="water_entered" from="MovingBobber" to="." method="_on_moving_bobber_water_entered"]
-[connection signal="fish_hooked" from="FloatingBobber" to="." method="_on_floating_bobber_fish_hooked"]

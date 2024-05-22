@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://btxyikyec8li1"]
+[gd_scene load_steps=14 format=3 uid="uid://btxyikyec8li1"]
 
 [ext_resource type="Script" path="res://tools/minigames/maze/MazeGenerator.gd" id="1_wltr6"]
 [ext_resource type="Script" path="res://tools/minigames/maze/maze_minigame.gd" id="1_xvgb3"]
@@ -6,9 +6,6 @@
 [ext_resource type="Script" path="res://tools/minigames/maze/FollowingCamera.gd" id="4_ohvxp"]
 [ext_resource type="PackedScene" uid="uid://dhyrf6dyl1s8c" path="res://scenes/player/maze_player.tscn" id="4_pj1vw"]
 [ext_resource type="Script" path="res://tools/minigames/maze/Goal.gd" id="4_v5a44"]
-[ext_resource type="AudioStream" uid="uid://cg6h2m5a8eyqx" path="res://tools/minigames/maze/sound/player_hurt.wav" id="7_faal4"]
-[ext_resource type="AudioStream" uid="uid://cxbb8wo2hb206" path="res://tools/minigames/maze/sound/key_get.wav" id="8_5svc1"]
-[ext_resource type="AudioStream" uid="uid://xvtym3o01k8f" path="res://tools/minigames/maze/sound/speed_up.wav" id="9_e8d8i"]
 
 [sub_resource type="Environment" id="Environment_pm51m"]
 glow_enabled = true
@@ -98,14 +95,9 @@ MIN_Z = 3.0
 MAX_Z = 10.0
 maze_generator = NodePath("../../MazeGenerator")
 
-[node name="PlayerHurtSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_faal4")
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="MazePlayer"]
 
-[node name="KeyGetSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_5svc1")
-
-[node name="SpeedUpSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_e8d8i")
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="goal_touched" from="Goal" to="." method="_on_goal_goal_touched"]

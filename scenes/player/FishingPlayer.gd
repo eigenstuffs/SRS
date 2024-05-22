@@ -95,7 +95,6 @@ func _on_fishing_reeling_minigame():
 	rod.retractable = false
 
 func _on_fishing_reeling_minigame_end(is_successful):
-	rod.retractable = true
 	rod.retract_bobber()
 
 func _on_casting_anim_done(): #send the bobber out after casting animation is done

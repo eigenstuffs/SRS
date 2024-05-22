@@ -76,7 +76,7 @@ transform = Transform3D(0.950256, 0.299892, -0.0841359, -0.0966315, 0.540646, 0.
 [node name="CanvasLayer" parent="." instance=ExtResource("2_1qyje")]
 
 [node name="Ground" type="Node3D" parent="."]
-transform = Transform3D(0.258819, -4.27175e-16, -0.965926, 3.48787e-16, 1, -3.48787e-16, 0.965926, -2.4663e-16, 0.258819, 0.05, 2.08165e-12, -2.80113)
+transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 0.05, 2.08165e-12, -2.80113)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
 collision_layer = 7
@@ -87,12 +87,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65874, -0.66535, -2.18823)
 shape = SubResource("BoxShape3D_rve5y")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(0.212278, 0, 0, 0, 1, 0, 0, 0, 1, -21.5094, 0.00840366, 9.12696e-07)
+transform = Transform3D(0.212278, 2.96384e-24, -5.48932e-09, 4.67676e-24, 1, -2.81843e-23, 4.09909e-09, 1.04503e-23, 1, -21.5094, 0.00840366, 9.12696e-07)
 layers = 3
 mesh = SubResource("PlaneMesh_d8xei")
 
 [node name="Colliders" type="Node3D" parent="."]
-transform = Transform3D(0.97437, -2.61388e-16, 0.224951, 3.48787e-16, 1, -3.48787e-16, -0.224951, 4.18307e-16, 0.97437, 0, 1.48397, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
 
 [node name="Back Wall" type="StaticBody3D" parent="Colliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.477099)
@@ -105,7 +105,7 @@ shape = SubResource("BoxShape3D_iucpa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.87005)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Front Wall"]
-transform = Transform3D(1, -2.49453e-24, -2.66974e-09, -3.92593e-24, 1, -4.70196e-24, -4.475e-10, -8.45381e-24, 1, -0.0054835, 0, -7.32319)
+transform = Transform3D(1, -2.49453e-24, -2.66974e-09, -3.92593e-24, 1, -4.70196e-24, -4.475e-10, -8.45381e-24, 1, -0.0054835, 0, -7.44162)
 shape = SubResource("BoxShape3D_iucpa")
 
 [node name="Left Wall" type="StaticBody3D" parent="Colliders"]
@@ -137,11 +137,11 @@ transform = Transform3D(1, 4.50224e-23, -3.43357e-09, -6.67044e-24, 1, -9.45091e
 shape = SubResource("BoxShape3D_odbwy")
 
 [node name="fish_instancer" parent="." instance=ExtResource("2_cead1")]
-transform = Transform3D(0.258819, -4.27175e-16, -0.965926, 3.48787e-16, 1, -3.48787e-16, 0.965926, -2.4663e-16, 0.258819, 0.053, 1.45, 1.387)
+transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 0.053, 1.45, 1.387)
 MAX_FISH_COUNT = 10
 
 [node name="Water" type="Node3D" parent="."]
-transform = Transform3D(0.258819, -4.27175e-16, -1.76774, 3.48787e-16, 1, -6.38315e-16, 0.965926, -2.4663e-16, 0.473665, 0.0533893, 0, 0.157003)
+transform = Transform3D(-4.37114e-08, -3.48787e-16, -1.8301, 3.48787e-16, 1, -6.38315e-16, 1, -3.48787e-16, -7.99962e-08, 0.0533893, 0, 0.157003)
 script = ExtResource("3_slp7l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Water"]
@@ -166,11 +166,12 @@ transform = Transform3D(1, 0, 0, 0, 1, -1.12238e-23, 0, -1.12238e-23, 1, 1.81472
 shape = SubResource("BoxShape3D_jq107")
 
 [node name="FishingPlayer" parent="." instance=ExtResource("4_y1r0s")]
-transform = Transform3D(0.258819, -0.330366, -0.907673, 3.27752e-16, 0.939692, -0.34202, 0.965926, 0.0885213, 0.24321, 4.76837e-07, 0.251348, -3.48677)
+transform = Transform3D(-4.37114e-08, 0.707106, -0.707107, 2.4663e-16, 0.707106, 0.707107, 1, 3.09086e-08, -3.09086e-08, 4.76837e-07, 0.668755, -3.7134)
 
 [node name="Camera3D4" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0.939693, -0.34202, 1.19292e-16, 0.34202, 0.939693, 1, 4.10753e-08, -1.49502e-08, -2.36239, 3.38219, 0.209632)
+transform = Transform3D(-4.37114e-08, 0.707107, -0.707107, 2.4663e-16, 0.707107, 0.707107, 1, 3.09086e-08, -3.09086e-08, -2.36239, 3.38219, 0.124384)
 current = true
+fov = 85.3
 size = 73.377
 frustum_offset = Vector2(0, 50)
 
