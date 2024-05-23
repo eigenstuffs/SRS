@@ -233,6 +233,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 5.32907e-15, 0, -5.32907e-15, 0.5, 0,
 sprite_frames = SubResource("SpriteFrames_pq85j")
 animation = &"fishing_cast"
 
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="." index="6"]
+
 [connection signal="casting_anim_done" from="." to="." method="_on_casting_anim_done"]
 [connection signal="fishing_time" from="." to="FishingRod" method="_on_fishing_player_fishing_time"]
 [connection signal="walking_time" from="." to="FishingRod" method="_on_fishing_player_walking_time"]

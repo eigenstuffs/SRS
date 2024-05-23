@@ -13,6 +13,8 @@ signal water_entered
 @onready var CatchField : Area3D = $CatchField
 @onready var AttractionField: Area3D = $AttractionField
 
+const WATER_SPLASH = preload("res://tools/minigames/fishing/sounds/water_splash.wav")
+
 const water_height : float = 0.0
 
 var submerged : bool = false
@@ -48,6 +50,8 @@ func enable_being_monitored():
 func _on_attraction_field_area_entered(area):
 	if area.get_parent() is Water:
 		emit_signal("water_entered")
+		$SfxPlayer.stream = WATER_SPLASH
+		$SfxPlayer.play()
 		angular_velocity = Vector3.ZERO
 		linear_velocity = Vector3.ZERO
 		set_global_rotation_degrees(Vector3(0, 0, 0))

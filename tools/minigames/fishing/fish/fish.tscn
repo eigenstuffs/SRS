@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d28td8njhv46f" path="res://tools/minigames/fishing/assets/Fishies/fish_common1_spritesheet.png" id="2_u4jqi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x45a8"]
-radius = 0.2
+radius = 0.256444
 
 [sub_resource type="Animation" id="Animation_q0huh"]
 length = 0.001

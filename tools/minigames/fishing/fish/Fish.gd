@@ -33,7 +33,7 @@ func _physics_process(delta):
 		velocity.z = 0
 		$AnimationPlayer.play("stop")
 	elif state == STATES.PURSUE:
-		look_at(bobber.global_position)
+		#look_at(bobber.global_position)
 		var dir : Vector3 = bobber.global_position - self.global_position
 		if(dir.length() <= 0.25):
 			state = STATES.STOP
@@ -63,12 +63,12 @@ func _on_visible_on_screen_notifier_3d_screen_exited():
 	queue_free()
 
 func _on_hurtbox_area_entered(area):
+	if area.get_name() == "CatchField":
+		emit_signal("im_hooked")
 	if area.get_parent() is FloatingBobber and state != STATES.PURSUE:
 		state = STATES.PURSUE
 		bobber = area.get_parent()
 		emit_signal("im_lured")
-	if area.get_name() == "CatchField":
-		emit_signal("im_hooked")
 
 func _on_hurtbox_area_exited(area):
 	if area.get_parent() is FloatingBobber and state == STATES.PURSUE:

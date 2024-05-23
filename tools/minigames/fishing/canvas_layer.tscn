@@ -229,5 +229,7 @@ stretch_mode = 5
 offset_right = 4.0
 offset_bottom = 27.0
 
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="reeling_ended" from="." to="." method="_on_reeling_ended"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

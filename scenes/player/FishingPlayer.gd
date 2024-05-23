@@ -10,6 +10,7 @@ signal casting_anim_done
 signal releasing_rod
 
 @onready var rod = $FishingRod
+@onready var ROD_SWING = preload("res://tools/minigames/fishing/sounds/rod_swing.mp3")
 
 const SPEED = 2.0
 const JUMP_VELOCITY = 1.5
@@ -79,6 +80,8 @@ func anim_handler():
 		$AnimatedSprite3D.play("fishing_cast")
 		await $AnimatedSprite3D.animation_finished
 		emit_signal("casting_anim_done")
+		$SfxPlayer.stream = ROD_SWING
+		$SfxPlayer.play()
 	elif currentState == FishingState.WAITING:
 		pass
 	elif currentState == FishingState.FISHING:

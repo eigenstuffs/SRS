@@ -3,6 +3,10 @@ extends CanvasLayer
 signal stop_loop
 signal reeling_ended(is_successful : bool)
 
+const MISS = preload("res://tools/minigames/fishing/sounds/miss.mp3")
+const HOOKED = preload("res://tools/minigames/fishing/sounds/hooked.mp3")
+const CAUGHT = preload("res://tools/minigames/fishing/sounds/fish_caught.mp3")
+
 @onready var ROD_TYPE : FishingRodTypes = preload("res://tools/minigames/fishing/Inventory/types_of_rod.tres")
 @onready var force_bar : TextureProgressBar = $ForceBarBackground/ForceBar
 @onready var force_bar_area = $ForceBarBackground
@@ -121,6 +125,8 @@ func _on_fishing_reeling_minigame():
 	if !reeling_now:
 		reeling_now = true
 		show_and_fade_icon(exclaim)
+		$SfxPlayer.stream = HOOKED
+		$SfxPlayer.play()
 		await get_tree().create_timer(0.5).timeout
 		reel_bar_activate()
 		movable = true
@@ -137,8 +143,12 @@ func _on_reeling_ended(is_successful, current_fish_rarity):
 	reeling_now = false
 	if is_successful:
 		show_and_fade_icon(plus_one)
+		$SfxPlayer.stream = CAUGHT
+		$SfxPlayer.play()
 	else:
 		show_and_fade_icon(miss)
+		$SfxPlayer.stream = MISS
+		$SfxPlayer.play()
 
 #change bite_strength_multiplier
 func _on_fish_instancer_first_fish_info(bite_strength, speed, rarity):
