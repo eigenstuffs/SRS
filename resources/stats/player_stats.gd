@@ -2,6 +2,7 @@ extends Resource
 
 class_name PlayerStats
 
+### STATS
 @export var wisdom : int
 @export var intelligence : int
 @export var charisma : int
@@ -24,7 +25,7 @@ func set_stats(list : Array[int]):
 	print("PLAYER STATS CHANGED: " + str(get_main_stats()))
 	emit_changed()
 
-func get_stat(index : int):
+func get_stat(index : int) -> int:
 	match index:
 		0:
 			return wisdom
@@ -40,10 +41,9 @@ func get_stat(index : int):
 			return prestige
 		_:
 			print("invalid index!")
-	return
+	return -999
 	
 #main stats means the first four
 func get_main_stats() -> Array[int]:
 	var output : Array[int] = [wisdom, intelligence, charisma, wellness]
 	return output
-	
