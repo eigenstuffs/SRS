@@ -15,6 +15,9 @@ class_name MazeMinigame extends Minigame
 @onready var SPEED_UP_SFX = preload("res://tools/minigames/maze/sound/speed_up.wav")
 @onready var KEY_SFX = preload("res://tools/minigames/maze/sound/key_get.wav")
 @onready var DOOR_OPEN_SFX = preload("res://tools/minigames/maze/sound/door_open.wav")
+const FIRST_STAGE_MUSIC = preload("res://tools/minigames/maze/sound/Villianess_Reborn_Minigame_Music_First_Stage.mp3")
+const FASTER_MUSIC = preload("res://tools/minigames/maze/sound/Villianess_Reborn_Minigame_Music_More_Intense.mp3")
+
 @export var time_penalty : int = -5
 var point_get : int = 0
 var all_keys_got : bool = false
@@ -23,6 +26,7 @@ func end():
 	Global.can_move = false
 	$SfxPlayer.stream = GAME_FINISHED_SFX
 	$SfxPlayer.play()
+	music_fade_out()
 	emit_signal("ended")
 	has_ended = true
 	var stats_gained = calculate_stats(remaining_time, maze_metadata.diffMult)
@@ -54,6 +58,9 @@ func _on_maze_generator_all_key_collected():
 	$MazePlayer.set_speed_modifier(2)
 	$MazeGenerator.set_all_enemy_speed_modifier(2)
 	Global.can_move = true #re-enable movement
+	await music_fade_out()
+	$MusicPlayer.stream = FASTER_MUSIC
+	$MusicPlayer.play()
 
 func _on_goal_goal_touched():
 	if all_keys_got:
@@ -73,3 +80,10 @@ func calculate_stats(time : int, multiplier : int) -> Array[int]:
 	var int_gained := roundi((3*time)/60) * multiplier
 	var well_gained := roundi((4*time)/60 + 1) * multiplier
 	return [0, int_gained, 0, well_gained]
+	
+func music_fade_out():
+	var a = create_tween()
+	a.tween_property($MusicPlayer, "volume_db", -80, 2.0)
+	await a.finished
+	$MusicPlayer.stop()
+	$MusicPlayer.volume_db = -8
