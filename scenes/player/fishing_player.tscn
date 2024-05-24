@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://0obt0ysdxga4" path="res://tools/minigames/fishing/fishing_rod/fishing_rod.tscn" id="3_ptm30"]
 [ext_resource type="Texture2D" uid="uid://dnlfugi4bdg57" path="res://tools/minigames/fishing/assets/spritesheet_mini_cecilia_fishing_cast.png" id="4_apfq8"]
 [ext_resource type="Texture2D" uid="uid://dqdc5jtw037og" path="res://tools/minigames/fishing/assets/spritesheet_mini_cecilia_fishing_idle.png" id="5_dex1r"]
-[ext_resource type="Texture2D" uid="uid://bgkaa7x1ip882" path="res://assets/mc.png" id="6_g3q3r"]
+[ext_resource type="Texture2D" uid="uid://bgkaa7x1ip882" path="res://assets/misc/mc.png" id="6_g3q3r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_27mii"]
 atlas = ExtResource("4_apfq8")

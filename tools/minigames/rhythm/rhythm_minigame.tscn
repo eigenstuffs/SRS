@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://tools/minigames/rhythm/environment.gd" id="5_yqwvy"]
 [ext_resource type="PackedScene" uid="uid://6kqupwwsa2f0" path="res://tools/minigames/rhythm/play/board.tscn" id="5_yue8y"]
 [ext_resource type="PackedScene" uid="uid://blv2x4ex2bkn0" path="res://tools/minigames/rhythm/assets/cirno/fumo.tscn" id="6_6fly7"]
-[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/panorama.png" id="6_luhxe"]
+[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/misc/panorama.png" id="6_luhxe"]
 [ext_resource type="Resource" uid="uid://cu4p61lqhyhc6" path="res://resources/beatmap/waltz.tres" id="7_d0cfl"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/assets/cirno/fumofumo.gd" id="7_ej0x1"]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://tools/dialogue/effect_test_scene.gd" id="1_1eiwq"]
 [ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="2_c5de5"]
-[ext_resource type="Texture2D" uid="uid://e83c35i6e8tu" path="res://assets/image0-2.jpg" id="3_qsgy1"]
+[ext_resource type="Texture2D" uid="uid://e83c35i6e8tu" path="res://assets/misc/image0-2.jpg" id="3_qsgy1"]
 
 [node name="EffectTestScene" type="Control"]
 layout_mode = 3

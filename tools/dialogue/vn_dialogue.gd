@@ -71,12 +71,12 @@ signal add_OPP
 const CHARACTER_LIST : CharacterList = preload("res://resources/characters/character_list.tres")
 const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
 
-@onready var box = $Box
-@onready var name_frame = $NameFrame
-@onready var label = $Label
-@onready var character_name = $Name
-@onready var remember = $Remember
-@onready var next = $Next
+@onready var box = $TextBox/Box
+@onready var name_frame = $TextBox/NameFrame
+@onready var label = $TextBox/Label
+@onready var character_name = $TextBox/Name
+@onready var remember = $TextBox/Remember
+@onready var next = $TextBox/Next
 @onready var choice_ui = $Choice
 
 @onready var ui_elements : Array = [

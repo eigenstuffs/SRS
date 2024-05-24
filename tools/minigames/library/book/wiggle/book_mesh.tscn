@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://caetny54og28d"]
 
-[ext_resource type="Texture2D" uid="uid://dvqkobteurqoe" path="res://assets/bookwcel_agwwgawg.png" id="1_1fn3a"]
-[ext_resource type="Texture2D" uid="uid://mpmbiavqjih6" path="res://assets/bookwcel_paper.png" id="2_w3omo"]
+[ext_resource type="Texture2D" uid="uid://dvqkobteurqoe" path="res://assets/misc/bookwcel_agwwgawg.png" id="1_1fn3a"]
+[ext_resource type="Texture2D" uid="uid://mpmbiavqjih6" path="res://assets/misc/bookwcel_paper.png" id="2_w3omo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xoyc"]
 resource_name = "Material"

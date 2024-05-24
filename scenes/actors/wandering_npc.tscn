@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c10ia86b7pi7n"]
 
 [ext_resource type="Script" path="res://scenes/actors/wandering_npc.gd" id="1_b6n0r"]
-[ext_resource type="Texture2D" uid="uid://d35y5nxcpcqwr" path="res://assets/spritesheet_mini_npc_walk.png" id="2_fwbt0"]
+[ext_resource type="Texture2D" uid="uid://d35y5nxcpcqwr" path="res://assets/misc/spritesheet_mini_npc_walk.png" id="2_fwbt0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hq8b"]
 size = Vector3(0.5, 1, 0.02)

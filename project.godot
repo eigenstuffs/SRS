@@ -14,7 +14,7 @@ config/name="SRS"
 run/main_scene="res://scenes/menus/title.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 run/max_fps=144
-config/icon="res://assets/IMG_4946.jpeg"
+config/icon="res://assets/misc/IMG_4946.jpeg"
 
 [autoload]
 

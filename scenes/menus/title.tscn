@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://ccsrql5pidcqv" path="res://assets/ui/Button_Default.png" id="2_jk8cj"]
 [ext_resource type="Texture2D" uid="uid://c8jonukq0ek4k" path="res://assets/ui/Button_Click.png" id="3_rhqcb"]
 [ext_resource type="Texture2D" uid="uid://dcjb5khfra1y2" path="res://assets/ui/Button_Hover.png" id="4_ie6dy"]
-[ext_resource type="Texture2D" uid="uid://be34lpcu247he" path="res://assets/fish.png" id="6_ncctf"]
-[ext_resource type="Texture2D" uid="uid://f1bl0di56y1u" path="res://assets/book.png" id="7_rfqxi"]
-[ext_resource type="Texture2D" uid="uid://x4lgsbode5j6" path="res://assets/rhythm.png" id="8_u63tl"]
+[ext_resource type="Texture2D" uid="uid://be34lpcu247he" path="res://assets/misc/fish.png" id="6_ncctf"]
+[ext_resource type="Texture2D" uid="uid://f1bl0di56y1u" path="res://assets/misc/book.png" id="7_rfqxi"]
+[ext_resource type="Texture2D" uid="uid://x4lgsbode5j6" path="res://assets/misc/rhythm.png" id="8_u63tl"]
 
 [node name="Title" type="Control"]
 z_index = -1

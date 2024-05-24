@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dcfbplcsi22qo"]
 
 [ext_resource type="Script" path="res://tools/minigames/shark_tank/npc_sharktank.gd" id="1_flce1"]
-[ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/spritesheet_mini_npc_idle.png" id="2_3pqwx"]
+[ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/misc/spritesheet_mini_npc_idle.png" id="2_3pqwx"]
 [ext_resource type="PackedScene" uid="uid://bgh3a41nfgulr" path="res://tools/interaction/interaction.tscn" id="4_pnpea"]
 [ext_resource type="Script" path="res://tools/interaction/interaction_dialogue.gd" id="5_yqs5k"]
 

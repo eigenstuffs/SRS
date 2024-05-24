@@ -11,5 +11,5 @@ func _ready():
 		a.card_data = i
 	for i in get_child_count():
 		get_child(i).position = Vector2(i*323, 0)
-		get_child(i).original_pos = Vector2(i*323, 0)
-		
+		self.position = self.position - Vector2(323*0.5, 0)
+		get_child(i).original_pos = get_child(i).global_position

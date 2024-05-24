@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://addons/wigglebone/wiggle_bone.gd" id="1_kck12"]
 [ext_resource type="Resource" uid="uid://bd7q2t67mlcxu" path="res://tools/minigames/library/book/wiggle/book_wiggle.tres" id="2_nagu5"]
-[ext_resource type="Texture2D" uid="uid://dvqkobteurqoe" path="res://assets/bookwcel_agwwgawg.png" id="3_85qsu"]
-[ext_resource type="Texture2D" uid="uid://mpmbiavqjih6" path="res://assets/bookwcel_paper.png" id="4_fl2r3"]
+[ext_resource type="Texture2D" uid="uid://dvqkobteurqoe" path="res://assets/misc/bookwcel_agwwgawg.png" id="3_85qsu"]
+[ext_resource type="Texture2D" uid="uid://mpmbiavqjih6" path="res://assets/misc/bookwcel_paper.png" id="4_fl2r3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xoyc"]
 resource_name = "Material"

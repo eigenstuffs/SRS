@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dm18anwr0e8qc"]
 
 [ext_resource type="Script" path="res://tools/minigames/maze/maze_enemy.gd" id="1_4egut"]
-[ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/spritesheet_mini_npc_idle.png" id="2_whn68"]
+[ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/misc/spritesheet_mini_npc_idle.png" id="2_whn68"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpcfu"]
 size = Vector3(1.5, 2.3, 1.5)

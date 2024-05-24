@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://mqexdrmlw45w"]
 
-[ext_resource type="Texture2D" uid="uid://ucktysloxbk5" path="res://assets/placeholder.png" id="2_gtwjr"]
-[ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/background layer.png" id="3_4fw6x"]
+[ext_resource type="Texture2D" path="res://assets/placeholder.png" id="2_gtwjr"]
+[ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="3_4fw6x"]
 [ext_resource type="PackedScene" uid="uid://dcfbplcsi22qo" path="res://tools/minigames/shark_tank/npc_sharktank.tscn" id="4_br0lr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
