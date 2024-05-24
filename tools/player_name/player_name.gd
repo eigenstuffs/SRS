@@ -31,9 +31,9 @@ func button_pressed():
 	for i in buttons.get_children():
 		if i.button_pressed:
 			i.button_pressed = false
-			var char = get_character(i)
-			if uppercase: char = char.to_upper()
-			input = input + char
+			var _char = get_character(i)
+			if uppercase: _char = _char.to_upper()
+			input = input + _char
 			print(input)
 			update_name()
 

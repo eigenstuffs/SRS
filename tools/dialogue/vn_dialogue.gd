@@ -2,43 +2,71 @@ extends Control
 
 class_name VisualNovelDialogue
 
-signal start_music
-signal boost_stats
-
-signal music_ambience
-signal music_chiptune
-signal music_bgm1
-signal music_bgm2
-
-signal stop_music
-
-signal sfx_truck
-signal sfx_screams
-
 signal fade_black
-signal fade_blacktowhite
 signal fade_blacktored
-
+signal fade_blacktowhite
 signal fade_red
 signal fade_redtowhite
 signal fade_redtoblack
-
 signal fade_white
 signal fade_whitetored
 signal fade_whitetoblack
 
 signal fade_trans
 
+signal music_ambience
+signal music_chiptune
+signal music_bgm1
+signal music_bgm2
+signal stop_music
+
+signal sfx_door_knock
+signal sfx_glass_break
+signal sfx_page_flip
+signal sfx_door_open_close
+signal sfx_impact_3
+signal sfx_creepy_stinger
+signal sfx_reverse_cymbal_ominous
+signal sfx_boom
+signal sfx_church_bell
+signal sfx_impact_1
+signal sfx_impact_2
+signal sfx_school_bell
+signal sfx_battle_start
+signal sfx_rain_looping
+signal sfx_switch_click
+signal sfx_ambiance_echoes
+signal sfx_ambiance_heavy
+signal sfx_melody_save
+signal sfx_rattling_door
+signal sfx_realization
+signal sfx_whoosh_foam
+signal sfx_happy
+signal sfx_epiphany
+signal sfx_heartbeat_looping
+signal sfx_bells_mystery
+signal sfx_bells_countdown
+signal sfx_bells_magic_chime
+signal sfx_reverse_cymbal
+signal sfx_printer_error
+signal sfx_cinematic_glitch
+signal sfx_static_crash
+signal sfx_urban_rain_looping
+signal sfx_game_chime
+signal sfx_game_select
+signal sfx_footstep_running_gravel
+signal sfx_realization_bells
+
+signal stop_sfx
+signal stop_looping_sfx
+
 signal cg_sky
-signal cg_black
-signal cg_death
-signal cg_gamestart
 signal cg_god
-signal cg_room
+signal cg_black
 signal cg_dining
 
-signal add_OPP
 signal add_OOC
+signal add_OPP
 
 const CHARACTER_LIST : CharacterList = preload("res://resources/characters/character_list.tres")
 const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
@@ -281,10 +309,10 @@ func next_anim():
 
 func init_parameters(key : int):
 	var line = result.get(result.keys()[key])
-	var char : Resource = null
+	var _char : Resource = null
 	var prev_mood = current_mood
 	if line["character"] != null:
-		char = CHARACTER_LIST.list.get(line["character"])
+		_char = CHARACTER_LIST.list.get(line["character"])
 		if line["character"] == "Player":
 			character_name.text = Global.player_name
 		else:

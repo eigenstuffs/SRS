@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://jsihguxhu4ri"]
+
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/card_deck.gd" id="2_g3u3q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dmk3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxuic"]
+bg_color = Color(0.454902, 0.870588, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcffu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25auy"]
+bg_color = Color(0.968627, 0.666667, 0.666667, 1)
+
+[node name="SocialWarfare" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vycxu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+color = Color(0.882353, 0.968627, 0.964706, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBars" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_top = 32.0
+offset_right = 224.0
+offset_bottom = 224.0
+grow_horizontal = 2
+
+[node name="PlayerHealth" type="ProgressBar" parent="CanvasLayer/HealthBars"]
+layout_mode = 0
+offset_right = 448.0
+offset_bottom = 64.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5dmk3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oxuic")
+
+[node name="EnemyHealth" type="ProgressBar" parent="CanvasLayer/HealthBars"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 448.0
+offset_bottom = 160.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vcffu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_25auy")
+
+[node name="DialogueHolder" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardDeck" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_g3u3q")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)

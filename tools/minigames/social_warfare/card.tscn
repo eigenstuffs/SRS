@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsx0i2yqh5py"]
+
+[ext_resource type="Texture2D" uid="uid://ccejxo85mtnpy" path="res://assets/socialwarfare/Card_Blank.png" id="1_ndodj"]
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/card_ui.gd" id="2_2l568"]
+
+[node name="Card1" type="TextureButton"]
+offset_left = 400.0
+offset_top = 280.0
+offset_right = 723.0
+offset_bottom = 720.0
+texture_normal = ExtResource("1_ndodj")
+texture_pressed = ExtResource("1_ndodj")
+texture_hover = ExtResource("1_ndodj")
+texture_disabled = ExtResource("1_ndodj")
+texture_focused = ExtResource("1_ndodj")
+script = ExtResource("2_2l568")

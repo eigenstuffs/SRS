@@ -1,8 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://dq7piist510w8"]
 
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare.gd" id="1_62gtl"]
-[ext_resource type="Texture2D" uid="uid://bmx38n2g6h7mp" path="res://assets/spritesheet_cecilia.png" id="1_fy2kp"]
-[ext_resource type="Texture2D" uid="uid://cifksca8mdvhi" path="res://assets/spritesheet_enemy.png" id="2_ibno4"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/move_button.gd" id="4_rio6d"]
 
 [sub_resource type="Animation" id="Animation_5fi3a"]
@@ -153,6 +151,12 @@ _data = {
 "PlayerTalk": SubResource("Animation_1v1gg")
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x4i56"]
+load_path = "res://.godot/imported/spritesheet_cecilia.png-5ee06ebd51332c0c56411af3d9394f17.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1ulp6"]
+load_path = "res://.godot/imported/spritesheet_enemy.png-2bb9f8744c33f183caa7f25e1d6bf3ff.ctex"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dmk3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxuic"]
@@ -192,17 +196,16 @@ libraries = {
 
 [node name="Player" type="Sprite2D" parent="."]
 position = Vector2(512, 544)
-texture = ExtResource("1_fy2kp")
+texture = SubResource("CompressedTexture2D_x4i56")
 hframes = 2
 vframes = 3
 frame = 4
 
 [node name="Enemy" type="Sprite2D" parent="."]
 position = Vector2(1536, 544)
-texture = ExtResource("2_ibno4")
+texture = SubResource("CompressedTexture2D_1ulp6")
 hframes = 2
 vframes = 3
-frame = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
