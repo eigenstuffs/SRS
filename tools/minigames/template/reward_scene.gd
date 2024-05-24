@@ -5,7 +5,6 @@ class_name Reward
 signal preview_done
 signal display_finished
 
-@onready var PLAYER_STATS : PlayerStats = preload("res://resources/stats/player_stats.tres")
 @onready var stats_container = $StatsContainer
 @onready var score_tally = $ScoreTally
 @onready var final_score = $FinalScore
@@ -25,7 +24,6 @@ func set_vars(score : Array, stats : Array):
 func _ready(): 
 	set_final_target()
 	stats_bar_update()
-	PLAYER_STATS.changed.connect(on_stats_changed)
 	hide_tally()
 	hide_final()
 	
@@ -57,24 +55,22 @@ func display_final(stats_gained : Array):
 func stats_bar_update():
 	for bar_index in stats_container.get_child_count():
 		var current_bar : ProgressBar = stats_container.get_child(bar_index)
-		current_bar.get_child(0).text = str(PLAYER_STATS.get_stat(bar_index))
+		current_bar.get_child(0).text = str(Global.get_stat(bar_index))
 		var a = create_tween()
-		a.tween_property(current_bar, "value", PLAYER_STATS.get_stat(bar_index), 0.1)
-
-func on_stats_changed():
-	stats_bar_update()
+		a.tween_property(current_bar, "value", Global.get_stat(bar_index), 0.1)
 
 func modify_stats(points_to_be_modified : Array):
-	var result_stats = PLAYER_STATS.get_main_stats()
+	var result_stats = Global.get_main_stats()
 	for i in range(0, points_to_be_modified.size()):
 		result_stats[i] = result_stats[i] + points_to_be_modified[i]
-	PLAYER_STATS.set_stats(result_stats)
+	Global.set_stats(result_stats)
 	done = true
+	stats_bar_update()
 
 func stats_change_preview(change_by : Array):
 	for bar_index in stats_container.get_child_count():
 		var current_bar : ProgressBar = stats_container.get_child(bar_index)
-		current_bar.get_child(0).text = str(PLAYER_STATS.get_stat(bar_index)) + " + " + str(change_by[bar_index])
+		current_bar.get_child(0).text = str(Global.get_stat(bar_index)) + " + " + str(change_by[bar_index])
 		await get_tree().create_timer(0.35).timeout
 	emit_signal("preview_done")
 

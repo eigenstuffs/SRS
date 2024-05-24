@@ -1,5 +1,8 @@
 extends Node
 
+### Player Stats Resource
+@onready var PLAYER_STATS = preload("res://resources/stats/player_stats.tres")
+
 ### UTILITIES
 
 var can_move = true
@@ -47,3 +50,12 @@ func rename_seraphina(name : String):
 	
 func rename_player(name : String):
 	player_name = name
+
+func set_stats(list : Array[int]):
+	PLAYER_STATS.set_stats(list)
+
+func get_stat(index : int) -> int:
+	return PLAYER_STATS.get_stat(index)
+
+func get_main_stats() -> Array[int]:
+	return PLAYER_STATS.get_main_stats()
