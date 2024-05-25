@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://tools/minigames/maze/maze_reward_scene.gd" id="1_tqxpr"]
 
 [node name="RewardScene" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_tqxpr")
 
 [node name="Backdrop" type="TextureRect" parent="."]

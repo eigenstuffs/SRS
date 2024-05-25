@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_reward_scene.gd" id="1_xs214"]
 
 [node name="RewardScene" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_xs214")
 
 [node name="Backdrop" type="TextureRect" parent="."]

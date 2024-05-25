@@ -54,6 +54,7 @@ func get_remaining_time() -> int:
 
 func _on_ui_game_over():
 	assert(game)
+	if is_finished: return
 	game.remaining_time = get_remaining_time()
 	game.end()
 	await get_tree().create_timer(2).timeout
@@ -61,6 +62,7 @@ func _on_ui_game_over():
 	detailed_points = game.detailed_points
 	finished.emit(detailed_points)
 	EffectRegistry.start_effect(self, 'Blur', [self])
+	is_finished = true
 
 func _on_game_child_entered_tree(node: Node) -> void:
 	if node is Minigame: game = node
@@ -73,6 +75,11 @@ func game_end_early(): #assuming that game calls its own end early
 	rough_points = game.rough_points
 	detailed_points = game.detailed_points
 	finished.emit(detailed_points)
+	EffectRegistry.start_effect(self, 'Blur', [self])
+	is_finished = true
 
 func set_game_remaining_time():
 	game.remaining_time = get_remaining_time()
+	
+func _physics_process(delta: float) -> void:
+	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
