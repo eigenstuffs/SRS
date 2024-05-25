@@ -78,13 +78,14 @@ const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
 @onready var remember = $TextBox/Remember
 @onready var next = $TextBox/Next
 @onready var choice_ui = $Choice
+@onready var sprite_handler : SpriteHandler = $SpriteHandler
 
 @onready var ui_elements : Array = [
 	box,
 	label
 ]
 
-var text
+@export_file("*.json") var text
 
 var result : Dictionary
 var lines : Dictionary = {}
@@ -106,7 +107,9 @@ func _ready():
 	character_name.hide()
 	next.hide()
 	
-	text = Global.return_current_text()
+	if text == null:
+		text = Global.return_current_text()
+	
 	EffectAnim.play_backwards("FadeBlack")
 	await EffectAnim.animation_finished
 	if text:
@@ -309,14 +312,13 @@ func next_anim():
 
 func init_parameters(key : int):
 	var line = result.get(result.keys()[key])
-	var _char : Resource = null
-	var prev_mood = current_mood
 	if line["character"] != null:
-		_char = CHARACTER_LIST.list.get(line["character"])
+		sprite_handler.init_sprite(
+			line["character"].split(","),
+			line["sprite"].split(",")
+		)
 		if line["character"] == "Player":
 			character_name.text = Global.player_name
-		else:
-			character_name.text = line["character"]
 		character_name.show()
 		name_frame.show()
 	else:
@@ -341,9 +343,10 @@ func _input(event):
 			a.tween_property(next, "modulate:a", 0, 0.2)
 			await a.finished
 			emit_signal("next_pressed")
-		elif a.is_running():
-			a.pause()
-			a.custom_step(current_time)
+		elif a:
+			if a.is_running():
+				a.pause()
+				a.custom_step(current_time)
 
 func _on_next_pressed():
 	var a = create_tween()

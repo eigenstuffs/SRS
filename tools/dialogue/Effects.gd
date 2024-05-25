@@ -42,7 +42,7 @@ const SFX_GAME_SELECT = preload("res://assets/sfx/game_alert_2.mp3")
 const SFX_FOOTSTEP_RUNNING_GRAVEL = preload("res://assets/sfx/footsteps_running_1.mp3")
 const SFX_REALIZATION_BELLS = preload("res://assets/sfx/textbox_4.ogg")
 
-const SKY_CG = preload("res://assets/image0-2.jpg")
+const SKY_CG = preload("res://assets/cgs/image0-2.jpg")
 const BLACK_CG = preload("res://assets/cgs/New Project.png")
 const GOD_CG = preload("res://assets/cgs/IMG_5160.png")
 const ROOM_CG = preload("res://assets/cgs/IMG_0552.png")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bakn0rf7616yq"]
+
+[ext_resource type="Texture2D" uid="uid://cvld62fr10on0" path="res://assets/vn/Seraphina/seraphina_sabotage1.PNG" id="1_fn3v4"]
+
+[node name="Character" type="TextureRect"]
+texture = ExtResource("1_fn3v4")
+expand_mode = 3
+stretch_mode = 4

@@ -1,37 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsx0i2yqh5py"]
+[gd_scene load_steps=7 format=3 uid="uid://dsx0i2yqh5py"]
 
 [ext_resource type="Texture2D" uid="uid://ccejxo85mtnpy" path="res://assets/socialwarfare/Card_Blank.png" id="1_ndodj"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/card_ui.gd" id="2_2l568"]
+[ext_resource type="Texture2D" uid="uid://dn282mfgbv8ui" path="res://assets/socialwarfare/faces/IMG_3376.png" id="3_sbvdy"]
 [ext_resource type="Texture2D" uid="uid://cfwqm5gqrmd2o" path="res://assets/socialwarfare/card_middle.png" id="3_ygxub"]
-[ext_resource type="Texture2D" uid="uid://b5fr3k6el67e5" path="res://assets/socialwarfare/faces/IMG_3374.png" id="4_3qmgt"]
+[ext_resource type="FontFile" uid="uid://c6556g6be4xw6" path="res://assets/ui/Halant-Regular.ttf" id="5_yih3g"]
+[ext_resource type="Texture2D" uid="uid://bu3kn6k2hd4wa" path="res://assets/socialwarfare/[SAMPLE REFERENCE] Card.png" id="6_08i2b"]
 
 [node name="Card" type="TextureButton"]
 offset_right = 323.0
 offset_bottom = 440.0
-texture_normal = ExtResource("1_ndodj")
-texture_pressed = ExtResource("1_ndodj")
-texture_hover = ExtResource("1_ndodj")
-texture_disabled = ExtResource("1_ndodj")
-texture_focused = ExtResource("1_ndodj")
+texture_normal = ExtResource("3_ygxub")
+texture_pressed = ExtResource("3_ygxub")
+texture_hover = ExtResource("3_ygxub")
+texture_disabled = ExtResource("3_ygxub")
+texture_focused = ExtResource("3_ygxub")
 script = ExtResource("2_2l568")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 323.0
-offset_bottom = 416.0
-texture = ExtResource("3_ygxub")
-
 [node name="Face" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 2048.0
-offset_bottom = 2048.0
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_3qmgt")
+custom_minimum_size = Vector2(208, 250)
+layout_mode = 2
+offset_left = 57.0
+offset_top = 87.0
+offset_right = 265.0
+offset_bottom = 337.0
+texture = ExtResource("3_sbvdy")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-visible = false
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 323.0
 offset_bottom = 416.0
-texture = ExtResource("3_ygxub")
+texture = ExtResource("1_ndodj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 320.0
+offset_bottom = 400.0
+theme_override_fonts/font = ExtResource("5_yih3g")
+theme_override_font_sizes/font_size = 32
+text = "ASoaihoih
+asodiioh"
+
+[node name="[sampleReference]Card" type="Sprite2D" parent="."]
+position = Vector2(486, 208)
+texture = ExtResource("6_08i2b")

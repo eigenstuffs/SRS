@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e83c35i6e8tu"
-path="res://.godot/imported/image0-2.jpg-62ccdb7713710b8065339e6228d31bfd.ctex"
+uid="uid://5t0s1k8s0c5c"
+path="res://.godot/imported/seraphina_serious4.PNG-f49f2693a350a3ff87eb1122091eb004.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/misc/image0-2.jpg"
-dest_files=["res://.godot/imported/image0-2.jpg-62ccdb7713710b8065339e6228d31bfd.ctex"]
+source_file="res://assets/vn/Seraphina/seraphina_serious4.PNG"
+dest_files=["res://.godot/imported/seraphina_serious4.PNG-f49f2693a350a3ff87eb1122091eb004.ctex"]
 
 [params]
 

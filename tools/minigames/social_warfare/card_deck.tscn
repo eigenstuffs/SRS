@@ -15,28 +15,18 @@ script = ExtResource("1_chru1")
 
 [node name="Card1" parent="." instance=ExtResource("2_kxjmp")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 323.0
-offset_bottom = 440.0
 
 [node name="Card2" parent="." instance=ExtResource("2_kxjmp")]
 layout_mode = 0
 offset_left = 320.0
-offset_top = 0.0
 offset_right = 643.0
-offset_bottom = 440.0
 
 [node name="Card3" parent="." instance=ExtResource("2_kxjmp")]
 layout_mode = 0
 offset_left = 640.0
-offset_top = 0.0
 offset_right = 963.0
-offset_bottom = 440.0
 
 [node name="Card4" parent="." instance=ExtResource("2_kxjmp")]
 layout_mode = 0
 offset_left = 960.0
-offset_top = 0.0
 offset_right = 1283.0
-offset_bottom = 440.0

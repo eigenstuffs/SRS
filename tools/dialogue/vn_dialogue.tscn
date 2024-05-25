@@ -8,10 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://b2b171hiuslon" path="res://assets/music/ambience.mp3" id="4_tjx41"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/Volkhov-Regular.ttf" id="5_2w2a5"]
 [ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/Galdeano-Regular.ttf" id="5_bpopc"]
-[ext_resource type="Texture2D" uid="uid://e83c35i6e8tu" path="res://assets/misc/image0-2.jpg" id="5_dussh"]
+[ext_resource type="Texture2D" uid="uid://e83c35i6e8tu" path="res://assets/cgs/image0-2.jpg" id="5_i18mn"]
 [ext_resource type="Texture2D" uid="uid://ckm7kx76fmepa" path="res://assets/cgs/IMG_5160.png" id="5_j5n5r"]
 [ext_resource type="Texture2D" uid="uid://bd3vg40yeb7ym" path="res://assets/ui/Next Default.png" id="7_fpcsy"]
 [ext_resource type="Texture2D" uid="uid://d02y3ome74of1" path="res://assets/ui/Character Background_Choice.png" id="8_5rtyy"]
+[ext_resource type="Script" path="res://tools/dialogue/SpriteHandler.gd" id="8_6jfjc"]
 [ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="12_17eel"]
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/Volkhov-Bold.ttf" id="12_elsoh"]
 [ext_resource type="FontFile" uid="uid://blo7ft3ovj4yy" path="res://assets/ui/Volkhov-Italic.ttf" id="13_61dic"]
@@ -79,9 +80,6 @@ _data = {
 "RESET": SubResource("Animation_u3l61")
 }
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t0jiw"]
-load_path = "res://.godot/imported/talksprite_npc_A.png-31b308ea2d64166d544f2d94a5ab7587.ctex"
-
 [sub_resource type="BitMap" id="BitMap_3kbno"]
 
 [node name="VN_Dialogue" type="Control"]
@@ -93,6 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("4_g1vbp")
+text = "res://tools/dialogue/vn_scripts/Dialogue - Prototype-3.json"
 
 [node name="EffectHandler" type="Node" parent="."]
 script = ExtResource("12_17eel")
@@ -112,7 +111,7 @@ z_index = -1
 offset_right = 1920.0
 offset_bottom = 1088.0
 mouse_filter = 2
-texture = ExtResource("5_dussh")
+texture = ExtResource("5_i18mn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EffectHandler"]
 libraries = {
@@ -144,10 +143,25 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="SpriteHandler" type="Control" parent="."]
+anchors_preset = 0
+script = ExtResource("8_6jfjc")
+name_string = NodePath("../TextBox/Name")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SpriteHandler"]
+layout_mode = 0
+offset_left = -256.0
+offset_top = -64.0
+offset_right = 2176.0
+offset_bottom = 1088.0
+theme_override_constants/separation = -160
+alignment = 1
+
 [node name="TextBox" type="Control" parent="."]
 anchors_preset = 0
+offset_top = 64.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 104.0
 
 [node name="Box" type="TextureRect" parent="TextBox"]
 layout_mode = 0
@@ -166,12 +180,6 @@ offset_right = 1705.0
 offset_bottom = 697.0
 texture = ExtResource("3_02rei")
 metadata/_edit_lock_ = true
-
-[node name="Sprite" type="TextureRect" parent="TextBox"]
-layout_mode = 0
-offset_left = -1920.0
-offset_bottom = 1080.0
-texture = SubResource("CompressedTexture2D_t0jiw")
 
 [node name="Label" type="RichTextLabel" parent="TextBox"]
 layout_mode = 0

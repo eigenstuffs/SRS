@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Character" load_steps=26 format=3 uid="uid://rphmiq0ax6l6"]
+
+[ext_resource type="Script" path="res://resources/characters/character.gd" id="1_chc16"]
+[ext_resource type="Texture2D" uid="uid://dtkh10xp6f0cp" path="res://assets/vn/Hermes/hermes_eyes1.png" id="2_plaws"]
+[ext_resource type="Texture2D" uid="uid://dl483uoe2pb2j" path="res://assets/vn/Hermes/hermes_eyes2.png" id="3_s4hr4"]
+[ext_resource type="Texture2D" uid="uid://b03retqvqmgtn" path="res://assets/vn/Hermes/hermes_eyes3.png" id="4_hjieg"]
+[ext_resource type="Texture2D" uid="uid://cl45ckrixm0eg" path="res://assets/vn/Hermes/hermes_eyes4.png" id="5_u6tih"]
+[ext_resource type="Texture2D" uid="uid://cxpxte7r2ng2" path="res://assets/vn/Hermes/hermes_eyes5.png" id="6_6mrrd"]
+[ext_resource type="Texture2D" uid="uid://b5ru14ts7dqxe" path="res://assets/vn/Hermes/hermes_eyes6.png" id="7_4t355"]
+[ext_resource type="Texture2D" uid="uid://uo7s5ujsdrvw" path="res://assets/vn/Hermes/hermes_eyes7.png" id="8_80hl3"]
+[ext_resource type="Texture2D" uid="uid://ub3efsgu1ybd" path="res://assets/vn/Hermes/hermes_eyes8.png" id="9_s5kvt"]
+[ext_resource type="Texture2D" uid="uid://dqdk3emao55mj" path="res://assets/vn/Hermes/hermes_eyes9.png" id="10_m0nf3"]
+[ext_resource type="Texture2D" uid="uid://djalm32b1yn4p" path="res://assets/vn/Hermes/hermes_eyes10.png" id="11_vhdta"]
+[ext_resource type="Texture2D" uid="uid://c3ku3k52df6i6" path="res://assets/vn/Hermes/hermes_eyes11.png" id="12_0r5p8"]
+[ext_resource type="Texture2D" uid="uid://dg3gbj74yy1eq" path="res://assets/vn/Hermes/hermes_neutral.png" id="13_skjsc"]
+[ext_resource type="Texture2D" uid="uid://b5wnr3kxn8ohk" path="res://assets/vn/Hermes/hermes_stressed1.png" id="14_risgx"]
+[ext_resource type="Texture2D" uid="uid://c04ajumq3ldm4" path="res://assets/vn/Hermes/hermes_stressed2.png" id="15_p52qx"]
+[ext_resource type="Texture2D" uid="uid://csmcjaswf2b8" path="res://assets/vn/Hermes/hermes_talk1.png" id="16_rqeox"]
+[ext_resource type="Texture2D" uid="uid://wdcqrm2mbar" path="res://assets/vn/Hermes/hermes_talk2.png" id="17_khioq"]
+[ext_resource type="Texture2D" uid="uid://d3c80hgknqei4" path="res://assets/vn/Hermes/hermes_talk3.png" id="18_ecs40"]
+[ext_resource type="Texture2D" uid="uid://cm2wjsmb7q8qd" path="res://assets/vn/Hermes/hermes_talk4.png" id="19_w8ux8"]
+[ext_resource type="Texture2D" uid="uid://dnnjr1uw1js52" path="res://assets/vn/Hermes/hermes_talk5.png" id="20_fuaop"]
+[ext_resource type="Texture2D" uid="uid://dfw7e422p2vkn" path="res://assets/vn/Hermes/hermes_talk6.png" id="21_h0lc6"]
+[ext_resource type="Texture2D" uid="uid://cmtaxj52tfvtr" path="res://assets/vn/Hermes/hermes_talk7.png" id="22_jawbf"]
+[ext_resource type="Texture2D" uid="uid://bisu4s02e5sxx" path="res://assets/vn/Hermes/hermes_talk8.png" id="23_73ypx"]
+[ext_resource type="Texture2D" uid="uid://b31tdd0r18355" path="res://assets/vn/Hermes/hermes_talk9.png" id="24_gnjkj"]
+[ext_resource type="Texture2D" uid="uid://cymdwdkbddf75" path="res://assets/vn/Hermes/hermes_talk10.png" id="25_w53y8"]
+
+[resource]
+script = ExtResource("1_chc16")
+name = "Hermes"
+textures = Array[Texture]([ExtResource("2_plaws"), ExtResource("3_s4hr4"), ExtResource("4_hjieg"), ExtResource("5_u6tih"), ExtResource("6_6mrrd"), ExtResource("7_4t355"), ExtResource("8_80hl3"), ExtResource("9_s5kvt"), ExtResource("10_m0nf3"), ExtResource("11_vhdta"), ExtResource("12_0r5p8"), ExtResource("13_skjsc"), ExtResource("14_risgx"), ExtResource("15_p52qx"), ExtResource("16_rqeox"), ExtResource("17_khioq"), ExtResource("18_ecs40"), ExtResource("19_w8ux8"), ExtResource("20_fuaop"), ExtResource("21_h0lc6"), ExtResource("22_jawbf"), ExtResource("23_73ypx"), ExtResource("24_gnjkj"), ExtResource("25_w53y8")])
