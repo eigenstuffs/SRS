@@ -11,11 +11,9 @@ func _ready() -> void:
 	# FIXME: cursed hack into minigame_holder
 	get_parent().get_parent().ui.connect('startTimeOver', func(): playfield.start())
 	get_parent().get_parent().ui.gTime.queue_free()
-	
-func _process(_delta : float) -> void:
-	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
 
 func _physics_process(delta: float) -> void:
+	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
 	if not has_ended and playfield.audio_synchronizer.time > last_note_time:
 		end()
 	# FIXME: cursed hack into minigame_holder
