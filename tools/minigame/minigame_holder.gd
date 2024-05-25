@@ -24,10 +24,10 @@ func initiate_minigame(which : String):
 		var minigame : Minigame = load(metadata.scene).instantiate()
 		minigame.size = MINIGAME_VIEWPORT_DIMS
 		$Game.add_child(minigame)
-		minigame.connect("update_points", update_points)
-		minigame.connect("update_time", update_time)
-		minigame.connect("ended", game_end_early)
-		minigame.connect("get_remaining_game", set_game_remaining_time)
+		minigame.update_points.connect(update_points)
+		minigame.update_time.connect(update_time)
+		minigame.ended.connect(game_end_early)
+		minigame.get_remaining_time.connect(set_game_remaining_time)
 		
 		if metadata.time <= 0: return
 		ui.gameTimeCount = metadata.time

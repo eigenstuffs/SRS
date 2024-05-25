@@ -47,7 +47,7 @@ func _ready() -> void:
 	last_window_size = viewport.size
 	main_window_size_changed.connect(_on_main_window_size_changed)
 
-	add_child(timer)
+	add_child.call_deferred(timer)
 	timer.timeout.connect(_on_timeout)
 
 func _process(_delta : float) -> void:
