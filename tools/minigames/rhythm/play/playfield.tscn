@@ -187,8 +187,6 @@ shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), Su
 
 [node name="Playfield" type="Node3D"]
 script = ExtResource("1_a1v4t")
-note_speed = null
-show_debug = null
 
 [node name="AudioSynchronizer" parent="." instance=ExtResource("3_g2rft")]
 
@@ -276,5 +274,11 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 21
 text = "Enabled Shader Passes:"
+
+[node name="Effects" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="on_beat" from="AudioSynchronizer" to="." method="_on_audio_synchronizer_on_beat"]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://tools/minigames/template/reward_scene.gd" id="1_p1o4n"]
 
 [node name="RewardScene" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_p1o4n")
 
 [node name="Backdrop" type="TextureRect" parent="."]

@@ -5,8 +5,6 @@ signal fishing_ends
 signal fish_hooked
 signal bobber_enter_water
 
-@onready var moving_bobber : RigidBody3D = $MovingBobber
-@onready var floating_bobber : RigidBody3D = $FloatingBobber
 @onready var bobber = preload("res://tools/minigames/fishing/fishing_rod/floating_bobber.tscn")
 
 var bobber_initial_v : Vector3 = Vector3(0, 5, 3)
