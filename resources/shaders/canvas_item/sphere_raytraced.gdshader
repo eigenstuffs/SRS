@@ -1,7 +1,7 @@
 shader_type canvas_item;
 render_mode unshaded;
 
-#define AA_PASSES (3)
+#define AA_PASSES (2)
 #define FOV (90.)
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
@@ -32,9 +32,9 @@ void fragment() {
 	float w = -1.0 / tan(radians(FOV)*0.5);
 	
 	// --- World ---
-	vec3 camera_origin = vec3(0, 0, 1.5);
+	vec3 camera_origin = vec3(0, 0, 2.0);
 	vec3 light_pos = normalize(vec3(1));
-	vec4 sphere = vec4(vec3(0, sin(TIME)*0.05, 0), 0.5); // w = radius
+	vec4 sphere = vec4(vec3(0, sin(TIME)*0.05, 0), 1.0); // w = radius
 	
 	// --- Color ---
 	COLOR.rgb = vec3(0);

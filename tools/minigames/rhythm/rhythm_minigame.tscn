@@ -18,7 +18,7 @@ sky_material = SubResource("PanoramaSkyMaterial_a8ggx")
 [sub_resource type="Environment" id="Environment_oefpv"]
 background_mode = 2
 sky = SubResource("Sky_eq6kb")
-sky_rotation = Vector3(1415.98, -1.5708, -4.71239)
+sky_rotation = Vector3(1898.84, -1.5708, -4.71239)
 tonemap_mode = 2
 glow_enabled = true
 
