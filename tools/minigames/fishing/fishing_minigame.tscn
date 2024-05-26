@@ -1,12 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjt4skwe1eu5h"]
+[gd_scene load_steps=26 format=3 uid="uid://bjt4skwe1eu5h"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_minigame.gd" id="1_rrich"]
 [ext_resource type="PackedScene" uid="uid://cj57sfea8xmsy" path="res://tools/minigames/fishing/canvas_layer.tscn" id="2_1qyje"]
 [ext_resource type="PackedScene" uid="uid://hq67rtu14odh" path="res://tools/minigames/fishing/fish/fish_instancer.tscn" id="2_cead1"]
 [ext_resource type="Script" path="res://tools/minigames/fishing/Water.gd" id="3_slp7l"]
+[ext_resource type="Texture2D" uid="uid://8vaoxu7b2g52" path="res://assets/misc/IMG_3408.png" id="4_fpl4c"]
 [ext_resource type="PackedScene" uid="uid://cac7s21gtcba8" path="res://scenes/player/fishing_player.tscn" id="4_y1r0s"]
 [ext_resource type="Material" uid="uid://dcgy7qsnns5qf" path="res://tools/minigames/fishing/water/water.tres" id="6_7is7m"]
 [ext_resource type="Shader" path="res://tools/minigames/fishing/water/sea_floor.gdshader" id="7_kygv1"]
+[ext_resource type="Texture2D" uid="uid://bqmn70ufrh38s" path="res://assets/misc/IMG_3410.png" id="9_46vtv"]
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/misc/panorama.png" id="9_i0a1k"]
 [ext_resource type="Script" path="res://tools/minigames/fishing/Camera3D4.gd" id="9_ji1k5"]
 
@@ -27,7 +29,7 @@ glow_enabled = true
 size = Vector3(3.57535, 1.31055, 18.437)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkhmw"]
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(0.192157, 0.0862745, 0.00784314, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d8xei"]
 material = SubResource("StandardMaterial3D_xkhmw")
@@ -55,6 +57,7 @@ frequency = 0.0036
 fractal_gain = 5.715
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4p5nf"]
+normalize = false
 noise = SubResource("FastNoiseLite_ta24x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bgbki"]
@@ -89,28 +92,41 @@ shape = SubResource("BoxShape3D_rve5y")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 transform = Transform3D(0.212278, -2.20313e-23, -1.931e-08, 4.67676e-24, 1, -1.04503e-23, 4.09909e-09, 1.04503e-23, 1, -21.5094, 0.00840366, 9.12696e-07)
+visible = false
 layers = 3
 mesh = SubResource("PlaneMesh_d8xei")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Ground"]
+transform = Transform3D(0.3, 0, -1.58819e-22, 1.13609e-24, -1.31134e-08, 0.3, 3.67098e-16, -0.3, -1.31134e-08, -2.17411, 8.33535e-16, 0.226304)
+texture = ExtResource("4_fpl4c")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Ground"]
+transform = Transform3D(0.3, 0, -2.64698e-22, 1.13609e-24, -1.31134e-08, 0.3, 3.67098e-16, -0.3, -1.31134e-08, -2.17411, -1.66035e-15, -6.92384)
+texture = ExtResource("4_fpl4c")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Ground"]
+transform = Transform3D(0.3, 0, -4.76456e-22, 1.13609e-24, -1.31134e-08, 0.3, 3.67098e-16, -0.3, -1.31134e-08, -2.17411, 3.3311e-15, 7.38865)
+texture = ExtResource("4_fpl4c")
 
 [node name="Colliders" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
 
 [node name="Back Wall" type="StaticBody3D" parent="Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.743394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.81127)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Back Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0, -2.9551)
 shape = SubResource("BoxShape3D_iucpa")
 
 [node name="Front Wall" type="StaticBody3D" parent="Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.87005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.17421)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Front Wall"]
 transform = Transform3D(1, -2.49453e-24, -2.66974e-09, -3.92593e-24, 1, -4.70196e-24, -4.475e-10, -8.45381e-24, 1, -0.0054835, 0, -7.44162)
 shape = SubResource("BoxShape3D_iucpa")
 
 [node name="Left Wall" type="StaticBody3D" parent="Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39182, 0, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39182, 0, -0.110318)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Left Wall"]
 transform = Transform3D(1, 9.63508e-22, -3.43357e-09, -6.67044e-24, 1, -9.45091e-24, -1.21133e-09, -1.21129e-22, 1, 1.32144, 0, -3.85673)
@@ -138,7 +154,7 @@ transform = Transform3D(1, 4.50224e-23, -3.43357e-09, -6.67044e-24, 1, -9.45091e
 shape = SubResource("BoxShape3D_odbwy")
 
 [node name="fish_instancer" parent="." instance=ExtResource("2_cead1")]
-transform = Transform3D(-4.37114e-08, -3.48787e-16, -0.634442, 3.48787e-16, 1, -2.21285e-16, 1, -3.48787e-16, -2.77324e-08, 0.053, 1.45, 1.387)
+transform = Transform3D(-4.37114e-08, -3.48787e-16, -0.634442, 3.48787e-16, 1, -2.21285e-16, 1, -3.48787e-16, -2.77324e-08, 0.053, 1.58216, 1.387)
 MAX_FISH_COUNT = 10
 
 [node name="Water" type="Node3D" parent="."]
@@ -146,13 +162,14 @@ transform = Transform3D(-4.37114e-08, -3.48787e-16, -1.8301, 3.48787e-16, 1, -6.
 script = ExtResource("3_slp7l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Water"]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999999, 1.85171, -1.04078e-17, -2.6077e-08)
+transform = Transform3D(0.999999, 1.53138e-22, 3.31898e-14, -1.90909e-23, 0.999998, -2.47469e-23, -6.54359e-16, -8.21593e-23, 0.999999, 1.66777, -0.0750525, -1.86265e-08)
 layers = 3
 mesh = SubResource("PlaneMesh_t6m4j")
 surface_material_override/0 = ExtResource("6_7is7m")
 
 [node name="SeaFloorMesh (Variation In Height Makes Water Look Better Since It Modulates Between A Deep and Shallow Color) (Feel Free To Change This)" type="MeshInstance3D" parent="Water"]
 transform = Transform3D(1.05923, 0, 0, -8.73503e-22, 0.90919, -9.05278e-24, 0, -1.26083e-23, 1.1424, -0.741774, -3.05772, 1.11759e-08)
+visible = false
 layers = 3
 mesh = SubResource("PlaneMesh_1621q")
 surface_material_override/0 = SubResource("ShaderMaterial_bgbki")
@@ -166,11 +183,16 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81472, 0, 0.0244763)
 shape = SubResource("BoxShape3D_jq107")
 
+[node name="Sprite3D" type="Sprite3D" parent="Water"]
+transform = Transform3D(0.7, 1.30422e-14, -1.14606e-22, -2.47364e-22, -2.18557e-08, -0.5, -7.691e-15, 0.5, -2.18557e-08, 2.47578, -0.179751, -5.96046e-08)
+modulate = Color(1, 1, 1, 0.701961)
+texture = ExtResource("9_46vtv")
+
 [node name="FishingPlayer" parent="." instance=ExtResource("4_y1r0s")]
-transform = Transform3D(-4.37114e-08, 0.707106, -0.707107, 2.4663e-16, 0.707106, 0.707107, 1, 3.09086e-08, -3.09086e-08, 4.76837e-07, 0.668755, -3.7134)
+transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 3.36902e-16, 0.965925, 0.258819, 1, 1.13133e-08, -4.2222e-08, 4.76837e-07, 1.89059, -3.7134)
 
 [node name="Camera3D4" type="Camera3D" parent="FishingPlayer"]
-transform = Transform3D(1, -1.42109e-14, -4.26326e-14, 3.55271e-15, 1, -1.9042e-08, 7.10543e-15, 1.2001e-08, 1, 3.47129, -0.704038, 4.54141)
+transform = Transform3D(1, -3.55271e-15, -2.18376e-15, 1.77636e-15, 0.258819, 0.965927, 0, -0.965926, 0.258819, 2.46533, 3.53443, 0.919089)
 current = true
 fov = 60.0
 size = 73.377

@@ -1,11 +1,16 @@
 class_name SpriteHandler extends Control
 
 @export_node_path("Label") var name_string
+@export_node_path("TextureRect") var cecilia_texture
+@export_node_path("RichTextLabel") var text
+@export_node_path("TextureRect") var name_frame
+@export_node_path("Label") var name_frame_text
 
 var focused_char = null
 
 const CHARACTER_SPRITE = preload("res://tools/dialogue/character_sprite.tscn")
 const CHARACTER_LIST = preload("res://resources/characters/character_list.tres")
+const CECILIA = preload("res://resources/characters/cecilia.tres")
 
 func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 	print(character_list)
@@ -95,3 +100,28 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 		5:
 			$HBoxContainer["theme_override_constants/separation"] = -400
 	
+func init_cecilia(sprite):
+	if sprite:
+		get_node(cecilia_texture).modulate.a = 0
+		for i in CECILIA.textures:
+			if i.resource_path.ends_with(
+				sprite + ".PNG"
+			):
+				var a = create_tween()
+				a.tween_property(
+					get_node(cecilia_texture),
+					"modulate:a",
+					1,
+					0.2
+				)
+				get_node(cecilia_texture).texture = i
+				get_node(text).position.x = 432
+				get_node(text).size.x = 1216
+				get_node(name_frame).position.x = 432
+				get_node(name_frame_text).position.x = 432+40
+				break
+	else:
+			get_node(text).position.x = 256
+			get_node(text).size.x = 1364
+			get_node(name_frame).position.x = 360
+			get_node(name_frame_text).position.x = 400

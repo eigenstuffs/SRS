@@ -1,6 +1,6 @@
 {
   "start": {
-	"character": "Akatius",
+	"character": "!Lord Akatius",
 	"sprite": "blush1",
 	"cecilia": null,
 	"text": "Hi",
@@ -15,7 +15,7 @@
 	"flag": null
   },
   "two": {
-	"character": "!Akatius,Cecilia",
+	"character": "!Lord Akatius,Cecilia",
 	"sprite": "lab1,smile1",
 	"cecilia": null,
 	"text": "Hello",
@@ -30,7 +30,7 @@
 	"flag": null
   },
   "three": {
-	"character": "Akatius,!Cecilia",
+	"character": "Lord Akatius,!Cecilia",
 	"sprite": "blush2,talk_evil3",
 	"cecilia": null,
 	"text": "Blarg",
@@ -45,7 +45,7 @@
 	"flag": null
   },
   "four": {
-	"character": "Akatiius,Cecilia,!Seraphina",
+	"character": "Lord Akatiius,Cecilia,!Seraphina",
 	"sprite": "lab2,thinking3,calm2",
 	"cecilia": null,
 	"text": "Ok",
@@ -60,9 +60,9 @@
 	"flag": null
   },
   "five": {
-	"character": "null,null,Seraphina",
-	"sprite": "null,null,scary4",
-	"cecilia": null,
+	"character": "null,null,null,null,Seraphina",
+	"sprite": "null,null,null,null,scary4",
+	"cecilia": "stressed7",
 	"text": "Goodbye",
 	"go to": null,
 	"options": null,
@@ -73,5 +73,20 @@
 	"add": null,
 	"set": null,
 	"flag": null
-  }
+  },
+	"five": {
+		"character": "!Esra,null,null,null,Seraphina",
+		"sprite": "scary4,null,null,null,scary4",
+		"cecilia": "stressed7",
+		"text": "Aihaoshioshoiahdoihsd",
+		"go to": null,
+		"options": null,
+		"options_id": null,
+		"emit": null,
+		"delay": null,
+		"run if": null,
+		"add": null,
+		"set": null,
+		"flag": null
+	  }
 }

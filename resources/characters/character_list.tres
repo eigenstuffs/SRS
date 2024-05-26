@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterList" load_steps=9 format=3 uid="uid://bc5c4s52s0g6n"]
+[gd_resource type="Resource" script_class="CharacterList" load_steps=10 format=3 uid="uid://bc5c4s52s0g6n"]
 
 [ext_resource type="Script" path="res://resources/characters/character_list.gd" id="1_525xs"]
 [ext_resource type="Resource" uid="uid://b0siqsngdqoj2" path="res://resources/characters/akatius.tres" id="1_p6ugo"]
@@ -8,7 +8,8 @@
 [ext_resource type="Resource" uid="uid://bhxluphieft1c" path="res://resources/characters/isidora.tres" id="5_fmutq"]
 [ext_resource type="Resource" uid="uid://dyjmwqypk8p1b" path="res://resources/characters/maverick.tres" id="6_33rb4"]
 [ext_resource type="Resource" uid="uid://dqo050lia7fcj" path="res://resources/characters/seraphina.tres" id="7_njqdy"]
+[ext_resource type="Resource" uid="uid://bvwdg4btn4rug" path="res://resources/characters/esra.tres" id="8_5gb6a"]
 
 [resource]
 script = ExtResource("1_525xs")
-list = Array[Resource]([ExtResource("1_p6ugo"), ExtResource("2_imrp4"), ExtResource("3_d04rf"), ExtResource("4_lac4e"), ExtResource("5_fmutq"), ExtResource("6_33rb4"), ExtResource("7_njqdy")])
+list = Array[Resource]([ExtResource("1_p6ugo"), ExtResource("2_imrp4"), ExtResource("3_d04rf"), ExtResource("4_lac4e"), ExtResource("5_fmutq"), ExtResource("6_33rb4"), ExtResource("7_njqdy"), ExtResource("8_5gb6a")])

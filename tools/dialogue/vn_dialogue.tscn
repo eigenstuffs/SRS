@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=39 format=3 uid="uid://drqf7jcr25yqx"]
 
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/ui/Dialogue Box.png" id="2_eyrgx"]
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
@@ -17,6 +17,23 @@
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/Volkhov-Bold.ttf" id="12_elsoh"]
 [ext_resource type="FontFile" uid="uid://blo7ft3ovj4yy" path="res://assets/ui/Volkhov-Italic.ttf" id="13_61dic"]
 [ext_resource type="FontFile" uid="uid://b5ootysr42ce3" path="res://assets/ui/Volkhov-BoldItalic.ttf" id="14_q7m4c"]
+[ext_resource type="Texture2D" uid="uid://c1e342tutqkm0" path="res://assets/vn/Cecilia/cecilia_default2.PNG" id="17_od5v0"]
+[ext_resource type="Texture2D" uid="uid://bo2omw0hx2b04" path="res://assets/vn/Settings/Autoplay.png" id="18_snyv8"]
+[ext_resource type="Texture2D" uid="uid://dg2mgqexrxkuq" path="res://assets/vn/Settings/Autoplay_Click.png" id="19_0c4ku"]
+[ext_resource type="Texture2D" uid="uid://df1gx2derxy74" path="res://assets/vn/Settings/Autoplay_Hover.png" id="20_evjav"]
+[ext_resource type="Texture2D" uid="uid://cxks3xttgv28h" path="res://assets/vn/Settings/Hide.png" id="21_unksq"]
+[ext_resource type="Texture2D" uid="uid://db1yt0oia8vd6" path="res://assets/vn/Settings/Hide_Click.png" id="22_4513m"]
+[ext_resource type="Texture2D" uid="uid://8gwntda51sxc" path="res://assets/vn/Settings/Hide_Hover.png" id="23_aycvg"]
+[ext_resource type="Texture2D" uid="uid://cfrru3bgk1jrx" path="res://assets/vn/Settings/History.png" id="24_28eyj"]
+[ext_resource type="Texture2D" uid="uid://dugsdj4vxrpt1" path="res://assets/vn/Settings/History_Click.png" id="25_0o1no"]
+[ext_resource type="Texture2D" uid="uid://cldjo05au0es8" path="res://assets/vn/Settings/History_Hover.png" id="26_a1ldb"]
+[ext_resource type="Texture2D" uid="uid://cew36lj3f360c" path="res://assets/vn/Settings/Skip.png" id="27_mudnd"]
+[ext_resource type="Texture2D" uid="uid://dwh2g2qjpuha0" path="res://assets/vn/Settings/Skip_Click.png" id="28_h1dlp"]
+[ext_resource type="Texture2D" uid="uid://cf1a2qldmtjrk" path="res://assets/vn/Settings/Skip_Hover.png" id="29_mqroi"]
+[ext_resource type="Texture2D" uid="uid://dqsbupp8nl3jc" path="res://assets/vn/Settings/drop-down menu_default.png" id="30_kxy2c"]
+[ext_resource type="Texture2D" uid="uid://dxkuxdwxibop5" path="res://assets/vn/Settings/drop-down_clicked.png" id="31_14bfd"]
+[ext_resource type="Texture2D" uid="uid://cuf4r4vg05nv6" path="res://assets/vn/Settings/[Reference] Dialogue_ Fake Screenshot_Default.png" id="33_5pxjq"]
+[ext_resource type="Texture2D" uid="uid://ckahvnqljtcgj" path="res://assets/vn/Settings/drop down_backplate.png" id="34_mqe1k"]
 
 [sub_resource type="Animation" id="Animation_sielb"]
 resource_name = "God_BG"
@@ -147,6 +164,10 @@ offset_bottom = 40.0
 anchors_preset = 0
 script = ExtResource("8_6jfjc")
 name_string = NodePath("../TextBox/Name")
+cecilia_texture = NodePath("../TextBox/Cecilia")
+text = NodePath("../TextBox/Label")
+name_frame = NodePath("../TextBox/NameFrame")
+name_frame_text = NodePath("../TextBox/Name")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SpriteHandler"]
 layout_mode = 0
@@ -164,6 +185,7 @@ offset_right = 40.0
 offset_bottom = 104.0
 
 [node name="Box" type="TextureRect" parent="TextBox"]
+modulate = Color(1, 1, 1, 0.901961)
 layout_mode = 0
 offset_left = 104.5
 offset_top = 650.0
@@ -174,19 +196,33 @@ metadata/_edit_lock_ = true
 
 [node name="NameFrame" type="TextureRect" parent="TextBox"]
 layout_mode = 0
-offset_left = 1214.0
+offset_left = 384.0
 offset_top = 598.0
-offset_right = 1705.0
+offset_right = 875.0
 offset_bottom = 697.0
 texture = ExtResource("3_02rei")
-metadata/_edit_lock_ = true
+
+[node name="Name" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 622.0
+offset_right = 915.0
+offset_bottom = 674.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_colors/font_outline_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("5_bpopc")
+theme_override_font_sizes/font_size = 48
+text = "Rose Violet"
+autowrap_mode = 3
+visible_characters_behavior = 1
 
 [node name="Label" type="RichTextLabel" parent="TextBox"]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 725.0
-offset_right = 1620.0
-offset_bottom = 1024.0
+offset_left = 432.0
+offset_top = 732.0
+offset_right = 1648.0
+offset_bottom = 1031.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.101961, 1)
 theme_override_constants/line_separation = 10
 theme_override_fonts/normal_font = ExtResource("5_2w2a5")
@@ -201,21 +237,6 @@ bbcode_enabled = true
 text = "Lorem ipsum
 ultricies"
 visible_characters_behavior = 1
-
-[node name="Name" type="Label" parent="TextBox"]
-layout_mode = 0
-offset_left = 1269.0
-offset_top = 622.0
-offset_right = 1653.0
-offset_bottom = 674.0
-theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
-theme_override_fonts/font = ExtResource("5_bpopc")
-theme_override_font_sizes/font_size = 48
-text = "Rose Violet"
-horizontal_alignment = 1
-autowrap_mode = 3
-visible_characters_behavior = 1
-metadata/_edit_lock_ = true
 
 [node name="Remember" type="Label" parent="TextBox"]
 visible = false
@@ -246,6 +267,75 @@ texture_disabled = ExtResource("7_fpcsy")
 texture_focused = ExtResource("7_fpcsy")
 texture_click_mask = SubResource("BitMap_3kbno")
 metadata/_edit_lock_ = true
+
+[node name="Cecilia" type="TextureRect" parent="TextBox"]
+layout_mode = 0
+offset_left = -96.0
+offset_top = 384.0
+offset_right = 530.0
+offset_bottom = 1216.0
+texture = ExtResource("17_od5v0")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Settings" type="VBoxContainer" parent="TextBox"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 0
+offset_left = 1833.0
+offset_top = 728.0
+offset_right = 1897.0
+offset_bottom = 984.0
+theme_override_constants/separation = 0
+
+[node name="Skip" type="TextureButton" parent="TextBox/Settings"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("27_mudnd")
+texture_pressed = ExtResource("28_h1dlp")
+texture_hover = ExtResource("29_mqroi")
+texture_focused = ExtResource("29_mqroi")
+stretch_mode = 0
+
+[node name="Autoplay" type="TextureButton" parent="TextBox/Settings"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("18_snyv8")
+texture_pressed = ExtResource("19_0c4ku")
+texture_hover = ExtResource("20_evjav")
+texture_focused = ExtResource("20_evjav")
+stretch_mode = 0
+
+[node name="Log" type="TextureButton" parent="TextBox/Settings"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("24_28eyj")
+texture_pressed = ExtResource("25_0o1no")
+texture_hover = ExtResource("26_a1ldb")
+texture_focused = ExtResource("26_a1ldb")
+stretch_mode = 0
+
+[node name="Hide" type="TextureButton" parent="TextBox/Settings"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("21_unksq")
+texture_pressed = ExtResource("22_4513m")
+texture_hover = ExtResource("23_aycvg")
+texture_focused = ExtResource("23_aycvg")
+stretch_mode = 0
+
+[node name="DropDown" type="TextureButton" parent="TextBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 1833.0
+offset_top = 652.0
+offset_right = 1897.0
+offset_bottom = 716.0
+toggle_mode = true
+texture_normal = ExtResource("30_kxy2c")
+texture_pressed = ExtResource("31_14bfd")
+texture_hover = ExtResource("30_kxy2c")
+texture_focused = ExtResource("30_kxy2c")
+stretch_mode = 3
 
 [node name="Choice" type="Control" parent="."]
 anchors_preset = 0
@@ -442,5 +532,23 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 1
+
+[node name="[reference]DialogueFakeScreenshotDropDown" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.333333)
+position = Vector2(960, 544)
+texture = ExtResource("33_5pxjq")
+
+[node name="[reference]DialogueFakeScreenshotDefault" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.313726)
+position = Vector2(960, 550)
+texture = ExtResource("33_5pxjq")
+
+[node name="DropDownBackplate" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1856, 912)
+scale = Vector2(1, 0.9)
+texture = ExtResource("34_mqe1k")
 
 [connection signal="pressed" from="TextBox/Next" to="." method="_on_next_pressed"]

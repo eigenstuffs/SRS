@@ -39,5 +39,5 @@
 
 [resource]
 script = ExtResource("1_yfmem")
-name = "Akatius"
+name = "Lord Akatius"
 textures = Array[Texture]([ExtResource("2_pb5pb"), ExtResource("3_aehoo"), ExtResource("4_6h8xm"), ExtResource("5_a7xo2"), ExtResource("6_lrdy6"), ExtResource("7_iqywf"), ExtResource("8_707m0"), ExtResource("9_q3wca"), ExtResource("10_1b06u"), ExtResource("11_r2qj0"), ExtResource("12_gxsjv"), ExtResource("13_7801e"), ExtResource("14_rycup"), ExtResource("15_ocmda"), ExtResource("16_co5fg"), ExtResource("17_pmi0d"), ExtResource("18_pce4r"), ExtResource("19_dhg3o"), ExtResource("20_qidy4"), ExtResource("21_r0vpk"), ExtResource("22_wk52h"), ExtResource("23_5e8m0"), ExtResource("24_s4ane"), ExtResource("25_pa7xg"), ExtResource("26_td4cs"), ExtResource("27_3g25v"), ExtResource("28_v3pva"), ExtResource("29_1x44y"), ExtResource("30_p5n7n"), ExtResource("31_4dewl"), ExtResource("32_gkvfk"), ExtResource("33_sqx63"), ExtResource("34_xc4fi"), ExtResource("35_uj5kr"), ExtResource("36_kax30")])

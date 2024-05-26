@@ -312,6 +312,7 @@ func next_anim():
 
 func init_parameters(key : int):
 	var line = result.get(result.keys()[key])
+	sprite_handler.init_cecilia(line["cecilia"])
 	if line["character"] != null:
 		sprite_handler.init_sprite(
 			line["character"].split(","),
