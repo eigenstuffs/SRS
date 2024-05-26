@@ -56,4 +56,4 @@ func calculate_stats(fish_types) -> Array[int]:
 
 
 func _on_fishing_player_releasing_rod():
-	fishing_rod.bobber_initial_v.z = 5 * force_multiplier
+	fishing_rod.bobber_initial_v.z = 4 * force_multiplier

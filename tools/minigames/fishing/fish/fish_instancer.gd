@@ -51,20 +51,23 @@ func _on_fishing_reeling_minigame():
 	var min_dist : float = 99999999
 	var closest_fish : Fish
 	for fishie in fish_array:
-		fishie.state = Fish.STATES.WANDER #release the fish back to wander
-		if (bobber_pos - fishie.global_position).length() <= min_dist:
-			closest_fish = fishie
+		if fishie != null:
+			fishie.state = Fish.STATES.WANDER #release the fish back to wander
+			if (bobber_pos - fishie.global_position).length() <= min_dist:
+				closest_fish = fishie
 	fish_array = []
-	fish_array.append(closest_fish)
-	closest_fish.state = Fish.STATES.STOP
-	emit_signal("first_fish_info", closest_fish.bite_strength, closest_fish.speed, closest_fish.rarity)
+	if closest_fish != null:
+		fish_array.append(closest_fish)
+		closest_fish.state = Fish.STATES.STOP
+		emit_signal("first_fish_info", closest_fish.bite_strength, closest_fish.speed, closest_fish.rarity)
 
 func _on_fishing_reeling_minigame_end(is_successful):
 	var to_be_freed = fish_array[0]
-	if is_successful:
-		to_be_freed.queue_free()
-	else:
-		to_be_freed.state = Fish.STATES.WANDER
+	if to_be_freed != null:
+		if is_successful:
+			to_be_freed.queue_free()
+		else:
+			to_be_freed.state = Fish.STATES.WANDER
 	fish_array = []
 	for fish in fish_folder.get_children():
 		fish.state = Fish.STATES.WANDER
