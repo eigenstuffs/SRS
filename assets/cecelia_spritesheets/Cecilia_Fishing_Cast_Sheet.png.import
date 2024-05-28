@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwoykkxtcwxcs"
-path.s3tc="res://.godot/imported/Cecilia_Idle_Sheet.png-23a93e78f52475b88dfcad64a74cc6a2.s3tc.ctex"
+uid="uid://yyupul86nj6e"
+path.s3tc="res://.godot/imported/Cecilia_Fishing_Cast_Sheet.png-26284eb8523712fc4f2638da12980bbb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/cecelia_spritesheets/Cecilia_Idle_Sheet.png"
-dest_files=["res://.godot/imported/Cecilia_Idle_Sheet.png-23a93e78f52475b88dfcad64a74cc6a2.s3tc.ctex"]
+source_file="res://assets/cecelia_spritesheets/Cecilia_Fishing_Cast_Sheet.png"
+dest_files=["res://.godot/imported/Cecilia_Fishing_Cast_Sheet.png-26284eb8523712fc4f2638da12980bbb.s3tc.ctex"]
 
 [params]
 

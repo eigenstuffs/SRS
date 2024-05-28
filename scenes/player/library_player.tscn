@@ -1,7 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://cifju81wyjjw4"]
+[gd_scene load_steps=36 format=3 uid="uid://cifju81wyjjw4"]
 
 [ext_resource type="Script" path="res://scenes/player/library_player.gd" id="1_0wy6d"]
-[ext_resource type="Texture2D" uid="uid://bixewrnfcu3pn" path="res://assets/cecelia_spritesheets/Cecilia_Idle_Sheet.png" id="2_7w2t8"]
+[ext_resource type="Texture2D" uid="uid://bwoykkxtcwxcs" path="res://assets/cecelia_spritesheets/Cecilia_Idle_Sheet.png" id="2_7w2t8"]
 [ext_resource type="Texture2D" uid="uid://bbmghnsaolthq" path="res://assets/cecelia_spritesheets/Cecilia_Library_Fail_Sheet.png" id="2_gn5hl"]
 [ext_resource type="Texture2D" uid="uid://deyxjtpwdgsxu" path="res://assets/cecelia_spritesheets/Cecilia_Damage_Sheet.png" id="2_vk51n"]
 [ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="3_lbixs"]
@@ -54,33 +54,37 @@ region = Rect2(1920, 0, 1920, 2000)
 atlas = ExtResource("2_vk51n")
 region = Rect2(3840, 0, 1920, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ixwb3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ure6"]
 atlas = ExtResource("2_7w2t8")
 region = Rect2(0, 0, 1920, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oicgx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m02o3"]
 atlas = ExtResource("2_7w2t8")
 region = Rect2(1920, 0, 1920, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iggug"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6j5q"]
 atlas = ExtResource("2_7w2t8")
 region = Rect2(3840, 0, 1920, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vxymt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlrub"]
 atlas = ExtResource("2_7w2t8")
 region = Rect2(5760, 0, 1920, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8e52q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc3sx"]
 atlas = ExtResource("2_7w2t8")
 region = Rect2(7680, 0, 1920, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eft3q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0e1p"]
 atlas = ExtResource("2_7w2t8")
 region = Rect2(9600, 0, 1920, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjs3x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_662ol"]
 atlas = ExtResource("2_7w2t8")
 region = Rect2(11520, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy3fv"]
+atlas = ExtResource("2_7w2t8")
+region = Rect2(13440, 0, 1920, 2000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iib05"]
 atlas = ExtResource("3_lbixs")
@@ -155,29 +159,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ixwb3")
+"texture": SubResource("AtlasTexture_1ure6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oicgx")
+"texture": SubResource("AtlasTexture_m02o3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iggug")
+"texture": SubResource("AtlasTexture_a6j5q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vxymt")
+"texture": SubResource("AtlasTexture_jlrub")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8e52q")
+"texture": SubResource("AtlasTexture_cc3sx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eft3q")
+"texture": SubResource("AtlasTexture_j0e1p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rjs3x")
+"texture": SubResource("AtlasTexture_662ol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy3fv")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 7.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -239,9 +246,9 @@ shape = SubResource("BoxShape3D_y6bqc")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0182938, -0.0168544, 0)
 sprite_frames = SubResource("SpriteFrames_xw15x")
-animation = &"Fail"
-frame = 3
-frame_progress = 0.746432
+animation = &"Idle"
+frame = 7
+frame_progress = 0.519376
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="Hurtbox2" to="." method="_on_hurtbox_2_body_entered"]
