@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=54 format=3 uid="uid://drqf7jcr25yqx"]
 
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/ui/Dialogue Box.png" id="2_eyrgx"]
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
@@ -9,10 +9,15 @@
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/Volkhov-Regular.ttf" id="5_2w2a5"]
 [ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/Galdeano-Regular.ttf" id="5_bpopc"]
 [ext_resource type="Texture2D" uid="uid://e83c35i6e8tu" path="res://assets/cgs/image0-2.jpg" id="5_i18mn"]
-[ext_resource type="Texture2D" uid="uid://ckm7kx76fmepa" path="res://assets/cgs/IMG_5160.png" id="5_j5n5r"]
 [ext_resource type="Texture2D" uid="uid://bd3vg40yeb7ym" path="res://assets/ui/Next Default.png" id="7_fpcsy"]
+[ext_resource type="Texture2D" uid="uid://d4m4ksb40jto2" path="res://assets/cgs/God_Neutral_Static_Sheet.png" id="7_yl28d"]
 [ext_resource type="Texture2D" uid="uid://d02y3ome74of1" path="res://assets/ui/Character Background_Choice.png" id="8_5rtyy"]
 [ext_resource type="Script" path="res://tools/dialogue/SpriteHandler.gd" id="8_6jfjc"]
+[ext_resource type="Texture2D" uid="uid://cvjaxwe6l0cqa" path="res://assets/cgs/God_Neutral_Speaking_Sheet.png" id="8_7f2oi"]
+[ext_resource type="Texture2D" uid="uid://bgckgxbrsnswb" path="res://assets/cgs/God_Serious_Static_Sheet.png" id="9_k754x"]
+[ext_resource type="Texture2D" uid="uid://0fx6q38jj3dv" path="res://assets/cgs/God_Serious_Speaking_Sheet.png" id="10_d1d5c"]
+[ext_resource type="Texture2D" uid="uid://dy63g7pmdlg7v" path="res://assets/cgs/God_Smile_Static_Sheet.png" id="11_i7dpf"]
+[ext_resource type="Texture2D" uid="uid://b00cc64t4gc0f" path="res://assets/cgs/God_Smile_Speaking_Sheet.png" id="12_14uqi"]
 [ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="12_17eel"]
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/Volkhov-Bold.ttf" id="12_elsoh"]
 [ext_resource type="FontFile" uid="uid://blo7ft3ovj4yy" path="res://assets/ui/Volkhov-Italic.ttf" id="13_61dic"]
@@ -37,26 +42,26 @@
 [ext_resource type="Texture2D" uid="uid://cuf4r4vg05nv6" path="res://assets/vn/Settings/[Reference] Dialogue_ Fake Screenshot_Default.png" id="33_5pxjq"]
 [ext_resource type="Texture2D" uid="uid://ckahvnqljtcgj" path="res://assets/vn/Settings/drop down_backplate.png" id="34_mqe1k"]
 
-[sub_resource type="Animation" id="Animation_sielb"]
-resource_name = "God_BG"
-length = 0.6
+[sub_resource type="Animation" id="Animation_8vsie"]
+resource_name = "NeutralStatic"
+length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/TextureRect:frame")
+tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/NeutralStatic:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [0, 1, 2]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/TextureRect:visible")
+tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/NeutralStatic:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -66,12 +71,267 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_cgb7d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/NeutralStatic:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/NeutralSpeaking:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EffectHandler/AnimGod/Textures/SeriousStatic:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EffectHandler/AnimGod/Textures/SeriousSpeaking:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EffectHandler/AnimGod/Textures/SmileStatic:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EffectHandler/AnimGod/Textures/SmileSpeaking:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EffectHandler/AnimGod/Textures:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("EffectHandler/AnimGod/Textures:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_l673d"]
+resource_name = "NeutralSpeaking"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/NeutralSpeaking:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/NeutralSpeaking:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6nn36"]
+resource_name = "SeriousStatic"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/SeriousStatic:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/SeriousStatic:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6rut7"]
+resource_name = "SeriousSpeaking"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/SeriousSpeaking:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/SeriousSpeaking:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7msbh"]
+resource_name = "SmileStatic"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/SmileStatic:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/SmileStatic:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uq83c"]
+resource_name = "SmileSpeaking"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/SmileSpeaking:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/SmileSpeaking:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6r53"]
+_data = {
+"NeutralSpeaking": SubResource("Animation_l673d"),
+"NeutralStatic": SubResource("Animation_8vsie"),
+"RESET": SubResource("Animation_cgb7d"),
+"SeriousSpeaking": SubResource("Animation_6rut7"),
+"SeriousStatic": SubResource("Animation_6nn36"),
+"SmileSpeaking": SubResource("Animation_uq83c"),
+"SmileStatic": SubResource("Animation_7msbh")
+}
+
 [sub_resource type="Animation" id="Animation_u3l61"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/TextureRect:frame")
+tracks/0/path = NodePath("AnimGod/Textures/TextureRect:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -83,7 +343,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/TextureRect:visible")
+tracks/1/path = NodePath("AnimGod/Textures/TextureRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -91,6 +351,35 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_sielb"]
+resource_name = "God_BG"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimGod/Textures/TextureRect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimGod/Textures/TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_abflm"]
@@ -110,7 +399,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("4_g1vbp")
-text = "res://tools/dialogue/vn_scripts/a1c1.json"
+text = "res://tools/dialogue/vn_scripts/Dialogue - UPDATED a1c1_3.json"
 
 [node name="EffectHandler" type="Node" parent="."]
 process_mode = 3
@@ -133,27 +422,72 @@ offset_bottom = 1088.0
 mouse_filter = 2
 texture = ExtResource("5_i18mn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EffectHandler"]
+[node name="AnimGod" type="AnimationPlayer" parent="EffectHandler"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_m6r53")
+}
+autoplay = "RESET"
+
+[node name="AnimGodBG" type="AnimationPlayer" parent="EffectHandler/AnimGod"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_abflm")
 }
 
-[node name="TextureRect" type="Sprite2D" parent="EffectHandler/AnimationPlayer"]
-visible = false
+[node name="Textures" type="Node2D" parent="EffectHandler/AnimGod"]
 modulate = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
+visible = false
 z_index = -1
 position = Vector2(960, 540)
 texture = ExtResource("4_ng0gx")
 hframes = 6
 frame = 2
 
-[node name="GodCG" type="TextureRect" parent="EffectHandler"]
-modulate = Color(1, 1, 1, 0)
+[node name="NeutralStatic" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
+visible = false
 z_index = -1
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-texture = ExtResource("5_j5n5r")
+position = Vector2(960, 540)
+texture = ExtResource("7_yl28d")
+hframes = 3
+
+[node name="NeutralSpeaking" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
+visible = false
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("8_7f2oi")
+hframes = 3
+
+[node name="SeriousStatic" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
+visible = false
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("9_k754x")
+hframes = 3
+frame = 1
+
+[node name="SeriousSpeaking" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
+visible = false
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("10_d1d5c")
+hframes = 3
+
+[node name="SmileStatic" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
+visible = false
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("11_i7dpf")
+hframes = 3
+
+[node name="SmileSpeaking" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
+visible = false
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("12_14uqi")
+hframes = 3
 
 [node name="Priority" type="Control" parent="EffectHandler"]
 z_index = 1

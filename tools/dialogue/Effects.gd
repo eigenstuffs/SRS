@@ -51,13 +51,16 @@ const DINING_CG = preload("res://assets/cgs/dininghall.png")
 @onready var audio = $Music
 @onready var sfx = $SFX
 
+@onready var anim_god : AnimationPlayer = $AnimGod
+@onready var anim_god_bg : AnimationPlayer = $AnimGod/AnimGodBG
+
 var song
 var last_fade = ""
 
 func _ready():
 	match Global.return_current_text():
 		Global.ACT1_CHAPTER1_PART1:
-			cg_sky()
+			cg_black()
 			var a = create_tween()
 			a.tween_property($SFX, "volume_db", -10, 3)
 			$SFX.play()
@@ -140,36 +143,22 @@ func _ready():
 	vn.connect("stop_looping_sfx", stop_sfx_looping)
 	
 	vn.connect("cg_sky", cg_sky)
-	vn.connect("cg_god", cg_god)
+	
+	vn.connect("cg_god_bg", cg_god_bg)
+	vn.connect("cg_god_neutral", cg_god_neutral)
+	vn.connect("cg_god_neutral_talk", cg_god_neutral_talk)
+	vn.connect("cg_god_serious", cg_god_serious)
+	vn.connect("cg_god_serious_talk", cg_god_serious_talk)
+	vn.connect("cg_god_smile", cg_god_smile)
+	vn.connect("cg_god_smile_talk", cg_god_smile_talk)
+	vn.connect("cg_exit_god", cg_exit_god)
+	
 	vn.connect("cg_black", cg_black)
 	vn.connect("cg_dining", cg_dining)
 	
 	vn.connect("add_OOC", add_OOC)
 	vn.connect("add_OPP", add_OPP)
-	
-	
-	
-#signal start_music
-#signal boost_stats
-#
-#signal music_ambience
-#signal music_chiptune
-#signal music_bgm1
-#
-#signal stop_music
-#
-#signal sfx_truck
-#signal sfx_screams
-#
-#signal fade_black
-#signal fade_red
-#
-#signal cg_death
-#signal cg_gamestart
-#signal cg_god
-#
-#signal name_player
-	#
+
 func fade_black():
 	EffectAnim.play("FadeBlack")
 	last_fade = "black"
@@ -255,7 +244,9 @@ func play_sfx_looping(effect_name):
 	
 func stop_sfx_looping():
 	EffectAnim.LoopPlayer.stop()
+	
 ## CG
+
 func cg_sky():
 	$CG.texture = SKY_CG
 	$CG.show()
@@ -272,14 +263,46 @@ func cg_dining():
 	$CG.texture = DINING_CG
 	$CG.show()
 	
-func cg_god():
-	$AnimationPlayer.play("God_BG")
+func cg_god_bg():
+	print("enter god")
 	var a = create_tween()
-	a.tween_property($AnimationPlayer/TextureRect,
-	"modulate:a", 1, 2)
+	$AnimGod/Textures.modulate.a = 0
+	a.tween_property($AnimGod/Textures,
+	"modulate:a", 1, 0.5)
+	anim_god_bg.play("God_BG")
+
+func cg_god_neutral():
+	anim_god.play("RESET")
+	anim_god.play("NeutralStatic")
+
+func cg_god_neutral_talk():
+	anim_god.play("RESET")
+	anim_god.play("NeutralSpeaking")
+	
+func cg_god_serious():
+	anim_god.play("RESET")
+	anim_god.play("SeriousStatic")
+	
+func cg_god_serious_talk():
+	anim_god.play("RESET")
+	anim_god.play("SeriousSpeaking")
+
+func cg_god_smile():
+	anim_god.play("RESET")
+	anim_god.play("SmileStatic")
+	
+func cg_god_smile_talk():
+	anim_god.play("RESET")
+	anim_god.play("SmileSpeaking")
+	
+func cg_exit_god():
+	var a = create_tween()
+	$AnimGod/Textures.modulate.a = 1
+	a.tween_property($AnimGod/Textures,
+	"modulate:a", 0, 0.5)
 	await a.finished
-	a = create_tween()
-	a.tween_property($GodCG, "modulate:a", 1, 1).set_trans(Tween.TRANS_EXPO)
+	anim_god.stop()
+	anim_god_bg.stop()
 
 func player_name_screen():
 	var a = PLAYER_NAME.instantiate()

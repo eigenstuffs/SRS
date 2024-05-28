@@ -61,9 +61,17 @@ signal stop_sfx
 signal stop_looping_sfx
 
 signal cg_sky
-signal cg_god
 signal cg_black
 signal cg_dining
+
+signal cg_god_bg
+signal cg_god_neutral
+signal cg_god_neutral_talk
+signal cg_god_serious
+signal cg_god_serious_talk
+signal cg_god_smile
+signal cg_god_smile_talk
+signal cg_exit_god
 
 signal add_OOC
 signal add_OPP
@@ -80,10 +88,11 @@ const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
 @onready var choice_ui = $Choice
 @onready var sprite_handler : SpriteHandler = $SpriteHandler
 @onready var settings_dropdown : SettingsDropDown = $TextBox/Settings
+@onready var text_box = $TextBox
 
 @onready var ui_elements : Array = [
 	box,
-	label#,
+	label
 	#$TextBox/Settings
 ]
 
@@ -104,10 +113,8 @@ signal choice(which : int)
 signal finished_line
 
 func _ready():
-	for i in ui_elements: i.hide()
-	name_frame.hide()
-	character_name.hide()
-	next.hide()
+	text_box.hide()
+	choice_ui.hide()
 	
 	if text == null:
 		text = Global.return_current_text()
@@ -115,7 +122,6 @@ func _ready():
 	EffectAnim.play_backwards("FadeBlack")
 	await EffectAnim.animation_finished
 	if text:
-		choice_ui.hide()
 		self.connect("choice", choice_funnel)
 		
 		var string = FileAccess.get_file_as_string(text)
@@ -127,23 +133,24 @@ func _ready():
 	else: print("Error: text doesn't exist within Dialogue node")
 
 func read_line(key : int):
+	next.hide()
+	next.disabled = true
+	choice_ui.hide()
+	
 	current_line = result.get(result.keys()[key])
 	init_parameters(key)
+	
 	if current_line["delay"] != null:
-		for i in ui_elements: i.hide()
-		next.hide()
-		choice_ui.hide()
+		text.hide()
 		await get_tree().create_timer(int(current_line["delay"])).timeout
 	if current_line["add"] != null:
 		Global.add_event(current_line["add"])
 		print(Global.remembered)
-	for i in ui_elements: i.show()
-	next.disabled = true
-	next.hide()
-	choice_ui.hide()
-	remember.position = Vector2(1280,672)
-	remember.modulate = Color(1,1,1,1)
-	remember.hide()
+
+	text_box.show()
+	#remember.position = Vector2(1280,672)
+	#remember.modulate = Color(1,1,1,1)
+	#remember.hide()
 	if current_line["emit"] != null:
 		var text = current_line["emit"].split(",")
 		for i in text.size():
@@ -153,12 +160,13 @@ func read_line(key : int):
 		var text = current_line["set"].split(",")
 		var variable = text[0]
 		var value = text[1]
+		print("set " + variable + " as " + value)
 		Global.set(variable, value)
 	if current_line["flag"] != null:
+		text_box.hide()
 		settings_dropdown.stop_skip()
+		
 	if current_line["flag"] == "decision":
-		for i in ui_elements: i.hide()
-		next.hide()
 		if current_line["options"] != null:
 			$Choice/Backdrop.position = Vector2(1950,0)
 			choice_ui.show()
@@ -256,7 +264,7 @@ func read_line(key : int):
 		$EffectHandler.seraphina_name_screen()
 		await $EffectHandler.done
 	if current_line["text"] == null:
-		for i in ui_elements: i.hide()
+		text_box.hide()
 	else:
 		label.text = current_line["text"]
 		label.visible_characters = 1
@@ -280,13 +288,8 @@ func read_line(key : int):
 			await get_tree().create_timer(
 				1 - (int(settings_dropdown.skip) * 0.9)
 			).timeout
-		if current_line["flag"] == "end":
-			current_line["go to"] = null
-		elif current_line["flag"] == "menu":
-			for i in ui_elements: i.hide()
-			name_frame.hide()
-			character_name.hide()
-			next.hide()
+		if current_line["flag"] == "menu":
+			text_box.hide()
 			EffectAnim.play("FadeBlack")
 			await EffectAnim.animation_finished
 			get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
@@ -337,10 +340,12 @@ func init_parameters(key : int):
 			character_name.text = Global.player_name
 
 	elif line["character"] != null:
+		sprite_handler.clear_sprites()
 		character_name.text = line["character"]
 		character_name.show()
 		name_frame.show()
 	else:
+		sprite_handler.clear_sprites()
 		character_name.text = ""
 		character_name.hide()
 		name_frame.hide()

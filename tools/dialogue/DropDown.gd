@@ -94,7 +94,6 @@ func _on_hide_pressed():
 	$DropDown.paused = false
 	for i in $Buttons.get_children():
 		i.disabled = false
-	
 
 func stop_skip():
 	skip = false
