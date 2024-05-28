@@ -79,10 +79,12 @@ const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
 @onready var next = $TextBox/Next
 @onready var choice_ui = $Choice
 @onready var sprite_handler : SpriteHandler = $SpriteHandler
+@onready var settings_dropdown : SettingsDropDown = $TextBox/Settings
 
 @onready var ui_elements : Array = [
 	box,
-	label
+	label#,
+	#$TextBox/Settings
 ]
 
 @export_file("*.json") var text
@@ -156,6 +158,7 @@ func read_line(key : int):
 		for i in ui_elements: i.hide()
 		next.hide()
 		if current_line["options"] != null:
+			settings_dropdown.stop_skip()
 			$Choice/Backdrop.position = Vector2(1950,0)
 			choice_ui.show()
 			var text : Array = current_line["options"].split(",")
@@ -260,7 +263,9 @@ func read_line(key : int):
 		var total_time = Global.text_speed * num_chars
 		current_time = total_time
 		a = create_tween()
-		a.tween_property(label, "visible_characters", num_chars, total_time)
+		a.tween_property(label, "visible_characters", num_chars, total_time - (
+			int(settings_dropdown.skip) * total_time * 0.9)
+		)
 		await a.finished
 		var b = create_tween()
 		next.show()
@@ -268,7 +273,12 @@ func read_line(key : int):
 		b.tween_property(next, "modulate:a", 1, 0.2)
 		next.disabled = false
 		finished_line.emit()
-		await next_pressed
+		if !settings_dropdown.autoplay:
+			await next_pressed
+		else:
+			await get_tree().create_timer(
+				1 - (int(settings_dropdown.skip) * 0.9)
+			).timeout
 		if current_line["flag"] == "end":
 			current_line["go to"] = null
 		elif current_line["flag"] == "menu":
@@ -313,7 +323,9 @@ func next_anim():
 func init_parameters(key : int):
 	var line = result.get(result.keys()[key])
 	sprite_handler.init_cecilia(line["cecilia"])
-	if line["character"] != null:
+	var sprites
+
+	if line["character"] != null && line["sprite"] != null:
 		sprite_handler.init_sprite(
 			line["character"].split(","),
 			line["sprite"].split(",")
@@ -322,10 +334,24 @@ func init_parameters(key : int):
 			character_name.text = Global.player_name
 		character_name.show()
 		name_frame.show()
+	elif line["character"] != null:
+		character_name.text = line["character"]
+		character_name.show()
+		name_frame.show()
 	else:
 		character_name.text = ""
 		character_name.hide()
 		name_frame.hide()
+
+	if character_name.text != "":
+		settings_dropdown.add_to_log(
+			"[b]" + character_name.text + ":[/b] " +
+			current_line["text"]
+		)
+	else:
+		settings_dropdown.add_to_log(
+			current_line["text"]
+		)
 
 func choice_funnel(which : int):
 	var choice = current_line["options_id"].split(",")[which]
@@ -338,7 +364,7 @@ func choice_pressed():
 			return
 
 func _input(event):
-	if event.is_action_pressed("ui_accept") or event.is_action_pressed("LMB"):
+	if event.is_action_pressed("ui_accept") or (event.is_action_pressed("LMB") and settings_dropdown.lmb):
 		if !next.disabled:
 			var a = create_tween()
 			a.tween_property(next, "modulate:a", 0, 0.2)
@@ -353,4 +379,7 @@ func _on_next_pressed():
 	var a = create_tween()
 	a.tween_property(next, "modulate:a", 0, 0.2)
 	await a.finished
+	emit_signal("next_pressed")
+
+func _on_settings_autoplay_started():
 	emit_signal("next_pressed")

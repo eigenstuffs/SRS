@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=41 format=3 uid="uid://drqf7jcr25yqx"]
 
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/ui/Dialogue Box.png" id="2_eyrgx"]
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bo2omw0hx2b04" path="res://assets/vn/Settings/Autoplay.png" id="18_snyv8"]
 [ext_resource type="Texture2D" uid="uid://dg2mgqexrxkuq" path="res://assets/vn/Settings/Autoplay_Click.png" id="19_0c4ku"]
 [ext_resource type="Texture2D" uid="uid://df1gx2derxy74" path="res://assets/vn/Settings/Autoplay_Hover.png" id="20_evjav"]
+[ext_resource type="Script" path="res://tools/dialogue/DropDown.gd" id="20_xsen7"]
 [ext_resource type="Texture2D" uid="uid://cxks3xttgv28h" path="res://assets/vn/Settings/Hide.png" id="21_unksq"]
 [ext_resource type="Texture2D" uid="uid://db1yt0oia8vd6" path="res://assets/vn/Settings/Hide_Click.png" id="22_4513m"]
 [ext_resource type="Texture2D" uid="uid://8gwntda51sxc" path="res://assets/vn/Settings/Hide_Hover.png" id="23_aycvg"]
@@ -32,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://cf1a2qldmtjrk" path="res://assets/vn/Settings/Skip_Hover.png" id="29_mqroi"]
 [ext_resource type="Texture2D" uid="uid://dqsbupp8nl3jc" path="res://assets/vn/Settings/drop-down menu_default.png" id="30_kxy2c"]
 [ext_resource type="Texture2D" uid="uid://dxkuxdwxibop5" path="res://assets/vn/Settings/drop-down_clicked.png" id="31_14bfd"]
+[ext_resource type="Texture2D" uid="uid://clu5ma2xjxd5t" path="res://assets/vn/Settings/History-Pop Up Background.png" id="31_yesph"]
 [ext_resource type="Texture2D" uid="uid://cuf4r4vg05nv6" path="res://assets/vn/Settings/[Reference] Dialogue_ Fake Screenshot_Default.png" id="33_5pxjq"]
 [ext_resource type="Texture2D" uid="uid://ckahvnqljtcgj" path="res://assets/vn/Settings/drop down_backplate.png" id="34_mqe1k"]
 
@@ -111,6 +113,7 @@ script = ExtResource("4_g1vbp")
 text = "res://tools/dialogue/vn_scripts/Dialogue - Prototype-3.json"
 
 [node name="EffectHandler" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("12_17eel")
 
 [node name="Music" type="AudioStreamPlayer" parent="EffectHandler"]
@@ -269,6 +272,7 @@ texture_click_mask = SubResource("BitMap_3kbno")
 metadata/_edit_lock_ = true
 
 [node name="Cecilia" type="TextureRect" parent="TextBox"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -96.0
 offset_top = 384.0
@@ -278,64 +282,139 @@ texture = ExtResource("17_od5v0")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Settings" type="VBoxContainer" parent="TextBox"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 0
-offset_left = 1833.0
-offset_top = 728.0
-offset_right = 1897.0
-offset_bottom = 984.0
-theme_override_constants/separation = 0
+[node name="Settings" type="Control" parent="TextBox"]
+process_mode = 3
+anchors_preset = 0
+offset_left = 1792.0
+offset_top = 640.0
+offset_right = 1920.0
+offset_bottom = 1024.0
+mouse_filter = 1
+script = ExtResource("20_xsen7")
+text_box = NodePath("..")
 
-[node name="Skip" type="TextureButton" parent="TextBox/Settings"]
+[node name="Buttons" type="Control" parent="TextBox/Settings"]
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 84.0
+offset_right = 104.0
+offset_bottom = 340.0
+mouse_filter = 1
+
+[node name="Skip" type="TextureButton" parent="TextBox/Settings/Buttons"]
 custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
+offset_right = 64.0
+offset_bottom = 64.0
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("27_mudnd")
 texture_pressed = ExtResource("28_h1dlp")
 texture_hover = ExtResource("29_mqroi")
 texture_focused = ExtResource("29_mqroi")
 stretch_mode = 0
 
-[node name="Autoplay" type="TextureButton" parent="TextBox/Settings"]
+[node name="Autoplay" type="TextureButton" parent="TextBox/Settings/Buttons"]
 custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 128.0
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("18_snyv8")
 texture_pressed = ExtResource("19_0c4ku")
 texture_hover = ExtResource("20_evjav")
 texture_focused = ExtResource("20_evjav")
 stretch_mode = 0
 
-[node name="Log" type="TextureButton" parent="TextBox/Settings"]
+[node name="Log" type="TextureButton" parent="TextBox/Settings/Buttons"]
 custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
+offset_top = 128.0
+offset_right = 64.0
+offset_bottom = 192.0
+focus_mode = 0
+mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("24_28eyj")
 texture_pressed = ExtResource("25_0o1no")
 texture_hover = ExtResource("26_a1ldb")
 texture_focused = ExtResource("26_a1ldb")
 stretch_mode = 0
 
-[node name="Hide" type="TextureButton" parent="TextBox/Settings"]
+[node name="Hide" type="TextureButton" parent="TextBox/Settings/Buttons"]
 custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
+offset_top = 192.0
+offset_right = 64.0
+offset_bottom = 256.0
+focus_mode = 0
+mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("21_unksq")
 texture_pressed = ExtResource("22_4513m")
 texture_hover = ExtResource("23_aycvg")
 texture_focused = ExtResource("23_aycvg")
 stretch_mode = 0
 
-[node name="DropDown" type="TextureButton" parent="TextBox"]
+[node name="DropDown" type="TextureButton" parent="TextBox/Settings"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
-offset_left = 1833.0
-offset_top = 652.0
-offset_right = 1897.0
-offset_bottom = 716.0
+offset_left = 41.0
+offset_top = 12.0
+offset_right = 105.0
+offset_bottom = 76.0
+focus_mode = 0
 toggle_mode = true
 texture_normal = ExtResource("30_kxy2c")
 texture_pressed = ExtResource("31_14bfd")
 texture_hover = ExtResource("30_kxy2c")
 texture_focused = ExtResource("30_kxy2c")
 stretch_mode = 3
+
+[node name="Log" type="Control" parent="TextBox/Settings"]
+visible = false
+anchors_preset = 0
+offset_left = -1792.0
+offset_top = -704.0
+offset_right = 128.0
+offset_bottom = 384.0
+
+[node name="ColorRect" type="ColorRect" parent="TextBox/Settings/Log"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+color = Color(0, 0, 0, 0.360784)
+
+[node name="TextureRect" type="TextureRect" parent="TextBox/Settings/Log"]
+modulate = Color(1, 1, 1, 0.901961)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -608.0
+offset_top = -384.0
+offset_right = 596.0
+offset_bottom = 419.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("31_yesph")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextBox/Settings/Log"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 1472.0
+offset_bottom = 832.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextBox/Settings/Log/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
 
 [node name="Choice" type="Control" parent="."]
 anchors_preset = 0
@@ -552,3 +631,9 @@ scale = Vector2(1, 0.9)
 texture = ExtResource("34_mqe1k")
 
 [connection signal="pressed" from="TextBox/Next" to="." method="_on_next_pressed"]
+[connection signal="autoplay_started" from="TextBox/Settings" to="." method="_on_settings_autoplay_started"]
+[connection signal="pressed" from="TextBox/Settings/Buttons/Skip" to="TextBox/Settings" method="_on_skip_pressed"]
+[connection signal="pressed" from="TextBox/Settings/Buttons/Autoplay" to="TextBox/Settings" method="_on_autoplay_pressed"]
+[connection signal="pressed" from="TextBox/Settings/Buttons/Log" to="TextBox/Settings" method="_on_log_pressed"]
+[connection signal="pressed" from="TextBox/Settings/Buttons/Hide" to="TextBox/Settings" method="_on_hide_pressed"]
+[connection signal="pressed" from="TextBox/Settings/DropDown" to="TextBox/Settings" method="_on_drop_down_pressed"]

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c0rxx62jd466c"]
+
+[node name="LogText" type="RichTextLabel"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+bbcode_enabled = true
+text = "asdasdasd
+asdasdasd"
+fit_content = true
