@@ -16,7 +16,8 @@ func start(args := []) -> void:
 func queue_free() -> void:
 	super.queue_free()
 	for render_pass in render_passes:
-		if render_pass: parent.remove_child(render_pass)
+		if not (render_pass and render_pass.get_parent() == parent): continue 
+		parent.remove_child(render_pass)
 
 static func insert_render_pass(parent_ : Control, render_pass : CanvasItemRenderPass) -> void:
 	if render_pass.get_parent(): return

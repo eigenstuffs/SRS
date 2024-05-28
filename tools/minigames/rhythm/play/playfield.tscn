@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cr62xw6ofifyl"]
+[gd_scene load_steps=32 format=3 uid="uid://cr62xw6ofifyl"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/playfield.gd" id="1_a1v4t"]
 [ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://tools/minigames/rhythm/util/audio_synchronizer.tscn" id="3_g2rft"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" path="res://resources/shaders/canvas_item/blur.gdshader" id="10_mdpw5"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/radial_pattern.gdshader" id="11_14gwy"]
 [ext_resource type="Shader" path="res://tools/minigames/rhythm/algae.gdshader" id="14_0l1kf"]
+[ext_resource type="Script" path="res://tools/minigames/rhythm/play/combo_meter.gd" id="15_srpjb"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_tu6ej"]
 flip_faces = true
@@ -195,6 +196,17 @@ script = ExtResource("3_m4kyl")
 is_canvas_item = false
 shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), SubResource("Resource_k750l"), SubResource("Resource_yyvg6")])
 
+[sub_resource type="LabelSettings" id="LabelSettings_ed0bq"]
+font_size = 45
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lijcf"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+outline_size = 15
+outline_color = Color(0.92549, 0.92549, 0.92549, 1)
+
 [node name="Playfield" type="Node3D"]
 script = ExtResource("1_a1v4t")
 
@@ -226,69 +238,71 @@ theme_override_font_sizes/font_size = 32
 text = "Lorem Ipsum"
 vertical_alignment = 1
 
-[node name="BeatLabel" type="Label" parent="."]
-offset_left = 41.0
-offset_top = 172.0
-offset_right = 313.0
-offset_bottom = 239.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 21
-text = "Beat: 1 / 4 (00 : 00)"
-vertical_alignment = 1
-
-[node name="BeatLabel2" type="Label" parent="."]
-offset_left = 42.0
-offset_top = 147.0
-offset_right = 314.0
-offset_bottom = 214.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 21
-text = "----------- Debug ------------"
-vertical_alignment = 1
-
-[node name="BPMLabel" type="Label" parent="."]
-offset_left = 40.0
-offset_top = 197.0
-offset_right = 976.0
-offset_bottom = 264.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 21
-text = "BPM: 0"
-vertical_alignment = 1
-
-[node name="FrametimeLabel" type="Label" parent="."]
-offset_left = 40.0
-offset_top = 223.0
-offset_right = 976.0
-offset_bottom = 290.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 21
-text = "Frametime: 0.00ms"
-vertical_alignment = 1
-
-[node name="EnabledPassesLabel" type="Label" parent="."]
-offset_left = 39.0
-offset_top = 268.0
-offset_right = 975.0
-offset_bottom = 684.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 21
-text = "Enabled Shader Passes:"
-
 [node name="Effects" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Scores" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_srpjb")
+
+[node name="ComboLabel" type="Label" parent="Scores"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -20.0
+offset_right = 125.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(125, 25)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+label_settings = SubResource("LabelSettings_ed0bq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Scores"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -70.0
+offset_right = 125.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(125, 25)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+label_settings = SubResource("LabelSettings_lijcf")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="on_beat" from="AudioSynchronizer" to="." method="_on_audio_synchronizer_on_beat"]

@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode skip_vertex_transform;
 
 varying vec3 world_pos;
 
@@ -15,7 +16,9 @@ uniform vec3 miss_color : source_color = vec3(0.25, 0.085, 0.05);
 
 void vertex() {
     world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	VERTEX.x += (pow(2.0, -(world_pos.z + 3.0)*0.75) * sin(world_pos.z*0.75)) * 0.075;
+		
+    VERTEX = (VIEW_MATRIX * vec4(world_pos, 1.0)).xyz;
+	VERTEX.x += (pow(2.2, -(world_pos.z + 3.0)*0.75) * sin(world_pos.z*0.75)) * 0.05;
 }
 
 void fragment() {
@@ -27,8 +30,9 @@ void fragment() {
 	
 	// Color swap from luminance
     vec3 greyscale = vec3((tex_color.r + tex_color.g + tex_color.b) * 0.3333333);
-    if (greyscale.x < 0.95)
-		ALBEDO = mix(tex_color.rgb, greyscale * color_overwrite.rgb, color_overwrite.a);
+    float mix_factor = (greyscale.x < 0.5) ? 1.0 : 0.0;
+	ALBEDO = mix(pow(tex_color.rgb, vec3(2.2)), greyscale * color_overwrite.rgb, mix_factor * color_overwrite.a);
+	if (greyscale.x > 0.5 && greyscale.x < 0.95) ALBEDO = vec3(0.6, 0.6, 0.6);
 	
 	ALBEDO = mix(ALBEDO, miss_color, 1. - alpha_overwrite);
 	ALPHA *= tex_color.a * fade_in_factor * (1. - fade_out_factor) * alpha_overwrite;

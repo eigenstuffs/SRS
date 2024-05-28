@@ -4,7 +4,7 @@ class_name WaltzMod
 
 # TODO: erm, delete me and this file later please
 static var TIMING_ACTIONS = [
-	[  2.895,    'screen',  'enable', ['flash', 'albedo'], [{'factor' : 0.05}, {'albedo' : Color(0.8, 0.4, 0.4, 0.06)}]],
+	[  2.895,    'screen',  'enable', ['flash', 'albedo'], [{'factor' : 0.05}, {'albedo' : Color(0.8, 0.5, 0.5, 0.06)}]],
 
 	[  3.568,    'screen',  'enable', ['flash'], [{'factor' : 0.1}]],
 

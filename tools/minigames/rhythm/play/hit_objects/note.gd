@@ -11,6 +11,10 @@ enum HitType {HIT, RELEASE, MISS}
 	set(value):
 		color_overwrite = value
 		_on_color_overwrite_changed(value)
+@export var mesh_angle := 0.0 : 
+	set(value):
+		mesh_angle = value
+		_on_mesh_angle_changed(value)
 
 var timings_supplier : Callable ## Shape: () -> [time : float, scroll_time : float]
 var alpha_overwrite : float = 1.0
@@ -28,6 +32,9 @@ func release() -> void: is_held = false
 func miss() -> void: is_missed = true
 
 func _on_color_overwrite_changed(_value : Color):
+	pass
+	
+func _on_mesh_angle_changed(value : float):
 	pass
 
 func enable_shader_pass(_pass_name : StringName, _uniforms : Dictionary={}):

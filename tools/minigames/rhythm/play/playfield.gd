@@ -7,6 +7,7 @@ class_name RhythmPlayfield extends Node3D
 
 signal report_score(score: int)
 
+const MEASURE_BAR = preload('res://tools/minigames/rhythm/play/hit_objects/measure_bar.tscn')
 const PHYSICS_TEXT = preload('res://tools/minigames/rhythm/util/physics_text.tscn')
 const KEY = preload('res://tools/minigames/rhythm/play/key.tscn')
 const PLAYFIELD_WIDTH : float = 8.0 # FIXME: No more fixed width please!
@@ -16,19 +17,18 @@ const BLUE : Color = Color(0.306, 0.796, 0.851)
 # This is how we organize scoring for different millisecond offsets 
 # (unless someone can come up with a better way!)
 const HIT_SCORING = [
-	[[0, 70], ['Perfect!', Color(0.231, 0.604, 1), 300*0.5]],
-	[[70, 100], ['Great!', Color(0.31, 0.89, 0.369), 200*0.5]],
-	[[100, 150], ['Okay.', Color(0.73, 0.58, 0.84), 100*0.5]],
-	[[150, 1e9], ['Bad', Color(0.71, 0.565, 0.659), 50*0.5]]]
+	[[0, 70], ['Perfect!', Color(0.231, 0.604, 1), 5]],
+	[[70, 100], ['Great!', Color(0.31, 0.89, 0.369), 3]],
+	[[100, 150], ['Okay.', Color(0.73, 0.58, 0.84), 1]],
+	[[150, 1e9], ['Bad', Color(0.71, 0.565, 0.659), 0]]]
 const RELEASE_SCORING = [
-	[[0, 100], ['Perfect!', Color(0.231, 0.604, 1), 150*0.5]],
-	[[100, 150], ['Great!', Color(0.31, 0.89, 0.369), 100*0.5]],
-	[[150, 200], ['Okay.', Color(0.73, 0.58, 0.84), 50*0.5]],
-	[[200, 1e9], ['Bad', Color(0.71, 0.565, 0.659), 25*0.5]]]
+	[[0, 100], ['Perfect!', Color(0.231, 0.604, 1), 3]],
+	[[100, 150], ['Great!', Color(0.31, 0.89, 0.369), 2]],
+	[[150, 200], ['Okay.', Color(0.73, 0.58, 0.84), 1]],
+	[[200, 1e9], ['Bad', Color(0.71, 0.565, 0.659), 0]]]
 
 @export var beatmap : Beatmap
 @export var note_speed : float = 2
-@export var show_debug : bool = false
 
 var keys : Array[RhythmKey] = []
 var hit_objects : Array[HitObjectInfo]
@@ -36,6 +36,8 @@ var next_load_idx : int = 0
 var next_timing_action_idx : int = 0
 var beat : int = 0
 var scores = [0, 0, 0, 0, 0]
+var measure_bar_key : RhythmKey
+var combo := 0
 
 @onready var audio_synchronizer : AudioSynchronizer = $AudioSynchronizer
 @onready var screen_space_material : MultiPassShaderMaterial = $ScreenSpaceMesh.get_surface_override_material(0)
@@ -61,6 +63,7 @@ func _ready() -> void:
 			4:
 				key.keybind = 'rhythm_key_%d' % [1, 2, 4, 5][key_index]
 				key.note_color = [GREEN, BLUE, BLUE, GREEN][key_index]
+				key.note_angle = deg_to_rad([180, 270, 90, 0][key_index])
 			7: 
 				key.keybind = 'rhythm_key_%d' % key_index
 				key.note_color = [GREEN, BLUE, GREEN, RED, GREEN, BLUE, GREEN][key_index]
@@ -71,6 +74,14 @@ func _ready() -> void:
 		key.connect('report_hit', _on_key_report_hit)
 		keys.push_back(key)
 		$Keys.add_child(key)
+	
+	# A special (unusable) key will also be created for spawning measure bars
+	measure_bar_key = KEY.instantiate()
+	measure_bar_key.keybind = ''
+	measure_bar_key.audio_synchronizer = audio_synchronizer
+	measure_bar_key.scroll_time = 1.0 / note_speed
+	measure_bar_key.is_visible = false
+	$Keys.add_child(measure_bar_key)
 		
 	$TitleLabel.text = beatmap.title
 
@@ -90,33 +101,30 @@ func _process(_delta: float) -> void:
 	while next_timing_action_idx < len(timing_actions) and corrected_time > timing_actions[next_timing_action_idx].time:
 		timing_actions[next_timing_action_idx].run()
 		next_timing_action_idx += 1
-		
-func _physics_process(delta: float) -> void:
-
-	$BPMLabel.visible = show_debug
-	$FrametimeLabel.visible = show_debug
-	$EnabledPassesLabel.visible = show_debug
-	$BeatLabel.visible = show_debug
-	if show_debug: 
-		audio_synchronizer.use_metronome = true
-		$BPMLabel.text = 'BPM: %.0f' % (audio_synchronizer.current_bps * 60.0)
-		$FrametimeLabel.text = 'Frametime: %.3fms' % (Performance.get_monitor(Performance.TIME_PROCESS) * 1e3)
-		$EnabledPassesLabel.text = 'Enabled Shader Passes:'
-		for shader_name in MultiPassShaderMaterial.enabled_passes:
-			$EnabledPassesLabel.text += '\n |  %s' % shader_name
 
 func _on_key_report_hit(timing_offset : Variant, hit_type : Note.HitType):	
 	var scoring = []
 	match hit_type:
 		Note.HitType.HIT:
 			scoring = _get_scoring(abs(timing_offset*1e3), HIT_SCORING)
+			_update_combo(combo + 1, scoring[0], scoring[1])
 		Note.HitType.RELEASE:
 			scoring = _get_scoring(abs(timing_offset*1e3), RELEASE_SCORING)
+			_update_combo(combo + 1, scoring[0], scoring[1])
 		Note.HitType.MISS:
 			scoring = ['Missed!', Color(0.89, 0.25, 0.27), 0, -1]
+			_update_combo(0, scoring[0], scoring[1])
 	self.scores[scoring[-1]] += 1
-	_create_score_text(scoring[0], scoring[1])
 	report_score.emit(scoring[2])
+
+func _update_combo(new_combo : int, new_score : String, score_color : Color) -> void:
+	if new_combo > combo:
+		pass
+	else: # Missed
+		pass
+	$Scores.update_combo_text(new_combo)
+	$Scores.update_score_text(new_score, score_color)
+	combo = new_combo
 
 func _get_scoring(timing_offset : float, scoring : Array):
 	# Just so I can avoid the awful if..elif..elif.. chain...
@@ -126,19 +134,19 @@ func _get_scoring(timing_offset : float, scoring : Array):
 	printerr('A timing offset of %f could not be found in the provided scoring!' % timing_offset)
 	return null
 
-func _create_score_text(text : String, color : Color):
-	var score : PhysicsText = PHYSICS_TEXT.instantiate()
-	score.force = Vector2(randf_range(-0.75, 0.75), randf_range(5, 6.25))
-	score.fake_torque = randf_range(-0.25, 0.25)
-	score.text = text
-	score.text_color = color
-	score.position.x = randi_range(175, 275)
-	add_child(score)
-
 func _on_audio_synchronizer_on_beat() -> void:
-	if not audio_synchronizer.has_started: return
-	
-	var time_int := floor(max(audio_synchronizer.time, 0.0)) as int
-	var length := audio_synchronizer.track.stream.get_length() as int
-	$BeatLabel.text = 'Beat: %d / %d  (%02d:%02d / %02d:%02d)' % [(beat % audio_synchronizer.current_beats_per_measure + 1), audio_synchronizer.current_beats_per_measure, (time_int / 60) % 60, time_int % 60, (length / 60) % 60, length % 60]
 	beat += 1
+	
+	if beat % audio_synchronizer.current_beats_per_measure != 0 or audio_synchronizer.time < 0 or not measure_bar_key: 
+		return
+	
+	var note : MeasureBar = MEASURE_BAR.instantiate()
+	note.position = measure_bar_key.spawn_position.position
+	note.timings_supplier = func() -> Array[float]: return [measure_bar_key.corrected_time, 1.0 / note_speed] 
+	note.spawn_point = measure_bar_key.spawn_position
+	note.hit_point = measure_bar_key.key_plane
+	note.hit_time = measure_bar_key.corrected_time + audio_synchronizer.current_beat_interval*4
+	note.duration = audio_synchronizer.current_beat_interval*4
+		
+	measure_bar_key.note_queue.push(note)
+	measure_bar_key.add_child(note)

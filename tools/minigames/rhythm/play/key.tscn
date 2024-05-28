@@ -1,10 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://c57f558j5tnsc"]
+[gd_scene load_steps=17 format=3 uid="uid://c57f558j5tnsc"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/key.gd" id="1_bcnxa"]
 [ext_resource type="PackedScene" uid="uid://bejn8g103mp0u" path="res://tools/debug/editor/editor_plane.tscn" id="2_j1vrs"]
 [ext_resource type="PackedScene" uid="uid://dywsugc8b2gts" path="res://tools/debug/editor/editor_point.tscn" id="3_yqybd"]
 [ext_resource type="AudioStream" uid="uid://dowyseood26b1" path="res://tools/minigames/rhythm/assets/samples/hit.mp3" id="4_25p1v"]
-[ext_resource type="Texture2D" uid="uid://y40mfo1sv1sd" path="res://tools/minigames/rhythm/assets/key.png" id="4_d8h3b"]
+[ext_resource type="Texture2D" uid="uid://nsfsluvoulwy" path="res://assets/rhythm/key.png" id="4_r2rj6"]
+[ext_resource type="Script" path="res://tools/minigames/rhythm/play/key_light.gd" id="5_ijapg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxuqm"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.219608)
+disable_receive_shadows = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_bmgil"]
+material = SubResource("StandardMaterial3D_gxuqm")
+size = Vector2(0.08, 100)
+orientation = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_c0kiq"]
 
@@ -12,7 +24,9 @@
 render_priority = 2
 transparency = 1
 no_depth_test = true
-albedo_texture = ExtResource("4_d8h3b")
+diffuse_mode = 1
+specular_mode = 2
+albedo_texture = ExtResource("4_r2rj6")
 billboard_keep_scale = true
 
 [sub_resource type="Curve" id="Curve_o3e0m"]
@@ -51,19 +65,14 @@ material = SubResource("StandardMaterial3D_n5gfs")
 size = Vector2(0.25, 0.25)
 orientation = 1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxuqm"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0.780392, 0.843137, 0.862745, 1)
-disable_receive_shadows = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_bmgil"]
-material = SubResource("StandardMaterial3D_gxuqm")
-size = Vector2(0.05, 100)
-orientation = 1
-
 [node name="Key" type="Node3D"]
 script = ExtResource("1_bcnxa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+sorting_offset = -99.0
+cast_shadow = 0
+mesh = SubResource("QuadMesh_bmgil")
 
 [node name="Editor" type="Node3D" parent="."]
 
@@ -80,8 +89,15 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 mesh = SubResource("QuadMesh_c0kiq")
 surface_material_override/0 = SubResource("StandardMaterial3D_yer7t")
 
-[node name="ParticleEmitter" type="GPUParticles3D" parent="KeyMesh"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+[node name="HitLight" type="OmniLight3D" parent="KeyMesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.72323e-09, 0.0623003)
+light_energy = 2.0
+omni_range = 2.0
+omni_attenuation = 0.2
+script = ExtResource("5_ijapg")
+decay_speed = 20.0
+
+[node name="ParticleEmitter" type="GPUParticles3D" parent="."]
 cast_shadow = 0
 emitting = false
 amount = 48
@@ -89,19 +105,6 @@ lifetime = 1.5
 fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_3fgsh")
 draw_pass_1 = SubResource("QuadMesh_nua2l")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="KeyMesh"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -50.445, -0.00100221)
-sorting_offset = -99.0
-cast_shadow = 0
-mesh = SubResource("QuadMesh_bmgil")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="KeyMesh"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 50.455, -0.000997795)
-cast_shadow = 0
-mesh = SubResource("QuadMesh_bmgil")
-skeleton = NodePath("../..")
 
 [node name="Notes" type="Node3D" parent="."]
 

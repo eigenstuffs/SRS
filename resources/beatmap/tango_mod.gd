@@ -87,7 +87,7 @@ static var TIMING_ACTIONS = [
 	[ 36.351, 'playfield', func(playfield): EffectRegistry.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.5), 0.2])],
 	[ 36.523, 'playfield', func(playfield): 
 		EffectRegistry.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.35])
-		EffectRegistry.start_effect(playfield, 'Bloom', [playfield.effects, 0.4, 0.0, 1.0, 0.4])],
+		EffectRegistry.start_effect(playfield, 'Bloom', [playfield.effects, 0.4, 0.25, 1.0, 0.4])],
 	
 	[ 38.580, 'playfield', func(playfield): EffectRegistry.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.2), 0.15])],
 	[ 38.751, 'playfield', func(playfield): EffectRegistry.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.15])],
@@ -95,56 +95,56 @@ static var TIMING_ACTIONS = [
 	[ 39.094, 'playfield', func(playfield): EffectRegistry.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.5), 0.2])],
 	[ 39.266, 'playfield', func(playfield): 
 		EffectRegistry.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.35])
-		EffectRegistry.start_effect(playfield, 'Bloom', [playfield.effects, 0.4, 0.0, 1.0, 0.4])],
+		EffectRegistry.start_effect(playfield, 'Bloom', [playfield.effects, 0.4, 0.25, 1.0, 0.4])],
 	
 	# 266 351 437 523 608 694 780 866 951 037 123 208 294 380 466 551 637
 	[ 39.266, 'playfield', func(playfield): 
-		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 39.351, 'playfield', func(playfield): 
 		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 39.437, 'playfield', func(playfield): 
 		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 39.523, 'playfield', func(playfield): 
 		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 39.608, 'playfield', func(playfield): 
 		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 39.694, 'playfield', func(playfield): 
 		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 39.780, 'playfield', func(playfield): 
 		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 39.866, 'playfield', func(playfield): 
 		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 39.951, 'playfield', func(playfield): 
 		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 40.037, 'playfield', func(playfield): 
 		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 40.123, 'playfield', func(playfield): 
 		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 40.208, 'playfield', func(playfield): 
 		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 40.294, 'playfield', func(playfield): 
 		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 40.380, 'playfield', func(playfield): 
 		playfield.keys[0].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 40.466, 'playfield', func(playfield): 
 		playfield.keys[1].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 40.551, 'playfield', func(playfield): 
 		playfield.keys[2].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
-		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.4, 0.4, 1.0))],
+		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.5, 0.5, 1.0))],
 	[ 40.637, 'playfield', func(playfield): 
 		playfield.keys[3].enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))
 		EffectRegistry.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.3])],
@@ -177,16 +177,16 @@ static var TIMING_ACTIONS = [
 		EffectRegistry.start_effect(playfield, 'Bloom', [playfield.effects, 1.0, 0.3125, 0.8, 0.35])],
 	
 	[ 52.980 + 0.086*0, 'playfield', func(playfield): 
-		playfield.keys[0].enable_note_color_overwrite(Color(0.5, 0.46, 0.91, 1.0))],
+		playfield.keys[0].enable_note_color_overwrite(Color(0.68, 0.75, 0.91, 1.0))],
 	[ 52.980 + 0.086*1, 'playfield', func(playfield): 
 		playfield.keys[0].enable_note_color_overwrite(Color(0.38, 0.45, 0.91, 1.0))
-		playfield.keys[1].enable_note_color_overwrite(Color(0.5, 0.46, 0.91, 1.0))],
+		playfield.keys[1].enable_note_color_overwrite(Color(0.68, 0.75, 0.91, 1.0))],
 	[ 52.980 + 0.086*2, 'playfield', func(playfield): 
 		playfield.keys[1].enable_note_color_overwrite(Color(0.38, 0.45, 0.91, 1.0))
-		playfield.keys[2].enable_note_color_overwrite(Color(0.5, 0.46, 0.91, 1.0))],
+		playfield.keys[2].enable_note_color_overwrite(Color(0.68, 0.75, 0.91, 1.0))],
 	[ 52.980 + 0.086*3, 'playfield', func(playfield): 
 		playfield.keys[2].enable_note_color_overwrite(Color(0.38, 0.45, 0.91, 1.0))
-		playfield.keys[3].enable_note_color_overwrite(Color(0.5, 0.46, 0.91, 1.0))],
+		playfield.keys[3].enable_note_color_overwrite(Color(0.68, 0.75, 0.91, 1.0))],
 	[ 52.980 + 0.086*4, 'playfield', func(playfield): 
 		playfield.keys[3].enable_note_color_overwrite(Color(0.38, 0.45, 0.91, 1.0))],
 	
@@ -242,27 +242,6 @@ static var TIMING_ACTIONS = [
 	
 	
 	
-	#[ 17.323,    'screen',  'enable', ['flash', 'rain']],
-	[ 73.133,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 73.712,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 74.992,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 75.230,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 75.406,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 75.615,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 76.746,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 77.060,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 77.361,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 77.970,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 78.274,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 78.572,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 79.755,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 80.601,    'screen',  'enable', ['flash'], [{'factor' : 0.05}]],
-	[ 81.418,    'screen',  'enable', ['flash', 'impact_lines'], [{'factor' : 0.5, 'duration': 0.6}, {'weight' : 0.6, 'max_alpha' : 0.95}]],
-	[ 81.418,      'back', 'disable', ['radial_pattern']],
-	[ 81.418,    'screen', 'disable', ['greyscale']],
-	[ 81.418, 'playfield', func(playfield): 
-		for key in playfield.keys: 
-			key.enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))],
 	[105.968,    'screen', 'enable',  ['flash']],
 	[105.968,    'screen', 'disable', ['rain', 'impact_lines']]]
 

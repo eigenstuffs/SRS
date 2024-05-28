@@ -24,9 +24,6 @@ signal on_beat
 ## assigned hit time so they could be moved.
 @export var spawn_offset_seconds : float = 0.0
 
-## Enables a ticking metronome sound on each beat of the track
-@export var use_metronome : bool = false
-
 @onready var track : AudioStreamPlayer = $Track
 @onready var metronome : AudioStreamPlayer = $Metronome
 
@@ -39,11 +36,11 @@ var timing_idx : int = 0
 var current_bps : float = 0
 var current_beat_interval : float = 0
 var current_beats_per_measure : int = 4
+var use_metronome := true
 
 func start():	
-	# Round time to nearest power of 2 multiple of bps
 	#beatmap.start_offset + x = current_beats_per_measure * 4 * current_beat_interval
-	self.time = -(current_beats_per_measure * 4 * current_beat_interval - beatmap.start_offset)
+	self.time = -((current_beats_per_measure - 1) * current_beat_interval) + beatmap.start_offset
 	self.next_metronome_time = self.time
 	track.stream = beatmap.track
 	has_started = true
@@ -51,6 +48,7 @@ func start():
 func _process(delta):
 	if not has_started: return
 	
+	use_metronome = self.time <= beatmap.start_offset
 	if has_played:
 		# Source: https://docs.godotengine.org/en/stable/tutorials/audio/sync_with_audio.html
 		time = max(time, track.get_playback_position() + AudioServer.get_time_since_last_mix())
@@ -70,7 +68,8 @@ func _process(delta):
 		timing_idx += 1
 
 	# Tick metronome ignoring output latency (since it calling play already includes it)
-	if use_metronome and time >= next_metronome_time:
+	if time >= next_metronome_time:
 		next_metronome_time += current_beat_interval
 		on_beat.emit()
-		metronome.play()
+		
+		if use_metronome: metronome.play()

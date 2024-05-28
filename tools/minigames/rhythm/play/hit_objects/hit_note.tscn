@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/hit_objects/hit_note.gd" id="1_ct2xr"]
 [ext_resource type="Script" path="res://tools/effect/multi_pass_shader_material.gd" id="2_gm18e"]
 [ext_resource type="Shader" path="res://tools/minigames/rhythm/resources/shaders/note.gdshader" id="3_7uq00"]
-[ext_resource type="Texture2D" uid="uid://b04ltd5nto2yw" path="res://tools/minigames/rhythm/assets/hit_circle.png" id="4_0vmqi"]
+[ext_resource type="Texture2D" uid="uid://b8c8u6ytdjtlj" path="res://assets/rhythm/hit.png" id="4_7ad0v"]
 [ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="5_7pr8j"]
 [ext_resource type="Shader" path="res://tools/minigames/rhythm/resources/shaders/warp_note.gdshader" id="6_x1asd"]
 
@@ -18,7 +18,7 @@ is_unique_pass = true
 default_uniforms = {
 "fade_out_time": null,
 "miss_color": null,
-"tex": ExtResource("4_0vmqi")
+"tex": ExtResource("4_7ad0v")
 }
 priority_overwrite = 1
 
@@ -27,7 +27,7 @@ render_priority = 1
 shader = ExtResource("3_7uq00")
 shader_parameter/miss_color = Color(0.25, 0.085, 0.05, 1)
 shader_parameter/fade_out_time = 0.35
-shader_parameter/tex = ExtResource("4_0vmqi")
+shader_parameter/tex = ExtResource("4_7ad0v")
 script = ExtResource("2_gm18e")
 is_canvas_item = false
 shader_passes = Array[ExtResource("5_7pr8j")]([SubResource("Resource_x1c01")])
@@ -39,6 +39,12 @@ script = ExtResource("1_ct2xr")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 mesh = SubResource("QuadMesh_7fr1q")
 surface_material_override/0 = SubResource("ShaderMaterial_5n7ax")
+
+[node name="Backlight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0348735, 0)
+light_energy = 0.7
+omni_range = 2.0
+omni_attenuation = 0.25
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.5

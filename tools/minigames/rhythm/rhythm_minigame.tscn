@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://lmg6p4vssmpw"]
+[gd_scene load_steps=15 format=3 uid="uid://lmg6p4vssmpw"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_minigame.gd" id="1_pb007"]
 [ext_resource type="PackedScene" uid="uid://cr62xw6ofifyl" path="res://tools/minigames/rhythm/play/playfield.tscn" id="2_2af6n"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/environment.gd" id="5_yqwvy"]
-[ext_resource type="PackedScene" uid="uid://6kqupwwsa2f0" path="res://tools/minigames/rhythm/play/board.tscn" id="5_yue8y"]
 [ext_resource type="PackedScene" uid="uid://blv2x4ex2bkn0" path="res://tools/minigames/rhythm/assets/cirno/fumo.tscn" id="6_6fly7"]
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/misc/panorama.png" id="6_luhxe"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/assets/cirno/fumofumo.gd" id="7_ej0x1"]
@@ -18,9 +17,27 @@ sky_material = SubResource("PanoramaSkyMaterial_a8ggx")
 [sub_resource type="Environment" id="Environment_oefpv"]
 background_mode = 2
 sky = SubResource("Sky_eq6kb")
-sky_rotation = Vector3(1898.84, -1.5708, -4.71239)
+sky_rotation = Vector3(2167.34, -1.5708, -4.71239)
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sgl3d"]
+size = Vector2(1.2, 4)
+subdivide_width = 1
+subdivide_depth = 1
+
+[sub_resource type="Gradient" id="Gradient_cg4qe"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.435556, 0.773333)
+colors = PackedColorArray(0.73202, 0.811476, 0.938752, 1, 0.584314, 0.478431, 0.584314, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iht3a"]
+gradient = SubResource("Gradient_cg4qe")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gehkv"]
+albedo_color = Color(0.324847, 0.109631, 0.205688, 1)
+albedo_texture = SubResource("GradientTexture2D_iht3a")
 
 [node name="RhythmMinigame" type="SubViewport"]
 script = ExtResource("1_pb007")
@@ -35,12 +52,12 @@ shadow_enabled = true
 
 [node name="Fumo" parent="." instance=ExtResource("6_6fly7")]
 transform = Transform3D(-0.108362, -1.21676e-08, -0.130987, -0.130987, -5.72563e-09, 0.108362, -1.21676e-08, 0.17, -5.72563e-09, 10.6458, -4.48, 2.60694)
+visible = false
 script = ExtResource("7_ej0x1")
 
 [node name="Playfield" parent="." instance=ExtResource("2_2af6n")]
 beatmap = ExtResource("7_o5gdu")
 note_speed = 1.35
-show_debug = true
 
 [node name="AudioSynchronizer" parent="Playfield" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36139, 0)
@@ -49,7 +66,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36139, 0)
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.53443, -4.031)
 current = true
 
-[node name="Board" parent="Playfield" instance=ExtResource("5_yue8y")]
+[node name="Mesh" type="MeshInstance3D" parent="Playfield"]
+transform = Transform3D(5.5, 0, 0, 0, 4.4, 0, 0, 0, 17.6, 2.08165e-12, -0.25, 2.08165e-12)
+mesh = SubResource("PlaneMesh_sgl3d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gehkv")
 
 [connection signal="report_score" from="Playfield" to="." method="_on_playfield_report_score"]
 [connection signal="on_beat" from="Playfield/AudioSynchronizer" to="Fumo" method="_on_audio_synchronizer_on_beat"]

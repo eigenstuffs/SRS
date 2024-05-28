@@ -67,6 +67,10 @@ func _set_shader_parameter(param_name : StringName, value : Variant) -> void:
 func _on_color_overwrite_changed(value : Color):
 	_set_shader_parameter('color_overwrite', value)
 
+func _on_mesh_angle_changed(value : float):
+	$Meshes/Bottom.rotation.y = value
+	$Meshes/Top.rotation.y = value
+
 func enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
 	front_material.enable_shader_pass(pass_name, uniforms)
 	body_material.enable_shader_pass(pass_name, uniforms)
