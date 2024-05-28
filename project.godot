@@ -20,10 +20,9 @@ config/icon="res://assets/misc/IMG_4946.jpeg"
 
 EffectAnim="*res://tools/effect/effect_anim.tscn"
 Global="*res://global/global.gd"
-DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 Util="*res://global/utilities.gd"
 WindowDimensionHelper="res://global/window_dimension_helper.gd"
-EffectRegistry="*res://global/effect_registry.gd"
+EffectRegistry="res://global/effect_registry.gd"
 
 [debug]
 
@@ -42,7 +41,7 @@ window/vsync/vsync_mode=3
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/wigglebone/plugin.cfg")
+enabled=PackedStringArray("res://addons/wigglebone/plugin.cfg")
 
 [file_customization]
 
@@ -146,10 +145,3 @@ rhythm_key_6={
 [rendering]
 
 anti_aliasing/quality/screen_space_aa=1
-
-[shader_globals]
-
-cpu_sync_time={
-"type": "float",
-"value": 0.0
-}

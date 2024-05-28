@@ -21,8 +21,12 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 			get_node(name_string).text = focused_char
 			break
 		elif character_list.size() == 1:
-			focused_char = i
-			get_node(name_string).text = focused_char
+			if i.contains("-"):
+				get_node(name_string).text = ""
+				focused_char = null
+			else:
+				focused_char = i
+				get_node(name_string).text = i
 			break
 		else:
 			var temp = character_list.duplicate(true)
@@ -39,6 +43,12 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 			
 	for i in character_list.size():
 		character_list[i] = character_list[i].replace("!","")
+		character_list[i] = character_list[i].replace("-","")
+		
+	if get_node(name_string).text == "" or get_node(name_string).text == null:
+		get_node(name_frame).hide()
+	else:
+		get_node(name_frame).show()
 	
 	for i in $HBoxContainer.get_children():
 		$HBoxContainer.remove_child(i)
@@ -72,15 +82,11 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 					a, i
 				)
 				a.modulate.a = 0
-				
+		if focused_char: print('focused: ' + focused_char)
 		for i in $HBoxContainer.get_child_count():
-			if focused_char == character_list[i]:
-				#$HBoxContainer.get_child(i).z_index = 1
-				break
-				
-		for i in $HBoxContainer.get_child_count():
-			if focused_char != character_list[i-1]:
-				$HBoxContainer.get_child(i-1).modulate = Color("969696")
+			if focused_char != "" and focused_char != null:
+				if focused_char != character_list[i-1]:
+					$HBoxContainer.get_child(i-1).modulate = Color("969696")
 			if character_list[i-1] != "null":
 				$HBoxContainer.get_child(i-1).modulate.a = 0
 				var q = create_tween()

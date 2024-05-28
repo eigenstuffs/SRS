@@ -10,7 +10,7 @@ static func _static_init() -> void:
 	var minigame_list = load(MINIGAME_LIST_RESOURCE_DIR)
 	for minigame in minigame_list.minigame_list:
 		register(minigame)
-	#minigames.make_read_only()
+	minigames.make_read_only()
 	
 static func register(minigame : MinigameInfo) -> void:
 	assert(minigame.name && minigame.scene && minigame.time != null)

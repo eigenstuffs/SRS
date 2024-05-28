@@ -1,4 +1,19 @@
 {
+	"a": {
+		"character": "-Seraphina",
+		"sprite": "calm1",
+		"cecilia": null,
+		"text": "Hi",
+		"go to": "start",
+		"options": null,
+		"options_id": null,
+		"emit": null,
+		"delay": null,
+		"run if": null,
+		"add": null,
+		"set": null,
+		"flag": null
+	  },
   "start": {
 	"character": "!Lord Akatius",
 	"sprite": "blush1",

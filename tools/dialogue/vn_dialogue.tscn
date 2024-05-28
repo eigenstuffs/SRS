@@ -110,7 +110,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("4_g1vbp")
-text = "res://tools/dialogue/vn_scripts/Dialogue - Prototype-3.json"
+text = "res://tools/dialogue/vn_scripts/a1c1.json"
 
 [node name="EffectHandler" type="Node" parent="."]
 process_mode = 3
@@ -303,6 +303,7 @@ mouse_filter = 1
 
 [node name="Skip" type="TextureButton" parent="TextBox/Settings/Buttons"]
 custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 focus_mode = 0
@@ -317,6 +318,7 @@ stretch_mode = 0
 
 [node name="Autoplay" type="TextureButton" parent="TextBox/Settings/Buttons"]
 custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
 offset_top = 64.0
 offset_right = 64.0
 offset_bottom = 128.0
@@ -332,6 +334,7 @@ stretch_mode = 0
 
 [node name="Log" type="TextureButton" parent="TextBox/Settings/Buttons"]
 custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
 offset_top = 128.0
 offset_right = 64.0
 offset_bottom = 192.0
@@ -346,6 +349,7 @@ stretch_mode = 0
 
 [node name="Hide" type="TextureButton" parent="TextBox/Settings/Buttons"]
 custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
 offset_top = 192.0
 offset_right = 64.0
 offset_bottom = 256.0

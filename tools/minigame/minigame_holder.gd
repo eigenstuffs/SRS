@@ -61,7 +61,7 @@ func _on_ui_game_over():
 	rough_points = game.rough_points
 	detailed_points = game.detailed_points
 	finished.emit(detailed_points)
-	EffectRegistry.start_effect(self, 'Blur', [self])
+	#EffectRegistry.start_effect(self, 'Blur', [self])
 	is_finished = true
 
 func _on_game_child_entered_tree(node: Node) -> void:
@@ -75,7 +75,7 @@ func game_end_early(): #assuming that game calls its own end early
 	rough_points = game.rough_points
 	detailed_points = game.detailed_points
 	finished.emit(detailed_points)
-	EffectRegistry.start_effect(self, 'Blur', [self])
+	#EffectRegistry.start_effect(self, 'Blur', [self])
 	is_finished = true
 
 func set_game_remaining_time():

@@ -154,11 +154,12 @@ func read_line(key : int):
 		var variable = text[0]
 		var value = text[1]
 		Global.set(variable, value)
+	if current_line["flag"] != null:
+		settings_dropdown.stop_skip()
 	if current_line["flag"] == "decision":
 		for i in ui_elements: i.hide()
 		next.hide()
 		if current_line["options"] != null:
-			settings_dropdown.stop_skip()
 			$Choice/Backdrop.position = Vector2(1950,0)
 			choice_ui.show()
 			var text : Array = current_line["options"].split(",")
@@ -326,14 +327,15 @@ func init_parameters(key : int):
 	var sprites
 
 	if line["character"] != null && line["sprite"] != null:
+		character_name.show()
+		name_frame.show()
 		sprite_handler.init_sprite(
 			line["character"].split(","),
 			line["sprite"].split(",")
 		)
 		if line["character"] == "Player":
 			character_name.text = Global.player_name
-		character_name.show()
-		name_frame.show()
+
 	elif line["character"] != null:
 		character_name.text = line["character"]
 		character_name.show()
@@ -342,16 +344,16 @@ func init_parameters(key : int):
 		character_name.text = ""
 		character_name.hide()
 		name_frame.hide()
-
-	if character_name.text != "":
-		settings_dropdown.add_to_log(
-			"[b]" + character_name.text + ":[/b] " +
-			current_line["text"]
-		)
-	else:
-		settings_dropdown.add_to_log(
-			current_line["text"]
-		)
+	if current_line["text"]:
+		if character_name.text != "":
+			settings_dropdown.add_to_log(
+				"[b]" + character_name.text + ":[/b] " +
+				current_line["text"]
+			)
+		else:
+			settings_dropdown.add_to_log(
+				current_line["text"]
+			)
 
 func choice_funnel(which : int):
 	var choice = current_line["options_id"].split(",")[which]
