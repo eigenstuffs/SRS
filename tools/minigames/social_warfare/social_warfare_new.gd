@@ -41,68 +41,74 @@ func turn_loop():
 							card_action(fight.current_card, "Opponent")
 							await card_action_finished
 							print("action done")
+							STATE = STATES.OPPONENT
 
 				"flee":
 					pass
 			
-			STATE = STATES.OPPONENT
 			turn_loop()
 		STATES.OPPONENT:
 			STATE = STATES.PLAYER
 			turn_loop()
 
 func card_action(card : Card, target : String):
+	print(card.title)
 	battle_intensity += card.intensity_mod
 	Global.player_mp -= card.points_req
 	
 	## put dialogue somewhere in here
 	
+	await get_tree().create_timer(1).timeout
+	
 	match target:
 		"Player":
 			match card.effect:
-				"Attack":
+				0:
 					Global.player_hp -= (card.effect_num *
 						enemy_data.enemy_offense_ratio)
-				"Restore":
+				1:
 					enemy_data.enemy_hp += card.effect_num
-				"Buff":
+				2:
 					match card.target_stat:
-						"Attack":
+						0:
 							enemy_data.enemy_offense_ratio *= card.effect_num
-						"Defense":
+						1:
 							enemy_data.enemy_defense_ratio *= card.effect_num
 					buff_applied = true
-				"Debuff":
+				3:
 					match card.target_stat:
-						"Attack":
+						0:
 							Global.player_offense_ratio *= card.effect_num
-						"Defense":
+						1:
 							Global.player_defense_ratio *= card.effect_num
 					buff_applied = true
 		"Opponent":
 			match card.effect:
-				"Attack":
+				0: #attack
 					enemy_data.enemy_hp -= (card.effect_num *
 						Global.player_offense_ratio)
-				"Restore":
+				1: #restore
 					Global.player_hp += card.effect_num
-				"Buff":
+				2: #buff
+					print("buff")
 					match card.target_stat:
-						"Attack":
+						0: # attack
 							Global.player_offense_ratio *= card.effect_num
-						"Defense":
+						1: # defense
 							Global.player_defense_ratio *= card.effect_num
 					buff_applied = true
-				"Debuff":
+				3: #debuff
+					print("debuff")
 					match card.target_stat:
-						"Attack":
+						0: # attack
 							enemy_data.enemy_offense_ratio *= card.effect_num
-						"Defense":
+						1: # defense
 							enemy_data.enemy_defense_ratio *= card.effect_num
 					buff_applied = true
 	if buff_applied:
 		buff_applied = false
 	else:
+		print("Wiped buffs")
 		Global.player_offense_ratio = 1
 		Global.player_defense_ratio = 1
 		enemy_data.enemy_offense_ratio = 1

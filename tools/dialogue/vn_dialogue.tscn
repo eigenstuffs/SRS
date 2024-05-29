@@ -1,6 +1,5 @@
 [gd_scene load_steps=54 format=3 uid="uid://drqf7jcr25yqx"]
 
-[ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/ui/Dialogue Box.png" id="2_eyrgx"]
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
 [ext_resource type="AudioStream" uid="uid://1ouwyjtdtbi2" path="res://assets/music/pavane.wav" id="3_4yjk8"]
 [ext_resource type="Script" path="res://tools/dialogue/vn_dialogue.gd" id="4_g1vbp"]
@@ -21,6 +20,7 @@
 [ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="12_17eel"]
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/Volkhov-Bold.ttf" id="12_elsoh"]
 [ext_resource type="FontFile" uid="uid://blo7ft3ovj4yy" path="res://assets/ui/Volkhov-Italic.ttf" id="13_61dic"]
+[ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/vn/Dialogue/Dialogue Box.png" id="14_483pf"]
 [ext_resource type="FontFile" uid="uid://b5ootysr42ce3" path="res://assets/ui/Volkhov-BoldItalic.ttf" id="14_q7m4c"]
 [ext_resource type="Texture2D" uid="uid://c1e342tutqkm0" path="res://assets/vn/Cecilia/cecilia_default2.PNG" id="17_od5v0"]
 [ext_resource type="Texture2D" uid="uid://bo2omw0hx2b04" path="res://assets/vn/Settings/Autoplay.png" id="18_snyv8"]
@@ -41,6 +41,35 @@
 [ext_resource type="Texture2D" uid="uid://clu5ma2xjxd5t" path="res://assets/vn/Settings/History-Pop Up Background.png" id="31_yesph"]
 [ext_resource type="Texture2D" uid="uid://cuf4r4vg05nv6" path="res://assets/vn/Settings/[Reference] Dialogue_ Fake Screenshot_Default.png" id="33_5pxjq"]
 [ext_resource type="Texture2D" uid="uid://ckahvnqljtcgj" path="res://assets/vn/Settings/drop down_backplate.png" id="34_mqe1k"]
+
+[sub_resource type="Animation" id="Animation_l673d"]
+resource_name = "NeutralSpeaking"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/NeutralSpeaking:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/NeutralSpeaking:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_8vsie"]
 resource_name = "NeutralStatic"
@@ -170,14 +199,14 @@ tracks/7/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_l673d"]
-resource_name = "NeutralSpeaking"
+[sub_resource type="Animation" id="Animation_6rut7"]
+resource_name = "SeriousSpeaking"
 length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/NeutralSpeaking:frame")
+tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/SeriousSpeaking:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -189,7 +218,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/NeutralSpeaking:visible")
+tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/SeriousSpeaking:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -228,14 +257,14 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_6rut7"]
-resource_name = "SeriousSpeaking"
+[sub_resource type="Animation" id="Animation_uq83c"]
+resource_name = "SmileSpeaking"
 length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/SeriousSpeaking:frame")
+tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/SmileSpeaking:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -247,7 +276,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/SeriousSpeaking:visible")
+tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/SmileSpeaking:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -286,35 +315,6 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_uq83c"]
-resource_name = "SmileSpeaking"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EffectHandler/AnimGod/Textures/SmileSpeaking:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EffectHandler/AnimGod/Textures/SmileSpeaking:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6r53"]
 _data = {
 "NeutralSpeaking": SubResource("Animation_l673d"),
@@ -324,33 +324,6 @@ _data = {
 "SeriousStatic": SubResource("Animation_6nn36"),
 "SmileSpeaking": SubResource("Animation_uq83c"),
 "SmileStatic": SubResource("Animation_7msbh")
-}
-
-[sub_resource type="Animation" id="Animation_u3l61"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimGod/Textures/TextureRect:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimGod/Textures/TextureRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_sielb"]
@@ -382,6 +355,33 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_u3l61"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimGod/Textures/TextureRect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimGod/Textures/TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_abflm"]
 _data = {
 "God_BG": SubResource("Animation_sielb"),
@@ -399,7 +399,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("4_g1vbp")
-text = "res://tools/dialogue/vn_scripts/Dialogue - UPDATED a1c1_3.json"
+text = "res://tools/dialogue/vn_scripts/Dialogue - UPDATED a1c1_1.json"
 
 [node name="EffectHandler" type="Node" parent="."]
 process_mode = 3
@@ -528,8 +528,8 @@ offset_left = 104.5
 offset_top = 650.0
 offset_right = 1815.5
 offset_bottom = 995.0
-texture = ExtResource("2_eyrgx")
-metadata/_edit_lock_ = true
+texture = ExtResource("14_483pf")
+expand_mode = 1
 
 [node name="NameFrame" type="TextureRect" parent="TextBox"]
 layout_mode = 0
@@ -574,20 +574,6 @@ bbcode_enabled = true
 text = "Lorem ipsum
 ultricies"
 visible_characters_behavior = 1
-
-[node name="Remember" type="Label" parent="TextBox"]
-visible = false
-layout_mode = 0
-offset_left = 1097.0
-offset_top = 543.0
-offset_right = 1705.0
-offset_bottom = 588.0
-theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
-theme_override_fonts/font = ExtResource("5_bpopc")
-theme_override_font_sizes/font_size = 32
-text = "Character will remember that."
-horizontal_alignment = 2
-autowrap_mode = 2
 
 [node name="Next" type="TextureButton" parent="TextBox"]
 modulate = Color(1, 1, 1, 0.54902)
@@ -753,6 +739,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 32
+
+[node name="GodChoice" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 466.5
+offset_top = 456.0
+offset_right = 1581.5
+offset_bottom = 1160.0
+theme_override_constants/separation = 4
+alignment = 1
 
 [node name="Choice" type="Control" parent="."]
 anchors_preset = 0

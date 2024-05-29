@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://tools/dialogue/dialogue_from_strings.gd" id="1_xx3lg"]
 [ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="2_6v40r"]
-[ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/ui/Dialogue Box.png" id="4_1bef5"]
+[ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/vn/Dialogue/Dialogue Box.png" id="4_1bef5"]
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="5_huhuf"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/Volkhov-Regular.ttf" id="7_yo456"]
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/Volkhov-Bold.ttf" id="8_b5tqi"]

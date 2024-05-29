@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://breocwsxqjanw"]
+
+[ext_resource type="Texture2D" uid="uid://b1eb5gxyxic3a" path="res://assets/vn/Dialogue/god_choice_dialoge_default.png" id="1_j1q51"]
+[ext_resource type="Texture2D" uid="uid://dde2h2nw4t0kw" path="res://assets/vn/Dialogue/god_choice_dialogue_hover.png" id="2_dnd0v"]
+
+[node name="GodDialogueChoice" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -557.5
+offset_top = -123.0
+offset_right = 557.5
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("1_j1q51")
+texture_pressed = ExtResource("1_j1q51")
+texture_hover = ExtResource("2_dnd0v")
+texture_disabled = ExtResource("2_dnd0v")
+texture_focused = ExtResource("1_j1q51")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1134.0
+offset_bottom = 223.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bj4bi5x25av1g"]
 
 [ext_resource type="Script" path="res://scenes/menus/title.gd" id="1_bsgjf"]
-[ext_resource type="Texture2D" uid="uid://vjj45nftrne" path="res://assets/cgs/title.png" id="2_3w1qb"]
+[ext_resource type="Texture2D" uid="uid://bptojoielq8rf" path="res://assets/menu/Title_REFERENCE.PNG" id="2_igyh0"]
 [ext_resource type="Texture2D" uid="uid://ccsrql5pidcqv" path="res://assets/ui/Button_Default.png" id="2_jk8cj"]
 [ext_resource type="Texture2D" uid="uid://c8jonukq0ek4k" path="res://assets/ui/Button_Click.png" id="3_rhqcb"]
 [ext_resource type="Texture2D" uid="uid://dcjb5khfra1y2" path="res://assets/ui/Button_Hover.png" id="4_ie6dy"]
@@ -27,8 +27,9 @@ offset_bottom = 1080.0
 color = Color(0.145098, 0.109804, 0.180392, 1)
 
 [node name="TitleScreenStackedButtons" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
-texture = ExtResource("2_3w1qb")
+position = Vector2(960, 544)
+scale = Vector2(0.575, 0.575)
+texture = ExtResource("2_igyh0")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
