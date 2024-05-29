@@ -1,9 +1,9 @@
-shader_type canvas_item;
+shader_type spatial;
 render_mode unshaded;
 
 #define AA_PASSES (1)
 #define FOV       (70.)
-#define MAX_STEPS (64)
+#define MAX_STEPS (100)
 #define TILE_SIZE (3.)
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
@@ -70,7 +70,7 @@ vec3 sample_texture(in sampler2D tex, in vec3 n) {
 
 void fragment() {
 	// --- Basis ---
-	float aspect_ratio = SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x;
+	float aspect_ratio = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
 	vec2 uv = (SCREEN_UV - 0.5) * vec2(aspect_ratio, 1); uv.y *= -1.0;
 	float w = -1.0 / tan(radians(FOV)*0.5);
 	
@@ -86,13 +86,13 @@ void fragment() {
 	float glow0 = pow(1.0 - length(SCREEN_UV-0.5), 3.0);
 	float glow1 = pow(glow0, 3.0);
 	
-	COLOR.rgb = vec3(0);
+	ALBEDO = vec3(0);
     for (int i = 0; i < AA_PASSES; i++)
     for (int j = 0; j < AA_PASSES; j++) {
 		vec3 col = vec3(0.0);
 		col = mix(col, orange, glow0);
 		col = mix(col, white, glow1);
-        vec2 offset = (vec2(float(i)*aspect_ratio, float(j)) / float(AA_PASSES) - 0.5)*SCREEN_PIXEL_SIZE;
+        vec2 offset = (vec2(float(i)*aspect_ratio, float(j)) / float(AA_PASSES) - 0.5)/VIEWPORT_SIZE;
 		
 		vec3 ro = camera_origin;
 		vec3 rd = normalize(vec3(uv + offset, w));
@@ -116,7 +116,7 @@ void fragment() {
 			col = mix(col, orange, glow0*(1.0 - fog));
 			col = mix(col, white, glow1*(1.0 - fog));
 		}
-		COLOR.rgb += col;
+		ALBEDO += col;
 	}
-	COLOR.rgb /= float(AA_PASSES*AA_PASSES);
+	ALBEDO /= float(AA_PASSES*AA_PASSES);
 }
