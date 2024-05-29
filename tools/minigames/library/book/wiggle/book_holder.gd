@@ -26,7 +26,7 @@ func get_num_books() -> int:
 
 func clear_all_books() -> void:
 	if get_num_books() >= 10:
-		EffectRegistry.stop_effect("Vignette")
+		EffectReg.stop_effect("Vignette")
 	skeleton.clear_bones()
 	for child in skeleton.get_children():
 		child.queue_free()

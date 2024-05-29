@@ -23,7 +23,7 @@ Global="*res://global/global.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 Util="*res://global/utilities.gd"
 WindowDimensionHelper="res://global/window_dimension_helper.gd"
-EffectRegistry="*res://global/effect_registry.gd"
+EffectReg="*res://global/EffectReg.gd"
 
 [debug]
 

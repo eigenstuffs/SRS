@@ -8,12 +8,12 @@ static var TIMING_ACTIONS = [
 		#for key in playfield.keys: 
 			#key.enable_note_shader_pass('warp')
 			#key.enable_note_color_overwrite(Color(0.2, 0.1, 0.5, 1.0))
-		#EffectRegistry.start_effect(playfield, 'Blur', [playfield.screen_space_material])],
+		#EffectReg.start_effect(playfield, 'Blur', [playfield.screen_space_material])],
 		#pass],
 		
 		
 	[ 2.535, 'playfield', func(playfield):
-		EffectRegistry.start_effect(playfield, 'BetterCall', [playfield])],
+		EffectReg.start_effect(playfield, 'BetterCall', [playfield])],
 		
 		
 		

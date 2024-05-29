@@ -53,7 +53,7 @@ func _on_maze_generator_all_key_collected():
 	#start the effect
 	$SfxPlayer.stream = SPEED_UP_SFX
 	$SfxPlayer.play()
-	EffectRegistry.start_effect(self, "ImpactLines", [$EffectNode, 1.0])
+	EffectReg.start_effect(self, "ImpactLines", [$EffectNode, 1.0])
 	#increase speed for both enemies and player
 	$MazePlayer.set_speed_modifier(2)
 	$MazeGenerator.set_all_enemy_speed_modifier(2)
@@ -68,7 +68,7 @@ func _on_goal_goal_touched():
 		end()
 
 func _on_maze_generator_enemy_met_player():
-	EffectRegistry.start_effect(self, "Flash", [$EffectNode, Color(0.6, 0, 0, 0.4)])
+	EffectReg.start_effect(self, "Flash", [$EffectNode, Color(0.6, 0, 0, 0.4)])
 	emit_signal("update_time", time_penalty)
 	$SfxPlayer.stream = HURT_SFX
 	$SfxPlayer.play()

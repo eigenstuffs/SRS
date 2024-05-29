@@ -191,14 +191,14 @@ class EffectExplosion extends Effect:
 				
 				# Hit stop!
 				Engine.set_time_scale(1e-8)
-				EffectRegistry.start_effect(parent, 'Bloom', [control, 1.0, 1.0, 0.3, 99999.0])
-				EffectRegistry.start_effect(parent, 'Flash', [control, Color(0.98, 0.98, 0.98, 0.3), 99999.0])
+				EffectReg.start_effect(parent, 'Bloom', [control, 1.0, 1.0, 0.3, 99999.0])
+				EffectReg.start_effect(parent, 'Flash', [control, Color(0.98, 0.98, 0.98, 0.3), 99999.0])
 				self.effect_node.start_anticiation()
 				await parent.get_tree().create_timer(0.07, true, false, true).timeout
 				
 				Engine.set_time_scale(1.0)
-				EffectRegistry.start_effect(parent, 'Bloom', [control, 1.0, 0.0, 0.5, 0.4])
-				EffectRegistry.start_effect(parent, 'Flash', [control, Color(0.98, 0.98, 0.98, 0.6), 0.2])
+				EffectReg.start_effect(parent, 'Bloom', [control, 1.0, 0.0, 0.5, 0.4])
+				EffectReg.start_effect(parent, 'Flash', [control, Color(0.98, 0.98, 0.98, 0.6), 0.2])
 				self.effect_node.start_explosion(),
 			func(): queue_free(),
 			func(): pass)
