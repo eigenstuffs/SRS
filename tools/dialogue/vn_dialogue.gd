@@ -23,7 +23,6 @@ signal stop_music
 signal sfx_door_knock
 signal sfx_glass_break
 signal sfx_page_flip
-signal sfx_door_open_close
 signal sfx_impact_3
 signal sfx_creepy_stinger
 signal sfx_reverse_cymbal_ominous
@@ -38,7 +37,7 @@ signal sfx_switch_click
 signal sfx_ambiance_echoes
 signal sfx_ambiance_heavy
 signal sfx_melody_save
-signal sfx_rattling_door
+signal sfx_door_1
 signal sfx_realization
 signal sfx_whoosh_foam
 signal sfx_happy
@@ -57,12 +56,52 @@ signal sfx_game_select
 signal sfx_footstep_running_gravel
 signal sfx_realization_bells
 
+signal sfx_heels_walking_metal
+signal sfx_heels_walking_tile
+signal sfx_heels_walking_wood_ext
+signal sfx_heels_walking_wood_int
+signal sfx_blanket_1
+signal sfx_blanket_2
+signal sfx_carcrash
+signal sfx_chair_scoot_wood
+signal sfx_curtains_heavy_1
+signal sfx_cutlery_1
+signal sfx_fabric_1
+signal sfx_truck_horn
+signal sfx_wardrobe_1
+signal sfx_drawer_1
+signal sfx_door_2
+signal sfx_cutlery_2
+signal sfx_bells_high
+signal sfx_bells_low
+signal sfx_bells_jingle
+signal sfx_ominous_linger
+signal sfx_ominous_quiet
+signal sfx_ominous_mystery
+signal sfx_ominous_buzz
+signal sfx_dark_vibrate
+signal sfx_dark_wash
+signal sfx_ominous_funky
+signal sfx_ominous_high
+signal sfx_ambiance_scarywind
+signal sfx_ambiance_blizzard
+signal sfx_ambiance_people_1
+signal sfx_ambiance_people_2
+signal sfx_ambiance_morningbirds
+signal sfx_twinkling_fairy
+signal sfx_twinkling_chime
+signal sfx_ambiance_fountain
+
 signal stop_sfx
 signal stop_looping_sfx
 
 signal cg_sky
 signal cg_black
 signal cg_dining
+
+signal cg_empty_fountain
+signal cg_cecilia_fountain
+signal cg_dead_snow
 
 signal cg_god_bg
 signal cg_god_neutral
