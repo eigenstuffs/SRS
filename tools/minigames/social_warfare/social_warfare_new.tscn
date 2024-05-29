@@ -1,23 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://jsihguxhu4ri"]
+[gd_scene load_steps=17 format=3 uid="uid://jsihguxhu4ri"]
 
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/PlayerData.gd" id="2_t2gbr"]
 [ext_resource type="Texture2D" uid="uid://bg5lmsai3bdgn" path="res://assets/socialwarfare/Black Box.png" id="2_wm5oo"]
+[ext_resource type="Texture2D" uid="uid://b0jmur30yi5il" path="res://assets/socialwarfare/Level_HP_MP_UI.png" id="3_wlxvx"]
 [ext_resource type="Texture2D" uid="uid://cmqm23sram70i" path="res://assets/socialwarfare/[SAMPLE REFERENCE] Social Welfare UI_Cards.png" id="4_bcrd3"]
+[ext_resource type="Texture2D" uid="uid://bp3ye0ldr4auw" path="res://assets/socialwarfare/MP Bar Color Shape.png" id="4_n7jg2"]
+[ext_resource type="Texture2D" uid="uid://yupx74k183p1" path="res://assets/socialwarfare/Opponent_HP_MP_Level_UI.png" id="4_vv8kx"]
+[ext_resource type="Texture2D" uid="uid://dngngwxkn1pq2" path="res://assets/socialwarfare/HP Bar Color Shape.png" id="5_ovjto"]
 [ext_resource type="Texture2D" uid="uid://m2w8lbq8vxxr" path="res://assets/socialwarfare/box.png" id="5_qj8qn"]
 [ext_resource type="Texture2D" uid="uid://cgaksh8qj6kb0" path="res://assets/socialwarfare/SW_Button_Backplate.png" id="7_k28hl"]
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/Choice.gd" id="7_sbmwb"]
 [ext_resource type="PackedScene" uid="uid://bbcvsc3odiorw" path="res://tools/minigames/social_warfare/card_deck_new.tscn" id="8_m254v"]
 [ext_resource type="Texture2D" uid="uid://c1ggtt1meqgln" path="res://assets/socialwarfare/Button_Backplate_Click.png" id="8_vkh4x"]
 [ext_resource type="Texture2D" uid="uid://52akqjnkuqwa" path="res://assets/socialwarfare/Button_Backplate_Hover.png" id="9_d3rgy"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dmk3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxuic"]
-bg_color = Color(0.454902, 0.870588, 0.380392, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcffu"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25auy"]
-bg_color = Color(0.968627, 0.666667, 0.666667, 1)
+[ext_resource type="Texture2D" uid="uid://b7v0viqq2h465" path="res://assets/socialwarfare/[SAMPLE REFERENCE] Social Welfare UI.png" id="9_epmyr"]
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/Fight.gd" id="12_3d855"]
 
 [node name="SocialWarfare" type="Control"]
 layout_mode = 3
@@ -27,6 +25,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vycxu")
+
+[node name="EnemyData" type="Node" parent="."]
+script = ExtResource("2_t2gbr")
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
@@ -48,8 +49,7 @@ texture = ExtResource("2_wm5oo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HealthBars" type="Control" parent="CanvasLayer"]
-visible = false
+[node name="Player" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -60,50 +60,66 @@ offset_right = 224.0
 offset_bottom = 224.0
 grow_horizontal = 2
 
-[node name="PlayerHealth" type="ProgressBar" parent="CanvasLayer/HealthBars"]
-layout_mode = 0
-offset_right = 448.0
-offset_bottom = 64.0
-theme_override_styles/background = SubResource("StyleBoxFlat_5dmk3")
-theme_override_styles/fill = SubResource("StyleBoxFlat_oxuic")
+[node name="Box" type="Sprite2D" parent="CanvasLayer/Player"]
+position = Vector2(845, 496)
+texture = ExtResource("3_wlxvx")
 
-[node name="EnemyHealth" type="ProgressBar" parent="CanvasLayer/HealthBars"]
+[node name="BarMP" type="TextureProgressBar" parent="CanvasLayer/Player"]
 layout_mode = 0
+offset_left = -32.0
 offset_top = 96.0
-offset_right = 448.0
-offset_bottom = 160.0
-theme_override_styles/background = SubResource("StyleBoxFlat_vcffu")
-theme_override_styles/fill = SubResource("StyleBoxFlat_25auy")
+offset_right = 256.0
+offset_bottom = 128.0
+texture_progress = ExtResource("4_n7jg2")
 
-[node name="DialogueHolder" type="Control" parent="CanvasLayer"]
+[node name="BarHP" type="TextureProgressBar" parent="CanvasLayer/Player"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 64.0
+texture_progress = ExtResource("5_ovjto")
+
+[node name="Opponent" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_top = 32.0
+offset_right = 224.0
+offset_bottom = 224.0
+grow_horizontal = 2
+
+[node name="Box" type="Sprite2D" parent="CanvasLayer/Opponent"]
+position = Vector2(-397, 163)
+texture = ExtResource("4_vv8kx")
+
+[node name="BarMP" type="TextureProgressBar" parent="CanvasLayer/Opponent"]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 288.0
+offset_right = 896.0
+offset_bottom = 320.0
+texture_progress = ExtResource("4_n7jg2")
+
+[node name="BarHP" type="TextureProgressBar" parent="CanvasLayer/Opponent"]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 224.0
+offset_right = 896.0
+offset_bottom = 256.0
+texture_progress = ExtResource("5_ovjto")
+
+[node name="Fight" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("12_3d855")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(960, 540)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = -105.0
-offset_top = 727.0
-offset_right = 2175.0
-offset_bottom = 1468.0
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("5_qj8qn")
-
-[node name="[sampleReference]SocialWelfareUiCards" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.2)
-position = Vector2(960, 540)
-texture = ExtResource("4_bcrd3")
-
-[node name="Fight" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureButton" type="TextureButton" parent="Fight"]
+[node name="Back" type="TextureButton" parent="CanvasLayer/Fight"]
 layout_mode = 0
 offset_left = 92.0
 offset_top = 708.0
@@ -115,9 +131,81 @@ texture_hover = ExtResource("9_d3rgy")
 texture_disabled = ExtResource("7_k28hl")
 texture_focused = ExtResource("9_d3rgy")
 
-[node name="CardDeck" parent="Fight" instance=ExtResource("8_m254v")]
+[node name="CardDeck" parent="CanvasLayer/Fight" instance=ExtResource("8_m254v")]
 layout_mode = 0
-offset_left = 320.0
+offset_left = 640.0
 offset_top = 640.0
-offset_right = 2240.0
+offset_right = 1856.0
 offset_bottom = 1152.0
+
+[node name="Cards" type="Control" parent="CanvasLayer/Fight"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Choice" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_sbmwb")
+
+[node name="Fight" type="TextureButton" parent="CanvasLayer/Choice"]
+layout_mode = 0
+offset_left = 946.0
+offset_top = 904.0
+offset_right = 1394.0
+offset_bottom = 1018.0
+texture_normal = ExtResource("7_k28hl")
+texture_pressed = ExtResource("8_vkh4x")
+texture_hover = ExtResource("9_d3rgy")
+texture_focused = ExtResource("9_d3rgy")
+
+[node name="Flee" type="TextureButton" parent="CanvasLayer/Choice"]
+layout_mode = 0
+offset_left = 1408.0
+offset_top = 904.0
+offset_right = 1856.0
+offset_bottom = 1018.0
+texture_normal = ExtResource("7_k28hl")
+texture_pressed = ExtResource("8_vkh4x")
+texture_hover = ExtResource("9_d3rgy")
+texture_focused = ExtResource("9_d3rgy")
+
+[node name="DialogueHolder" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -105.0
+offset_top = 727.0
+offset_right = 2175.0
+offset_bottom = 1468.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_qj8qn")
+
+[node name="[sampleReference]SocialWelfareUiCards" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.2)
+position = Vector2(960, 540)
+texture = ExtResource("4_bcrd3")
+
+[node name="[sampleReference]SocialWelfareUi" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.396078)
+position = Vector2(960, 544)
+texture = ExtResource("9_epmyr")
+
+[connection signal="pressed" from="CanvasLayer/Fight/Back" to="CanvasLayer/Fight" method="_on_back_pressed"]
+[connection signal="selected_card" from="CanvasLayer/Fight/CardDeck" to="CanvasLayer/Fight" method="_on_card_deck_selected_card"]
+[connection signal="pressed" from="CanvasLayer/Choice/Fight" to="CanvasLayer/Choice" method="_on_fight_pressed"]
+[connection signal="pressed" from="CanvasLayer/Choice/Flee" to="CanvasLayer/Choice" method="_on_flee_pressed"]

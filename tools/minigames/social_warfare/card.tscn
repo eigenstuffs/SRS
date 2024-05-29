@@ -42,11 +42,23 @@ offset_right = 323.0
 offset_bottom = 416.0
 texture = ExtResource("1_ndodj")
 
-[node name="Label" type="Label" parent="Elements"]
+[node name="Description" type="Label" parent="Elements"]
 offset_top = 320.0
-offset_right = 320.0
+offset_right = 323.0
 offset_bottom = 425.0
 theme_override_fonts/font = ExtResource("5_yih3g")
 theme_override_font_sizes/font_size = 32
 text = "ASoaihoih
 asodiioh"
+
+[node name="Title" type="Label" parent="Elements"]
+offset_left = 82.0
+offset_top = 16.0
+offset_right = 228.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("5_yih3g")
+theme_override_font_sizes/font_size = 32
+text = "ASoaihoih
+asodiioh"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

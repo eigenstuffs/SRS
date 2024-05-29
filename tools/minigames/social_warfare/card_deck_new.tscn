@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbcvsc3odiorw"]
+[gd_scene load_steps=2 format=3 uid="uid://bbcvsc3odiorw"]
 
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/card_deck_new.gd" id="1_lc1f1"]
-[ext_resource type="PackedScene" uid="uid://dsx0i2yqh5py" path="res://tools/minigames/social_warfare/card.tscn" id="1_m76vy"]
 
 [node name="CardDeck" type="HBoxContainer"]
 offset_right = 1920.0
@@ -9,19 +8,3 @@ offset_bottom = 512.0
 theme_override_constants/separation = -60
 alignment = 1
 script = ExtResource("1_lc1f1")
-
-[node name="Card" parent="." instance=ExtResource("1_m76vy")]
-layout_mode = 2
-focus_mode = 0
-
-[node name="Card2" parent="." instance=ExtResource("1_m76vy")]
-layout_mode = 2
-focus_mode = 0
-
-[node name="Card3" parent="." instance=ExtResource("1_m76vy")]
-layout_mode = 2
-focus_mode = 0
-
-[node name="Card4" parent="." instance=ExtResource("1_m76vy")]
-layout_mode = 2
-focus_mode = 0
