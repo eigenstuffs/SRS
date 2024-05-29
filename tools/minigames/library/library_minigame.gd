@@ -3,6 +3,8 @@ class_name LibraryMinigame extends Minigame
 @onready var BOOK_CAUGHT_SFX = preload("res://tools/minigames/library/sound/book_caught.mp3")
 @onready var SUBMIT_SFX = preload("res://tools/minigames/library/sound/submit_chime.mp3")
 
+signal stop_blinking
+
 var started = false
 @export var player_health = 3
 var item_caught : Array[int] = [0, 0]
@@ -35,7 +37,8 @@ func end():
 	#$BookInstancer.queue_free()
 
 func _on_library_player_book_collected(book : Book):
-	#gain_points(1)
+	if $LibraryPlayer/BookHolder.get_num_books() == 0:
+		$Walls/Shelves.blinking()
 	if $LibraryPlayer/BookHolder.get_num_books() < 10: 
 		$LibraryPlayer/BookHolder.add_book_bone(book)
 		$SfxPlayer.stream = BOOK_CAUGHT_SFX
@@ -50,6 +53,7 @@ func _on_library_player_bomb_hit(bomb : Bomb):
 	$LibraryPlayer/BookHolder.clear_all_books()
 	$LibraryPlayer.move_hurtbox()
 	$CanvasLayer.remove_heart()
+	emit_signal("stop_blinking")
 	#EffectRegistry.start_effect(self, "Flash", [$E])
 	player_health -= 1
 	do_explosion(bomb)
@@ -97,6 +101,7 @@ func _on_bookshelf_player_entered():
 		emit_signal("update_time", num_of_books)
 		$LibraryPlayer/BookHolder.clear_all_books()
 		$LibraryPlayer.move_hurtbox()
+		emit_signal("stop_blinking")
 
 func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)

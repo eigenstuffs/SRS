@@ -1,15 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://buyuq0kfr1tme"]
+[gd_scene load_steps=28 format=3 uid="uid://buyuq0kfr1tme"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="2_4dmdn"]
 [ext_resource type="PackedScene" uid="uid://cnujinydfucuo" path="res://tools/minigames/library/canvas_layer.tscn" id="2_7cbig"]
+[ext_resource type="Script" path="res://tools/minigames/library/Shelves.gd" id="3_bn36f"]
 [ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
-[ext_resource type="Texture2D" uid="uid://f2y3dba0olvy" path="res://assets/misc/librarybg.png" id="4_hf356"]
 [ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="4_q284v"]
 [ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/book/wiggle/book_holder.tscn" id="5_4rr6e"]
 [ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/npc_instancer.tscn" id="5_hbp12"]
+[ext_resource type="Texture2D" uid="uid://bjx05et1hfjou" path="res://assets/library/library minigame shelves_left.png" id="5_yufw6"]
+[ext_resource type="Texture2D" uid="uid://cq5ocmwyyussi" path="res://assets/library/librarybg.png" id="6_3agw3"]
 [ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="6_8v8og"]
+[ext_resource type="Texture2D" uid="uid://0up60520e26a" path="res://assets/library/library minigame shelves_right.png" id="6_gmm7x"]
 [ext_resource type="Script" path="res://tools/minigames/library/Bookshelf.gd" id="8_lbiij"]
+[ext_resource type="Texture2D" uid="uid://b5tb2e7l3k0ff" path="res://assets/library/library minigame MULTIPLY overlay.png" id="8_terwc"]
+[ext_resource type="Texture2D" uid="uid://canoybacfkdhk" path="res://assets/library/library minigame COLOR DODGE overlay.png" id="9_18307"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
 size = Vector3(10, 1, 10)
@@ -75,6 +80,7 @@ mesh = SubResource("PlaneMesh_krp85")
 
 [node name="Shelves" type="Node3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.48397, 0)
+script = ExtResource("3_bn36f")
 
 [node name="Right Shelf" type="MeshInstance3D" parent="Walls/Shelves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0.5)
@@ -93,9 +99,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 visible = false
 mesh = SubResource("BoxMesh_ngvxs")
 
-[node name="Sprite3D" type="Sprite3D" parent="Walls/Shelves"]
+[node name="Background" type="Sprite3D" parent="Walls/Shelves"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 2.08165e-12)
-texture = ExtResource("4_hf356")
+texture = ExtResource("6_3agw3")
+
+[node name="LShelf" type="Sprite3D" parent="Walls/Shelves"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -3.24954, 0.0327032, 0.738586)
+texture = ExtResource("5_yufw6")
+
+[node name="RShelf" type="Sprite3D" parent="Walls/Shelves"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.3, 0.033, 0.739)
+texture = ExtResource("6_gmm7x")
+
+[node name="Sprite3D" type="Sprite3D" parent="Walls/Shelves"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.03685, 0, 0.269709)
+texture = ExtResource("8_terwc")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Walls/Shelves"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.02298, 0, 1.2376)
+modulate = Color(0.596078, 0.596078, 0.6, 1)
+texture = ExtResource("9_18307")
 
 [node name="Colliders" type="Node3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
@@ -204,6 +227,7 @@ offset_bottom = 40.0
 
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
 
+[connection signal="stop_blinking" from="." to="Walls/Shelves" method="_on_library_stop_blinking"]
 [connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]
 [connection signal="book_collected" from="LibraryPlayer" to="." method="_on_library_player_book_collected"]
 [connection signal="body_entered" from="Bookshelf" to="Bookshelf" method="_on_body_entered"]

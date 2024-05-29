@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnujinydfucuo"]
+[gd_scene load_steps=3 format=3 uid="uid://cnujinydfucuo"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/canvas_layer.gd" id="1_wvlk1"]
+[ext_resource type="Texture2D" uid="uid://cpsjhq8tp4qbx" path="res://assets/library/Heart.png" id="2_umyva"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_wvlk1")
@@ -13,17 +14,20 @@ offset_bottom = 138.0
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+[node name="ColorRect" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-color = Color(0.937255, 0.364706, 0.345098, 1)
+texture = ExtResource("2_umyva")
+expand_mode = 1
 
-[node name="ColorRect2" type="ColorRect" parent="HBoxContainer"]
+[node name="ColorRect2" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-color = Color(0.937255, 0.364706, 0.345098, 1)
+texture = ExtResource("2_umyva")
+expand_mode = 1
 
-[node name="ColorRect3" type="ColorRect" parent="HBoxContainer"]
+[node name="ColorRect3" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-color = Color(0.937255, 0.364706, 0.345098, 1)
+texture = ExtResource("2_umyva")
+expand_mode = 1

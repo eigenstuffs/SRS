@@ -48,6 +48,8 @@ func _on_rigid_body_body_entered(_body: Node) -> void:
 	# To increase visual clarity, fade out shadow once book has hit the ground
 	shadow.fade_out()
 	has_collided = true
+	await get_tree().create_timer(3).timeout
+	queue_free()
 
 
 func _on_shadow_on_fully_faded() -> void:
