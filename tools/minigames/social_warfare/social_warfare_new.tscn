@@ -1,12 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://jsihguxhu4ri"]
+[gd_scene load_steps=13 format=3 uid="uid://jsihguxhu4ri"]
 
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
-[ext_resource type="Script" path="res://tools/minigames/social_warfare/card_deck.gd" id="2_g3u3q"]
 [ext_resource type="Texture2D" uid="uid://bg5lmsai3bdgn" path="res://assets/socialwarfare/Black Box.png" id="2_wm5oo"]
 [ext_resource type="Texture2D" uid="uid://cmqm23sram70i" path="res://assets/socialwarfare/[SAMPLE REFERENCE] Social Welfare UI_Cards.png" id="4_bcrd3"]
 [ext_resource type="Texture2D" uid="uid://m2w8lbq8vxxr" path="res://assets/socialwarfare/box.png" id="5_qj8qn"]
-[ext_resource type="PackedScene" uid="uid://o0ok7fnh2djk" path="res://tools/minigames/social_warfare/card_deck.tscn" id="6_lc8fl"]
 [ext_resource type="Texture2D" uid="uid://cgaksh8qj6kb0" path="res://assets/socialwarfare/SW_Button_Backplate.png" id="7_k28hl"]
+[ext_resource type="PackedScene" uid="uid://bbcvsc3odiorw" path="res://tools/minigames/social_warfare/card_deck_new.tscn" id="8_m254v"]
 [ext_resource type="Texture2D" uid="uid://c1ggtt1meqgln" path="res://assets/socialwarfare/Button_Backplate_Click.png" id="8_vkh4x"]
 [ext_resource type="Texture2D" uid="uid://52akqjnkuqwa" path="res://assets/socialwarfare/Button_Backplate_Hover.png" id="9_d3rgy"]
 
@@ -82,13 +81,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CardDeck" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_g3u3q")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
@@ -106,19 +98,12 @@ modulate = Color(1, 1, 1, 0.2)
 position = Vector2(960, 540)
 texture = ExtResource("4_bcrd3")
 
-[node name="Control" type="Control" parent="."]
+[node name="Fight" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CardDeck" parent="Control" instance=ExtResource("6_lc8fl")]
-layout_mode = 1
-offset_left = 637.0
-offset_top = 736.0
-offset_right = 637.0
-offset_bottom = 736.0
-
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="TextureButton" type="TextureButton" parent="Fight"]
 layout_mode = 0
 offset_left = 92.0
 offset_top = 708.0
@@ -129,3 +114,10 @@ texture_pressed = ExtResource("8_vkh4x")
 texture_hover = ExtResource("9_d3rgy")
 texture_disabled = ExtResource("7_k28hl")
 texture_focused = ExtResource("9_d3rgy")
+
+[node name="CardDeck" parent="Fight" instance=ExtResource("8_m254v")]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 640.0
+offset_right = 2240.0
+offset_bottom = 1152.0
