@@ -75,6 +75,7 @@ func _physics_process(delta):
 
 func anim_handler():
 	if velocity != Vector3.ZERO:
+		$AnimatedSprite3D.flip_h = Input.get_action_strength("ui_left")
 		$AnimatedSprite3D.play("walk")
 	elif currentState == FishingState.RELEASE:
 		$AnimatedSprite3D.play("fishing_cast")
@@ -91,6 +92,7 @@ func anim_handler():
 
 
 func _on_fishing_rod_fishing_ends():
+	await get_tree().create_timer(0.5).timeout
 	currentState = FishingState.WALKING
 
 

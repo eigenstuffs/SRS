@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cf2gklxjpk17e"
-path="res://.godot/imported/Thabit.ttf-f7f96d692996cabfbc56425e8876fedc.fontdata"
+uid="uid://c6jcbn16yd4pq"
+path="res://.godot/imported/CourierPrime-Regular.ttf-d2b2c0e1b7755a21ad5c3e6f160af507.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/ttf/Thabit.ttf"
-dest_files=["res://.godot/imported/Thabit.ttf-f7f96d692996cabfbc56425e8876fedc.fontdata"]
+source_file="res://assets/ui/ttf/CourierPrime-Regular.ttf"
+dest_files=["res://.godot/imported/CourierPrime-Regular.ttf-d2b2c0e1b7755a21ad5c3e6f160af507.fontdata"]
 
 [params]
 

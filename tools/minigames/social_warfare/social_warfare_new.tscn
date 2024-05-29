@@ -29,6 +29,7 @@ script = ExtResource("1_vycxu")
 
 [node name="EnemyData" type="Node" parent="."]
 script = ExtResource("2_t2gbr")
+enemy_name = "Esra"
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
@@ -208,7 +209,6 @@ position = Vector2(960, 540)
 texture = ExtResource("4_bcrd3")
 
 [node name="[sampleReference]SocialWelfareUi" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.396078)
 position = Vector2(3136, 512)
 texture = ExtResource("9_epmyr")

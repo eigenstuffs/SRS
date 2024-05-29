@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://brm004idf5wd7"
-path="res://.godot/imported/Thabit-BoldOblique.ttf-88397b40278b8eceb195ef343e57edd5.fontdata"
+uid="uid://b3r7lbrdr6ibw"
+path="res://.godot/imported/CourierPrime-Bold.ttf-585ca73cbf0f8d4cb7eb3519a2dff990.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/ttf/Thabit-BoldOblique.ttf"
-dest_files=["res://.godot/imported/Thabit-BoldOblique.ttf-88397b40278b8eceb195ef343e57edd5.fontdata"]
+source_file="res://assets/ui/ttf/CourierPrime-Bold.ttf"
+dest_files=["res://.godot/imported/CourierPrime-Bold.ttf-585ca73cbf0f8d4cb7eb3519a2dff990.fontdata"]
 
 [params]
 
