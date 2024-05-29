@@ -61,6 +61,24 @@ script = ExtResource("1_jnejo")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_7cbig")]
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_terwc")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_18307")
+expand_mode = 2
+
 [node name="Walls" type="Node3D" parent="."]
 
 [node name="Ground" type="Node3D" parent="Walls"]
@@ -113,10 +131,14 @@ texture = ExtResource("6_gmm7x")
 
 [node name="Sprite3D" type="Sprite3D" parent="Walls/Shelves"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.03685, 0, 0.269709)
+visible = false
+cast_shadow = 0
 texture = ExtResource("8_terwc")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Walls/Shelves"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.02298, 0, 1.2376)
+visible = false
+cast_shadow = 0
 modulate = Color(0.596078, 0.596078, 0.6, 1)
 texture = ExtResource("9_18307")
 
