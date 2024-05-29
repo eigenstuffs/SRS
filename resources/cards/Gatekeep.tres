@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_svhto")
 points_req = 0
-title = "Apathetic Look"
+title = "Gatekeep"
 effect = 3
 target_stat = 0
 type = 1

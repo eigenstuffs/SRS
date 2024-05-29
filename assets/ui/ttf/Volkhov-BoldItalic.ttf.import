@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://drk6ai4vky8ih"
-path="res://.godot/imported/Halant-Bold.ttf-8adc5cb51cca5ee61d2fbac113501848.fontdata"
+uid="uid://b5ootysr42ce3"
+path="res://.godot/imported/Volkhov-BoldItalic.ttf-997b38396d124fffcd9d89bef0664708.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/Halant-Bold.ttf"
-dest_files=["res://.godot/imported/Halant-Bold.ttf-8adc5cb51cca5ee61d2fbac113501848.fontdata"]
+source_file="res://assets/ui/ttf/Volkhov-BoldItalic.ttf"
+dest_files=["res://.godot/imported/Volkhov-BoldItalic.ttf-997b38396d124fffcd9d89bef0664708.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://do4h18m68ecu8"
-path="res://.godot/imported/Volkhov-Regular.ttf-453cb9c441041057c073bf11185f1797.fontdata"
+path="res://.godot/imported/Volkhov-Regular.ttf-e3e3ab65b3541eb3dba4a388a327079a.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/Volkhov-Regular.ttf"
-dest_files=["res://.godot/imported/Volkhov-Regular.ttf-453cb9c441041057c073bf11185f1797.fontdata"]
+source_file="res://assets/ui/ttf/Volkhov-Regular.ttf"
+dest_files=["res://.godot/imported/Volkhov-Regular.ttf-e3e3ab65b3541eb3dba4a388a327079a.fontdata"]
 
 [params]
 

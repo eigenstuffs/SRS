@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1_lbklo")
 points_req = 0
-title = "Apathetic Look"
+title = "Gaslight"
 effect = 3
 target_stat = 1
 type = 1
 effect_num = 0.75
 desc = ""
-intensity_mod = 0
+intensity_mod = 10
 move_dialogue = Array[String]([])

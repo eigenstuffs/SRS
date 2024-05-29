@@ -152,10 +152,8 @@ _data = {
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x4i56"]
-load_path = "res://.godot/imported/spritesheet_cecilia.png-5ee06ebd51332c0c56411af3d9394f17.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1ulp6"]
-load_path = "res://.godot/imported/spritesheet_enemy.png-2bb9f8744c33f183caa7f25e1d6bf3ff.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dmk3"]
 

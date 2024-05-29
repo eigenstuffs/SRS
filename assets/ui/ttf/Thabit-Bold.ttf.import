@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://blo7ft3ovj4yy"
-path="res://.godot/imported/Volkhov-Italic.ttf-27c1d5a3c07f05fdbb38386ab56eea49.fontdata"
+uid="uid://e4pc01jit8r"
+path="res://.godot/imported/Thabit-Bold.ttf-76e8002a414feac9c60a780197c4744c.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/Volkhov-Italic.ttf"
-dest_files=["res://.godot/imported/Volkhov-Italic.ttf-27c1d5a3c07f05fdbb38386ab56eea49.fontdata"]
+source_file="res://assets/ui/ttf/Thabit-Bold.ttf"
+dest_files=["res://.godot/imported/Thabit-Bold.ttf-76e8002a414feac9c60a780197c4744c.fontdata"]
 
 [params]
 

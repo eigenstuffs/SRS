@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://5dv6lpvm4hm6"
-path="res://.godot/imported/Galdeano-Regular.ttf-930857e7f3348d95dfc333fb51b9bcd3.fontdata"
+uid="uid://blo7ft3ovj4yy"
+path="res://.godot/imported/Volkhov-Italic.ttf-be00062a2d3f7607ca328b80b7e1517b.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/Galdeano-Regular.ttf"
-dest_files=["res://.godot/imported/Galdeano-Regular.ttf-930857e7f3348d95dfc333fb51b9bcd3.fontdata"]
+source_file="res://assets/ui/ttf/Volkhov-Italic.ttf"
+dest_files=["res://.godot/imported/Volkhov-Italic.ttf-be00062a2d3f7607ca328b80b7e1517b.fontdata"]
 
 [params]
 

@@ -5,8 +5,6 @@
 [ext_resource type="Script" path="res://tools/dialogue/vn_dialogue.gd" id="4_g1vbp"]
 [ext_resource type="Texture2D" uid="uid://vuwpph6vx6un" path="res://assets/cgs/god.jpg" id="4_ng0gx"]
 [ext_resource type="AudioStream" uid="uid://b2b171hiuslon" path="res://assets/music/ambience.mp3" id="4_tjx41"]
-[ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/Volkhov-Regular.ttf" id="5_2w2a5"]
-[ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/Galdeano-Regular.ttf" id="5_bpopc"]
 [ext_resource type="Texture2D" uid="uid://e83c35i6e8tu" path="res://assets/cgs/image0-2.jpg" id="5_i18mn"]
 [ext_resource type="Texture2D" uid="uid://bd3vg40yeb7ym" path="res://assets/ui/Next Default.png" id="7_fpcsy"]
 [ext_resource type="Texture2D" uid="uid://d4m4ksb40jto2" path="res://assets/cgs/God_Neutral_Static_Sheet.png" id="7_yl28d"]
@@ -18,14 +16,16 @@
 [ext_resource type="Texture2D" uid="uid://dy63g7pmdlg7v" path="res://assets/cgs/God_Smile_Static_Sheet.png" id="11_i7dpf"]
 [ext_resource type="Texture2D" uid="uid://b00cc64t4gc0f" path="res://assets/cgs/God_Smile_Speaking_Sheet.png" id="12_14uqi"]
 [ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="12_17eel"]
-[ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/Volkhov-Bold.ttf" id="12_elsoh"]
-[ext_resource type="FontFile" uid="uid://blo7ft3ovj4yy" path="res://assets/ui/Volkhov-Italic.ttf" id="13_61dic"]
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/vn/Dialogue/Dialogue Box.png" id="14_483pf"]
-[ext_resource type="FontFile" uid="uid://b5ootysr42ce3" path="res://assets/ui/Volkhov-BoldItalic.ttf" id="14_q7m4c"]
+[ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/ttf/Galdeano-Regular.ttf" id="16_v8kk6"]
+[ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="17_elvhv"]
 [ext_resource type="Texture2D" uid="uid://c1e342tutqkm0" path="res://assets/vn/Cecilia/cecilia_default2.PNG" id="17_od5v0"]
+[ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/ttf/Volkhov-Bold.ttf" id="18_2cvh1"]
 [ext_resource type="Texture2D" uid="uid://bo2omw0hx2b04" path="res://assets/vn/Settings/Autoplay.png" id="18_snyv8"]
 [ext_resource type="Texture2D" uid="uid://dg2mgqexrxkuq" path="res://assets/vn/Settings/Autoplay_Click.png" id="19_0c4ku"]
+[ext_resource type="FontFile" uid="uid://blo7ft3ovj4yy" path="res://assets/ui/ttf/Volkhov-Italic.ttf" id="19_p2ivp"]
 [ext_resource type="Texture2D" uid="uid://df1gx2derxy74" path="res://assets/vn/Settings/Autoplay_Hover.png" id="20_evjav"]
+[ext_resource type="FontFile" uid="uid://b5ootysr42ce3" path="res://assets/ui/ttf/Volkhov-BoldItalic.ttf" id="20_n52nn"]
 [ext_resource type="Script" path="res://tools/dialogue/DropDown.gd" id="20_xsen7"]
 [ext_resource type="Texture2D" uid="uid://cxks3xttgv28h" path="res://assets/vn/Settings/Hide.png" id="21_unksq"]
 [ext_resource type="Texture2D" uid="uid://db1yt0oia8vd6" path="res://assets/vn/Settings/Hide_Click.png" id="22_4513m"]
@@ -548,7 +548,7 @@ offset_bottom = 674.0
 theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
 theme_override_colors/font_outline_color = Color(0.898039, 0.858824, 0.760784, 1)
 theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("5_bpopc")
+theme_override_fonts/font = ExtResource("16_v8kk6")
 theme_override_font_sizes/font_size = 48
 text = "Rose Violet"
 autowrap_mode = 3
@@ -562,10 +562,10 @@ offset_right = 1648.0
 offset_bottom = 1031.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.101961, 1)
 theme_override_constants/line_separation = 10
-theme_override_fonts/normal_font = ExtResource("5_2w2a5")
-theme_override_fonts/bold_font = ExtResource("12_elsoh")
-theme_override_fonts/italics_font = ExtResource("13_61dic")
-theme_override_fonts/bold_italics_font = ExtResource("14_q7m4c")
+theme_override_fonts/normal_font = ExtResource("17_elvhv")
+theme_override_fonts/bold_font = ExtResource("18_2cvh1")
+theme_override_fonts/italics_font = ExtResource("19_p2ivp")
+theme_override_fonts/bold_italics_font = ExtResource("20_n52nn")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
 theme_override_font_sizes/italics_font_size = 32

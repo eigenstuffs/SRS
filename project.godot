@@ -59,7 +59,7 @@ folder_colors={
 
 [gui]
 
-theme/custom_font="res://assets/ui/Volkhov-Regular.ttf"
+theme/custom_font="res://assets/ui/ttf/Volkhov-Regular.ttf"
 theme/default_font_hinting=2
 theme/default_font_multichannel_signed_distance_field=true
 theme/default_font_generate_mipmaps=true

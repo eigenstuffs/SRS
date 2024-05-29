@@ -11,5 +11,5 @@ target_stat = null
 type = 0
 effect_num = 0.0
 desc = ""
-intensity_mod = 0
+intensity_mod = -20
 move_dialogue = Array[String]([])

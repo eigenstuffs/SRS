@@ -21,7 +21,13 @@ signal enemy_move_finished
 func _ready():
 	turn_loop()
 	
+	$CanvasLayer/Opponent/BarHP.max_value = enemy_data.enemy_hp
+	$CanvasLayer/Opponent/BarMP.max_value = enemy_data.enemy_mp
+	$CanvasLayer/Player/BarHP.max_value = Global.player_max_hp
+	$CanvasLayer/Player/BarMP.max_value = Global.player_max_mp
+	
 func turn_loop():
+	refresh_stats()
 	fight.reset()
 	choose.hide()
 	fight.hide()
@@ -29,6 +35,7 @@ func turn_loop():
 		STATES.PLAYER:
 			choose.show()
 			await choose.chosen
+			choose.hide()
 			match choose.current_choice:
 				"fight":
 					fight.show()
@@ -48,17 +55,20 @@ func turn_loop():
 			
 			turn_loop()
 		STATES.OPPONENT:
+			card_action(
+				enemy_move(), "Player"
+			)
+			await card_action_finished
+			
 			STATE = STATES.PLAYER
 			turn_loop()
-
+	
 func card_action(card : Card, target : String):
 	print(card.title)
 	battle_intensity += card.intensity_mod
 	Global.player_mp -= card.points_req
 	
 	## put dialogue somewhere in here
-	
-	await get_tree().create_timer(1).timeout
 	
 	match target:
 		"Player":
@@ -113,8 +123,28 @@ func card_action(card : Card, target : String):
 		Global.player_defense_ratio = 1
 		enemy_data.enemy_offense_ratio = 1
 		enemy_data.enemy_defense_ratio = 1
+	refresh_stats()
+	await get_tree().create_timer(0.5).timeout
 	emit_signal("card_action_finished")
 
 func enemy_move():
 	enemy_data.enemy_cards.shuffle()
 	return enemy_data.enemy_cards[0]
+
+func refresh_stats():
+	var a = create_tween()
+	a.tween_property(
+		$CanvasLayer/Player/BarHP, "value",
+		Global.player_hp, 0.5).set_trans(Tween.TRANS_EXPO)
+	a = create_tween()
+	a.tween_property(
+		$CanvasLayer/Player/BarMP, "value",
+		Global.player_mp, 0.5).set_trans(Tween.TRANS_EXPO)
+	a = create_tween()
+	a.tween_property(
+		$CanvasLayer/Opponent/BarHP, "value",
+		enemy_data.enemy_hp, 0.5).set_trans(Tween.TRANS_EXPO)
+	a = create_tween()
+	a.tween_property(
+		$CanvasLayer/Opponent/BarMP, "value",
+		enemy_data.enemy_mp, 0.5).set_trans(Tween.TRANS_EXPO)

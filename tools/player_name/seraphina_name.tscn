@@ -1,7 +1,7 @@
 [gd_scene load_steps=91 format=3 uid="uid://ce1xrvfaluqeb"]
 
 [ext_resource type="Script" path="res://tools/player_name/seraphina_name.gd" id="1_qjg3q"]
-[ext_resource type="FontFile" uid="uid://c6556g6be4xw6" path="res://assets/ui/Halant-Regular.ttf" id="2_nfqv7"]
+[ext_resource type="FontFile" uid="uid://c6556g6be4xw6" path="res://assets/ui/ttf/Halant-Regular.ttf" id="2_nfqv7"]
 [ext_resource type="Texture2D" uid="uid://dbk3jlklom6v1" path="res://assets/ui/Player Input UI/Lower case keyboard.png" id="3_uhisc"]
 [ext_resource type="Texture2D" uid="uid://ctwfafu5tsgto" path="res://assets/ui/Player Input UI/Uppercase Keyboard.png" id="4_rpjx3"]
 [ext_resource type="Texture2D" uid="uid://j4kt324jvtet" path="res://assets/ui/Player Input UI/Input-Focus State.png" id="5_xm8qt"]

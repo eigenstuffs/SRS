@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bpl082rltxyjp"
-path="res://.godot/imported/ArnoPro-Regular.ttf-8de44d075e5c9883b70a5ae9a42c2c9f.fontdata"
+path="res://.godot/imported/ArnoPro-Regular.ttf-996d60ee406b27cd6aa6a84f9862c906.fontdata"
 
 [deps]
 
-source_file="res://assets/misc/ArnoPro-Regular.ttf"
-dest_files=["res://.godot/imported/ArnoPro-Regular.ttf-8de44d075e5c9883b70a5ae9a42c2c9f.fontdata"]
+source_file="res://assets/ui/ttf/ArnoPro-Regular.ttf"
+dest_files=["res://.godot/imported/ArnoPro-Regular.ttf-996d60ee406b27cd6aa6a84f9862c906.fontdata"]
 
 [params]
 

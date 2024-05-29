@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bs54kw4ef5h21" path="res://assets/ui/Mini Game Frame.png" id="2_ajkn4"]
 [ext_resource type="Texture2D" uid="uid://dki4a7c8ecavm" path="res://assets/ui/Score and Timer.png" id="3_8x31i"]
 [ext_resource type="Texture2D" uid="uid://c875qeheydn86" path="res://assets/ui/goldcircle.png" id="4_7aruq"]
-[ext_resource type="FontFile" uid="uid://drk6ai4vky8ih" path="res://assets/ui/Halant-Bold.ttf" id="5_ub81w"]
+[ext_resource type="FontFile" uid="uid://drk6ai4vky8ih" path="res://assets/ui/ttf/Halant-Bold.ttf" id="5_ub81w"]
 
 [node name="Timers" type="Control"]
 layout_mode = 3

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c6556g6be4xw6"
-path="res://.godot/imported/Halant-Regular.ttf-c769693c20635251c1527206081cf45f.fontdata"
+uid="uid://5dv6lpvm4hm6"
+path="res://.godot/imported/Galdeano-Regular.ttf-0d917390952310621ecc767070ebd0e3.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/Halant-Regular.ttf"
-dest_files=["res://.godot/imported/Halant-Regular.ttf-c769693c20635251c1527206081cf45f.fontdata"]
+source_file="res://assets/ui/ttf/Galdeano-Regular.ttf"
+dest_files=["res://.godot/imported/Galdeano-Regular.ttf-0d917390952310621ecc767070ebd0e3.fontdata"]
 
 [params]
 

@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1_fx8sk")
 points_req = 0
-title = "Gaslight"
+title = "Apathetic Look"
 effect = 3
 target_stat = 0
-type = 1
+type = 2
 effect_num = 0.75
 desc = ""
-intensity_mod = 0
+intensity_mod = 10
 move_dialogue = Array[String]([])
