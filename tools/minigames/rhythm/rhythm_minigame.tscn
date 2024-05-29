@@ -1,11 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://lmg6p4vssmpw"]
+[gd_scene load_steps=13 format=3 uid="uid://lmg6p4vssmpw"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_minigame.gd" id="1_pb007"]
 [ext_resource type="PackedScene" uid="uid://cr62xw6ofifyl" path="res://tools/minigames/rhythm/play/playfield.tscn" id="2_2af6n"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/environment.gd" id="5_yqwvy"]
-[ext_resource type="PackedScene" uid="uid://blv2x4ex2bkn0" path="res://tools/minigames/rhythm/assets/cirno/fumo.tscn" id="6_6fly7"]
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/misc/panorama.png" id="6_luhxe"]
-[ext_resource type="Script" path="res://tools/minigames/rhythm/assets/cirno/fumofumo.gd" id="7_ej0x1"]
 [ext_resource type="Resource" uid="uid://cy0bsj18hrx30" path="res://resources/beatmap/tango.tres" id="7_o5gdu"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a8ggx"]
@@ -17,7 +15,7 @@ sky_material = SubResource("PanoramaSkyMaterial_a8ggx")
 [sub_resource type="Environment" id="Environment_oefpv"]
 background_mode = 2
 sky = SubResource("Sky_eq6kb")
-sky_rotation = Vector3(2167.34, -1.5708, -4.71239)
+sky_rotation = Vector3(2172.62, -1.5708, -4.71239)
 tonemap_mode = 2
 glow_enabled = true
 
@@ -50,11 +48,6 @@ script = ExtResource("5_yqwvy")
 transform = Transform3D(-0.642788, 0.663414, -0.383022, 0, 0.5, 0.866026, 0.766044, 0.556671, -0.321394, -4.5, 10, -3.5)
 shadow_enabled = true
 
-[node name="Fumo" parent="." instance=ExtResource("6_6fly7")]
-transform = Transform3D(-0.108362, -1.21676e-08, -0.130987, -0.130987, -5.72563e-09, 0.108362, -1.21676e-08, 0.17, -5.72563e-09, 10.6458, -4.48, 2.60694)
-visible = false
-script = ExtResource("7_ej0x1")
-
 [node name="Playfield" parent="." instance=ExtResource("2_2af6n")]
 beatmap = ExtResource("7_o5gdu")
 note_speed = 1.35
@@ -73,7 +66,6 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_gehkv")
 
 [connection signal="report_score" from="Playfield" to="." method="_on_playfield_report_score"]
-[connection signal="on_beat" from="Playfield/AudioSynchronizer" to="Fumo" method="_on_audio_synchronizer_on_beat"]
 
 [editable path="Playfield"]
 [editable path="Playfield/AudioSynchronizer"]

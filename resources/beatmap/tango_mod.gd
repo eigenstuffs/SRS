@@ -239,8 +239,7 @@ static var TIMING_ACTIONS = [
 		EffectRegistry.free_effect('Bloom')
 		for key in playfield.keys: key.disable_note_color_overwrite()],
 	[ 66.008,      'back', 'disable', ['Algae']],
-	
-	
+	[ 70.0,      'back', 'enable', ['Raymarched']],
 	
 	[105.968,    'screen', 'enable',  ['flash']],
 	[105.968,    'screen', 'disable', ['rain', 'impact_lines']]]

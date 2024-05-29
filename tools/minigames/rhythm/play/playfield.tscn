@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cr62xw6ofifyl"]
+[gd_scene load_steps=34 format=3 uid="uid://cr62xw6ofifyl"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/playfield.gd" id="1_a1v4t"]
 [ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://tools/minigames/rhythm/util/audio_synchronizer.tscn" id="3_g2rft"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" path="res://resources/shaders/canvas_item/blur.gdshader" id="10_mdpw5"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/radial_pattern.gdshader" id="11_14gwy"]
 [ext_resource type="Shader" path="res://tools/minigames/rhythm/algae.gdshader" id="14_0l1kf"]
+[ext_resource type="Shader" path="res://resources/shaders/spatial/sphere_raymarched_spatial.gdshader" id="15_hdmr7"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/combo_meter.gd" id="15_srpjb"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_tu6ej"]
@@ -189,12 +190,21 @@ is_unique_pass = true
 default_uniforms = {}
 priority_overwrite = 999
 
+[sub_resource type="Resource" id="Resource_374er"]
+script = ExtResource("4_apd5l")
+name = &"Raymarched"
+shader = ExtResource("15_hdmr7")
+is_enabled_by_default = false
+is_unique_pass = true
+default_uniforms = {}
+priority_overwrite = 999
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5pri"]
 render_priority = 0
 shader = ExtResource("10_ckunn")
 script = ExtResource("3_m4kyl")
 is_canvas_item = false
-shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), SubResource("Resource_k750l"), SubResource("Resource_yyvg6")])
+shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), SubResource("Resource_k750l"), SubResource("Resource_yyvg6"), SubResource("Resource_374er")])
 
 [sub_resource type="LabelSettings" id="LabelSettings_ed0bq"]
 font_size = 45
