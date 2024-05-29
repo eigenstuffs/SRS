@@ -44,7 +44,7 @@ func _on_library_player_book_collected(book : Book):
 		$SfxPlayer.stream = BOOK_CAUGHT_SFX
 		$SfxPlayer.play()
 	elif $LibraryPlayer/BookHolder.get_num_books() == 10:
-		EffectRegistry.start_effect(self, "Vignette", [$EffectNode])
+		EffectReg.start_effect(self, "Vignette", [$EffectNode])
 
 func _on_library_player_bomb_hit(bomb : Bomb):
 	lose_points(1)
@@ -54,7 +54,7 @@ func _on_library_player_bomb_hit(bomb : Bomb):
 	$LibraryPlayer.move_hurtbox()
 	$CanvasLayer.remove_heart()
 	emit_signal("stop_blinking")
-	#EffectRegistry.start_effect(self, "Flash", [$E])
+	#EffectReg.start_effect(self, "Flash", [$E])
 	player_health -= 1
 	do_explosion(bomb)
 	bomb.queue_free()
@@ -70,7 +70,7 @@ func _on_library_player_bomb_hit(bomb : Bomb):
 		
 func do_explosion(bomb : Bomb): 
 	var bomb_position := bomb.rigid_body.global_position
-	EffectRegistry.start_effect(self, 'Explosion', [self, EffectRegistry, bomb_position])
+	EffectReg.start_effect(self, 'Explosion', [self, EffectReg, bomb_position])
 		
 	for obj in $BookInstancer.get_children().slice(1):
 		if obj == bomb: continue

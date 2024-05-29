@@ -6,7 +6,7 @@ extends Node3D
 @onready var env_list := $CanvasLayer/EnvironmentList
 
 func _ready() -> void:
-	for effect_name in EffectRegistry.effects:
+	for effect_name in EffectReg.effects:
 		effect_list.add_item(effect_name)
 	
 func _process(_delta: float) -> void:
@@ -25,22 +25,22 @@ func _on_item_list_item_activated(index: int) -> void:
 	# In the case of Blur, it will disable if the end blur amount is 0.0, etc.
 	if is_effect_started:
 		match effect_name:
-			'ColorFade': EffectRegistry.start_effect(self, effect_name, [$PostProcessing, Color.BLACK, Color.TRANSPARENT])
-			'SlideWhistle': EffectRegistry.start_effect(self, effect_name, [$PostProcessing, 0.0, 1.0])
-			'Blur': EffectRegistry.start_effect(self, effect_name, [$PostProcessing, 1.0, 0.0])
-			'Bloom': EffectRegistry.start_effect(self, effect_name, [$PostProcessing, 1.0, 0.0])
-			'Sepia': EffectRegistry.start_effect(self, effect_name, [$PostProcessing, 0.8, 0.0])
-			_: EffectRegistry.free_effect(effect_name)
+			'ColorFade': EffectReg.start_effect(self, effect_name, [$PostProcessing, Color.BLACK, Color.TRANSPARENT])
+			'SlideWhistle': EffectReg.start_effect(self, effect_name, [$PostProcessing, 0.0, 1.0])
+			'Blur': EffectReg.start_effect(self, effect_name, [$PostProcessing, 1.0, 0.0])
+			'Bloom': EffectReg.start_effect(self, effect_name, [$PostProcessing, 1.0, 0.0])
+			'Sepia': EffectReg.start_effect(self, effect_name, [$PostProcessing, 0.8, 0.0])
+			_: EffectReg.free_effect(effect_name)
 	else: # Effect is stopped
 		match effect_name:
-			'Explosion': EffectRegistry.start_effect(self, effect_name, [$SpawnPoint, $PostProcessing])
-			'BetterCall': EffectRegistry.start_effect(self, effect_name, [self])
-			'InteriorWarm': EffectRegistry.start_effect(self, effect_name, [self])
+			'Explosion': EffectReg.start_effect(self, effect_name, [$SpawnPoint, $PostProcessing])
+			'BetterCall': EffectReg.start_effect(self, effect_name, [self])
+			'InteriorWarm': EffectReg.start_effect(self, effect_name, [self])
 			_:
-				if EffectRegistry.get_effect(effect_name) is CanvasItemEffect:
-					EffectRegistry.start_effect(self, effect_name, [$PostProcessing])
+				if EffectReg.get_effect(effect_name) is CanvasItemEffect:
+					EffectReg.start_effect(self, effect_name, [$PostProcessing])
 				else:
-					EffectRegistry.start_effect(self, effect_name)
+					EffectReg.start_effect(self, effect_name)
 	
 	# Effect state change (enabled/disabled) logic
 	match effect_name:
