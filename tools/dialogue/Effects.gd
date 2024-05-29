@@ -77,6 +77,19 @@ const SFX_TWINKLING_FAIRY = preload("res://assets/sfx/twinkling_1.mp3")
 const SFX_TWINKLING_CHIME = preload("res://assets/sfx/twinkling_2.mp3")
 const SFX_AMBIANCE_FOUNTAIN = preload("res://assets/sfx/ambiance_water_1.mp3")
 
+const MUSIC_SOMBER_DEATH = preload("res://assets/music/Villianess Reborn Somber Death Theme Accepting Fate.mp3")
+const MUSIC_MORE_INTENSE = preload("res://assets/music/Villianess Reborn A Little Faster More Intense Theme.mp3")
+const MUSIC_MYSTERIOUS = preload("res://assets/music/Villianess Reborn Mysterious BGM.mp3")
+const MUSIC_FIRST_STAGE = preload("res://assets/music/Villianess_Reborn_Minigame_Music_First_Stage.mp3")
+const MUSIC_TEA_TIME = preload("res://assets/music/Villianess Reborn Tea Time Minigame.mp3")
+const MUSIC_SOCIAL_WARFARE = preload("res://assets/music/Villianess Reborn Battle Social Warfare Music 1.mp3")
+const MUSIC_CHURCH = preload("res://assets/music/Villianess Reborn Church.mp3")
+const MUSIC_CHURCH_WELCOMING = preload("res://assets/music/Villianess Reborn Church (Welcoming).mp3")
+const MUSIC_FOREST_2 = preload("res://assets/music/Villianess Reborn Forest Theme 2.mp3")
+const MUSIC_TOWN = preload("res://assets/music/Villianess Reborn Town Theme.mp3")
+const MUSIC_BALLROOM = preload("res://assets/music/Villianess Reborn Ballroom.mp3")
+const MUSIC_GOD = preload("res://assets/music/Villianess Reborn God Theme.mp3")
+
 const SKY_CG = preload("res://assets/cgs/image0-2.jpg")
 const BLACK_CG = preload("res://assets/cgs/New Project.png")
 const GOD_CG = preload("res://assets/cgs/IMG_5160.png")
@@ -85,9 +98,6 @@ const DINING_CG = preload("res://assets/cgs/dininghall.png")
 const DEAD_SNOW_CG = preload("res://assets/cgs/dead_snow.png")
 const CECILIA_FOUNTAIN = preload("res://assets/cgs/Cecelia-fountain.png")
 const EMPTY_FOUNTAIN = preload("res://assets/cgs/emtpy_fountain.png")
-
-@onready var audio = $Music
-@onready var sfx = $SFX
 
 @onready var anim_god : AnimationPlayer = $AnimGod
 @onready var anim_god_bg : AnimationPlayer = $AnimGod/AnimGodBG
@@ -133,11 +143,7 @@ func _ready():
 	vn.connect("fade_whitetoblack", fade_whitetoblack)
 	
 	vn.connect("fade_trans", fade_trans)
-	
-	vn.connect("music_ambience", music_ambience)
-	vn.connect("music_chiptune", music_chiptune)
-	vn.connect("music_bgm1", music_bgm1)
-	vn.connect("music_bgm2", music_bgm1)
+
 	vn.connect("stop_music", stop_music)
 	
 	vn.connect("sfx_door_knock", play_sfx.bind(SFX_DOOR_KNOCK))
@@ -211,6 +217,19 @@ func _ready():
 	vn.connect("sfx_twinkling_fairy", play_sfx.bind(SFX_TWINKLING_FAIRY))
 	vn.connect("sfx_twinkling_chime", play_sfx.bind(SFX_TWINKLING_CHIME))
 	vn.connect("sfx_ambiance_fountain", play_sfx.bind(SFX_AMBIANCE_FOUNTAIN))
+
+	vn.connect("music_somber_death", play_music.bind(MUSIC_SOMBER_DEATH))
+	vn.connect("music_more_intense", play_music.bind(MUSIC_MORE_INTENSE))
+	vn.connect("music_mysterious", play_music.bind(MUSIC_MYSTERIOUS))
+	vn.connect("music_first_stage", play_music.bind(MUSIC_FIRST_STAGE))
+	vn.connect("music_tea_time", play_music.bind(MUSIC_TEA_TIME))
+	vn.connect("music_social_warfare", play_music.bind(MUSIC_SOCIAL_WARFARE))
+	vn.connect("music_church", play_music.bind(MUSIC_CHURCH))
+	vn.connect("music_church_welcoming", play_music.bind(MUSIC_CHURCH_WELCOMING))
+	vn.connect("music_forest_2", play_music.bind(MUSIC_FOREST_2))
+	vn.connect("music_town", play_music.bind(MUSIC_TOWN))
+	vn.connect("music_ballroom", play_music.bind(MUSIC_BALLROOM))
+	vn.connect("music_god", play_music.bind(MUSIC_GOD))
 
 	
 	vn.connect("stop_sfx", stop_sfx)
@@ -295,17 +314,13 @@ func fade_trans():
 	await EffectAnim.animation_finished
 
 ## MUSIC
-func music_ambience():
-	$SFX.play()
-	
-func music_chiptune():
-	pass
-	
-func music_bgm1():
-	pass
+
+func play_music(effect_name):
+	EffectAnim.MusicPlayer.stream = effect_name
+	EffectAnim.MusicPlayer.play()
 	
 func stop_music():
-	audio.stop()
+	EffectAnim.MusicPlayer.stop()
 	
 ## SFX
 

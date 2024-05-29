@@ -1,10 +1,8 @@
-[gd_scene load_steps=54 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=52 format=3 uid="uid://drqf7jcr25yqx"]
 
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
-[ext_resource type="AudioStream" uid="uid://1ouwyjtdtbi2" path="res://assets/music/pavane.wav" id="3_4yjk8"]
 [ext_resource type="Script" path="res://tools/dialogue/vn_dialogue.gd" id="4_g1vbp"]
 [ext_resource type="Texture2D" uid="uid://vuwpph6vx6un" path="res://assets/cgs/god.jpg" id="4_ng0gx"]
-[ext_resource type="AudioStream" uid="uid://b2b171hiuslon" path="res://assets/music/ambience.mp3" id="4_tjx41"]
 [ext_resource type="Texture2D" uid="uid://e83c35i6e8tu" path="res://assets/cgs/image0-2.jpg" id="5_i18mn"]
 [ext_resource type="Texture2D" uid="uid://bd3vg40yeb7ym" path="res://assets/ui/Next Default.png" id="7_fpcsy"]
 [ext_resource type="Texture2D" uid="uid://d4m4ksb40jto2" path="res://assets/cgs/God_Neutral_Static_Sheet.png" id="7_yl28d"]
@@ -404,15 +402,6 @@ text = "res://tools/dialogue/vn_scripts/Dialogue - UPDATED a1c1_1.json"
 [node name="EffectHandler" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("12_17eel")
-
-[node name="Music" type="AudioStreamPlayer" parent="EffectHandler"]
-stream = ExtResource("3_4yjk8")
-volume_db = -80.0
-pitch_scale = 0.9
-
-[node name="SFX" type="AudioStreamPlayer" parent="EffectHandler"]
-stream = ExtResource("4_tjx41")
-volume_db = -10.0
 
 [node name="CG" type="TextureRect" parent="EffectHandler"]
 modulate = Color(0.592157, 0.592157, 0.592157, 1)

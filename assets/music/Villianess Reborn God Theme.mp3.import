@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://hoyysexeqok8"
+path="res://.godot/imported/Villianess Reborn God Theme.mp3-bb143bd5b1609da73330c3638f43dc28.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Villianess Reborn God Theme.mp3"
+dest_files=["res://.godot/imported/Villianess Reborn God Theme.mp3-bb143bd5b1609da73330c3638f43dc28.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

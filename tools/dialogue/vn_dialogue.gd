@@ -14,10 +14,6 @@ signal fade_whitetoblack
 
 signal fade_trans
 
-signal music_ambience
-signal music_chiptune
-signal music_bgm1
-signal music_bgm2
 signal stop_music
 
 signal sfx_door_knock
@@ -91,6 +87,19 @@ signal sfx_ambiance_morningbirds
 signal sfx_twinkling_fairy
 signal sfx_twinkling_chime
 signal sfx_ambiance_fountain
+
+signal music_somber_death
+signal music_more_intense
+signal music_mysterious
+signal music_first_stage
+signal music_tea_time
+signal music_social_warfare
+signal music_church
+signal music_church_welcoming
+signal music_forest_2
+signal music_town
+signal music_ballroom
+signal music_god
 
 signal stop_sfx
 signal stop_looping_sfx
