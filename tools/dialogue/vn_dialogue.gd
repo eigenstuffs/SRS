@@ -3,6 +3,7 @@ extends Control
 class_name VisualNovelDialogue
 
 signal fade_black
+signal fade_black_abrupt
 signal fade_blacktored
 signal fade_blacktowhite
 signal fade_red
@@ -89,6 +90,7 @@ signal sfx_ambiance_morningbirds
 signal sfx_twinkling_fairy
 signal sfx_twinkling_chime
 signal sfx_ambiance_fountain
+signal sfx_footstep_walking_snow
 
 signal music_somber_death
 signal music_more_intense
@@ -102,6 +104,8 @@ signal music_forest_2
 signal music_town
 signal music_ballroom
 signal music_god
+signal music_god_calm
+signal music_sliceoflife
 
 signal stop_sfx
 signal stop_looping_sfx
@@ -114,6 +118,10 @@ signal cg_empty_fountain
 signal cg_cecilia_fountain
 signal cg_dead_snow
 
+signal cg_winter
+signal cg_white
+signal stop_cg
+
 signal cg_god_bg
 signal cg_god_neutral
 signal cg_god_neutral_talk
@@ -122,6 +130,10 @@ signal cg_god_serious_talk
 signal cg_god_smile
 signal cg_god_smile_talk
 signal cg_exit_god
+
+signal overlay_blood_splatter
+
+signal stop_overlay
 
 signal add_OOC
 signal add_OPP
@@ -198,7 +210,7 @@ func read_line(key : int):
 	init_parameters(key)
 	
 	if current_line["delay"] != null:
-		text.hide()
+		text_box.hide()
 		await get_tree().create_timer(int(current_line["delay"])).timeout
 	if current_line["add"] != null:
 		Global.add_event(current_line["add"])
@@ -360,6 +372,9 @@ func read_line(key : int):
 	print('escaped')
 	if current_line["text"] == null:
 		text_box.hide()
+		if current_line["flag"]:
+			if current_line["flag"].split(",").has("autoplay"):
+				await get_tree().create_timer(3).timeout
 	else:
 		label.text = current_line["text"]
 		label.visible_characters = 1
@@ -383,13 +398,15 @@ func read_line(key : int):
 			await get_tree().create_timer(
 				1 - (int(settings_dropdown.skip) * 0.9)
 			).timeout
-		if current_line["flag"] == "menu":
-			text_box.hide()
-			EffectAnim.play("FadeBlack")
-			await EffectAnim.animation_finished
-			get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
-		elif current_line["flag"] == "quit":
-			get_tree().quit()
+	if current_line["flag"] == "menu":
+		text_box.hide()
+		EffectAnim.play("FadeBlack")
+		EffectAnim.speed_scale = 0.5
+		await EffectAnim.animation_finished
+		EffectAnim.speed_scale = 1
+		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
+	elif current_line["flag"] == "quit":
+		get_tree().quit()
 	
 	if current_line["run if"] != null:
 		var text = current_line["run if"].split(",")

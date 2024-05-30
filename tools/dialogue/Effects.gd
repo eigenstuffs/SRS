@@ -76,6 +76,7 @@ const SFX_AMBIANCE_MORNINGBIRDS = preload("res://assets/sfx/ambiance_5.wav")
 const SFX_TWINKLING_FAIRY = preload("res://assets/sfx/twinkling_1.mp3")
 const SFX_TWINKLING_CHIME = preload("res://assets/sfx/twinkling_2.mp3")
 const SFX_AMBIANCE_FOUNTAIN = preload("res://assets/sfx/ambiance_water_1.mp3")
+const SFX_FOOTSTEP_WALKING_SNOW = preload("res://assets/sfx/footsteps_walking_snow.mp3")
 
 const MUSIC_SOMBER_DEATH = preload("res://assets/music/Villianess Reborn Somber Death Theme Accepting Fate.mp3")
 const MUSIC_MORE_INTENSE = preload("res://assets/music/Villianess Reborn A Little Faster More Intense Theme.mp3")
@@ -89,6 +90,8 @@ const MUSIC_FOREST_2 = preload("res://assets/music/Villianess Reborn Forest Them
 const MUSIC_TOWN = preload("res://assets/music/Villianess Reborn Town Theme.mp3")
 const MUSIC_BALLROOM = preload("res://assets/music/Villianess Reborn Ballroom.mp3")
 const MUSIC_GOD = preload("res://assets/music/Villianess Reborn God Theme.mp3")
+const MUSIC_GOD_CALM = preload("res://assets/music/Villianess_Reborn_Calm_God_Theme.mp3")
+const MUSIC_SLICEOFLIFE = preload("res://assets/music/Villianess Reborn Peppy Isekai Filler Episode Type Beat.mp3")
 
 const SKY_CG = preload("res://assets/cgs/image0-2.jpg")
 const BLACK_CG = preload("res://assets/cgs/New Project.png")
@@ -98,9 +101,14 @@ const DINING_CG = preload("res://assets/cgs/dininghall.png")
 const DEAD_SNOW_CG = preload("res://assets/cgs/dead_snow.png")
 const CECILIA_FOUNTAIN = preload("res://assets/cgs/Cecelia-fountain.png")
 const EMPTY_FOUNTAIN = preload("res://assets/cgs/emtpy_fountain.png")
+const CG_WINTER = preload("res://assets/cgs/cg_winter.png")
+const CG_WHITE = preload("res://assets/cgs/cg_white.png")
+
+const OVERLAY_BLOOD_SPLATTER = 1
 
 @onready var anim_god : AnimationPlayer = $AnimGod
 @onready var anim_god_bg : AnimationPlayer = $AnimGod/AnimGodBG
+@onready var overlay : TextureRect = $Overlay
 
 var song
 var last_fade = ""
@@ -108,27 +116,27 @@ var last_fade = ""
 func _ready():
 	match Global.return_current_text():
 		Global.ACT1_CHAPTER1_PART1:
-			cg_black()
+			cg_static(BLACK_CG)
 			var a = create_tween()
 			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
 			a = create_tween()
 			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
 		Global.ACT1_CHAPTER1_PART2:
-			cg_room()
+			cg_static(ROOM_CG)
 			var a = create_tween()
 			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
 			a = create_tween()
 			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
 		Global.ACT1_CHAPTER2_PART1:
-			cg_room()
+			cg_static(ROOM_CG)
 			var a = create_tween()
 			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -15, 3)
 			a = create_tween()
 			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
 		Global.ACT1_CHAPTER2_PART2:
-			cg_dining()
+			cg_static(DINING_CG)
 			var a = create_tween()
-			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -15, 3)
+			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
 			a = create_tween()
 			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
 	
@@ -137,6 +145,7 @@ func _ready():
 	var vn : VisualNovelDialogue = get_parent()
 	
 	vn.connect("fade_black", fade_black)
+	vn.connect("fade_black_abrupt", fade_black_abrupt)
 	vn.connect("fade_blacktored", fade_blacktored)
 	vn.connect("fade_blacktowhite", fade_blacktowhite)
 	vn.connect("fade_red", fade_red)
@@ -223,7 +232,8 @@ func _ready():
 	vn.connect("sfx_twinkling_fairy", play_sfx.bind(SFX_TWINKLING_FAIRY))
 	vn.connect("sfx_twinkling_chime", play_sfx.bind(SFX_TWINKLING_CHIME))
 	vn.connect("sfx_ambiance_fountain", play_sfx.bind(SFX_AMBIANCE_FOUNTAIN))
-
+	vn.connect("sfx_footstep_walking_snow", play_sfx.bind(SFX_FOOTSTEP_WALKING_SNOW))
+	
 	vn.connect("music_somber_death", play_music.bind(MUSIC_SOMBER_DEATH))
 	vn.connect("music_more_intense", play_music.bind(MUSIC_MORE_INTENSE))
 	vn.connect("music_mysterious", play_music.bind(MUSIC_MYSTERIOUS))
@@ -236,12 +246,11 @@ func _ready():
 	vn.connect("music_town", play_music.bind(MUSIC_TOWN))
 	vn.connect("music_ballroom", play_music.bind(MUSIC_BALLROOM))
 	vn.connect("music_god", play_music.bind(MUSIC_GOD))
-
+	vn.connect("music_god_calm", play_music.bind(MUSIC_GOD_CALM))
+	vn.connect("music_sliceoflife", play_music.bind(MUSIC_SLICEOFLIFE))
 	
 	vn.connect("stop_sfx", stop_sfx)
 	vn.connect("stop_looping_sfx", stop_sfx_looping)
-	
-	vn.connect("cg_sky", cg_sky)
 	
 	vn.connect("cg_god_bg", cg_god_bg)
 	vn.connect("cg_god_neutral", cg_god_neutral)
@@ -252,18 +261,32 @@ func _ready():
 	vn.connect("cg_god_smile_talk", cg_god_smile_talk)
 	vn.connect("cg_exit_god", cg_exit_god)
 	
-	vn.connect("cg_black", cg_black)
-	vn.connect("cg_dining", cg_dining)
+	vn.connect("cg_sky", cg_static.bind(SKY_CG))
+	vn.connect("cg_black", cg_static.bind(BLACK_CG))
+	vn.connect("cg_dining", cg_static.bind(DINING_CG))
 	
-	vn.connect("cg_empty_fountain", cg_empty_fountain)
-	vn.connect("cg_cecilia_fountain", cg_cecilia_fountain)
-	vn.connect("cg_dead_snow", cg_dead_snow)
+	vn.connect("cg_empty_fountain", cg_static.bind(EMPTY_FOUNTAIN))
+	vn.connect("cg_cecilia_fountain", cg_static.bind(CECILIA_FOUNTAIN))
+	vn.connect("cg_dead_snow", cg_static.bind(DEAD_SNOW_CG))
+	
+	vn.connect("cg_winter", cg_static.bind(CG_WINTER))
+	vn.connect("cg_white", cg_static.bind(CG_WHITE))
+	vn.connect("stop_cg", stop_cg)
+	
+	vn.connect("overlay_blood_splatter", overlay_static.bind(OVERLAY_BLOOD_SPLATTER))
+	
+	vn.connect("stop_overlay", stop_overlay)
 	
 	vn.connect("add_OOC", add_OOC)
 	vn.connect("add_OPP", add_OPP)
 
 func fade_black():
 	EffectAnim.play("FadeBlack")
+	last_fade = "black"
+	await EffectAnim.animation_finished
+	
+func fade_black_abrupt():
+	EffectAnim.play("FadeBlackAbrupt")
 	last_fade = "black"
 	await EffectAnim.animation_finished
 	
@@ -326,10 +349,15 @@ func flash_white():
 ## MUSIC
 
 func play_music(effect_name):
+	EffectAnim.MusicPlayer.volume_db = -10
 	EffectAnim.MusicPlayer.stream = effect_name
 	EffectAnim.MusicPlayer.play()
 	
 func stop_music():
+	var a = create_tween()
+	a.tween_property(EffectAnim.MusicPlayer,
+	"volume_db", -60, 0.5)
+	await a.finished
 	EffectAnim.MusicPlayer.stop()
 	
 ## SFX
@@ -350,21 +378,37 @@ func stop_sfx_looping():
 	
 ## CG
 
-func cg_sky():
-	$CG.texture = SKY_CG
+func cg_static(texture : Texture):
+	#$CG.modulate.a = 0
+	#$CG.show()
+	#var a = create_tween()
+	#a.tween_property($CG, "modulate:a", 1, 0.5)
+	#await a.finished
+	$CG.modulate.a = 1
 	$CG.show()
+	$CG.texture = texture
 	
-func cg_black():
-	$CG.texture = BLACK_CG
-	$CG.show()
+func stop_cg():
+	var a = create_tween()
+	a.tween_property($CG, "modulate:a", 0, 0.5)
+	await a.finished
+	$CG.hide()
+	$CG.modulate.a = 1
 	
-func cg_room():
-	$CG.texture = ROOM_CG
-	$CG.show()
+func overlay_static(texture : Texture):
+	overlay.modulate.a = 0
+	overlay.show()
+	var a = create_tween()
+	a.tween_property(overlay, "modulate:a", 1, 0.5)
+	await a.finished
+	overlay.texture = texture
 	
-func cg_dining():
-	$CG.texture = DINING_CG
-	$CG.show()
+func stop_overlay():
+	var a = create_tween()
+	a.tween_property(overlay, "modulate:a", 0, 0.5)
+	await a.finished
+	overlay.hide()
+	overlay.modulate.a = 1
 	
 func cg_god_bg():
 	print("enter god")
@@ -375,27 +419,45 @@ func cg_god_bg():
 	anim_god_bg.play("God_BG")
 
 func cg_god_neutral():
-	anim_god.play("RESET")
+	print("GOD NEUTRAL")
+	anim_god.stop(false)
+	#anim_god.play("RESET")
+	#await anim_god.animation_finished
 	anim_god.play("NeutralStatic")
 
 func cg_god_neutral_talk():
-	anim_god.play("RESET")
+	print("GOD NEUTRAL TALK")
+	anim_god.stop(false)
+	#anim_god.play("RESET")
+	#await anim_god.animation_finished
 	anim_god.play("NeutralSpeaking")
 	
 func cg_god_serious():
-	anim_god.play("RESET")
+	print("GOD SERIOUS")
+	anim_god.stop(false)
+	#anim_god.play("RESET")
+	#await anim_god.animation_finished
 	anim_god.play("SeriousStatic")
 	
 func cg_god_serious_talk():
-	anim_god.play("RESET")
+	print("GOD SERIOUS TALK")
+	anim_god.stop(false)
+	#anim_god.play("RESET")
+	#await anim_god.animation_finished
 	anim_god.play("SeriousSpeaking")
 
 func cg_god_smile():
-	anim_god.play("RESET")
+	print("GOD SMILE")
+	anim_god.stop(false)
+	#anim_god.play("RESET")
+	#await anim_god.animation_finished
 	anim_god.play("SmileStatic")
 	
 func cg_god_smile_talk():
-	anim_god.play("RESET")
+	print("GOD SMILE TALK")
+	anim_god.stop(false)
+	#anim_god.play("RESET")
+	#await anim_god.animation_finished
 	anim_god.play("SmileSpeaking")
 	
 func cg_exit_god():
@@ -406,18 +468,6 @@ func cg_exit_god():
 	await a.finished
 	anim_god.stop()
 	anim_god_bg.stop()
-	
-func cg_empty_fountain():
-	$CG.texture = EMPTY_FOUNTAIN
-	$CG.show()
-
-func cg_cecilia_fountain():
-	$CG.texture = CECILIA_FOUNTAIN
-	$CG.show()
-	
-func cg_dead_snow():
-	$CG.texture = DEAD_SNOW_CG
-	$CG.show()
 
 func player_name_screen():
 	var a = PLAYER_NAME.instantiate()
