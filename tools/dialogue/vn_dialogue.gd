@@ -141,6 +141,9 @@ signal stop_overlay
 signal add_OOC
 signal add_OPP
 
+signal hide_text
+signal show_text
+
 const CHARACTER_LIST : CharacterList = preload("res://resources/characters/character_list.tres")
 const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
 const GOD_CHOICE_BUTTON = preload("res://tools/dialogue/god_dialogue_choice.tscn")

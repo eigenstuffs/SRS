@@ -719,6 +719,7 @@ text = "res://tools/dialogue/vn_scripts/act1_chapter1_scene1.json"
 [node name="EffectHandler" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("12_17eel")
+text_box = NodePath("../TextBox")
 
 [node name="CG" type="TextureRect" parent="EffectHandler"]
 z_index = -1
@@ -837,6 +838,7 @@ anchors_preset = 0
 offset_top = 64.0
 offset_right = 40.0
 offset_bottom = 104.0
+mouse_filter = 1
 
 [node name="Box" type="TextureRect" parent="TextBox"]
 modulate = Color(1, 1, 1, 0.901961)

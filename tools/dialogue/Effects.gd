@@ -109,6 +109,7 @@ const OVERLAY_BLOOD_SPLATTER = 1
 @onready var anim_god : AnimationPlayer = $AnimGod
 @onready var anim_god_bg : AnimationPlayer = $AnimGod/AnimGodBG
 @onready var overlay : TextureRect = $Overlay
+@export_node_path("Control") var text_box
 
 var song
 var last_fade = ""
@@ -282,6 +283,9 @@ func _ready():
 	
 	vn.connect("add_OOC", add_OOC)
 	vn.connect("add_OPP", add_OPP)
+	
+	vn.connect("hide_text", hide_text)
+	vn.connect("show_text", show_text)
 
 func fade_black():
 	EffectAnim.play("FadeBlack")
@@ -502,3 +506,17 @@ func add_OOC():
 	
 func add_OPP():
 	Global.opp += 1
+
+func hide_text():
+	var a = create_tween()
+	a.tween_property(get_node(text_box),
+	"modulate:a", 0, 1)
+	await a.finished
+	get_node(text_box)["mouse_filter"] = 2
+
+func show_text():
+	var a = create_tween()
+	a.tween_property(get_node(text_box),
+	"modulate:a", 0, 1)
+	await a.finished
+	get_node(text_box)["mouse_filter"] = 1
