@@ -14,6 +14,8 @@ signal fade_whitetoblack
 
 signal fade_trans
 
+signal flash_white
+
 signal stop_music
 
 signal sfx_door_knock
@@ -50,7 +52,7 @@ signal sfx_urban_rain_looping
 signal sfx_game_chime
 signal sfx_game_select
 signal sfx_footstep_running_gravel
-signal sfx_realizatoin
+signal sfx_realization
 
 signal sfx_heels_walking_metal
 signal sfx_heels_walking_tile
@@ -500,5 +502,5 @@ func alternate_text_box():
 		box.texture = GOD_DIALOGUE_TEXTURE
 		name_frame.texture = null
 		label["theme_override_colors/default_color"] = Color("ffffff")
-		box.scale = Vector2(1.5,1.5)
-		box.position = Vector2(-256, 448)
+		box.scale = Vector2(1.5,2.5)
+		box.position = Vector2(-256, 320)
