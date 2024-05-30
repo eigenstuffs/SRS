@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://845ydmim68kx"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://845ydmim68kx"]
 
+[ext_resource type="Texture2D" uid="uid://b5fr3k6el67e5" path="res://assets/socialwarfare/faces/IMG_3374.png" id="1_iuiic"]
 [ext_resource type="Script" path="res://resources/cards/card.gd" id="1_n3iwe"]
 
 [resource]
 script = ExtResource("1_n3iwe")
+image = ExtResource("1_iuiic")
 points_req = 0
 title = "Slap"
 effect = 0

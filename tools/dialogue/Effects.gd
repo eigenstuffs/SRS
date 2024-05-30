@@ -110,23 +110,27 @@ func _ready():
 		Global.ACT1_CHAPTER1_PART1:
 			cg_black()
 			var a = create_tween()
-			a.tween_property($SFX, "volume_db", -10, 3)
-			$SFX.play()
+			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
+			a = create_tween()
+			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
 		Global.ACT1_CHAPTER1_PART2:
 			cg_room()
 			var a = create_tween()
-			a.tween_property($SFX, "volume_db", -10, 3)
-			$SFX.play()
+			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
+			a = create_tween()
+			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
 		Global.ACT1_CHAPTER2_PART1:
 			cg_room()
 			var a = create_tween()
-			a.tween_property($Music, "volume_db", -15, 3)
-			$Music.play()
+			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -15, 3)
+			a = create_tween()
+			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
 		Global.ACT1_CHAPTER2_PART2:
 			cg_dining()
 			var a = create_tween()
-			a.tween_property($Music, "volume_db", -15, 3)
-			$Music.play()
+			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -15, 3)
+			a = create_tween()
+			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
 	
 	#to be changed back to VisualNovelDialogue
 	#var vn : VisualNovelDialogue = get_parent()

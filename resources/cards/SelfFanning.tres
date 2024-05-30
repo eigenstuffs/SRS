@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://b33acxy032q5y"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://b33acxy032q5y"]
 
+[ext_resource type="Texture2D" uid="uid://dn282mfgbv8ui" path="res://assets/socialwarfare/faces/IMG_3376.png" id="1_02x48"]
 [ext_resource type="Script" path="res://resources/cards/card.gd" id="1_p18ue"]
 
 [resource]
 script = ExtResource("1_p18ue")
+image = ExtResource("1_02x48")
 points_req = 0
 title = "Self Fanning"
 effect = 2

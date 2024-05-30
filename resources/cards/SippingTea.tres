@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://drsej55dkajmo"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://drsej55dkajmo"]
 
+[ext_resource type="Texture2D" uid="uid://chegxy5mvx30b" path="res://assets/socialwarfare/faces/IMG_3375.png" id="1_0w2xw"]
 [ext_resource type="Script" path="res://resources/cards/card.gd" id="1_hyeb5"]
 
 [resource]
 script = ExtResource("1_hyeb5")
+image = ExtResource("1_0w2xw")
 points_req = 0
 title = "Sipping Tea"
 effect = 1

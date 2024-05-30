@@ -34,7 +34,7 @@ signal sfx_ambiance_echoes
 signal sfx_ambiance_heavy
 signal sfx_melody_save
 signal sfx_door_1
-signal sfx_realization
+signal sfx_inquisitive
 signal sfx_whoosh_foam
 signal sfx_happy
 signal sfx_epiphany
@@ -50,7 +50,7 @@ signal sfx_urban_rain_looping
 signal sfx_game_chime
 signal sfx_game_select
 signal sfx_footstep_running_gravel
-signal sfx_realization_bells
+signal sfx_realizatoin
 
 signal sfx_heels_walking_metal
 signal sfx_heels_walking_tile
