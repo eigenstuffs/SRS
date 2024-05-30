@@ -249,6 +249,9 @@ func _ready():
 	vn.connect("music_god_calm", play_music.bind(MUSIC_GOD_CALM))
 	vn.connect("music_sliceoflife", play_music.bind(MUSIC_SLICEOFLIFE))
 	
+	vn.connect("pause_music", pause_music)
+	vn.connect("resume_music", resume_music)
+	
 	vn.connect("stop_sfx", stop_sfx)
 	vn.connect("stop_looping_sfx", stop_sfx_looping)
 	
@@ -356,9 +359,22 @@ func play_music(effect_name):
 func stop_music():
 	var a = create_tween()
 	a.tween_property(EffectAnim.MusicPlayer,
-	"volume_db", -60, 0.5)
+	"volume_db", -60, 0.2)
 	await a.finished
 	EffectAnim.MusicPlayer.stop()
+	EffectAnim.MusicPlayer.volume_db = -10
+	
+func pause_music():
+	var a = create_tween()
+	a.tween_property(EffectAnim.MusicPlayer,
+	"volume_db", -100, 0.2)
+	await a.finished
+	
+func resume_music():
+	var a = create_tween()
+	a.tween_property(EffectAnim.MusicPlayer,
+	"volume_db", -10, 0.2)
+	await a.finished
 	
 ## SFX
 

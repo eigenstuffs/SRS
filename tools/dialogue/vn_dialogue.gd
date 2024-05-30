@@ -107,6 +107,9 @@ signal music_god
 signal music_god_calm
 signal music_sliceoflife
 
+signal pause_music
+signal resume_music
+
 signal stop_sfx
 signal stop_looping_sfx
 
