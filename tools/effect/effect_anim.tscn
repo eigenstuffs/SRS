@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8of8aacla8xa"]
+[gd_scene load_steps=14 format=3 uid="uid://b8of8aacla8xa"]
 
 [ext_resource type="Script" path="res://tools/effect/effect_anim.gd" id="16_ie6vu"]
 
@@ -164,6 +164,22 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_qi816"]
+resource_name = "FlashWhite"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnim/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_303pa"]
 _data = {
 "FadeBlack": SubResource("Animation_w53sw"),
@@ -175,6 +191,7 @@ _data = {
 "FadeWhite": SubResource("Animation_kbmje"),
 "FadeWhiteToBlack": SubResource("Animation_wia8j"),
 "FadeWhiteToRed": SubResource("Animation_o0fni"),
+"FlashWhite": SubResource("Animation_qi816"),
 "RESET": SubResource("Animation_bsm8s")
 }
 
@@ -189,7 +206,7 @@ script = ExtResource("16_ie6vu")
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(1, 1, 1, 0)
 
 [node name="OneTimePlayer" type="AudioStreamPlayer" parent="."]
 

@@ -147,6 +147,8 @@ func _ready():
 	vn.connect("fade_whitetoblack", fade_whitetoblack)
 	
 	vn.connect("fade_trans", fade_trans)
+	
+	vn.connect("flash_white", flash_white)
 
 	vn.connect("stop_music", stop_music)
 	
@@ -315,6 +317,10 @@ func fade_trans():
 			EffectAnim.play_backwards("FadeRed")
 		_:
 			print("no last fade")
+	await EffectAnim.animation_finished
+	
+func flash_white():
+	EffectAnim.play("FlashWhite")
 	await EffectAnim.animation_finished
 
 ## MUSIC
