@@ -49,7 +49,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Book caught"
+text = "Books caught"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="ScoreTally/Line"]
@@ -64,7 +64,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Bomb touched"
+text = "Bombs touched"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="ScoreTally/Line2"]

@@ -1,33 +1,33 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnujinydfucuo"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/canvas_layer.gd" id="1_wvlk1"]
-[ext_resource type="Texture2D" uid="uid://cpsjhq8tp4qbx" path="res://assets/library/Heart.png" id="2_umyva"]
+[ext_resource type="Texture2D" uid="uid://bsg642hjtctj2" path="res://assets/library/Heart_Filled.png" id="2_eka5j"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_wvlk1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 21.0
-offset_top = 88.0
-offset_right = 496.0
-offset_bottom = 138.0
+offset_left = 144.0
+offset_top = 109.0
+offset_right = 619.0
+offset_bottom = 159.0
+scale = Vector2(1.4, 1.4)
 theme_override_constants/separation = 30
-alignment = 1
 
 [node name="ColorRect" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("2_umyva")
+texture = ExtResource("2_eka5j")
 expand_mode = 1
 
 [node name="ColorRect2" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("2_umyva")
+texture = ExtResource("2_eka5j")
 expand_mode = 1
 
 [node name="ColorRect3" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("2_umyva")
+texture = ExtResource("2_eka5j")
 expand_mode = 1

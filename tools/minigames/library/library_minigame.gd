@@ -37,8 +37,8 @@ func end():
 	#$BookInstancer.queue_free()
 
 func _on_library_player_book_collected(book : Book):
-	if $LibraryPlayer/BookHolder.get_num_books() == 0:
-		$Walls/Shelves.blinking()
+	#if $LibraryPlayer/BookHolder.get_num_books() == 0:
+		#$Walls/Shelves.blinking()
 	if $LibraryPlayer/BookHolder.get_num_books() < 10: 
 		$LibraryPlayer/BookHolder.add_book_bone(book)
 		$SfxPlayer.stream = BOOK_CAUGHT_SFX

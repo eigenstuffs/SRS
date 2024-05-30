@@ -83,6 +83,8 @@ func start_display():
 	await preview_done
 	modify_stats(stats_gained)
 
-func _on_confirm_button_pressed():
+func _on_confirm_button_pressed(): #BUG: Somehow button press is not registered?
+	print("confirm button pressed")
 	if done:
 		emit_signal("display_finished")
+		print("ended")

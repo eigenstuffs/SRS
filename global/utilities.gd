@@ -22,6 +22,7 @@ func create_minigame(canvas_layer : CanvasLayer, minigame : String):
 	var points = a.detailed_points
 	print(points)
 	emit_signal("util_finished")
+	a.queue_free()
 	create_reward_scene(minigame, points[0], points[1], a, canvas_layer)
 	return points
 

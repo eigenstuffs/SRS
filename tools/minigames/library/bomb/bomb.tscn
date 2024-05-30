@@ -12,6 +12,7 @@ bounce = 0.1
 radius = 0.3
 
 [node name="Bomb" type="Node3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 script = ExtResource("1_48fmn")
 
 [node name="Shadow" parent="." instance=ExtResource("2_ko3ke")]

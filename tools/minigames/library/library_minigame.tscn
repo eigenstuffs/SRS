@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://buyuq0kfr1tme"]
+[gd_scene load_steps=32 format=3 uid="uid://buyuq0kfr1tme"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="2_4dmdn"]
@@ -6,15 +6,19 @@
 [ext_resource type="Script" path="res://tools/minigames/library/Shelves.gd" id="3_bn36f"]
 [ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
 [ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="4_q284v"]
+[ext_resource type="Texture2D" uid="uid://blifv4cla6nqm" path="res://assets/library/Library_BottomBanister.PNG" id="5_4ilel"]
 [ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/book/wiggle/book_holder.tscn" id="5_4rr6e"]
 [ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/npc_instancer.tscn" id="5_hbp12"]
-[ext_resource type="Texture2D" uid="uid://bjx05et1hfjou" path="res://assets/library/library minigame shelves_left.png" id="5_yufw6"]
-[ext_resource type="Texture2D" uid="uid://cq5ocmwyyussi" path="res://assets/library/librarybg.png" id="6_3agw3"]
 [ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="6_8v8og"]
-[ext_resource type="Texture2D" uid="uid://0up60520e26a" path="res://assets/library/library minigame shelves_right.png" id="6_gmm7x"]
+[ext_resource type="Texture2D" uid="uid://dfxsirtyw7lm" path="res://assets/library/Library_BG.PNG" id="7_pg1qs"]
 [ext_resource type="Script" path="res://tools/minigames/library/Bookshelf.gd" id="8_lbiij"]
 [ext_resource type="Texture2D" uid="uid://b5tb2e7l3k0ff" path="res://assets/library/library minigame MULTIPLY overlay.png" id="8_terwc"]
 [ext_resource type="Texture2D" uid="uid://canoybacfkdhk" path="res://assets/library/library minigame COLOR DODGE overlay.png" id="9_18307"]
+[ext_resource type="Texture2D" uid="uid://bx86b5uxmivs2" path="res://assets/library/HardLight_setto100%transparency.PNG" id="9_h2gwe"]
+[ext_resource type="Texture2D" uid="uid://d35sro4gk8glk" path="res://assets/library/Library_shelves.PNG" id="10_ff1hf"]
+[ext_resource type="Texture2D" uid="uid://e50mcrpkh28u" path="res://assets/library/Screen_setto70%transparency.PNG" id="10_sb8oc"]
+[ext_resource type="Texture2D" uid="uid://bhnxu5xbw83e4" path="res://assets/library/Library_TopBanister.PNG" id="12_bqiee"]
+[ext_resource type="Texture2D" uid="uid://c6ep7gd34sa5v" path="res://assets/library/Overlay_setto35%transparency.PNG" id="13_wtd8x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
 size = Vector3(10, 1, 10)
@@ -61,7 +65,8 @@ script = ExtResource("1_jnejo")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_7cbig")]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -70,7 +75,8 @@ grow_vertical = 2
 texture = ExtResource("8_terwc")
 expand_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -78,6 +84,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_18307")
 expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_4ilel")
+expand_mode = 1
 
 [node name="Walls" type="Node3D" parent="."]
 
@@ -119,28 +131,29 @@ mesh = SubResource("BoxMesh_ngvxs")
 
 [node name="Background" type="Sprite3D" parent="Walls/Shelves"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 2.08165e-12)
-texture = ExtResource("6_3agw3")
+texture = ExtResource("7_pg1qs")
 
-[node name="LShelf" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -3.24954, 0.0327032, 0.738586)
-texture = ExtResource("5_yufw6")
+[node name="Hardlight" type="Sprite3D" parent="Walls/Shelves"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 0.04)
+texture = ExtResource("9_h2gwe")
 
-[node name="RShelf" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.3, 0.033, 0.739)
-texture = ExtResource("6_gmm7x")
+[node name="Screen" type="Sprite3D" parent="Walls/Shelves"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 0.04)
+modulate = Color(1, 1, 1, 0.3)
+texture = ExtResource("10_sb8oc")
 
-[node name="Sprite3D" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.03685, 0, 0.269709)
-visible = false
-cast_shadow = 0
-texture = ExtResource("8_terwc")
+[node name="Shelves" type="Sprite3D" parent="Walls/Shelves"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 0, 0.2)
+texture = ExtResource("10_ff1hf")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.02298, 0, 1.2376)
-visible = false
-cast_shadow = 0
-modulate = Color(0.596078, 0.596078, 0.6, 1)
-texture = ExtResource("9_18307")
+[node name="TopBanister" type="Sprite3D" parent="Walls/Shelves"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 0.045)
+texture = ExtResource("12_bqiee")
+
+[node name="Overlay" type="Sprite3D" parent="Walls/Shelves"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 2.08165e-12)
+modulate = Color(1, 1, 1, 0.35)
+texture = ExtResource("13_wtd8x")
 
 [node name="Colliders" type="Node3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
