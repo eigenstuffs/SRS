@@ -235,8 +235,9 @@ func read_line(key : int):
 		print("set " + variable + " as " + value)
 		Global.set(variable, value)
 	if current_line["flag"] != null:
-		text_box.hide()
-		settings_dropdown.stop_skip()
+		if current_line["flag"] != "slow":
+			text_box.hide()
+			settings_dropdown.stop_skip()
 		
 	if current_line["flag"] == "decision":
 		if current_line["options"] != null:
@@ -386,6 +387,7 @@ func read_line(key : int):
 		label.visible_characters = 1
 		var num_chars = label.text.length()
 		var total_time = Global.text_speed * num_chars
+		if current_line["flag"] == "slow": total_time * 3
 		current_time = total_time
 		a = create_tween()
 		a.tween_property(label, "visible_characters", num_chars, total_time - (
@@ -444,29 +446,29 @@ func next_anim():
 
 func init_parameters(key : int):
 	var line = result.get(result.keys()[key])
-	sprite_handler.init_cecilia(line["cecilia"])
-	var sprites
+	
+	if line["cecilia"]:
+		sprite_handler.init_cecilia(line["cecilia"])
+	
+	if line["speaker"]:
+		if line["speaker"] == "Player":
+			character_name.text = Global.player_name
+		else:
+			character_name.text = line["speaker"]
+		name_frame.show()
+	else:
+		character_name.text = ""
+		name_frame.hide()
 
 	if line["character"] != null && line["sprite"] != null:
-		character_name.show()
-		name_frame.show()
 		sprite_handler.init_sprite(
 			line["character"].split(","),
 			line["sprite"].split(",")
 		)
-		if line["character"] == "Player":
-			character_name.text = Global.player_name
-
-	elif line["character"] != null:
-		sprite_handler.clear_sprites()
-		character_name.text = line["character"]
-		character_name.show()
-		name_frame.show()
+		
 	else:
 		sprite_handler.clear_sprites()
-		character_name.text = ""
-		character_name.hide()
-		name_frame.hide()
+
 	if current_line["text"]:
 		if character_name.text != "":
 			settings_dropdown.add_to_log(

@@ -714,7 +714,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("4_g1vbp")
-text = "res://tools/dialogue/vn_scripts/act1_chapter1_scene1.json"
+text = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_1.json"
 
 [node name="EffectHandler" type="Node" parent="."]
 process_mode = 3

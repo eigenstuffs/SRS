@@ -358,12 +358,12 @@ func flash_white():
 func play_music(effect_name):
 	EffectAnim.MusicPlayer.volume_db = -10
 	EffectAnim.MusicPlayer.stream = effect_name
-	EffectAnim.MusicPlayer.play()
+	EffectAnim.MusicPlayer.play(0)
 	
 func stop_music():
 	var a = create_tween()
 	a.tween_property(EffectAnim.MusicPlayer,
-	"volume_db", -60, 0.2)
+	"volume_db", -100, 0.5)
 	await a.finished
 	EffectAnim.MusicPlayer.stop()
 	EffectAnim.MusicPlayer.volume_db = -10

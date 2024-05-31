@@ -14,43 +14,6 @@ const CHARACTER_LIST = preload("res://resources/characters/character_list.tres")
 const CECILIA = preload("res://resources/characters/cecilia.tres")
 
 func init_sprite(character_list : Array[String], sprite_list : Array[String]):
-	print(character_list)
-	
-	for i in character_list:
-		if i.contains("!"):
-			focused_char = i.replace("!", "")
-			get_node(name_string).text = focused_char
-			break
-		elif character_list.size() == 1:
-			if i.contains("-"):
-				get_node(name_string).text = ""
-				focused_char = null
-			else:
-				focused_char = i
-				get_node(name_string).text = i
-			break
-		else:
-			var temp = character_list.duplicate(true)
-			temp.erase("null")
-			temp.erase("null")
-			temp.erase("null")
-			temp.erase("null")
-			if temp.size() == 1:
-				focused_char = temp[0]
-				get_node(name_string).text = temp[0]
-				break
-			else:
-				focused_char = null
-			
-	for i in character_list.size():
-		character_list[i] = character_list[i].replace("!","")
-		character_list[i] = character_list[i].replace("-","")
-		
-	if get_node(name_string).text == "" or get_node(name_string).text == null:
-		get_node(name_frame).hide()
-	else:
-		get_node(name_frame).show()
-	
 	if sprite_list == prior_sprite_list:
 		pass
 	else:
@@ -61,7 +24,10 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 		if sprite_list.size() == character_list.size():
 			prior_sprite_list = sprite_list
 			for i : Character in CHARACTER_LIST.list:
-				if character_list.has(i.name):
+				var clean_character_list = character_list.duplicate(true)
+				for k in character_list.size():
+					clean_character_list[k] = character_list[k].replace("-", "")
+				if clean_character_list.has(i.name):
 					print(i.name)
 					var a = CHARACTER_SPRITE.instantiate()
 					$HBoxContainer.add_child(a)
@@ -71,7 +37,7 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 					
 					for j in i.textures:
 						if j.resource_path.ends_with(sprite_list[
-							character_list.find(i.name)
+							clean_character_list.find(i.name)
 						] + ".PNG"):
 							texture = j
 					
@@ -87,18 +53,13 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 						a, i
 					)
 					a.modulate.a = 0
-			if focused_char: print('focused: ' + focused_char)
 			for i in $HBoxContainer.get_child_count():
-				if focused_char != "" and focused_char != null:
-					if focused_char != character_list[i-1]:
-						$HBoxContainer.get_child(i-1).modulate = Color("969696")
-				if character_list[i-1] != "null":
-					$HBoxContainer.get_child(i-1).modulate.a = 0
-					var q = create_tween()
-					q.tween_property($HBoxContainer.get_child(i-1),
-					"modulate:a", 1, 0.2)
-				else:
-					$HBoxContainer.get_child(i-1).modulate.a = 0
+				if character_list[i-1].contains("-"):
+					$HBoxContainer.get_child(i-1).modulate = Color("969696")
+				$HBoxContainer.get_child(i-1).modulate.a = 0
+				var q = create_tween()
+				q.tween_property($HBoxContainer.get_child(i-1),
+				"modulate:a", 1, 0.2)
 						
 			match $HBoxContainer.get_child_count():
 				1:
