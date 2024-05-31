@@ -3,6 +3,7 @@ class_name FishingMinigame extends Minigame
 # signals and end() are already defined in Minigame class .. see minigame.gd
 
 @onready var fishing_rod = $FishingPlayer/FishingRod
+@onready var bob_indicator = $BobIndicator
 var force_bar_val
 
 signal reeling_minigame
@@ -14,6 +15,7 @@ var fish_caught_by_type : Array[int] = [0, 0, 0, 0]
 
 func _ready():
 	force_bar_val = $CanvasLayer.get_force_bar_val()
+	bob_indicator.visible = false
 	await get_tree().create_timer(3).timeout # wait for countdown timer
 	
 func end() -> void:
@@ -24,6 +26,7 @@ func end() -> void:
 func _process(delta):
 	force_bar_val = $CanvasLayer.get_force_bar_val()
 	force_multiplier = force_bar_val / 100
+	bob_indicator.global_position.z = $FishingPlayer.global_position.z + 4*force_multiplier
 
 
 func _on_canvas_layer_reeling_ended(is_successful, rarity):
@@ -56,4 +59,9 @@ func calculate_stats(fish_types) -> Array[int]:
 
 
 func _on_fishing_player_releasing_rod():
+	bob_indicator.visible = false
 	fishing_rod.bobber_initial_v.z = 4 * force_multiplier
+
+func _on_fishing_player_casting_time():
+	bob_indicator.global_position = $FishingPlayer.global_position
+	bob_indicator.visible = true

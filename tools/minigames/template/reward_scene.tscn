@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://daom8pfxkxqmw"]
+[gd_scene load_steps=4 format=3 uid="uid://daom8pfxkxqmw"]
 
 [ext_resource type="Script" path="res://tools/minigames/template/reward_scene.gd" id="1_p1o4n"]
+[ext_resource type="Texture2D" uid="uid://kjxx6hef0fgh" path="res://assets/rewardscene/Results Frame.png" id="2_2bua5"]
+[ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="3_vkyv0"]
 
 [node name="RewardScene" type="CanvasLayer"]
 layer = 2
@@ -9,18 +11,16 @@ script = ExtResource("1_p1o4n")
 [node name="Backdrop" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1083.0
-
-[node name="ColorRect" type="ColorRect" parent="Backdrop"]
-layout_mode = 0
-offset_right = 1915.0
-offset_bottom = 1080.0
-color = Color(0.392157, 0.392157, 0.392157, 1)
+texture = ExtResource("2_2bua5")
 
 [node name="Title" type="Label" parent="."]
-offset_top = 25.0
-offset_right = 1915.0
-offset_bottom = 138.0
-theme_override_font_sizes/font_size = 110
+offset_left = 3.0
+offset_top = -10.0
+offset_right = 1918.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(0.27451, 0.156863, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("3_vkyv0")
+theme_override_font_sizes/font_size = 85
 text = "Result"
 horizontal_alignment = 1
 vertical_alignment = 1

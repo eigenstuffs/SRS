@@ -52,10 +52,10 @@ func rename_player(name : String):
 
 ### PLAYER STATS
 
-@onready var player_wisdom : int = 0
-@onready var player_intelligence : int = 0
-@onready var player_charisma : int = 0
-@onready var player_wellness : int = 0
+@onready var player_wisdom : int = 50
+@onready var player_intelligence : int = 50
+@onready var player_charisma : int = 50
+@onready var player_wellness : int = 50
 @onready var player_money : int = 0
 @onready var player_prestige : int = 0
 

@@ -54,7 +54,7 @@ func display_final(stats_gained : Array):
 
 func stats_bar_update():
 	for bar_index in stats_container.get_child_count():
-		var current_bar : ProgressBar = stats_container.get_child(bar_index)
+		var current_bar := stats_container.get_child(bar_index)
 		current_bar.get_child(0).text = str(Global.get_stat(bar_index))
 		var a = create_tween()
 		a.tween_property(current_bar, "value", Global.get_stat(bar_index), 0.1)
@@ -69,7 +69,7 @@ func modify_stats(points_to_be_modified : Array):
 
 func stats_change_preview(change_by : Array):
 	for bar_index in stats_container.get_child_count():
-		var current_bar : ProgressBar = stats_container.get_child(bar_index)
+		var current_bar := stats_container.get_child(bar_index)
 		current_bar.get_child(0).text = str(Global.get_stat(bar_index)) + " + " + str(change_by[bar_index])
 		await get_tree().create_timer(0.35).timeout
 	emit_signal("preview_done")
