@@ -75,10 +75,10 @@ func _on_hide_pressed():
 		0.4
 	)
 	await a.finished
-	$DropDown.paused = true
+	get_tree().paused = true
+	$DropDown.disabled = true
 	for i in $Buttons.get_children():
 		i.disabled = true
-	
 	get_tree().paused = true
 	await exit_log
 	
@@ -91,7 +91,8 @@ func _on_hide_pressed():
 	)
 	await a.finished
 	get_tree().paused = false
-	$DropDown.paused = false
+	$DropDown.disabled = false
+
 	for i in $Buttons.get_children():
 		i.disabled = false
 

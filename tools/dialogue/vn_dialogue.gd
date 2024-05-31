@@ -3,6 +3,7 @@ extends Control
 class_name VisualNovelDialogue
 
 signal fade_black
+signal fade_black_abrupt
 signal fade_blacktored
 signal fade_blacktowhite
 signal fade_red
@@ -13,6 +14,8 @@ signal fade_whitetored
 signal fade_whitetoblack
 
 signal fade_trans
+
+signal flash_white
 
 signal stop_music
 
@@ -50,7 +53,7 @@ signal sfx_urban_rain_looping
 signal sfx_game_chime
 signal sfx_game_select
 signal sfx_footstep_running_gravel
-signal sfx_realizatoin
+signal sfx_realization
 
 signal sfx_heels_walking_metal
 signal sfx_heels_walking_tile
@@ -87,6 +90,7 @@ signal sfx_ambiance_morningbirds
 signal sfx_twinkling_fairy
 signal sfx_twinkling_chime
 signal sfx_ambiance_fountain
+signal sfx_footstep_walking_snow
 
 signal music_somber_death
 signal music_more_intense
@@ -100,6 +104,11 @@ signal music_forest_2
 signal music_town
 signal music_ballroom
 signal music_god
+signal music_god_calm
+signal music_sliceoflife
+
+signal pause_music
+signal resume_music
 
 signal stop_sfx
 signal stop_looping_sfx
@@ -112,6 +121,10 @@ signal cg_empty_fountain
 signal cg_cecilia_fountain
 signal cg_dead_snow
 
+signal cg_winter
+signal cg_white
+signal stop_cg
+
 signal cg_god_bg
 signal cg_god_neutral
 signal cg_god_neutral_talk
@@ -121,8 +134,15 @@ signal cg_god_smile
 signal cg_god_smile_talk
 signal cg_exit_god
 
+signal overlay_blood_splatter
+
+signal stop_overlay
+
 signal add_OOC
 signal add_OPP
+
+signal hide_text
+signal show_text
 
 const CHARACTER_LIST : CharacterList = preload("res://resources/characters/character_list.tres")
 const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
@@ -196,7 +216,7 @@ func read_line(key : int):
 	init_parameters(key)
 	
 	if current_line["delay"] != null:
-		text.hide()
+		text_box.hide()
 		await get_tree().create_timer(int(current_line["delay"])).timeout
 	if current_line["add"] != null:
 		Global.add_event(current_line["add"])
@@ -215,8 +235,9 @@ func read_line(key : int):
 		print("set " + variable + " as " + value)
 		Global.set(variable, value)
 	if current_line["flag"] != null:
-		text_box.hide()
-		settings_dropdown.stop_skip()
+		if current_line["flag"] != "slow":
+			text_box.hide()
+			settings_dropdown.stop_skip()
 		
 	if current_line["flag"] == "decision":
 		if current_line["options"] != null:
@@ -358,11 +379,15 @@ func read_line(key : int):
 	print('escaped')
 	if current_line["text"] == null:
 		text_box.hide()
+		if current_line["flag"]:
+			if current_line["flag"].split(",").has("autoplay"):
+				await get_tree().create_timer(3).timeout
 	else:
 		label.text = current_line["text"]
 		label.visible_characters = 1
 		var num_chars = label.text.length()
 		var total_time = Global.text_speed * num_chars
+		if current_line["flag"] == "slow": total_time * 3
 		current_time = total_time
 		a = create_tween()
 		a.tween_property(label, "visible_characters", num_chars, total_time - (
@@ -381,13 +406,15 @@ func read_line(key : int):
 			await get_tree().create_timer(
 				1 - (int(settings_dropdown.skip) * 0.9)
 			).timeout
-		if current_line["flag"] == "menu":
-			text_box.hide()
-			EffectAnim.play("FadeBlack")
-			await EffectAnim.animation_finished
-			get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
-		elif current_line["flag"] == "quit":
-			get_tree().quit()
+	if current_line["flag"] == "menu":
+		text_box.hide()
+		EffectAnim.play("FadeBlack")
+		EffectAnim.speed_scale = 0.5
+		await EffectAnim.animation_finished
+		EffectAnim.speed_scale = 1
+		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
+	elif current_line["flag"] == "quit":
+		get_tree().quit()
 	
 	if current_line["run if"] != null:
 		var text = current_line["run if"].split(",")
@@ -419,29 +446,29 @@ func next_anim():
 
 func init_parameters(key : int):
 	var line = result.get(result.keys()[key])
-	sprite_handler.init_cecilia(line["cecilia"])
-	var sprites
+	
+	if line["cecilia"]:
+		sprite_handler.init_cecilia(line["cecilia"])
+	
+	if line["speaker"]:
+		if line["speaker"] == "Player":
+			character_name.text = Global.player_name
+		else:
+			character_name.text = line["speaker"]
+		name_frame.show()
+	else:
+		character_name.text = ""
+		name_frame.hide()
 
 	if line["character"] != null && line["sprite"] != null:
-		character_name.show()
-		name_frame.show()
 		sprite_handler.init_sprite(
 			line["character"].split(","),
 			line["sprite"].split(",")
 		)
-		if line["character"] == "Player":
-			character_name.text = Global.player_name
-
-	elif line["character"] != null:
-		sprite_handler.clear_sprites()
-		character_name.text = line["character"]
-		character_name.show()
-		name_frame.show()
+		
 	else:
 		sprite_handler.clear_sprites()
-		character_name.text = ""
-		character_name.hide()
-		name_frame.hide()
+
 	if current_line["text"]:
 		if character_name.text != "":
 			settings_dropdown.add_to_log(
@@ -500,5 +527,5 @@ func alternate_text_box():
 		box.texture = GOD_DIALOGUE_TEXTURE
 		name_frame.texture = null
 		label["theme_override_colors/default_color"] = Color("ffffff")
-		box.scale = Vector2(1.5,1.5)
-		box.position = Vector2(-256, 448)
+		box.scale = Vector2(1.5,2.5)
+		box.position = Vector2(-256, 320)

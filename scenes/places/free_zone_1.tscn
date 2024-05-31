@@ -1,10 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://cxgp75potouv6"]
+[gd_scene load_steps=27 format=3 uid="uid://cxgp75potouv6"]
 
 [ext_resource type="Script" path="res://scenes/places/space.gd" id="1_mux7q"]
-[ext_resource type="Texture2D" path="res://assets/placeholder.png" id="3_4hhkl"]
 [ext_resource type="Texture2D" uid="uid://7m700boxprsh" path="res://assets/ui/Score backplate.png" id="3_awc3h"]
 [ext_resource type="Texture2D" uid="uid://wejxkxnk6rsi" path="res://assets/location/Location_Mockup-3.png" id="4_yig84"]
-[ext_resource type="Texture2D" uid="uid://dq0rfoy8a43bw" path="res://assets/location/Location_Mockup-4.png" id="5_idt7k"]
 [ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="5_nbsw3"]
 [ext_resource type="Texture2D" uid="uid://ndj0t4vwxi3t" path="res://assets/location/Location_Mockup-7.png" id="5_wd8ku"]
 [ext_resource type="Texture2D" uid="uid://b5ytkm22qhk8" path="res://assets/location/Location_Mockup-5.png" id="6_3frex"]
@@ -35,9 +33,6 @@ albedo_color = Color(0.356863, 0.156863, 0.172549, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_32gjr"]
 material = SubResource("StandardMaterial3D_qu7o7")
 size = Vector3(10, 1, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3jwy8"]
-size = Vector3(1.5, 3, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6cyo8"]
 size = Vector3(0.5, 3, 0.1)
@@ -86,9 +81,11 @@ _data = {
 "RESET": SubResource("Animation_5th0q")
 }
 
-[sub_resource type="Environment" id="Environment_ujwhc"]
-glow_enabled = true
-glow_intensity = 0.07
+[sub_resource type="Environment" id="Environment_cwgqk"]
+ambient_light_color = Color(0.909804, 0.690196, 0.513726, 1)
+ambient_light_energy = 7.63
+reflected_light_source = 1
+tonemap_mode = 1
 
 [node name="Space" type="Node3D"]
 script = ExtResource("1_mux7q")
@@ -143,6 +140,7 @@ vertical_alignment = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.873641, 0.466846)
+current = true
 
 [node name="Colliders" type="Node3D" parent="."]
 
@@ -172,10 +170,10 @@ skeleton = NodePath("../..")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Colliders"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.08165e-12, 0.757636, -3.05799)
-texture = ExtResource("3_4hhkl")
 
 [node name="Sprite3D" type="Sprite3D" parent="Colliders"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.08165e-12, 0.757636, -3)
+modulate = Color(0.882353, 0.741176, 0.654902, 1)
 texture = ExtResource("4_yig84")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders/Sprite3D"]
@@ -187,6 +185,7 @@ shape = SubResource("BoxShape3D_nay11")
 
 [node name="Sprite3D4" type="Sprite3D" parent="Colliders"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0665214, 0.757636, -2.98071)
+modulate = Color(0.984314, 0.8, 0.666667, 1)
 texture = ExtResource("5_wd8ku")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders/Sprite3D4"]
@@ -198,6 +197,7 @@ shape = SubResource("BoxShape3D_nay11")
 
 [node name="Sprite3D3" type="Sprite3D" parent="Colliders"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0131216, 0.768672, -2.95498)
+modulate = Color(0.960784, 0.709804, 0.603922, 1)
 texture = ExtResource("6_3frex")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders/Sprite3D3"]
@@ -213,17 +213,6 @@ mesh = SubResource("BoxMesh_32gjr")
 skeleton = NodePath("../..")
 
 [node name="Objects" type="Node3D" parent="."]
-
-[node name="Sign" type="StaticBody3D" parent="Objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.74804)
-
-[node name="Sprite3D" type="Sprite3D" parent="Objects/Sign"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.462364, 0, 0)
-texture = ExtResource("5_idt7k")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Sign"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80629, -0.00161743)
-shape = SubResource("BoxShape3D_3jwy8")
 
 [node name="Lamp" type="StaticBody3D" parent="Objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96373, -2.58218)
@@ -348,6 +337,9 @@ autoplay = "Idle"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.906757, 0.421653, 0, -0.421653, 0.906757, 0, 1.97825, 2.32794)
+light_color = Color(0.992157, 0.74902, 0.454902, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ujwhc")
+environment = SubResource("Environment_cwgqk")
+
+[node name="SubViewportContainer" type="CanvasLayer" parent="."]

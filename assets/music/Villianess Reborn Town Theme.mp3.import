@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Villianess Reborn Town Theme.mp3-6ce84682ed14
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -16,7 +16,7 @@ const SPEED = 2.0
 const JUMP_VELOCITY = 1.5
 
 enum FishingState {
-	WALKING, CASTING, RELEASE, WAITING, FISHING, REELING
+	NOTHING, WALKING, CASTING, RELEASE, WAITING, FISHING, REELING
 }
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -25,6 +25,8 @@ var turning = false
 var currentState = FishingState.WALKING
 
 func _ready():
+	currentState = FishingState.NOTHING
+	await get_tree().create_timer(3).timeout
 	currentState = FishingState.WALKING
 	
 func _physics_process(delta):
@@ -36,7 +38,7 @@ func _physics_process(delta):
 		if currentState == FishingState.CASTING:
 			currentState = FishingState.RELEASE
 			emit_signal("releasing_rod")
-	if Global.can_move and currentState == FishingState.WALKING:
+	if currentState == FishingState.WALKING:
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 		

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bg7whtysix5re"
+path="res://.godot/imported/Villianess Reborn Peppy Isekai Filler Episode Type Beat.mp3-f10a27319675224fca6e1ed98f0ba2f0.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Villianess Reborn Peppy Isekai Filler Episode Type Beat.mp3"
+dest_files=["res://.godot/imported/Villianess Reborn Peppy Isekai Filler Episode Type Beat.mp3-f10a27319675224fca6e1ed98f0ba2f0.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
