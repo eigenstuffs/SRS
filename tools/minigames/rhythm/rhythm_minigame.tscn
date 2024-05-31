@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://lmg6p4vssmpw"]
+[gd_scene load_steps=12 format=3 uid="uid://lmg6p4vssmpw"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_minigame.gd" id="1_pb007"]
 [ext_resource type="PackedScene" uid="uid://cr62xw6ofifyl" path="res://tools/minigames/rhythm/play/playfield.tscn" id="2_2af6n"]
-[ext_resource type="Script" path="res://tools/minigames/rhythm/environment.gd" id="5_yqwvy"]
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/misc/panorama.png" id="6_luhxe"]
 [ext_resource type="Resource" uid="uid://cy0bsj18hrx30" path="res://resources/beatmap/tango.tres" id="7_o5gdu"]
 
@@ -15,7 +14,7 @@ sky_material = SubResource("PanoramaSkyMaterial_a8ggx")
 [sub_resource type="Environment" id="Environment_oefpv"]
 background_mode = 2
 sky = SubResource("Sky_eq6kb")
-sky_rotation = Vector3(2172.62, -1.5708, -4.71239)
+sky_rotation = Vector3(2190.01, -1.5708, -4.71239)
 tonemap_mode = 2
 glow_enabled = true
 
@@ -42,7 +41,6 @@ script = ExtResource("1_pb007")
 
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oefpv")
-script = ExtResource("5_yqwvy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.642788, 0.663414, -0.383022, 0, 0.5, 0.866026, 0.766044, 0.556671, -0.321394, -4.5, 10, -3.5)

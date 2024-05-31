@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cr62xw6ofifyl"]
+[gd_scene load_steps=39 format=3 uid="uid://cr62xw6ofifyl"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/playfield.gd" id="1_a1v4t"]
 [ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://tools/minigames/rhythm/util/audio_synchronizer.tscn" id="3_g2rft"]
@@ -9,13 +9,13 @@
 [ext_resource type="Shader" path="res://resources/shaders/post_processing/greyscale.gdshader" id="7_adyhk"]
 [ext_resource type="Shader" path="res://resources/shaders/post_processing/albedo.gdshader" id="8_k4mm8"]
 [ext_resource type="Shader" path="res://resources/shaders/post_processing/impact_lines.gdshader" id="9_5refg"]
-[ext_resource type="Shader" path="res://resources/shaders/spatial/clear_shader_spatial.gdshader" id="10_ckunn"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/albedo_fade.gdshader" id="10_ji235"]
 [ext_resource type="Shader" path="res://resources/shaders/canvas_item/blur.gdshader" id="10_mdpw5"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/radial_pattern.gdshader" id="11_14gwy"]
 [ext_resource type="Shader" path="res://tools/minigames/rhythm/algae.gdshader" id="14_0l1kf"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/sphere_raymarched_spatial.gdshader" id="15_hdmr7"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/combo_meter.gd" id="15_srpjb"]
+[ext_resource type="Shader" path="res://resources/shaders/spatial/volumetric_clouds.gdshader" id="16_rr7ty"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_tu6ej"]
 flip_faces = true
@@ -163,6 +163,27 @@ class_name ScreenSpaceMesh2 extends MeshInstance3D
 size = Vector2(100, 100)
 orientation = 1
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jewtc"]
+noise_type = 5
+frequency = 1.0
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yn8er"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_jewtc")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dct30"]
+noise_type = 5
+frequency = 1.0
+fractal_type = 0
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_xo1fx"]
+width = 32
+height = 32
+depth = 32
+noise = SubResource("FastNoiseLite_dct30")
+
 [sub_resource type="Resource" id="Resource_5qumv"]
 script = ExtResource("4_apd5l")
 name = &"albedo_fade"
@@ -199,12 +220,26 @@ is_unique_pass = true
 default_uniforms = {}
 priority_overwrite = 999
 
+[sub_resource type="Resource" id="Resource_6xjft"]
+script = ExtResource("4_apd5l")
+name = &"Clouds"
+shader = ExtResource("16_rr7ty")
+is_enabled_by_default = false
+is_unique_pass = true
+default_uniforms = {
+"dither_texture": SubResource("NoiseTexture2D_yn8er"),
+"noise_texture": SubResource("NoiseTexture3D_xo1fx")
+}
+priority_overwrite = 999
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5pri"]
 render_priority = 0
-shader = ExtResource("10_ckunn")
+shader = ExtResource("16_rr7ty")
+shader_parameter/noise_texture = SubResource("NoiseTexture3D_xo1fx")
+shader_parameter/blue_noise_texture = SubResource("NoiseTexture2D_yn8er")
 script = ExtResource("3_m4kyl")
 is_canvas_item = false
-shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), SubResource("Resource_k750l"), SubResource("Resource_yyvg6"), SubResource("Resource_374er")])
+shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), SubResource("Resource_k750l"), SubResource("Resource_yyvg6"), SubResource("Resource_374er"), SubResource("Resource_6xjft")])
 
 [sub_resource type="LabelSettings" id="LabelSettings_ed0bq"]
 font_size = 45
@@ -231,7 +266,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_m0omd")
 script = SubResource("GDScript_1sgvm")
 
 [node name="BackplaneMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227432, -7.99924, -0.960572)
 mesh = SubResource("QuadMesh_noca2")
 surface_material_override/0 = SubResource("ShaderMaterial_l5pri")
 
