@@ -55,16 +55,16 @@ func _physics_process(delta):
 				
 			if dir != last_dir:
 				if dir == Vector2.RIGHT:
-					$Sprite3D.scale = Vector3(0.5,0.5,0.5)
+					$AnimatedSprite3D.scale = Vector3(0.1,0.1,0.1)
 				else:
-					$Sprite3D.scale = Vector3(-0.5,0.5,0.5)
+					$AnimatedSprite3D.scale = Vector3(-0.1,0.1,0.1)
 				if not turning:
 					var a = create_tween()
 					turning = true
-					a.tween_property($Sprite3D, "position", $Sprite3D.position + Vector3(0,.1,0), 0.1)
+					a.tween_property($AnimatedSprite3D, "position", $AnimatedSprite3D.position + Vector3(0,.1,0), 0.1)
 					await a.finished
 					a = create_tween()
-					a.tween_property($Sprite3D, "position", $Sprite3D.position - Vector3(0,.1,0), 0.1)
+					a.tween_property($AnimatedSprite3D, "position", $AnimatedSprite3D.position - Vector3(0,.1,0), 0.1)
 					await a.finished
 					turning = false
 		else:
@@ -75,6 +75,12 @@ func _physics_process(delta):
 	else:
 		velocity = Vector3.ZERO
 	anim_handler()
+
+func anim_handler():
+	if velocity != Vector3.ZERO:
+		$AnimatedSprite3D.play("walk")
+	else:
+		$AnimatedSprite3D.play("idle")
 
 func dash_timer():
 	await get_tree().create_timer(0.25).timeout

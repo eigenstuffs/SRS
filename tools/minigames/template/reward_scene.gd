@@ -87,7 +87,6 @@ func start_display():
 
 
 func _on_confirm_button_pressed():
-	print("confirm button pressed")
 	if done:
 		emit_signal("display_finished")
 		print("ended")
