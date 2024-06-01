@@ -25,14 +25,14 @@ func _physics_process(delta):
 			
 			if velocity.x > 0:
 				dir = Vector2.RIGHT
-			else:
+			elif velocity.x < 0:
 				dir = Vector2.LEFT
 				
 			if dir != last_dir:
 				if dir == Vector2.RIGHT:
-					$Sprite3D.scale = Vector3(0.5,0.5,0.5)
+					$Sprite3D.scale = Vector3(0.1,0.1,0.1)
 				else:
-					$Sprite3D.scale = Vector3(-0.5,0.5,0.5)
+					$Sprite3D.scale = Vector3(-0.1,0.1,0.1)
 				if not turning:
 					var a = create_tween()
 					turning = true
