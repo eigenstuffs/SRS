@@ -132,6 +132,7 @@ signal cg_god_serious
 signal cg_god_serious_talk
 signal cg_god_smile
 signal cg_god_smile_talk
+signal cg_god_glitch
 signal cg_exit_god
 
 signal overlay_blood_splatter
@@ -412,6 +413,11 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
+		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
+	elif current_line["flag"] == "menu_abrupt":
+		text_box.hide()
+		EffectAnim.play("FadeBlackAbrupt")
+		await EffectAnim.animation_finished
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "quit":
 		get_tree().quit()

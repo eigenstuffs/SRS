@@ -263,6 +263,7 @@ func _ready():
 	vn.connect("cg_god_serious_talk", cg_god_serious_talk)
 	vn.connect("cg_god_smile", cg_god_smile)
 	vn.connect("cg_god_smile_talk", cg_god_smile_talk)
+	vn.connect("cg_god_glitch", cg_god_glitch)
 	vn.connect("cg_exit_god", cg_exit_god)
 	
 	vn.connect("cg_sky", cg_static.bind(SKY_CG))
@@ -361,11 +362,11 @@ func play_music(effect_name):
 	EffectAnim.MusicPlayer.play(0)
 	
 func stop_music():
-	var a = create_tween()
-	a.tween_property(EffectAnim.MusicPlayer,
-	"volume_db", -100, 1)
-	await a.finished
-	EffectAnim.MusicPlayer.volume_db = -10000
+	#var a = create_tween()
+	#a.tween_property(EffectAnim.MusicPlayer,
+	#"volume_db", -100, 1)
+	#await a.finished
+	EffectAnim.MusicPlayer.stop()
 	
 func pause_music():
 	var a = create_tween()
@@ -478,6 +479,11 @@ func cg_god_smile_talk():
 	#anim_god.play("RESET")
 	#await anim_god.animation_finished
 	anim_god.play("SmileSpeaking")
+	
+func cg_god_glitch():
+	print("GOD GLITCH")
+	anim_god.stop(false)
+	anim_god.play("Glitch")
 	
 func cg_exit_god():
 	var a = create_tween()
