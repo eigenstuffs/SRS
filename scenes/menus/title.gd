@@ -3,6 +3,7 @@ extends Control
 const VN = preload("res://tools/dialogue/vn_dialogue.tscn")
 
 func _ready():
+	Global.load_data()
 	EffectAnim.play_backwards("FadeBlack")
 
 func _on_texture_button_pressed():

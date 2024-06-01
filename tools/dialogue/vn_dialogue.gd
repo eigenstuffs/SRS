@@ -244,7 +244,7 @@ func read_line(key : int):
 		var variable = text[0]
 		var value = text[1]
 		print("set " + variable + " as " + value)
-		Global.set(variable, value)
+		Global.set(Global.data_dict[variable], value)
 	if current_line["flag"] != null:
 		if current_line["flag"] != "slow":
 			text_box.hide()
@@ -423,11 +423,13 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
+		Global.save_data()
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "menu_abrupt":
 		text_box.hide()
 		EffectAnim.play("FadeBlackAbrupt")
 		await EffectAnim.animation_finished
+		Global.save_data()
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "menu_lace":
 		text_box.hide()
@@ -437,6 +439,7 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		EffectAnim.play("FadeBlack")
 		await EffectAnim.animation_finished
+		Global.save_data()
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "quit":
 		get_tree().quit()
