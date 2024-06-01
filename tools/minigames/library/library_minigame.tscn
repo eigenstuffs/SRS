@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://buyuq0kfr1tme"]
+[gd_scene load_steps=31 format=3 uid="uid://buyuq0kfr1tme"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="2_4dmdn"]
@@ -12,8 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="6_8v8og"]
 [ext_resource type="Texture2D" uid="uid://dfxsirtyw7lm" path="res://assets/library/Library_BG.PNG" id="7_pg1qs"]
 [ext_resource type="Script" path="res://tools/minigames/library/Bookshelf.gd" id="8_lbiij"]
-[ext_resource type="Texture2D" uid="uid://b5tb2e7l3k0ff" path="res://assets/library/library minigame MULTIPLY overlay.png" id="8_terwc"]
-[ext_resource type="Texture2D" uid="uid://canoybacfkdhk" path="res://assets/library/library minigame COLOR DODGE overlay.png" id="9_18307"]
 [ext_resource type="Texture2D" uid="uid://bx86b5uxmivs2" path="res://assets/library/HardLight_setto100%transparency.PNG" id="9_h2gwe"]
 [ext_resource type="Texture2D" uid="uid://d35sro4gk8glk" path="res://assets/library/Library_shelves.PNG" id="10_ff1hf"]
 [ext_resource type="Texture2D" uid="uid://e50mcrpkh28u" path="res://assets/library/Screen_setto70%transparency.PNG" id="10_sb8oc"]
@@ -66,26 +64,6 @@ script = ExtResource("1_jnejo")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_7cbig")]
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_terwc")
-expand_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_18307")
-expand_mode = 2
-
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -93,6 +71,7 @@ texture = ExtResource("5_4ilel")
 expand_mode = 1
 
 [node name="Walls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 2.08165e-12, 2.08165e-12)
 
 [node name="Ground" type="Node3D" parent="Walls"]
 
@@ -192,14 +171,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.0
 shape = SubResource("BoxShape3D_uh7u6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 4.92944e-16, 0.995699, 0.0926489, -3.49231e-16, -0.0926489, 0.995699, 2.08165e-12, 2.61608, 14.3369)
+transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 4.92944e-16, 0.995699, 0.0926489, -3.49231e-16, -0.0926489, 0.995699, 1000, 2.616, 14.337)
 current = true
 fov = 20.0
 size = 73.377
 frustum_offset = Vector2(0, 50)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 2, 2)
 light_color = Color(1, 0.913725, 0.807843, 1)
 light_energy = 3.01
 light_indirect_energy = 0.0
@@ -207,11 +186,11 @@ light_volumetric_fog_energy = 0.0
 omni_range = 11.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.978, 6.92968)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 1000, 1.978, 6.93)
 light_color = Color(1, 0.933333, 0.811765, 1)
 
 [node name="LibraryPlayer" parent="." instance=ExtResource("3_jyoxc")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.6849, 0.747878, 2.02868)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1000, 0.748, 2.029)
 collision_mask = 3
 
 [node name="Shadow" parent="LibraryPlayer" instance=ExtResource("4_q284v")]
@@ -221,7 +200,7 @@ size = Vector3(1, 100, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575, 0)
 
 [node name="NPCInstancer" parent="." instance=ExtResource("5_hbp12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 2.08165e-12, 2.5)
 
 [node name="SpawnAreaLeft" parent="NPCInstancer" index="0"]
 transform = Transform3D(1, -2.99891e-30, 2.91303e-38, 0, -1.96701e-07, -1, 6.66424e-31, 4.5, -4.37114e-08, -5.10274, 2.08165e-12, 2.8374)
@@ -232,27 +211,27 @@ transform = Transform3D(1, -2.99891e-30, 2.91303e-38, 0, -1.96701e-07, -1, 6.664
 visible = true
 
 [node name="BookInstancer" parent="." instance=ExtResource("6_8v8og")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.907, -0.106403, 5, 2.03018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.907, 1000, 5, 2.03)
 
 [node name="Bookshelf" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.70081, 0.82556, 2.0901)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 0.826, 2.09)
 visible = false
 script = ExtResource("8_lbiij")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.119757, 0.0598755, 0.244781)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 0.0598755, 0.244781)
 shape = SubResource("BoxShape3D_4t3gm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, -0.119757, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, 3.7, 0, 0)
 mesh = SubResource("BoxMesh_h0o6u")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.16349, 0.0598755, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 0.0598755, 0)
 shape = SubResource("BoxShape3D_4t3gm")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, -7.16349, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, -3.8, 0, 0)
 mesh = SubResource("BoxMesh_h0o6u")
 
 [node name="EffectNode" type="Control" parent="."]

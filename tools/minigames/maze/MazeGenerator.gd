@@ -20,26 +20,30 @@ signal enemy_met_player
 var mazeGrid : Array
 var enemyArray : Array[MazeEnemy] = []
 var keysCollected : int = 0
+var my_x : int
+var my_z : int
 
 func _ready():
+	my_x = global_position.x
+	my_z = global_position.z
 	get_metadata()
 	for i in range(mazeWidth):
 		mazeGrid.append([])
 		for j in range(mazeLength):
 			var newCell : MazeCell = mazeCell.instantiate()
-			newCell.position = Vector3(i, 0.5, j)
+			newCell.position = Vector3(my_x+i, 0.5, my_z+j)
 			add_child(newCell)
 			mazeGrid[i].append(newCell)
 	
 	generateMaze(null, mazeGrid[0][0])
 	
 	#place keys at random places
-	var place_coords : Array = [[0, 0], [mazeWidth-1, mazeLength-1]]
+	var place_coords : Array = [[my_x+0, my_z+0], [my_x+mazeWidth-1, my_z+mazeLength-1]]
 	for i in range(keyN):
-		var random_coords : Array = [randi_range(0, mazeWidth-1), randi_range(0, mazeLength-1)]
+		var random_coords : Array = [randi_range(my_x+0, my_x+mazeWidth-1), randi_range(my_z+0, my_z+mazeLength-1)]
 		while coords_too_close(place_coords, random_coords):
 			#see if repeated location or too close to the starting point
-			random_coords = [randi_range(0, mazeWidth-1), randi_range(0, mazeLength-1)]
+			random_coords = [randi_range(my_x+0, my_x+mazeWidth-1), randi_range(my_z+0, my_z+mazeLength-1)]
 		print(random_coords)
 		place_coords.append(random_coords)
 		var newKey : Keys = keys.instantiate()

@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvi5w7r00seip"]
+[gd_scene load_steps=20 format=3 uid="uid://bvi5w7r00seip"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fish_reward_scene.gd" id="1_j7q2r"]
+[ext_resource type="Texture2D" uid="uid://kjxx6hef0fgh" path="res://assets/rewardscene/Results Frame.png" id="2_kv0vn"]
+[ext_resource type="FontFile" uid="uid://c6556g6be4xw6" path="res://assets/ui/ttf/Halant-Regular.ttf" id="3_orxvu"]
+[ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/ttf/Volkhov-Bold.ttf" id="4_1o7ys"]
+[ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="5_1y6o1"]
+[ext_resource type="Texture2D" uid="uid://baxfybl86u2pc" path="res://assets/rewardscene/Bar Empty_Not Grayscale.png" id="6_guwq6"]
+[ext_resource type="Texture2D" uid="uid://bastonbbis246" path="res://assets/rewardscene/Bar Rim.png" id="7_2r0ex"]
+[ext_resource type="Texture2D" uid="uid://brfvly7x0s4qo" path="res://assets/rewardscene/Blue Bar Filled In.png" id="8_vm1qq"]
+[ext_resource type="FontFile" uid="uid://drk6ai4vky8ih" path="res://assets/ui/ttf/Halant-Bold.ttf" id="9_128su"]
+[ext_resource type="Texture2D" uid="uid://b5qsn3n2vdc33" path="res://assets/rewardscene/Yellow Bar Filled In.png" id="10_w1o3f"]
+[ext_resource type="Texture2D" uid="uid://kna7p8ekd8st" path="res://assets/rewardscene/Pink Bar Filled In.png" id="11_x7xgn"]
+[ext_resource type="Texture2D" uid="uid://wgosda4pjk0f" path="res://assets/rewardscene/Green Bar Filled In.png" id="12_lr73n"]
+[ext_resource type="Texture2D" uid="uid://tu87hcvtosor" path="res://assets/rewardscene/WIS.png" id="13_sdoqu"]
+[ext_resource type="Texture2D" uid="uid://el6m8bwdqdeb" path="res://assets/rewardscene/INT.png" id="14_4pxkk"]
+[ext_resource type="Texture2D" uid="uid://cliys653llcik" path="res://assets/rewardscene/CHR.png" id="15_8uf2q"]
+[ext_resource type="Texture2D" uid="uid://nxh5sd7x43w2" path="res://assets/rewardscene/WEL.png" id="16_fo2ca"]
+[ext_resource type="Texture2D" uid="uid://crea2a6e0tedx" path="res://assets/rewardscene/Copy of Button_Default.png" id="17_l00eq"]
+[ext_resource type="Texture2D" uid="uid://cs6jb6g3pauo4" path="res://assets/rewardscene/Copy of Button_Click.png" id="18_tdxqe"]
+[ext_resource type="Texture2D" uid="uid://mvfgek4xqrq4" path="res://assets/rewardscene/Copy of Button_Hover.png" id="19_kri5m"]
 
 [node name="RewardScene" type="CanvasLayer"]
 layer = 2
@@ -9,107 +27,129 @@ script = ExtResource("1_j7q2r")
 [node name="Backdrop" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1083.0
-
-[node name="ColorRect" type="ColorRect" parent="Backdrop"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.301961, 0.301961, 0.301961, 0.815686)
+texture = ExtResource("2_kv0vn")
 
 [node name="Title" type="Label" parent="."]
-offset_top = 25.0
 offset_right = 1915.0
-offset_bottom = 138.0
-theme_override_font_sizes/font_size = 110
-text = "Result"
+offset_bottom = 111.0
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("3_orxvu")
+theme_override_font_sizes/font_size = 54
+text = "Results"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Score" type="Label" parent="."]
-offset_left = 38.0
-offset_top = 133.0
-offset_right = 474.0
-offset_bottom = 238.0
-theme_override_font_sizes/font_size = 80
+offset_left = 176.0
+offset_top = 176.0
+offset_right = 612.0
+offset_bottom = 281.0
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("4_1o7ys")
+theme_override_font_sizes/font_size = 75
 text = "Score"
 vertical_alignment = 1
 
 [node name="ScoreTally" type="VBoxContainer" parent="."]
-offset_left = 38.0
-offset_top = 225.0
-offset_right = 1108.0
-offset_bottom = 811.0
-theme_override_constants/separation = 15
+offset_left = 168.0
+offset_top = 262.0
+offset_right = 872.0
+offset_bottom = 592.0
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Line" type="HBoxContainer" parent="ScoreTally"]
 layout_mode = 2
 
 [node name="Name" type="Label" parent="ScoreTally/Line"]
-custom_minimum_size = Vector2(900, 100)
+custom_minimum_size = Vector2(650, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "Common Fish"
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("5_1y6o1")
+theme_override_font_sizes/font_size = 40
+text = "Common Fish Caught"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="ScoreTally/Line"]
+custom_minimum_size = Vector2(50, 2.08165e-12)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("5_1y6o1")
+theme_override_font_sizes/font_size = 40
 text = "x0"
+horizontal_alignment = 2
 
 [node name="Line2" type="HBoxContainer" parent="ScoreTally"]
 layout_mode = 2
 
 [node name="Name" type="Label" parent="ScoreTally/Line2"]
-custom_minimum_size = Vector2(900, 100)
+custom_minimum_size = Vector2(650, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "Rare Fish"
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("5_1y6o1")
+theme_override_font_sizes/font_size = 40
+text = "Rare Fish Caught"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="ScoreTally/Line2"]
+custom_minimum_size = Vector2(50, 2.08165e-12)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("5_1y6o1")
+theme_override_font_sizes/font_size = 40
 text = "x0"
+horizontal_alignment = 2
 
 [node name="Line3" type="HBoxContainer" parent="ScoreTally"]
 layout_mode = 2
 
 [node name="Name" type="Label" parent="ScoreTally/Line3"]
-custom_minimum_size = Vector2(900, 100)
+custom_minimum_size = Vector2(650, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "Epic Fish"
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("5_1y6o1")
+theme_override_font_sizes/font_size = 40
+text = "Epic Fish Caught"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="ScoreTally/Line3"]
+custom_minimum_size = Vector2(50, 2.08165e-12)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("5_1y6o1")
+theme_override_font_sizes/font_size = 40
 text = "x0"
+horizontal_alignment = 2
 
 [node name="Line4" type="HBoxContainer" parent="ScoreTally"]
 layout_mode = 2
 
 [node name="Name" type="Label" parent="ScoreTally/Line4"]
-custom_minimum_size = Vector2(900, 100)
+custom_minimum_size = Vector2(650, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "Legendary Fish"
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("5_1y6o1")
+theme_override_font_sizes/font_size = 40
+text = "Legendary Fish Caught"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="ScoreTally/Line4"]
+custom_minimum_size = Vector2(50, 2.08165e-12)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("5_1y6o1")
+theme_override_font_sizes/font_size = 40
 text = "x0"
+horizontal_alignment = 2
 
 [node name="FinalScore" type="VBoxContainer" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 38.0
-offset_top = -254.0
-offset_right = 1108.0
-offset_bottom = 3.0
+offset_left = 168.0
+offset_top = -485.0
+offset_right = 872.0
+offset_bottom = -228.0
 grow_vertical = 0
 alignment = 1
 
@@ -117,39 +157,51 @@ alignment = 1
 layout_mode = 2
 
 [node name="Name" type="Label" parent="FinalScore/Line"]
-custom_minimum_size = Vector2(900, 100)
+custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "Charisma Gained"
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("5_1y6o1")
+theme_override_font_sizes/font_size = 40
+text = "Charisma gained"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="FinalScore/Line"]
+custom_minimum_size = Vector2(50, 2.08165e-12)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_font_sizes/font_size = 40
 text = "+0"
+horizontal_alignment = 2
 
 [node name="Line2" type="HBoxContainer" parent="FinalScore"]
 layout_mode = 2
 
 [node name="Name" type="Label" parent="FinalScore/Line2"]
-custom_minimum_size = Vector2(900, 100)
+custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "Wellness Gained"
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("5_1y6o1")
+theme_override_font_sizes/font_size = 40
+text = "Wellness gained"
 vertical_alignment = 1
 
 [node name="Count" type="Label" parent="FinalScore/Line2"]
+custom_minimum_size = Vector2(50, 2.08165e-12)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_font_sizes/font_size = 40
 text = "+0"
+horizontal_alignment = 2
 
 [node name="StatsTitle" type="Label" parent="."]
 custom_minimum_size = Vector2(2.08165e-12, 100)
-offset_left = 1161.0
-offset_top = 133.0
-offset_right = 1887.0
-offset_bottom = 233.0
-theme_override_font_sizes/font_size = 80
+offset_left = 1157.0
+offset_top = 180.0
+offset_right = 1744.0
+offset_bottom = 280.0
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("4_1o7ys")
+theme_override_font_sizes/font_size = 75
 text = "Stats"
 
 [node name="StatsContainer" type="VBoxContainer" parent="."]
@@ -157,65 +209,79 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -759.0
-offset_top = 228.0
-offset_right = -33.0
-offset_bottom = -222.0
+offset_left = -568.0
+offset_top = 275.0
+offset_right = -168.0
+offset_bottom = -384.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Wisdom" type="ProgressBar" parent="StatsContainer"]
-custom_minimum_size = Vector2(500, 100)
+[node name="Wisdom" type="TextureProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-show_percentage = false
+step = 0.01
+nine_patch_stretch = true
+texture_under = ExtResource("6_guwq6")
+texture_over = ExtResource("7_2r0ex")
+texture_progress = ExtResource("8_vm1qq")
 
 [node name="Label" type="Label" parent="StatsContainer/Wisdom"]
-custom_minimum_size = Vector2(500, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -393.0
-offset_top = -50.0
-offset_right = 393.0
-offset_bottom = 50.0
+offset_left = -192.0
+offset_top = -51.0
+offset_right = 192.0
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_fonts/font = ExtResource("9_128su")
 theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Intelligence" type="ProgressBar" parent="StatsContainer"]
-custom_minimum_size = Vector2(500, 100)
+[node name="Intelligence" type="TextureProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-show_percentage = false
+step = 0.01
+nine_patch_stretch = true
+texture_under = ExtResource("6_guwq6")
+texture_over = ExtResource("7_2r0ex")
+texture_progress = ExtResource("10_w1o3f")
 
 [node name="Label" type="Label" parent="StatsContainer/Intelligence"]
-custom_minimum_size = Vector2(500, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -391.5
-offset_top = -50.0
-offset_right = 391.5
-offset_bottom = 50.0
+offset_left = -192.0
+offset_top = -51.0
+offset_right = 192.0
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_fonts/font = ExtResource("9_128su")
 theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Charisma" type="ProgressBar" parent="StatsContainer"]
-custom_minimum_size = Vector2(500, 100)
+[node name="Charisma" type="TextureProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-show_percentage = false
+page = 0.01
+nine_patch_stretch = true
+texture_under = ExtResource("6_guwq6")
+texture_over = ExtResource("7_2r0ex")
+texture_progress = ExtResource("11_x7xgn")
 
 [node name="Label" type="Label" parent="StatsContainer/Charisma"]
 custom_minimum_size = Vector2(500, 100)
@@ -231,15 +297,21 @@ offset_right = 391.5
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_fonts/font = ExtResource("9_128su")
 theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Wellness" type="ProgressBar" parent="StatsContainer"]
-custom_minimum_size = Vector2(500, 100)
+[node name="Wellness" type="TextureProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-show_percentage = false
+step = 0.01
+nine_patch_stretch = true
+texture_under = ExtResource("6_guwq6")
+texture_over = ExtResource("7_2r0ex")
+texture_progress = ExtResource("12_lr73n")
 
 [node name="Label" type="Label" parent="StatsContainer/Wellness"]
 custom_minimum_size = Vector2(500, 100)
@@ -255,32 +327,90 @@ offset_right = 390.5
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_fonts/font = ExtResource("9_128su")
 theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConfirmButton" type="Button" parent="."]
-anchors_preset = 3
+[node name="StatsLabelContainer" type="VBoxContainer" parent="."]
+anchors_preset = 6
 anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -682.0
-offset_top = -180.0
-offset_right = -123.0
-offset_bottom = -37.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 100
-text = "Confirm"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 4
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 38.0
-offset_top = 275.0
-offset_right = 1108.0
-offset_bottom = 284.0
+offset_left = -784.0
+offset_top = -261.0
+offset_right = -524.0
+offset_bottom = 147.0
+grow_horizontal = 0
 grow_vertical = 2
+scale = Vector2(0.799995, 1)
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="Wisdom" type="TextureRect" parent="StatsLabelContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("13_sdoqu")
+expand_mode = 3
+
+[node name="Int" type="TextureRect" parent="StatsLabelContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("14_4pxkk")
+expand_mode = 3
+
+[node name="CHR" type="TextureRect" parent="StatsLabelContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("15_8uf2q")
+expand_mode = 3
+
+[node name="WEL" type="TextureRect" parent="StatsLabelContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("16_fo2ca")
+expand_mode = 3
+
+[node name="ConfirmButton" type="TextureButton" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -279.0
+offset_top = -206.0
+offset_right = 280.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("17_l00eq")
+texture_pressed = ExtResource("18_tdxqe")
+texture_hover = ExtResource("19_kri5m")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ConfirmButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -48.0
+offset_right = 178.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_fonts/font = ExtResource("3_orxvu")
+theme_override_font_sizes/font_size = 54
+text = "Confirm"
+horizontal_alignment = 1
+vertical_alignment = 1
