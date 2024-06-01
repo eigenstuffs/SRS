@@ -436,9 +436,6 @@ func read_line(key : int):
 		EffectAnim.play("FadeLace")
 		EffectAnim.speed_scale = 0.8
 		await EffectAnim.animation_finished
-		EffectAnim.speed_scale = 0.5
-		EffectAnim.play("FadeBlack")
-		await EffectAnim.animation_finished
 		Global.save_data()
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "free_zone_1":
