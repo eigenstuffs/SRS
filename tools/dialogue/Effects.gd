@@ -363,10 +363,9 @@ func play_music(effect_name):
 func stop_music():
 	var a = create_tween()
 	a.tween_property(EffectAnim.MusicPlayer,
-	"volume_db", -100, 0.5)
+	"volume_db", -100, 1)
 	await a.finished
-	EffectAnim.MusicPlayer.stop()
-	EffectAnim.MusicPlayer.volume_db = -10
+	EffectAnim.MusicPlayer.volume_db = -10000
 	
 func pause_music():
 	var a = create_tween()

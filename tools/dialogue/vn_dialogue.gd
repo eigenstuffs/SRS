@@ -387,7 +387,7 @@ func read_line(key : int):
 		label.visible_characters = 1
 		var num_chars = label.text.length()
 		var total_time = Global.text_speed * num_chars
-		if current_line["flag"] == "slow": total_time * 3
+		if current_line["flag"] == "slow": total_time * 1000
 		current_time = total_time
 		a = create_tween()
 		a.tween_property(label, "visible_characters", num_chars, total_time - (
