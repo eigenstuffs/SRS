@@ -441,6 +441,14 @@ func read_line(key : int):
 		await EffectAnim.animation_finished
 		Global.save_data()
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
+	elif current_line["flag"] == "free_zone_1":
+		text_box.hide()
+		EffectAnim.play("FadeBlack")
+		EffectAnim.speed_scale = 0.5
+		await EffectAnim.animation_finished
+		EffectAnim.speed_scale = 1
+		Global.save_data()
+		get_tree().change_scene_to_file("res://scenes/places/free_zone_1.tscn")
 	elif current_line["flag"] == "quit":
 		get_tree().quit()
 	

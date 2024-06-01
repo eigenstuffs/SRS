@@ -10,12 +10,12 @@ var DASH_SPEED : float = 10
 var dashing_dir : Vector3
 var last_input_dir : Vector3
 var speed_modifier : float = 1
+var can_move = false
 
 func _physics_process(delta):
-	if Global.can_move:
-		if not is_on_floor():
+	if not is_on_floor():
 			velocity.y -= gravity * delta
-		
+	if can_move:
 		if is_dashing:
 			velocity = dashing_dir * DASH_SPEED *speed_modifier
 			velocity.y = 0

@@ -28,7 +28,7 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_kbuiq")
 
 [node name="CellSprite" type="Node3D" parent="LeftWall"]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.1, 2.08165e-12, 2.08165e-12)
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.1, 0, 2.08165e-12)
 
 [node name="Sprite3D" type="Sprite3D" parent="LeftWall/CellSprite"]
 texture = ExtResource("2_k4dgj")

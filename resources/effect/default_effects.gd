@@ -27,11 +27,12 @@ class EffectImpactLines extends CanvasItemEffect:
 		
 		super('ImpactLines', 0.0, 
 			func(weight := 0.5, max_alpha := 0.7, bias_angle := 0.0, bias_weight := 0.0):
-				render_passes[0].enable({
-					'weight': weight,
-					'max_alpha': max_alpha,
-					'bias_angle': bias_angle,
-					'bias_weight': bias_weight}),
+				if render_passes[0] != null:
+					render_passes[0].enable({
+						'weight': weight,
+						'max_alpha': max_alpha,
+						'bias_angle': bias_angle,
+						'bias_weight': bias_weight}),
 			func(): 
 				queue_free())
 

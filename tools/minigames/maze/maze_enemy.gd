@@ -20,6 +20,7 @@ var possible_dirs : Array[Vector3] = [Vector3.RIGHT, Vector3.LEFT, Vector3.FORWA
 var can_change : bool = true
 @export var dir_cooldown : float = 0.5
 var speed_modifier : float = 1
+var can_move = false
 
 func _ready():
 	spawn_point = global_position
@@ -27,7 +28,7 @@ func _ready():
 	#player = get_node(player_node)
 
 func _physics_process(delta):
-	if Global.can_move:
+	if can_move:
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 		

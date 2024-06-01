@@ -22,8 +22,13 @@ const FASTER_MUSIC = preload("res://tools/minigames/maze/sound/Villianess_Reborn
 var point_get : int = 0
 var all_keys_got : bool = false
 
+func _ready():
+	pause_all_movement()
+	await get_tree().create_timer(3).timeout
+	resume_all_movement()
+
 func end():
-	Global.can_move = false
+	pause_all_movement()
 	$SfxPlayer.stream = GAME_FINISHED_SFX
 	$SfxPlayer.play()
 	music_fade_out()
@@ -41,7 +46,7 @@ func _on_maze_generator_key_collected():
 
 func _on_maze_generator_all_key_collected():
 	all_keys_got = true
-	Global.can_move = false #pause movement for all
+	pause_all_movement()
 	#switching camera view
 	await get_tree().create_timer(0.1).timeout
 	await $MazePlayer/FollowingCamera.bird_view()
@@ -57,7 +62,7 @@ func _on_maze_generator_all_key_collected():
 	#increase speed for both enemies and player
 	$MazePlayer.set_speed_modifier(2)
 	$MazeGenerator.set_all_enemy_speed_modifier(2)
-	Global.can_move = true #re-enable movement
+	resume_all_movement()
 	await music_fade_out()
 	$MusicPlayer.stream = FASTER_MUSIC
 	$MusicPlayer.play()
@@ -87,3 +92,13 @@ func music_fade_out():
 	await a.finished
 	$MusicPlayer.stop()
 	$MusicPlayer.volume_db = -8
+	
+func pause_all_movement():
+	$MazePlayer.can_move = false
+	for child in $EnemyFolder.get_children():
+		child.can_move = false
+
+func resume_all_movement():
+	$MazePlayer.can_move = true
+	for child in $EnemyFolder.get_children():
+		child.can_move = true
