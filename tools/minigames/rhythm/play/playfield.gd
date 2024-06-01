@@ -11,9 +11,9 @@ const MEASURE_BAR = preload('res://tools/minigames/rhythm/play/hit_objects/measu
 const PHYSICS_TEXT = preload('res://tools/minigames/rhythm/util/physics_text.tscn')
 const KEY = preload('res://tools/minigames/rhythm/play/key.tscn')
 const PLAYFIELD_WIDTH : float = 8.0 # FIXME: No more fixed width please!
-const RED : Color = Color(0.851, 0.184, 0.251)
-const GREEN : Color = Color(0.424, 0.851, 0.475)
-const BLUE : Color = Color(0.306, 0.796, 0.851)
+const RED : Color = Color(0.851, 0.184, 0.251, 0.0)
+const GREEN : Color = Color(0.424, 0.851, 0.475, 0.0)
+const BLUE : Color = Color(0.306, 0.796, 0.851, 0.0)
 # This is how we organize scoring for different millisecond offsets 
 # (unless someone can come up with a better way!)
 const HIT_SCORING = [
