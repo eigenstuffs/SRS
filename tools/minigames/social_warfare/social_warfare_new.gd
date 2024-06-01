@@ -23,8 +23,8 @@ func _ready():
 	
 	$CanvasLayer/Opponent/BarHP.max_value = enemy_data.enemy_hp
 	$CanvasLayer/Opponent/BarMP.max_value = enemy_data.enemy_mp
-	$CanvasLayer/Player/BarHP.max_value = Global.player_max_hp
-	$CanvasLayer/Player/BarMP.max_value = Global.player_max_mp
+	$CanvasLayer/Player/BarHP.max_value = Global.data_dict["player_max_hp"]
+	$CanvasLayer/Player/BarMP.max_value = Global.data_dict["player_max_mp"]
 	
 func turn_loop():
 	refresh_stats()
@@ -66,7 +66,7 @@ func turn_loop():
 func card_action(card : Card, target : String):
 	print(card.title)
 	battle_intensity += card.intensity_mod
-	Global.player_mp -= card.points_req
+	Global.data_dict["player_mp"] -= card.points_req
 	
 	## put dialogue somewhere in here
 	
@@ -74,7 +74,7 @@ func card_action(card : Card, target : String):
 		"Player":
 			match card.effect:
 				0:
-					Global.player_hp -= (card.effect_num *
+					Global.data_dict["player_hp"] -= (card.effect_num *
 						enemy_data.enemy_offense_ratio)
 				1:
 					enemy_data.enemy_hp += card.effect_num
@@ -88,24 +88,24 @@ func card_action(card : Card, target : String):
 				3:
 					match card.target_stat:
 						0:
-							Global.player_offense_ratio *= card.effect_num
+							Global.data_dict["player_offense_ratio"] *= card.effect_num
 						1:
-							Global.player_defense_ratio *= card.effect_num
+							Global.data_dict["player_defense_ratio"] *= card.effect_num
 					buff_applied = true
 		"Opponent":
 			match card.effect:
 				0: #attack
 					enemy_data.enemy_hp -= (card.effect_num *
-						Global.player_offense_ratio)
+						Global.data_dict["player_offense_ratio"])
 				1: #restore
-					Global.player_hp += card.effect_num
+					Global.data_dict["player_hp"] += card.effect_num
 				2: #buff
 					print("buff")
 					match card.target_stat:
 						0: # attack
-							Global.player_offense_ratio *= card.effect_num
+							Global.data_dict["player_offense_ratio"]*= card.effect_num
 						1: # defense
-							Global.player_defense_ratio *= card.effect_num
+							Global.data_dict["player_defense_ratio"] *= card.effect_num
 					buff_applied = true
 				3: #debuff
 					print("debuff")
@@ -119,8 +119,8 @@ func card_action(card : Card, target : String):
 		buff_applied = false
 	else:
 		print("Wiped buffs")
-		Global.player_offense_ratio = 1
-		Global.player_defense_ratio = 1
+		Global.data_dict["player_offense_ratio"] = 1
+		Global.data_dict["player_defense_ratio"] = 1
 		enemy_data.enemy_offense_ratio = 1
 		enemy_data.enemy_defense_ratio = 1
 	refresh_stats()
@@ -135,11 +135,11 @@ func refresh_stats():
 	var a = create_tween()
 	a.tween_property(
 		$CanvasLayer/Player/BarHP, "value",
-		Global.player_hp, 0.5).set_trans(Tween.TRANS_EXPO)
+		Global.data_dict["player_hp"], 0.5).set_trans(Tween.TRANS_EXPO)
 	a = create_tween()
 	a.tween_property(
 		$CanvasLayer/Player/BarMP, "value",
-		Global.player_mp, 0.5).set_trans(Tween.TRANS_EXPO)
+		Global.data_dict["player_mp"], 0.5).set_trans(Tween.TRANS_EXPO)
 	a = create_tween()
 	a.tween_property(
 		$CanvasLayer/Opponent/BarHP, "value",

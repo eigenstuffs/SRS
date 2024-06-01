@@ -125,6 +125,9 @@ signal cg_winter
 signal cg_white
 signal stop_cg
 
+signal cg_room
+signal cg_room_blur
+
 signal cg_god_bg
 signal cg_god_neutral
 signal cg_god_neutral_talk
@@ -187,16 +190,24 @@ signal choice(which : int)
 signal finished_line
 
 func _ready():
-	alternate_text_box()
+	EffectAnim.play_backwards("FadeBlack")
+	
+	match Global.return_current_text():
+		Global.ACT1_CHAPTER1_SCENE1:
+			alternate_text_box(true)
+		Global.ACT1_CHAPTER1_SCENE2:
+			alternate_text_box(true)
+		Global.ACT1_CHAPTER1_SCENE3:
+			alternate_text_box(true)
 	
 	text_box.hide()
 	choice_ui.hide()
 	
+	await EffectAnim.animation_finished
+	
 	if text == null:
 		text = Global.return_current_text()
 	
-	EffectAnim.play_backwards("FadeBlack")
-	await EffectAnim.animation_finished
 	if text:
 		self.connect("choice", choice_funnel)
 		
@@ -221,7 +232,6 @@ func read_line(key : int):
 		await get_tree().create_timer(int(current_line["delay"])).timeout
 	if current_line["add"] != null:
 		Global.add_event(current_line["add"])
-		print(Global.remembered)
 	text_box.show()
 	
 	if current_line["emit"] != null:
@@ -244,10 +254,10 @@ func read_line(key : int):
 		if current_line["options"] != null:
 			var read_all = true
 			for i in current_line["options"].split(","):
-				if !Global.remembered.has(i):
+				if !Global.data_dict["remembered"].has(i):
 					read_all = false
 			if !read_all:
-				if Global.remembered.has("a1c1_2"):
+				if Global.data_dict["remembered"].has("a1c1_2"):
 					$Choice/Backdrop.position = Vector2(1950,0)
 					choice_ui.show()
 					var text : Array = current_line["options"].split(",")
@@ -259,7 +269,7 @@ func read_line(key : int):
 						button.connect("pressed", choice_pressed)
 						$Choice/Buttons.add_child(button)
 						button.get_node("Label").text = i
-						if Global.remembered.has(i):
+						if Global.data_dict["remembered"].has(i):
 							button.disabled = true
 						button.position = Vector2(1140,-180)
 					match $Choice/Buttons.get_child_count():
@@ -345,7 +355,7 @@ func read_line(key : int):
 					var text : Array = current_line["options"].split(",")
 					for i in text:
 						var a = GOD_CHOICE_BUTTON.instantiate()
-						if !Global.remembered.has(i):
+						if !Global.data_dict["remembered"].has(i):
 							a.connect("pressed", choice_pressed)
 						else:
 							a.disabled = true
@@ -387,7 +397,7 @@ func read_line(key : int):
 		label.text = current_line["text"]
 		label.visible_characters = 1
 		var num_chars = label.text.length()
-		var total_time = Global.text_speed * num_chars
+		var total_time = Global.data_dict["text_speed"] * num_chars
 		if current_line["flag"] == "slow": total_time * 1000
 		current_time = total_time
 		a = create_tween()
@@ -435,7 +445,7 @@ func read_line(key : int):
 		var text = current_line["run if"].split(",")
 		var condition = text[0]
 		var target = text[1]
-		if Global.remembered.has(condition):
+		if Global.data_dict["remembered"].has(condition):
 			print("HAS CONDITION MET")
 			current_line["go to"] = target
 	next_line()
@@ -467,7 +477,7 @@ func init_parameters(key : int):
 	
 	if line["speaker"]:
 		if line["speaker"] == "Player":
-			character_name.text = Global.player_name
+			character_name.text = Global.data_dict["player_name"]
 		else:
 			character_name.text = line["speaker"]
 		name_frame.show()
@@ -502,12 +512,12 @@ func choice_funnel(which : int):
 func choice_pressed():
 	for i in $Choice/Buttons.get_children():
 		if i.button_pressed:
-			Global.remembered.append(i.get_node("Label").text)
+			Global.data_dict["remembered"].append(i.get_node("Label").text)
 			choice.emit(i.get_index())
 			return
 	for i in $GodChoice.get_children():
 		if i.button_pressed:
-			Global.remembered.append(i.get_node("Label").text)
+			Global.data_dict["remembered"].append(i.get_node("Label").text)
 			choice.emit(i.get_index())
 			return
 
@@ -532,8 +542,8 @@ func _on_next_pressed():
 func _on_settings_autoplay_started():
 	emit_signal("next_pressed")
 
-func alternate_text_box():
-	if Global.remembered.has("a1c1_2"):
+func alternate_text_box(yes: bool):
+	if !yes:
 		box.texture = NORMAL_DIALOGUE_TEXTURE
 		label["theme_override_colors/default_color"] = Color("53431a")
 		box.scale = Vector2(1,1)

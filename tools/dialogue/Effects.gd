@@ -96,7 +96,8 @@ const MUSIC_SLICEOFLIFE = preload("res://assets/music/Villianess Reborn Peppy Is
 const SKY_CG = preload("res://assets/cgs/image0-2.jpg")
 const BLACK_CG = preload("res://assets/cgs/New Project.png")
 const GOD_CG = preload("res://assets/cgs/IMG_5160.png")
-const ROOM_CG = preload("res://assets/cgs/IMG_0552.png")
+const ROOM_CG = preload("res://assets/cgs/cecilias room.png")
+const BLUR_ROOM_CG = preload("res://assets/cgs/IMG_0552.png")
 const DINING_CG = preload("res://assets/cgs/dininghall.png")
 const DEAD_SNOW_CG = preload("res://assets/cgs/dead_snow.png")
 const CECILIA_FOUNTAIN = preload("res://assets/cgs/Cecelia-fountain.png")
@@ -104,7 +105,7 @@ const EMPTY_FOUNTAIN = preload("res://assets/cgs/emtpy_fountain.png")
 const CG_WINTER = preload("res://assets/cgs/cg_winter.png")
 const CG_WHITE = preload("res://assets/cgs/cg_white.png")
 
-const OVERLAY_BLOOD_SPLATTER = 1
+const OVERLAY_BLOOD_SPLATTER = preload("res://assets/vn/overlay/overlay_blood_splatter.png")
 
 @onready var anim_god : AnimationPlayer = $AnimGod
 @onready var anim_god_bg : AnimationPlayer = $AnimGod/AnimGodBG
@@ -115,31 +116,17 @@ var song
 var last_fade = ""
 
 func _ready():
-	match Global.return_current_text():
-		Global.ACT1_CHAPTER1_PART1:
-			cg_static(BLACK_CG)
-			var a = create_tween()
-			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
-			a = create_tween()
-			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
-		Global.ACT1_CHAPTER1_PART2:
-			cg_static(ROOM_CG)
-			var a = create_tween()
-			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
-			a = create_tween()
-			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
-		Global.ACT1_CHAPTER2_PART1:
-			cg_static(ROOM_CG)
-			var a = create_tween()
-			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -15, 3)
-			a = create_tween()
-			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
-		Global.ACT1_CHAPTER2_PART2:
-			cg_static(DINING_CG)
-			var a = create_tween()
-			a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
-			a = create_tween()
-			a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
+	#match Global.return_current_text():
+		#Global.ACT1_CHAPTER1_SCENE1:
+			#cg_static(BLACK_CG)
+		#Global.ACT1_CHAPTER1_SCENE2:
+			#cg_static(CG_WINTER)
+		#Global.ACT1_CHAPTER1_SCENE3:
+			#cg_static(BLACK_CG)
+	var a = create_tween()
+	a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
+	a = create_tween()
+	a.tween_property(EffectAnim.SfxPlayer, "volume_db", -10, 3)
 	
 	#to be changed back to VisualNovelDialogue
 	#var vn : VisualNovelDialogue = get_parent()
@@ -276,6 +263,10 @@ func _ready():
 	
 	vn.connect("cg_winter", cg_static.bind(CG_WINTER))
 	vn.connect("cg_white", cg_static.bind(CG_WHITE))
+	
+	vn.connect("cg_room_blur", cg_static.bind(BLUR_ROOM_CG))
+	vn.connect("cg_room", cg_static.bind(ROOM_CG))
+	
 	vn.connect("stop_cg", stop_cg)
 	
 	vn.connect("overlay_blood_splatter", overlay_static.bind(OVERLAY_BLOOD_SPLATTER))
@@ -400,13 +391,13 @@ func stop_sfx_looping():
 
 func cg_static(texture : Texture):
 	#$CG.modulate.a = 0
-	#$CG.show()
+	$CG.show()
 	#var a = create_tween()
 	#a.tween_property($CG, "modulate:a", 1, 0.5)
 	#await a.finished
 	$CG.modulate.a = 1
-	$CG.show()
 	$CG.texture = texture
+	
 	
 func stop_cg():
 	var a = create_tween()
@@ -507,10 +498,12 @@ func seraphina_name_screen():
 	done.emit()
 	
 func add_OOC():
-	Global.ooc += 1
+	Global.data_dict["ooc"] += 1
+	Global.data_dict["remembered"].append("OOC_reached_" % Global.data_dict["ooc"])
 	
 func add_OPP():
-	Global.opp += 1
+	Global.data_dict["opp"] += 1
+	Global.data_dict["remembered"].append("OPP_reached_" % Global.data_dict["opp"])
 
 func hide_text():
 	var a = create_tween()

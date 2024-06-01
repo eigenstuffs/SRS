@@ -841,7 +841,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("4_g1vbp")
-text = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_1.json"
+text = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_3.json"
 
 [node name="EffectHandler" type="Node" parent="."]
 process_mode = 3
@@ -881,7 +881,7 @@ z_as_relative = false
 
 [node name="TextureRect" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
 visible = false
-z_index = -1
+z_as_relative = false
 position = Vector2(960, 540)
 texture = ExtResource("4_ng0gx")
 hframes = 6
@@ -889,55 +889,63 @@ frame = 2
 
 [node name="NeutralStatic" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
 visible = false
-z_index = -1
+z_index = 2
+z_as_relative = false
 position = Vector2(960, 540)
 texture = ExtResource("7_yl28d")
 hframes = 3
 
 [node name="NeutralSpeaking" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
 visible = false
-z_index = -1
+z_index = 2
+z_as_relative = false
 position = Vector2(960, 540)
 texture = ExtResource("8_7f2oi")
 hframes = 3
 
 [node name="SeriousStatic" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
 visible = false
-z_index = -1
+z_index = 2
+z_as_relative = false
 position = Vector2(960, 540)
 texture = ExtResource("9_k754x")
 hframes = 3
 
 [node name="SeriousSpeaking" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
 visible = false
-z_index = -1
+z_index = 2
+z_as_relative = false
 position = Vector2(960, 540)
 texture = ExtResource("10_d1d5c")
 hframes = 3
 
 [node name="SmileStatic" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
 visible = false
-z_index = -1
+z_index = 2
+z_as_relative = false
 position = Vector2(960, 540)
 texture = ExtResource("11_i7dpf")
 hframes = 3
 
 [node name="SmileSpeaking" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
 visible = false
-z_index = -1
+z_index = 2
+z_as_relative = false
 position = Vector2(960, 540)
 texture = ExtResource("12_14uqi")
 hframes = 3
 
 [node name="Glitch" type="Sprite2D" parent="EffectHandler/AnimGod/Textures"]
 visible = false
+z_index = 2
+z_as_relative = false
 position = Vector2(960, 540)
 texture = ExtResource("11_ygtw6")
 hframes = 7
 vframes = 13
 
 [node name="Priority" type="Control" parent="EffectHandler"]
-z_index = 2
+z_index = 4
 z_as_relative = false
 layout_mode = 3
 anchors_preset = 0
@@ -945,7 +953,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="SpriteHandler" type="Control" parent="."]
-z_index = 1
+z_index = 3
 z_as_relative = false
 anchors_preset = 0
 script = ExtResource("8_6jfjc")
@@ -965,7 +973,7 @@ theme_override_constants/separation = -160
 alignment = 1
 
 [node name="TextBox" type="Control" parent="."]
-z_index = 1
+z_index = 4
 z_as_relative = false
 anchors_preset = 0
 offset_top = 64.0
@@ -1193,7 +1201,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 32
 
 [node name="GodChoice" type="VBoxContainer" parent="."]
-z_index = 1
+z_index = 5
 z_as_relative = false
 layout_mode = 0
 offset_left = 466.5
@@ -1204,7 +1212,7 @@ theme_override_constants/separation = 4
 alignment = 1
 
 [node name="Choice" type="Control" parent="."]
-z_index = 1
+z_index = 5
 z_as_relative = false
 anchors_preset = 0
 offset_right = 1920.0

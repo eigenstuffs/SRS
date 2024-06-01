@@ -7,9 +7,9 @@ var current_card : Card
 signal selected_card
 
 func initiate():
-	Global.player_cards.shuffle()
+	Global.data_dict["player_cards"].shuffle()
 	for i in 4:
-		var j = Global.player_cards[i]
+		var j = Global.data_dict["player_cards"][i]
 		var a = CARD.instantiate()
 		add_child(a)
 		a.card_data = j

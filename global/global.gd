@@ -26,29 +26,28 @@ var volume = 0.5
 
 ### DIALOGUE FILES
 
-const ACT1_CHAPTER1_PART1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1.json"
-const ACT1_CHAPTER1_PART2 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_2.json"
-const ACT1_CHAPTER2_PART1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_1.json"
-const ACT1_CHAPTER2_PART2 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_2.json"
+const ACT1_CHAPTER1_SCENE1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_1.json"
+const ACT1_CHAPTER1_SCENE2 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_2.json"
+const ACT1_CHAPTER1_SCENE3 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_3.json"
 
 func return_current_text():
-	if remembered.has("a1c2_1"):
-		return ACT1_CHAPTER2_PART2
-	elif remembered.has("a1c1_2"):
-		return ACT1_CHAPTER2_PART1
-	elif remembered.has("a1c1_1"):
-		return ACT1_CHAPTER1_PART2
+	if data_dict["remembered"].has("a1c1_3"):
+		return ACT1_CHAPTER1_SCENE3
+	elif data_dict["remembered"].has("a1c1_2"):
+		return ACT1_CHAPTER1_SCENE3
+	elif data_dict["remembered"].has("a1c1_1"):
+		return ACT1_CHAPTER1_SCENE2
 	else:
-		return ACT1_CHAPTER1_PART1
+		return ACT1_CHAPTER1_SCENE1
 		
 func add_event(event : String):
-	remembered.append(event)
+	data_dict["remembered"].append(event)
 	
 func rename_seraphina(name : String):
-	seraphina_name = name
+	data_dict["seraphina_name"] = name
 	
 func rename_player(name : String):
-	player_name = name
+	data_dict["player_name"] = name
 
 ### PLAYER STATS
 
@@ -72,33 +71,88 @@ var player_offense_ratio : float = 1
 # main four stats
 
 func set_stats(list : Array[int]):
-	player_wisdom = list[0]
-	player_intelligence = list[1]
-	player_charisma = list[2]
-	player_wellness = list[3]
+	data_dict["player_wisdom"] = list[0]
+	data_dict["player_intelligence"] = list[1]
+	data_dict["player_charisma"] = list[2]
+	data_dict["player_wellness"] = list[3]
 	print("PLAYER STATS CHANGED: " + str(get_main_stats()))
 
 func get_stat(index : int) -> int:
 	match index:
 		0:
-			return player_wisdom
+			return data_dict["player_wisdom"]
 		1:
-			return player_intelligence
+			return data_dict["player_intelligence"]
 		2:
-			return player_charisma
+			return data_dict["player_charisma"]
 		3: 
-			return player_wellness
+			return data_dict["player_wellness"]
 		4:
-			return player_money
+			return data_dict["player_money"]
 		5:
-			return player_prestige
+			return data_dict["player_prestige"]
 		_:
 			print("invalid index!")
 			return -999
 	
 func get_main_stats() -> Array[int]:
-	var output : Array[int] = [player_wisdom,
-		player_intelligence,
-		player_charisma,
-		player_wellness]
+	var output : Array[int] = [data_dict["player_wisdom"],
+		data_dict["player_intelligence"],
+		data_dict["player_charisma"],
+		data_dict["player_wellness"]]
 	return output
+
+## SAVING AND LOADING
+
+var save_dir = "user://villainess_saves/"
+var save_path = save_dir + "save.dat"
+
+var data_dict = {
+	"remembered" : remembered,
+	"ooc" : ooc,
+	"opp" : opp,
+	"player_name" : player_name,
+	"seraphina_name" : seraphina_name,
+	"og_ro" : og_ro,
+	"text_speed" : text_speed,
+	"volume" : volume,
+	
+	"player_wisdom" : player_wisdom,
+	"player_intelligence" : player_intelligence,
+	"player_charisma" : player_charisma,
+	"player_wellness" : player_wellness,
+	"player_money" : player_money,
+	"player_prestige" : player_prestige,
+	"player_cards" : player_cards,
+	
+	"player_hp" : player_hp,
+	"player_mp" : player_mp,
+	"player_max_hp" : player_max_hp,
+	"player_max_mp" : player_max_mp,
+	"player_level" : player_level,
+	"player_defense_ratio" : player_defense_ratio,
+	"player_offense_ratio" : player_offense_ratio
+}
+	
+func _ready():
+	load_data()
+
+func save_data():
+	var dir = DirAccess.open(save_dir)
+	if !dir:
+		DirAccess.make_dir_recursive_absolute(save_dir)
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	print("Saved data.")
+	file.store_var(data_dict)
+	file.close()
+
+func load_data():
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	if file:
+		data_dict = file.get_var()
+		file.close()
+		print("Loaded data.")
+	else:
+		save_data()
+		print("Saved and loaded new file.")
+		load_data()
