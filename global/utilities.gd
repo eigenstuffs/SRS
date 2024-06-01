@@ -37,5 +37,4 @@ func create_reward_scene(minigame : String, scores : Array, stats_gained : Array
 	a.start_display()
 	await a.display_finished
 	a.queue_free()
-	scene.queue_free()
 	emit_signal("util_finished")

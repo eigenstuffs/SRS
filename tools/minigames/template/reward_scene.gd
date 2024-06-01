@@ -8,6 +8,7 @@ signal display_finished
 @onready var stats_container = $StatsContainer
 @onready var score_tally = $ScoreTally
 @onready var final_score = $FinalScore
+@onready var confirm_button = $ConfirmButton
 
 var scores : Array
 var stats_gained : Array
@@ -22,6 +23,7 @@ func set_vars(score : Array, stats : Array):
 	stats_gained = stats
 
 func _ready(): 
+	confirm_button.connect("pressed", _on_confirm_button_pressed)
 	set_final_target()
 	stats_bar_update()
 	hide_tally()
@@ -83,7 +85,8 @@ func start_display():
 	await preview_done
 	modify_stats(stats_gained)
 
-func _on_confirm_button_pressed(): #BUG: Somehow button press is not registered?
+
+func _on_confirm_button_pressed():
 	print("confirm button pressed")
 	if done:
 		emit_signal("display_finished")
