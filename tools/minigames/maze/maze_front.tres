@@ -1,0 +1,6 @@
+[gd_resource type="MeshTexture" load_steps=2 format=3 uid="uid://do30l0jlw7g1a"]
+
+[ext_resource type="PlaneMesh" uid="uid://d44uolewqfys" path="res://tools/minigames/maze/maze_side.tres" id="1_umi2q"]
+
+[resource]
+mesh = ExtResource("1_umi2q")

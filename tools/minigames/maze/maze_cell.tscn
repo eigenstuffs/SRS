@@ -1,12 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs0oo1dolca08"]
+[gd_scene load_steps=12 format=3 uid="uid://cs0oo1dolca08"]
 
 [ext_resource type="Script" path="res://tools/minigames/maze/MazeCell.gd" id="1_ixgp1"]
 [ext_resource type="Texture2D" uid="uid://c2sq6stmivvob" path="res://assets/maze/maze front.png" id="2_k4dgj"]
-[ext_resource type="Texture2D" uid="uid://srqk6hln7ion" path="res://assets/maze/maze side.png" id="3_nt5hf"]
-[ext_resource type="Texture2D" uid="uid://qrlhg3h6lgs7" path="res://assets/maze/maze top.png" id="4_w40q0"]
+[ext_resource type="PlaneMesh" uid="uid://d44uolewqfys" path="res://tools/minigames/maze/maze_side.tres" id="6_df0y8"]
+[ext_resource type="PlaneMesh" uid="uid://c3fb2ugt4el5m" path="res://tools/minigames/maze/maze_top.tres" id="7_jty6u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kbuiq"]
 size = Vector3(0.2, 1, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rnyvc"]
+transparency = 4
+albedo_texture = ExtResource("2_k4dgj")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ev4io"]
+lightmap_size_hint = Vector2i(7, 8)
+material = SubResource("StandardMaterial3D_rnyvc")
+size = Vector2(1, 1.2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l3cwr"]
+material = SubResource("StandardMaterial3D_rnyvc")
+size = Vector2(1, 1.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nk48q"]
 
@@ -27,27 +40,28 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall"]
 shape = SubResource("BoxShape3D_kbuiq")
 
-[node name="CellSprite" type="Node3D" parent="LeftWall"]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.1, 0, 2.08165e-12)
+[node name="CellMesh" type="Node3D" parent="LeftWall"]
+transform = Transform3D(-4.37114e-09, 3.48787e-17, 0.1, 1.12379e-22, 0.1, -2.5988e-16, -0.1, 5.9557e-23, -4.37114e-09, 0.1, 2.08165e-12, 2.08165e-12)
 
-[node name="Sprite3D" type="Sprite3D" parent="LeftWall/CellSprite"]
-texture = ExtResource("2_k4dgj")
+[node name="front" type="MeshInstance3D" parent="LeftWall/CellMesh"]
+transform = Transform3D(-8.74228e-07, -9.93477e-07, 10, 10, 1.31134e-06, 8.74228e-07, -1.31134e-06, 10, 9.93477e-07, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ev4io")
 
-[node name="Sprite3D5" type="Sprite3D" parent="LeftWall/CellSprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.95343)
-texture = ExtResource("2_k4dgj")
+[node name="back" type="MeshInstance3D" parent="LeftWall/CellMesh"]
+transform = Transform3D(4.37115e-07, 1.31134e-06, -10, 10, -6.75664e-14, 4.37115e-07, 5.47287e-14, -10, -1.31134e-06, 2.38742e-12, 0, -2)
+mesh = SubResource("PlaneMesh_l3cwr")
 
-[node name="Sprite3D2" type="Sprite3D" parent="LeftWall/CellSprite"]
-transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, 5.98954, 0, -0.974498)
-texture = ExtResource("3_nt5hf")
+[node name="left" type="MeshInstance3D" parent="LeftWall/CellMesh"]
+transform = Transform3D(-4.37114e-07, 10, 4.37114e-07, 1.74846e-06, -4.37114e-07, 10, 10, 4.37114e-07, -1.74846e-06, 5.98954, 0, -0.974498)
+mesh = ExtResource("6_df0y8")
 
-[node name="Sprite3D4" type="Sprite3D" parent="LeftWall/CellSprite"]
-transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, -5.97904, 0, -0.974498)
-texture = ExtResource("3_nt5hf")
+[node name="right" type="MeshInstance3D" parent="LeftWall/CellMesh"]
+transform = Transform3D(-4.37114e-07, -10, -4.37114e-07, -1.5246e-22, -4.37114e-07, 10, -10, 4.37114e-07, 1.91069e-14, -5.97904, 0, -0.974498)
+mesh = ExtResource("6_df0y8")
 
-[node name="Sprite3D3" type="Sprite3D" parent="LeftWall/CellSprite"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0334582, 4.97124, -0.990165)
-texture = ExtResource("4_w40q0")
+[node name="top" type="MeshInstance3D" parent="LeftWall/CellMesh"]
+transform = Transform3D(10, -8.74228e-07, -8.74228e-07, 8.74228e-07, 10, 4.32245e-14, 8.74228e-07, -1.386e-13, 10, 0.0334582, 4.97124, -0.990164)
+mesh = ExtResource("7_jty6u")
 
 [node name="RightWall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 2.08165e-12)
@@ -57,27 +71,28 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightWall"]
 shape = SubResource("BoxShape3D_kbuiq")
 
-[node name="CellSprite2" type="Node3D" parent="RightWall"]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.100419, 0, 0)
+[node name="CellMesh" type="Node3D" parent="RightWall"]
+transform = Transform3D(-4.37114e-09, 5.99514e-38, 0.1, 1.55886e-22, 0.1, -6.63177e-16, -0.1, 7.46424e-23, -4.37114e-09, 0.1, 2.08165e-12, 2.08165e-12)
 
-[node name="Sprite3D" type="Sprite3D" parent="RightWall/CellSprite2"]
-texture = ExtResource("2_k4dgj")
+[node name="front" type="MeshInstance3D" parent="RightWall/CellMesh"]
+transform = Transform3D(-8.74228e-07, -9.93477e-07, 10, 10, 1.31134e-06, 8.74228e-07, -1.31134e-06, 10, 9.93477e-07, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ev4io")
 
-[node name="Sprite3D5" type="Sprite3D" parent="RightWall/CellSprite2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.95343)
-texture = ExtResource("2_k4dgj")
+[node name="back" type="MeshInstance3D" parent="RightWall/CellMesh"]
+transform = Transform3D(4.37115e-07, 1.31134e-06, -10, 10, -1.7053e-13, 4.37115e-07, 6.17395e-14, -10, -1.31134e-06, 2.38742e-12, 0, -2)
+mesh = SubResource("PlaneMesh_l3cwr")
 
-[node name="Sprite3D2" type="Sprite3D" parent="RightWall/CellSprite2"]
-transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, 5.98954, 0, -0.974498)
-texture = ExtResource("3_nt5hf")
+[node name="left" type="MeshInstance3D" parent="RightWall/CellMesh"]
+transform = Transform3D(-4.37114e-07, 10, 4.37114e-07, 1.74846e-06, -4.37114e-07, 10, 10, 4.37114e-07, -1.74846e-06, 5.98954, 0, -0.974498)
+mesh = ExtResource("6_df0y8")
 
-[node name="Sprite3D4" type="Sprite3D" parent="RightWall/CellSprite2"]
-transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, -5.97904, 0, -0.974498)
-texture = ExtResource("3_nt5hf")
+[node name="right" type="MeshInstance3D" parent="RightWall/CellMesh"]
+transform = Transform3D(-4.37114e-07, -10, -4.37114e-07, -1.5246e-22, -4.37114e-07, 10, -10, 4.37114e-07, 1.91069e-14, -5.97904, 0, -0.974498)
+mesh = ExtResource("6_df0y8")
 
-[node name="Sprite3D3" type="Sprite3D" parent="RightWall/CellSprite2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0334582, 4.97124, -0.990165)
-texture = ExtResource("4_w40q0")
+[node name="top" type="MeshInstance3D" parent="RightWall/CellMesh"]
+transform = Transform3D(10, -8.74228e-07, -8.74228e-07, 8.74228e-07, 10, 4.32245e-14, 8.74228e-07, -1.386e-13, 10, 0.0334582, 4.97124, -0.990164)
+mesh = ExtResource("7_jty6u")
 
 [node name="FrontWall" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 2.08165e-12, 0.5, 0.5)
@@ -87,27 +102,28 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FrontWall"]
 shape = SubResource("BoxShape3D_kbuiq")
 
-[node name="CellSprite2" type="Node3D" parent="FrontWall"]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.100419, 0, 0)
+[node name="CellMesh" type="Node3D" parent="FrontWall"]
+transform = Transform3D(-4.37114e-09, 3.48787e-17, 0.1, 1.12379e-22, 0.1, -2.5988e-16, -0.1, 7.27919e-23, -4.37114e-09, 0.1, 2.08165e-12, 2.08165e-12)
 
-[node name="Sprite3D" type="Sprite3D" parent="FrontWall/CellSprite2"]
-texture = ExtResource("2_k4dgj")
+[node name="front" type="MeshInstance3D" parent="FrontWall/CellMesh"]
+transform = Transform3D(-8.74228e-07, -9.93477e-07, 10, 10, 1.31134e-06, 8.74228e-07, -1.31134e-06, 10, 9.93477e-07, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ev4io")
 
-[node name="Sprite3D5" type="Sprite3D" parent="FrontWall/CellSprite2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.95343)
-texture = ExtResource("2_k4dgj")
+[node name="back" type="MeshInstance3D" parent="FrontWall/CellMesh"]
+transform = Transform3D(4.37115e-07, 1.31134e-06, -10, 10, -6.75664e-14, 4.37115e-07, 5.47287e-14, -10, -1.31134e-06, 2.38742e-12, 0, -2)
+mesh = SubResource("PlaneMesh_l3cwr")
 
-[node name="Sprite3D2" type="Sprite3D" parent="FrontWall/CellSprite2"]
-transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, 5.98954, 0, -0.974498)
-texture = ExtResource("3_nt5hf")
+[node name="left" type="MeshInstance3D" parent="FrontWall/CellMesh"]
+transform = Transform3D(-4.37114e-07, 10, 4.37114e-07, 1.74846e-06, -4.37114e-07, 10, 10, 4.37114e-07, -1.74846e-06, 5.98954, 0, -0.974498)
+mesh = ExtResource("6_df0y8")
 
-[node name="Sprite3D4" type="Sprite3D" parent="FrontWall/CellSprite2"]
-transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, -5.97904, 0, -0.974498)
-texture = ExtResource("3_nt5hf")
+[node name="right" type="MeshInstance3D" parent="FrontWall/CellMesh"]
+transform = Transform3D(-4.37114e-07, -10, -4.37114e-07, -1.5246e-22, -4.37114e-07, 10, -10, 4.37114e-07, 1.91069e-14, -5.97904, 0, -0.974498)
+mesh = ExtResource("6_df0y8")
 
-[node name="Sprite3D3" type="Sprite3D" parent="FrontWall/CellSprite2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0334582, 4.97124, -0.990165)
-texture = ExtResource("4_w40q0")
+[node name="top" type="MeshInstance3D" parent="FrontWall/CellMesh"]
+transform = Transform3D(10, -8.74228e-07, -8.74228e-07, 8.74228e-07, 10, 4.32245e-14, 8.74228e-07, -1.386e-13, 10, 0.0334582, 4.97124, -0.990164)
+mesh = ExtResource("7_jty6u")
 
 [node name="BackWall" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 2.08165e-12, 0.5, -0.5)
@@ -117,27 +133,28 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackWall"]
 shape = SubResource("BoxShape3D_kbuiq")
 
-[node name="CellSprite2" type="Node3D" parent="BackWall"]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.100419, 0, 0)
+[node name="CellMesh" type="Node3D" parent="BackWall"]
+transform = Transform3D(-4.37114e-09, 3.48787e-17, 0.1, 2.18258e-22, 0.1, -2.5988e-16, -0.1, 9.26442e-23, -4.37114e-09, 0.1, 2.08165e-12, 2.08165e-12)
 
-[node name="Sprite3D" type="Sprite3D" parent="BackWall/CellSprite2"]
-texture = ExtResource("2_k4dgj")
+[node name="front" type="MeshInstance3D" parent="BackWall/CellMesh"]
+transform = Transform3D(-8.74228e-07, -9.93477e-07, 10, 10, 1.31134e-06, 8.74228e-07, -1.31134e-06, 10, 9.93477e-07, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ev4io")
 
-[node name="Sprite3D5" type="Sprite3D" parent="BackWall/CellSprite2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.95343)
-texture = ExtResource("2_k4dgj")
+[node name="back" type="MeshInstance3D" parent="BackWall/CellMesh"]
+transform = Transform3D(4.37115e-07, 1.31134e-06, -10, 10, 5.68434e-14, 4.37115e-07, 8.52651e-14, -10, -1.31134e-06, 2.359e-12, 4.76837e-07, -2)
+mesh = SubResource("PlaneMesh_l3cwr")
 
-[node name="Sprite3D2" type="Sprite3D" parent="BackWall/CellSprite2"]
-transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, 5.98954, 0, -0.974498)
-texture = ExtResource("3_nt5hf")
+[node name="left" type="MeshInstance3D" parent="BackWall/CellMesh"]
+transform = Transform3D(-4.37114e-07, 10, 4.37114e-07, 1.74846e-06, -4.37114e-07, 10, 10, 4.37114e-07, -1.74846e-06, 5.98954, 0, -0.974498)
+mesh = ExtResource("6_df0y8")
 
-[node name="Sprite3D4" type="Sprite3D" parent="BackWall/CellSprite2"]
-transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, -5.97904, 0, -0.974498)
-texture = ExtResource("3_nt5hf")
+[node name="right" type="MeshInstance3D" parent="BackWall/CellMesh"]
+transform = Transform3D(-4.37114e-07, -10, -4.37114e-07, -1.5246e-22, -4.37114e-07, 10, -10, 4.37114e-07, 1.91069e-14, -5.97904, 0, -0.974498)
+mesh = ExtResource("6_df0y8")
 
-[node name="Sprite3D3" type="Sprite3D" parent="BackWall/CellSprite2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0334582, 4.97124, -0.990165)
-texture = ExtResource("4_w40q0")
+[node name="top" type="MeshInstance3D" parent="BackWall/CellMesh"]
+transform = Transform3D(10, -8.74228e-07, -8.74228e-07, 8.74228e-07, 10, 4.32245e-14, 8.74228e-07, -1.386e-13, 10, 0.0334582, 4.97124, -0.990164)
+mesh = ExtResource("7_jty6u")
 
 [node name="UnvisitedBlock" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 2.08165e-12, 0.5, 2.08165e-12)
