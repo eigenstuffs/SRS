@@ -190,6 +190,9 @@ signal choice(which : int)
 signal finished_line
 
 func _ready():
+	if text == null:
+		text = Global.return_current_text()
+		
 	EffectAnim.play_backwards("FadeBlack")
 	
 	match Global.return_current_text():
@@ -204,9 +207,6 @@ func _ready():
 	choice_ui.hide()
 	
 	await EffectAnim.animation_finished
-	
-	if text == null:
-		text = Global.return_current_text()
 	
 	if text:
 		self.connect("choice", choice_funnel)

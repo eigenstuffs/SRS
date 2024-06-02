@@ -116,13 +116,13 @@ var song
 var last_fade = ""
 
 func _ready():
-	#match Global.return_current_text():
-		#Global.ACT1_CHAPTER1_SCENE1:
-			#cg_static(BLACK_CG)
-		#Global.ACT1_CHAPTER1_SCENE2:
-			#cg_static(CG_WINTER)
-		#Global.ACT1_CHAPTER1_SCENE3:
-			#cg_static(BLACK_CG)
+	match get_parent().text:
+		Global.ACT1_CHAPTER1_SCENE1:
+			cg_static(BLACK_CG)
+		Global.ACT1_CHAPTER1_SCENE2:
+			cg_static(CG_WINTER)
+		Global.ACT1_CHAPTER1_SCENE3:
+			cg_static(BLACK_CG)
 	var a = create_tween()
 	a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
 	a = create_tween()
@@ -407,17 +407,18 @@ func stop_cg():
 	$CG.modulate.a = 1
 	
 func overlay_static(texture : Texture):
+	overlay.texture = texture
 	overlay.modulate.a = 0
 	overlay.show()
 	var a = create_tween()
 	a.tween_property(overlay, "modulate:a", 1, 0.5)
 	await a.finished
-	overlay.texture = texture
 	
 func stop_overlay():
 	var a = create_tween()
 	a.tween_property(overlay, "modulate:a", 0, 0.5)
 	await a.finished
+	overlay.texture = null
 	overlay.hide()
 	overlay.modulate.a = 1
 	
