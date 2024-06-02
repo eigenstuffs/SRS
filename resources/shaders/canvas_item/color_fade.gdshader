@@ -7,6 +7,7 @@ uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_n
 uniform vec4 start_color : source_color;
 uniform vec4 end_color : source_color;
 uniform float duration;
+uniform bool use_vignette;
 uniform float start_time;
 
 // Source: https://www.shadertoy.com/view/ttcyRS
@@ -33,10 +34,12 @@ vec3 oklab_mix(vec3 colA, vec3 colB, float h) {
 }
 
 void fragment() {
+	float vignette_factor = (use_vignette ? mix(0.07, 1.0, min(1.0, pow(length((FRAGCOORD.xy*SCREEN_PIXEL_SIZE - 0.5)*2.5*SCREEN_PIXEL_SIZE.x/SCREEN_PIXEL_SIZE.y), 2.2))) : 1.0);
+	
 	vec4 frag_color = texture(screen_texture, SCREEN_UV);
 	// Just use normal mix() if performance becomes an issue
-	vec3 start_color0 = oklab_mix(frag_color.rgb, start_color.rgb, start_color.a);
-	vec3 end_color0 = oklab_mix(frag_color.rgb, end_color.rgb, end_color.a);
+	vec3 start_color0 = oklab_mix(frag_color.rgb, start_color.rgb, start_color.a * vignette_factor);
+	vec3 end_color0 = oklab_mix(frag_color.rgb, end_color.rgb, end_color.a * vignette_factor);
 	
 	float t = min(1.0, (cpu_sync_time - start_time) / duration);
 	COLOR = vec4(oklab_mix(start_color0, end_color0, t), 1.0);

@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dowyseood26b1" path="res://tools/minigames/rhythm/assets/samples/hit.mp3" id="4_25p1v"]
 [ext_resource type="Texture2D" uid="uid://nsfsluvoulwy" path="res://assets/rhythm/key.png" id="4_r2rj6"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/key_light.gd" id="5_ijapg"]
+[ext_resource type="Texture2D" uid="uid://b4hn85ukrhk8v" path="res://assets/ui/Star.png" id="6_rfh2y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxuqm"]
 transparency = 1
@@ -48,14 +49,11 @@ gravity = Vector3(0, 0, 5)
 attractor_interaction_enabled = false
 scale_curve = SubResource("CurveTexture_53nvl")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iogy2"]
-load_path = "res://.godot/imported/star.png-b9a59f08c7f69a33a607a9bc1e0ed3c4.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5gfs"]
 render_priority = 1
 transparency = 1
 albedo_color = Color(0.721569, 0.54902, 0.701961, 0.462745)
-albedo_texture = SubResource("CompressedTexture2D_iogy2")
+albedo_texture = ExtResource("6_rfh2y")
 emission_enabled = true
 emission = Color(0.952941, 0.85098, 0.721569, 1)
 emission_energy_multiplier = 5.0
