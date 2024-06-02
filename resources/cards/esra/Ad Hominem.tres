@@ -6,10 +6,10 @@
 script = ExtResource("1_xhu1w")
 points_req = 0
 title = "Ad Hominem"
-effect = null
+effect = 0
 target_stat = null
 type = 0
-effect_num = 0.0
+effect_num = 5.0
 desc = "A very strong, very opinionated personal attack on Cecilia’s character. "
 intensity_mod = -20
 move_dialogue = Array[String](["What a joke. How has Prince Cassius not broken off your engagement already?", "Listening to you talk is like pulling teeth. I pity your brother for sharing a home with you.", "Still talking… Don’t you have a broomstick ride you need to catch?", "Resorting to using daddy’s title already? There’s another reason why no one respects you.", "It’s getting cold out. Better slither back to your den, you snake."])

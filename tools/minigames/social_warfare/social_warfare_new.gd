@@ -82,53 +82,103 @@ func card_action(card : Card, target : String):
 	Util.popup_dialogue(
 		$CanvasLayer,
 		card.move_dialogue,
-		[null,null,null,null,null,null,null,null,null,null]
+		card.name_dialogue
 	)
+	
+	## type advantage multiplier
+	
+	var enemy_type = enemy_data.enemy_type
+	var card_type = card.type
+	
+	var multiple = 1.0
+	match target:
+		"Player":
+			match card_type:
+				"Backhanded":
+					match enemy_type:
+						"Blunt":
+							multiple = 1.2
+						"Emotional":
+							multiple = 0.8
+				"Blunt":
+					match card_type:
+						"Backhanded":
+							multiple = 0.8
+						"Emotional":
+							multiple = 1.2
+				"Emotional":
+					match card_type:
+						"Blunt":
+							multiple = 0.8
+						"Backhanded":
+							multiple = 1.2
+		"Opponent":
+			match enemy_type:
+				"Backhanded":
+					match card_type:
+						"Blunt":
+							multiple = 1.2
+						"Emotional":
+							multiple = 0.8
+				"Blunt":
+					match card_type:
+						"Backhanded":
+							multiple = 0.8
+						"Emotional":
+							multiple = 1.2
+				"Emotional":
+					match card_type:
+						"Blunt":
+							multiple = 0.8
+						"Backhanded":
+							multiple = 1.2
+	
+	## apply effect
 	
 	match target:
 		"Player":
 			match card.effect:
 				0:
 					Global.data_dict["player_hp"] -= (card.effect_num *
-						enemy_data.enemy_offense_ratio)
+						enemy_data.enemy_offense_ratio) * multiple
 				1:
-					enemy_data.enemy_hp += card.effect_num
+					enemy_data.enemy_hp += card.effect_num * multiple
 				2:
 					match card.target_stat:
 						0:
-							enemy_data.enemy_offense_ratio *= card.effect_num
+							enemy_data.enemy_offense_ratio *= (card.effect_num * multiple)
 						1:
-							enemy_data.enemy_defense_ratio *= card.effect_num
+							enemy_data.enemy_defense_ratio *= (card.effect_num * multiple)
 					buff_applied = true
 				3:
 					match card.target_stat:
 						0:
-							Global.data_dict["player_offense_ratio"] *= card.effect_num
+							Global.data_dict["player_offense_ratio"] *= (card.effect_num * multiple)
 						1:
-							Global.data_dict["player_defense_ratio"] *= card.effect_num
+							Global.data_dict["player_defense_ratio"] *= (card.effect_num * multiple)
 					buff_applied = true
 		"Opponent":
 			match card.effect:
 				0: #attack
 					enemy_data.enemy_hp -= (card.effect_num *
-						Global.data_dict["player_offense_ratio"])
+						Global.data_dict["player_offense_ratio"] * multiple)
 				1: #restore
-					Global.data_dict["player_hp"] += card.effect_num
+					Global.data_dict["player_hp"] += (card.effect_num * multiple)
 				2: #buff
 					print("buff")
 					match card.target_stat:
 						0: # attack
-							Global.data_dict["player_offense_ratio"]*= card.effect_num
+							Global.data_dict["player_offense_ratio"]*= (card.effect_num*multiple)
 						1: # defense
-							Global.data_dict["player_defense_ratio"] *= card.effect_num
+							Global.data_dict["player_defense_ratio"] *= (card.effect_num*multiple)
 					buff_applied = true
 				3: #debuff
 					print("debuff")
 					match card.target_stat:
 						0: # attack
-							enemy_data.enemy_offense_ratio *= card.effect_num
+							enemy_data.enemy_offense_ratio *= (card.effect_num*multiple)
 						1: # defense
-							enemy_data.enemy_defense_ratio *= card.effect_num
+							enemy_data.enemy_defense_ratio *= (card.effect_num*multiple)
 					buff_applied = true
 	if buff_applied:
 		buff_applied = false

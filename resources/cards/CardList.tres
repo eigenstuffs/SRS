@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardList" load_steps=13 format=3 uid="uid://dy47yxw0calrg"]
+[gd_resource type="Resource" script_class="CardList" load_steps=17 format=3 uid="uid://dy47yxw0calrg"]
 
 [ext_resource type="Resource" uid="uid://cmorefbnj7gir" path="res://resources/cards/ApatheticLook.tres" id="1_b7pwe"]
 [ext_resource type="Script" path="res://resources/cards/card_list.gd" id="1_pemig"]
@@ -12,7 +12,12 @@
 [ext_resource type="Resource" uid="uid://845ydmim68kx" path="res://resources/cards/Slap.tres" id="9_ym731"]
 [ext_resource type="Resource" uid="uid://ccinl4dlimddt" path="res://resources/cards/SpillYourDrink.tres" id="10_b3bgs"]
 [ext_resource type="Resource" uid="uid://2isk2o8w0alx" path="res://resources/cards/UmActually.tres" id="11_kop4g"]
+[ext_resource type="Resource" uid="uid://deh68rclk8f4k" path="res://resources/cards/esra/Ad Hominem.tres" id="12_u5d3e"]
+[ext_resource type="Resource" uid="uid://3t21ogoehw7x" path="res://resources/cards/esra/Catch His Breath.tres" id="13_uywia"]
+[ext_resource type="Resource" uid="uid://cf7ck8j3q4n7" path="res://resources/cards/esra/Tch.tres" id="14_spy7t"]
+[ext_resource type="Resource" uid="uid://dkwwnrwa7nc2h" path="res://resources/cards/esra/Tsk.tres" id="15_3kkns"]
 
 [resource]
 script = ExtResource("1_pemig")
 card_list = Array[Resource("res://resources/cards/card.gd")]([ExtResource("1_b7pwe"), ExtResource("2_eku48"), ExtResource("3_unqhm"), ExtResource("4_0hsgn"), ExtResource("5_sbork"), ExtResource("6_i0dpi"), ExtResource("7_fenoe"), ExtResource("8_h8ymy"), ExtResource("9_ym731"), ExtResource("10_b3bgs"), ExtResource("11_kop4g")])
+esra_list = Array[Resource("res://resources/cards/card.gd")]([ExtResource("12_u5d3e"), ExtResource("13_uywia"), ExtResource("14_spy7t"), ExtResource("15_3kkns")])
