@@ -68,12 +68,13 @@ class EffectFlashNew extends EffectColorFadeNew:
 		super()
 		self.name = 'Flash'
 		self.should_free_when_stopped = true
-		self.on_start = func(color := Color(0.98, 0.98, 0.98, 0.6), flash_duration := 0.35) -> void:
+		self.on_start = func(color := Color(0.98, 0.98, 0.98, 0.6), flash_duration := 0.35, use_vignette := true) -> void:
 			self.duration = flash_duration
 			render_passes[0].enable({
 				'start_color' : color, 
 				'end_color' : Color(color.r, color.g, color.b, 0), 
-				'duration' : flash_duration})
+				'duration' : flash_duration,
+				'use_vignette' : use_vignette})
 
 class EffectKuwahara extends CanvasItemEffect:
 	const KUWAHARA_FILTER := preload('../shaders/canvas_item/kuwahara.gdshader')
