@@ -130,7 +130,7 @@ class EffectBetterCallNew extends Effect:
 			func(): 
 				queue_free(),
 			func():
-				self.effect_node.queue_free())
+				if effect_node: self.effect_node.queue_free())
 				
 class EffectInteriorWarm extends Effect:
 	const INTERIOR_WARM_EFFECT := preload('./interior_warm_effect/interior_warm_effect.tscn')
@@ -145,7 +145,7 @@ class EffectInteriorWarm extends Effect:
 			func(): 
 				queue_free(),
 			func():
-				self.effect_node.queue_free())
+				if effect_node: self.effect_node.queue_free())
 				
 class EffectSphereRaytraced extends CanvasItemEffect:
 	const SPHERE_RAYTRACED_SHADER := preload('../shaders/canvas_item/sphere_raytraced.gdshader')
