@@ -14,4 +14,4 @@ const CARD_LIST = preload("res://resources/cards/CardList.tres")
 func _ready():
 	match enemy_name:
 		"Esra":
-			enemy_cards = CARD_LIST.esra_cards
+			enemy_cards = CARD_LIST.esra_list

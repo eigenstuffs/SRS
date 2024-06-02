@@ -77,13 +77,42 @@ func card_action(card : Card, target : String):
 	battle_intensity += card.intensity_mod
 	Global.data_dict["player_mp"] -= card.points_req
 	
+	## print card title
+	
+	#$Background/Box.hide()
+	$CanvasLayer/Fight.hide()
+	
+	match target:
+		"Player":
+			Util.popup_dialogue(
+				$CanvasLayer,
+				[enemy_data.enemy_name + " used " + card.title + "!"],
+				["null"]
+			)
+			
+			await Util.util_finished
+		"Opponent":
+			Util.popup_dialogue(
+				$CanvasLayer,
+				["You used " + card.title + "!"],
+				["null"]
+			)
+			
+			await Util.util_finished
+	
 	## put dialogue somewhere in here
 	
-	Util.popup_dialogue(
-		$CanvasLayer,
-		card.move_dialogue,
-		card.name_dialogue
-	)
+	if card.move_dialogue:
+		var index = randi_range(0, card.move_dialogue.size()-1)
+		Util.popup_dialogue(
+			$CanvasLayer,
+			[card.move_dialogue[index]],
+			[card.name_dialogue[index]]
+		)
+		
+		await Util.util_finished
+		
+	#$Background/Box.show()
 	
 	## type advantage multiplier
 	
@@ -146,16 +175,38 @@ func card_action(card : Card, target : String):
 				2:
 					match card.target_stat:
 						0:
-							enemy_data.enemy_offense_ratio *= (card.effect_num * multiple)
+							enemy_data.enemy_offense_ratio *= (card.effect_num)
+							Util.popup_dialogue(
+								$CanvasLayer,
+								[enemy_data.enemy_name + "'s offense rose!"],
+								["null"]
+							)
 						1:
-							enemy_data.enemy_defense_ratio *= (card.effect_num * multiple)
+							enemy_data.enemy_defense_ratio *= (card.effect_num)
+							Util.popup_dialogue(
+								$CanvasLayer,
+								[enemy_data.enemy_name + "'s defense rose!"],
+								["null"]
+							)
 					buff_applied = true
 				3:
 					match card.target_stat:
 						0:
+							multiple = 1 + (1 - multiple)
 							Global.data_dict["player_offense_ratio"] *= (card.effect_num * multiple)
+							Util.popup_dialogue(
+								$CanvasLayer,
+								["Your offense fell!"],
+								["null"]
+							)
 						1:
+							multiple = 1 + (1 - multiple)
 							Global.data_dict["player_defense_ratio"] *= (card.effect_num * multiple)
+							Util.popup_dialogue(
+								$CanvasLayer,
+								["Your defense fell!"],
+								["null"]
+							)
 					buff_applied = true
 		"Opponent":
 			match card.effect:
@@ -169,17 +220,52 @@ func card_action(card : Card, target : String):
 					match card.target_stat:
 						0: # attack
 							Global.data_dict["player_offense_ratio"]*= (card.effect_num*multiple)
+							Util.popup_dialogue(
+								$CanvasLayer,
+								["Your offense rose!"],
+								["null"]
+							)
 						1: # defense
 							Global.data_dict["player_defense_ratio"] *= (card.effect_num*multiple)
+							Util.popup_dialogue(
+								$CanvasLayer,
+								["Your defense fell!"],
+								["null"]
+							)
 					buff_applied = true
 				3: #debuff
 					print("debuff")
 					match card.target_stat:
 						0: # attack
+							multiple = 1 + (1 - multiple)
 							enemy_data.enemy_offense_ratio *= (card.effect_num*multiple)
+							Util.popup_dialogue(
+								$CanvasLayer,
+								[enemy_data.enemy_name + "'s defense fell!"],
+								["null"]
+							)
 						1: # defense
+							multiple = 1 + (1 - multiple)
 							enemy_data.enemy_defense_ratio *= (card.effect_num*multiple)
+							Util.popup_dialogue(
+								$CanvasLayer,
+								[enemy_data.enemy_name + "'s defense fell!"],
+								["null"]
+							)
 					buff_applied = true
+	
+	if multiple == 0.8:
+		Util.popup_dialogue(
+			$CanvasLayer,
+			["It's not very effective..."],
+			["null"]
+		)
+	elif multiple == 1.2:
+		Util.popup_dialogue(
+			$CanvasLayer,
+			["It's super effective!"],
+			["null"])
+	
 	if buff_applied:
 		buff_applied = false
 	else:

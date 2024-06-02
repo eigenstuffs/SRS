@@ -17,14 +17,30 @@ signal next_pressed
 signal done
 signal finished_line
 
+signal finished_reading
+
+func _ready():
+	$TextBox.hide()
+
 func read(text : Array, names : Array):
+	print(text)
+	print(names)
+	
 	next_anim()
 	
 	for i in text.size():
-		if names[i]: character_name = names[i]
-		else: character_name = ""
-		if names[i]: name_frame.show()
-		else: name_frame.hide()
+		$TextBox.show()
+		
+		if names[i] != "null":
+			print("set name")
+			character_name.text = names[i]
+		else:
+			character_name.text = ""
+			
+		if names[i] != "null":
+			name_frame.show()
+		else:
+			name_frame.hide()
 		
 		label.text = text[i]
 		label.visible_characters = 1
@@ -42,6 +58,7 @@ func read(text : Array, names : Array):
 		finished_line.emit()
 		
 		await next_pressed
+	emit_signal("finished_reading")
 		
 func next_anim():
 	if !next.disabled:

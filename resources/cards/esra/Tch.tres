@@ -13,4 +13,4 @@ effect_num = 0.0
 desc = "Esra scoffs to lower your standing."
 intensity_mod = -20
 move_dialogue = Array[String](["Tch, is that all you’ve got?", "You heard me.", "What are you, an idiot?", "What’s wrong? You need your daddy now?", "[Esra gives you a nasty look. It doesn’t bode well…]"])
-name_dialogue = Array[String](["Esra", "Esra", "Esra", "Esra", ""])
+name_dialogue = Array[String](["Esra", "Esra", "Esra", "Esra", "null"])
