@@ -398,12 +398,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Lace"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(960, 540)
 texture = ExtResource("16_rn038")
 hframes = 4
 frame = 3
 
 [node name="Sprite2D2" type="Sprite2D" parent="Lace"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(1752, 880)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_2mp2i")

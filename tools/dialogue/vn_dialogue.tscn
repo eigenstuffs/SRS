@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=54 format=3 uid="uid://drqf7jcr25yqx"]
 
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
 [ext_resource type="Animation" uid="uid://bll7q7uatwhgb" path="res://tools/dialogue/God_BG.res" id="3_y7ey7"]
@@ -830,6 +830,43 @@ _data = {
 "RESET": SubResource("Animation_u3l61")
 }
 
+[sub_resource type="Animation" id="Animation_d6tyx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fkq21"]
+resource_name = "screen_shake"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(30, 2.08165e-12), Vector2(-30, 2.08165e-12), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qldr1"]
+_data = {
+"RESET": SubResource("Animation_d6tyx"),
+"screen_shake": SubResource("Animation_fkq21")
+}
+
 [sub_resource type="BitMap" id="BitMap_3kbno"]
 
 [node name="VN_Dialogue" type="Control"]
@@ -951,6 +988,14 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="EffectHandler"]
+anchor_mode = 0
+
+[node name="CameraAnim" type="AnimationPlayer" parent="EffectHandler"]
+libraries = {
+"": SubResource("AnimationLibrary_qldr1")
+}
 
 [node name="SpriteHandler" type="Control" parent="."]
 z_index = 3

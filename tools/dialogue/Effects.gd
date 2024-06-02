@@ -146,6 +146,8 @@ func _ready():
 	vn.connect("fade_trans", fade_trans)
 	
 	vn.connect("flash_white", flash_white)
+	
+	vn.connect("screen_shake", screen_shake)
 
 	vn.connect("stop_music", stop_music)
 	
@@ -344,6 +346,10 @@ func fade_trans():
 func flash_white():
 	EffectAnim.play("FlashWhite")
 	await EffectAnim.animation_finished
+
+func screen_shake():
+	$CameraAnim.play("screen_shake")
+	await $CameraAnim.animation_finished
 
 ## MUSIC
 

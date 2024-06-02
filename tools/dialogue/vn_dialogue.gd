@@ -17,6 +17,8 @@ signal fade_trans
 
 signal flash_white
 
+signal screen_shake
+
 signal stop_music
 
 signal sfx_door_knock
