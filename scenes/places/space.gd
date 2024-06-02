@@ -9,6 +9,7 @@ signal noTimeLeft
 @onready var turn_label : Label = $CanvasLayer/Overlay/Turns/TextureRect/Label
 
 func _ready():
+	turn_label.text = str(turns) + " turns left"
 	interactor.connect("started_interaction", interacted)
 	
 func interacted():

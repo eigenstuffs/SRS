@@ -22,12 +22,10 @@ enum FishingState {
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var dir = Vector2.RIGHT
 var turning = false
-var currentState = FishingState.WALKING
+var currentState = FishingState.NOTHING
 
 func _ready():
 	currentState = FishingState.NOTHING
-	await get_tree().create_timer(3).timeout
-	currentState = FishingState.WALKING
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):

@@ -1,6 +1,7 @@
 class_name MinigameHolder extends Control
 
 const MINIGAME_VIEWPORT_DIMS : Vector2 = Vector2(1600, 900)
+const TUTORIAL_LIST = preload("res://resources/minigame/tutorial_list.tres")
 
 @onready var ui : Control = $UI
 
@@ -28,6 +29,10 @@ func initiate_minigame(which : String):
 		minigame.update_time.connect(update_time)
 		minigame.ended.connect(game_end_early)
 		minigame.get_remaining_time.connect(set_game_remaining_time)
+		if Global.data_dict["remembered"].has(which):
+			$UI.start_sTime()
+		else:
+			show_tutorial(which)
 		
 		if metadata.time <= 0: return
 		ui.gameTimeCount = metadata.time
@@ -87,3 +92,15 @@ func _physics_process(delta: float) -> void:
 
 func pause_time():
 	$UI.pause_game_time()
+
+func show_tutorial(which : String):
+	var desired_tutorial = TUTORIAL_LIST.find_scene(which)
+	var a : Tutorial = desired_tutorial.instantiate()
+	$Tutorial.add_child(a)
+	await a.confirm_pressed
+	a.queue_free()
+	$UI.start_sTime()
+	Global.add_event(which)
+
+func _on_ui_start_time_over():
+	game.game_start()

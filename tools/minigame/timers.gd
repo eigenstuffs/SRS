@@ -12,6 +12,9 @@ signal gameOver
 @onready var gBar : TextureProgressBar = $GameTimer/TextureProgressBar
 
 func _ready():
+	pass
+
+func start_sTime():
 	sTime.start()
 	sLabel.show()
 

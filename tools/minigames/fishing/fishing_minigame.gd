@@ -18,8 +18,10 @@ var fish_caught_by_type : Array[int] = [0, 0, 0, 0]
 func _ready():
 	force_bar_val = $CanvasLayer.get_force_bar_val()
 	bob_indicator.visible = false
-	await get_tree().create_timer(3).timeout # wait for countdown timer
 	
+func game_start():
+	$FishingPlayer.currentState = FishingPlayer.FishingState.WALKING
+
 func end() -> void:
 	$SfxPlayer.stream = FINISHED_SFX
 	$SfxPlayer.volume_db = 5
