@@ -22,3 +22,6 @@ func end() -> void:
 # inputs to pass through to the child subviewport!
 func unhandled_input(_event : InputEvent) -> void:
 	pass
+
+func start_game():
+	pass

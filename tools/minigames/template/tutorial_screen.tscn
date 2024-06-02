@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://drw36phbx4vrj"]
+
+[ext_resource type="Texture2D" uid="uid://kjxx6hef0fgh" path="res://assets/rewardscene/Results Frame.png" id="1_5nqfx"]
+[ext_resource type="Script" path="res://tools/minigames/template/tutorial_screen.gd" id="1_g30yo"]
+[ext_resource type="FontFile" uid="uid://c6556g6be4xw6" path="res://assets/ui/ttf/Halant-Regular.ttf" id="2_tc2m4"]
+[ext_resource type="Texture2D" uid="uid://cgaksh8qj6kb0" path="res://assets/socialwarfare/SW_Button_Backplate.png" id="3_1sr5p"]
+[ext_resource type="Texture2D" uid="uid://c1ggtt1meqgln" path="res://assets/socialwarfare/Button_Backplate_Click.png" id="4_e8e3k"]
+[ext_resource type="Texture2D" uid="uid://52akqjnkuqwa" path="res://assets/socialwarfare/Button_Backplate_Hover.png" id="5_pjefn"]
+
+[node name="TutorialScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g30yo")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.0
+offset_top = -412.0
+offset_right = 679.0
+offset_bottom = 415.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5nqfx")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -952.0
+offset_top = 112.0
+offset_right = 963.0
+offset_bottom = 223.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.227451, 0.137255, 0.027451, 1)
+theme_override_fonts/font = ExtResource("2_tc2m4")
+theme_override_font_sizes/font_size = 54
+text = "How to Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConfirmButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -288.0
+offset_right = 232.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("3_1sr5p")
+texture_pressed = ExtResource("4_e8e3k")
+texture_hover = ExtResource("5_pjefn")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ConfirmButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -48.0
+offset_right = 178.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_fonts/font = ExtResource("2_tc2m4")
+theme_override_font_sizes/font_size = 54
+text = "Confirm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]

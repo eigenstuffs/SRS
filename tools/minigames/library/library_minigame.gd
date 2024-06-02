@@ -11,10 +11,11 @@ var started = false
 var item_caught : Array[int] = [0, 0]
 
 func _ready():
-	await get_tree().create_timer(3).timeout
+	pass
+
+func game_start():
 	$NPCInstancer.active = true
 	$BookInstancer.active = true
-	
 #by default we gain and lose by 1 point. If we want to make some
 #extra valuable books or damaging bombs, we can adjust that
 #when calling the gain and lose points function
@@ -28,6 +29,9 @@ func lose_points(decrease : int = 1):
 	update_item_caught("bomb", decrease)
 
 func end():
+	$LibraryPlayer.can_move = false
+	$NPCInstancer.active = false
+	$BookInstancer.active = false
 	music_fade_out()
 	$SfxPlayer.stream = FINISHED_SFX
 	$SfxPlayer.volume_db = 5

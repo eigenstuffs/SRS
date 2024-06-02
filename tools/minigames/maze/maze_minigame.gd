@@ -24,7 +24,8 @@ var all_keys_got : bool = false
 
 func _ready():
 	pause_all_movement()
-	await get_tree().create_timer(3).timeout
+
+func game_start():
 	resume_all_movement()
 
 func end():
