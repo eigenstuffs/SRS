@@ -6,6 +6,7 @@ class_name MazeGenerator
 signal key_collected
 signal all_key_collected
 signal enemy_met_player
+signal setup_complete
 
 @onready var mazeCell = preload("res://tools/minigames/maze/maze_cell.tscn")
 @onready var keys = preload("res://tools/minigames/maze/keys.tscn")

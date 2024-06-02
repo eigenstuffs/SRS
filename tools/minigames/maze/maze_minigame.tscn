@@ -81,13 +81,14 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_fx42x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_id6dk")
 
 [node name="MazePlayer" parent="." instance=ExtResource("4_pj1vw")]
 transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.173648, -4.09353e-16, -0.173648, 0.984808, 2.08165e-12, 2, 2.08165e-12)
 
 [node name="FollowingCamera" type="Camera3D" parent="MazePlayer" node_paths=PackedStringArray("maze_generator")]
-transform = Transform3D(1, -6.2061e-16, 2.18551e-16, 2.18551e-16, 0.626604, 0.779338, -6.2061e-16, -0.779338, 0.626604, 0.439, 4.23765, 3.79349)
+transform = Transform3D(1, -6.2061e-16, 2.18552e-16, 2.18551e-16, 0.626604, 0.779338, -6.2061e-16, -0.779338, 0.626604, 0.439, 3.49605, 2.40622)
 current = true
 script = ExtResource("4_ohvxp")
 MAX_X = 10.0
