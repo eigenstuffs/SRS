@@ -209,6 +209,8 @@ transform = Transform3D(-4.37114e-09, 0.0707107, -0.0707107, 2.4663e-17, 0.07071
 modulate = Color(0.976471, 0.705882, 0.654902, 0.505882)
 texture = ExtResource("12_3hqmn")
 
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="reeling_minigame" from="." to="CanvasLayer" method="_on_fishing_reeling_minigame"]
 [connection signal="reeling_minigame" from="." to="fish_instancer" method="_on_fishing_reeling_minigame"]
 [connection signal="reeling_minigame" from="." to="FishingPlayer" method="_on_fishing_reeling_minigame"]

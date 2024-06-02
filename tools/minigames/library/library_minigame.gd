@@ -2,6 +2,7 @@ class_name LibraryMinigame extends Minigame
 
 @onready var BOOK_CAUGHT_SFX = preload("res://tools/minigames/library/sound/book_caught.mp3")
 @onready var SUBMIT_SFX = preload("res://tools/minigames/library/sound/submit_chime.mp3")
+@onready var FINISHED_SFX = preload("res://tools/minigames/maze/sound/maze_game_finished.wav")
 
 signal stop_blinking
 
@@ -27,9 +28,14 @@ func lose_points(decrease : int = 1):
 	update_item_caught("bomb", decrease)
 
 func end():
+	music_fade_out()
+	$SfxPlayer.stream = FINISHED_SFX
+	$SfxPlayer.volume_db = 5
+	$SfxPlayer.play()
 	var stats_gained = compute_stats_gained(item_caught)
 	detailed_points = [item_caught, stats_gained]
 	emit_signal("ended")
+	await $SfxPlayer.finished
 	emit_signal("minigame_finished", detailed_points)
 	$LibraryPlayer/CollisionShape3D.disabled = true
 	$LibraryPlayer.can_move = false
@@ -105,3 +111,10 @@ func _on_bookshelf_player_entered():
 
 func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
+
+func music_fade_out():
+	var a = create_tween()
+	a.tween_property($MusicPlayer, "volume_db", -80, 2.0)
+	await a.finished
+	$MusicPlayer.stop()
+	$MusicPlayer.volume_db = -8

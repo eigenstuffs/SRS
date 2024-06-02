@@ -11,7 +11,8 @@ func start(args := []) -> void:
 	
 	# FIXME: Potentially super slow
 	for render_pass in render_passes:
-		CanvasItemEffect.insert_render_pass(parent, render_pass)
+		if render_pass != null:
+			CanvasItemEffect.insert_render_pass(parent, render_pass)
 
 func queue_free() -> void:
 	super.queue_free()

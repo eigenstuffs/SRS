@@ -57,7 +57,7 @@ func _on_ui_game_over():
 	if is_finished: return
 	game.remaining_time = get_remaining_time()
 	game.end()
-	await get_tree().create_timer(2).timeout
+	await game.minigame_finished
 	rough_points = game.rough_points
 	detailed_points = game.detailed_points
 	finished.emit(detailed_points)
@@ -69,9 +69,10 @@ func _on_game_child_entered_tree(node: Node) -> void:
 
 func game_end_early(): #assuming that game calls its own end early
 	print("game ends early")
+	pause_time()
 	game.remaining_time = get_remaining_time()
 	$UI.display_message("Finished!")
-	await get_tree().create_timer(2).timeout
+	await game.minigame_finished
 	rough_points = game.rough_points
 	detailed_points = game.detailed_points
 	finished.emit(detailed_points)
@@ -83,3 +84,6 @@ func set_game_remaining_time():
 	
 func _physics_process(delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
+
+func pause_time():
+	$UI.pause_game_time()

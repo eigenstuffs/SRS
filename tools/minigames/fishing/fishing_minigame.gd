@@ -2,6 +2,8 @@ class_name FishingMinigame extends Minigame
 #extends Node3D #remember to change this back
 # signals and end() are already defined in Minigame class .. see minigame.gd
 
+const FINISHED_SFX = preload("res://tools/minigames/maze/sound/maze_game_finished.wav")
+
 @onready var fishing_rod = $FishingPlayer/FishingRod
 @onready var bob_indicator = $BobIndicator
 var force_bar_val
@@ -19,8 +21,12 @@ func _ready():
 	await get_tree().create_timer(3).timeout # wait for countdown timer
 	
 func end() -> void:
+	$SfxPlayer.stream = FINISHED_SFX
+	$SfxPlayer.volume_db = 5
+	$SfxPlayer.play()
 	var stats_gained : Array[int] = calculate_stats(fish_caught_by_type)
 	detailed_points = [fish_caught_by_type, stats_gained]
+	await $SfxPlayer.finished
 	emit_signal("minigame_finished", [fish_caught_by_type, stats_gained])
 	
 func _process(delta):

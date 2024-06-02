@@ -36,6 +36,7 @@ func end():
 	has_ended = true
 	var stats_gained = calculate_stats(remaining_time, maze_metadata.diffMult)
 	detailed_points = [[remaining_time, maze_metadata.diffMult], stats_gained]
+	await $SfxPlayer.finished
 	emit_signal("minigame_finished", detailed_points)
 
 func _on_maze_generator_key_collected():
@@ -82,9 +83,9 @@ func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
 
 func calculate_stats(time : int, multiplier : int) -> Array[int]:
-	var int_gained := roundi((3*time)/60) * multiplier
+	var wis_gained := roundi((3*time)/60) * multiplier
 	var well_gained := roundi((4*time)/60 + 1) * multiplier
-	return [0, int_gained, 0, well_gained]
+	return [wis_gained, 0, 0, well_gained]
 	
 func music_fade_out():
 	var a = create_tween()

@@ -241,6 +241,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -8.0
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_lrgu2")

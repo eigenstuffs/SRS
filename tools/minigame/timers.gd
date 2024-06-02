@@ -51,3 +51,6 @@ func modify_game_time(delta : int):
 func display_message(msg : String):
 	sLabel.text = msg
 	sLabel.show()
+	
+func pause_game_time():
+	gTime.paused = true
