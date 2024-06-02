@@ -79,6 +79,12 @@ func card_action(card : Card, target : String):
 	
 	## put dialogue somewhere in here
 	
+	Util.popup_dialogue(
+		$CanvasLayer,
+		card.move_dialogue,
+		[null,null,null,null,null,null,null,null,null,null]
+	)
+	
 	match target:
 		"Player":
 			match card.effect:

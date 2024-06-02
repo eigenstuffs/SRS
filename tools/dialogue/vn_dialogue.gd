@@ -147,6 +147,9 @@ signal stop_overlay
 signal add_OOC
 signal add_OPP
 
+signal remove_OOC
+signal remove_OPP
+
 signal hide_text
 signal show_text
 
@@ -448,8 +451,37 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 1
 		Global.save_data()
 		get_tree().change_scene_to_file("res://scenes/places/free_zone_1.tscn")
+	elif current_line["flag"] == "free_zone_2":
+		text_box.hide()
+		EffectAnim.play("FadeBlack")
+		EffectAnim.speed_scale = 0.5
+		await EffectAnim.animation_finished
+		EffectAnim.speed_scale = 1
+		Global.save_data()
+		get_tree().change_scene_to_file("res://scenes/places/free_zone_2.tscn")
 	elif current_line["flag"] == "quit":
 		get_tree().quit()
+	elif current_line["flag"] == "next_scene":
+		text_box.hide()
+		EffectAnim.play("FadeBlack")
+		EffectAnim.speed_scale = 0.5
+		await EffectAnim.animation_finished
+		EffectAnim.speed_scale = 1
+		Global.save_data()
+		get_tree().reload_current_scene()
+	elif current_line["flag"] == "next_scene_lace":
+		text_box.hide()
+		EffectAnim.play("FadeLace")
+		EffectAnim.speed_scale = 0.8
+		await EffectAnim.animation_finished
+		Global.save_data()
+		get_tree().reload_current_scene()
+	elif current_line["flag"] == "next_scene_abrupt":
+		text_box.hide()
+		EffectAnim.play("FadeBlackAbrupt")
+		await EffectAnim.animation_finished
+		Global.save_data()
+		get_tree().reload_current_scene()
 	
 	if current_line["run if"] != null:
 		var text = current_line["run if"].split(",")

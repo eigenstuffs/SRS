@@ -278,6 +278,9 @@ func _ready():
 	vn.connect("add_OOC", add_OOC)
 	vn.connect("add_OPP", add_OPP)
 	
+	vn.connect("remove_OOC", remove_OOC)
+	vn.connect("remove_OPP", remove_OPP)
+	
 	vn.connect("hide_text", hide_text)
 	vn.connect("show_text", show_text)
 
@@ -511,6 +514,16 @@ func add_OOC():
 func add_OPP():
 	Global.data_dict["opp"] += 1
 	Global.data_dict["remembered"].append("OPP_reached_" % Global.data_dict["opp"])
+	
+func remove_OOC():
+	Global.data_dict["ooc"] += 1
+	if Global.data_dict["remembered"].has("OOC_reached_" % Global.data_dict["ooc"]+1):
+		Global.data_dict["remembered"].erase("OOC_reached_" % Global.data_dict["ooc"]+1)
+	
+func remove_OPP():
+	Global.data_dict["opp"] += 1
+	if Global.data_dict["remembered"].has("OPP_reached_" % Global.data_dict["opp"]+1):
+		Global.data_dict["remembered"].erase("OPP_reached_" % Global.data_dict["opp"]+1)
 
 func hide_text():
 	var a = create_tween()

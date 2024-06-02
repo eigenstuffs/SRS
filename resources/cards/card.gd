@@ -12,3 +12,4 @@ class_name Card
 @export var desc : String
 @export var intensity_mod : int
 @export var move_dialogue : Array[String]
+@export var name_dialogue : Array[String]

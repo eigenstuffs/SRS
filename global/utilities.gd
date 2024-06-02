@@ -2,17 +2,17 @@ extends Node
 
 signal util_finished
 
-#const DIALOGUE_FROM_STRINGS = preload("res://tools/dialogue/dialogue_from_strings.tscn")
+const UTIL_DIALOGUE = preload("res://tools/dialogue/util_dialogue.tscn")
 const MINIGAME_HOLDER = preload("res://tools/minigame/minigame_holder.tscn")
 const REWARD_SCENE_LIST = preload("res://resources/minigame/reward_scene_list.tres")
 
-#func dialogue_from_strings(holder : Control, text_array : Array[String]):#
-#	var a : DialogueFromStrings = DIALOGUE_FROM_STRINGS.instantiate()
-#	holder.add_child(a)
-#	a.read(text_array)
-#	await a.finished_reading
-#	a.queue_free()
-#	emit_signal("util_finished")
+func popup_dialogue(holder : CanvasLayer, text_array : Array[String], names : Array):
+	var a : UtilDialogue = UTIL_DIALOGUE.instantiate()
+	holder.add_child(a)
+	a.read(text_array, names)
+	await a.finished_reading
+	a.queue_free()
+	emit_signal("util_finished")
 
 func create_minigame(canvas_layer : CanvasLayer, minigame : String):
 	var a : MinigameHolder = MINIGAME_HOLDER.instantiate()

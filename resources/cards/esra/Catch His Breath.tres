@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://3t21ogoehw7x"]
+
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_4l12f"]
+
+[resource]
+script = ExtResource("1_4l12f")
+points_req = 0
+title = "Catch His Breath"
+effect = null
+target_stat = null
+type = 0
+effect_num = 0.0
+desc = "Esra takes a moment to stare up at the ceiling while running his hands through his hair."
+intensity_mod = -20
+move_dialogue = Array[String](["…", "I don’t have to listen to this.", "How stupid.", "Cram it.", "[Esra furiously runs his hand through his hair, mussing up his bangs.]"])
+name_dialogue = Array[String](["Esra", "Esra", "Esra", "Esra", ""])

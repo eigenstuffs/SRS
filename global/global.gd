@@ -107,7 +107,7 @@ func get_main_stats() -> Array[int]:
 var save_dir = "user://villainess_saves/"
 var save_path = save_dir + "save.dat"
 
-var data_dict = {
+@onready var data_dict = {
 	"remembered" : remembered,
 	"ooc" : ooc,
 	"opp" : opp,
@@ -123,7 +123,7 @@ var data_dict = {
 	"player_wellness" : player_wellness,
 	"player_money" : player_money,
 	"player_prestige" : player_prestige,
-	"player_cards" : player_cards,
+	"player_cards" : card_list.card_list,
 	
 	"player_hp" : player_hp,
 	"player_mp" : player_mp,
