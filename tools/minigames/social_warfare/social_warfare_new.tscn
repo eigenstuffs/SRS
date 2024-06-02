@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://jsihguxhu4ri"]
+[gd_scene load_steps=36 format=3 uid="uid://jsihguxhu4ri"]
 
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/PlayerData.gd" id="2_t2gbr"]
@@ -17,6 +17,326 @@
 [ext_resource type="Texture2D" uid="uid://52akqjnkuqwa" path="res://assets/socialwarfare/Button_Backplate_Hover.png" id="9_d3rgy"]
 [ext_resource type="Texture2D" uid="uid://b7v0viqq2h465" path="res://assets/socialwarfare/[SAMPLE REFERENCE] Social Welfare UI.png" id="9_epmyr"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/Fight.gd" id="12_3d855"]
+[ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="15_7j0p1"]
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/Flee.gd" id="15_bsyil"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpmps"]
+bg_color = Color(0, 0, 0, 0.576471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi051"]
+bg_color = Color(0.556863, 0.698039, 0.317647, 1)
+
+[sub_resource type="Animation" id="Animation_aclgi"]
+resource_name = "Enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -1088), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(512, -128), Vector2(512, 704), Vector2(512, 576)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2048, 576), Vector2(1318, 576)]
+}
+
+[sub_resource type="Animation" id="Animation_qfjrt"]
+resource_name = "ExitFail"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1088)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(512, 576), Vector2(512, -128)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [Vector2(1408, 576), Vector2(2048, 576)]
+}
+
+[sub_resource type="Animation" id="Animation_g7tsf"]
+resource_name = "ExitWon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(512, 576), Vector2(512, -128)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.784314), Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(512, 576), Vector2(-128, 576)]
+}
+
+[sub_resource type="Animation" id="Animation_y03o5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1088)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(512, -128)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.784314)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2048, 704)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/Sprite2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, -128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q7apf"]
+_data = {
+"Enter": SubResource("Animation_aclgi"),
+"ExitFail": SubResource("Animation_qfjrt"),
+"ExitWon": SubResource("Animation_g7tsf"),
+"RESET": SubResource("Animation_y03o5")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi1qw"]
+atlas = ExtResource("15_7j0p1")
+region = Rect2(0, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkc0s"]
+atlas = ExtResource("15_7j0p1")
+region = Rect2(1920, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04tm3"]
+atlas = ExtResource("15_7j0p1")
+region = Rect2(3840, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6863"]
+atlas = ExtResource("15_7j0p1")
+region = Rect2(5760, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5uvo"]
+atlas = ExtResource("15_7j0p1")
+region = Rect2(7680, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2703t"]
+atlas = ExtResource("15_7j0p1")
+region = Rect2(9600, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0acs"]
+atlas = ExtResource("15_7j0p1")
+region = Rect2(11520, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfit7"]
+atlas = ExtResource("15_7j0p1")
+region = Rect2(13440, 0, 1920, 2000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwyqj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi1qw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkc0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6863")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5uvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2703t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0acs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfit7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
 
 [node name="SocialWarfare" type="Control"]
 layout_mode = 3
@@ -188,6 +508,59 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Flee" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("15_bsyil")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Flee"]
+layout_mode = 0
+offset_top = -1088.0
+offset_right = 1920.0
+color = Color(0, 0, 0, 0.784314)
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Flee"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = -128.0
+offset_right = 1408.0
+offset_bottom = -0.000244141
+theme_override_styles/background = SubResource("StyleBoxFlat_kpmps")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mi051")
+value = 10.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Flee" type="AnimationPlayer" parent="CanvasLayer/Flee"]
+libraries = {
+"": SubResource("AnimationLibrary_q7apf")
+}
+autoplay = "RESET"
+
+[node name="Label" type="Label" parent="CanvasLayer/Flee"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 768.0
+offset_right = 1408.0
+offset_bottom = 832.0
+theme_override_font_sizes/font_size = 32
+text = "MASH SPACE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer/Flee"]
+position = Vector2(2048, 704)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Flee/Node2D"]
+position = Vector2(2.08165e-12, -128)
+rotation = 3.14159
+scale = Vector2(0.2, -0.2)
+sprite_frames = SubResource("SpriteFrames_wwyqj")
+autoplay = "default"
+frame_progress = 0.41756
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)

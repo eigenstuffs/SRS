@@ -13,6 +13,7 @@ var buff_applied : bool = false
 
 @onready var choose = $CanvasLayer/Choice
 @onready var fight = $CanvasLayer/Fight
+@onready var flee = $CanvasLayer/Flee
 @onready var enemy_data : EnemyData = $EnemyData
 
 signal card_action_finished
@@ -31,6 +32,7 @@ func turn_loop():
 	fight.reset()
 	choose.hide()
 	fight.hide()
+	flee.hide()
 	match STATE:
 		STATES.PLAYER:
 			choose.show()
@@ -49,10 +51,17 @@ func turn_loop():
 							await card_action_finished
 							print("action done")
 							STATE = STATES.OPPONENT
-
 				"flee":
-					pass
-			
+					flee.show()
+					flee.initiate()
+					await flee.finished
+					match flee.escaped:
+						true:
+							end_battle(true)
+						false:
+							print("failed flee")
+							STATE = STATES.OPPONENT
+							flee.hide()
 			turn_loop()
 		STATES.OPPONENT:
 			card_action(
@@ -148,3 +157,10 @@ func refresh_stats():
 	a.tween_property(
 		$CanvasLayer/Opponent/BarMP, "value",
 		enemy_data.enemy_mp, 0.5).set_trans(Tween.TRANS_EXPO)
+
+func end_battle(won : bool):
+	match won:
+		true:
+			pass
+		false:
+			pass
