@@ -80,10 +80,6 @@ func _input(event):
 			a.tween_property(next, "modulate:a", 0, 0.2)
 			await a.finished
 			emit_signal("next_pressed")
-		elif a:
-			if a.is_running():
-				a.pause()
-				a.custom_step(current_time)
 
 func _on_next_pressed():
 	var a = create_tween()

@@ -20,7 +20,7 @@ config/icon="res://assets/misc/IMG_4946.jpeg"
 
 EffectAnim="*res://tools/effect/effect_anim.tscn"
 Global="*res://global/global.gd"
-DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+DebugMenu="res://addons/debug_menu/debug_menu.tscn"
 Util="*res://global/utilities.gd"
 WindowDimensionHelper="res://global/window_dimension_helper.gd"
 EffectReg="*res://global/EffectReg.gd"

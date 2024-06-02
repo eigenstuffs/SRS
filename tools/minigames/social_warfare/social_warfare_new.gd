@@ -11,10 +11,14 @@ var battle_intensity : int = 0
 
 var buff_applied : bool = false
 
-@onready var choose = $CanvasLayer/Choice
-@onready var fight = $CanvasLayer/Fight
-@onready var flee = $CanvasLayer/Flee
+var shake_strength = 0
+var shake_decay = 0
+
+@onready var choose = $Holder/Choice
+@onready var fight = $Holder/Fight
+@onready var flee = $Holder/Flee
 @onready var enemy_data : EnemyData = $EnemyData
+@onready var cam : Camera2D = $Camera2D
 
 signal card_action_finished
 signal enemy_move_finished
@@ -22,10 +26,10 @@ signal enemy_move_finished
 func _ready():
 	turn_loop()
 	
-	$CanvasLayer/Opponent/BarHP.max_value = enemy_data.enemy_hp
-	$CanvasLayer/Opponent/BarMP.max_value = enemy_data.enemy_mp
-	$CanvasLayer/Player/BarHP.max_value = Global.data_dict["player_max_hp"]
-	$CanvasLayer/Player/BarMP.max_value = Global.data_dict["player_max_mp"]
+	$Holder/Opponent/BarHP.max_value = enemy_data.enemy_hp
+	$Holder/Opponent/BarMP.max_value = enemy_data.enemy_mp
+	$Holder/Player/BarHP.max_value = Global.data_dict["player_max_hp"]
+	$Holder/Player/BarMP.max_value = Global.data_dict["player_max_mp"]
 	
 func turn_loop():
 	refresh_stats()
@@ -80,12 +84,12 @@ func card_action(card : Card, target : String):
 	## print card title
 	
 	#$Background/Box.hide()
-	$CanvasLayer/Fight.hide()
+	$Holder/Fight.hide()
 	
 	match target:
 		"Player":
 			Util.popup_dialogue(
-				$CanvasLayer,
+				$Holder/DialogueHolder,
 				[enemy_data.enemy_name + " used " + card.title + "!"],
 				["null"]
 			)
@@ -93,7 +97,7 @@ func card_action(card : Card, target : String):
 			await Util.util_finished
 		"Opponent":
 			Util.popup_dialogue(
-				$CanvasLayer,
+				$Holder/DialogueHolder,
 				["You used " + card.title + "!"],
 				["null"]
 			)
@@ -105,7 +109,7 @@ func card_action(card : Card, target : String):
 	if card.move_dialogue:
 		var index = randi_range(0, card.move_dialogue.size()-1)
 		Util.popup_dialogue(
-			$CanvasLayer,
+			$Holder/DialogueHolder,
 			[card.move_dialogue[index]],
 			[card.name_dialogue[index]]
 		)
@@ -170,6 +174,7 @@ func card_action(card : Card, target : String):
 				0:
 					Global.data_dict["player_hp"] -= (card.effect_num *
 						enemy_data.enemy_offense_ratio) * multiple
+					start_shake(card.effect_num, card.effect_num * 2)
 				1:
 					enemy_data.enemy_hp += card.effect_num * multiple
 				2:
@@ -181,13 +186,15 @@ func card_action(card : Card, target : String):
 								[enemy_data.enemy_name + "'s offense rose!"],
 								["null"]
 							)
+							await Util.util_finished
 						1:
 							enemy_data.enemy_defense_ratio *= (card.effect_num)
 							Util.popup_dialogue(
-								$CanvasLayer,
+								$Holder/DialogueHolder,
 								[enemy_data.enemy_name + "'s defense rose!"],
 								["null"]
 							)
+							await Util.util_finished
 					buff_applied = true
 				3:
 					match card.target_stat:
@@ -195,24 +202,27 @@ func card_action(card : Card, target : String):
 							multiple = 1 + (1 - multiple)
 							Global.data_dict["player_offense_ratio"] *= (card.effect_num * multiple)
 							Util.popup_dialogue(
-								$CanvasLayer,
+								$Holder/DialogueHolder,
 								["Your offense fell!"],
 								["null"]
 							)
+							await Util.util_finished
 						1:
 							multiple = 1 + (1 - multiple)
 							Global.data_dict["player_defense_ratio"] *= (card.effect_num * multiple)
 							Util.popup_dialogue(
-								$CanvasLayer,
+								$Holder/DialogueHolder,
 								["Your defense fell!"],
 								["null"]
 							)
+							await Util.util_finished
 					buff_applied = true
 		"Opponent":
 			match card.effect:
 				0: #attack
 					enemy_data.enemy_hp -= (card.effect_num *
 						Global.data_dict["player_offense_ratio"] * multiple)
+					start_shake(card.effect_num, card.effect_num * 2)
 				1: #restore
 					Global.data_dict["player_hp"] += (card.effect_num * multiple)
 				2: #buff
@@ -221,17 +231,19 @@ func card_action(card : Card, target : String):
 						0: # attack
 							Global.data_dict["player_offense_ratio"]*= (card.effect_num*multiple)
 							Util.popup_dialogue(
-								$CanvasLayer,
+								$Holder/DialogueHolder,
 								["Your offense rose!"],
 								["null"]
 							)
+							await Util.util_finished
 						1: # defense
 							Global.data_dict["player_defense_ratio"] *= (card.effect_num*multiple)
 							Util.popup_dialogue(
-								$CanvasLayer,
+								$Holder/DialogueHolder,
 								["Your defense fell!"],
 								["null"]
 							)
+							await Util.util_finished
 					buff_applied = true
 				3: #debuff
 					print("debuff")
@@ -240,31 +252,35 @@ func card_action(card : Card, target : String):
 							multiple = 1 + (1 - multiple)
 							enemy_data.enemy_offense_ratio *= (card.effect_num*multiple)
 							Util.popup_dialogue(
-								$CanvasLayer,
+								$Holder/DialogueHolder,
 								[enemy_data.enemy_name + "'s defense fell!"],
 								["null"]
 							)
+							await Util.util_finished
 						1: # defense
 							multiple = 1 + (1 - multiple)
 							enemy_data.enemy_defense_ratio *= (card.effect_num*multiple)
 							Util.popup_dialogue(
-								$CanvasLayer,
+								$Holder/DialogueHolder,
 								[enemy_data.enemy_name + "'s defense fell!"],
 								["null"]
 							)
+							await Util.util_finished
 					buff_applied = true
 	
 	if multiple == 0.8:
 		Util.popup_dialogue(
-			$CanvasLayer,
+			$Holder/DialogueHolder,
 			["It's not very effective..."],
 			["null"]
 		)
+		await Util.util_finished
 	elif multiple == 1.2:
 		Util.popup_dialogue(
-			$CanvasLayer,
+			$Holder/DialogueHolder,
 			["It's super effective!"],
 			["null"])
+		await Util.util_finished
 	
 	if buff_applied:
 		buff_applied = false
@@ -285,19 +301,19 @@ func enemy_move():
 func refresh_stats():
 	var a = create_tween()
 	a.tween_property(
-		$CanvasLayer/Player/BarHP, "value",
+		$Holder/Player/BarHP, "value",
 		Global.data_dict["player_hp"], 0.5).set_trans(Tween.TRANS_EXPO)
 	a = create_tween()
 	a.tween_property(
-		$CanvasLayer/Player/BarMP, "value",
+		$Holder/Player/BarMP, "value",
 		Global.data_dict["player_mp"], 0.5).set_trans(Tween.TRANS_EXPO)
 	a = create_tween()
 	a.tween_property(
-		$CanvasLayer/Opponent/BarHP, "value",
+		$Holder/Opponent/BarHP, "value",
 		enemy_data.enemy_hp, 0.5).set_trans(Tween.TRANS_EXPO)
 	a = create_tween()
 	a.tween_property(
-		$CanvasLayer/Opponent/BarMP, "value",
+		$Holder/Opponent/BarMP, "value",
 		enemy_data.enemy_mp, 0.5).set_trans(Tween.TRANS_EXPO)
 
 func end_battle(won : bool):
@@ -306,3 +322,15 @@ func end_battle(won : bool):
 			pass
 		false:
 			pass
+
+func _process(delta):
+	if shake_strength > 0:
+		#print(shake_strength)
+		cam.offset = Vector2(randf_range(-shake_strength, shake_strength), randf_range(-shake_strength, shake_strength))
+		print(cam.offset)
+		shake_strength -= shake_decay * delta
+	
+		
+func start_shake(strength: float, decay: float):
+	shake_strength = strength
+	shake_decay = decay

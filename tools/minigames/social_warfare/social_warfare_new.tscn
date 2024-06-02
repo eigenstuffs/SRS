@@ -1,12 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://jsihguxhu4ri"]
+[gd_scene load_steps=33 format=3 uid="uid://jsihguxhu4ri"]
 
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/PlayerData.gd" id="2_t2gbr"]
 [ext_resource type="Texture2D" uid="uid://bg5lmsai3bdgn" path="res://assets/socialwarfare/Black Box.png" id="2_wm5oo"]
 [ext_resource type="Texture2D" uid="uid://b0jmur30yi5il" path="res://assets/socialwarfare/Level_HP_MP_UI.png" id="3_wlxvx"]
-[ext_resource type="Texture2D" uid="uid://cmqm23sram70i" path="res://assets/socialwarfare/[SAMPLE REFERENCE] Social Welfare UI_Cards.png" id="4_bcrd3"]
 [ext_resource type="Texture2D" uid="uid://yupx74k183p1" path="res://assets/socialwarfare/Opponent_HP_MP_Level_UI.png" id="4_vv8kx"]
-[ext_resource type="Texture2D" uid="uid://m2w8lbq8vxxr" path="res://assets/socialwarfare/box.png" id="5_qj8qn"]
 [ext_resource type="Texture2D" uid="uid://duon6ucqjsp23" path="res://assets/socialwarfare/bar_white.png" id="5_r0ovr"]
 [ext_resource type="Texture2D" uid="uid://c8he0ci40rd5s" path="res://assets/socialwarfare/bar_green.png" id="6_wldyg"]
 [ext_resource type="Texture2D" uid="uid://dync2rp1v4bs4" path="res://assets/socialwarfare/bar_mp.png" id="7_j7171"]
@@ -15,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bbcvsc3odiorw" path="res://tools/minigames/social_warfare/card_deck_new.tscn" id="8_m254v"]
 [ext_resource type="Texture2D" uid="uid://c1ggtt1meqgln" path="res://assets/socialwarfare/Button_Backplate_Click.png" id="8_vkh4x"]
 [ext_resource type="Texture2D" uid="uid://52akqjnkuqwa" path="res://assets/socialwarfare/Button_Backplate_Hover.png" id="9_d3rgy"]
-[ext_resource type="Texture2D" uid="uid://b7v0viqq2h465" path="res://assets/socialwarfare/[SAMPLE REFERENCE] Social Welfare UI.png" id="9_epmyr"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/Fight.gd" id="12_3d855"]
 [ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="15_7j0p1"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/Flee.gd" id="15_bsyil"]
@@ -359,34 +356,38 @@ offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 2048.0
+offset_bottom = 1216.0
 
 [node name="Box" type="TextureRect" parent="Background"]
 layout_mode = 0
+offset_left = -128.0
 offset_top = 848.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 2048.0
+offset_bottom = 1216.0
 texture = ExtResource("2_wm5oo")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Holder" type="Control" parent="."]
+anchors_preset = 0
+mouse_filter = 1
 
-[node name="Player" type="Control" parent="CanvasLayer"]
-layout_mode = 3
+[node name="Player" type="Control" parent="Holder"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -224.0
-offset_top = 32.0
-offset_right = 224.0
-offset_bottom = 224.0
+offset_left = 736.0
+offset_right = 1184.0
+offset_bottom = 192.0
 grow_horizontal = 2
 
-[node name="Box" type="Sprite2D" parent="CanvasLayer/Player"]
+[node name="Box" type="Sprite2D" parent="Holder/Player"]
 position = Vector2(845, 496)
 texture = ExtResource("3_wlxvx")
 
-[node name="BarHP" type="TextureProgressBar" parent="CanvasLayer/Player"]
+[node name="BarHP" type="TextureProgressBar" parent="Holder/Player"]
 layout_mode = 0
 offset_left = 611.0
 offset_top = 495.0
@@ -396,7 +397,7 @@ value = 70.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("6_wldyg")
 
-[node name="BarMP" type="TextureProgressBar" parent="CanvasLayer/Player"]
+[node name="BarMP" type="TextureProgressBar" parent="Holder/Player"]
 layout_mode = 0
 offset_left = 924.0
 offset_top = 495.0
@@ -406,22 +407,22 @@ value = 70.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("7_j7171")
 
-[node name="Opponent" type="Control" parent="CanvasLayer"]
-layout_mode = 3
+[node name="Opponent" type="Control" parent="Holder"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -224.0
-offset_top = 32.0
-offset_right = 224.0
-offset_bottom = 224.0
+offset_left = 736.0
+offset_top = 64.0
+offset_right = 1184.0
+offset_bottom = 256.0
 grow_horizontal = 2
 
-[node name="Box" type="Sprite2D" parent="CanvasLayer/Opponent"]
+[node name="Box" type="Sprite2D" parent="Holder/Opponent"]
 position = Vector2(-397, 163)
 texture = ExtResource("4_vv8kx")
 
-[node name="BarHP" type="TextureProgressBar" parent="CanvasLayer/Opponent"]
+[node name="BarHP" type="TextureProgressBar" parent="Holder/Opponent"]
 layout_mode = 0
 offset_left = -665.0
 offset_top = 169.0
@@ -431,7 +432,7 @@ value = 70.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("6_wldyg")
 
-[node name="BarMP" type="TextureProgressBar" parent="CanvasLayer/Opponent"]
+[node name="BarMP" type="TextureProgressBar" parent="Holder/Opponent"]
 layout_mode = 0
 offset_left = -352.0
 offset_top = 169.0
@@ -441,14 +442,15 @@ value = 70.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("7_j7171")
 
-[node name="Fight" type="Control" parent="CanvasLayer"]
+[node name="Fight" type="Control" parent="Holder"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_3d855")
 
-[node name="Back" type="TextureButton" parent="CanvasLayer/Fight"]
+[node name="Back" type="TextureButton" parent="Holder/Fight"]
 layout_mode = 0
 offset_left = 92.0
 offset_top = 708.0
@@ -460,19 +462,19 @@ texture_hover = ExtResource("9_d3rgy")
 texture_disabled = ExtResource("7_k28hl")
 texture_focused = ExtResource("9_d3rgy")
 
-[node name="CardDeck" parent="CanvasLayer/Fight" instance=ExtResource("8_m254v")]
+[node name="CardDeck" parent="Holder/Fight" instance=ExtResource("8_m254v")]
 layout_mode = 0
 offset_left = 640.0
 offset_top = 640.0
 offset_right = 1856.0
 offset_bottom = 1152.0
 
-[node name="Cards" type="Control" parent="CanvasLayer/Fight"]
+[node name="Cards" type="Control" parent="Holder/Fight"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Choice" type="Control" parent="CanvasLayer"]
+[node name="Choice" type="Control" parent="Holder"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -480,7 +482,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_sbmwb")
 
-[node name="Fight" type="TextureButton" parent="CanvasLayer/Choice"]
+[node name="Fight" type="TextureButton" parent="Holder/Choice"]
 layout_mode = 0
 offset_left = 946.0
 offset_top = 904.0
@@ -491,7 +493,7 @@ texture_pressed = ExtResource("8_vkh4x")
 texture_hover = ExtResource("9_d3rgy")
 texture_focused = ExtResource("9_d3rgy")
 
-[node name="Flee" type="TextureButton" parent="CanvasLayer/Choice"]
+[node name="Flee" type="TextureButton" parent="Holder/Choice"]
 layout_mode = 0
 offset_left = 1408.0
 offset_top = 904.0
@@ -502,27 +504,21 @@ texture_pressed = ExtResource("8_vkh4x")
 texture_hover = ExtResource("9_d3rgy")
 texture_focused = ExtResource("9_d3rgy")
 
-[node name="DialogueHolder" type="Control" parent="CanvasLayer"]
+[node name="Flee" type="Control" parent="Holder"]
 visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Flee" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("15_bsyil")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Flee"]
+[node name="ColorRect" type="ColorRect" parent="Holder/Flee"]
 layout_mode = 0
 offset_top = -1088.0
 offset_right = 1920.0
 color = Color(0, 0, 0, 0.784314)
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Flee"]
+[node name="ProgressBar" type="ProgressBar" parent="Holder/Flee"]
 layout_mode = 0
 offset_left = 512.0
 offset_top = -128.0
@@ -534,13 +530,13 @@ value = 10.0
 fill_mode = 1
 show_percentage = false
 
-[node name="Flee" type="AnimationPlayer" parent="CanvasLayer/Flee"]
+[node name="Flee" type="AnimationPlayer" parent="Holder/Flee"]
 libraries = {
 "": SubResource("AnimationLibrary_q7apf")
 }
 autoplay = "RESET"
 
-[node name="Label" type="Label" parent="CanvasLayer/Flee"]
+[node name="Label" type="Label" parent="Holder/Flee"]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 768.0
@@ -551,10 +547,10 @@ text = "MASH SPACE!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Node2D" type="Node2D" parent="CanvasLayer/Flee"]
+[node name="Node2D" type="Node2D" parent="Holder/Flee"]
 position = Vector2(2048, 704)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Flee/Node2D"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Holder/Flee/Node2D"]
 position = Vector2(2.08165e-12, -128)
 rotation = 3.14159
 scale = Vector2(0.2, -0.2)
@@ -562,31 +558,12 @@ sprite_frames = SubResource("SpriteFrames_wwyqj")
 autoplay = "default"
 frame_progress = 0.41756
 
+[node name="DialogueHolder" type="CanvasLayer" parent="Holder"]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -105.0
-offset_top = 727.0
-offset_right = 2175.0
-offset_bottom = 1468.0
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("5_qj8qn")
-
-[node name="[sampleReference]SocialWelfareUiCards" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.2)
-position = Vector2(960, 540)
-texture = ExtResource("4_bcrd3")
-
-[node name="[sampleReference]SocialWelfareUi" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.396078)
-position = Vector2(3136, 512)
-texture = ExtResource("9_epmyr")
-
-[connection signal="pressed" from="CanvasLayer/Fight/Back" to="CanvasLayer/Fight" method="_on_back_pressed"]
-[connection signal="selected_card" from="CanvasLayer/Fight/CardDeck" to="CanvasLayer/Fight" method="_on_card_deck_selected_card"]
-[connection signal="pressed" from="CanvasLayer/Choice/Fight" to="CanvasLayer/Choice" method="_on_fight_pressed"]
-[connection signal="pressed" from="CanvasLayer/Choice/Flee" to="CanvasLayer/Choice" method="_on_flee_pressed"]
+[connection signal="pressed" from="Holder/Fight/Back" to="Holder/Fight" method="_on_back_pressed"]
+[connection signal="selected_card" from="Holder/Fight/CardDeck" to="Holder/Fight" method="_on_card_deck_selected_card"]
+[connection signal="pressed" from="Holder/Choice/Fight" to="Holder/Choice" method="_on_fight_pressed"]
+[connection signal="pressed" from="Holder/Choice/Flee" to="Holder/Choice" method="_on_flee_pressed"]
