@@ -6,7 +6,7 @@ var last_note_time : float
 var prepare_stage := false
 
 func _ready() -> void:
-	MinigameRegistry.get_metadata('Rhythm').time = 9999.0
+	MinigameRegistry.get_metadata('Rhythm').time = -1.0
 	get_parent().get_parent().ui.gTime.queue_free()
 
 func _process(delta: float) -> void:
@@ -29,10 +29,11 @@ func _physics_process(delta: float) -> void:
 		playfield.beatmap = beatmap_select.current_beatmap
 		playfield.prepare()
 		
-		last_note_time = playfield.hit_objects[-1].time
-		MinigameRegistry.get_metadata('Rhythm').time = last_note_time - 3
+		var last_hit_object := playfield.hit_objects[-1]
+		last_note_time = last_hit_object.time + last_hit_object.duration + 3
+		MinigameRegistry.get_metadata('Rhythm').time = last_note_time
 		# FIXME: cursed hack into minigame_holder
-		#get_parent().get_parent().ui.connect('startTimeOver', func(): playfield.start())
+		get_parent().get_parent().ui.connect('startTimeOver', func(): playfield.start())
 		
 		prepare_stage = true
 		await get_tree().create_timer(3.0).timeout
@@ -44,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		$DirectionalLight3D.rotation_degrees = Vector3(-60, -130, 0)
 		$Playfield/Camera3D.fov = 170
 		await get_tree().create_timer(3.0).timeout
-		playfield.start()
+		get_parent().get_parent().start.call()
 	
 func end() -> void:
 	if not has_ended:

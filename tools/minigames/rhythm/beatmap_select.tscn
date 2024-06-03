@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d4cwmpkhjgayy"]
+[gd_scene load_steps=18 format=3 uid="uid://d4cwmpkhjgayy"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/beatmap_select.gd" id="1_28cak"]
 [ext_resource type="Resource" uid="uid://u2v6to2msmoe" path="res://resources/beatmap/black_key.tres" id="2_w3ady"]
@@ -8,13 +8,20 @@
 [ext_resource type="Resource" uid="uid://dnbo1c8vcvwxb" path="res://resources/beatmap/escapsim.tres" id="4_xy04h"]
 [ext_resource type="Resource" uid="uid://qc6xfemnwspm" path="res://resources/beatmap/eden.tres" id="5_kr3uh"]
 [ext_resource type="AudioStream" uid="uid://d1querjbramsy" path="res://assets/sfx/whoosh_1.wav" id="7_1i8dd"]
+[ext_resource type="Shader" path="res://tools/minigames/rhythm/arrow.gdshader" id="7_ksbjf"]
 [ext_resource type="AudioStream" uid="uid://dfvvumy7n5b2b" path="res://assets/sfx/game_alert_2.mp3" id="8_5xqbm"]
 [ext_resource type="AudioStream" uid="uid://dd1wk4fpa4nyq" path="res://assets/sfx/game_alert_1.mp3" id="8_m1r3h"]
 [ext_resource type="AudioStream" uid="uid://cv1rv3aovce3j" path="res://assets/sfx/boom_1.mp3" id="10_5jkuj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsma1"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7tw1"]
+shader = ExtResource("7_ksbjf")
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghcn7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnd68"]
+shader = ExtResource("7_ksbjf")
 
 [sub_resource type="LabelSettings" id="LabelSettings_hh0js"]
 font_size = 64
@@ -47,8 +54,10 @@ offset_bottom = 506.0
 rotation = 1.5708
 pivot_offset = Vector2(130, 45)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xsma1")
+flat = true
 
 [node name="TextureRect" type="TextureRect" parent="UI/LeftButton"]
+material = SubResource("ShaderMaterial_n7tw1")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -72,8 +81,10 @@ offset_bottom = 496.0
 rotation = -1.5708
 pivot_offset = Vector2(130, 45)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ghcn7")
+flat = true
 
 [node name="TextureRect" type="TextureRect" parent="UI/RightButton"]
+material = SubResource("ShaderMaterial_dnd68")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

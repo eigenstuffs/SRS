@@ -18,6 +18,7 @@ signal finished(detailed_points)
 #array 2 should be an array of four numbers which represent the increment in each stat
 
 var game : Minigame
+var start
 
 func initiate_minigame(which : String):	
 	if MinigameRegistry.has_key(which):
@@ -29,23 +30,26 @@ func initiate_minigame(which : String):
 		minigame.update_time.connect(update_time)
 		minigame.ended.connect(game_end_early)
 		minigame.get_remaining_time.connect(set_game_remaining_time)
-		if Global.data_dict["remembered"].has(which):
-			$UI.start_sTime()
-		else:
-			show_tutorial(which)
+		# very cursed, but no time to improve!
+		start = func():
+			if Global.data_dict["remembered"].has(which):
+				$UI.start_sTime()
+			else:
+				show_tutorial(which)
 		
-		if metadata.time <= 0: return
-		ui.gameTimeCount = metadata.time
-		$UI/GameTimer/TextureProgressBar.max_value = metadata.time
-		$UI/GameTimer/TextureProgressBar.value = metadata.time
-		$UI/GameTimer/TimeLabel.text = str(metadata.time)
+			ui.gameTimeCount = metadata.time
+			$UI/StartTimer.visible = true
+			$UI/GameTimer/TextureProgressBar.max_value = metadata.time
+			$UI/GameTimer/TextureProgressBar.value = metadata.time
+			$UI/GameTimer/TimeLabel.text = str(metadata.time)
+		
+		if metadata.time > 0: start.call()
 	else:
 		printerr("No such minigame %s!" % which)
 
 func _process(delta: float) -> void:
 	if is_finished:
 		self.scale = Vector2(lerp(self.scale.x, 1.75, delta * 15), lerp(self.scale.y, 1.75, delta * 15))
-	
 
 func update_points(new : int):
 	rough_points = new

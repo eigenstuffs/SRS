@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cr62xw6ofifyl"]
+[gd_scene load_steps=41 format=3 uid="uid://cr62xw6ofifyl"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/playfield.gd" id="1_a1v4t"]
 [ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://tools/minigames/rhythm/util/audio_synchronizer.tscn" id="3_g2rft"]
@@ -12,11 +12,12 @@
 [ext_resource type="Shader" path="res://resources/shaders/spatial/albedo_fade.gdshader" id="10_ji235"]
 [ext_resource type="Shader" path="res://resources/shaders/canvas_item/blur.gdshader" id="10_mdpw5"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/radial_pattern.gdshader" id="11_14gwy"]
-[ext_resource type="Shader" path="res://resources/shaders/spatial/clear_shader_spatial.gdshader" id="11_xfc5w"]
 [ext_resource type="Shader" path="res://tools/minigames/rhythm/algae.gdshader" id="14_0l1kf"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/sphere_raymarched_spatial.gdshader" id="15_hdmr7"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/combo_meter.gd" id="15_srpjb"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/volumetric_clouds.gdshader" id="16_rr7ty"]
+[ext_resource type="Texture2D" uid="uid://8xpprf7ooxdt" path="res://tools/minigames/rhythm/assets/ballroom.png" id="17_ing8d"]
+[ext_resource type="Shader" path="res://tools/minigames/rhythm/ballroom.gdshader" id="18_7gqo5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_tu6ej"]
 flip_faces = true
@@ -235,7 +236,8 @@ priority_overwrite = 999
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5pri"]
 render_priority = 0
-shader = ExtResource("11_xfc5w")
+shader = ExtResource("18_7gqo5")
+shader_parameter/tex = ExtResource("17_ing8d")
 script = ExtResource("3_m4kyl")
 is_canvas_item = false
 shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), SubResource("Resource_k750l"), SubResource("Resource_yyvg6"), SubResource("Resource_374er"), SubResource("Resource_6xjft")])
@@ -265,7 +267,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_m0omd")
 script = SubResource("GDScript_1sgvm")
 
 [node name="BackplaneMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227432, -7.99924, -0.960572)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.227432, -7.99924, -0.960572)
 mesh = SubResource("QuadMesh_noca2")
 surface_material_override/0 = SubResource("ShaderMaterial_l5pri")
 

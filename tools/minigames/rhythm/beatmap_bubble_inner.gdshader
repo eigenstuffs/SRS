@@ -7,6 +7,7 @@ uniform float displacement_scale = 0.1;
 uniform float animation_speed = 0.1;
 
 varying vec3 vertex_world;
+varying float dist;
 
 mat2 rotate(float theta) {
 	float s = sin(theta);
@@ -23,12 +24,10 @@ void vertex() {
 	float height = texture(noise_texture, VERTEX.xz * displacement_scale + TIME * animation_speed).r - 0.5;
 	VERTEX += NORMAL * height * displacement_factor;
 	vertex_world = VERTEX;
+	dist = distance(NODE_POSITION_WORLD, CAMERA_POSITION_WORLD);
 }
 
 void fragment() {
-	//vec3 view_world = (INV_VIEW_MATRIX * vec4(VIEW, 0.0)).xyz;
-	//vec3 vertex_world = (INV_VIEW_MATRIX * vec4(VERTEX, 0.0)).xyz;
-	
 	ALBEDO = texture(beatmap_texture, vec2(atan(vertex_world.x, vertex_world.z)*0.5 + 0.46, acos(vertex_world.y))).rgb;
 }
 

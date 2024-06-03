@@ -5,4 +5,4 @@
 [node name="TutorialScreen" instance=ExtResource("1_grl0q")]
 
 [node name="Description" parent="." index="3"]
-text = "Press the keys on the beat!"
+text = "Use arrow keys or DFJK to tap the notes on the beat!"
