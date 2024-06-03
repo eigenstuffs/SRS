@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://jydkbuhf6s4a"]
+
+[ext_resource type="PackedScene" uid="uid://drw36phbx4vrj" path="res://tools/minigames/template/tutorial_screen.tscn" id="1_2083q"]
+
+[node name="TutorialScreen" instance=ExtResource("1_2083q")]
+
+[node name="Description" parent="." index="3"]
+text = "Get all the keys and reach the exit!"

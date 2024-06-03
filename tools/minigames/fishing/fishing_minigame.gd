@@ -23,6 +23,7 @@ func game_start():
 	$FishingPlayer.currentState = FishingPlayer.FishingState.WALKING
 
 func end() -> void:
+	music_fade_out()
 	$SfxPlayer.stream = FINISHED_SFX
 	$SfxPlayer.volume_db = 5
 	$SfxPlayer.play()
@@ -73,3 +74,10 @@ func _on_fishing_player_releasing_rod():
 func _on_fishing_player_casting_time():
 	bob_indicator.global_position = $FishingPlayer.global_position
 	bob_indicator.visible = true
+
+func music_fade_out():
+	var a = create_tween()
+	a.tween_property($MusicPlayer, "volume_db", -80, 2.0)
+	await a.finished
+	$MusicPlayer.stop()
+	$MusicPlayer.volume_db = -8

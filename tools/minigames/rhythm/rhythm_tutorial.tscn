@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnd8eawenmuk5"]
+
+[ext_resource type="PackedScene" uid="uid://drw36phbx4vrj" path="res://tools/minigames/template/tutorial_screen.tscn" id="1_grl0q"]
+
+[node name="TutorialScreen" instance=ExtResource("1_grl0q")]
+
+[node name="Description" parent="." index="3"]
+text = "Press the keys on the beat!"
