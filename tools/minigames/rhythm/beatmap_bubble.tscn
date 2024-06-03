@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://brfmbj8usxfis"]
+
+[ext_resource type="Script" path="res://tools/minigames/rhythm/beatmap_bubble.gd" id="1_h8ty2"]
+[ext_resource type="Shader" path="res://tools/minigames/rhythm/beatmap_bubble_inner.gdshader" id="1_qjdmg"]
+[ext_resource type="Texture2D" uid="uid://cgpxggbdwrbok" path="res://tools/minigames/rhythm/default_beatmap_preview.png" id="2_rmhxy"]
+[ext_resource type="Shader" path="res://tools/minigames/rhythm/beatmap_bubble_outer.gdshader" id="2_rrtn0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ck4dc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2p2gt"]
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pp0fn"]
+seamless = true
+noise = SubResource("FastNoiseLite_2p2gt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akg3i"]
+render_priority = 0
+shader = ExtResource("1_qjdmg")
+shader_parameter/displacement_factor = 0.1
+shader_parameter/displacement_scale = 0.1
+shader_parameter/animation_speed = 0.02
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_pp0fn")
+shader_parameter/beatmap_texture = ExtResource("2_rmhxy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ahx63"]
+render_priority = 0
+shader = ExtResource("2_rrtn0")
+shader_parameter/displacement_factor = 0.1
+shader_parameter/displacement_scale = 0.1
+shader_parameter/animation_speed = 0.02
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_pp0fn")
+
+[node name="BeatmapBubble" type="Node3D"]
+script = ExtResource("1_h8ty2")
+
+[node name="InnerBubble" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0, 0)
+mesh = SubResource("SphereMesh_ck4dc")
+surface_material_override/0 = SubResource("ShaderMaterial_akg3i")
+
+[node name="OuterBubble" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ck4dc")
+surface_material_override/0 = SubResource("ShaderMaterial_ahx63")

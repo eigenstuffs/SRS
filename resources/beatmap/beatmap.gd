@@ -11,6 +11,11 @@ static var _POSITION_MAP : Dictionary = { # (Yuck!)
 ## has been specified
 @export var title : StringName
 
+@export var preview : CompressedTexture2D
+@export var mod_file : BeatmapMod
+@export var preview_start := 0.0
+@export var volume_db_offset := 0.0
+
 ## The track associated with the beatmap. Any metadata of the track is ignored
 ## as beatmap will be used to extract metadata instead.
 @export var track : AudioStream :

@@ -67,7 +67,7 @@ void fragment() {
 			cloud_color = mix(cloud_color, col, 1.0 - exp(-0.07*t));
 			sum += vec4(cloud_color, 1)*density * (1.0 - sum.a);
 		}
-		t += max(0.12, 0.60*density);
+		t += max(0.12, 0.60*density)*0.4;
 	}
 	sum = clamp(sum, 0.0, 1.0);
 	col = col*(1.0 - sum.a) + sum.rgb;

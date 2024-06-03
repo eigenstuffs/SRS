@@ -3,7 +3,7 @@ render_mode unshaded;
 
 #define AA_PASSES (1)
 #define FOV       (70.)
-#define MAX_STEPS (100)
+#define MAX_STEPS (50)
 #define TILE_SIZE (3.)
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
@@ -80,8 +80,8 @@ void fragment() {
 	const vec3 light_pos1 = normalize(vec3(0,0,-1));
 	
 	// --- Color ---
-	const vec3 orange = vec3(1, 0.3, 0);
-	const vec3 white = vec3(1);
+	const vec3 orange = vec3(0.3, 0.0, 0.05);
+	const vec3 white = vec3(0.4);
 	const vec3 rim_col = (orange + white)*6.0;
 	float glow0 = pow(1.0 - length(SCREEN_UV-0.5), 3.0);
 	float glow1 = pow(glow0, 3.0);
@@ -112,7 +112,7 @@ void fragment() {
 			float occlusion = 0.35*mix(0.0, -hit_normal.y, 0.5);
 			float rim = clamp(dot(hit_normal, light_pos1), 0.0, 1.0);
 			float fog = exp(-0.13*t);
-			col = sample_texture(screen_texture, hit_normal) * (diffusion + occlusion + rim*rim_col)*fog;
+			col = vec3(0.01) * (diffusion + occlusion + rim*rim_col)*fog;
 			col = mix(col, orange, glow0*(1.0 - fog));
 			col = mix(col, white, glow1*(1.0 - fog));
 		}

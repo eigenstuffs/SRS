@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Beatmap" load_steps=6 format=3 uid="uid://u2v6to2msmoe"]
+
+[ext_resource type="Script" path="res://resources/beatmap/black_key_mod.gd" id="1_bjwht"]
+[ext_resource type="Texture2D" uid="uid://cgpxggbdwrbok" path="res://tools/minigames/rhythm/default_beatmap_preview.png" id="1_cmsvr"]
+[ext_resource type="Script" path="res://resources/beatmap/beatmap.gd" id="1_gkjrl"]
+[ext_resource type="AudioStream" uid="uid://coo0bjmie33bo" path="res://assets/beatmaps/black_key.mp3" id="3_sqo18"]
+
+[sub_resource type="Resource" id="Resource_a0u1k"]
+script = ExtResource("1_bjwht")
+
+[resource]
+script = ExtResource("1_gkjrl")
+title = &"Black Key Etude"
+preview = ExtResource("1_cmsvr")
+mod_file = SubResource("Resource_a0u1k")
+preview_start = 30.0
+volume_db_offset = -5.0
+track = ExtResource("3_sqo18")
+path = "res://assets/beatmaps/black_key.osu"
+start_offset = 1.359
+num_keys = 4

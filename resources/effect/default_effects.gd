@@ -59,9 +59,9 @@ class EffectColorFadeNew extends CanvasItemEffect:
 		render_passes.push_back(CanvasItemRenderPass.new(COLOR_FADE_SHADER))
 		
 		super('ColorFade', 1.0, 
-			func(from := Color.TRANSPARENT, to := Color.BLACK) -> void:
+			func(from := Color.TRANSPARENT, to := Color.BLACK, duration_override := -1.0) -> void:
 				self.should_free_when_stopped = to.a <= 0.0
-				render_passes[0].enable({'start_color' : from, 'end_color' : to, 'duration' : duration}))
+				render_passes[0].enable({'start_color' : from, 'end_color' : to, 'duration' : duration if duration_override == -1.0 else duration_override}))
 
 class EffectFlashNew extends EffectColorFadeNew:
 	func _init() -> void:

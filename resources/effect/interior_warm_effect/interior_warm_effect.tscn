@@ -23,15 +23,15 @@ initial_velocity_max = 20.0
 angular_velocity_min = -10.0
 angular_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.2
-scale_max = 0.4
+scale_min = 2.0
+scale_max = 4.0
 scale_over_velocity_max = 1.0
 color = Color(1, 1, 1, 0.168627)
 alpha_curve = SubResource("CurveTexture_yii3v")
 
 [sub_resource type="Gradient" id="Gradient_kcddy"]
 offsets = PackedFloat32Array(0, 0.520737)
-colors = PackedColorArray(0.772549, 0.454902, 0.360784, 1, 1, 1, 1, 0)
+colors = PackedColorArray(0.973721, 0.902324, 0.881002, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_43qyt"]
 gradient = SubResource("Gradient_kcddy")
@@ -50,7 +50,7 @@ grow_vertical = 2
 
 [node name="DustParticles" type="GPUParticles2D" parent="."]
 position = Vector2(960, 540)
-amount = 256
+amount = 64
 process_material = SubResource("ParticleProcessMaterial_j61g8")
 texture = SubResource("GradientTexture2D_43qyt")
 lifetime = 20.0

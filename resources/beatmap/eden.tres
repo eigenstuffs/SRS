@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Beatmap" load_steps=4 format=3 uid="uid://qc6xfemnwspm"]
+
+[ext_resource type="Texture2D" uid="uid://cu407mamhnwbp" path="res://assets/beatmaps/eden.jpg" id="1_2l5x4"]
+[ext_resource type="Script" path="res://resources/beatmap/beatmap.gd" id="1_81qnw"]
+[ext_resource type="AudioStream" uid="uid://bc6wbfnohslej" path="res://assets/beatmaps/eden.mp3" id="3_x8m07"]
+
+[resource]
+script = ExtResource("1_81qnw")
+title = &"Eden"
+preview = ExtResource("1_2l5x4")
+preview_start = 14.0
+volume_db_offset = -8.0
+track = ExtResource("3_x8m07")
+path = "res://assets/beatmaps/eden.osu"
+start_offset = 0.07
+num_keys = 4

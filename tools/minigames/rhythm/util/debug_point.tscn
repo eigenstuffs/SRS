@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbdyy5nxs8noi"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jjwvn"]
+radius = 0.125
+height = 0.25
+radial_segments = 8
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7owf"]
+shading_mode = 0
+albedo_color = Color(0.876801, 0, 0.0460618, 1)
+
+[node name="DebugPoint" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_jjwvn")
+surface_material_override/0 = SubResource("StandardMaterial3D_x7owf")

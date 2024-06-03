@@ -7,7 +7,6 @@
 script = ExtResource("1_lbd1m")
 
 [node name="Track" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0
 
 [node name="Metronome" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_om135")

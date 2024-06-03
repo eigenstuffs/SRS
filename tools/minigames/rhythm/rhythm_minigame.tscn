@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://lmg6p4vssmpw"]
+[gd_scene load_steps=11 format=3 uid="uid://lmg6p4vssmpw"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_minigame.gd" id="1_pb007"]
 [ext_resource type="PackedScene" uid="uid://cr62xw6ofifyl" path="res://tools/minigames/rhythm/play/playfield.tscn" id="2_2af6n"]
-[ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/misc/panorama.png" id="6_luhxe"]
-[ext_resource type="Resource" uid="uid://cy0bsj18hrx30" path="res://resources/beatmap/tango.tres" id="7_o5gdu"]
+[ext_resource type="Texture2D" uid="uid://bjw21ivp62bgd" path="res://tools/minigames/rhythm/assets/skybox_exterior.png" id="2_tusgb"]
+[ext_resource type="PackedScene" uid="uid://d4cwmpkhjgayy" path="res://tools/minigames/rhythm/beatmap_select.tscn" id="4_vgyc2"]
+[ext_resource type="Texture2D" uid="uid://dcaacsvwgwa00" path="res://tools/minigames/rhythm/assets/body2.png" id="5_ii67y"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a8ggx"]
-panorama = ExtResource("6_luhxe")
+panorama = ExtResource("2_tusgb")
 
 [sub_resource type="Sky" id="Sky_eq6kb"]
 sky_material = SubResource("PanoramaSkyMaterial_a8ggx")
@@ -14,7 +15,6 @@ sky_material = SubResource("PanoramaSkyMaterial_a8ggx")
 [sub_resource type="Environment" id="Environment_oefpv"]
 background_mode = 2
 sky = SubResource("Sky_eq6kb")
-sky_rotation = Vector3(2190.01, -1.5708, -4.71239)
 tonemap_mode = 2
 glow_enabled = true
 
@@ -23,18 +23,9 @@ size = Vector2(1.2, 4)
 subdivide_width = 1
 subdivide_depth = 1
 
-[sub_resource type="Gradient" id="Gradient_cg4qe"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.435556, 0.773333)
-colors = PackedColorArray(0.73202, 0.811476, 0.938752, 1, 0.584314, 0.478431, 0.584314, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_iht3a"]
-gradient = SubResource("Gradient_cg4qe")
-fill_from = Vector2(1, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gehkv"]
-albedo_color = Color(0.324847, 0.109631, 0.205688, 1)
-albedo_texture = SubResource("GradientTexture2D_iht3a")
+albedo_color = Color(0.415288, 0.272278, 0.549399, 1)
+albedo_texture = ExtResource("5_ii67y")
 
 [node name="RhythmMinigame" type="SubViewport"]
 script = ExtResource("1_pb007")
@@ -43,19 +34,46 @@ script = ExtResource("1_pb007")
 environment = SubResource("Environment_oefpv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.642788, 0.663414, -0.383022, 0, 0.5, 0.866026, 0.766044, 0.556671, -0.321394, -4.5, 10, -3.5)
+transform = Transform3D(0.906117, 0.0727105, -0.416731, -0.0138194, 0.98968, 0.142629, 0.422801, -0.12348, 0.897771, 0, 0, 0)
 shadow_enabled = true
 
+[node name="BeatmapSelect" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="BeatmapSelect"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="BeatmapSelect/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1600, 900)
+render_target_update_mode = 4
+
+[node name="BeatmapSelect" parent="BeatmapSelect/SubViewportContainer/SubViewport" instance=ExtResource("4_vgyc2")]
+
 [node name="Playfield" parent="." instance=ExtResource("2_2af6n")]
-beatmap = ExtResource("7_o5gdu")
+visible = false
 note_speed = 1.35
 
 [node name="AudioSynchronizer" parent="Playfield" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36139, 0)
 
+[node name="TitleLabel" parent="Playfield" index="4"]
+mouse_filter = 1
+
+[node name="Effects" parent="Playfield" index="5"]
+mouse_filter = 1
+
+[node name="Scores" parent="Playfield" index="6"]
+mouse_filter = 1
+
+[node name="ComboLabel" parent="Playfield/Scores" index="0"]
+mouse_filter = 1
+
+[node name="ScoreLabel" parent="Playfield/Scores" index="1"]
+mouse_filter = 1
+
 [node name="Camera3D" type="Camera3D" parent="Playfield"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.53443, -4.031)
-current = true
 
 [node name="Mesh" type="MeshInstance3D" parent="Playfield"]
 transform = Transform3D(5.5, 0, 0, 0, 4.4, 0, 0, 0, 17.6, 2.08165e-12, -0.25, 2.08165e-12)

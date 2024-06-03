@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cr62xw6ofifyl"]
+[gd_scene load_steps=40 format=3 uid="uid://cr62xw6ofifyl"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/playfield.gd" id="1_a1v4t"]
 [ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://tools/minigames/rhythm/util/audio_synchronizer.tscn" id="3_g2rft"]
@@ -12,6 +12,7 @@
 [ext_resource type="Shader" path="res://resources/shaders/spatial/albedo_fade.gdshader" id="10_ji235"]
 [ext_resource type="Shader" path="res://resources/shaders/canvas_item/blur.gdshader" id="10_mdpw5"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/radial_pattern.gdshader" id="11_14gwy"]
+[ext_resource type="Shader" path="res://resources/shaders/spatial/clear_shader_spatial.gdshader" id="11_xfc5w"]
 [ext_resource type="Shader" path="res://tools/minigames/rhythm/algae.gdshader" id="14_0l1kf"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/sphere_raymarched_spatial.gdshader" id="15_hdmr7"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/combo_meter.gd" id="15_srpjb"]
@@ -163,27 +164,6 @@ class_name ScreenSpaceMesh2 extends MeshInstance3D
 size = Vector2(100, 100)
 orientation = 1
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_jewtc"]
-noise_type = 5
-frequency = 1.0
-fractal_type = 0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yn8er"]
-width = 256
-height = 256
-noise = SubResource("FastNoiseLite_jewtc")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_dct30"]
-noise_type = 5
-frequency = 1.0
-fractal_type = 0
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_xo1fx"]
-width = 32
-height = 32
-depth = 32
-noise = SubResource("FastNoiseLite_dct30")
-
 [sub_resource type="Resource" id="Resource_5qumv"]
 script = ExtResource("4_apd5l")
 name = &"albedo_fade"
@@ -213,12 +193,33 @@ priority_overwrite = 999
 
 [sub_resource type="Resource" id="Resource_374er"]
 script = ExtResource("4_apd5l")
-name = &"Raymarched"
+name = &"Spheres"
 shader = ExtResource("15_hdmr7")
 is_enabled_by_default = false
 is_unique_pass = true
 default_uniforms = {}
 priority_overwrite = 999
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jewtc"]
+noise_type = 5
+frequency = 1.0
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yn8er"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_jewtc")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dct30"]
+noise_type = 5
+frequency = 1.0
+fractal_type = 0
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_xo1fx"]
+width = 32
+height = 32
+depth = 32
+noise = SubResource("FastNoiseLite_dct30")
 
 [sub_resource type="Resource" id="Resource_6xjft"]
 script = ExtResource("4_apd5l")
@@ -234,9 +235,7 @@ priority_overwrite = 999
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5pri"]
 render_priority = 0
-shader = ExtResource("16_rr7ty")
-shader_parameter/noise_texture = SubResource("NoiseTexture3D_xo1fx")
-shader_parameter/blue_noise_texture = SubResource("NoiseTexture2D_yn8er")
+shader = ExtResource("11_xfc5w")
 script = ExtResource("3_m4kyl")
 is_canvas_item = false
 shader_passes = Array[ExtResource("4_apd5l")]([SubResource("Resource_5qumv"), SubResource("Resource_k750l"), SubResource("Resource_yyvg6"), SubResource("Resource_374er"), SubResource("Resource_6xjft")])

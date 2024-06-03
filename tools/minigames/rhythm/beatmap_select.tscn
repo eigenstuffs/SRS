@@ -1,0 +1,135 @@
+[gd_scene load_steps=15 format=3 uid="uid://d4cwmpkhjgayy"]
+
+[ext_resource type="Script" path="res://tools/minigames/rhythm/beatmap_select.gd" id="1_28cak"]
+[ext_resource type="Resource" uid="uid://u2v6to2msmoe" path="res://resources/beatmap/black_key.tres" id="2_w3ady"]
+[ext_resource type="Resource" uid="uid://v7u4nlrosc66" path="res://resources/beatmap/touhou.tres" id="3_e4nf1"]
+[ext_resource type="Texture2D" uid="uid://4yblrqe1shl6" path="res://assets/ui/arrow.png" id="3_kmr4s"]
+[ext_resource type="Resource" uid="uid://byqqvw7rgw14n" path="res://resources/beatmap/fantaisie.tres" id="4_8hbdj"]
+[ext_resource type="Resource" uid="uid://dnbo1c8vcvwxb" path="res://resources/beatmap/escapsim.tres" id="4_xy04h"]
+[ext_resource type="Resource" uid="uid://qc6xfemnwspm" path="res://resources/beatmap/eden.tres" id="5_kr3uh"]
+[ext_resource type="AudioStream" uid="uid://d1querjbramsy" path="res://assets/sfx/whoosh_1.wav" id="7_1i8dd"]
+[ext_resource type="AudioStream" uid="uid://dfvvumy7n5b2b" path="res://assets/sfx/game_alert_2.mp3" id="8_5xqbm"]
+[ext_resource type="AudioStream" uid="uid://dd1wk4fpa4nyq" path="res://assets/sfx/game_alert_1.mp3" id="8_m1r3h"]
+[ext_resource type="AudioStream" uid="uid://cv1rv3aovce3j" path="res://assets/sfx/boom_1.mp3" id="10_5jkuj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsma1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghcn7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hh0js"]
+font_size = 64
+outline_size = 22
+outline_color = Color(0, 0, 0, 1)
+
+[node name="BeatmapSelect" type="Node3D"]
+script = ExtResource("1_28cak")
+beatmaps = Array[Resource("res://resources/beatmap/beatmap.gd")]([ExtResource("2_w3ady"), ExtResource("3_e4nf1"), ExtResource("4_xy04h"), ExtResource("4_8hbdj"), ExtResource("5_kr3uh")])
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+current = true
+fov = 40.0
+
+[node name="Bubbles" type="Node3D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LeftButton" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = -38.0
+offset_top = 416.0
+offset_right = 222.0
+offset_bottom = 506.0
+rotation = 1.5708
+pivot_offset = Vector2(130, 45)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xsma1")
+
+[node name="TextureRect" type="TextureRect" parent="UI/LeftButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -35.5
+offset_right = 112.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kmr4s")
+
+[node name="RightButton" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 1375.0
+offset_top = 406.0
+offset_right = 1635.0
+offset_bottom = 496.0
+rotation = -1.5708
+pivot_offset = Vector2(130, 45)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ghcn7")
+
+[node name="TextureRect" type="TextureRect" parent="UI/RightButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -35.5
+offset_right = 112.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kmr4s")
+
+[node name="SelectButton" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 97.0
+offset_right = 1341.0
+offset_bottom = 895.0
+flat = true
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 742.0
+offset_right = 1588.0
+offset_bottom = 914.0
+label_settings = SubResource("LabelSettings_hh0js")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+
+[node name="SwitchTrackPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1i8dd")
+volume_db = -15.0
+pitch_scale = 0.8
+max_polyphony = 5
+
+[node name="SwitchTrackPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_5xqbm")
+volume_db = -5.0
+max_polyphony = 5
+
+[node name="SelectPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_m1r3h")
+volume_db = -7.0
+pitch_scale = 0.8
+
+[node name="SelectPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_5jkuj")
+volume_db = -10.0
+
+[connection signal="pressed" from="UI/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="button_down" from="UI/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="pressed" from="UI/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="UI/SelectButton" to="." method="_on_select_button_pressed"]

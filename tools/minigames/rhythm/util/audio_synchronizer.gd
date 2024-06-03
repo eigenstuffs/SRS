@@ -15,14 +15,10 @@ signal on_beat
 @export var beatmap : Beatmap : 
 	set(value):
 		beatmap = value
+		#if not beatmap: return
 		self.current_beat_interval = self.beatmap.timings[0].beat_interval
 		self.current_bps = 1.0 / self.current_beat_interval
 		self.current_beats_per_measure = self.beatmap.timings[0].beats_per_measure
-
-## The offset for which the synchronizer will emit a signal to spawn the next
-## hit object. For example, this can be used to spawn objects ahead of their
-## assigned hit time so they could be moved.
-@export var spawn_offset_seconds : float = 0.0
 
 @onready var track : AudioStreamPlayer = $Track
 @onready var metronome : AudioStreamPlayer = $Metronome
@@ -40,15 +36,16 @@ var use_metronome := true
 
 func start():	
 	#beatmap.start_offset + x = current_beats_per_measure * 4 * current_beat_interval
-	self.time = -((current_beats_per_measure - 1) * current_beat_interval) + beatmap.start_offset
-	self.next_metronome_time = self.time
+	self.time = -((current_beats_per_measure + 1) * current_beat_interval) + beatmap.start_offset
+	self.next_metronome_time = self.time + current_beat_interval
 	track.stream = beatmap.track
+	track.volume_db = beatmap.volume_db_offset
 	has_started = true
 
 func _process(delta):
 	if not has_started: return
 	
-	use_metronome = self.time <= beatmap.start_offset
+	use_metronome = self.time <= beatmap.start_offset - current_beat_interval + 0.05
 	if has_played:
 		# Source: https://docs.godotengine.org/en/stable/tutorials/audio/sync_with_audio.html
 		time = max(time, track.get_playback_position() + AudioServer.get_time_since_last_mix())

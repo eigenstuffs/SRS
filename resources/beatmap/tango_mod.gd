@@ -1,4 +1,4 @@
-class_name TangoMod
+class_name TangoMod extends BeatmapMod
 ## This is a very rough version of how a 'modfile' can be loaded to sync different
 ## effects with a beatmap.
 
@@ -244,7 +244,7 @@ static var TIMING_ACTIONS = [
 	[105.968,    'screen', 'enable',  ['flash']],
 	[105.968,    'screen', 'disable', ['rain', 'impact_lines']]]
 
-static func get_timing_actions(playfield : RhythmPlayfield) -> Array[TimingAction]:
+func get_timing_actions(playfield : RhythmPlayfield) -> Array[TimingAction]:
 	# FIXME: This is yucky! Seriously,
 	var actions : Array[TimingAction] = []
 	for action in TangoMod.TIMING_ACTIONS:

@@ -43,13 +43,13 @@ var combo := 0
 @onready var screen_space_material : MultiPassShaderMaterial = $ScreenSpaceMesh.get_surface_override_material(0)
 @onready var backplane_material : MultiPassShaderMaterial = $BackplaneMesh.get_surface_override_material(0)
 # FIXME : Hardcoded for 'dungeon' beatmap!
-@onready var timing_actions : Variant = TangoMod.get_timing_actions(self) #DungeonMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'dungeon' else CaitSithMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'cait_sith' else WaltzMod.get_timing_actions(self) if beatmap.track.resource_path.get_file().trim_suffix('.' + beatmap.track.resource_path.get_extension()) == 'waltz' else []
+@onready var timing_actions : Variant
 @onready var effects : Control = $Effects
 
-func _ready() -> void:
-	audio_synchronizer.spawn_offset_seconds = 1.0 # FIXME: Not static for all songs!
+func prepare():
 	audio_synchronizer.beatmap = self.beatmap
 	self.hit_objects = beatmap.objects
+	self.timing_actions = beatmap.mod_file.get_timing_actions(self) if beatmap.mod_file else []
 	print('(playfield) initialized audio synchronizer')
 	
 	# Initialize keys based on key count of beatmap
@@ -93,7 +93,8 @@ func _process(_delta: float) -> void:
 	
 	# Compensate for output latency and spawn offset time.
 	var corrected_time = audio_synchronizer.time - AudioServer.get_output_latency()
-	while next_load_idx < len(hit_objects) and corrected_time + audio_synchronizer.spawn_offset_seconds > hit_objects[next_load_idx].time:
+	const SPAWN_OFFSET_SECONDS := 1.0
+	while next_load_idx < len(hit_objects) and corrected_time + SPAWN_OFFSET_SECONDS > hit_objects[next_load_idx].time:
 		var info := hit_objects[next_load_idx]
 		keys[info.key_index].enqueue_note(info)
 		next_load_idx += 1
