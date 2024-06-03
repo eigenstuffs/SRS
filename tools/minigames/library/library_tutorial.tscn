@@ -5,6 +5,15 @@
 [node name="TutorialScreen" instance=ExtResource("1_ivsxg")]
 
 [node name="Description" parent="." index="3"]
-text = "THIS IS A LIBRARY
-CATCH BOOKS, NOT BOMBS
-Can't be easier"
+offset_left = -560.0
+offset_top = -292.0
+offset_right = 576.0
+offset_bottom = 200.0
+text = "Catch books and put them back on the shelves while avoiding falling bombs!
+Try to put as many books back on the shelves as you can before time tuns out.
+
+Use [A], [D] to move left and right.
+Once you have books stacked on your head, go to either side of the stage to put them back. You will also gain time when you successfully do that. Good luck!"
+horizontal_alignment = 0
+vertical_alignment = 1
+autowrap_mode = 2

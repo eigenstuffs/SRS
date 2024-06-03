@@ -5,4 +5,16 @@
 [node name="TutorialScreen" instance=ExtResource("1_5rral")]
 
 [node name="Description" parent="." index="3"]
-text = "Fish to your heart's content :D"
+offset_left = -528.0
+offset_top = -284.0
+offset_right = 584.0
+offset_bottom = 208.0
+text = "Catch as many fish as you can within the time limit!
+Difficulty: green < blue < blue-pink < golden
+
+Use [W], [A], [S], [D] to move around.
+Hold and release [Space] to cast your rod. Press [Space] again to recast when the hook is under water.
+
+When a fish is hooked, hold and release [Space] to keep the fish inside the green region until the fish is caught."
+horizontal_alignment = 0
+autowrap_mode = 2

@@ -5,4 +5,17 @@
 [node name="TutorialScreen" instance=ExtResource("1_2083q")]
 
 [node name="Description" parent="." index="3"]
-text = "Get all the keys and reach the exit!"
+offset_left = -560.0
+offset_top = -284.0
+offset_right = 576.0
+offset_bottom = 208.0
+text = "Collect all fans on the ground and reach the bench within the time limit!
+Do not bump into the enemies or else you will lose time!
+
+Use [W], [A], [S], [D] to move around the maze.
+Use [Space] to dash forward.
+You can dash through enemies and not lose time this way.
+You need to collect all the fans (3 of them) in order to unlock the bench. Good luck!"
+horizontal_alignment = 0
+vertical_alignment = 1
+autowrap_mode = 2

@@ -284,7 +284,7 @@ libraries = {
 autoplay = "Idle"
 
 [node name="NPC2" type="Area3D" parent="Actors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.920653, 0.540338, -2.1824)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.526139, 0.540338, -2.1824)
 script = ExtResource("6_eorbl")
 idle = ExtResource("7_11k2p")
 selected = ExtResource("8_q2j1r")

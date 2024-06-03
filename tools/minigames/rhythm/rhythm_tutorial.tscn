@@ -5,4 +5,9 @@
 [node name="TutorialScreen" instance=ExtResource("1_grl0q")]
 
 [node name="Description" parent="." index="3"]
-text = "Use arrow keys or DFJK to tap the notes on the beat!"
+offset_left = -312.0
+offset_top = -84.0
+offset_right = 315.0
+offset_bottom = 23.0
+text = "Use arrow keys or [D], [F], [J], [K] to tap the notes on the beat!"
+autowrap_mode = 2
