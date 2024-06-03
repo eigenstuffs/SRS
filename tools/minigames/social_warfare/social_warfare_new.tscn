@@ -348,6 +348,10 @@ script = ExtResource("1_vycxu")
 script = ExtResource("2_t2gbr")
 enemy_name = "Esra"
 
+[node name="Sprite2D" type="Sprite2D" parent="EnemyData"]
+
+[node name="Enemy" type="AnimationPlayer" parent="EnemyData"]
+
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
