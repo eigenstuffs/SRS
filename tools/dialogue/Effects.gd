@@ -109,6 +109,11 @@ const EMPTY_FOUNTAIN = preload("res://assets/cgs/emtpy_fountain.png")
 const CG_WINTER = preload("res://assets/cgs/cg_winter.png")
 const CG_WHITE = preload("res://assets/cgs/cg_white.png")
 
+const CG_DAY = preload("res://assets/cgs/bg_day_sky.PNG")
+const CG_NIGHT = preload("res://assets/cgs/bg_night_sky.PNG")
+const CG_EVENING = preload("res://assets/cgs/bg_sunset_sky.PNG")
+const CG_BALLROOM = preload("res://assets/cgs/ballroom bg.png")
+
 const OVERLAY_BLOOD_SPLATTER = preload("res://assets/vn/overlay/overlay_blood_splatter.png")
 
 @onready var anim_god : AnimationPlayer = $AnimGod
@@ -270,6 +275,11 @@ func _ready():
 	
 	vn.connect("cg_winter", cg_static.bind(CG_WINTER))
 	vn.connect("cg_white", cg_static.bind(CG_WHITE))
+	
+	vn.connect("cg_ballroom", cg_static.bind(CG_BALLROOM))
+	vn.connect("cg_evening", cg_static.bind(CG_EVENING))
+	vn.connect("cg_day", cg_static.bind(CG_DAY))
+	vn.connect("cg_night", cg_static.bind(CG_NIGHT))
 	
 	vn.connect("cg_room_blur", cg_static.bind(BLUR_ROOM_CG))
 	vn.connect("cg_room", cg_static.bind(ROOM_CG))

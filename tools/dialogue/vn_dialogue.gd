@@ -127,6 +127,11 @@ signal cg_winter
 signal cg_white
 signal stop_cg
 
+signal cg_ballroom
+signal cg_evening
+signal cg_day
+signal cg_night
+
 signal cg_room
 signal cg_room_blur
 
