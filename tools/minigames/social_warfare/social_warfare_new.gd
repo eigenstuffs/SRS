@@ -330,15 +330,16 @@ func card_action(card : Card, target : String):
 		end_battle(true)
 	elif Global.data_dict["player_hp"] <= 0:
 		end_battle(false)
+	else:
 	
-	await get_tree().create_timer(0.5).timeout
-	
-	if $EnemyData/Enemy.current_animation != "Idle":
-		$EnemyData/Enemy.play("Idle")
-	if $EnemyData/Player.current_animation != "Idle":
-		$EnemyData/Player.play("Idle")
-	
-	emit_signal("card_action_finished")
+		await get_tree().create_timer(0.5).timeout
+		
+		if $EnemyData/Enemy.current_animation != "Idle":
+			$EnemyData/Enemy.play("Idle")
+		if $EnemyData/Player.current_animation != "Idle":
+			$EnemyData/Player.play("Idle")
+		
+		emit_signal("card_action_finished")
 
 func enemy_move():
 	return enemy_data.get_best_card()
