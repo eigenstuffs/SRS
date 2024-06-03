@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://btxyikyec8li1"]
+[gd_scene load_steps=14 format=3 uid="uid://btxyikyec8li1"]
 
 [ext_resource type="Script" path="res://tools/minigames/maze/MazeGenerator.gd" id="1_wltr6"]
 [ext_resource type="Script" path="res://tools/minigames/maze/maze_minigame.gd" id="1_xvgb3"]
 [ext_resource type="AudioStream" uid="uid://dut8banp5gtcn" path="res://tools/minigames/maze/sound/door_open.wav" id="3_ar6l6"]
+[ext_resource type="Texture2D" uid="uid://bpn4jhabr04lh" path="res://assets/maze/maze bench.png" id="3_l6eoi"]
 [ext_resource type="Script" path="res://tools/minigames/maze/FollowingCamera.gd" id="4_ohvxp"]
 [ext_resource type="PackedScene" uid="uid://dhyrf6dyl1s8c" path="res://scenes/player/maze_player.tscn" id="4_pj1vw"]
 [ext_resource type="Script" path="res://tools/minigames/maze/Goal.gd" id="4_v5a44"]
@@ -12,12 +13,6 @@
 glow_enabled = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qn3x3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lf32"]
-albedo_color = Color(0, 0.960784, 0.517647, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_kj010"]
-material = SubResource("StandardMaterial3D_1lf32")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fx42x"]
 size = Vector3(20, 1, 20)
@@ -54,8 +49,11 @@ mg = NodePath("../MazeGenerator")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
 shape = SubResource("SphereShape3D_qn3x3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Goal"]
-mesh = SubResource("SphereMesh_kj010")
+[node name="MeshInstance3D" type="Sprite3D" parent="Goal"]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.377021, 0)
+billboard = 1
+shaded = true
+texture = ExtResource("3_l6eoi")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Goal"]
 stream = ExtResource("3_ar6l6")

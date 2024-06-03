@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bjt4skwe1eu5h"]
+[gd_scene load_steps=28 format=3 uid="uid://bjt4skwe1eu5h"]
 
 [ext_resource type="Script" path="res://tools/minigames/fishing/fishing_minigame.gd" id="1_rrich"]
 [ext_resource type="PackedScene" uid="uid://cj57sfea8xmsy" path="res://tools/minigames/fishing/canvas_layer.tscn" id="2_1qyje"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/misc/panorama.png" id="9_i0a1k"]
 [ext_resource type="Script" path="res://tools/minigames/fishing/Camera3D4.gd" id="9_ji1k5"]
 [ext_resource type="Texture2D" uid="uid://chbw40rkc3heq" path="res://tools/minigames/fishing/assets/hook.png" id="12_3hqmn"]
+[ext_resource type="AudioStream" uid="uid://o03a0faqnxxa" path="res://tools/minigames/fishing/sounds/Villianess_Reborn_Fishing_Minigame.mp3" id="13_j78s1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5qk2j"]
 panorama = ExtResource("9_i0a1k")
@@ -210,6 +211,10 @@ modulate = Color(0.976471, 0.705882, 0.654902, 0.505882)
 texture = ExtResource("12_3hqmn")
 
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_j78s1")
+autoplay = true
 
 [connection signal="reeling_minigame" from="." to="CanvasLayer" method="_on_fishing_reeling_minigame"]
 [connection signal="reeling_minigame" from="." to="fish_instancer" method="_on_fishing_reeling_minigame"]

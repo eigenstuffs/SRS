@@ -1,23 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm18anwr0e8qc"]
+[gd_scene load_steps=6 format=3 uid="uid://dm18anwr0e8qc"]
 
 [ext_resource type="Script" path="res://tools/minigames/maze/maze_enemy.gd" id="1_4egut"]
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/misc/spritesheet_mini_npc_idle.png" id="2_whn68"]
+[ext_resource type="Texture2D" uid="uid://bntur1bf2hnkx" path="res://assets/maze/maze thorn circle.png" id="3_2ryuh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpcfu"]
 size = Vector3(1.5, 2.3, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hacuu"]
 size = Vector3(1.75, 2.086, 1.75)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kwt0"]
-albedo_color = Color(1, 0.145098, 0.145098, 1)
-billboard_mode = 2
-billboard_keep_scale = true
-
-[sub_resource type="TorusMesh" id="TorusMesh_pqpta"]
-material = SubResource("StandardMaterial3D_5kwt0")
-inner_radius = 0.864
-outer_radius = 0.761
 
 [node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -29,6 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0979008, 0.140029, 0)
 shape = SubResource("BoxShape3D_wpcfu")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+no_depth_test = true
 texture = ExtResource("2_whn68")
 hframes = 7
 
@@ -38,8 +30,11 @@ hframes = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119042, -0.0100403, -0.0437043)
 shape = SubResource("BoxShape3D_hacuu")
 
-[node name="Indicator" type="MeshInstance3D" parent="Hurtbox"]
-mesh = SubResource("TorusMesh_pqpta")
+[node name="Indicator" type="Sprite3D" parent="Hurtbox"]
+transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0)
+no_depth_test = true
+render_priority = -1
+texture = ExtResource("3_2ryuh")
 
 [connection signal="direction_cooldown" from="." to="." method="_on_direction_cooldown"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

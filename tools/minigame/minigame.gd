@@ -23,5 +23,5 @@ func end() -> void:
 func unhandled_input(_event : InputEvent) -> void:
 	pass
 
-func start_game():
+func game_start():
 	pass
