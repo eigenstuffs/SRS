@@ -111,7 +111,7 @@ func _on_key_report_hit(timing_offset : Variant, hit_type : Note.HitType):
 	match hit_type:
 		Note.HitType.HIT:
 			scoring = _get_scoring(abs(timing_offset*1e3), HIT_SCORING)
-			_update_combo(combo + 1, scoring[0], scoring[1])
+			_update_combo(combo + 1 if scoring[0] != 'Bad' else 0, scoring[0], scoring[1])
 		Note.HitType.RELEASE:
 			scoring = _get_scoring(abs(timing_offset*1e3), RELEASE_SCORING)
 			_update_combo(combo + 1, scoring[0], scoring[1])
