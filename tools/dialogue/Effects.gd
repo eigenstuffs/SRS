@@ -81,6 +81,7 @@ const SFX_TWINKLING_FAIRY = preload("res://assets/sfx/twinkling_1.mp3")
 const SFX_TWINKLING_CHIME = preload("res://assets/sfx/twinkling_2.mp3")
 const SFX_AMBIANCE_FOUNTAIN = preload("res://assets/sfx/ambiance_water_1.mp3")
 const SFX_FOOTSTEP_WALKING_SNOW = preload("res://assets/sfx/footsteps_walking_snow.mp3")
+const SFX_AMBIANCE_CARRIAGE_1 = preload("res://assets/sfx/ambiance_6.mp3")
 
 const MUSIC_SOMBER_DEATH = preload("res://assets/music/Villianess Reborn Somber Death Theme Accepting Fate.mp3")
 const MUSIC_MORE_INTENSE = preload("res://assets/music/Villianess Reborn A Little Faster More Intense Theme.mp3")
@@ -232,6 +233,7 @@ func _ready():
 	vn.connect("sfx_twinkling_chime", play_sfx.bind(SFX_TWINKLING_CHIME))
 	vn.connect("sfx_ambiance_fountain", play_sfx.bind(SFX_AMBIANCE_FOUNTAIN))
 	vn.connect("sfx_footstep_walking_snow", play_sfx.bind(SFX_FOOTSTEP_WALKING_SNOW))
+	vn.connect("sfx_ambiance_carriage_1", play_sfx.bind(SFX_AMBIANCE_CARRIAGE_1))
 	
 	vn.connect("music_somber_death", play_music.bind(MUSIC_SOMBER_DEATH))
 	vn.connect("music_more_intense", play_music.bind(MUSIC_MORE_INTENSE))

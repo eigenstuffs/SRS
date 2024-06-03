@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/vn/Dialogue/Dialogue Box.png" id="14_483pf"]
 [ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/ttf/Galdeano-Regular.ttf" id="16_v8kk6"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="17_elvhv"]
-[ext_resource type="Texture2D" uid="uid://c1e342tutqkm0" path="res://assets/vn/Cecilia/cecilia_default2.PNG" id="17_od5v0"]
+[ext_resource type="Texture2D" uid="uid://b846uae636evm" path="res://assets/vn/Cecilia/cecilia_default2.PNG" id="17_od5v0"]
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/ttf/Volkhov-Bold.ttf" id="18_2cvh1"]
 [ext_resource type="Texture2D" uid="uid://bo2omw0hx2b04" path="res://assets/vn/Settings/Autoplay.png" id="18_snyv8"]
 [ext_resource type="Texture2D" uid="uid://dg2mgqexrxkuq" path="res://assets/vn/Settings/Autoplay_Click.png" id="19_0c4ku"]
@@ -842,7 +842,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("4_g1vbp")
-text = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_2.json"
+text = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_3.json"
 
 [node name="EffectHandler" type="Node" parent="."]
 process_mode = 3

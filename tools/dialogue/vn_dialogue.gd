@@ -93,6 +93,7 @@ signal sfx_twinkling_fairy
 signal sfx_twinkling_chime
 signal sfx_ambiance_fountain
 signal sfx_footstep_walking_snow
+signal sfx_ambiance_carriage_1
 
 signal music_somber_death
 signal music_more_intense
@@ -203,6 +204,8 @@ signal done
 signal choice(which : int)
 signal finished_line
 
+var edgy_theme = false
+
 func _ready():
 	if text == null:
 		text = Global.return_current_text()
@@ -212,12 +215,16 @@ func _ready():
 	match text:
 		Global.ACT1_CHAPTER1_SCENE1:
 			alternate_text_box(true)
+			edgy_theme = true
 		Global.ACT1_CHAPTER1_SCENE2:
 			alternate_text_box(true)
+			edgy_theme = true
 		Global.ACT1_CHAPTER1_SCENE3:
 			alternate_text_box(true)
+			edgy_theme = true
 		_:
 			alternate_text_box(false)
+			edgy_theme = false
 	
 	text_box.hide()
 	choice_ui.hide()
@@ -248,7 +255,11 @@ func read_line(key : int):
 		await get_tree().create_timer(int(current_line["delay"])).timeout
 	if current_line["add"] != null:
 		Global.add_event(current_line["add"])
-	text_box.show()
+	if current_line["emit"]:
+		if !current_line["emit"].split(",").has("hide_text"):
+			text_box.show()
+	else:
+		text_box.show()
 	
 	if current_line["emit"] != null:
 		var text = current_line["emit"].split(",")
@@ -273,7 +284,7 @@ func read_line(key : int):
 				if !Global.data_dict["remembered"].has(i):
 					read_all = false
 			if !read_all:
-				if Global.data_dict["remembered"].has("a1c1_2"):
+				if !edgy_theme:
 					$Choice/Backdrop.position = Vector2(1950,0)
 					choice_ui.show()
 					var text : Array = current_line["options"].split(",")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlx1rnswomrpv"
-path="res://.godot/imported/cecilia_smile8(1).PNG-fd6b280462687d7577e3a193c3e2f05c.ctex"
+uid="uid://n17s7hfmbbhq"
+path="res://.godot/imported/maverick_serious7.PNG-fe0285ae75dce1765bf8bd4fd7ea7042.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Cecilia/cecilia_smile8(1).PNG"
-dest_files=["res://.godot/imported/cecilia_smile8(1).PNG-fd6b280462687d7577e3a193c3e2f05c.ctex"]
+source_file="res://assets/vn/Maverick/maverick_serious7.PNG"
+dest_files=["res://.godot/imported/maverick_serious7.PNG-fe0285ae75dce1765bf8bd4fd7ea7042.ctex"]
 
 [params]
 

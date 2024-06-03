@@ -17,6 +17,7 @@ var opp = 1
 var player_name : String = "You"
 var seraphina_name : String = "Seraphina"
 
+var type : String
 var og_ro : String
 
 ### OPTIONS
@@ -113,6 +114,7 @@ var save_path = save_dir + "save.dat"
 	"opp" : opp,
 	"player_name" : player_name,
 	"seraphina_name" : seraphina_name,
+	"type" : type,
 	"og_ro" : og_ro,
 	"text_speed" : text_speed,
 	"volume" : volume,

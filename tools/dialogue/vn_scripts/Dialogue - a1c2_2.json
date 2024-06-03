@@ -8,7 +8,7 @@
 	"go to": 2,
 	"options": null,
 	"options_id": null,
-	"emit": "cg_room,show_next,music_forest_2",
+	"emit": "cg_room,hide_text,show_next,music_forest_2",
 	"delay": null,
 	"run if": null,
 	"add": null,
@@ -24,7 +24,7 @@
 	"go to": 3,
 	"options": null,
 	"options_id": null,
-	"emit": "sfx_heels_walking_wood_int",
+	"emit": "sfx_heels_walking_wood_int,show_text",
 	"delay": null,
 	"run if": null,
 	"add": null,
@@ -1437,7 +1437,7 @@
 	"run if": null,
 	"add": null,
 	"set": null,
-	"flag": "decision"
+	"flag": null
   },
   "91": {
 	"speaker": null,
@@ -1453,7 +1453,7 @@
 	"run if": null,
 	"add": null,
 	"set": null,
-	"flag": null
+	"flag": "decision"
   },
   "92": {
 	"speaker": null,
@@ -3432,7 +3432,7 @@
 	"go to": 47,
 	"options": null,
 	"options_id": null,
-	"emit": null,
+	"emit": "fade_trans,stop_looping_sfx,stop_sfx,music_forest_2",
 	"delay": null,
 	"run if": null,
 	"add": "og_ro_mav",
@@ -3448,7 +3448,7 @@
 	"go to": 51,
 	"options": null,
 	"options_id": null,
-	"emit": null,
+	"emit": "fade_trans,stop_looping_sfx,stop_sfx,music_forest_2",
 	"delay": null,
 	"run if": null,
 	"add": null,
@@ -3464,7 +3464,7 @@
 	"go to": 53,
 	"options": null,
 	"options_id": null,
-	"emit": null,
+	"emit": "fade_trans,stop_looping_sfx,stop_sfx,music_forest_2",
 	"delay": null,
 	"run if": null,
 	"add": null,
@@ -4349,7 +4349,7 @@
 	"run if": null,
 	"add": null,
 	"set": null,
-	"flag": "menu"
+	"flag": null
   },
   "check_for_4": {
 	"speaker": null,

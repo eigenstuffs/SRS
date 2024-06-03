@@ -101,5 +101,9 @@ func init_cecilia(sprite):
 
 func clear_sprites():
 	for i in $HBoxContainer.get_children():
+		var a = create_tween()
+		a.tween_property(i, "modulate:a", 0, 0.5)
+	await get_tree().create_timer(0.5).timeout
+	for i in $HBoxContainer.get_children():
 		$HBoxContainer.remove_child(i)
 		i.queue_free()
