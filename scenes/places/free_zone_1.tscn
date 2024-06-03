@@ -156,7 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77746, 0, -1.80986)
 shape = SubResource("BoxShape3D_uoii5")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 7.11775, 0, -2.6008)
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 7.33873, -7.70752e-17, -2.6008)
 shape = SubResource("BoxShape3D_uoii5")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
@@ -284,7 +284,7 @@ libraries = {
 autoplay = "Idle"
 
 [node name="NPC2" type="Area3D" parent="Actors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.526139, 0.540338, -2.1824)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108917, 0.540338, -2.1824)
 script = ExtResource("6_eorbl")
 idle = ExtResource("7_11k2p")
 selected = ExtResource("8_q2j1r")
@@ -327,7 +327,7 @@ shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="Actors/NPC3" instance=ExtResource("9_csk0s")]
 script = ExtResource("15_a0gab")
-minigame = "Rhythm"
+minigame = "Maze"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC3"]
 libraries = {

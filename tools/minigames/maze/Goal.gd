@@ -7,10 +7,10 @@ signal goal_touched
 func _ready():
 	visible = false
 	monitoring = false
-	global_position = Vector3(mg.mazeWidth-1, 0.5, mg.mazeLength-1)
+	global_position = Vector3(mg.my_x+mg.mazeWidth-1, 0.5, mg.my_z+mg.mazeLength-1)
 
 func show_and_monitor():
-	global_position = Vector3(mg.mazeWidth-1, 0.5, mg.mazeLength-1)
+	global_position = Vector3(mg.my_x+mg.mazeWidth-1, 0.5, mg.my_z+mg.mazeLength-1)
 	visible = true
 	monitoring = true
 	$AudioStreamPlayer.play()

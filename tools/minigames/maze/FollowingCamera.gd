@@ -5,6 +5,7 @@ extends Camera3D
 @export var MIN_Z : float
 @export var MAX_Z : float
 @export var maze_generator : MazeGenerator
+@export var following_player : Node
 
 var ORIGINAL_ROT : Vector3 = Vector3(-51.2, 0, 0)
 var BIRD_VIEW_ROT : Vector3 = Vector3(-80, 0, 0)
@@ -16,7 +17,11 @@ func _ready():
 
 func _process(delta):
 	global_position.x = clamp(global_position.x, MIN_X, MAX_X)
-	global_position.z = clamp(global_position.z, MIN_Z, MAX_Z)
+	#if following_player.global_position.z < MIN_Z:
+		#global_position.z = MIN_Z
+	#elif following_player.global_position.z > MAX_Z:
+		#global_position.z = MAX_Z
+	#global_position.z = following_player.global_position.z + 2.4
 
 func bird_view():
 	curr_pos = global_position
@@ -31,6 +36,6 @@ func original_view():
 	set_rotation_degrees(ORIGINAL_ROT)
 
 func set_goal_pos():
-	MAX_X = maze_generator.mazeWidth
-	MAX_Z = maze_generator.mazeLength
-	GOAL_POS = Vector3(maze_generator.mazeWidth-1, 7, maze_generator.mazeLength-1)
+	MAX_X = maze_generator.mazeWidth + maze_generator.my_x
+	MAX_Z = maze_generator.mazeLength + maze_generator.my_z
+	GOAL_POS = Vector3(MAX_X-1, 7, MAX_Z-1)
