@@ -14,6 +14,8 @@ var buff_applied : bool = false
 var shake_strength = 0
 var shake_decay = 0
 
+var battle_result : String #for calculating stats
+
 @onready var choose = $Holder/Choice
 @onready var fight = $Holder/Fight
 @onready var flee = $Holder/Flee
@@ -24,13 +26,20 @@ signal card_action_finished
 signal enemy_move_finished
 
 func _ready():
-	turn_loop()
-	
+	if Global.data_dict["remembered"].has("SocialWarfare"):
+		turn_loop()
+	else:
+		Util.show_tutorial("SocialWarfare", $RewardHolder)
+		await Util.tutorial_finished
+		turn_loop()
 	$Holder/Opponent/BarHP.max_value = enemy_data.enemy_hp
 	$Holder/Opponent/BarMP.max_value = enemy_data.enemy_mp
 	$Holder/Player/BarHP.max_value = Global.data_dict["player_max_hp"]
 	$Holder/Player/BarMP.max_value = Global.data_dict["player_max_mp"]
-	
+
+func game_start():
+	turn_loop()
+
 func turn_loop():
 	refresh_stats()
 	fight.reset()
@@ -321,15 +330,16 @@ func card_action(card : Card, target : String):
 		end_battle(true)
 	elif Global.data_dict["player_hp"] <= 0:
 		end_battle(false)
+	else:
 	
-	await get_tree().create_timer(0.5).timeout
-	
-	if $EnemyData/Enemy.current_animation != "Idle":
-		$EnemyData/Enemy.play("Idle")
-	if $EnemyData/Player.current_animation != "Idle":
-		$EnemyData/Player.play("Idle")
-	
-	emit_signal("card_action_finished")
+		await get_tree().create_timer(0.5).timeout
+		
+		if $EnemyData/Enemy.current_animation != "Idle":
+			$EnemyData/Enemy.play("Idle")
+		if $EnemyData/Player.current_animation != "Idle":
+			$EnemyData/Player.play("Idle")
+		
+		emit_signal("card_action_finished")
 
 func enemy_move():
 	return enemy_data.get_best_card()
@@ -361,12 +371,28 @@ func end_battle(won : bool):
 	await get_tree().create_timer(0.5).timeout
 	EffectAnim.play("FadeBlack")
 	await EffectAnim.animation_finished
+	if won: battle_result = "Victory!"
+	else: battle_result = "Defeat..."
+	end()
 	# if you win you gain stats, if you lose you lose stats? idk
 	
 func flee_battle():
-	pass
+	battle_result = "Fled..."
+	end()
 	# no bonuses
 
+func end():
+	var stats_gained
+	match battle_result:
+		"Victory!":
+			stats_gained = [5, 5, 5, 5]
+		"Defeat...":
+			stats_gained = [0, 0, 0, 0]
+		"Fled...":
+			stats_gained = [1, 1, 1, 1]
+	await Util.create_reward_scene("SocialWarfare", [battle_result], stats_gained, self, $RewardHolder)
+	#connect back to free time zone or VN
+	
 func _process(delta):
 	if shake_strength > 0:
 		#print(shake_strength)

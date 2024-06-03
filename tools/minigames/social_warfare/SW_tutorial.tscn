@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwepgcd1cbaso"]
+
+[ext_resource type="PackedScene" uid="uid://drw36phbx4vrj" path="res://tools/minigames/template/tutorial_screen.tscn" id="1_2cu7q"]
+
+[node name="TutorialScreen" instance=ExtResource("1_2cu7q")]
+
+[node name="ConfirmButton" parent="." index="2"]
+offset_top = 252.0
+offset_bottom = 366.0
+
+[node name="Description" parent="." index="3"]
+offset_left = -288.0
+offset_top = -108.5
+offset_right = 288.0
+offset_bottom = 108.5
+text = "Pick the correct cards to destroy your opponent both physically and mentally!"
+vertical_alignment = 1
+autowrap_mode = 2

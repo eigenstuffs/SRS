@@ -1,8 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://jsihguxhu4ri"]
+[gd_scene load_steps=45 format=3 uid="uid://jsihguxhu4ri"]
 
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/PlayerData.gd" id="2_t2gbr"]
-[ext_resource type="Texture2D" uid="uid://bg5lmsai3bdgn" path="res://assets/socialwarfare/Black Box.png" id="2_wm5oo"]
 [ext_resource type="Texture2D" uid="uid://b0jmur30yi5il" path="res://assets/socialwarfare/Level_HP_MP_UI.png" id="3_wlxvx"]
 [ext_resource type="Texture2D" uid="uid://be0aofp6torag" path="res://assets/socialwarfare/esra/Esra_Idle_Sheet.png" id="3_y4if1"]
 [ext_resource type="Texture2D" uid="uid://cuibfl2jfmk0s" path="res://assets/socialwarfare/esra/Esra_Damage_Sheet.png" id="4_j317y"]
@@ -21,6 +20,45 @@
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="14_2nwvy"]
 [ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="15_7j0p1"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/Flee.gd" id="15_bsyil"]
+
+[sub_resource type="Animation" id="Animation_78qpp"]
+resource_name = "Damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprites/Damage:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprites/Idle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprites/Damage:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_dwyf7"]
 resource_name = "Idle"
@@ -54,45 +92,6 @@ tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("EnemySprites/Idle:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_78qpp"]
-resource_name = "Damage"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EnemySprites/Damage:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EnemySprites/Idle:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("EnemySprites/Damage:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -160,6 +159,45 @@ _data = {
 "RESET": SubResource("Animation_8chkj")
 }
 
+[sub_resource type="Animation" id="Animation_gcnir"]
+resource_name = "Damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites/Damage:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites/Damage:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites/Idle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_v34wt"]
 resource_name = "Idle"
 length = 0.8
@@ -174,7 +212,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 5]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -250,45 +288,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_gcnir"]
-resource_name = "Damage"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprites/Damage:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerSprites/Damage:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerSprites/Idle:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_po36k"]
@@ -618,11 +617,7 @@ animations = [{
 
 [node name="SocialWarfare" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_vycxu")
 
 [node name="EnemyData" type="Node" parent="."]
@@ -634,27 +629,32 @@ position = Vector2(1320, 300)
 scale = Vector2(-1, 1)
 
 [node name="Idle" type="Sprite2D" parent="EnemyData/EnemySprites"]
+position = Vector2(-312, 0)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_y4if1")
 hframes = 8
 
 [node name="Damage" type="Sprite2D" parent="EnemyData/EnemySprites"]
 visible = false
+position = Vector2(-312, 0)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_j317y")
 hframes = 3
 
 [node name="PlayerSprites" type="Node2D" parent="EnemyData"]
+z_index = -1
+z_as_relative = false
 position = Vector2(570, 600)
 
 [node name="Idle" type="Sprite2D" parent="EnemyData/PlayerSprites"]
-scale = Vector2(0.3, 0.3)
+position = Vector2(-250, 168)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_d5jsl")
 hframes = 8
 
 [node name="Damage" type="Sprite2D" parent="EnemyData/PlayerSprites"]
 visible = false
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_dcv2l")
 hframes = 3
 
@@ -662,11 +662,13 @@ hframes = 3
 libraries = {
 "": SubResource("AnimationLibrary_t1wax")
 }
+autoplay = "Idle"
 
 [node name="Player" type="AnimationPlayer" parent="EnemyData"]
 libraries = {
 "": SubResource("AnimationLibrary_po36k")
 }
+autoplay = "Idle"
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
@@ -675,21 +677,25 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
+z_index = -2
+z_as_relative = false
 layout_mode = 0
 offset_left = -128.0
 offset_top = -128.0
 offset_right = 2048.0
 offset_bottom = 1216.0
 
-[node name="Box" type="TextureRect" parent="Background"]
+[node name="ColorRect2" type="ColorRect" parent="Background"]
+z_as_relative = false
 layout_mode = 0
 offset_left = -128.0
-offset_top = 848.0
+offset_top = 864.0
 offset_right = 2048.0
-offset_bottom = 1216.0
-texture = ExtResource("2_wm5oo")
+offset_bottom = 1248.0
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 
 [node name="Holder" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
 
@@ -906,6 +912,8 @@ frame_progress = 0.41756
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+
+[node name="RewardHolder" type="CanvasLayer" parent="."]
 
 [connection signal="pressed" from="Holder/Fight/Back" to="Holder/Fight" method="_on_back_pressed"]
 [connection signal="selected_card" from="Holder/Fight/CardDeck" to="Holder/Fight" method="_on_card_deck_selected_card"]
