@@ -35,7 +35,9 @@ func initiate_minigame(which : String):
 			if Global.data_dict["remembered"].has(which):
 				$UI.start_sTime()
 			else:
-				show_tutorial(which)
+				Util.show_tutorial(which, self)
+				await Util.tutorial_finished
+				$UI.start_sTime()
 		
 			ui.gameTimeCount = metadata.time
 			$UI/StartTimer.visible = true
@@ -106,15 +108,6 @@ func pause_time():
 
 func resume_time():
 	$UI.resume_game_time()
-
-func show_tutorial(which : String):
-	var desired_tutorial = TUTORIAL_LIST.find_scene(which)
-	var a : Tutorial = desired_tutorial.instantiate()
-	$Tutorial.add_child(a)
-	await a.confirm_pressed
-	a.queue_free()
-	$UI.start_sTime()
-	Global.add_event(which)
 
 func _on_ui_start_time_over():
 	game.game_start()

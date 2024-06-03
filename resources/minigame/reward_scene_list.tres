@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RewardList" load_steps=7 format=3 uid="uid://cyduh5tusug7w"]
+[gd_resource type="Resource" script_class="RewardList" load_steps=8 format=3 uid="uid://cyduh5tusug7w"]
 
 [ext_resource type="Script" path="res://resources/minigame/reward_scene_list.gd" id="1_2l0mq"]
 [ext_resource type="Script" path="res://resources/minigame/reward_scene_info.gd" id="1_flj3g"]
@@ -23,6 +23,11 @@ script = ExtResource("1_flj3g")
 name = "Maze"
 scene = "res://tools/minigames/maze/maze_reward_scene.tscn"
 
+[sub_resource type="Resource" id="Resource_smc6b"]
+script = ExtResource("1_flj3g")
+name = "SocialWarfare"
+scene = "res://tools/minigames/social_warfare/SW_reward_scene.tscn"
+
 [resource]
 script = ExtResource("1_2l0mq")
-reward_scene_list = Array[ExtResource("1_flj3g")]([SubResource("Resource_i6p0o"), SubResource("Resource_a353u"), SubResource("Resource_8jc4f"), SubResource("Resource_1qcdo")])
+reward_scene_list = Array[ExtResource("1_flj3g")]([SubResource("Resource_i6p0o"), SubResource("Resource_a353u"), SubResource("Resource_8jc4f"), SubResource("Resource_1qcdo"), SubResource("Resource_smc6b")])
