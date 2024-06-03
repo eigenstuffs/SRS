@@ -140,7 +140,6 @@ vertical_alignment = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.873641, 0.466846)
-current = true
 
 [node name="Colliders" type="Node3D" parent="."]
 
