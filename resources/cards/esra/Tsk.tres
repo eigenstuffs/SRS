@@ -6,10 +6,10 @@
 script = ExtResource("1_875a2")
 points_req = 0
 title = "Tsk."
-effect = null
-target_stat = null
+effect = 3
+target_stat = 0
 type = 0
-effect_num = 0.0
+effect_num = 0.75
 desc = "Esra clicks his tongue to boost his standing."
 intensity_mod = -20
 move_dialogue = Array[String](["Tsk, you really piss me off.", "You little…!", "I’m just getting started.", "Are you even trying?", "I’ll make you choke on those words."])

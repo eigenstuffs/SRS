@@ -61,7 +61,7 @@ func turn_loop():
 					await flee.finished
 					match flee.escaped:
 						true:
-							end_battle(true)
+							flee_battle()
 						false:
 							print("failed flee")
 							STATE = STATES.OPPONENT
@@ -80,6 +80,26 @@ func card_action(card : Card, target : String):
 	print(card.title)
 	battle_intensity += card.intensity_mod
 	Global.data_dict["player_mp"] -= card.points_req
+	
+	## anim handler
+	
+	match target:
+		"Player":
+			match card.effect:
+				0:
+					$EnemyData/Player.play("Damage")
+				3:
+					$EnemyData/Player.play("Damage")
+				_:
+					pass
+		"Opponent":
+			match card.effect:
+				0:
+					$EnemyData/Enemy.play("Damage")
+				3:
+					$EnemyData/Enemy.play("Damage")
+				_:
+					pass
 	
 	## print card title
 	
@@ -290,13 +310,29 @@ func card_action(card : Card, target : String):
 		Global.data_dict["player_defense_ratio"] = 1
 		enemy_data.enemy_offense_ratio = 1
 		enemy_data.enemy_defense_ratio = 1
+		
+	enemy_data.enemy_hp = clamp(enemy_data.enemy_hp, 0, enemy_data.enemy_max_hp)
+	enemy_data.enemy_mp = clamp(enemy_data.enemy_mp, 0, enemy_data.enemy_max_mp)
+	Global.data_dict["player_hp"] = clamp(Global.data_dict["player_hp"], 0, Global.data_dict["player_max_hp"])
+	Global.data_dict["player_mp"] = clamp(Global.data_dict["player_mp"], 0, Global.data_dict["player_max_mp"])
 	refresh_stats()
+	
+	if enemy_data.enemy_hp <= 0:
+		end_battle(true)
+	elif Global.data_dict["player_hp"] <= 0:
+		end_battle(false)
+	
 	await get_tree().create_timer(0.5).timeout
+	
+	if $EnemyData/Enemy.current_animation != "Idle":
+		$EnemyData/Enemy.play("Idle")
+	if $EnemyData/Player.current_animation != "Idle":
+		$EnemyData/Player.play("Idle")
+	
 	emit_signal("card_action_finished")
 
 func enemy_move():
-	enemy_data.enemy_cards.shuffle()
-	return enemy_data.enemy_cards[0]
+	return enemy_data.get_best_card()
 
 func refresh_stats():
 	var a = create_tween()
@@ -319,9 +355,17 @@ func refresh_stats():
 func end_battle(won : bool):
 	match won:
 		true:
-			pass
+			$EnemyData/Enemy.play("Damage")
 		false:
-			pass
+			$EnemyData/Player.play("Damage")
+	await get_tree().create_timer(0.5).timeout
+	EffectAnim.play("FadeBlack")
+	await EffectAnim.animation_finished
+	# if you win you gain stats, if you lose you lose stats? idk
+	
+func flee_battle():
+	pass
+	# no bonuses
 
 func _process(delta):
 	if shake_strength > 0:

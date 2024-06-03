@@ -1,11 +1,15 @@
-[gd_scene load_steps=33 format=3 uid="uid://jsihguxhu4ri"]
+[gd_scene load_steps=46 format=3 uid="uid://jsihguxhu4ri"]
 
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/PlayerData.gd" id="2_t2gbr"]
 [ext_resource type="Texture2D" uid="uid://bg5lmsai3bdgn" path="res://assets/socialwarfare/Black Box.png" id="2_wm5oo"]
 [ext_resource type="Texture2D" uid="uid://b0jmur30yi5il" path="res://assets/socialwarfare/Level_HP_MP_UI.png" id="3_wlxvx"]
+[ext_resource type="Texture2D" uid="uid://be0aofp6torag" path="res://assets/socialwarfare/esra/Esra_Idle_Sheet.png" id="3_y4if1"]
+[ext_resource type="Texture2D" uid="uid://cuibfl2jfmk0s" path="res://assets/socialwarfare/esra/Esra_Damage_Sheet.png" id="4_j317y"]
 [ext_resource type="Texture2D" uid="uid://yupx74k183p1" path="res://assets/socialwarfare/Opponent_HP_MP_Level_UI.png" id="4_vv8kx"]
+[ext_resource type="Texture2D" uid="uid://bwoykkxtcwxcs" path="res://assets/cecelia_spritesheets/Cecilia_Idle_Sheet.png" id="5_d5jsl"]
 [ext_resource type="Texture2D" uid="uid://duon6ucqjsp23" path="res://assets/socialwarfare/bar_white.png" id="5_r0ovr"]
+[ext_resource type="Texture2D" uid="uid://deyxjtpwdgsxu" path="res://assets/cecelia_spritesheets/Cecilia_Damage_Sheet.png" id="6_dcv2l"]
 [ext_resource type="Texture2D" uid="uid://c8he0ci40rd5s" path="res://assets/socialwarfare/bar_green.png" id="6_wldyg"]
 [ext_resource type="Texture2D" uid="uid://dync2rp1v4bs4" path="res://assets/socialwarfare/bar_mp.png" id="7_j7171"]
 [ext_resource type="Texture2D" uid="uid://cgaksh8qj6kb0" path="res://assets/socialwarfare/SW_Button_Backplate.png" id="7_k28hl"]
@@ -14,8 +18,285 @@
 [ext_resource type="Texture2D" uid="uid://c1ggtt1meqgln" path="res://assets/socialwarfare/Button_Backplate_Click.png" id="8_vkh4x"]
 [ext_resource type="Texture2D" uid="uid://52akqjnkuqwa" path="res://assets/socialwarfare/Button_Backplate_Hover.png" id="9_d3rgy"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/Fight.gd" id="12_3d855"]
+[ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="14_2nwvy"]
 [ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="15_7j0p1"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/Flee.gd" id="15_bsyil"]
+
+[sub_resource type="Animation" id="Animation_dwyf7"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprites/Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprites/Damage:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprites/Idle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_78qpp"]
+resource_name = "Damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprites/Damage:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprites/Idle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprites/Damage:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8chkj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprites/Damage:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprites/Idle:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprites/Damage:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemySprites/Idle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1wax"]
+_data = {
+"Damage": SubResource("Animation_78qpp"),
+"Idle": SubResource("Animation_dwyf7"),
+"RESET": SubResource("Animation_8chkj")
+}
+
+[sub_resource type="Animation" id="Animation_v34wt"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites/Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites/Idle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites/Damage:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d7xgc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites/Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites/Damage:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites/Damage:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprites/Idle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gcnir"]
+resource_name = "Damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites/Damage:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites/Damage:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites/Idle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_po36k"]
+_data = {
+"Damage": SubResource("Animation_gcnir"),
+"Idle": SubResource("Animation_v34wt"),
+"RESET": SubResource("Animation_d7xgc")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpmps"]
 bg_color = Color(0, 0, 0, 0.576471)
@@ -348,9 +629,44 @@ script = ExtResource("1_vycxu")
 script = ExtResource("2_t2gbr")
 enemy_name = "Esra"
 
-[node name="Sprite2D" type="Sprite2D" parent="EnemyData"]
+[node name="EnemySprites" type="Node2D" parent="EnemyData"]
+position = Vector2(1320, 300)
+scale = Vector2(-1, 1)
+
+[node name="Idle" type="Sprite2D" parent="EnemyData/EnemySprites"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_y4if1")
+hframes = 8
+
+[node name="Damage" type="Sprite2D" parent="EnemyData/EnemySprites"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_j317y")
+hframes = 3
+
+[node name="PlayerSprites" type="Node2D" parent="EnemyData"]
+position = Vector2(570, 600)
+
+[node name="Idle" type="Sprite2D" parent="EnemyData/PlayerSprites"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_d5jsl")
+hframes = 8
+
+[node name="Damage" type="Sprite2D" parent="EnemyData/PlayerSprites"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_dcv2l")
+hframes = 3
 
 [node name="Enemy" type="AnimationPlayer" parent="EnemyData"]
+libraries = {
+"": SubResource("AnimationLibrary_t1wax")
+}
+
+[node name="Player" type="AnimationPlayer" parent="EnemyData"]
+libraries = {
+"": SubResource("AnimationLibrary_po36k")
+}
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
@@ -383,8 +699,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 736.0
+offset_top = 180.0
 offset_right = 1184.0
-offset_bottom = 192.0
+offset_bottom = 372.0
 grow_horizontal = 2
 
 [node name="Box" type="Sprite2D" parent="Holder/Player"]
@@ -410,6 +727,18 @@ offset_bottom = 515.0
 value = 70.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("7_j7171")
+
+[node name="Label2" type="Label" parent="Holder/Player"]
+layout_mode = 0
+offset_left = 562.0
+offset_top = 442.0
+offset_right = 1222.0
+offset_bottom = 485.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_2nwvy")
+theme_override_font_sizes/font_size = 32
+text = "CECILIA
+"
 
 [node name="Opponent" type="Control" parent="Holder"]
 layout_mode = 1
@@ -445,6 +774,17 @@ offset_bottom = 189.0
 value = 70.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("7_j7171")
+
+[node name="Label" type="Label" parent="Holder/Opponent"]
+layout_mode = 0
+offset_left = -713.0
+offset_top = 116.0
+offset_right = -53.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_2nwvy")
+theme_override_font_sizes/font_size = 32
+text = "ESRA"
 
 [node name="Fight" type="Control" parent="Holder"]
 visible = false

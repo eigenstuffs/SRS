@@ -6,10 +6,10 @@
 script = ExtResource("1_4rbhu")
 points_req = 0
 title = "Tch."
-effect = null
-target_stat = null
+effect = 3
+target_stat = 1
 type = 0
-effect_num = 0.0
+effect_num = 0.75
 desc = "Esra scoffs to lower your standing."
 intensity_mod = -20
 move_dialogue = Array[String](["Tch, is that all you’ve got?", "You heard me.", "What are you, an idiot?", "What’s wrong? You need your daddy now?", "[Esra gives you a nasty look. It doesn’t bode well…]"])
