@@ -913,7 +913,7 @@
   },
   "58": {
     "speaker": "Esra",
-    "character": "Cassius,!Esra",
+    "character": "Cassius,Ssra",
     "sprite": null,
     "cecilia": null,
     "text": "[i]Tsk.[/i] Lady Karmina! Are you even listening to me?",
@@ -929,7 +929,7 @@
   },
   "59": {
     "speaker": "Esra",
-    "character": "Cassius,!Esra",
+    "character": "Cassius,Esra",
     "sprite": null,
     "cecilia": null,
     "text": "Your behavior isn’t appropriate for a lady of high society, much less the fiancee of the crown prince.",
@@ -961,7 +961,7 @@
   },
   "61": {
     "speaker": "Esra",
-    "character": "Cassius,!Esra",
+    "character": "Cassius,Esra",
     "sprite": null,
     "cecilia": null,
     "text": "I’ll have you know, you’re lucky that I came here to pick you up today.",
@@ -977,7 +977,7 @@
   },
   "62": {
     "speaker": "Esra",
-    "character": "Cassius,!Esra",
+    "character": "Cassius,Esra",
     "sprite": null,
     "cecilia": null,
     "text": "I have a lot of work to finish at the palace and I [i]really[/i] don’t appreciate my time being wasted by some noblewoman who has no respect for anyone other than herself.",
@@ -1009,7 +1009,7 @@
   },
   "64": {
     "speaker": "Cassius",
-    "character": "!Cassius,Esra",
+    "character": "Cassius,Esra",
     "sprite": null,
     "cecilia": null,
     "text": "There might not be a next time if you keep this up.",
@@ -1041,7 +1041,7 @@
   },
   "66": {
     "speaker": "Cassius",
-    "character": "!Cassius,Esra",
+    "character": "Cassius,Esra",
     "sprite": null,
     "cecilia": null,
     "text": "Now is not the time to be picking fights, Cecilia.",
@@ -1153,7 +1153,7 @@
   },
   "74": {
     "speaker": "Cassius",
-    "character": "!Cassius,Esra",
+    "character": "Cassius,Esra",
     "sprite": null,
     "cecilia": null,
     "text": "Lady Karmina has already caused enough grief. Do not endeavor to test my patience as well.",
@@ -1601,7 +1601,7 @@
   },
   "snapout": {
     "speaker": "Esra",
-    "character": "Cassius,!Esra",
+    "character": "Cassius,Esra",
     "sprite": null,
     "cecilia": null,
     "text": "-na?",
@@ -1633,7 +1633,7 @@
   },
   "justbecause": {
     "speaker": "Esra",
-    "character": "Cassius,!Esra",
+    "character": "Cassius,Esra",
     "sprite": null,
     "cecilia": null,
     "text": "[i]Why you—[/i]",
@@ -1681,14 +1681,14 @@
   },
   "resume_late": {
     "speaker": "Cassius",
-    "character": "!Cassius,Esra",
+    "character": "Cassius,Esra",
     "sprite": null,
     "cecilia": null,
     "text": "Coachman, take us to the palace and make haste.",
     "go to": 74,
     "options": null,
     "options_id": null,
-    "emit": null,
+    "emit": "fade_trans",
     "delay": null,
     "run if": null,
     "add": null,
