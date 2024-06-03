@@ -227,7 +227,7 @@ shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="Actors/NPC" instance=ExtResource("12_ng67i")]
 script = ExtResource("13_o0gv8")
-minigame = "Fishing"
+minigame = "Maze"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC"]
 libraries = {
@@ -253,7 +253,7 @@ shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="Actors/NPC2" instance=ExtResource("12_ng67i")]
 script = ExtResource("13_o0gv8")
-minigame = "Library"
+minigame = "Maze"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC2"]
 libraries = {
@@ -279,7 +279,7 @@ shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="Actors/NPC3" instance=ExtResource("12_ng67i")]
 script = ExtResource("13_o0gv8")
-minigame = "Rhythm"
+minigame = "Maze"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC3"]
 libraries = {
@@ -287,11 +287,11 @@ libraries = {
 }
 autoplay = "Idle"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.906757, 0.421653, 0, -0.421653, 0.906757, 0, 1.97825, 2.32794)
-light_color = Color(0.792157, 0.741176, 0.788235, 1)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cwgqk")
 
 [node name="SubViewportContainer" type="CanvasLayer" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906757, 0.421653, 0, -0.421653, 0.906757, 0, 1.97825, 2.32794)
+light_color = Color(0.992157, 0.74902, 0.454902, 1)

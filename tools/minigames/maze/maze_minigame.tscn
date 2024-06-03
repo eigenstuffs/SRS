@@ -35,15 +35,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.740582, 0.671966, 0, -0.671966, 0.740582, 0, 12.1276, 9.07798)
-light_color = Color(0.992157, 0.921569, 0.847059, 1)
-light_energy = 1.38
+transform = Transform3D(1, 0, 0, 0, 0.740582, 0.671966, 0, -0.671966, 0.740582, 1000, 12.128, 9.078)
+light_color = Color(1, 0.933333, 0.811765, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bncaf")
 
 [node name="Goal" type="Area3D" parent="." node_paths=PackedStringArray("mg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 0.5, 9)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_v5a44")
@@ -63,16 +62,16 @@ stream = ExtResource("3_ar6l6")
 
 [node name="EnemyFolder" type="Node3D" parent="."]
 
-[node name="MazeGenerator" type="Node3D" parent="." node_paths=PackedStringArray("enemyFolder")]
+[node name="MazeGenerator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 2.08165e-12, 2.08165e-12)
 script = ExtResource("1_wltr6")
-enemyFolder = NodePath("../EnemyFolder")
 mazeWidth = 13
 mazeLength = 13
 keyN = 5
 minimum_radius = 4
 
 [node name="Ground" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.08165e-12, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1005, 2.08165e-12, 2.08165e-12)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
 collision_layer = 3
@@ -86,16 +85,17 @@ mesh = SubResource("PlaneMesh_n6l4b")
 skeleton = NodePath("../StaticBody3D")
 
 [node name="MazePlayer" parent="." instance=ExtResource("4_pj1vw")]
-transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.173648, -4.09353e-16, -0.173648, 0.984808, 2.08165e-12, 1, 2.08165e-12)
+transform = Transform3D(1, -4.3906e-16, 3.36902e-16, 3.36902e-16, 0.965926, 0.258819, -4.3906e-16, -0.258819, 0.965926, 1000, 1, 2.08165e-12)
 
-[node name="FollowingCamera" type="Camera3D" parent="MazePlayer" node_paths=PackedStringArray("maze_generator")]
-transform = Transform3D(1, -6.2061e-16, 2.18552e-16, 2.18551e-16, 0.626604, 0.779338, -6.2061e-16, -0.779338, 0.626604, 0.439, 3.49605, 2.40622)
+[node name="FollowingCamera" type="Camera3D" parent="MazePlayer" node_paths=PackedStringArray("maze_generator", "following_player")]
+transform = Transform3D(1, -6.19845e-16, 2.19499e-16, 2.19499e-16, 0.62932, 0.777146, -6.19845e-16, -0.777146, 0.62932, 0.439, 3.2, 3)
 current = true
 script = ExtResource("4_ohvxp")
 MAX_X = 10.0
 MIN_Z = 3.0
-MAX_Z = 10.0
+MAX_Z = 15.0
 maze_generator = NodePath("../../MazeGenerator")
+following_player = NodePath("..")
 
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="MazePlayer"]
 

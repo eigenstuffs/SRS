@@ -11,7 +11,6 @@ signal setup_complete
 @onready var mazeCell = preload("res://tools/minigames/maze/maze_cell.tscn")
 @onready var keys = preload("res://tools/minigames/maze/keys.tscn")
 @onready var enemies = preload("res://tools/minigames/maze/maze_enemy.tscn")
-@export var enemyFolder : Node3D
 @onready var maze_metadata : MazeMeta = preload("res://tools/minigames/maze/maze_metadata.tres")
 
 @export var mazeWidth : int
@@ -20,6 +19,7 @@ signal setup_complete
 @export var minimum_radius : int
 var mazeGrid : Array
 var enemyArray : Array[MazeEnemy] = []
+var keyArray : Array = []
 var keysCollected : int = 0
 var my_x : int
 var my_z : int
@@ -32,24 +32,25 @@ func _ready():
 		mazeGrid.append([])
 		for j in range(mazeLength):
 			var newCell : MazeCell = mazeCell.instantiate()
-			newCell.position = Vector3(my_x+i, 0.5, my_z+j)
+			newCell.position = Vector3(i, 0.5, j)
 			add_child(newCell)
 			mazeGrid[i].append(newCell)
 	
 	generateMaze(null, mazeGrid[0][0])
 	
 	#place keys at random places
-	var place_coords : Array = [[my_x+0, my_z+0], [my_x+mazeWidth-1, my_z+mazeLength-1]]
+	var place_coords : Array = [[0, 0], [mazeWidth-1, mazeLength-1]]
 	for i in range(keyN):
-		var random_coords : Array = [randi_range(my_x+0, my_x+mazeWidth-1), randi_range(my_z+0, my_z+mazeLength-1)]
+		var random_coords : Array = [randi_range(0, mazeWidth-1), randi_range(0, mazeLength-1)]
 		while coords_too_close(place_coords, random_coords):
 			#see if repeated location or too close to the starting point
-			random_coords = [randi_range(my_x+0, my_x+mazeWidth-1), randi_range(my_z+0, my_z+mazeLength-1)]
+			random_coords = [randi_range(0, mazeWidth-1), randi_range(0, mazeLength-1)]
 		print(random_coords)
 		place_coords.append(random_coords)
 		var newKey : Keys = keys.instantiate()
 		newKey.position = Vector3(random_coords[0], 1, random_coords[1])
 		add_child(newKey)
+		keyArray.append(newKey)
 		newKey.connect("collected", on_key_collected)
 		
 	#spawn enemies around the keys
@@ -57,10 +58,12 @@ func _ready():
 	for coords in key_coords:
 		var newEnemy : MazeEnemy = enemies.instantiate()
 		newEnemy.position = Vector3(coords[0], 0.8, coords[1])
-		enemyFolder.add_child(newEnemy)
+		add_child(newEnemy)
 		newEnemy.connect("met_player", on_enemy_met_player)
 		enemyArray.append(newEnemy)
 	
+	
+	print("setup complete")
 	emit_signal("setup_complete")
 
 func coords_too_close(coords_array : Array, new_coords : Array) -> bool:

@@ -25,7 +25,7 @@ var all_keys_got : bool = false
 func _ready():
 	pause_all_movement()
 
-func game_start():
+func game_start(): 
 	resume_all_movement()
 
 func end():
@@ -103,5 +103,5 @@ func pause_all_movement():
 
 func resume_all_movement():
 	$MazePlayer.can_move = true
-	for child in $EnemyFolder.get_children():
+	for child in $MazeGenerator.enemyArray:
 		child.can_move = true
