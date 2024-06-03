@@ -269,7 +269,7 @@ func card_action(card : Card, target : String):
 							Global.data_dict["player_defense_ratio"] *= (card.effect_num*multiple)
 							Util.popup_dialogue(
 								$Holder/DialogueHolder,
-								["Your defense fell!"],
+								["Your defense rose!"],
 								["null"]
 							)
 							await Util.util_finished
@@ -282,7 +282,7 @@ func card_action(card : Card, target : String):
 							enemy_data.enemy_offense_ratio *= (card.effect_num*multiple)
 							Util.popup_dialogue(
 								$Holder/DialogueHolder,
-								[enemy_data.enemy_name + "'s defense fell!"],
+								[enemy_data.enemy_name + "'s offense fell!"],
 								["null"]
 							)
 							await Util.util_finished
