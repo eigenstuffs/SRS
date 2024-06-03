@@ -280,6 +280,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="TitleLabel" type="Label" parent="."]
+visible = false
 offset_left = 40.0
 offset_top = 107.0
 offset_right = 976.0
