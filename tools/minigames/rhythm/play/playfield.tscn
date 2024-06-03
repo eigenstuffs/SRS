@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cr62xw6ofifyl"]
+[gd_scene load_steps=42 format=3 uid="uid://cr62xw6ofifyl"]
 
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/playfield.gd" id="1_a1v4t"]
 [ext_resource type="PackedScene" uid="uid://d1qbfbxp0ditp" path="res://tools/minigames/rhythm/util/audio_synchronizer.tscn" id="3_g2rft"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/combo_meter.gd" id="15_srpjb"]
 [ext_resource type="Shader" path="res://resources/shaders/spatial/volumetric_clouds.gdshader" id="16_rr7ty"]
 [ext_resource type="Texture2D" uid="uid://8xpprf7ooxdt" path="res://tools/minigames/rhythm/assets/ballroom.png" id="17_ing8d"]
+[ext_resource type="PackedScene" uid="uid://blv2x4ex2bkn0" path="res://tools/minigames/rhythm/assets/cirno/fumo.tscn" id="18_6rega"]
 [ext_resource type="Shader" path="res://tools/minigames/rhythm/ballroom.gdshader" id="18_7gqo5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_tu6ej"]
@@ -270,6 +271,13 @@ script = SubResource("GDScript_1sgvm")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.227432, -7.99924, -0.960572)
 mesh = SubResource("QuadMesh_noca2")
 surface_material_override/0 = SubResource("ShaderMaterial_l5pri")
+
+[node name="Fumo" type="Node3D" parent="."]
+transform = Transform3D(-0.0390757, 0.144821, 0, -0.144821, -0.0390757, 0, 0, 0, 0.15, 7.80604, -2.85912, 2.16368)
+visible = false
+
+[node name="Fumo" parent="Fumo" instance=ExtResource("18_6rega")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="TitleLabel" type="Label" parent="."]
 offset_left = 40.0

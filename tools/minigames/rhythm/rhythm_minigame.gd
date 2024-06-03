@@ -30,13 +30,13 @@ func _physics_process(delta: float) -> void:
 		playfield.prepare()
 		
 		var last_hit_object := playfield.hit_objects[-1]
-		last_note_time = last_hit_object.time + last_hit_object.duration + 3
+		last_note_time = last_hit_object.time + last_hit_object.duration + 3.0
 		MinigameRegistry.get_metadata('Rhythm').time = last_note_time
 		# FIXME: cursed hack into minigame_holder
 		get_parent().get_parent().ui.connect('startTimeOver', func(): playfield.start())
 		
 		prepare_stage = true
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(2.5).timeout
 		EffectReg.free_effect('ColorFade')
 		EffectReg.start_effect(self, 'ColorFade', [$Playfield/Effects, Color.WHITE, Color.TRANSPARENT, 0.65])
 		$BeatmapSelect.free()

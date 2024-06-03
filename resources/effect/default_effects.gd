@@ -68,7 +68,7 @@ class EffectFlashNew extends EffectColorFadeNew:
 		super()
 		self.name = 'Flash'
 		self.should_free_when_stopped = true
-		self.on_start = func(color := Color(0.98, 0.98, 0.98, 0.6), flash_duration := 0.35, use_vignette := true) -> void:
+		self.on_start = func(color := Color(0.98, 0.98, 0.98, 1.0), flash_duration := 0.35, use_vignette := true) -> void:
 			self.duration = flash_duration
 			render_passes[0].enable({
 				'start_color' : color, 
@@ -200,7 +200,7 @@ class EffectExplosion extends Effect:
 				
 				Engine.set_time_scale(1.0)
 				EffectReg.start_effect(parent, 'Bloom', [control, 1.0, 0.0, 0.5, 0.4])
-				EffectReg.start_effect(parent, 'Flash', [control, Color(0.98, 0.98, 0.98, 0.6), 0.2])
+				EffectReg.start_effect(parent, 'Flash', [control, Color(0.98, 0.98, 0.98, 1.0), 0.2])
 				self.effect_node.start_explosion(),
 			func(): queue_free(),
 			func(): pass)

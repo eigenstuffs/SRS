@@ -10,6 +10,8 @@ var seed := 0.0 :
 	set(value):
 		seed = fmod(sin(value * 12.9898) * 43758.5453, 1.0) * 20.0
 
+@onready var label : Label3D = $Label
+
 func _ready() -> void:
 	_set_preview_texture(DEFAULT_PREVIEW_IMAGE)
 
@@ -18,4 +20,4 @@ func _set_preview_texture(texture : CompressedTexture2D) -> void:
 	$InnerBubble.get_surface_override_material(0).set_shader_parameter('beatmap_texture', texture)
 
 func _physics_process(delta: float) -> void:
-	position.y = cos(seed + Time.get_ticks_msec()*1e-3*0.2) * 0.085
+	position.y = cos(seed + Time.get_ticks_msec()*1e-3*0.2) * 0.0425

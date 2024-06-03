@@ -82,6 +82,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_swpkw")
 
 [node name="BetterCallEffect" type="CanvasLayer"]
+layer = 0
 
 [node name="Circle" type="TextureRect" parent="."]
 offset_left = 30.0
@@ -165,9 +166,9 @@ spot_angle = 35.31
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_uw15k")
+volume_db = -10.0
 autoplay = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_de8po")
 volume_db = 5.0
-autoplay = true

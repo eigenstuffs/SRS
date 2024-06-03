@@ -1,13 +1,18 @@
-[gd_resource type="Resource" script_class="Beatmap" load_steps=4 format=3 uid="uid://qc6xfemnwspm"]
+[gd_resource type="Resource" script_class="Beatmap" load_steps=6 format=3 uid="uid://qc6xfemnwspm"]
 
 [ext_resource type="Texture2D" uid="uid://cu407mamhnwbp" path="res://assets/beatmaps/eden.jpg" id="1_2l5x4"]
 [ext_resource type="Script" path="res://resources/beatmap/beatmap.gd" id="1_81qnw"]
+[ext_resource type="Script" path="res://resources/beatmap/eden_mod.gd" id="1_mq4xo"]
 [ext_resource type="AudioStream" uid="uid://bc6wbfnohslej" path="res://assets/beatmaps/eden.mp3" id="3_x8m07"]
+
+[sub_resource type="Resource" id="Resource_1mt05"]
+script = ExtResource("1_mq4xo")
 
 [resource]
 script = ExtResource("1_81qnw")
 title = &"Eden"
 preview = ExtResource("1_2l5x4")
+mod_file = SubResource("Resource_1mt05")
 preview_start = 14.0
 volume_db_offset = -8.0
 track = ExtResource("3_x8m07")

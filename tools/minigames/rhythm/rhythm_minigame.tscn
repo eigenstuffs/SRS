@@ -28,6 +28,7 @@ albedo_color = Color(0.415288, 0.272278, 0.549399, 1)
 albedo_texture = ExtResource("5_ii67y")
 
 [node name="RhythmMinigame" type="SubViewport"]
+own_world_3d = true
 script = ExtResource("1_pb007")
 
 [node name="Environment" type="WorldEnvironment" parent="."]
@@ -57,13 +58,13 @@ note_speed = 1.35
 [node name="AudioSynchronizer" parent="Playfield" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36139, 0)
 
-[node name="TitleLabel" parent="Playfield" index="4"]
+[node name="TitleLabel" parent="Playfield" index="5"]
 mouse_filter = 1
 
-[node name="Effects" parent="Playfield" index="5"]
+[node name="Effects" parent="Playfield" index="6"]
 mouse_filter = 1
 
-[node name="Scores" parent="Playfield" index="6"]
+[node name="Scores" parent="Playfield" index="7"]
 mouse_filter = 1
 
 [node name="ComboLabel" parent="Playfield/Scores" index="0"]
