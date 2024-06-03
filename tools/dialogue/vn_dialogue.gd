@@ -140,6 +140,8 @@ signal cg_god_smile_talk
 signal cg_god_glitch
 signal cg_exit_god
 
+signal cg_dining_light
+
 signal overlay_blood_splatter
 
 signal stop_overlay
@@ -152,6 +154,8 @@ signal remove_OPP
 
 signal hide_text
 signal show_text
+signal show_empty
+signal show_next
 
 const CHARACTER_LIST : CharacterList = preload("res://resources/characters/character_list.tres")
 const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
@@ -200,13 +204,15 @@ func _ready():
 		
 	EffectAnim.play_backwards("FadeBlack")
 	
-	match Global.return_current_text():
+	match text:
 		Global.ACT1_CHAPTER1_SCENE1:
 			alternate_text_box(true)
 		Global.ACT1_CHAPTER1_SCENE2:
 			alternate_text_box(true)
 		Global.ACT1_CHAPTER1_SCENE3:
 			alternate_text_box(true)
+		_:
+			alternate_text_box(false)
 	
 	text_box.hide()
 	choice_ui.hide()
@@ -403,7 +409,8 @@ func read_line(key : int):
 		label.visible_characters = 1
 		var num_chars = label.text.length()
 		var total_time = Global.data_dict["text_speed"] * num_chars
-		if current_line["flag"] == "slow": total_time * 1000
+		if current_line["flag"]:
+			if current_line["flag"].split(",").has("slow"): total_time * 10
 		current_time = total_time
 		a = create_tween()
 		a.tween_property(label, "visible_characters", num_chars, total_time - (
@@ -422,6 +429,45 @@ func read_line(key : int):
 			await get_tree().create_timer(
 				1 - (int(settings_dropdown.skip) * 0.9)
 			).timeout
+	
+	if current_line["emit"]:
+		if current_line["emit"].split(",").has("show_empty"):
+			print("has show_empty")
+			label.text = ""
+			label.visible_characters = 1
+			text_box.show()
+			next.show()
+			next.modulate.a = 0
+			var b = create_tween()
+			b.tween_property(next, "modulate:a", 1, 0.2)
+			next.disabled = false
+			finished_line.emit()
+			if !settings_dropdown.autoplay:
+				await next_pressed
+			else:
+				await get_tree().create_timer(
+					1 - (int(settings_dropdown.skip) * 0.9)
+				).timeout
+	if current_line["emit"]:
+		if current_line["emit"].split(",").has("show_next"):
+			print("has show_next")
+			label.text = ""
+			label.visible_characters = 1
+			text_box.hide()
+			next.show()
+			$TextBox/Settings.show()
+			next.modulate.a = 0
+			var b = create_tween()
+			b.tween_property(next, "modulate:a", 1, 0.2)
+			next.disabled = false
+			finished_line.emit()
+			if !settings_dropdown.autoplay:
+				await next_pressed
+			else:
+				await get_tree().create_timer(
+					1 - (int(settings_dropdown.skip) * 0.9)
+				).timeout
+				
 	if current_line["flag"] == "menu":
 		text_box.hide()
 		EffectAnim.play("FadeBlack")
@@ -490,6 +536,10 @@ func read_line(key : int):
 		if Global.data_dict["remembered"].has(condition):
 			print("HAS CONDITION MET")
 			current_line["go to"] = target
+			
+	if $EffectHandler.BUSY:
+		await $EffectHandler.NOT_BUSY
+	
 	next_line()
 
 func next_line():

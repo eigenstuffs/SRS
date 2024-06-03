@@ -654,6 +654,7 @@ hframes = 8
 
 [node name="Damage" type="Sprite2D" parent="EnemyData/PlayerSprites"]
 visible = false
+position = Vector2(-250, 168)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_dcv2l")
 hframes = 3

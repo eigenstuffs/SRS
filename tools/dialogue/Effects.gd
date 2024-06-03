@@ -2,6 +2,10 @@ extends Node
 
 signal done
 
+var BUSY : bool = false
+
+signal NOT_BUSY
+
 const PLAYER_NAME = preload("res://tools/player_name/player_name.tscn")
 const SERAPHINA_NAME = preload("res://tools/player_name/seraphina_name.tscn")
 
@@ -258,6 +262,7 @@ func _ready():
 	vn.connect("cg_sky", cg_static.bind(SKY_CG))
 	vn.connect("cg_black", cg_static.bind(BLACK_CG))
 	vn.connect("cg_dining", cg_static.bind(DINING_CG))
+	vn.connect("cg_dining_light", cg_static.bind(DINING_CG))
 	
 	vn.connect("cg_empty_fountain", cg_static.bind(EMPTY_FOUNTAIN))
 	vn.connect("cg_cecilia_fountain", cg_static.bind(CECILIA_FOUNTAIN))
@@ -362,23 +367,32 @@ func play_music(effect_name):
 	EffectAnim.MusicPlayer.play(0)
 	
 func stop_music():
-	#var a = create_tween()
-	#a.tween_property(EffectAnim.MusicPlayer,
-	#"volume_db", -100, 1)
-	#await a.finished
+	BUSY = true
+	var a = create_tween()
+	a.tween_property(EffectAnim.MusicPlayer,
+	"volume_db", -100, 1)
+	await a.finished
 	EffectAnim.MusicPlayer.stop()
+	BUSY = false
+	emit_signal("NOT_BUSY")
 	
 func pause_music():
+	BUSY = true
 	var a = create_tween()
 	a.tween_property(EffectAnim.MusicPlayer,
-	"volume_db", -100, 0.2)
+	"volume_db", -100, 0.5)
 	await a.finished
+	BUSY = false
+	emit_signal("NOT_BUSY")
 	
 func resume_music():
+	BUSY = true
 	var a = create_tween()
 	a.tween_property(EffectAnim.MusicPlayer,
-	"volume_db", -10, 0.2)
+	"volume_db", -10, 0.5)
 	await a.finished
+	BUSY = false
+	emit_signal("NOT_BUSY")
 	
 ## SFX
 
@@ -394,7 +408,14 @@ func play_sfx_looping(effect_name):
 	EffectAnim.LoopPlayer.play()
 	
 func stop_sfx_looping():
+	BUSY = true
+	var a = create_tween()
+	a.tween_property(EffectAnim.LoopPlayer,
+	"volume_db", -100, 1)
+	await a.finished
 	EffectAnim.LoopPlayer.stop()
+	BUSY = false
+	emit_signal("NOT_BUSY")
 	
 ## CG
 
@@ -409,35 +430,47 @@ func cg_static(texture : Texture):
 	
 	
 func stop_cg():
+	BUSY = true
 	var a = create_tween()
 	a.tween_property($CG, "modulate:a", 0, 0.5)
 	await a.finished
 	$CG.hide()
 	$CG.modulate.a = 1
+	BUSY = false
+	emit_signal("NOT_BUSY")
 	
 func overlay_static(texture : Texture):
+	BUSY = true
 	overlay.texture = texture
 	overlay.modulate.a = 0
 	overlay.show()
 	var a = create_tween()
 	a.tween_property(overlay, "modulate:a", 1, 0.5)
 	await a.finished
+	BUSY = false
+	emit_signal("NOT_BUSY")
 	
 func stop_overlay():
+	BUSY = true
 	var a = create_tween()
 	a.tween_property(overlay, "modulate:a", 0, 0.5)
 	await a.finished
 	overlay.texture = null
 	overlay.hide()
 	overlay.modulate.a = 1
+	BUSY = false
+	emit_signal("NOT_BUSY")
 	
 func cg_god_bg():
+	BUSY = true
 	print("enter god")
 	var a = create_tween()
 	$AnimGod/Textures.modulate.a = 0
 	a.tween_property($AnimGod/Textures,
 	"modulate:a", 1, 0.5)
 	anim_god_bg.play("God_BG")
+	BUSY = false
+	emit_signal("NOT_BUSY")
 
 func cg_god_neutral():
 	print("GOD NEUTRAL")
@@ -487,6 +520,7 @@ func cg_god_glitch():
 	anim_god.play("Glitch")
 	
 func cg_exit_god():
+	BUSY = true
 	var a = create_tween()
 	$AnimGod/Textures.modulate.a = 1
 	a.tween_property($AnimGod/Textures,
@@ -494,6 +528,8 @@ func cg_exit_god():
 	await a.finished
 	anim_god.stop()
 	anim_god_bg.stop()
+	BUSY = false
+	emit_signal("NOT_BUSY")
 
 func player_name_screen():
 	var a = PLAYER_NAME.instantiate()
@@ -509,32 +545,38 @@ func seraphina_name_screen():
 	
 func add_OOC():
 	Global.data_dict["ooc"] += 1
-	Global.data_dict["remembered"].append("OOC_reached_" % Global.data_dict["ooc"])
+	Global.data_dict["remembered"].append(str("OOC_reached_", Global.data_dict["ooc"]+1))
 	
 func add_OPP():
 	Global.data_dict["opp"] += 1
-	Global.data_dict["remembered"].append("OPP_reached_" % Global.data_dict["opp"])
+	Global.data_dict["remembered"].append(str("OPP_reached_", Global.data_dict["opp"]+1))
 	
 func remove_OOC():
-	Global.data_dict["ooc"] += 1
-	if Global.data_dict["remembered"].has("OOC_reached_" % Global.data_dict["ooc"]+1):
-		Global.data_dict["remembered"].erase("OOC_reached_" % Global.data_dict["ooc"]+1)
+	Global.data_dict["ooc"] -= 1
+	if Global.data_dict["remembered"].has(str("OOC_reached_", Global.data_dict["ooc"]+1)):
+		Global.data_dict["remembered"].erase(str("OOC_reached_", Global.data_dict["ooc"]+1))
 	
 func remove_OPP():
-	Global.data_dict["opp"] += 1
-	if Global.data_dict["remembered"].has("OPP_reached_" % Global.data_dict["opp"]+1):
-		Global.data_dict["remembered"].erase("OPP_reached_" % Global.data_dict["opp"]+1)
+	Global.data_dict["opp"] -= 1
+	if Global.data_dict["remembered"].has(str("OPP_reached_", Global.data_dict["opp"]+1)):
+		Global.data_dict["remembered"].erase(str("OPP_reached_", Global.data_dict["opp"]+1))
 
 func hide_text():
+	BUSY = true
 	var a = create_tween()
 	a.tween_property(get_node(text_box),
-	"modulate:a", 0, 1)
+	"modulate:a", 0.01, .15)
 	await a.finished
-	get_node(text_box)["mouse_filter"] = 2
+	#get_node(text_box)["mouse_filter"] = 2
+	BUSY = false
+	emit_signal("NOT_BUSY")
 
 func show_text():
+	BUSY = true
 	var a = create_tween()
 	a.tween_property(get_node(text_box),
-	"modulate:a", 0, 1)
+	"modulate:a", 1, .15)
 	await a.finished
-	get_node(text_box)["mouse_filter"] = 1
+	#get_node(text_box)["mouse_filter"] = 1
+	BUSY = false
+	emit_signal("NOT_BUSY")
