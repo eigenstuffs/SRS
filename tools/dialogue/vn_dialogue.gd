@@ -38,7 +38,7 @@ signal sfx_switch_click
 signal sfx_ambiance_echoes
 signal sfx_ambiance_heavy
 signal sfx_melody_save
-signal sfx_door_1
+signal sfx_rattling_door
 signal sfx_inquisitive
 signal sfx_whoosh_foam
 signal sfx_happy
@@ -94,6 +94,10 @@ signal sfx_twinkling_chime
 signal sfx_ambiance_fountain
 signal sfx_footstep_walking_snow
 signal sfx_ambiance_carriage_1
+signal sfx_glasses_clink
+signal sfx_glass_crash
+signal sfx_coinflip_1
+signal sfx_journal_writing
 
 signal music_somber_death
 signal music_more_intense

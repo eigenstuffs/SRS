@@ -30,14 +30,25 @@ var volume = 0.5
 const ACT1_CHAPTER1_SCENE1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_1.json"
 const ACT1_CHAPTER1_SCENE2 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_2.json"
 const ACT1_CHAPTER1_SCENE3 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_3.json"
+const ACT1_CHAPTER2_SCENE1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_1.json"
+const ACT1_CHAPTER2_SCENE2 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_2.json"
+const ACT1_CHAPTER2_SCENE3 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_3.json"
 
 func return_current_text():
-	if data_dict["remembered"].has("a1c1_3"):
-		return ACT1_CHAPTER1_SCENE3
+	if  data_dict["remembered"].has("a1c2_3"):
+		return ACT1_CHAPTER2_SCENE3 #Current newest
+	elif data_dict["remembered"].has("a1c2_2"):
+		return ACT1_CHAPTER2_SCENE3
+	elif data_dict["remembered"].has("a1c2_1"):
+		return ACT1_CHAPTER2_SCENE2
+	elif data_dict["remembered"].has("a1c1_3"):
+		return ACT1_CHAPTER2_SCENE1
 	elif data_dict["remembered"].has("a1c1_2"):
 		return ACT1_CHAPTER1_SCENE3
 	elif data_dict["remembered"].has("a1c1_1"):
 		return ACT1_CHAPTER1_SCENE2
+
+
 	else:
 		return ACT1_CHAPTER1_SCENE1
 		

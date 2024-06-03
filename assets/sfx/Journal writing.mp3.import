@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cthljatqd2oxx"
+path="res://.godot/imported/Journal writing.mp3-dbf82fdce7e3beffa3f8eb4762751ec9.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Journal writing.mp3"
+dest_files=["res://.godot/imported/Journal writing.mp3-dbf82fdce7e3beffa3f8eb4762751ec9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
