@@ -88,7 +88,7 @@ skeleton = NodePath("../StaticBody3D")
 transform = Transform3D(1, -4.3906e-16, 3.36902e-16, 3.36902e-16, 0.965926, 0.258819, -4.3906e-16, -0.258819, 0.965926, 1000, 1, 2.08165e-12)
 
 [node name="FollowingCamera" type="Camera3D" parent="MazePlayer" node_paths=PackedStringArray("maze_generator", "following_player")]
-transform = Transform3D(1, -6.19845e-16, 2.19499e-16, 2.19499e-16, 0.62932, 0.777146, -6.19845e-16, -0.777146, 0.62932, 0.439, 3, 3)
+transform = Transform3D(1, -6.19845e-16, 2.19499e-16, 2.19499e-16, 0.62932, 0.777146, -6.19845e-16, -0.777146, 0.62932, 0.439, 3.2, 3)
 current = true
 script = ExtResource("4_ohvxp")
 MAX_X = 10.0
