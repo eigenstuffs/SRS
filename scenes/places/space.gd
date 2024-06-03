@@ -2,7 +2,9 @@ extends Node3D
 
 signal noTimeLeft
 
-@export var turns : int = 1
+
+@export var turns : int = 5
+
 
 @onready var interactor : Interactor = $Actors/Player.get_node("Interactor")
 @onready var overlay = $CanvasLayer/Overlay
