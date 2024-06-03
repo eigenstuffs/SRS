@@ -55,9 +55,16 @@ func update_points(new : int):
 	rough_points = new
 	$UI/PointLabel.text = str(rough_points)
 	
-func update_time(delta : int):
-	$UI.modify_game_time(delta)
-	
+func update_time(delta):
+	if delta is int:
+		$UI.modify_game_time(delta)
+	elif delta is String:
+		match delta:
+			"pause":
+				pause_time()
+			"resume":
+				resume_time()
+
 func get_remaining_time() -> int:
 	return $UI.gameTimeCount
 
@@ -96,6 +103,9 @@ func _physics_process(delta: float) -> void:
 
 func pause_time():
 	$UI.pause_game_time()
+
+func resume_time():
+	$UI.resume_game_time()
 
 func show_tutorial(which : String):
 	var desired_tutorial = TUTORIAL_LIST.find_scene(which)

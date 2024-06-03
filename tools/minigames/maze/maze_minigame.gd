@@ -18,7 +18,7 @@ class_name MazeMinigame extends Minigame
 const FIRST_STAGE_MUSIC = preload("res://tools/minigames/maze/sound/Villianess_Reborn_Minigame_Music_First_Stage.mp3")
 const FASTER_MUSIC = preload("res://tools/minigames/maze/sound/Villianess_Reborn_Minigame_Music_More_Intense.mp3")
 
-@export var time_penalty : int = -5
+@export var time_penalty : int = -3
 var point_get : int = 0
 var all_keys_got : bool = false
 
@@ -49,6 +49,7 @@ func _on_maze_generator_key_collected():
 func _on_maze_generator_all_key_collected():
 	all_keys_got = true
 	pause_all_movement()
+	emit_signal("update_time", "pause")
 	#switching camera view
 	await get_tree().create_timer(0.1).timeout
 	await $MazePlayer/FollowingCamera.bird_view()
@@ -56,7 +57,7 @@ func _on_maze_generator_all_key_collected():
 	$Goal.show_and_monitor()
 	await get_tree().create_timer(1).timeout
 	$MazePlayer/FollowingCamera.original_view()
-	emit_signal("update_time", 2)
+	emit_signal("update_time", "resume")
 	#start the effect
 	$SfxPlayer.stream = SPEED_UP_SFX
 	$SfxPlayer.play()
@@ -84,8 +85,8 @@ func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
 
 func calculate_stats(time : int, multiplier : int) -> Array[int]:
-	var wis_gained := roundi((3*time)/60) * multiplier
-	var well_gained := roundi((4*time)/60 + 1) * multiplier
+	var wis_gained := roundi((time)/10) * multiplier
+	var well_gained := roundi((time)/10 + 1) * multiplier
 	return [wis_gained, 0, 0, well_gained]
 	
 func music_fade_out():

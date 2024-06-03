@@ -57,3 +57,6 @@ func display_message(msg : String):
 	
 func pause_game_time():
 	gTime.paused = true
+	
+func resume_game_time():
+	gTime.paused = false

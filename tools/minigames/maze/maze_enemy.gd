@@ -28,6 +28,7 @@ func _ready():
 	#player = get_node(player_node)
 
 func _physics_process(delta):
+	$Hurtbox/Indicator.set_rotation_degrees($Hurtbox/Indicator.rotation_degrees + Vector3(0, 25 * delta, 0))
 	if can_move:
 		if not is_on_floor():
 			velocity.y -= gravity * delta

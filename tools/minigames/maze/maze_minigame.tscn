@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://btxyikyec8li1"]
+[gd_scene load_steps=15 format=3 uid="uid://btxyikyec8li1"]
 
 [ext_resource type="Script" path="res://tools/minigames/maze/MazeGenerator.gd" id="1_wltr6"]
 [ext_resource type="Script" path="res://tools/minigames/maze/maze_minigame.gd" id="1_xvgb3"]
@@ -7,22 +7,23 @@
 [ext_resource type="Script" path="res://tools/minigames/maze/FollowingCamera.gd" id="4_ohvxp"]
 [ext_resource type="PackedScene" uid="uid://dhyrf6dyl1s8c" path="res://scenes/player/maze_player.tscn" id="4_pj1vw"]
 [ext_resource type="Script" path="res://tools/minigames/maze/Goal.gd" id="4_v5a44"]
+[ext_resource type="Texture2D" uid="uid://4b63ncjnbcpi" path="res://assets/maze/maze_grass.png" id="6_0aw61"]
 [ext_resource type="AudioStream" uid="uid://dfnighsb3ipip" path="res://tools/minigames/maze/sound/Villianess_Reborn_Minigame_Music_First_Stage.mp3" id="7_7pxdu"]
 
-[sub_resource type="Environment" id="Environment_pm51m"]
-glow_enabled = true
+[sub_resource type="Environment" id="Environment_bncaf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qn3x3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fx42x"]
 size = Vector3(20, 1, 20)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncyor"]
-albedo_color = Color(0.54902, 0.392157, 0.258824, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5pqr"]
+albedo_texture = ExtResource("6_0aw61")
+uv1_scale = Vector3(4, 4, 2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_id6dk"]
-material = SubResource("StandardMaterial3D_ncyor")
-size = Vector3(20, 1, 20)
+[sub_resource type="PlaneMesh" id="PlaneMesh_n6l4b"]
+material = SubResource("StandardMaterial3D_b5pqr")
+size = Vector2(50, 50)
 
 [node name="MazeMinigame" type="SubViewport"]
 script = ExtResource("1_xvgb3")
@@ -35,9 +36,11 @@ offset_bottom = 40.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.740582, 0.671966, 0, -0.671966, 0.740582, 0, 12.1276, 9.07798)
+light_color = Color(0.992157, 0.921569, 0.847059, 1)
+light_energy = 1.38
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_pm51m")
+environment = SubResource("Environment_bncaf")
 
 [node name="Goal" type="Area3D" parent="." node_paths=PackedStringArray("mg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 9)
@@ -50,8 +53,8 @@ mg = NodePath("../MazeGenerator")
 shape = SubResource("SphereShape3D_qn3x3")
 
 [node name="MeshInstance3D" type="Sprite3D" parent="Goal"]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.377021, 0)
-billboard = 1
+transform = Transform3D(0.06, -4.89604e-18, 1.34518e-17, 1.34518e-17, 0.0385673, -0.0459627, -4.89604e-18, 0.0459627, 0.0385673, 0, 0.377021, 0)
+axis = 1
 shaded = true
 texture = ExtResource("3_l6eoi")
 
@@ -79,11 +82,11 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_fx42x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_id6dk")
+mesh = SubResource("PlaneMesh_n6l4b")
+skeleton = NodePath("../StaticBody3D")
 
 [node name="MazePlayer" parent="." instance=ExtResource("4_pj1vw")]
-transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.173648, -4.09353e-16, -0.173648, 0.984808, 2.08165e-12, 2, 2.08165e-12)
+transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.173648, -4.09353e-16, -0.173648, 0.984808, 2.08165e-12, 1, 2.08165e-12)
 
 [node name="FollowingCamera" type="Camera3D" parent="MazePlayer" node_paths=PackedStringArray("maze_generator")]
 transform = Transform3D(1, -6.2061e-16, 2.18552e-16, 2.18551e-16, 0.626604, 0.779338, -6.2061e-16, -0.779338, 0.626604, 0.439, 3.49605, 2.40622)
