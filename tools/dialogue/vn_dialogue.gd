@@ -145,6 +145,7 @@ signal cg_god_smile
 signal cg_god_smile_talk
 signal cg_god_glitch
 signal cg_exit_god
+signal cg_town
 
 signal cg_dining_light
 

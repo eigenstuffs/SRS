@@ -842,12 +842,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("4_g1vbp")
-text = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_3.json"
+text = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_6.json"
 
 [node name="EffectHandler" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("12_17eel")
 text_box = NodePath("../TextBox")
+
+[node name="ProtectionForScreenShake" type="ColorRect" parent="EffectHandler"]
+z_index = -2
+z_as_relative = false
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 2070.0
+offset_bottom = 1260.0
+color = Color(0, 0, 0, 1)
 
 [node name="CG" type="TextureRect" parent="EffectHandler"]
 z_index = -1

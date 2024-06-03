@@ -114,6 +114,7 @@ const CG_DAY = preload("res://assets/cgs/bg_day_sky.PNG")
 const CG_NIGHT = preload("res://assets/cgs/bg_night_sky.PNG")
 const CG_EVENING = preload("res://assets/cgs/bg_sunset_sky.PNG")
 const CG_BALLROOM = preload("res://assets/cgs/ballroom bg.png")
+const CG_TOWN = preload("res://assets/cgs/town bg.png")
 
 const OVERLAY_BLOOD_SPLATTER = preload("res://assets/vn/overlay/overlay_blood_splatter.png")
 
@@ -282,6 +283,7 @@ func _ready():
 	vn.connect("cg_evening", cg_static.bind(CG_EVENING))
 	vn.connect("cg_day", cg_static.bind(CG_DAY))
 	vn.connect("cg_night", cg_static.bind(CG_NIGHT))
+	vn.connect("cg_town", cg_static.bind(CG_TOWN))
 	
 	vn.connect("cg_room_blur", cg_static.bind(BLUR_ROOM_CG))
 	vn.connect("cg_room", cg_static.bind(ROOM_CG))

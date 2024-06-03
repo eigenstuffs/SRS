@@ -546,7 +546,7 @@
   "35": {
 	"speaker": null,
 	"character": "Isidora",
-	"sprite": "talk12",
+	"sprite": "talk11",
 	"cecilia": null,
 	"text": "(As you draw closer, her eyes flicker to yours with a smile that exposes little of her true feelings towards you—or your face, specifically.)",
 	"go to": 36,
@@ -642,7 +642,7 @@
   "41": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "neutral,talk12",
+	"sprite": "neutral,talk11",
 	"cecilia": null,
 	"text": "(Her companion turns at her words, standing a half a head taller than you. You look up to see the regal, princely gaze of—)",
 	"go to": 42,
@@ -914,7 +914,7 @@
   "58": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince1,talk12",
+	"sprite": "talkprince1,talk11",
 	"cecilia": null,
 	"text": "(He dips his head politely towards the young woman, before facing you once again.)",
 	"go to": 59,
@@ -930,7 +930,7 @@
   "59": {
 	"speaker": "Cassius",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince7,talk12",
+	"sprite": "talkprince7,talk11",
 	"cecilia": null,
 	"text": "It’s good to see you.",
 	"go to": "no_late",
@@ -946,7 +946,7 @@
   "60": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince2,talk12",
+	"sprite": "talkprince2,talk11",
 	"cecilia": null,
 	"text": "(For a moment you see a certain flintiness in his eyes, a cold front that melts away as soon as you put a name to it.)",
 	"go to": 61,
@@ -962,7 +962,7 @@
   "61": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince2,talk12",
+	"sprite": "talkprince2,talk11",
 	"cecilia": null,
 	"text": "(Behind him, the posse of girls that surround Isidora stare from him to you. It doesn’t escape your notice how they cup their hands around their mouths and whisper.)",
 	"go to": 62,
@@ -978,7 +978,7 @@
   "62": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince2,talk12",
+	"sprite": "talkprince2,talk11",
 	"cecilia": null,
 	"text": "(It doesn’t seem too welcoming back there. You pretend not to see as you decide how to greet Cassius in return.)",
 	"go to": "yes_late_response",
@@ -1042,7 +1042,7 @@
   "66": {
 	"speaker": "Cassius",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince11,talk12",
+	"sprite": "talkprince11,talk11",
 	"cecilia": null,
 	"text": "Perhaps there was something more pressing that needed to be attended to.",
 	"go to": 67,
@@ -1058,7 +1058,7 @@
   "67": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince11,talk12",
+	"sprite": "talkprince11,talk11",
 	"cecilia": null,
 	"text": "(Yeah, sure, you could say that. It doesn’t seem he believes that as much as he’s simply giving you a polite out of what you now see was a social blunder.)",
 	"go to": "main_building_2",
@@ -1154,7 +1154,7 @@
   "73": {
 	"speaker": "\"Cecilia\"",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince11,talk12",
+	"sprite": "talkprince11,talk11",
 	"cecilia": null,
 	"text": "Yes, that sounds reasonable.",
 	"go to": 74,
@@ -1170,7 +1170,7 @@
   "74": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince11,talk12",
+	"sprite": "talkprince11,talk11",
 	"cecilia": null,
 	"text": "(In essence, he’s telling you to pick a better time. Go figure.)",
 	"go to": "main_building_2",
@@ -1250,7 +1250,7 @@
   "79": {
 	"speaker": "Cassius",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince11,talk12",
+	"sprite": "talkprince11,talk11",
 	"cecilia": null,
 	"text": "I hope to someday find a cause to meet it.",
 	"go to": 80,
@@ -1266,7 +1266,7 @@
   "80": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince11,talk12",
+	"sprite": "talkprince11,talk11",
 	"cecilia": null,
 	"text": "(You think that’s a compliment. Is it? He could be insulting your fussiness, or praising your high standards—it’s hard to tell, with that kind of obfuscating smile on his face.)",
 	"go to": "main_building_2",
@@ -1314,7 +1314,7 @@
   "83": {
 	"speaker": "Cassius",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince9,talk12",
+	"sprite": "talkprince9,talk11",
 	"cecilia": null,
 	"text": "I’m sure the academy has much to improve in that regard.",
 	"go to": 84,
@@ -1330,7 +1330,7 @@
   "84": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince9,talk12",
+	"sprite": "talkprince9,talk11",
 	"cecilia": null,
 	"text": "(Well, he’s not [i]wrong[/i]. The estate you walked out of this morning was something out of a storybook.)",
 	"go to": 85,
@@ -1346,7 +1346,7 @@
   "85": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince9,talk12",
+	"sprite": "talkprince9,talk11",
 	"cecilia": null,
 	"text": "(The clear sophistication in the building was evident no matter which angle you peeked at through the carriage.)",
 	"go to": "main_building_2",
@@ -1362,7 +1362,7 @@
   "86": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince7,talk12",
+	"sprite": "talkprince7,talk11",
 	"cecilia": null,
 	"text": "(Before you can even consider your next move, you see Isidora from beside Cassius step forward a little, back straight and eyes round.)",
 	"go to": 87,
@@ -1570,7 +1570,7 @@
   "99": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince6,talk12",
+	"sprite": "talkprince6,talk11",
 	"cecilia": null,
 	"text": "(From beside you, you catch sight of Cassius observing the interaction with sharp eyes. The ladies behind Lady Isidora as well stand stock still, giving you two their rapt attention,)",
 	"go to": 100,
@@ -1586,7 +1586,7 @@
   "100": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince6,talk12",
+	"sprite": "talkprince6,talk11",
 	"cecilia": null,
 	"text": "(Was she really going to have you make a decision here? In front of everyone?)",
 	"go to": "come_decision",
@@ -2386,7 +2386,7 @@
   "return_cas": {
 	"speaker": "Cassius",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince1,talk12",
+	"sprite": "talkprince1,talk11",
 	"cecilia": null,
 	"text": "Ah, Cecilia. Forgive me, Lady Isidora, but it seems I must attend to my fiancée.",
 	"go to": 58,
@@ -2402,7 +2402,7 @@
   "yes_late": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince2,talk12",
+	"sprite": "talkprince2,talk11",
 	"cecilia": null,
 	"text": "It seems you may have taken a bit of a…detour in getting here. I’m afraid I’ve kept Lady Isidora for far too long.",
 	"go to": 60,
@@ -2418,11 +2418,11 @@
   "yes_late_response": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince2,talk12",
+	"sprite": "talkprince2,talk11",
 	"cecilia": null,
 	"text": null,
 	"go to": null,
-	"options": "Aww, you were waiting for me? That’s so sweet!,My sincerest apologies to you and Lady Isidora then.,Oh boo. Too bad.,Sorry. I was simply admiring the view on the way here.",
+	"options": "Aww--you were waiting for me? That’s so sweet!,My sincerest apologies to you and Lady Isidora then.,Oh boo. Too bad.,Sorry. I was simply admiring the view on the way here.",
 	"options_id": "sweet,apologies,boo,admiring",
 	"emit": null,
 	"delay": null,
@@ -2450,7 +2450,7 @@
   "apologies": {
 	"speaker": "Cassius",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince11,talk12",
+	"sprite": "talkprince11,talk11",
 	"cecilia": null,
 	"text": "No need to stand on formalities, Cecilia. But it is much appreciated.",
 	"go to": 66,
@@ -2482,7 +2482,7 @@
   "admiring": {
 	"speaker": "Cassius",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince11,talk12",
+	"sprite": "talkprince11,talk11",
 	"cecilia": null,
 	"text": "The academy does have a certain appeal to it. Perhaps it could be explored closer and more leisurely at another time?",
 	"go to": 73,
@@ -2498,7 +2498,7 @@
   "no_late": {
 	"speaker": "Cassius",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince1,talk12",
+	"sprite": "talkprince1,talk11",
 	"cecilia": null,
 	"text": "I appreciate your ever dependable timeliness. I trust you had a pleasant ride?",
 	"go to": "no_late_response",
@@ -2514,7 +2514,7 @@
   "no_late_response": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince1,talk12",
+	"sprite": "talkprince1,talk11",
 	"cecilia": null,
 	"text": null,
 	"go to": null,
@@ -2546,7 +2546,7 @@
   "passable": {
 	"speaker": "Cassius",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince11,talk12",
+	"sprite": "talkprince11,talk11",
 	"cecilia": null,
 	"text": "You have high standards, as always.",
 	"go to": 79,
@@ -2578,7 +2578,7 @@
   "behold": {
 	"speaker": "Cassius",
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince9,talk12",
+	"sprite": "talkprince9,talk11",
 	"cecilia": null,
 	"text": "I agree. Though it should go without saying—Marquess Karmina’s estate seems to be just as elaborate, if not twice as grand.",
 	"go to": 83,
@@ -2658,7 +2658,7 @@
   "come_decision": {
 	"speaker": null,
 	"character": "Cassius,Isidora",
-	"sprite": "talkprince6,talk12",
+	"sprite": "talkprince6,talk11",
 	"cecilia": null,
 	"text": null,
 	"go to": null,
