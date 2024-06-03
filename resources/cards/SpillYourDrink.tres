@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://ccinl4dlimddt"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://ccinl4dlimddt"]
 
 [ext_resource type="Script" path="res://resources/cards/card.gd" id="1_io2s8"]
+[ext_resource type="Texture2D" uid="uid://bspfrgtbt2b4s" path="res://assets/socialwarfare/faces/IMG_3377.png" id="1_rsnh4"]
 
 [resource]
 script = ExtResource("1_io2s8")
+image = ExtResource("1_rsnh4")
 points_req = 0
 title = "Spill Your Drink"
 effect = 0
@@ -13,3 +15,4 @@ effect_num = 6.0
 desc = ""
 intensity_mod = 90
 move_dialogue = Array[String]([])
+name_dialogue = Array[String]([])

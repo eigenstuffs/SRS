@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://da2e7ur6ypyxh"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://da2e7ur6ypyxh"]
 
+[ext_resource type="Texture2D" uid="uid://b5fr3k6el67e5" path="res://assets/socialwarfare/faces/IMG_3374.png" id="1_h6c5t"]
 [ext_resource type="Script" path="res://resources/cards/card.gd" id="1_lhpno"]
 
 [resource]
 script = ExtResource("1_lhpno")
+image = ExtResource("1_h6c5t")
 points_req = 0
 title = "Insult Their Mother"
 effect = 0
@@ -13,3 +15,4 @@ effect_num = 5.0
 desc = ""
 intensity_mod = 40
 move_dialogue = Array[String]([])
+name_dialogue = Array[String]([])

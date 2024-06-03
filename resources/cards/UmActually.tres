@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://2isk2o8w0alx"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://2isk2o8w0alx"]
 
+[ext_resource type="Texture2D" uid="uid://dn282mfgbv8ui" path="res://assets/socialwarfare/faces/IMG_3376.png" id="1_hbc02"]
 [ext_resource type="Script" path="res://resources/cards/card.gd" id="1_kaskg"]
 
 [resource]
 script = ExtResource("1_kaskg")
+image = ExtResource("1_hbc02")
 points_req = 0
 title = "Um, Actually"
 effect = 3
@@ -13,3 +15,4 @@ effect_num = 0.75
 desc = ""
 intensity_mod = 0
 move_dialogue = Array[String]([])
+name_dialogue = Array[String]([])
