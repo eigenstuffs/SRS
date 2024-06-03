@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://tools/interaction/interaction.gd" id="1_qklf0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_y5c71"]
-radius = 0.2
 
 [node name="Interaction" type="Area3D"]
 script = ExtResource("1_qklf0")

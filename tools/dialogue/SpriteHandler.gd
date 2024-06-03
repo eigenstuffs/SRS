@@ -36,18 +36,9 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 					## pick the texture
 					
 					for j in i.textures:
-						print(clean_character_list.find(i.name))
-						print(clean_character_list)
-						print(sprite_list[
-							clean_character_list.find(i.name)
-						])
-						print(j.resource_path)
 						if j.resource_path.ends_with(sprite_list[
 							clean_character_list.find(i.name)
-						] + ".PNG") or j.resource_path.ends_with(sprite_list[
-							clean_character_list.find(i.name)
-						] + ".png"):
-							print("sprite fuond")
+						] + ".PNG"):
 							texture = j
 					
 					a.texture = texture
@@ -84,19 +75,11 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 	
 func init_cecilia(sprite):
 	if sprite:
-		var clean_sprite = sprite.replace("-", "")
 		get_node(cecilia_texture).modulate.a = 0
 		for i in CECILIA.textures:
 			if i.resource_path.ends_with(
-				clean_sprite + ".PNG"
-			) or i.resource_path.ends_with(
-				clean_sprite + ".png"
+				sprite + ".PNG"
 			):
-				if sprite.has("-"):
-					get_node(cecilia_texture).modulate = Color("969696")
-				else:
-					get_node(cecilia_texture).modulate = Color("ffffff")
-					
 				var a = create_tween()
 				a.tween_property(
 					get_node(cecilia_texture),
@@ -104,7 +87,6 @@ func init_cecilia(sprite):
 					1,
 					0.2
 				)
-				
 				get_node(cecilia_texture).texture = i
 				get_node(text).position.x = 432
 				get_node(text).size.x = 1216
