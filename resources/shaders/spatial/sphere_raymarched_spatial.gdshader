@@ -3,7 +3,7 @@ render_mode unshaded;
 
 #define AA_PASSES (1)
 #define FOV       (70.)
-#define MAX_STEPS (50)
+#define MAX_STEPS (35)
 #define TILE_SIZE (3.)
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;

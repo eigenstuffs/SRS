@@ -15,7 +15,7 @@ signal on_beat
 @export var beatmap : Beatmap : 
 	set(value):
 		beatmap = value
-		#if not beatmap: return
+		assert(beatmap)
 		self.current_beat_interval = self.beatmap.timings[0].beat_interval
 		self.current_bps = 1.0 / self.current_beat_interval
 		self.current_beats_per_measure = self.beatmap.timings[0].beats_per_measure
@@ -34,7 +34,7 @@ var current_beat_interval : float = 0
 var current_beats_per_measure : int = 4
 var use_metronome := true
 
-func start():	
+func start():
 	#beatmap.start_offset + x = current_beats_per_measure * 4 * current_beat_interval
 	self.time = -((current_beats_per_measure + 1) * current_beat_interval) + beatmap.start_offset
 	self.next_metronome_time = self.time + current_beat_interval

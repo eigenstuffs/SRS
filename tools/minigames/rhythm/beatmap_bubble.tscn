@@ -42,3 +42,16 @@ surface_material_override/0 = SubResource("ShaderMaterial_akg3i")
 [node name="OuterBubble" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_ck4dc")
 surface_material_override/0 = SubResource("ShaderMaterial_ahx63")
+
+[node name="Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.4, 0)
+visible = false
+pixel_size = 0.001
+billboard = 1
+alpha_antialiasing_mode = 1
+texture_filter = 5
+text = "Duration: 1:20
+Difficulty: 5"
+font_size = 50
+outline_size = 27
+horizontal_alignment = 0

@@ -23,6 +23,8 @@ func _ready() -> void:
 	#EffectReg.start_effect(self, 'InteriorWarm', [$UI])
 	_reorient_bubbles()
 	_reset_preview()
+	# FIXME: AAAAAAAAAAAAAAAAAA GODOT INPUT AAAAAAAAAA
+	await get_tree().create_timer(0.1).timeout 
 	is_ready = true
 	
 func _process(delta: float) -> void:
@@ -57,6 +59,7 @@ func _reorient_bubbles() -> void:
 	for bubble in $Bubbles.get_children(): bubble.queue_free()
 	
 	theta = 2.0*PI / len(beatmaps)
+	current_index = 0
 	for i in range(len(beatmaps)):
 		var phi = theta*i + PI*0.5;
 		var bubble := BEATMAP_BUBBLE.instantiate()
@@ -64,6 +67,7 @@ func _reorient_bubbles() -> void:
 		$Bubbles.add_child(bubble)
 		bubble.preview_texture = beatmaps[i].preview
 		bubble.position = Vector3(RADIUS*cos(phi), bubble.position.y, RADIUS*sin(phi))
+		bubble.label.visible = i == 0
 
 func _reset_preview() -> void:
 	var beatmap := beatmaps[-current_index % len(beatmaps)]
@@ -71,9 +75,17 @@ func _reset_preview() -> void:
 	$AudioStreamPlayer.volume_db = -100.0
 	$AudioStreamPlayer.play()
 	$AudioStreamPlayer.seek(beatmap.preview_start)
+	
+	var duration := beatmap.objects[-1].time + beatmap.objects[-1].duration
+	var difficulty := len(beatmap.objects)/(duration + 1e-8) # Difficulty is just note density LOL
+	var description := 'Difficulty: %.2f★\nDuration: %d:%d' % [difficulty, int(duration / 60.0), int(duration) % 60]
+	var bubbles := $Bubbles.get_children()
+	for i in range(len(bubbles)):
+		bubbles[i].label.visible = i == posmod(len(beatmaps) - current_index, len(beatmaps))
+		bubbles[i].label.text = description
 
 func _input(event: InputEvent) -> void:
-	if has_chosen or has_registered_input_this_frame: return
+	if not is_ready or has_chosen or has_registered_input_this_frame: return
 	
 	if event.is_action_pressed('ui_left'):
 		_on_left_button_pressed()

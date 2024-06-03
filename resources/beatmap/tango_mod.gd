@@ -6,30 +6,29 @@ class_name TangoMod extends BeatmapMod
 static var TIMING_ACTIONS = [
 	[  0.865, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.3])],
 	[  1.380, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.3])],
-	[  1.894, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.4])],
+	[  1.894, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
 	[  2.237, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.3])],
 	[  2.751, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.3])],
-	[  3.266, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.4])],
-	[  3.608, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.4])],
-  	[  3.866, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.4])],
-	[  4.123, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.4])],
+	[  3.266, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
+	[  3.608, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
+  	[  3.866, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
+	[  4.123, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
 	[  4.466, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.3])],
-	[  4.637, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.4])],
-	[  4.980, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.4])],
+	[  4.637, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
+	[  4.980, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
 	
 	[  5.494, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.0, 1.0, 0.6, 0.685])],
 	[  6.351, 'playfield', func(playfield): 
-		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.4])
+		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])
 		#EffectReg.start_effect(playfield, 'Sepia', [playfield.effects])
 		EffectReg.start_effect(playfield, 'Vignette', [playfield.effects])
 		EffectReg.free_effect('Bloom')],
 	[  6.351,    'screen', 'enable', ['greyscale']],
 	#[  5.666, 'playfield', func(playfield): 
 		#EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.0, 1.0, 0.5, 0.685])],
-	[ 13.208, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.4])],
-	[ 13.551, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.4])],
-	[ 14.480 , 'playfield', func(playfield): 
-		EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.0, 1.0, 0.6, 1.0])],
+	[ 13.208, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
+	[ 13.551, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
+	[ 14.480 , 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.0, 1.0, 0.6, 1.0])],
 	[ 15.608, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.3])],
 	[ 15.951, 'playfield', func(playfield): 
 		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0 ), 0.4])
@@ -44,7 +43,7 @@ static var TIMING_ACTIONS = [
 			key.enable_note_color_overwrite(Color(0.8, 0.2, 0.2, 1.0))],
 	[ 17.323,      'back', 'enable', ['radial_pattern']],
 	
-	[ 24.180, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.4])],
+	[ 24.180, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
 	[ 24.523, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.8), 0.4])],
 	
 	[ 28.294, 'playfield', func(playfield): 
@@ -83,18 +82,18 @@ static var TIMING_ACTIONS = [
 		
 	[ 35.837, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.2), 0.15])],
 	[ 36.008, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.15])],
-	[ 36.180, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.2])],
+	[ 36.180, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.2])],
 	[ 36.351, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.5), 0.2])],
 	[ 36.523, 'playfield', func(playfield): 
-		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.35])
+		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.35])
 		EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.4, 0.25, 1.0, 0.4])],
 	
 	[ 38.580, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.2), 0.15])],
 	[ 38.751, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.15])],
-	[ 38.923, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.2])],
+	[ 38.923, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.2])],
 	[ 39.094, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.5), 0.2])],
 	[ 39.266, 'playfield', func(playfield): 
-		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.35])
+		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.35])
 		EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.4, 0.25, 1.0, 0.4])],
 	
 	# 266 351 437 523 608 694 780 866 951 037 123 208 294 380 466 551 637
@@ -150,14 +149,14 @@ static var TIMING_ACTIONS = [
 		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.3])],
 	
 	[ 40.980, 'playfield', func(playfield): 
-		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.4])
+		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])
 		EffectReg.free_effect('Bloom')
 		EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.625, 1.0, 0.4, 0.343])],
 	[ 41.323, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 1.0, 0.625, 0.4, 0.2])],
 	[ 42.008, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.41666, 1.0, 0.6, 1.029])],
 	[ 43.037, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.6, 1.0, 1.0, 0.343])],
 	[ 43.380, 'playfield', func(playfield):
-		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.4]) 
+		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8]) 
 		EffectReg.free_effect('Bloom')
 		EffectReg.free_effect('ImpactLines')
 		for key in playfield.keys: 
@@ -191,7 +190,7 @@ static var TIMING_ACTIONS = [
 		playfield.keys[3].enable_note_color_overwrite(Color(0.38, 0.45, 0.91, 1.0))],
 	
 	[ 55.723, 'playfield', func(playfield): 
-		#EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.4])
+		#EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])
 		EffectReg.start_effect(playfield, 'Vignette', [playfield.effects])
 		EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.8, 0.0, 1.0, 0.4])
 		for key in playfield.keys: key.disable_note_color_overwrite()],
@@ -200,18 +199,18 @@ static var TIMING_ACTIONS = [
 	
 	[ 57.780 + 0.171*0, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.2), 0.15])],
 	[ 57.780 + 0.171*1, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.15])],
-	[ 57.780 + 0.171*2, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.2])],
+	[ 57.780 + 0.171*2, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.2])],
 	[ 57.780 + 0.171*3, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.5), 0.2])],
 	[ 57.780 + 0.171*4, 'playfield', func(playfield): 
-		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.35])
+		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.35])
 		EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.4, 0.0, 1.0, 0.4])],
 	
 	[ 60.523 + 0.171*0, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.2), 0.15])],
 	[ 60.523 + 0.171*1, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.15])],
-	[ 60.523 + 0.171*2, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.2])],
+	[ 60.523 + 0.171*2, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.2])],
 	[ 60.523 + 0.171*3, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.5), 0.2])],
 	[ 60.523 + 0.171*4, 'playfield', func(playfield): 
-		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.6), 0.35])
+		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.35])
 		EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 0.4, 0.0, 1.0, 0.4])],
 	
 	[ 61.208, 'playfield', func(playfield): 
@@ -227,9 +226,9 @@ static var TIMING_ACTIONS = [
 		EffectReg.start_effect(playfield, 'Bloom', [playfield.effects, 1.0, 0.3125, 0.8, 0.35])],
 	
 	[ 63.951, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.8), 0.4])],
-	[ 64.466, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.4])],
+	[ 64.466, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
 	[ 64.637, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.8), 0.4])],
-	[ 65.151, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.4), 0.4])],
+	[ 65.151, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
 	[ 65.323, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.8), 0.4])],
 	[ 65.666, 'playfield', func(playfield): 
 		EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 0.3), 0.3])

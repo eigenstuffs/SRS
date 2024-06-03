@@ -45,6 +45,7 @@ var combo := 0
 # FIXME : Hardcoded for 'dungeon' beatmap!
 @onready var timing_actions : Variant
 @onready var effects : Control = $Effects
+@onready var fumo_scale : float = $Fumo.scale.z
 
 func prepare():
 	audio_synchronizer.beatmap = self.beatmap
@@ -88,7 +89,9 @@ func prepare():
 func start():
 	audio_synchronizer.start()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	$Fumo.rotation.z += 2.0*delta
+	$Fumo.scale.z = move_toward($Fumo.scale.z, fumo_scale, 5.0*abs($Fumo.scale.z - fumo_scale)*delta)
 	if not audio_synchronizer.has_started: return
 	
 	# Compensate for output latency and spawn offset time.
@@ -137,6 +140,8 @@ func _get_scoring(timing_offset : float, scoring : Array):
 
 func _on_audio_synchronizer_on_beat() -> void:
 	beat += 1
+	$Fumo.scale.z = fumo_scale*0.7
+	
 	
 	if beat % audio_synchronizer.current_beats_per_measure != 0 or audio_synchronizer.time < 0 or not measure_bar_key: 
 		return
