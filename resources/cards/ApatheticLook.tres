@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://cmorefbnj7gir"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://cmorefbnj7gir"]
 
 [ext_resource type="Script" path="res://resources/cards/card.gd" id="1_fx8sk"]
+[ext_resource type="Texture2D" uid="uid://dn282mfgbv8ui" path="res://assets/socialwarfare/faces/IMG_3376.png" id="1_l2mc7"]
 
 [resource]
 script = ExtResource("1_fx8sk")
+image = ExtResource("1_l2mc7")
 points_req = 0
 title = "Apathetic Look"
 effect = 3
@@ -13,3 +15,4 @@ effect_num = 0.75
 desc = ""
 intensity_mod = 10
 move_dialogue = Array[String]([])
+name_dialogue = Array[String]([])

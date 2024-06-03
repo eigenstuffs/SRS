@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://esbkpcm0reay"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://esbkpcm0reay"]
 
 [ext_resource type="Script" path="res://resources/cards/card.gd" id="1_lbklo"]
+[ext_resource type="Texture2D" uid="uid://b5fr3k6el67e5" path="res://assets/socialwarfare/faces/IMG_3374.png" id="1_vnyky"]
 
 [resource]
 script = ExtResource("1_lbklo")
+image = ExtResource("1_vnyky")
 points_req = 0
 title = "Gaslight"
 effect = 3
@@ -13,3 +15,4 @@ effect_num = 0.75
 desc = ""
 intensity_mod = 10
 move_dialogue = Array[String]([])
+name_dialogue = Array[String]([])

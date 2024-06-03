@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://hq7iaggtx624"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://hq7iaggtx624"]
 
 [ext_resource type="Script" path="res://resources/cards/card.gd" id="1_aou5v"]
+[ext_resource type="Texture2D" uid="uid://b5fr3k6el67e5" path="res://assets/socialwarfare/faces/IMG_3374.png" id="1_veg18"]
 
 [resource]
 script = ExtResource("1_aou5v")
+image = ExtResource("1_veg18")
 points_req = 0
 title = "Patronize"
 effect = 0
@@ -13,3 +15,4 @@ effect_num = 2.0
 desc = ""
 intensity_mod = 5
 move_dialogue = Array[String]([])
+name_dialogue = Array[String]([])
