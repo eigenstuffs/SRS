@@ -848,6 +848,15 @@ process_mode = 3
 script = ExtResource("12_17eel")
 text_box = NodePath("../TextBox")
 
+[node name="ProtectAgainstShake" type="ColorRect" parent="EffectHandler"]
+z_index = -999
+z_as_relative = false
+offset_left = -120.0
+offset_top = -90.0
+offset_right = 2040.0
+offset_bottom = 1200.0
+color = Color(0, 0, 0, 1)
+
 [node name="CG" type="TextureRect" parent="EffectHandler"]
 z_index = -1
 z_as_relative = false
