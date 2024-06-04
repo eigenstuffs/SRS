@@ -26,3 +26,6 @@ func reset():
 	for i in $CardDeck.get_children():
 		$CardDeck.remove_child(i)
 		i.queue_free()
+
+func keep_current_hand():
+	card_deck.keep_current_hand()

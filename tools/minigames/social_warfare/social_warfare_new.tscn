@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://jsihguxhu4ri"]
+[gd_scene load_steps=46 format=3 uid="uid://jsihguxhu4ri"]
 
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/PlayerData.gd" id="2_t2gbr"]
@@ -20,6 +20,7 @@
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="14_2nwvy"]
 [ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="15_7j0p1"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/Flee.gd" id="15_bsyil"]
+[ext_resource type="AudioStream" uid="uid://coyghwfjx0wpo" path="res://assets/music/Villianess Reborn Battle Social Warfare Music 1.mp3" id="21_cadsa"]
 
 [sub_resource type="Animation" id="Animation_78qpp"]
 resource_name = "Damage"
@@ -955,6 +956,11 @@ frame_progress = 0.41756
 position = Vector2(960, 540)
 
 [node name="RewardHolder" type="CanvasLayer" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_cadsa")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="Holder/Fight/Back" to="Holder/Fight" method="_on_back_pressed"]
 [connection signal="selected_card" from="Holder/Fight/CardDeck" to="Holder/Fight" method="_on_card_deck_selected_card"]

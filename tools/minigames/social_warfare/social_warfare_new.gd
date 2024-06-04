@@ -31,10 +31,7 @@ signal card_action_finished
 signal enemy_move_finished
 
 func _ready():
-	EffectAnim.MusicPlayer.volume_db = -10
 	EffectAnim.SfxPlayer.volume_db = -10
-	EffectAnim.MusicPlayer.stream = MUSIC_SOCIAL_WARFARE
-	EffectAnim.MusicPlayer.play()
 	if Global.data_dict["remembered"].has("SocialWarfare"):
 		turn_loop()
 	else:
@@ -67,7 +64,7 @@ func turn_loop():
 					await fight.action
 					match fight.current_action:
 						"back":
-							pass
+							fight.keep_current_hand()
 						"card":
 							card_action(fight.current_card, "Opponent")
 							await card_action_finished
