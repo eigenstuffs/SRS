@@ -39,7 +39,7 @@ static var TIMING_ACTIONS = [
 		EffectReg.free_effect('Vignette')
 		EffectReg.free_effect('InteriorWarm')],
 	[ 58.355,    'screen', 'disable', ['greyscale']],
-	[ 58.355,    'screen', 'disable', ['Clouds']],
+	[ 58.355,    'back', 'enable', ['Clouds']],
 	
 	[ 85.784, 'playfield', func(playfield): EffectReg.start_effect(playfield, 'Flash', [playfield.effects, Color(0.98, 0.98, 0.98, 1.0), 0.8])],
 	[ 99.498, 'playfield', func(playfield): 
