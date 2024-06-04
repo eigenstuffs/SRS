@@ -123,6 +123,7 @@ const CG_NIGHT = preload("res://assets/cgs/bg_night_sky.PNG")
 const CG_EVENING = preload("res://assets/cgs/bg_sunset_sky.PNG")
 const CG_BALLROOM = preload("res://assets/cgs/ballroom bg.png")
 const CG_TOWN = preload("res://assets/cgs/town bg.png")
+const CG_LIBRARY = preload("res://assets/library/Library_BG.PNG")
 
 const OVERLAY_BLOOD_SPLATTER = preload("res://assets/vn/overlay/overlay_blood_splatter.png")
 
@@ -142,6 +143,13 @@ func _ready():
 			cg_static(CG_WINTER)
 		Global.ACT1_CHAPTER1_SCENE3:
 			cg_static(BLACK_CG)
+		Global.ACT1_CHAPTER2_SCENE1:
+			cg_static(BLUR_ROOM_CG)
+		Global.ACT1_CHAPTER2_SCENE2:
+			cg_static(ROOM_CG)
+		Global.ACT1_CHAPTER2_SCENE3:
+			cg_static(SKY_CG)
+
 	var a = create_tween()
 	a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)
 	a = create_tween()

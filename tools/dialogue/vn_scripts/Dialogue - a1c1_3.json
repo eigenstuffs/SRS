@@ -997,7 +997,7 @@
     "sprite": null,
     "cecilia": null,
     "text": "I wish you peace, mortal. Whatever that may be.",
-    "go to": "early_exit",
+    "go to": null,
     "options": null,
     "options_id": null,
     "emit": "cg_exit_god,sfx_ominous_quiet",
@@ -1005,9 +1005,9 @@
     "run if": null,
     "add": null,
     "set": null,
-    "flag": null
+    "flag": "quit"
   },
-  "early_exit": {
+  "asdasdasd": {
     "speaker": null,
     "character": null,
     "sprite": null,
@@ -1021,7 +1021,7 @@
     "run if": null,
     "add": null,
     "set": null,
-    "flag": "quit"
+    "flag": null
   },
   "dowant": {
     "speaker": null,
