@@ -27,11 +27,15 @@ func _process(_delta):
 		$Library.disabled = true
 		$Fishing.disabled = true
 		$Rhythm.disabled = true
+		$SocialWarfare.disabled = true
+		$Maze.disabled = true
 	else:
 		$TextureButton.disabled = false
 		$Library.disabled = false
 		$Fishing.disabled = false
 		$Rhythm.disabled = false
+		$SocialWarfare.disabled = false
+		$Maze.disabled = false
 
 func _on_social_warfare_pressed():
 	get_tree().change_scene_to_file("res://tools/minigames/social_warfare/social_warfare_new.tscn")
