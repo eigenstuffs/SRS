@@ -4,6 +4,8 @@ class_name CardButton extends TextureButton
 
 signal chosen(data)
 
+const SFX_ERROR = preload("res://assets/sfx/switch_1.ogg")
+
 var card_data : Card
 
 func _ready():
@@ -35,9 +37,17 @@ func _on_mouse_exited():
 	Vector2(global_position.x, global_position.y), 0.05)
 
 func _on_pressed():
-	emit_signal("chosen", card_data)
+	if Global.data_dict["player_mp"] >= card_data.points_req:
+		emit_signal("chosen", card_data)
+	else:
+		EffectAnim.SfxPlayer.stream = SFX_ERROR
+		EffectAnim.SfxPlayer.play()
 
 func apply_assets():
 	$Elements/Face.texture = card_data.image
 	$Elements/Description.text = card_data.desc
+	if card_data.effect:
+		$Elements/Type.text = str(card_data.effect, ", Cost: ", card_data.points_req)
+	else:
+		$Elements/Type.text = str("Cost: ", card_data.points_req)
 	$Elements/Title.text = card_data.title

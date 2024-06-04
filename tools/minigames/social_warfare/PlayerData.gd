@@ -37,3 +37,5 @@ func get_best_card():
 	elif enemy_hp == (enemy_max_hp):
 		other.shuffle()
 		return other[0]
+	else:
+		return enemy_cards[0]

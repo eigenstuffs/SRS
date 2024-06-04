@@ -6,13 +6,13 @@
 [resource]
 script = ExtResource("1_kaskg")
 image = ExtResource("1_hbc02")
-points_req = 0
+points_req = 3
 title = "Um, Actually"
 effect = 3
 target_stat = 0
 type = 2
 effect_num = 0.75
-desc = ""
+desc = "Debate your opponent into lowering their attack for one turn."
 intensity_mod = 0
 move_dialogue = Array[String]([])
 name_dialogue = Array[String]([])

@@ -44,25 +44,40 @@ offset_bottom = 416.0
 texture = ExtResource("1_ndodj")
 
 [node name="Description" type="Label" parent="Elements"]
-offset_left = 50.0
-offset_top = 327.0
-offset_right = 273.0
-offset_bottom = 431.0
+offset_left = 60.0
+offset_top = 330.0
+offset_right = 270.0
+offset_bottom = 404.0
 theme_override_colors/font_color = Color(0.105882, 0.0470588, 0.109804, 1)
 theme_override_constants/line_spacing = -5
 theme_override_fonts/font = ExtResource("6_7mubt")
-theme_override_font_sizes/font_size = 18
-text = "Test"
+theme_override_font_sizes/font_size = 16
+text = "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Type" type="Label" parent="Elements"]
+offset_top = 300.0
+offset_right = 320.0
+offset_bottom = 330.0
+theme_override_colors/font_color = Color(0.105882, 0.0470588, 0.109804, 1)
+theme_override_constants/line_spacing = -5
+theme_override_fonts/font = ExtResource("7_2nh5x")
+theme_override_font_sizes/font_size = 12
+text = "asdasd"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Title" type="Label" parent="Elements"]
 offset_left = 82.0
-offset_top = 32.0
+offset_top = 27.0
 offset_right = 240.0
-offset_bottom = 64.0
+offset_bottom = 61.0
 theme_override_fonts/font = ExtResource("7_2nh5x")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 12
 text = "Slap"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -6,13 +6,13 @@
 [resource]
 script = ExtResource("1_hyeb5")
 image = ExtResource("1_0w2xw")
-points_req = 0
+points_req = 3
 title = "Sipping Tea"
 effect = 1
 target_stat = 2
 type = 0
 effect_num = 3.0
-desc = ""
+desc = "Take a refreshing sip of tea to heal yourself."
 intensity_mod = 0
 move_dialogue = Array[String]([])
 name_dialogue = Array[String]([])

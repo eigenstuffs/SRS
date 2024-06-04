@@ -6,13 +6,13 @@
 [resource]
 script = ExtResource("1_lbklo")
 image = ExtResource("1_vnyky")
-points_req = 0
+points_req = 3
 title = "Gaslight"
 effect = 3
 target_stat = 1
 type = 1
 effect_num = 0.75
-desc = ""
+desc = "Convince your opponent they're the problem and reduce their defense for one turn."
 intensity_mod = 10
 move_dialogue = Array[String]([])
 name_dialogue = Array[String]([])

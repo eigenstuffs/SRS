@@ -6,13 +6,13 @@
 [resource]
 script = ExtResource("1_svhto")
 image = ExtResource("1_7byko")
-points_req = 0
+points_req = 3
 title = "Gatekeep"
 effect = 3
 target_stat = 0
 type = 1
 effect_num = 0.75
-desc = ""
+desc = "It's a secret."
 intensity_mod = 0
 move_dialogue = Array[String]([])
 name_dialogue = Array[String]([])

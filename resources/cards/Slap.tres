@@ -6,12 +6,13 @@
 [resource]
 script = ExtResource("1_n3iwe")
 image = ExtResource("1_iuiic")
-points_req = 0
+points_req = 6
 title = "Slap"
 effect = 0
 target_stat = null
 type = 3
 effect_num = 5.0
-desc = ""
+desc = "THE AUDACITY!"
 intensity_mod = 70
 move_dialogue = Array[String]([])
+name_dialogue = Array[String]([])

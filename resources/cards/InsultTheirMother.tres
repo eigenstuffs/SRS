@@ -6,13 +6,13 @@
 [resource]
 script = ExtResource("1_lhpno")
 image = ExtResource("1_h6c5t")
-points_req = 0
+points_req = 5
 title = "Insult Their Mother"
 effect = 0
 target_stat = null
 type = 0
 effect_num = 5.0
-desc = ""
+desc = "Lie about your opponent's mother. Or is it a lie?"
 intensity_mod = 40
 move_dialogue = Array[String]([])
 name_dialogue = Array[String]([])

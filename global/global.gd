@@ -72,10 +72,10 @@ func rename_player(name : String):
 
 @onready var player_cards : Array[Card] = card_list.card_list
 
-var player_hp : int = 10 # poise 
-var player_mp : int = 5  
-var player_max_hp : int = 10
-var player_max_mp : int = 5
+var player_hp : int = 20 # poise 
+var player_mp : int = 10
+var player_max_hp : int = 20
+var player_max_mp : int = 10
 var player_level : int = 1 # repute
 var player_defense_ratio : float = 1
 var player_offense_ratio : float = 1

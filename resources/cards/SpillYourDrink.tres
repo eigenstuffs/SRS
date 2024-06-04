@@ -6,13 +6,13 @@
 [resource]
 script = ExtResource("1_io2s8")
 image = ExtResource("1_rsnh4")
-points_req = 0
+points_req = 10
 title = "Spill Your Drink"
 effect = 0
 target_stat = null
 type = 2
-effect_num = 6.0
-desc = ""
+effect_num = 8.0
+desc = "Spill your tea on your opponent's clothes. THE NERVE!"
 intensity_mod = 90
 move_dialogue = Array[String]([])
 name_dialogue = Array[String]([])

@@ -1,5 +1,10 @@
 class_name SocialWarfare extends Control
 
+const MUSIC_SOCIAL_WARFARE = preload("res://assets/music/Villianess Reborn Battle Social Warfare Music 1.mp3")
+const SFX_IMPACT_1 = preload("res://assets/sfx/impact_!.ogg")
+const SFX_IMPACT_2 = preload("res://assets/sfx/impact_2.ogg")
+const SFX_IMPACT_3 = preload("res://assets/sfx/impact_3.mp3")
+
 enum STATES {
 	PLAYER,
 	OPPONENT
@@ -26,6 +31,10 @@ signal card_action_finished
 signal enemy_move_finished
 
 func _ready():
+	EffectAnim.MusicPlayer.volume_db = -10
+	EffectAnim.SfxPlayer.volume_db = -10
+	EffectAnim.MusicPlayer.stream = MUSIC_SOCIAL_WARFARE
+	EffectAnim.MusicPlayer.play()
 	if Global.data_dict["remembered"].has("SocialWarfare"):
 		turn_loop()
 	else:
@@ -197,6 +206,17 @@ func card_action(card : Card, target : String):
 	
 	## apply effect
 	
+	match randi_range(0,2):
+		0:
+			EffectAnim.SfxPlayer.stream = SFX_IMPACT_1
+			EffectAnim.SfxPlayer.play()
+		1:
+			EffectAnim.SfxPlayer.stream = SFX_IMPACT_2
+			EffectAnim.SfxPlayer.play()
+		_:
+			EffectAnim.SfxPlayer.stream = SFX_IMPACT_3
+			EffectAnim.SfxPlayer.play()
+	
 	match target:
 		"Player":
 			match card.effect:
@@ -246,6 +266,7 @@ func card_action(card : Card, target : String):
 							)
 							await Util.util_finished
 					buff_applied = true
+			Global.data_dict["player_mp"] += 2
 		"Opponent":
 			match card.effect:
 				0: #attack
@@ -253,7 +274,11 @@ func card_action(card : Card, target : String):
 						Global.data_dict["player_offense_ratio"] * multiple)
 					start_shake(card.effect_num, card.effect_num * 2)
 				1: #restore
-					Global.data_dict["player_hp"] += (card.effect_num * multiple)
+					match card.target_stat:
+						2: # health
+							Global.data_dict["player_hp"] += (card.effect_num * multiple)
+						3: # mp
+							Global.data_dict["player_mp"] += (card.effect_num * multiple)
 				2: #buff
 					print("buff")
 					match card.target_stat:
@@ -296,7 +321,8 @@ func card_action(card : Card, target : String):
 							)
 							await Util.util_finished
 					buff_applied = true
-	
+			
+			
 	if multiple == 0.8:
 		Util.popup_dialogue(
 			$Holder/DialogueHolder,
@@ -391,7 +417,7 @@ func end():
 		"Fled...":
 			stats_gained = [1, 1, 1, 1]
 	await Util.create_reward_scene("SocialWarfare", [battle_result], stats_gained, self, $RewardHolder)
-	#connect back to free time zone or VN
+	get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	
 func _process(delta):
 	if shake_strength > 0:
