@@ -33,10 +33,22 @@ const ACT1_CHAPTER1_SCENE3 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_3.
 const ACT1_CHAPTER2_SCENE1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_1.json"
 const ACT1_CHAPTER2_SCENE2 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_2.json"
 const ACT1_CHAPTER2_SCENE3 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_3.json"
+const ACT1_CHAPTER2_SCENE4 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_4.json"
+const ACT1_CHAPTER2_SCENE5 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_5.json"
+const ACT1_CHAPTER2_SCENE6 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_6.json"
+const ACT1_CHAPTER2_SCENE7 = "res://tools/dialogue/vn_scripts/Dialogue - a1c2_7.json"
 
 func return_current_text():
-	if  data_dict["remembered"].has("a1c2_3"):
-		return ACT1_CHAPTER2_SCENE3 #Current newest
+	if data_dict["remembered"].has("a1c2_7"):
+		return ACT1_CHAPTER2_SCENE7 #current newest
+	elif data_dict["remembered"].has("a1c2_6"):
+		return ACT1_CHAPTER2_SCENE7
+	elif data_dict["remembered"].has("a1c2_5"):
+		return ACT1_CHAPTER2_SCENE6
+	elif data_dict["remembered"].has("a1c2_4"):
+		return ACT1_CHAPTER2_SCENE5
+	elif data_dict["remembered"].has("a1c2_3"):
+		return ACT1_CHAPTER2_SCENE4
 	elif data_dict["remembered"].has("a1c2_2"):
 		return ACT1_CHAPTER2_SCENE3
 	elif data_dict["remembered"].has("a1c2_1"):

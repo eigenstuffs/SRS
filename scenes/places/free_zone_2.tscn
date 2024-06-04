@@ -227,7 +227,7 @@ shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="Actors/NPC" instance=ExtResource("12_ng67i")]
 script = ExtResource("13_o0gv8")
-minigame = "Maze"
+minigame = "Library"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC"]
 libraries = {
@@ -279,7 +279,7 @@ shape = SubResource("BoxShape3D_0hq8b")
 
 [node name="Interaction" parent="Actors/NPC3" instance=ExtResource("12_ng67i")]
 script = ExtResource("13_o0gv8")
-minigame = "Maze"
+minigame = "Rhythm"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC3"]
 libraries = {

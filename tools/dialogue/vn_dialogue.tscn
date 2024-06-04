@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cs0nthvmjnh3o" path="res://assets/vn/god_glitch/image0.png" id="11_ygtw6"]
 [ext_resource type="Texture2D" uid="uid://b00cc64t4gc0f" path="res://assets/cgs/God_Smile_Speaking_Sheet.png" id="12_14uqi"]
 [ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="12_17eel"]
-[ext_resource type="PackedScene" uid="uid://c56vc03el0ny1" path="res://tools/dialogue/camera_anim.tscn" id="12_csetl"]
+[ext_resource type="PackedScene" path="res://tools/dialogue/camera_anim.tscn" id="12_csetl"]
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/vn/Dialogue/Dialogue Box.png" id="14_483pf"]
 [ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/ttf/Galdeano-Regular.ttf" id="16_v8kk6"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="17_elvhv"]
@@ -847,15 +847,6 @@ script = ExtResource("4_g1vbp")
 process_mode = 3
 script = ExtResource("12_17eel")
 text_box = NodePath("../TextBox")
-
-[node name="ProtectAgainstShake" type="ColorRect" parent="EffectHandler"]
-z_index = -999
-z_as_relative = false
-offset_left = -120.0
-offset_top = -90.0
-offset_right = 2040.0
-offset_bottom = 1200.0
-color = Color(0, 0, 0, 1)
 
 [node name="CG" type="TextureRect" parent="EffectHandler"]
 z_index = -1
