@@ -98,6 +98,10 @@ signal sfx_glasses_clink
 signal sfx_glass_crash
 signal sfx_coinflip_1
 signal sfx_journal_writing
+signal sfx_heels_running_wood_ext
+signal sfx_horror_suspense_music
+signal sfx_glass_hit_1
+signal sfx_soft_wind
 
 signal music_somber_death
 signal music_more_intense
