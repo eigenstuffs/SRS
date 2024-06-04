@@ -585,7 +585,7 @@
     "options": null,
     "options_id": null,
     "emit": "sfx_reverse_cymbal_ominous",
-    "delay": null,
+    "delay": 2,
     "run if": null,
     "add": null,
     "set": null,

@@ -1209,10 +1209,10 @@ theme_override_constants/separation = 32
 z_index = 5
 z_as_relative = false
 layout_mode = 0
-offset_left = 466.5
-offset_top = 456.0
-offset_right = 1581.5
-offset_bottom = 1160.0
+offset_left = 384.0
+offset_top = 448.0
+offset_right = 1499.0
+offset_bottom = 1152.0
 theme_override_constants/separation = 4
 alignment = 1
 

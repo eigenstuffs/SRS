@@ -135,10 +135,11 @@ const OVERLAY_BLOOD_SPLATTER = preload("res://assets/vn/overlay/overlay_blood_sp
 var song
 var last_fade = ""
 
-func _ready():
+func init():
 	match get_parent().text:
 		Global.ACT1_CHAPTER1_SCENE1:
 			cg_static(BLACK_CG)
+			print("worked")
 		Global.ACT1_CHAPTER1_SCENE2:
 			cg_static(CG_WINTER)
 		Global.ACT1_CHAPTER1_SCENE3:
@@ -149,6 +150,7 @@ func _ready():
 			cg_static(ROOM_CG)
 		Global.ACT1_CHAPTER2_SCENE3:
 			cg_static(SKY_CG)
+	print(get_parent().text)
 
 	var a = create_tween()
 	a.tween_property(EffectAnim.MusicPlayer, "volume_db", -10, 3)

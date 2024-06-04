@@ -218,6 +218,7 @@ var edgy_theme = false
 func _ready():
 	if text == null:
 		text = Global.return_current_text()
+	$EffectHandler.init()
 		
 	EffectAnim.play_backwards("FadeBlack")
 	
@@ -435,7 +436,8 @@ func read_line(key : int):
 		var num_chars = label.text.length()
 		var total_time = Global.data_dict["text_speed"] * num_chars
 		if current_line["flag"]:
-			if current_line["flag"].split(",").has("slow"): total_time * 10
+			if current_line["flag"].split(",").has("slow"):
+				total_time = total_time * 10
 		current_time = total_time
 		a = create_tween()
 		a.tween_property(label, "visible_characters", num_chars, total_time - (
