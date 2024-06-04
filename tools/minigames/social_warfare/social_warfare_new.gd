@@ -41,8 +41,8 @@ func _ready():
 		Util.show_tutorial("SocialWarfare", $RewardHolder)
 		await Util.tutorial_finished
 		turn_loop()
-	$Holder/Opponent/BarHP.max_value = enemy_data.enemy_hp
-	$Holder/Opponent/BarMP.max_value = enemy_data.enemy_mp
+	$Holder/Opponent/BarHP.max_value = enemy_data.enemy_max_hp
+	$Holder/Opponent/BarMP.max_value = enemy_data.enemy_max_mp
 	$Holder/Player/BarHP.max_value = Global.data_dict["player_max_hp"]
 	$Holder/Player/BarMP.max_value = Global.data_dict["player_max_mp"]
 
@@ -266,7 +266,7 @@ func card_action(card : Card, target : String):
 							)
 							await Util.util_finished
 					buff_applied = true
-			Global.data_dict["player_mp"] += 2
+			Global.data_dict["player_mp"] += 3
 		"Opponent":
 			match card.effect:
 				0: #attack

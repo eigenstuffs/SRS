@@ -623,6 +623,7 @@ script = ExtResource("1_vycxu")
 [node name="EnemyData" type="Node" parent="."]
 script = ExtResource("2_t2gbr")
 enemy_name = "Esra"
+enemy_type = 1
 
 [node name="EnemySprites" type="Node2D" parent="EnemyData"]
 position = Vector2(1320, 300)
@@ -721,7 +722,7 @@ offset_left = 611.0
 offset_top = 495.0
 offset_right = 843.0
 offset_bottom = 515.0
-value = 70.0
+value = 100.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("6_wldyg")
 
@@ -731,7 +732,7 @@ offset_left = 924.0
 offset_top = 495.0
 offset_right = 1156.0
 offset_bottom = 515.0
-value = 70.0
+value = 100.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("7_j7171")
 
@@ -768,7 +769,7 @@ offset_left = -665.0
 offset_top = 169.0
 offset_right = -433.0
 offset_bottom = 189.0
-value = 70.0
+value = 100.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("6_wldyg")
 
@@ -778,7 +779,7 @@ offset_left = -352.0
 offset_top = 169.0
 offset_right = -120.0
 offset_bottom = 189.0
-value = 70.0
+value = 100.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("7_j7171")
 

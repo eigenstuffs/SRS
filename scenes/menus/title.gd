@@ -32,3 +32,9 @@ func _process(_delta):
 		$Library.disabled = false
 		$Fishing.disabled = false
 		$Rhythm.disabled = false
+
+func _on_social_warfare_pressed():
+	get_tree().change_scene_to_file("res://tools/minigames/social_warfare/social_warfare_new.tscn")
+
+func _on_maze_pressed():
+	Util.create_minigame($CanvasLayer, "Maze")
