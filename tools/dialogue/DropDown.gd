@@ -53,14 +53,29 @@ func _on_log_pressed():
 	get_tree().paused = true
 	lmb = false
 	$Log.show()
+	
 	for i in $Log/ScrollContainer/VBoxContainer.get_children():
 		i.queue_free()
+		
 	for i in log_text:
 		var a = LOG_TEXT.instantiate()
 		a.text = i
 		$Log/ScrollContainer/VBoxContainer.add_child(a)
+		
+	$DropDown.disabled = true
+
+	for i in $Buttons.get_children():
+		i.disabled = true
+		
 	await exit_log
 	$Log.hide()
+	await get_tree().create_timer(0.1).timeout
+	
+	$DropDown.disabled = false
+
+	for i in $Buttons.get_children():
+		i.disabled = false
+	
 	lmb = true
 	get_tree().paused = false
 
@@ -79,10 +94,13 @@ func _on_hide_pressed():
 	)
 	await a.finished
 	get_tree().paused = true
+	
 	$DropDown.disabled = true
 	for i in $Buttons.get_children():
 		i.disabled = true
 	get_tree().paused = true
+	
+	
 	await exit_log
 	
 	a = create_tween()

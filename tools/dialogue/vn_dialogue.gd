@@ -260,11 +260,11 @@ func read_line(key : int):
 	current_line = result.get(result.keys()[key])
 	init_parameters(key)
 	
-	current_line["text"] = current_line["text"].replace("[PlayerName]", Global.data_dict["player_name"])
-	current_line["text"] = current_line["text"].replace("[SeraphinaName]", Global.data_dict["seraphina_name"])
+	if current_line["text"]: current_line["text"] = current_line["text"].replace("[PlayerName]", Global.data_dict["player_name"])
+	if current_line["text"]: current_line["text"] = current_line["text"].replace("[SeraphinaName]", Global.data_dict["seraphina_name"])
 	
-	current_line["speaker"] = current_line["speaker"].replace("[PlayerName]", Global.data_dict["player_name"])
-	current_line["speaker"] = current_line["speaker"].replace("[SeraphinaName]", Global.data_dict["seraphina_name"])
+	if current_line["speaker"]: current_line["speaker"] = current_line["speaker"].replace("[PlayerName]", Global.data_dict["player_name"])
+	if current_line["speaker"]: current_line["speaker"] = current_line["speaker"].replace("[SeraphinaName]", Global.data_dict["seraphina_name"])
 	
 	if current_line["delay"] != null:
 		text_box.hide()
