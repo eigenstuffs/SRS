@@ -78,14 +78,18 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 					$HBoxContainer["theme_override_constants/separation"] = -400
 	
 func init_cecilia(sprite):
+	var clean_sprite = sprite.replace(",", "")
 	if sprite:
 		get_node(cecilia_texture).modulate.a = 0
 		for i in CECILIA.textures:
 			if i.resource_path.ends_with(
-				sprite + ".PNG"
+				clean_sprite + ".PNG"
 			) or i.resource_path.ends_with(
-				sprite + ".png"
+				clean_sprite + ".png"
 			):
+				if sprite.has("-"):
+					get_node(cecilia_texture).modulate = Color("969696")
+				get_node(cecilia_texture).modulate.a = 0
 				var a = create_tween()
 				a.tween_property(
 					get_node(cecilia_texture),
