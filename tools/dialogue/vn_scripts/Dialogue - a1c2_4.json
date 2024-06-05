@@ -9,7 +9,7 @@
 		"go to": 2,
 		"options": null,
 		"option ids": null,
-		"emit": "cg_sky|music_tea_time|hide_text|show_next",
+		"emit": "cg_day|music_tea_time|hide_text|show_next",
 		"delay": null,
 		"remember": null,
 		"if remembered": null,
@@ -59,7 +59,7 @@
 	"4": {
 		"id": 4,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "(Enthusiastically, you go to greet him.)",
@@ -97,7 +97,7 @@
 	"6": {
 		"id": 6,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "(Still, you should maintain formalities for now and greet him.)",
@@ -135,7 +135,7 @@
 	"8": {
 		"id": 8,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "(You should probably just stay quiet, nod your head, and avoid making eye contact.)",
@@ -173,7 +173,7 @@
 	"10": {
 		"id": 10,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "(Hm. Keep it middle of the line. You should just bow and greet him.)",
@@ -192,7 +192,7 @@
 	"11": {
 		"id": 11,
 		"speaker": "\"Cecilia\"",
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "Greet-",
@@ -230,7 +230,7 @@
 	"13": {
 		"id": 13,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince12",
 		"cecilia": null,
 		"text": "(You can’t help but flinch when he turns to you, eyes narrowed with what you can only describe as pure loathing. His voice is sharper than before.)",
@@ -249,7 +249,7 @@
 	"14": {
 		"id": 14,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince12",
 		"cecilia": null,
 		"text": "(Where there was once a gentlemanly—if not a bit exasperated—prince, now stands a man whose every word drips with distaste.)",
@@ -268,7 +268,7 @@
 	"15": {
 		"id": 15,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince12",
 		"cecilia": null,
 		"text": "(You blink, almost hoping your eyes and ears deceive you.)",
@@ -287,7 +287,7 @@
 	"16": {
 		"id": 16,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince12",
 		"cecilia": null,
 		"text": "(No longer is his dislike for you hidden between strained words and evasive eye contact.)",
@@ -306,7 +306,7 @@
 	"17": {
 		"id": 17,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince12",
 		"cecilia": null,
 		"text": "(It’s like the Cassius that existed in the presence of Lady Isidora, the one you remembered from the game, was nothing more than a facade.)",
@@ -363,7 +363,7 @@
 	"20": {
 		"id": 20,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "(You wince when he grabs your wrist and pulls. [i]Damn,[/i] his grip’s tight.)",
@@ -382,7 +382,7 @@
 	"21": {
 		"id": 21,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "(You know that he hated Cecilia—which seemed justified enough at the time—but this behavior seems too harsh, even towards someone like her.)",
@@ -401,7 +401,7 @@
 	"22": {
 		"id": 22,
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": null,
@@ -439,7 +439,7 @@
 	"24": {
 		"id": 24,
 		"speaker": null,
-		"character": "Cassius|Esra",
+		"character": "-Cassius|-Esra",
 		"sprite": "talk_prince10|talk3",
 		"cecilia": null,
 		"text": "(A harsh voice calls out and you turn to face a young man wearing a nasty scowl. If looks could kill, you’d be dead ten times over.)",
@@ -458,7 +458,7 @@
 	"25": {
 		"id": 25,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk3",
 		"cecilia": null,
 		"text": "(But aside from his blatant disdain for you, he seems familiar. You just can’t quite piece together who he is.)",
@@ -496,7 +496,7 @@
 	"27": {
 		"id": 27,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk1",
 		"cecilia": null,
 		"text": "(He drops the formalities, if they could even be called that, and snaps out another annoyed remark before you can respond.)",
@@ -534,7 +534,7 @@
 	"29": {
 		"id": 29,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk1",
 		"cecilia": null,
 		"text": "(And then, it finally clicks. After all, you’d recognize that sarcastic, pissed off tone anywhere.)\r",
@@ -572,7 +572,7 @@
 	"31": {
 		"id": 31,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(You’re face to face with Esra Rosas de Durazno, Cassius’s best friend and closest advisor…and the third love interest from [i]Full Blossom.[/i])",
@@ -591,7 +591,7 @@
 	"32": {
 		"id": 32,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(He was definitely less popular than Cassius and Maverick, but his fanbase was incredibly dedicated. Every time the developers would release new art pieces for the other male leads, fan artists would take to the forums and post their own works to even things out.)",
@@ -610,7 +610,7 @@
 	"33": {
 		"id": 33,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(Looking back, you can see why that part of the fandom was so devoted to him. He was…[i]strong-willed[/i]…but pushing past his constant RBF was part of the fun in pursuing him.)",
@@ -629,7 +629,7 @@
 	"34": {
 		"id": 34,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(Personally though…)",
@@ -648,7 +648,7 @@
 	"35": {
 		"id": 35,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(What can you say? You liked rooting for the underdog.)",
@@ -667,7 +667,7 @@
 	"36": {
 		"id": 36,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(Although he never got as much love in the fandom as you thought he should, you chose to take that as you having a special understanding of him that other people just couldn’t achieve. Liking him was a testament to one’s media literacy skills.)",
@@ -686,7 +686,7 @@
 	"37": {
 		"id": 37,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(Esra was just so intelligent and driven, to the extent that he graduated the academy three years early and became the crown prince’s tutor. His capabilities in politics and academia were unparalleled, second only to his passion for helping the people.)",
@@ -705,7 +705,7 @@
 	"38": {
 		"id": 38,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(Contrary to what his appearance suggested, Esra was a model civil servant.)",
@@ -724,7 +724,7 @@
 	"39": {
 		"id": 39,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(But he wasn’t without his flaws either. He’s a hothead, often letting his emotions drive his actions.)",
@@ -743,7 +743,7 @@
 	"40": {
 		"id": 40,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(He was also incredibly stubborn. Once he made up his mind, nothing could stop him. Though that made him all the more endearing, like a tsundere type of charm.)",
@@ -762,7 +762,7 @@
 	"41": {
 		"id": 41,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(As an early academy graduate, Esra took on the role of Cassius’s tutor, but he was more like a worried best friend than an actual teacher.)",
@@ -781,7 +781,7 @@
 	"42": {
 		"id": 42,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(Even if you didn’t romance him, he never stopped striving to improve the kingdom or support his friends.)",
@@ -800,7 +800,7 @@
 	"43": {
 		"id": 43,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(For all his rough edges, Esra was still just someone who wanted the best for those he cared about. You couldn’t fault him for that.)",
@@ -819,7 +819,7 @@
 	"44": {
 		"id": 44,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(And… that was about it. No wonder he never had much content post main-game.)",
@@ -838,7 +838,7 @@
 	"45": {
 		"id": 45,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(...What else? He was also a bit of a hothead, despite his intelligence. He had that tsundere type of appeal, making him an acquired taste as far as romance options go.)",
@@ -857,7 +857,7 @@
 	"46": {
 		"id": 46,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(You were just never too into him.)",
@@ -876,7 +876,7 @@
 	"47": {
 		"id": 47,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(Whatever your previous opinions on him were, Esra is definitely… quite the character, especially in the flesh.)",
@@ -895,7 +895,7 @@
 	"48": {
 		"id": 48,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(But, just like Cassius, he seems different.)",
@@ -914,7 +914,7 @@
 	"49": {
 		"id": 49,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(You remember him being prickly, sure. However, you don’t remember him being this hostile right out the gate, more just nagging and stern)",
@@ -933,7 +933,7 @@
 	"50": {
 		"id": 50,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(Then again, he never had that good of a relationship with Cecilia.)",
@@ -952,7 +952,7 @@
 	"51": {
 		"id": 51,
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(He should also be the final love interest from [i]Full Blossom.[/i] At least you think he is…Unless you’re forgetting something important.)",
@@ -1085,7 +1085,7 @@
 	"58": {
 		"id": 58,
 		"speaker": "Esra",
-		"character": "Cassius|SEsra",
+		"character": "Cassius|Esra",
 		"sprite": "talk3|talk7",
 		"cecilia": null,
 		"text": "[i]Tsk.[/i] Lady Karmina! Are you even listening to me?",
@@ -1123,7 +1123,7 @@
 	"60": {
 		"id": 60,
 		"speaker": null,
-		"character": "Cassius|Esra",
+		"character": "-Cassius|-Esra",
 		"sprite": "talk3|talk6",
 		"cecilia": null,
 		"text": "(You got so caught up thinking about [i]Full Blossom[/i] that you completely forgot you were supposed to be heading to the luncheon right now.)",
@@ -1149,7 +1149,7 @@
 		"go to": 62,
 		"options": null,
 		"option ids": null,
-		"emit": "music_tea_time",
+		"emit": null,
 		"delay": null,
 		"remember": null,
 		"if remembered": null,
@@ -1471,7 +1471,7 @@
 		"text": null,
 		"go to": null,
 		"options": null,
-		"option ids": null,
+		"option ids": "stop_music",
 		"emit": null,
 		"delay": null,
 		"remember": "a1c2_4",
@@ -1503,8 +1503,8 @@
 	"notlate_direct_2": {
 		"id": "notlate_direct_2",
 		"speaker": null,
-		"character": null,
-		"sprite": null,
+		"character": "-Cassius",
+		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": null,
 		"go to": "notlate_direct_3",
@@ -1522,8 +1522,8 @@
 	"notlate_direct_3": {
 		"id": "notlate_direct_3",
 		"speaker": null,
-		"character": null,
-		"sprite": null,
+		"character": "-Cassius",
+		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": null,
 		"go to": "notlate_direct_4",
@@ -1541,8 +1541,8 @@
 	"notlate_direct_4": {
 		"id": "notlate_direct_4",
 		"speaker": null,
-		"character": null,
-		"sprite": null,
+		"character": "-Cassius",
+		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": null,
 		"go to": "notlate_mimic",
@@ -1560,7 +1560,7 @@
 	"notlate_silly": {
 		"id": "notlate_silly",
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "(You blink, making sure he can see your eyes wide and surprised. You really need to sell this new personality, and every little action counts.)",
@@ -1579,7 +1579,7 @@
 	"notlate_girlboss": {
 		"id": "notlate_girlboss",
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "(You keep your head held high. You really need to sell this new personality, and every little action counts.)",
@@ -1598,7 +1598,7 @@
 	"notlate_meek": {
 		"id": "notlate_meek",
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "(You flinch, hesitantly turning to face him. You really need to sell this new personality, and every little action counts.)",
@@ -1617,7 +1617,7 @@
 	"notlate_mimic": {
 		"id": "notlate_mimic",
 		"speaker": null,
-		"character": "Cassius",
+		"character": "-Cassius",
 		"sprite": "talk_prince10",
 		"cecilia": null,
 		"text": "(What would Cecilia do? Talking to Cassius is a delicate balancing act, teetering between her signature villainess behavior and her deep-seated affections towards him.)",
@@ -1655,7 +1655,7 @@
 	"cas_check": {
 		"id": "cas_check",
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": null,
@@ -1674,7 +1674,7 @@
 	"op_es_1": {
 		"id": "op_es_1",
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": null,
@@ -1693,7 +1693,7 @@
 	"op_es_2": {
 		"id": "op_es_2",
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": null,
@@ -1712,7 +1712,7 @@
 	"hewas": {
 		"id": "hewas",
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(You used to love playing through his route in middle school—he had you wrapped around his finger with that attitude and hidden soft side of his.)",
@@ -1731,7 +1731,7 @@
 	"fun": {
 		"id": "fun",
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(Esra was always so intelligent and quick-witted, but at the same time, he was hot-tempered and had a fiery personality. Once you pushed past his harsh exterior though, you had a man full of passion and drive.)",
@@ -1750,7 +1750,7 @@
 	"neverliked": {
 		"id": "neverliked",
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(He graduated from the academy three years early, which you guess made him kind of interesting. Eventually, he went on to tutor Cassius and became a close friend and confidant to him.)",
@@ -1769,7 +1769,7 @@
 	"og_ro_check_1": {
 		"id": "og_ro_check_1",
 		"speaker": null,
-		"character": "Esra",
+		"character": "-Esra",
 		"sprite": "talk7",
 		"cecilia": null,
 		"text": "(Hm. Nope.)",
@@ -1788,7 +1788,7 @@
 	"og_ro_check_2": {
 		"id": "og_ro_check_2",
 		"speaker": null,
-		"character": null,
+		"character": "-Esra",
 		"sprite": null,
 		"cecilia": null,
 		"text": null,
@@ -1807,7 +1807,7 @@
 	"og_ro_check_3": {
 		"id": "og_ro_check_3",
 		"speaker": null,
-		"character": null,
+		"character": "-Esra",
 		"sprite": null,
 		"cecilia": null,
 		"text": null,
@@ -1826,7 +1826,7 @@
 	"favoritepicker": {
 		"id": "favoritepicker",
 		"speaker": null,
-		"character": null,
+		"character": "-Esra",
 		"sprite": null,
 		"cecilia": null,
 		"text": "(Speaking of love interests… Maybe you should repair Cecilia’s relationship with one of the original route holders. Having them as an ally could be useful.)",
@@ -1852,7 +1852,7 @@
 		"go to": "snapout",
 		"options": null,
 		"option ids": null,
-		"emit": null,
+		"emit": "music_tea_time",
 		"delay": null,
 		"remember": "og_ro_cas",
 		"if remembered": null,
@@ -1871,7 +1871,7 @@
 		"go to": "snapout",
 		"options": null,
 		"option ids": null,
-		"emit": null,
+		"emit": "music_tea_time",
 		"delay": null,
 		"remember": "og_ro_mav",
 		"if remembered": null,
@@ -1890,7 +1890,7 @@
 		"go to": "snapout",
 		"options": null,
 		"option ids": null,
-		"emit": null,
+		"emit": "music_tea_time",
 		"delay": null,
 		"remember": "og_ro_es",
 		"if remembered": null,
@@ -1909,7 +1909,7 @@
 		"go to": 56,
 		"options": null,
 		"option ids": null,
-		"emit": null,
+		"emit": "music_tea_time",
 		"delay": null,
 		"remember": null,
 		"if remembered": null,
@@ -1928,7 +1928,7 @@
 		"go to": 58,
 		"options": null,
 		"option ids": null,
-		"emit": "cg_sky|screen_shake",
+		"emit": "cg_day|screen_shake",
 		"delay": null,
 		"remember": null,
 		"if remembered": null,

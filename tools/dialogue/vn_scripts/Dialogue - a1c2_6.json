@@ -2669,7 +2669,7 @@
 		"go to": null,
 		"options": null,
 		"option ids": null,
-		"emit": null,
+		"emit": "stop_music",
 		"delay": null,
 		"remember": "a1c2_6",
 		"if remembered": null,
