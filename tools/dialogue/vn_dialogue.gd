@@ -117,6 +117,7 @@ signal music_ballroom
 signal music_god
 signal music_god_calm
 signal music_sliceoflife
+signal music_cecilia
 
 signal pause_music
 signal resume_music

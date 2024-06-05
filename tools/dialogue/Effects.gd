@@ -98,6 +98,7 @@ const MUSIC_FIRST_STAGE = preload("res://assets/music/Villianess_Reborn_Minigame
 const MUSIC_TEA_TIME = preload("res://assets/music/Villianess Reborn Tea Time Minigame.mp3")
 const MUSIC_SOCIAL_WARFARE = preload("res://assets/music/Villianess Reborn Battle Social Warfare Music 1.mp3")
 const MUSIC_CHURCH = preload("res://assets/music/Villianess Reborn Church.mp3")
+const MUSIC_CECILIA = preload("res://assets/music/Villainess_Reborn_Cecilias_Theme_Numero_Dos.mp3")
 const MUSIC_CHURCH_WELCOMING = preload("res://assets/music/Villianess Reborn Church (Welcoming).mp3")
 const MUSIC_FOREST_2 = preload("res://assets/music/Villianess Reborn Forest Theme 2.mp3")
 const MUSIC_TOWN = preload("res://assets/music/Villianess Reborn Town Theme.mp3")
@@ -298,6 +299,7 @@ func init():
 	vn.connect("music_god", play_music.bind(MUSIC_GOD))
 	vn.connect("music_god_calm", play_music.bind(MUSIC_GOD_CALM))
 	vn.connect("music_sliceoflife", play_music.bind(MUSIC_SLICEOFLIFE))
+	vn.connect("music_cecilia", play_music.bind(MUSIC_CECILIA))
 	
 	vn.connect("pause_music", pause_music)
 	vn.connect("resume_music", resume_music)
