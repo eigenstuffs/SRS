@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="SRS"
+config/name="Villainess x Reborn"
 run/main_scene="res://scenes/menus/title.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 run/max_fps=144

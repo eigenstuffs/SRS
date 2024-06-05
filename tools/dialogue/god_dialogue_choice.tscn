@@ -24,7 +24,8 @@ texture_focused = ExtResource("1_j1q51")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 1134.0
+offset_left = -18.0
+offset_right = 1135.0
 offset_bottom = 223.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
