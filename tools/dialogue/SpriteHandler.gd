@@ -36,10 +36,14 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 					## pick the texture
 					
 					for j in i.textures:
+						print("texture: " + j.resource_path)
 						if j.resource_path.ends_with(sprite_list[
 							clean_character_list.find(i.name)
-						] + ".PNG"):
+						] + ".PNG") or j.resource_path.ends_with(sprite_list[
+							clean_character_list.find(i.name)
+						] + ".png"):
 							texture = j
+							print("matched texture" + sprite_list[clean_character_list.find(i.name)] + ".PNG")
 					
 					a.texture = texture
 				
@@ -79,6 +83,8 @@ func init_cecilia(sprite):
 		for i in CECILIA.textures:
 			if i.resource_path.ends_with(
 				sprite + ".PNG"
+			) or i.resource_path.ends_with(
+				sprite + ".png"
 			):
 				var a = create_tween()
 				a.tween_property(
