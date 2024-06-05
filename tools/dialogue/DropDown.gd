@@ -50,6 +50,8 @@ func _on_autoplay_pressed():
 	#$Buttons/Skip.button_pressed = false
 
 func _on_log_pressed():
+	get_tree().paused = true
+	lmb = false
 	$Log.show()
 	for i in $Log/ScrollContainer/VBoxContainer.get_children():
 		i.queue_free()
@@ -57,13 +59,14 @@ func _on_log_pressed():
 		var a = LOG_TEXT.instantiate()
 		a.text = i
 		$Log/ScrollContainer/VBoxContainer.add_child(a)
-	get_tree().paused = true
 	await exit_log
-	get_tree().paused = false
 	$Log.hide()
+	lmb = true
+	get_tree().paused = false
 
 func _on_hide_pressed():
 	autoplay = false
+	lmb = false
 	skip = false
 	$Buttons/Autoplay.button_pressed = false
 	$Buttons/Skip.button_pressed = false
@@ -95,6 +98,7 @@ func _on_hide_pressed():
 
 	for i in $Buttons.get_children():
 		i.disabled = false
+	lmb = true
 
 func stop_skip():
 	skip = false
