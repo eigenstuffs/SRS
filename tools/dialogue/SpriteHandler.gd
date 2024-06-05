@@ -28,7 +28,6 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 				for k in character_list.size():
 					clean_character_list[k] = character_list[k].replace("-", "")
 				if clean_character_list.has(i.name):
-					print(i.name)
 					var a = CHARACTER_SPRITE.instantiate()
 					$HBoxContainer.add_child(a)
 					var texture : Texture
@@ -36,14 +35,12 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 					## pick the texture
 					
 					for j in i.textures:
-						print("texture: " + j.resource_path)
 						if j.resource_path.ends_with(sprite_list[
 							clean_character_list.find(i.name)
 						] + ".PNG") or j.resource_path.ends_with(sprite_list[
 							clean_character_list.find(i.name)
 						] + ".png"):
 							texture = j
-							print("matched texture" + sprite_list[clean_character_list.find(i.name)] + ".PNG")
 					
 					a.texture = texture
 				

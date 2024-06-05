@@ -865,6 +865,13 @@ offset_right = 1920.0
 offset_bottom = 1088.0
 mouse_filter = 2
 
+[node name="CG2" type="TextureRect" parent="EffectHandler"]
+z_index = -1
+z_as_relative = false
+offset_right = 1920.0
+offset_bottom = 1088.0
+mouse_filter = 2
+
 [node name="Overlay" type="TextureRect" parent="EffectHandler"]
 modulate = Color(0.592157, 0.592157, 0.592157, 1)
 z_index = -1

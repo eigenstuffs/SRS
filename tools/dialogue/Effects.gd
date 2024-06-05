@@ -482,13 +482,23 @@ func stop_sfx_looping():
 ## CG
 
 func cg_static(texture : Texture):
-	#$CG.modulate.a = 0
-	$CG.show()
-	#var a = create_tween()
-	#a.tween_property($CG, "modulate:a", 1, 0.5)
-	#await a.finished
-	$CG.modulate.a = 1
-	$CG.texture = texture
+	BUSY = true
+	if $CG.texture:
+		$CG2.modulate.a = 0
+		$CG2.texture = texture
+		var a = create_tween()
+		a.tween_property($CG2, "modulate:a", 1, 0.5)
+		await a.finished
+		$CG.texture = null
+	elif $CG2.texture:
+		$CG.texture = texture
+		var a = create_tween()
+		a.tween_property($CG2, "modulate:a", 0, 0.5)
+		await a.finished
+		$CG2.texture = null
+	else:
+		print("WHAT!!!!!! CG ERROR")
+	BUSY = false
 	
 	
 func stop_cg():
