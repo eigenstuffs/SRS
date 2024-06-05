@@ -266,18 +266,18 @@ func read_line(key : int):
 	if current_line["add"] != null:
 		Global.add_event(current_line["add"])
 	if current_line["emit"]:
-		if !current_line["emit"].split(",").has("hide_text"):
+		if !current_line["emit"].split("|").has("hide_text"):
 			text_box.show()
 	else:
 		text_box.show()
 	
 	if current_line["emit"] != null:
-		var text = current_line["emit"].split(",")
+		var text = current_line["emit"].split("|")
 		for i in text.size():
 			print(text[i])
 			self.emit_signal(text[i])
 	if current_line["set"] != null:
-		var text = current_line["set"].split(",")
+		var text = current_line["set"].split("|")
 		var variable = text[0]
 		var value = text[1]
 		print("set " + variable + " as " + value)
@@ -290,14 +290,14 @@ func read_line(key : int):
 	if current_line["flag"] == "decision":
 		if current_line["options"] != null:
 			var read_all = true
-			for i in current_line["options"].split(","):
+			for i in current_line["options"].split("|"):
 				if !Global.data_dict["remembered"].has(i):
 					read_all = false
 			if !read_all:
 				if !edgy_theme:
 					$Choice/Backdrop.position = Vector2(1950,0)
 					choice_ui.show()
-					var text : Array = current_line["options"].split(",")
+					var text : Array = current_line["options"].split("|")
 					var a = create_tween()
 					a.tween_property($Choice/Backdrop, "position", Vector2(960,0), .5).set_trans(Tween.TRANS_EXPO)
 					await get_tree().create_timer(0.1).timeout
@@ -389,7 +389,7 @@ func read_line(key : int):
 				else:
 					$GodChoice.modulate.a = 0
 					$GodChoice.show()
-					var text : Array = current_line["options"].split(",")
+					var text : Array = current_line["options"].split("|")
 					for i in text:
 						var a = GOD_CHOICE_BUTTON.instantiate()
 						if !Global.data_dict["remembered"].has(i):
@@ -428,7 +428,7 @@ func read_line(key : int):
 	if current_line["text"] == null:
 		text_box.hide()
 		if current_line["flag"]:
-			if current_line["flag"].split(",").has("autoplay"):
+			if current_line["flag"].split("|").has("autoplay"):
 				await get_tree().create_timer(3).timeout
 	else:
 		label.text = current_line["text"]
@@ -436,7 +436,7 @@ func read_line(key : int):
 		var num_chars = label.text.length()
 		var total_time = Global.data_dict["text_speed"] * num_chars
 		if current_line["flag"]:
-			if current_line["flag"].split(",").has("slow"):
+			if current_line["flag"].split("|").has("slow"):
 				total_time = total_time * 10
 		current_time = total_time
 		a = create_tween()
@@ -458,7 +458,7 @@ func read_line(key : int):
 			).timeout
 	
 	if current_line["emit"]:
-		if current_line["emit"].split(",").has("show_empty"):
+		if current_line["emit"].split("|").has("show_empty"):
 			print("has show_empty")
 			label.text = ""
 			label.visible_characters = 1
@@ -476,7 +476,7 @@ func read_line(key : int):
 					1 - (int(settings_dropdown.skip) * 0.9)
 				).timeout
 	if current_line["emit"]:
-		if current_line["emit"].split(",").has("show_next"):
+		if current_line["emit"].split("|").has("show_next"):
 			print("has show_next")
 			label.text = ""
 			label.visible_characters = 1
@@ -557,7 +557,7 @@ func read_line(key : int):
 		get_tree().reload_current_scene()
 	
 	if current_line["run if"] != null:
-		var text = current_line["run if"].split(",")
+		var text = current_line["run if"].split("|")
 		var condition = text[0]
 		var target = text[1]
 		if Global.data_dict["remembered"].has(condition):
@@ -606,8 +606,8 @@ func init_parameters(key : int):
 
 	if line["character"] != null && line["sprite"] != null:
 		sprite_handler.init_sprite(
-			line["character"].split(","),
-			line["sprite"].split(",")
+			line["character"].split("|"),
+			line["sprite"].split("|")
 		)
 		
 	else:
@@ -625,7 +625,7 @@ func init_parameters(key : int):
 			)
 
 func choice_funnel(which : int):
-	var choice = current_line["options_id"].split(",")[which]
+	var choice = current_line["options_id"].split("|")[which]
 	current_line["go to"] = choice
 	
 func choice_pressed():
