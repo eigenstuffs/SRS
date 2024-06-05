@@ -150,6 +150,29 @@ func init():
 			cg_static(ROOM_CG)
 		Global.ACT1_CHAPTER2_SCENE3:
 			cg_static(SKY_CG)
+		Global.ACT1_CHAPTER2_SCENE4:
+			cg_static(SKY_CG)
+		Global.ACT1_CHAPTER2_SCENE5:
+			cg_static(CG_DAY)
+		Global.ACT1_CHAPTER2_SCENE6:
+			cg_static(CG_DAY)
+		Global.ACT1_CHAPTER2_SCENE7:
+			cg_static(DINING_CG)
+		Global.ACT1_CHAPTER3_SCENE1:
+			cg_static(ROOM_CG)
+		Global.ACT1_CHAPTER3_SCENE2:
+			cg_static(SKY_CG)
+		Global.ACT1_CHAPTER3_SCENE3:
+			cg_static(CG_BALLROOM)
+		Global.ACT1_CHAPTER3_SCENE4:
+			cg_static(CG_NIGHT)
+		Global.ACT1_CHAPTER3_SCENE5:
+			cg_static(CG_NIGHT)
+		Global.ACT1_CHAPTER3_SCENE6:
+			cg_static(CG_BALLROOM)
+		Global.ACT1_CHAPTER3_SCENE7:
+			cg_static(ROOM_CG)
+			
 	print(get_parent().text)
 
 	var a = create_tween()

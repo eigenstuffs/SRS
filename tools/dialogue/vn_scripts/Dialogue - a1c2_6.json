@@ -522,7 +522,7 @@
 		"go to": 29,
 		"options": null,
 		"option ids": null,
-		"emit": "sfx_coinflip_1|show_next||hide_text",
+		"emit": "sfx_coinflip_1|show_next|hide_text",
 		"delay": null,
 		"remember": null,
 		"if remembered": null,
@@ -571,7 +571,7 @@
 	},
 	"31": {
 		"id": 31,
-		"speaker": "\"Cecilia\"",
+		"speaker": null,
 		"character": null,
 		"sprite": null,
 		"cecilia": null,
