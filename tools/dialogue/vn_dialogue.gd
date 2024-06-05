@@ -276,8 +276,8 @@ func read_line(key : int):
 		for i in text.size():
 			print(text[i])
 			self.emit_signal(text[i])
-	if current_line["set"] != null:
-		var text = current_line["set"].split("|")
+	if current_line["set var"] != null:
+		var text = current_line["set var"].split("|")
 		var variable = text[0]
 		var value = text[1]
 		print("set " + variable + " as " + value)
@@ -556,13 +556,35 @@ func read_line(key : int):
 		Global.save_data()
 		get_tree().reload_current_scene()
 	
-	if current_line["run if"] != null:
-		var text = current_line["run if"].split("|")
+	if current_line["if remembered"] != null:
+		var text = current_line["if remembered"].split("|")
 		var condition = text[0]
 		var target = text[1]
-		if Global.data_dict["remembered"].has(condition):
-			print("HAS CONDITION MET")
+		var any_or_all
+		if text.size() >= 3: any_or_all = text[2]
+		else: any_or_all = null
+		var ok = false
+		for i in condition.split(","):
+			if Global.data_dict["remembered"].has(i):
+				print("HAS REMEMBERED ", i)
+				ok = true
+			else:
+				if any_or_all == "any":
+					pass
+				else:
+					ok = false
+					break
+		if ok: current_line["go to"] = target
+		
+		current_line["go to"] = target
+	if current_line["check var"] != null:
+		var text = current_line["check var"].split("|")
+		var variable = text[0]
+		var checker = text[1]
+		var target = text[2]
+		if Global.data_dict[variable] == checker:
 			current_line["go to"] = target
+			print(str(variable, " is ", checker, ". going to ", target))
 			
 	if $EffectHandler.BUSY:
 		await $EffectHandler.NOT_BUSY
@@ -595,7 +617,7 @@ func init_parameters(key : int):
 		sprite_handler.init_cecilia(line["cecilia"])
 	
 	if line["speaker"]:
-		if line["speaker"] == "Player":
+		if line["speaker"] == "[Player":
 			character_name.text = Global.data_dict["player_name"]
 		else:
 			character_name.text = line["speaker"]
@@ -625,7 +647,7 @@ func init_parameters(key : int):
 			)
 
 func choice_funnel(which : int):
-	var choice = current_line["options_id"].split("|")[which]
+	var choice = current_line["option ids"].split("|")[which]
 	current_line["go to"] = choice
 	
 func choice_pressed():
