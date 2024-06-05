@@ -149,9 +149,9 @@ func init():
 		Global.ACT1_CHAPTER2_SCENE2:
 			cg_static(ROOM_CG)
 		Global.ACT1_CHAPTER2_SCENE3:
-			cg_static(SKY_CG)
+			cg_static(CG_DAY)
 		Global.ACT1_CHAPTER2_SCENE4:
-			cg_static(SKY_CG)
+			cg_static(CG_DAY)
 		Global.ACT1_CHAPTER2_SCENE5:
 			cg_static(CG_DAY)
 		Global.ACT1_CHAPTER2_SCENE6:
@@ -161,9 +161,9 @@ func init():
 		Global.ACT1_CHAPTER3_SCENE1:
 			cg_static(ROOM_CG)
 		Global.ACT1_CHAPTER3_SCENE2:
-			cg_static(SKY_CG)
+			cg_static(CG_DAY)
 		Global.ACT1_CHAPTER3_SCENE3:
-			cg_static(CG_BALLROOM)
+			cg_static(CG_EVENING)
 		Global.ACT1_CHAPTER3_SCENE4:
 			cg_static(CG_NIGHT)
 		Global.ACT1_CHAPTER3_SCENE5:
@@ -497,9 +497,10 @@ func cg_static(texture : Texture):
 		await a.finished
 		$CG2.texture = null
 	else:
-		print("WHAT!!!!!! CG ERROR")
+		$CG.texture = texture
+		$CG.modulate.a = 1
 	BUSY = false
-	
+	emit_signal("NOT_BUSY")
 	
 func stop_cg():
 	BUSY = true

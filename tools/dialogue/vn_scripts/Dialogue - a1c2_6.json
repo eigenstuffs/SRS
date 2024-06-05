@@ -762,7 +762,7 @@
 	"41": {
 		"id": 41,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk8",
 		"cecilia": null,
 		"text": "(He steps in front of you, chest to chest, and holds up one hand so that you can see the coin between his index and middle fingers. Light glints off of it and into your eyes.)",
@@ -781,7 +781,7 @@
 	"42": {
 		"id": 42,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk8",
 		"cecilia": null,
 		"text": null,
@@ -800,7 +800,7 @@
 	"43": {
 		"id": 43,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk8",
 		"cecilia": null,
 		"text": "(A trickle of ice cold fear drips down your spine. Why does he keep stopping you? Who is this man?)",
@@ -819,7 +819,7 @@
 	"44": {
 		"id": 44,
 		"speaker": "???",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk8",
 		"cecilia": null,
 		"text": "I’ve an idea, I think, that will give us both what we need.",
@@ -838,7 +838,7 @@
 	"45": {
 		"id": 45,
 		"speaker": "\"Cecilia\"",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk8",
 		"cecilia": null,
 		"text": "Pardon, but I only need past [i]you[/i] at the moment. It’s a very [i]simple[/i] solution, if you would just move.",
@@ -857,7 +857,7 @@
 	"46": {
 		"id": 46,
 		"speaker": "???",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk5",
 		"cecilia": null,
 		"text": "And I shall do precisely that, should you play and win a [i]simple[/i] game with me.",
@@ -876,7 +876,7 @@
 	"47": {
 		"id": 47,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk5",
 		"cecilia": null,
 		"text": "(That makes you pause.)",
@@ -895,7 +895,7 @@
 	"48": {
 		"id": 48,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk5",
 		"cecilia": null,
 		"text": "(Is he simply a con artist seeking an easy pick? If that’s the case, you can indulge him in a quick game and move on. Besides, he’s bigger than you, it’s not like you could force your way past anyways.)",
@@ -914,7 +914,7 @@
 	"49": {
 		"id": 49,
 		"speaker": "\"Cecilia\"",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk5",
 		"cecilia": null,
 		"text": "…And what kind of game would that be?",
@@ -933,7 +933,7 @@
 	"50": {
 		"id": 50,
 		"speaker": "???",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "A simple game of chance, of course! Nothing nefarious for a lady in full bloom.",
@@ -952,7 +952,7 @@
 	"51": {
 		"id": 51,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(The coin turns over in his fingers easily, quickly, to the point your eyes almost can’t follow it.)",
@@ -971,7 +971,7 @@
 	"52": {
 		"id": 52,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(Then, he closes his fist around it.)",
@@ -990,7 +990,7 @@
 	"53": {
 		"id": 53,
 		"speaker": "???",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "Heads or tails, if you would?",
@@ -1009,7 +1009,7 @@
 	"54": {
 		"id": 54,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(It seems there is a shadow of Cecilia still remaining inside you.)",
@@ -1028,7 +1028,7 @@
 	"55": {
 		"id": 55,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(He lifts his palm, and looking up at you is the coin.)",
@@ -1047,7 +1047,7 @@
 	"56": {
 		"id": 56,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(...It's tails.)",
@@ -1066,7 +1066,7 @@
 	"57": {
 		"id": 57,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(It seems there is a shadow of Cecilia still remaining inside you.)",
@@ -1085,7 +1085,7 @@
 	"58": {
 		"id": 58,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(He lifts his palm, and looking up at you is the coin.)",
@@ -1104,7 +1104,7 @@
 	"59": {
 		"id": 59,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(...It's heads.)",
@@ -1123,7 +1123,7 @@
 	"60": {
 		"id": 60,
 		"speaker": "???",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "It appears you’ve guessed incorrectly.",
@@ -1142,7 +1142,7 @@
 	"61": {
 		"id": 61,
 		"speaker": "???",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "Pity. It seems as though this is your loss.",
@@ -1161,7 +1161,7 @@
 	"62": {
 		"id": 62,
 		"speaker": "\"Cecilia\"",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "You did something to the coin.",
@@ -1180,7 +1180,7 @@
 	"63": {
 		"id": 63,
 		"speaker": "\"Cecilia\"",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "You rigged the outcome.",
@@ -1199,7 +1199,7 @@
 	"64": {
 		"id": 64,
 		"speaker": "???",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "Ahhh…of course the [i]ever[/i] pragmatic Lady Cecilia Antirrhinum of House Karmina sees straight through me.",
@@ -1218,7 +1218,7 @@
 	"65": {
 		"id": 65,
 		"speaker": "???",
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "Then I suppose this is my loss.",
@@ -1237,7 +1237,7 @@
 	"66": {
 		"id": 66,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(The man steps out into the alley, at least enough for you to finally see who he is.)",
@@ -1256,7 +1256,7 @@
 	"67": {
 		"id": 67,
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(...Great.)",
@@ -1490,7 +1490,7 @@
 		"text": null,
 		"go to": null,
 		"options": "I need to keep following Esra.|Building a connection with Hermes now will be useful.",
-		"option ids": "keep_esra|connect_hermes",
+		"option ids": "esra_connect|hermes_connect",
 		"emit": null,
 		"delay": null,
 		"remember": null,
@@ -3517,8 +3517,8 @@
 	"heads_or_tails": {
 		"id": "heads_or_tails",
 		"speaker": null,
-		"character": null,
-		"sprite": null,
+		"character": "Hermes",
+		"sprite": "talk4",
 		"cecilia": null,
 		"text": null,
 		"go to": null,
@@ -3536,7 +3536,7 @@
 	"heads": {
 		"id": "heads",
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(The man catches the coin mid-air and something doesn’t feel right. Your instincts are screaming that this man is doing something suspicious.)",
@@ -3555,7 +3555,7 @@
 	"tails": {
 		"id": "tails",
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "(The man catches the coin mid-air and something doesn’t feel right. Your instincts are screaming that this man is doing something suspicious.)",
@@ -3574,7 +3574,7 @@
 	"return_loss": {
 		"id": "return_loss",
 		"speaker": null,
-		"character": "-Hermes",
+		"character": "Hermes",
 		"sprite": "talk4",
 		"cecilia": null,
 		"text": "[i](Damnit. You don’t have time for this.)[/i]",
@@ -3590,8 +3590,8 @@
 		"flag": null,
 		"": null
 	},
-	"keep_esra": {
-		"id": "keep_esra",
+	"esra_connect": {
+		"id": "esra_connect",
 		"speaker": "\"Cecilia\"",
 		"character": "Hermes",
 		"sprite": "neutral",
@@ -3750,6 +3750,25 @@
 		"cecilia": null,
 		"text": "If you ever need to purchase anything, I hope you’ll come to me first.",
 		"go to": 172,
+		"options": null,
+		"option ids": null,
+		"emit": null,
+		"delay": null,
+		"remember": null,
+		"if remembered": null,
+		"set var": null,
+		"check var": null,
+		"flag": null,
+		"": null
+	},
+	"null": {
+		"id": null,
+		"speaker": null,
+		"character": null,
+		"sprite": null,
+		"cecilia": null,
+		"text": null,
+		"go to": null,
 		"options": null,
 		"option ids": null,
 		"emit": null,

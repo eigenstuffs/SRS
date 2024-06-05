@@ -568,6 +568,7 @@ func read_line(key : int):
 		if text.size() >= 3: any_or_all = text[2]
 		else: any_or_all = null
 		var ok = false
+		
 		for i in condition.split(","):
 			if Global.data_dict["remembered"].has(i):
 				print("HAS REMEMBERED ", i)
@@ -578,9 +579,8 @@ func read_line(key : int):
 				else:
 					ok = false
 					break
+					
 		if ok: current_line["go to"] = target
-		
-		current_line["go to"] = target
 	if current_line["check var"] != null:
 		var text = current_line["check var"].split("|")
 		var variable = text[0]

@@ -7,14 +7,15 @@ class_name SpriteHandler extends Control
 @export_node_path("Label") var name_frame_text
 
 var focused_char = null
-var prior_sprite_list : Array = [""]
+var prior_sprite_list = [""]
+var prior_character_list = [""]
 
 const CHARACTER_SPRITE = preload("res://tools/dialogue/character_sprite.tscn")
 const CHARACTER_LIST = preload("res://resources/characters/character_list.tres")
 const CECILIA = preload("res://resources/characters/cecilia.tres")
 
 func init_sprite(character_list : Array[String], sprite_list : Array[String]):
-	if sprite_list == prior_sprite_list:
+	if sprite_list == prior_sprite_list and character_list == prior_character_list:
 		pass
 	else:
 		for i in $HBoxContainer.get_children():
@@ -22,6 +23,7 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 			i.queue_free()
 		
 		if sprite_list.size() == character_list.size():
+			prior_character_list = character_list
 			prior_sprite_list = sprite_list
 			for i : Character in CHARACTER_LIST.list:
 				var clean_character_list = character_list.duplicate(true)
@@ -114,3 +116,4 @@ func clear_sprites():
 	for i in $HBoxContainer.get_children():
 		$HBoxContainer.remove_child(i)
 		i.queue_free()
+	prior_sprite_list = null
