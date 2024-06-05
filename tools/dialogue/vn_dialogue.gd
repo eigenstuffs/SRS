@@ -281,7 +281,7 @@ func read_line(key : int):
 		var variable = text[0]
 		var value = text[1]
 		print("set " + variable + " as " + value)
-		Global.set(Global.data_dict[variable], value)
+		Global.data_dict[variable] = value
 	if current_line["flag"] != null:
 		if current_line["flag"] != "slow":
 			text_box.hide()
