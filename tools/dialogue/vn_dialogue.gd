@@ -263,8 +263,8 @@ func read_line(key : int):
 	if current_line["delay"] != null:
 		text_box.hide()
 		await get_tree().create_timer(int(current_line["delay"])).timeout
-	if current_line["add"] != null:
-		Global.add_event(current_line["add"])
+	if current_line["remember"] != null:
+		Global.add_event(current_line["remember"])
 	if current_line["emit"]:
 		if !current_line["emit"].split("|").has("hide_text"):
 			text_box.show()
