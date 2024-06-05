@@ -11,6 +11,7 @@ var can_move = true
 var remembered = []
 var ooc = 0
 var opp = 1
+var bruise : bool = false
 
 ### MODIFIABLE THROUGH DIALOGUE
 
@@ -57,7 +58,7 @@ func return_current_text():
 		return ACT1_CHAPTER3_SCENE4
 	elif data_dict["remembered"].has("a1c3_2"):
 		return ACT1_CHAPTER3_SCENE3
-	elif data_dict["remembered"].has("a1c3_1"):
+        elif data_dict["remembered"].has("a1c3_1"):
 		return ACT1_CHAPTER3_SCENE2
 	elif data_dict["remembered"].has("a1c2_7"):
 		return ACT1_CHAPTER3_SCENE1
@@ -79,8 +80,6 @@ func return_current_text():
 		return ACT1_CHAPTER1_SCENE3
 	elif data_dict["remembered"].has("a1c1_1"):
 		return ACT1_CHAPTER1_SCENE2
-
-
 	else:
 		return ACT1_CHAPTER1_SCENE1
 		
@@ -161,6 +160,7 @@ var save_path = save_dir + "save.dat"
 	"og_ro" : og_ro,
 	"text_speed" : text_speed,
 	"volume" : volume,
+	"bruise": bruise,
 	
 	"player_wisdom" : player_wisdom,
 	"player_intelligence" : player_intelligence,
