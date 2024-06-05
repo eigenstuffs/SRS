@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_p18ue")
 image = ExtResource("1_02x48")
-points_req = 2
+points_req = 1
 title = "Self Fanning"
 effect = 2
 target_stat = 1

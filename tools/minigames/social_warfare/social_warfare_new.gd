@@ -368,6 +368,11 @@ func enemy_move():
 	return enemy_data.get_best_card()
 
 func refresh_stats():
+	#enemy_data.enemy_hp = snapped(enemy_data.enemy_hp, 1)
+	enemy_data.enemy_mp = snapped(enemy_data.enemy_mp, 1)
+	#Global.data_dict["player_hp"] = snapped(Global.data_dict["player_hp"], 1)
+	Global.data_dict["player_mp"] = snapped(Global.data_dict["player_mp"], 1)
+	
 	var a = create_tween()
 	a.tween_property(
 		$Holder/Player/BarHP, "value",

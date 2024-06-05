@@ -26,7 +26,15 @@ func get_best_card():
 			heal.append(i)
 		else:
 			other.append(i)
-	if enemy_hp <= (enemy_max_hp * .5):
+	if enemy_hp <= (enemy_max_hp * .2):
+		var num = randi_range(0, 10)
+		if num >= 1:
+			heal.shuffle()
+			return heal[0] 
+		else:
+			other.shuffle()
+			return other[0]
+	elif enemy_hp <= (enemy_max_hp * .5):
 		var num = randi_range(0, 10)
 		if num >= 3:
 			heal.shuffle()
@@ -38,4 +46,5 @@ func get_best_card():
 		other.shuffle()
 		return other[0]
 	else:
+		enemy_cards.shuffle()
 		return enemy_cards[0]

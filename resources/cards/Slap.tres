@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_n3iwe")
 image = ExtResource("1_iuiic")
-points_req = 6
+points_req = 3
 title = "Slap"
 effect = 0
 target_stat = null

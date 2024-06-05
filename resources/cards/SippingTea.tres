@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_hyeb5")
 image = ExtResource("1_0w2xw")
-points_req = 3
+points_req = 2
 title = "Sipping Tea"
 effect = 1
 target_stat = 2

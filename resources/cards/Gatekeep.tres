@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_svhto")
 image = ExtResource("1_7byko")
-points_req = 3
+points_req = 1
 title = "Gatekeep"
 effect = 3
 target_stat = 0

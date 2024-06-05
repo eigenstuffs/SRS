@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_kaskg")
 image = ExtResource("1_hbc02")
-points_req = 3
+points_req = 2
 title = "Um, Actually"
 effect = 3
 target_stat = 0

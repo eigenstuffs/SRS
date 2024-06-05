@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_io2s8")
 image = ExtResource("1_rsnh4")
-points_req = 10
+points_req = 7
 title = "Spill Your Drink"
 effect = 0
 target_stat = null

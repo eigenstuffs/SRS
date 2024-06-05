@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_lhpno")
 image = ExtResource("1_h6c5t")
-points_req = 5
+points_req = 3
 title = "Insult Their Mother"
 effect = 0
 target_stat = null

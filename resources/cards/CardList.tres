@@ -20,4 +20,4 @@
 [resource]
 script = ExtResource("1_pemig")
 card_list = Array[Resource("res://resources/cards/card.gd")]([ExtResource("1_b7pwe"), ExtResource("2_eku48"), ExtResource("3_unqhm"), ExtResource("4_0hsgn"), ExtResource("5_sbork"), ExtResource("6_i0dpi"), ExtResource("7_fenoe"), ExtResource("8_h8ymy"), ExtResource("9_ym731"), ExtResource("10_b3bgs"), ExtResource("11_kop4g")])
-esra_list = Array[Resource("res://resources/cards/card.gd")]([ExtResource("12_u5d3e"), ExtResource("13_uywia"), ExtResource("14_spy7t"), ExtResource("15_3kkns")])
+esra_list = Array[Resource("res://resources/cards/card.gd")]([ExtResource("12_u5d3e"), ExtResource("13_uywia"), ExtResource("14_spy7t"), ExtResource("15_3kkns"), ExtResource("12_u5d3e"), ExtResource("12_u5d3e")])

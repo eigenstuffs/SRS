@@ -47,7 +47,15 @@ func apply_assets():
 	$Elements/Face.texture = card_data.image
 	$Elements/Description.text = card_data.desc
 	if card_data.effect:
-		$Elements/Type.text = str(card_data.effect, ", Cost: ", card_data.points_req)
+		match card_data.effect:
+			0:
+				$Elements/Type.text = str("Attack, Cost: ", card_data.points_req)
+			1:
+				$Elements/Type.text = str("Restore, Cost: ", card_data.points_req)
+			2:
+				$Elements/Type.text = str("Buff, Cost: ", card_data.points_req)
+			3:
+				$Elements/Type.text = str("Debuff, Cost: ", card_data.points_req)
 	else:
 		$Elements/Type.text = str("Cost: ", card_data.points_req)
 	$Elements/Title.text = card_data.title
