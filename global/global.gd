@@ -58,7 +58,7 @@ func return_current_text():
 		return ACT1_CHAPTER3_SCENE4
 	elif data_dict["remembered"].has("a1c3_2"):
 		return ACT1_CHAPTER3_SCENE3
-        elif data_dict["remembered"].has("a1c3_1"):
+	elif data_dict["remembered"].has("a1c3_1"):
 		return ACT1_CHAPTER3_SCENE2
 	elif data_dict["remembered"].has("a1c2_7"):
 		return ACT1_CHAPTER3_SCENE1
