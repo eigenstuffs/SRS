@@ -208,6 +208,16 @@ func save_data():
 	print("Saved data.")
 	file.store_var(data_dict)
 	file.close()
+	
+func save_data_multiple(which_slot : int):
+	var dir = DirAccess.open(save_dir + "save" + str(which_slot) + ".dat")
+	if !dir:
+		DirAccess.make_dir_recursive_absolute(save_dir)
+	var file = FileAccess.open(save_dir + "save" + str(which_slot) + ".dat",
+		FileAccess.WRITE)
+	print("Saved data.")
+	file.store_var(data_dict)
+	file.close()
 
 func load_data():
 	var file = FileAccess.open(save_path, FileAccess.READ)
