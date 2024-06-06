@@ -159,7 +159,7 @@ var save_path = save_dir + "save.dat"
 	"remembered" : [],
 	"ooc" : 0,
 	"opp" : 0,
-	"player_name" : "Nothing yet!",
+	"player_name" : "No name.",
 	"seraphina_name" : "Nothing yet!",
 	"type" : "Nothing yet!",
 	"og_ro" : "Nobody yet!",
