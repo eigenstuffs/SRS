@@ -7,3 +7,4 @@ func _process(_delta):
 		get_local_mouse_position()
 	):
 		sub_lmb = false
+	else: sub_lmb = true
