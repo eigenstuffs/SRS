@@ -164,6 +164,7 @@ func _on_settings_button_pressed():
 	busy = false
 	
 func _on_save_button_pressed():
+	Global.vn_can_advance = false
 	busy = true
 	get_tree().paused = true
 	for i in $Buttons.get_children():

@@ -5,6 +5,7 @@ extends Node
 ### UTILITIES
 
 var can_move = true
+var vn_can_advance = true
 
 ### GAME
 

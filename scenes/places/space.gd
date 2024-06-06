@@ -23,6 +23,6 @@ func interacted():
 		Global.can_move = false
 		EffectAnim.play("FadeBlack")
 		await EffectAnim.animation_finished
-		Global.save_data()
+		#Global.save_data()
 		get_tree().change_scene_to_file("res://tools/dialogue/vn_dialogue.tscn")
 		Global.can_move = true
