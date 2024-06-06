@@ -48,6 +48,7 @@ func button_pressed():
 			
 			Global.load_data(i.save_path)
 			EffectAnim.play("FlashWhite")
+			get_tree().paused = false
 			get_tree().reload_current_scene()
 
 func _on_texture_button_pressed():
