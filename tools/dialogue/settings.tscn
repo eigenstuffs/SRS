@@ -33,12 +33,14 @@ offset_bottom = 1088.0
 script = ExtResource("1_vesns")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
 color = Color(0, 0, 0, 0.360784)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+process_mode = 3
 modulate = Color(1, 1, 1, 0.901961)
 layout_mode = 1
 anchors_preset = 8
@@ -55,6 +57,7 @@ grow_vertical = 2
 texture = ExtResource("1_lyke2")
 
 [node name="Label" type="Label" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 750.0
 offset_top = 143.0
@@ -68,6 +71,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 510.0
 offset_top = 390.0
@@ -80,6 +84,7 @@ text = "Master Volume
 vertical_alignment = 1
 
 [node name="MasterVolume" type="HScrollBar" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 510.0
 offset_top = 480.0
@@ -94,6 +99,7 @@ max_value = 1.0
 value = 0.5
 
 [node name="Label3" type="Label" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 960.0
 offset_top = 390.0
@@ -106,6 +112,7 @@ text = "Text Speed
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 510.0
 offset_top = 570.0
@@ -117,6 +124,7 @@ text = "Better Minigame Visual Effects?"
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 900.0
 offset_top = 660.0
@@ -131,6 +139,7 @@ Save and reboot for this change to take effect."
 vertical_alignment = 1
 
 [node name="TextSpeed" type="HScrollBar" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 960.0
 offset_top = 480.0
@@ -146,6 +155,7 @@ max_value = 0.1
 value = 0.01
 
 [node name="TextureButton" type="TextureButton" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 510.0
 offset_top = 660.0
@@ -156,6 +166,7 @@ texture_normal = ExtResource("6_fwwms")
 texture_pressed = ExtResource("7_ntxnm")
 
 [node name="Label6" type="Label" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 515.0
 offset_top = 667.0
@@ -168,6 +179,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureButton2" type="TextureButton" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 1590.0
 offset_top = 900.0

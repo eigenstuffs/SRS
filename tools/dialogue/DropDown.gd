@@ -31,8 +31,6 @@ func _process(_delta):
 		get_local_mouse_position()
 	):
 		lmb = false
-	elif busy:
-		lmb = false
 	else:
 		lmb = true
 
@@ -143,15 +141,6 @@ func _on_drop_down_pressed():
 	else:
 		buttons.hide()
 
-func add_to_log(text : String):
-	log_text.append(text)
-	if log_text.size() > 19:
-		log_text.remove_at(0)
-
-func _input(event):
-	if event.is_action_pressed("ui_accept") or event.is_action_pressed("LMB"):
-		emit_signal("exit_log")
-
 func _on_settings_button_pressed():
 	busy = true
 	get_tree().paused = true
@@ -193,3 +182,13 @@ func _on_save_button_pressed():
 		i.disabled = false
 	get_tree().paused = false
 	busy = false
+
+
+func add_to_log(text : String):
+	log_text.append(text)
+	if log_text.size() > 19:
+		log_text.remove_at(0)
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("LMB"):
+		emit_signal("exit_log")
