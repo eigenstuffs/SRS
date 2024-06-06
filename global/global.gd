@@ -11,7 +11,6 @@ var can_move = true
 var remembered = []
 var ooc = 0
 var opp = 1
-var bruise : bool = false
 
 ### MODIFIABLE THROUGH DIALOGUE
 
@@ -27,7 +26,7 @@ var text_speed = 0.01
 var volume = 0.5
 var effect_on = false
 
-### DIALOGUE FILES
+### DIALOGUE FILES 
 
 const ACT1_CHAPTER1_SCENE1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_1.json"
 const ACT1_CHAPTER1_SCENE2 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_2.json"
@@ -46,6 +45,9 @@ const ACT1_CHAPTER3_SCENE4 = "res://tools/dialogue/vn_scripts/Dialogue - a1c3_4.
 const ACT1_CHAPTER3_SCENE5 = "res://tools/dialogue/vn_scripts/Dialogue - a1c3_5.json"
 const ACT1_CHAPTER3_SCENE6 = "res://tools/dialogue/vn_scripts/Dialogue - a1c3_6.json"
 const ACT1_CHAPTER3_SCENE7 = "res://tools/dialogue/vn_scripts/Dialogue - a1c3_7.json"
+
+var current_scene = ACT1_CHAPTER1_SCENE1
+var current_line = 0
 
 func return_current_text():
 	
@@ -151,6 +153,38 @@ func get_main_stats() -> Array[int]:
 var save_dir = "user://villainess_saves/"
 var save_path = save_dir + "save.dat"
 
+@onready var original_data_dict = {
+	"remembered" : [],
+	"ooc" : 0,
+	"opp" : 0,
+	"player_name" : "Nothing yet!",
+	"seraphina_name" : "Nothing yet!",
+	"type" : "Nothing yet!",
+	"og_ro" : "Nobody yet!",
+	"text_speed" : 0.01,
+	"volume" : 0.5,
+	"effect_on" : false,
+	"current_scene" : ACT1_CHAPTER1_SCENE1,
+	"current_line" : 0,
+	
+	
+	"player_wisdom" : 0,
+	"player_intelligence" : 0,
+	"player_charisma" : 0,
+	"player_wellness" : 0,
+	"player_money" : 0,
+	"player_prestige" : 0,
+	"player_cards" : card_list.card_list,
+	
+	"player_hp" : 20,
+	"player_mp" : 10,
+	"player_max_hp" : 20,
+	"player_max_mp" : 10,
+	"player_level" : 1,
+	"player_defense_ratio" : 1,
+	"player_offense_ratio" : 1
+}
+
 @onready var data_dict = {
 	"remembered" : remembered,
 	"ooc" : ooc,
@@ -161,8 +195,9 @@ var save_path = save_dir + "save.dat"
 	"og_ro" : og_ro,
 	"text_speed" : text_speed,
 	"volume" : volume,
-	"bruise": bruise,
 	"effect_on": effect_on,
+	"current_scene" : current_scene,
+	"current_line" : current_line,
 	
 	"player_wisdom" : player_wisdom,
 	"player_intelligence" : player_intelligence,
@@ -182,40 +217,41 @@ var save_path = save_dir + "save.dat"
 }
 	
 func _ready():
-	load_data()
+	for i in 100:
+		var dynamic_path = save_dir + "save_" + str(i) + ".dat"
+		load_data(dynamic_path)
 	if data_dict["effect_on"]:
 		precompile_effects()
 	else: print("effect turned off")
-
-func save_data():
+	
+func save_data(dynamic_path : String):
 	var dir = DirAccess.open(save_dir)
 	if !dir:
 		DirAccess.make_dir_recursive_absolute(save_dir)
-	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	print("Saved data.")
+	var file = FileAccess.open(dynamic_path, FileAccess.WRITE)
+	print("Saved data." + dynamic_path)
 	file.store_var(data_dict)
 	file.close()
 	
-func save_data_multiple(which_slot : int):
-	var dir = DirAccess.open(save_dir + "save" + str(which_slot) + ".dat")
+func create_save(dynamic_path : String):
+	var dir = DirAccess.open(save_dir)
 	if !dir:
 		DirAccess.make_dir_recursive_absolute(save_dir)
-	var file = FileAccess.open(save_dir + "save" + str(which_slot) + ".dat",
-		FileAccess.WRITE)
-	print("Saved data.")
-	file.store_var(data_dict)
+	var file = FileAccess.open(dynamic_path, FileAccess.WRITE)
+	print("Created data." + dynamic_path)
+	file.store_var(original_data_dict)
 	file.close()
 
-func load_data():
-	var file = FileAccess.open(save_path, FileAccess.READ)
+func load_data(dynamic_path : String):
+	var file = FileAccess.open(dynamic_path, FileAccess.READ)
 	if file:
 		data_dict = file.get_var()
 		file.close()
 		print("Loaded data.")
 	else:
-		save_data()
-		print("Saved and loaded new file.")
-		load_data()
+		create_save(dynamic_path)
+		print("Created and loaded new file. " + dynamic_path)
+		load_data(dynamic_path)
 
 func precompile_effects():
 	# --- EFFECT SHADER PRECOMPILATION --- 

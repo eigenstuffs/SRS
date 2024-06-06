@@ -1,11 +1,46 @@
 extends Control
 
+var save_dir = "user://villainess_saves/"
 
-# Called when the node enters the scene tree for the first time.
+const SAVE_BLOCK = preload("res://tools/dialogue/save_block.tscn")
+
 func _ready():
-	pass # Replace with function body.
+	var dir = DirAccess.open(save_dir)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".dat"):
+				var file_path = save_dir + file_name
+				print("Processing file: " + file_path)
+				var file = FileAccess.open(file_path, FileAccess.READ)
+				var get_var = file.get_var()
+				#print(get_var)
+				
+				var a = SAVE_BLOCK.instantiate()
+				$ScrollContainer/VBoxContainer.add_child(a)
+				a.get_node("Metadata").text = str(
+					get_var["player_name"], "\n",
+					get_var["current_scene"].replace(
+						"res://tools/dialogue/vn_scripts/Dialogue - ",
+						""
+					)
+				)
+				a.save_path = file_path
+				a.connect("pressed", button_pressed)
+				
+				file.close()
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	else:
+		print("Failed to open directory.")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func button_pressed():
+	print("pressed")
+	for i in $ScrollContainer/VBoxContainer.get_children():
+		if i.button_pressed:
+			i.button_pressed = false
+			
+			Global.save_data(i.save_path)
+			EffectAnim.play("FlashWhite")
+			_ready()
