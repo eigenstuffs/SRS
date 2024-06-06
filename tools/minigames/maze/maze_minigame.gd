@@ -77,9 +77,12 @@ func _on_goal_goal_touched():
 
 func _on_maze_generator_enemy_met_player():
 	EffectReg.start_effect(self, "Flash", [$EffectNode, Color(0.6, 0, 0, 0.4)])
+	$MazePlayer.is_hurt = true
 	emit_signal("update_time", time_penalty)
 	$SfxPlayer.stream = HURT_SFX
 	$SfxPlayer.play()
+	await get_tree().create_timer(1).timeout
+	$MazePlayer.is_hurt = false
 
 func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)

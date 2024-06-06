@@ -1,14 +1,27 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhyrf6dyl1s8c"]
+[gd_scene load_steps=28 format=3 uid="uid://dhyrf6dyl1s8c"]
 
 [ext_resource type="Script" path="res://scenes/player/maze_player.gd" id="1_kkc1h"]
 [ext_resource type="Script" path="res://scenes/player/interactor.gd" id="2_7y6ge"]
 [ext_resource type="Texture2D" uid="uid://bwoykkxtcwxcs" path="res://assets/cecelia_spritesheets/Cecilia_Idle_Sheet.png" id="3_df5tl"]
+[ext_resource type="Texture2D" uid="uid://deyxjtpwdgsxu" path="res://assets/cecelia_spritesheets/Cecilia_Damage_Sheet.png" id="3_rkp73"]
 [ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="4_bvcv3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hq8b"]
 size = Vector3(0.5, 1, 0.02)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oarmy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm56g"]
+atlas = ExtResource("3_rkp73")
+region = Rect2(0, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pouf"]
+atlas = ExtResource("3_rkp73")
+region = Rect2(1920, 0, 1920, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6idhc"]
+atlas = ExtResource("3_rkp73")
+region = Rect2(3840, 0, 1920, 2000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_re4ot"]
 atlas = ExtResource("3_df5tl")
@@ -76,6 +89,20 @@ region = Rect2(13440, 0, 1920, 2000)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k4vt3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm56g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pouf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6idhc")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_re4ot")
@@ -151,8 +178,8 @@ shape = SubResource("CylinderShape3D_oarmy")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_k4vt3")
-animation = &"walk"
-frame_progress = 0.738424
+animation = &"hurt"
+frame_progress = 0.468477
 
 [connection signal="area_entered" from="Interactor" to="Interactor" method="_on_area_entered"]
 [connection signal="area_exited" from="Interactor" to="Interactor" method="_on_area_exited"]

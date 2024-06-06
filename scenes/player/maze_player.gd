@@ -11,6 +11,7 @@ var dashing_dir : Vector3
 var last_input_dir : Vector3
 var speed_modifier : float = 1
 var can_move = false
+var is_hurt = false
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -77,7 +78,9 @@ func _physics_process(delta):
 	anim_handler()
 
 func anim_handler():
-	if velocity != Vector3.ZERO:
+	if is_hurt:
+		$AnimatedSprite3D.play("hurt")
+	elif velocity != Vector3.ZERO:
 		$AnimatedSprite3D.play("walk")
 	else:
 		$AnimatedSprite3D.play("idle")

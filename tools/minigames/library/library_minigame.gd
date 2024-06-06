@@ -51,8 +51,9 @@ func _on_library_player_book_collected(book : Book):
 		#$Walls/Shelves.blinking()
 	if $LibraryPlayer/BookHolder.get_num_books() < 10: 
 		$LibraryPlayer/BookHolder.add_book_bone(book)
-		$SfxPlayer.stream = BOOK_CAUGHT_SFX
-		$SfxPlayer.play()
+		if $SfxPlayer.stream != FINISHED_SFX:
+			$SfxPlayer.stream = BOOK_CAUGHT_SFX
+			$SfxPlayer.play()
 	elif $LibraryPlayer/BookHolder.get_num_books() == 10:
 		EffectReg.start_effect(self, "Vignette", [$EffectNode])
 
@@ -111,7 +112,6 @@ func _on_bookshelf_player_entered():
 		emit_signal("update_time", num_of_books)
 		$LibraryPlayer/BookHolder.clear_all_books()
 		$LibraryPlayer.move_hurtbox()
-		emit_signal("stop_blinking")
 
 func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)

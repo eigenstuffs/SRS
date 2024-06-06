@@ -25,6 +25,7 @@ var og_ro : String
 
 var text_speed = 0.01
 var volume = 0.5
+var effect_on = false
 
 ### DIALOGUE FILES
 
@@ -161,6 +162,7 @@ var save_path = save_dir + "save.dat"
 	"text_speed" : text_speed,
 	"volume" : volume,
 	"bruise": bruise,
+	"effect_on": effect_on,
 	
 	"player_wisdom" : player_wisdom,
 	"player_intelligence" : player_intelligence,
@@ -181,24 +183,9 @@ var save_path = save_dir + "save.dat"
 	
 func _ready():
 	load_data()
-	
-	# --- EFFECT SHADER PRECOMPILATION --- 
-	 # A black ColorRect is used to hide all the shaders drawn on the screen!
-	var color_rect := ColorRect.new()
-	color_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	color_rect.color = Color.BLACK
-	color_rect.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
-	
-	# FIXME: This is an awful way for 'shader precompilation'! ew! ew!
-	# FIXME: This could crash the game on very low end devices.
-	var control := self.get_node('/root/EffectReg')
-	# We load all effects to the screen (ensuring they are *visible* i.e., rendered)
-	for effect_name in EffectReg.effects.keys(): EffectReg.start_effect(self, effect_name, [control])
-	control.get_children()[-1].add_child(color_rect)
-	await get_tree().create_timer(0.2).timeout # idk if this is needed
-	# ...then we remove all the loaded effects.
-	for effect_name in EffectReg.effects.keys(): EffectReg.free_effect(effect_name)
-	color_rect.queue_free()
+	if data_dict["effect_on"]:
+		precompile_effects()
+	else: print("effect turned off")
 
 func save_data():
 	var dir = DirAccess.open(save_dir)
@@ -229,3 +216,23 @@ func load_data():
 		save_data()
 		print("Saved and loaded new file.")
 		load_data()
+
+func precompile_effects():
+	# --- EFFECT SHADER PRECOMPILATION --- 
+	 # A black ColorRect is used to hide all the shaders drawn on the screen!
+	var color_rect := ColorRect.new()
+	color_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	color_rect.color = Color.BLACK
+	color_rect.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
+	
+	# FIXME: This is an awful way for 'shader precompilation'! ew! ew!
+	# FIXME: This could crash the game on very low end devices.
+	var control := self.get_node('/root/EffectReg')
+	# We load all effects to the screen (ensuring they are *visible* i.e., rendered)
+	for effect_name in EffectReg.effects.keys(): EffectReg.start_effect(self, effect_name, [control])
+	control.get_children()[-1].add_child(color_rect)
+	await get_tree().create_timer(0.2).timeout # idk if this is needed
+	# ...then we remove all the loaded effects.
+	for effect_name in EffectReg.effects.keys(): EffectReg.free_effect(effect_name)
+	color_rect.queue_free()
+	print("all effect compiled")
