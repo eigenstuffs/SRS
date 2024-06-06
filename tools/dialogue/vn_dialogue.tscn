@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=69 format=3 uid="uid://drqf7jcr25yqx"]
 
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
 [ext_resource type="Animation" uid="uid://bll7q7uatwhgb" path="res://tools/dialogue/God_BG.res" id="3_y7ey7"]
@@ -48,6 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://cgt25px5ytk02" path="res://assets/vn/Settings/Back_Click.png" id="46_jpgrq"]
 [ext_resource type="Texture2D" uid="uid://c3ynoic0if62" path="res://assets/vn/Settings/Back_Hover.png" id="47_lbcar"]
 [ext_resource type="PackedScene" uid="uid://b1db5mq0b2io5" path="res://tools/dialogue/save_screen.tscn" id="48_2hln3"]
+[ext_resource type="PackedScene" uid="uid://cgy8b801oy6ao" path="res://tools/dialogue/load_screen.tscn" id="48_r4scv"]
 [ext_resource type="Texture2D" uid="uid://c2iw8bcynwrpk" path="res://assets/ui/Banner Icon Backplate_Default.png" id="49_pfnwr"]
 [ext_resource type="Texture2D" uid="uid://k86e0v8fq77w" path="res://assets/ui/Banner Icon Backplate_Click.png" id="50_ubeo1"]
 [ext_resource type="Texture2D" uid="uid://wc2indpyjym5" path="res://assets/ui/Banner Icon Backplate_Hover.png" id="51_lth7m"]
@@ -1317,6 +1318,14 @@ offset_top = -704.0
 offset_right = -1920.0
 offset_bottom = -1088.0
 
+[node name="LoadScreen" parent="TextBox/Settings" instance=ExtResource("48_r4scv")]
+visible = false
+layout_mode = 1
+offset_left = -1792.0
+offset_top = -704.0
+offset_right = -1920.0
+offset_bottom = -1088.0
+
 [node name="SettingsButton" type="TextureButton" parent="TextBox/Settings"]
 layout_mode = 0
 offset_left = -22.0
@@ -1348,6 +1357,25 @@ texture_hover = ExtResource("51_lth7m")
 texture_focused = ExtResource("51_lth7m")
 
 [node name="Save" type="TextureRect" parent="TextBox/Settings/SaveButton"]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 120.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("53_eab1y")
+stretch_mode = 3
+
+[node name="LoadButton" type="TextureButton" parent="TextBox/Settings"]
+layout_mode = 0
+offset_left = -320.0
+offset_top = -644.0
+offset_right = -222.0
+offset_bottom = -545.0
+texture_normal = ExtResource("49_pfnwr")
+texture_pressed = ExtResource("50_ubeo1")
+texture_hover = ExtResource("51_lth7m")
+texture_focused = ExtResource("51_lth7m")
+
+[node name="Save" type="TextureRect" parent="TextBox/Settings/LoadButton"]
 layout_mode = 0
 offset_right = 130.0
 offset_bottom = 120.0
@@ -1576,3 +1604,4 @@ mouse_filter = 1
 [connection signal="pressed" from="TextBox/Settings/Log/TextureButton" to="TextBox/Settings/Log" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="TextBox/Settings/SettingsButton" to="TextBox/Settings" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="TextBox/Settings/SaveButton" to="TextBox/Settings" method="_on_save_button_pressed"]
+[connection signal="pressed" from="TextBox/Settings/LoadButton" to="TextBox/Settings" method="_on_load_button_pressed"]

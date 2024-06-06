@@ -4,7 +4,7 @@ var save_dir = "user://villainess_saves/"
 
 const SAVE_BLOCK = preload("res://tools/dialogue/save_block.tscn")
 
-signal exited_save
+signal exited_load
 
 func init():
 	var dir = DirAccess.open(save_dir)
@@ -43,13 +43,10 @@ func button_pressed():
 		if i.button_pressed:
 			i.button_pressed = false
 			
-			Global.save_data(i.save_path)
+			Global.load_data(i.save_path)
 			EffectAnim.play("FlashWhite")
-			init()
+			get_tree().reload_current_scene()
 
 func _on_texture_button_pressed():
-	emit_signal("exited_save")
-	print("exiting save")
-
-func _ready():
-	init()
+	emit_signal("exited_load")
+	print("exiting load")

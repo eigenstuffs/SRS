@@ -242,6 +242,8 @@ func _ready():
 	
 	await EffectAnim.animation_finished
 	
+	Global.data_dict["current_scene"] = text
+	
 	if text:
 		self.connect("choice", choice_funnel)
 		
@@ -250,7 +252,7 @@ func _ready():
 		
 		#init_parameters(0)
 		next_anim()
-		read_line(0)
+		read_line(Global.data_dict["current_line"])
 	else: print("Error: text doesn't exist within Dialogue node")
 
 func read_line(key : int):	

@@ -181,6 +181,25 @@ func _on_save_button_pressed():
 	get_tree().paused = false
 	busy = false
 
+func _on_load_button_pressed():
+	busy = true
+	get_tree().paused = true
+	for i in $Buttons.get_children():
+		i.disabled = true
+	$DropDown.disabled = true
+	
+	$LoadScreen.show()
+	$LoadScreen.init()
+	await $LoadScreen.exited_load
+	$LoadScreen.hide()
+	
+	await get_tree().create_timer(0.1).timeout
+	
+	$DropDown.disabled = false
+	for i in $Buttons.get_children():
+		i.disabled = false
+	get_tree().paused = false
+	busy = false
 
 func add_to_log(text : String):
 	log_text.append(text)
