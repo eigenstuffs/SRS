@@ -31,6 +31,9 @@ func init():
 						""
 					)
 				)
+				a.get_node("SaveDate").text = str(
+					"Save created on:\n", get_var["saved_date"]
+				)
 				a.save_path = file_path
 				a.connect("pressed", button_pressed)
 				
@@ -45,7 +48,7 @@ func button_pressed():
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		if i.button_pressed:
 			i.button_pressed = false
-			
+			Global.data_dict["saved_date"] = Time.get_datetime_string_from_system()
 			Global.save_data(i.save_path)
 			EffectAnim.play("FlashWhite")
 			init()

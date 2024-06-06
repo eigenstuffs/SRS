@@ -26,6 +26,8 @@ var text_speed = 0.01
 var volume = 0.5
 var effect_on = false
 
+var saved_date
+
 ### DIALOGUE FILES 
 
 const ACT1_CHAPTER1_SCENE1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_1.json"
@@ -166,6 +168,7 @@ var save_path = save_dir + "save.dat"
 	"effect_on" : false,
 	"current_scene" : ACT1_CHAPTER1_SCENE1,
 	"current_line" : 0,
+	"saved_date": null,
 	
 	"player_wisdom" : 0,
 	"player_intelligence" : 0,
@@ -197,6 +200,7 @@ var save_path = save_dir + "save.dat"
 	"effect_on": effect_on,
 	"current_scene" : current_scene,
 	"current_line" : current_line,
+	"saved_date" : saved_date,
 	
 	"player_wisdom" : player_wisdom,
 	"player_intelligence" : player_intelligence,

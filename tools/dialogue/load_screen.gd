@@ -31,6 +31,9 @@ func init():
 						""
 					)
 				)
+				a.get_node("SaveDate").text = str(
+					"Save created on:\n", get_var["saved_date"]
+				)
 				a.save_path = file_path
 				a.connect("pressed", button_pressed)
 				
