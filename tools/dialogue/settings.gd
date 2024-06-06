@@ -1,4 +1,4 @@
-extends Control
+class_name SettingScene extends Control
 
 signal exit_settings
 

@@ -71,12 +71,14 @@ func _on_log_pressed():
 
 	for i in $Buttons.get_children():
 		i.disabled = true
-		
+	
+			
 	await $Log.log_closed
 	
 	$Log.hide()
 	await get_tree().create_timer(0.1).timeout
 	
+		
 	$DropDown.disabled = false
 
 	for i in $Buttons.get_children():
@@ -143,13 +145,12 @@ func _on_settings_button_pressed():
 	busy = true
 	get_tree().paused = true
 	
-	$Settings.show()
-	$Settings.init()
-	
 	for i in $Buttons.get_children():
 		i.disabled = true
 	$DropDown.disabled = true
 	
+	$Settings.show()
+	$Settings.init()
 	await $Settings.exit_settings
 	$Settings.hide()
 	

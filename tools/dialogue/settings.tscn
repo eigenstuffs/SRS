@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bipcdrehn87d4"]
+[gd_scene load_steps=15 format=3 uid="uid://bipcdrehn87d4"]
 
 [ext_resource type="Texture2D" uid="uid://clu5ma2xjxd5t" path="res://assets/vn/Settings/History-Pop Up Background.png" id="1_lyke2"]
 [ext_resource type="Script" path="res://tools/dialogue/settings.gd" id="1_vesns"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bgsmuiltt2yms" path="res://assets/vn/Settings/Scrolly Button Circle Slider.png" id="4_rk0jf"]
 [ext_resource type="Texture2D" uid="uid://cvn0srh4uluhe" path="res://assets/vn/Settings/Return_Default.png" id="6_fwwms"]
 [ext_resource type="Texture2D" uid="uid://ctdukm83vhmh5" path="res://assets/vn/Settings/Return_Click.png" id="7_ntxnm"]
+[ext_resource type="Texture2D" uid="uid://dcjb5khfra1y2" path="res://assets/ui/Button_Hover.png" id="8_0kx26"]
 [ext_resource type="Texture2D" uid="uid://bbpx7huvpjk82" path="res://assets/vn/Settings/Back (2).png" id="8_bp5vh"]
 [ext_resource type="Texture2D" uid="uid://cgt25px5ytk02" path="res://assets/vn/Settings/Back_Click.png" id="9_2n30h"]
 [ext_resource type="Texture2D" uid="uid://c3ynoic0if62" path="res://assets/vn/Settings/Back_Hover.png" id="10_h1850"]
@@ -30,6 +31,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
+mouse_filter = 1
 script = ExtResource("1_vesns")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -164,6 +166,7 @@ offset_bottom = 762.0
 toggle_mode = true
 texture_normal = ExtResource("6_fwwms")
 texture_pressed = ExtResource("7_ntxnm")
+texture_hover = ExtResource("8_0kx26")
 
 [node name="Label6" type="Label" parent="."]
 process_mode = 3
