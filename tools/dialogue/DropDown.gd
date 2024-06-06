@@ -19,6 +19,12 @@ var busy = false
 
 var log_text : Array[String] = []
 
+@onready var other_buttons = [
+	$SettingsButton,
+	$SaveButton,
+	$LoadButton
+]
+
 func _ready():
 	buttons.hide()
 	
@@ -71,6 +77,8 @@ func _on_log_pressed():
 
 	for i in $Buttons.get_children():
 		i.disabled = true
+	for i in other_buttons:
+		i.disabled = true
 	
 			
 	await $Log.log_closed
@@ -82,6 +90,8 @@ func _on_log_pressed():
 	$DropDown.disabled = false
 
 	for i in $Buttons.get_children():
+		i.disabled = false
+	for i in other_buttons:
 		i.disabled = false
 	
 	get_tree().paused = false
@@ -107,6 +117,8 @@ func _on_hide_pressed():
 	$DropDown.disabled = true
 	for i in $Buttons.get_children():
 		i.disabled = true
+	for i in other_buttons:
+		i.disabled = true
 	get_tree().paused = true
 	
 	await exit_log
@@ -124,6 +136,8 @@ func _on_hide_pressed():
 	$DropDown.disabled = false
 
 	for i in $Buttons.get_children():
+		i.disabled = false
+	for i in other_buttons:
 		i.disabled = false
 	lmb = true
 	busy = false
@@ -147,6 +161,8 @@ func _on_settings_button_pressed():
 	
 	for i in $Buttons.get_children():
 		i.disabled = true
+	for i in other_buttons:
+		i.disabled = true
 	$DropDown.disabled = true
 	
 	$Settings.show()
@@ -159,6 +175,8 @@ func _on_settings_button_pressed():
 	$DropDown.disabled = false
 	for i in $Buttons.get_children():
 		i.disabled = false
+	for i in other_buttons:
+		i.disabled = false
 	get_tree().paused = false
 	busy = false
 	
@@ -166,6 +184,8 @@ func _on_save_button_pressed():
 	busy = true
 	get_tree().paused = true
 	for i in $Buttons.get_children():
+		i.disabled = true
+	for i in other_buttons:
 		i.disabled = true
 	$DropDown.disabled = true
 	
@@ -179,6 +199,8 @@ func _on_save_button_pressed():
 	$DropDown.disabled = false
 	for i in $Buttons.get_children():
 		i.disabled = false
+	for i in other_buttons:
+		i.disabled = false
 	get_tree().paused = false
 	busy = false
 
@@ -186,6 +208,8 @@ func _on_load_button_pressed():
 	busy = true
 	get_tree().paused = true
 	for i in $Buttons.get_children():
+		i.disabled = true
+	for i in other_buttons:
 		i.disabled = true
 	$DropDown.disabled = true
 	
@@ -198,6 +222,8 @@ func _on_load_button_pressed():
 	
 	$DropDown.disabled = false
 	for i in $Buttons.get_children():
+		i.disabled = false
+	for i in other_buttons:
 		i.disabled = false
 	get_tree().paused = false
 	busy = false

@@ -48,7 +48,8 @@ func button_pressed():
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		if i.button_pressed:
 			i.button_pressed = false
-			
+			EffectAnim.MusicPlayer.stop()
+			EffectAnim.LoopPlayer.stop()
 			Global.load_data(i.save_path)
 			EffectAnim.play("FlashWhite")
 			get_tree().paused = false

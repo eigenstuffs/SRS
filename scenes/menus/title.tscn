@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://be34lpcu247he" path="res://assets/misc/fish.png" id="6_ncctf"]
 [ext_resource type="Texture2D" uid="uid://f1bl0di56y1u" path="res://assets/misc/book.png" id="7_rfqxi"]
 [ext_resource type="Texture2D" uid="uid://x4lgsbode5j6" path="res://assets/misc/rhythm.png" id="8_u63tl"]
-[ext_resource type="Texture2D" uid="uid://c7fn4tormcchl" path="res://assets/vn/Esra/esra_blush1.PNG" id="9_7m7qd"]
+[ext_resource type="Texture2D" uid="uid://bsnghr333tm06" path="res://assets/vn/Esra/esra_blush1.PNG" id="9_7m7qd"]
 [ext_resource type="Texture2D" uid="uid://cp812hasta050" path="res://assets/maze/Maze_Fan.png" id="10_4ugxj"]
 [ext_resource type="AudioStream" uid="uid://cwykh27ek1vmr" path="res://assets/music/Villianess Reborn Rose Type Beat.mp3" id="11_fjnq7"]
 
