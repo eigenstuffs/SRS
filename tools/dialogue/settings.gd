@@ -25,4 +25,4 @@ func _on_effects_button_toggled(toggled_on):
 
 
 func _on_effects_button_mouse_entered():
-	print("mouse entere")
+	print("mouse entered")
