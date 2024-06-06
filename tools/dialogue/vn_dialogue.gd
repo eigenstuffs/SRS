@@ -686,7 +686,13 @@ func _on_next_pressed():
 	emit_signal("next_pressed")
 
 func _on_settings_autoplay_started():
-	emit_signal("next_pressed")
+	if !next.disabled:
+		emit_signal("next_pressed")
+	else:
+		if a.is_running():
+			a.pause()
+			a.custom_step(current_time)
+			emit_signal("next_pressed")
 
 func alternate_text_box(yes: bool):
 	if !yes:

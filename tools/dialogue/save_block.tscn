@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bql34wij4xw6e"]
+
+[node name="SaveBlock" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 120.0
+color = Color(0, 0, 0, 0.784314)
+
+[node name="Metadata" type="Label" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 480.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_font_sizes/font_size = 24
+text = "[PlayerName]
+Act 1, Chapter 3, Scene 2
+"
+
+[node name="SaveDate" type="Label" parent="."]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 30.0
+offset_right = 930.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_font_sizes/font_size = 24
+text = "Save created on:"
+horizontal_alignment = 2

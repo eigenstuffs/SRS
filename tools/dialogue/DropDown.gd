@@ -52,7 +52,6 @@ func _on_autoplay_pressed():
 func _on_log_pressed():
 	get_tree().paused = true
 	lmb = false
-	$Log.show()
 	
 	for i in $Log/ScrollContainer/VBoxContainer.get_children():
 		i.queue_free()
@@ -62,12 +61,18 @@ func _on_log_pressed():
 		a.text = i
 		$Log/ScrollContainer/VBoxContainer.add_child(a)
 		
+	
+	$Log.show()
+	
+	$Log.init()
+		
 	$DropDown.disabled = true
 
 	for i in $Buttons.get_children():
 		i.disabled = true
 		
-	await exit_log
+	await $Log.log_closed
+	
 	$Log.hide()
 	await get_tree().create_timer(0.1).timeout
 	
@@ -100,7 +105,6 @@ func _on_hide_pressed():
 		i.disabled = true
 	get_tree().paused = true
 	
-	
 	await exit_log
 	
 	a = create_tween()
@@ -110,6 +114,7 @@ func _on_hide_pressed():
 		1,
 		0.4
 	)
+	
 	await a.finished
 	get_tree().paused = false
 	$DropDown.disabled = false
