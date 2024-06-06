@@ -50,5 +50,3 @@ func button_pressed():
 func _on_texture_button_pressed():
 	emit_signal("exited_save")
 	print("exiting save")
-	await get_tree().create_timer(2).timeout
-	Global.vn_can_advance = true

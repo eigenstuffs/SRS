@@ -5,7 +5,6 @@ extends Node
 ### UTILITIES
 
 var can_move = true
-var vn_can_advance = true
 
 ### GAME
 
@@ -167,7 +166,6 @@ var save_path = save_dir + "save.dat"
 	"effect_on" : false,
 	"current_scene" : ACT1_CHAPTER1_SCENE1,
 	"current_line" : 0,
-	
 	
 	"player_wisdom" : 0,
 	"player_intelligence" : 0,

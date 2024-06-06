@@ -670,13 +670,11 @@ func choice_pressed():
 
 func _input(event):
 	if (event.is_action_pressed("ui_accept") or (event.is_action_pressed("LMB") and settings_dropdown.lmb)) and !settings_dropdown.busy:
-		if !next.disabled and Global.vn_can_advance:
-			print("it's unhandled input")
+		if !next.disabled:
 			var a = create_tween()
 			a.tween_property(next, "modulate:a", 0, 0.2)
 			await a.finished
 			emit_signal("next_pressed")
-			print("all conditoins met")
 		elif a:
 			if a.is_running():
 				a.pause()
@@ -686,12 +684,10 @@ func _on_next_pressed():
 	var a = create_tween()
 	a.tween_property(next, "modulate:a", 0, 0.2)
 	await a.finished
-	print("it's next button")
 	emit_signal("next_pressed")
 
 func _on_settings_autoplay_started():
 	if !next.disabled:
-		print("it's autoplay")
 		emit_signal("next_pressed")
 	else:
 		if a.is_running():

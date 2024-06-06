@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=68 format=3 uid="uid://drqf7jcr25yqx"]
 
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
 [ext_resource type="Animation" uid="uid://bll7q7uatwhgb" path="res://tools/dialogue/God_BG.res" id="3_y7ey7"]
@@ -15,11 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://cs0nthvmjnh3o" path="res://assets/vn/god_glitch/image0.png" id="11_ygtw6"]
 [ext_resource type="Texture2D" uid="uid://b00cc64t4gc0f" path="res://assets/cgs/God_Smile_Speaking_Sheet.png" id="12_14uqi"]
 [ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="12_17eel"]
-[ext_resource type="PackedScene" path="res://tools/dialogue/camera_anim.tscn" id="12_csetl"]
+[ext_resource type="PackedScene" uid="uid://c56vc03el0ny1" path="res://tools/dialogue/camera_anim.tscn" id="12_csetl"]
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/vn/Dialogue/Dialogue Box.png" id="14_483pf"]
 [ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/ttf/Galdeano-Regular.ttf" id="16_v8kk6"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="17_elvhv"]
-[ext_resource type="Texture2D" uid="uid://b846uae636evm" path="res://assets/vn/Cecilia/cecilia_default2.PNG" id="17_od5v0"]
+[ext_resource type="Texture2D" uid="uid://c1e342tutqkm0" path="res://assets/vn/Cecilia/cecilia_default2.PNG" id="17_od5v0"]
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/ttf/Volkhov-Bold.ttf" id="18_2cvh1"]
 [ext_resource type="Texture2D" uid="uid://bo2omw0hx2b04" path="res://assets/vn/Settings/Autoplay.png" id="18_snyv8"]
 [ext_resource type="Texture2D" uid="uid://dg2mgqexrxkuq" path="res://assets/vn/Settings/Autoplay_Click.png" id="19_0c4ku"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cxks3xttgv28h" path="res://assets/vn/Settings/Hide.png" id="21_unksq"]
 [ext_resource type="Texture2D" uid="uid://db1yt0oia8vd6" path="res://assets/vn/Settings/Hide_Click.png" id="22_4513m"]
 [ext_resource type="Texture2D" uid="uid://8gwntda51sxc" path="res://assets/vn/Settings/Hide_Hover.png" id="23_aycvg"]
+[ext_resource type="Script" path="res://tools/dialogue/MouseBlocker.gd" id="24_7rwyl"]
 [ext_resource type="Texture2D" uid="uid://cfrru3bgk1jrx" path="res://assets/vn/Settings/History.png" id="24_28eyj"]
 [ext_resource type="Texture2D" uid="uid://dugsdj4vxrpt1" path="res://assets/vn/Settings/History_Click.png" id="25_0o1no"]
 [ext_resource type="Texture2D" uid="uid://cldjo05au0es8" path="res://assets/vn/Settings/History_Hover.png" id="26_a1ldb"]
@@ -1125,6 +1126,7 @@ offset_top = -674.0
 offset_right = 98.0
 offset_bottom = -524.0
 mouse_filter = 1
+script = ExtResource("24_7rwyl")
 
 [node name="Buttons" type="Control" parent="TextBox/Settings"]
 anchors_preset = 0
