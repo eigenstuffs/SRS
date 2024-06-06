@@ -228,7 +228,7 @@ func save_data(dynamic_path : String):
 	if !dir:
 		DirAccess.make_dir_recursive_absolute(save_dir)
 	var file = FileAccess.open(dynamic_path, FileAccess.WRITE)
-	print("Saved data." + dynamic_path)
+	print("Saved data. " + dynamic_path)
 	file.store_var(data_dict)
 	file.close()
 	
