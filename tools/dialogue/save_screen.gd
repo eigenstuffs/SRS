@@ -7,6 +7,9 @@ const SAVE_BLOCK = preload("res://tools/dialogue/save_block.tscn")
 signal exited_save
 
 func init():
+	for i in $ScrollContainer/VBoxContainer.get_children():
+		i.queue_free()
+	
 	var dir = DirAccess.open(save_dir)
 	if dir:
 		dir.list_dir_begin()
