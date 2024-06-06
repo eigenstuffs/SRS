@@ -12,9 +12,10 @@ const LOG_TEXT = preload("res://tools/dialogue/log_text.tscn")
 
 var autoplay = false
 var hide = false
-var log_active = false
 var skip = false
 var lmb = true
+
+var busy = false
 
 var log_text : Array[String] = []
 
@@ -25,6 +26,12 @@ func _process(_delta):
 	if Rect2(Vector2(), size).has_point(
 		get_local_mouse_position()
 	):
+		lmb = false
+	elif Rect2(Vector2(), $MouseBlocker.size).has_point(
+		get_local_mouse_position()
+	):
+		lmb = false
+	elif busy:
 		lmb = false
 	else:
 		lmb = true
@@ -50,17 +57,15 @@ func _on_autoplay_pressed():
 	#$Buttons/Skip.button_pressed = false
 
 func _on_log_pressed():
+	busy = true
 	get_tree().paused = true
-	lmb = false
 	
 	for i in $Log/ScrollContainer/VBoxContainer.get_children():
 		i.queue_free()
-		
 	for i in log_text:
 		var a = LOG_TEXT.instantiate()
 		a.text = i
 		$Log/ScrollContainer/VBoxContainer.add_child(a)
-		
 	
 	$Log.show()
 	
@@ -81,10 +86,11 @@ func _on_log_pressed():
 	for i in $Buttons.get_children():
 		i.disabled = false
 	
-	lmb = true
 	get_tree().paused = false
+	busy = false
 
 func _on_hide_pressed():
+	busy = true
 	autoplay = false
 	lmb = false
 	skip = false
@@ -122,6 +128,7 @@ func _on_hide_pressed():
 	for i in $Buttons.get_children():
 		i.disabled = false
 	lmb = true
+	busy = false
 
 func stop_skip():
 	skip = false
@@ -144,3 +151,45 @@ func add_to_log(text : String):
 func _input(event):
 	if event.is_action_pressed("ui_accept") or event.is_action_pressed("LMB"):
 		emit_signal("exit_log")
+
+func _on_settings_button_pressed():
+	busy = true
+	get_tree().paused = true
+	
+	$Settings.show()
+	$Settings.init()
+	
+	for i in $Buttons.get_children():
+		i.disabled = true
+	$DropDown.disabled = true
+	
+	await $Settings.exit_settings
+	$Settings.hide()
+	
+	await get_tree().create_timer(0.1).timeout
+	
+	$DropDown.disabled = false
+	for i in $Buttons.get_children():
+		i.disabled = false
+	get_tree().paused = false
+	busy = false
+	
+func _on_save_button_pressed():
+	busy = true
+	get_tree().paused = true
+	for i in $Buttons.get_children():
+		i.disabled = true
+	$DropDown.disabled = true
+	
+	$SaveScreen.show()
+	$SaveScreen.init()
+	await $SaveScreen.exited_save
+	$SaveScreen.hide()
+	
+	await get_tree().create_timer(0.1).timeout
+	
+	$DropDown.disabled = false
+	for i in $Buttons.get_children():
+		i.disabled = false
+	get_tree().paused = false
+	busy = false

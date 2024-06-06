@@ -4,7 +4,9 @@ var save_dir = "user://villainess_saves/"
 
 const SAVE_BLOCK = preload("res://tools/dialogue/save_block.tscn")
 
-func _ready():
+signal exited_save
+
+func init():
 	var dir = DirAccess.open(save_dir)
 	if dir:
 		dir.list_dir_begin()
@@ -44,3 +46,6 @@ func button_pressed():
 			Global.save_data(i.save_path)
 			EffectAnim.play("FlashWhite")
 			_ready()
+
+func _on_texture_button_pressed():
+	emit_signal("exited_save")

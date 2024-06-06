@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1db5mq0b2io5"]
+[gd_scene load_steps=10 format=3 uid="uid://b1db5mq0b2io5"]
 
 [ext_resource type="Script" path="res://tools/dialogue/save_screen.gd" id="1_lj16n"]
 [ext_resource type="Texture2D" uid="uid://clu5ma2xjxd5t" path="res://assets/vn/Settings/History-Pop Up Background.png" id="1_out65"]
 [ext_resource type="Texture2D" uid="uid://dn7cdu0wh1hya" path="res://assets/vn/Settings/Vertical Scroll Bar.png" id="3_vhxfs"]
 [ext_resource type="Texture2D" uid="uid://bgsmuiltt2yms" path="res://assets/vn/Settings/Scrolly Button Circle Slider.png" id="4_2posl"]
+[ext_resource type="Texture2D" uid="uid://bbpx7huvpjk82" path="res://assets/vn/Settings/Back (2).png" id="5_mvhbx"]
+[ext_resource type="Texture2D" uid="uid://cgt25px5ytk02" path="res://assets/vn/Settings/Back_Click.png" id="6_br555"]
+[ext_resource type="Texture2D" uid="uid://c3ynoic0if62" path="res://assets/vn/Settings/Back_Hover.png" id="7_5a6ii"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ix7s7"]
 texture = ExtResource("3_vhxfs")
@@ -31,15 +34,15 @@ offset_bottom = 1080.0
 color = Color(0, 0, 0, 0.360784)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(900, 540)
+position = Vector2(962, 568)
 texture = ExtResource("1_out65")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_left = 390.0
-offset_top = 270.0
-offset_right = 1380.0
-offset_bottom = 840.0
+offset_left = 452.0
+offset_top = 298.0
+offset_right = 1442.0
+offset_bottom = 868.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -50,10 +53,10 @@ process_mode = 3
 z_index = 9
 z_as_relative = false
 layout_mode = 2
-offset_left = 1386.0
-offset_top = 249.0
-offset_right = 1400.0
-offset_bottom = 549.0
+offset_left = 1448.0
+offset_top = 277.0
+offset_right = 1462.0
+offset_bottom = 577.0
 scale = Vector2(2, 2)
 theme_override_styles/scroll = SubResource("StyleBoxTexture_ix7s7")
 theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_ix7s7")
@@ -65,12 +68,25 @@ value = 1.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 696.0
-offset_top = 122.0
-offset_right = 1086.0
-offset_bottom = 242.0
+offset_left = 758.0
+offset_top = 150.0
+offset_right = 1148.0
+offset_bottom = 270.0
 theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
 theme_override_font_sizes/font_size = 32
 text = "Save"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1590.0
+offset_top = 900.0
+offset_right = 1638.0
+offset_bottom = 948.0
+texture_normal = ExtResource("5_mvhbx")
+texture_pressed = ExtResource("6_br555")
+texture_hover = ExtResource("7_5a6ii")
+texture_focused = ExtResource("7_5a6ii")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

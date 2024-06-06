@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://drqf7jcr25yqx"]
+[gd_scene load_steps=67 format=3 uid="uid://drqf7jcr25yqx"]
 
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
 [ext_resource type="Animation" uid="uid://bll7q7uatwhgb" path="res://tools/dialogue/God_BG.res" id="3_y7ey7"]
@@ -39,15 +39,19 @@
 [ext_resource type="Texture2D" uid="uid://dqsbupp8nl3jc" path="res://assets/vn/Settings/drop-down menu_default.png" id="30_kxy2c"]
 [ext_resource type="Texture2D" uid="uid://dxkuxdwxibop5" path="res://assets/vn/Settings/drop-down_clicked.png" id="31_14bfd"]
 [ext_resource type="Texture2D" uid="uid://clu5ma2xjxd5t" path="res://assets/vn/Settings/History-Pop Up Background.png" id="31_yesph"]
-[ext_resource type="Script" path="res://tools/dialogue/settings.gd" id="38_j2wxr"]
-[ext_resource type="Texture2D" uid="uid://dt4qybjwvigbh" path="res://assets/vn/Settings/Scroll Bar.png" id="40_qbwty"]
-[ext_resource type="Texture2D" uid="uid://cy5yxqgl0t2bt" path="res://assets/vn/Settings/Scroll Bar Fill.png" id="41_fsrm2"]
+[ext_resource type="PackedScene" uid="uid://bipcdrehn87d4" path="res://tools/dialogue/settings.tscn" id="38_x2nug"]
 [ext_resource type="Texture2D" uid="uid://bgsmuiltt2yms" path="res://assets/vn/Settings/Scrolly Button Circle Slider.png" id="42_q0jhi"]
 [ext_resource type="Script" path="res://tools/dialogue/log.gd" id="43_hwvsm"]
 [ext_resource type="Texture2D" uid="uid://dn7cdu0wh1hya" path="res://assets/vn/Settings/Vertical Scroll Bar.png" id="44_3lngh"]
 [ext_resource type="Texture2D" uid="uid://bbpx7huvpjk82" path="res://assets/vn/Settings/Back (2).png" id="45_jt7ol"]
 [ext_resource type="Texture2D" uid="uid://cgt25px5ytk02" path="res://assets/vn/Settings/Back_Click.png" id="46_jpgrq"]
 [ext_resource type="Texture2D" uid="uid://c3ynoic0if62" path="res://assets/vn/Settings/Back_Hover.png" id="47_lbcar"]
+[ext_resource type="PackedScene" uid="uid://b1db5mq0b2io5" path="res://tools/dialogue/save_screen.tscn" id="48_2hln3"]
+[ext_resource type="Texture2D" uid="uid://c2iw8bcynwrpk" path="res://assets/ui/Banner Icon Backplate_Default.png" id="49_pfnwr"]
+[ext_resource type="Texture2D" uid="uid://k86e0v8fq77w" path="res://assets/ui/Banner Icon Backplate_Click.png" id="50_ubeo1"]
+[ext_resource type="Texture2D" uid="uid://wc2indpyjym5" path="res://assets/ui/Banner Icon Backplate_Hover.png" id="51_lth7m"]
+[ext_resource type="Texture2D" uid="uid://dmk7lcdgfbd05" path="res://assets/ui/Settings.png" id="52_yi4i4"]
+[ext_resource type="Texture2D" uid="uid://dsmdmqjm1b5g6" path="res://assets/vn/Settings/Journal Icon.png" id="53_eab1y"]
 
 [sub_resource type="Animation" id="Animation_salsw"]
 resource_name = "Glitch"
@@ -842,19 +846,6 @@ _data = {
 
 [sub_resource type="BitMap" id="BitMap_3kbno"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yfjup"]
-texture = ExtResource("40_qbwty")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2sq6r"]
-texture = ExtResource("41_fsrm2")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wkqq4"]
-content_margin_left = 16.0
-content_margin_top = 16.0
-content_margin_right = 16.0
-content_margin_bottom = 16.0
-texture = ExtResource("42_q0jhi")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ix7s7"]
 texture = ExtResource("44_3lngh")
 
@@ -1127,6 +1118,14 @@ mouse_filter = 1
 script = ExtResource("20_xsen7")
 text_box = NodePath("..")
 
+[node name="MouseBlocker" type="Control" parent="TextBox/Settings"]
+anchors_preset = 0
+offset_left = -202.0
+offset_top = -674.0
+offset_right = 98.0
+offset_bottom = -524.0
+mouse_filter = 1
+
 [node name="Buttons" type="Control" parent="TextBox/Settings"]
 anchors_preset = 0
 offset_left = 40.0
@@ -1211,100 +1210,12 @@ texture_hover = ExtResource("30_kxy2c")
 texture_focused = ExtResource("30_kxy2c")
 stretch_mode = 3
 
-[node name="Settings" type="Control" parent="TextBox/Settings"]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 0
+[node name="Settings" parent="TextBox/Settings" instance=ExtResource("38_x2nug")]
+visible = false
 offset_left = -1792.0
 offset_top = -704.0
 offset_right = 128.0
 offset_bottom = 384.0
-script = ExtResource("38_j2wxr")
-
-[node name="ColorRect" type="ColorRect" parent="TextBox/Settings/Settings"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1088.0
-color = Color(0, 0, 0, 0.360784)
-
-[node name="TextureRect" type="TextureRect" parent="TextBox/Settings/Settings"]
-modulate = Color(1, 1, 1, 0.901961)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -608.0
-offset_top = -384.0
-offset_right = 596.0
-offset_bottom = 419.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("31_yesph")
-
-[node name="Label" type="Label" parent="TextBox/Settings/Settings"]
-layout_mode = 0
-offset_left = 750.0
-offset_top = 143.0
-offset_right = 1140.0
-offset_bottom = 263.0
-theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
-theme_override_font_sizes/font_size = 32
-text = "Settings
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="TextBox/Settings/Settings"]
-layout_mode = 0
-offset_left = 510.0
-offset_top = 390.0
-offset_right = 900.0
-offset_bottom = 458.0
-theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
-theme_override_font_sizes/font_size = 32
-text = "Master Volume
-"
-vertical_alignment = 1
-
-[node name="MasterVolume" type="HScrollBar" parent="TextBox/Settings/Settings"]
-layout_mode = 0
-offset_left = 510.0
-offset_top = 480.0
-offset_right = 890.0
-offset_bottom = 512.0
-theme_override_styles/scroll = SubResource("StyleBoxTexture_yfjup")
-theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_2sq6r")
-theme_override_styles/grabber = SubResource("StyleBoxTexture_wkqq4")
-theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_wkqq4")
-theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
-value = 60.0
-
-[node name="Label3" type="Label" parent="TextBox/Settings/Settings"]
-layout_mode = 0
-offset_left = 960.0
-offset_top = 390.0
-offset_right = 1350.0
-offset_bottom = 458.0
-theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
-theme_override_font_sizes/font_size = 32
-text = "Text Speed
-"
-vertical_alignment = 1
-
-[node name="TextSpeed" type="HScrollBar" parent="TextBox/Settings/Settings"]
-layout_mode = 0
-offset_left = 960.0
-offset_top = 480.0
-offset_right = 1340.0
-offset_bottom = 512.0
-theme_override_styles/scroll = SubResource("StyleBoxTexture_yfjup")
-theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_2sq6r")
-theme_override_styles/grabber = SubResource("StyleBoxTexture_wkqq4")
-theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_wkqq4")
-theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
-value = 60.0
 
 [node name="Log" type="Control" parent="TextBox/Settings"]
 process_mode = 3
@@ -1393,6 +1304,53 @@ texture_normal = ExtResource("45_jt7ol")
 texture_pressed = ExtResource("46_jpgrq")
 texture_hover = ExtResource("47_lbcar")
 texture_focused = ExtResource("47_lbcar")
+
+[node name="SaveScreen" parent="TextBox/Settings" instance=ExtResource("48_2hln3")]
+process_mode = 3
+visible = false
+layout_mode = 1
+offset_left = -1792.0
+offset_top = -704.0
+offset_right = -1920.0
+offset_bottom = -1088.0
+
+[node name="SettingsButton" type="TextureButton" parent="TextBox/Settings"]
+layout_mode = 0
+offset_left = -22.0
+offset_top = -644.0
+offset_right = 76.0
+offset_bottom = -545.0
+texture_normal = ExtResource("49_pfnwr")
+texture_pressed = ExtResource("50_ubeo1")
+texture_hover = ExtResource("51_lth7m")
+texture_focused = ExtResource("51_lth7m")
+
+[node name="Settings" type="TextureRect" parent="TextBox/Settings/SettingsButton"]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 120.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("52_yi4i4")
+stretch_mode = 3
+
+[node name="SaveButton" type="TextureButton" parent="TextBox/Settings"]
+layout_mode = 0
+offset_left = -172.0
+offset_top = -644.0
+offset_right = -74.0
+offset_bottom = -545.0
+texture_normal = ExtResource("49_pfnwr")
+texture_pressed = ExtResource("50_ubeo1")
+texture_hover = ExtResource("51_lth7m")
+texture_focused = ExtResource("51_lth7m")
+
+[node name="Save" type="TextureRect" parent="TextBox/Settings/SaveButton"]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 120.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("53_eab1y")
+stretch_mode = 3
 
 [node name="GodChoice" type="VBoxContainer" parent="."]
 z_index = 5
@@ -1610,8 +1568,8 @@ mouse_filter = 1
 [connection signal="pressed" from="TextBox/Settings/Buttons/Log" to="TextBox/Settings" method="_on_log_pressed"]
 [connection signal="pressed" from="TextBox/Settings/Buttons/Hide" to="TextBox/Settings" method="_on_hide_pressed"]
 [connection signal="pressed" from="TextBox/Settings/DropDown" to="TextBox/Settings" method="_on_drop_down_pressed"]
-[connection signal="value_changed" from="TextBox/Settings/Settings/MasterVolume" to="TextBox/Settings/Settings" method="_on_master_volume_value_changed"]
-[connection signal="value_changed" from="TextBox/Settings/Settings/TextSpeed" to="TextBox/Settings/Settings" method="_on_text_speed_value_changed"]
 [connection signal="mouse_entered" from="TextBox/Settings/Log/VScrollBar" to="TextBox/Settings/Log" method="_on_v_scroll_bar_mouse_entered"]
 [connection signal="value_changed" from="TextBox/Settings/Log/VScrollBar" to="TextBox/Settings/Log" method="_on_v_scroll_bar_value_changed"]
 [connection signal="pressed" from="TextBox/Settings/Log/TextureButton" to="TextBox/Settings/Log" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextBox/Settings/SettingsButton" to="TextBox/Settings" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="TextBox/Settings/SaveButton" to="TextBox/Settings" method="_on_save_button_pressed"]

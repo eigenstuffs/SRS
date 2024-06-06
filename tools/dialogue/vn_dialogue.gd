@@ -669,7 +669,7 @@ func choice_pressed():
 			return
 
 func _input(event):
-	if event.is_action_pressed("ui_accept") or (event.is_action_pressed("LMB") and settings_dropdown.lmb):
+	if event.is_action_pressed("ui_accept") or (event.is_action_pressed("LMB") and settings_dropdown.lmb) and !settings_dropdown.busy:
 		if !next.disabled:
 			var a = create_tween()
 			a.tween_property(next, "modulate:a", 0, 0.2)

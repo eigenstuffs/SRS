@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://i1kstjaj4rfi"]
+[gd_scene load_steps=14 format=3 uid="uid://bipcdrehn87d4"]
 
 [ext_resource type="Texture2D" uid="uid://clu5ma2xjxd5t" path="res://assets/vn/Settings/History-Pop Up Background.png" id="1_lyke2"]
 [ext_resource type="Script" path="res://tools/dialogue/settings.gd" id="1_vesns"]
 [ext_resource type="Texture2D" uid="uid://cy5yxqgl0t2bt" path="res://assets/vn/Settings/Scroll Bar Fill.png" id="2_v7hia"]
 [ext_resource type="Texture2D" uid="uid://dt4qybjwvigbh" path="res://assets/vn/Settings/Scroll Bar.png" id="3_i2y6q"]
 [ext_resource type="Texture2D" uid="uid://bgsmuiltt2yms" path="res://assets/vn/Settings/Scrolly Button Circle Slider.png" id="4_rk0jf"]
+[ext_resource type="Texture2D" uid="uid://cvn0srh4uluhe" path="res://assets/vn/Settings/Return_Default.png" id="6_fwwms"]
+[ext_resource type="Texture2D" uid="uid://ctdukm83vhmh5" path="res://assets/vn/Settings/Return_Click.png" id="7_ntxnm"]
+[ext_resource type="Texture2D" uid="uid://bbpx7huvpjk82" path="res://assets/vn/Settings/Back (2).png" id="8_bp5vh"]
+[ext_resource type="Texture2D" uid="uid://cgt25px5ytk02" path="res://assets/vn/Settings/Back_Click.png" id="9_2n30h"]
+[ext_resource type="Texture2D" uid="uid://c3ynoic0if62" path="res://assets/vn/Settings/Back_Hover.png" id="10_h1850"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yfjup"]
 texture = ExtResource("3_i2y6q")
@@ -20,6 +25,7 @@ content_margin_bottom = 16.0
 texture = ExtResource("4_rk0jf")
 
 [node name="Settings" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -84,7 +90,8 @@ theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_2sq6r")
 theme_override_styles/grabber = SubResource("StyleBoxTexture_wkqq4")
 theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_wkqq4")
 theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
-value = 60.0
+max_value = 1.0
+value = 0.5
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 0
@@ -98,6 +105,31 @@ text = "Text Speed
 "
 vertical_alignment = 1
 
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 570.0
+offset_right = 900.0
+offset_bottom = 638.0
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/font_size = 32
+text = "Better Minigame Visual Effects?"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 660.0
+offset_right = 1313.0
+offset_bottom = 750.0
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/font_size = 16
+text = "WARNING: Enabling these effects will make the game
+run very poorly on older hardware.
+
+Save and reboot for this change to take effect."
+vertical_alignment = 1
+
 [node name="TextSpeed" type="HScrollBar" parent="."]
 layout_mode = 0
 offset_left = 960.0
@@ -109,7 +141,44 @@ theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_2sq6r")
 theme_override_styles/grabber = SubResource("StyleBoxTexture_wkqq4")
 theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_wkqq4")
 theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
-value = 60.0
+min_value = 0.001
+max_value = 0.1
+value = 0.01
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 660.0
+offset_right = 880.0
+offset_bottom = 762.0
+toggle_mode = true
+texture_normal = ExtResource("6_fwwms")
+texture_pressed = ExtResource("7_ntxnm")
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 667.0
+offset_right = 875.0
+offset_bottom = 757.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_font_sizes/font_size = 32
+text = "Disabled"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1590.0
+offset_top = 900.0
+offset_right = 1638.0
+offset_bottom = 948.0
+texture_normal = ExtResource("8_bp5vh")
+texture_pressed = ExtResource("9_2n30h")
+texture_hover = ExtResource("10_h1850")
+texture_focused = ExtResource("10_h1850")
 
 [connection signal="value_changed" from="MasterVolume" to="." method="_on_master_volume_value_changed"]
 [connection signal="value_changed" from="TextSpeed" to="." method="_on_text_speed_value_changed"]
+[connection signal="toggled" from="TextureButton" to="." method="_on_texture_button_toggled"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
