@@ -3703,5 +3703,24 @@
 		"check var": null,
 		"flag": null,
 		"": null
+	},
+	"null": {
+		"id": null,
+		"speaker": null,
+		"character": null,
+		"sprite": null,
+		"cecilia": null,
+		"text": null,
+		"go to": null,
+		"options": null,
+		"option ids": null,
+		"emit": null,
+		"delay": null,
+		"remember": null,
+		"if remembered": null,
+		"set var": null,
+		"check var": null,
+		"flag": null,
+		"": null
 	}
 }
