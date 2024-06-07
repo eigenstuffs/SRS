@@ -356,51 +356,61 @@ func init():
 func fade_black():
 	EffectAnim.play("FadeBlack")
 	last_fade = "black"
+	Global.data_dict["active_fade"] = "fade_black"
 	await EffectAnim.animation_finished
 	
 func fade_black_abrupt():
 	EffectAnim.play("FadeBlackAbrupt")
 	last_fade = "black"
+	Global.data_dict["active_fade"] = "fade_black_abrupt"
 	await EffectAnim.animation_finished
 	
 func fade_blacktowhite():
 	EffectAnim.play("FadeBlackToWhite")
 	last_fade = "white"
+	Global.data_dict["active_fade"] = "fade_blacktowhite"
 	await EffectAnim.animation_finished
 	
 func fade_blacktored():
 	EffectAnim.play("FadeBlackToRed")
 	last_fade = "red"
+	Global.data_dict["active_fade"] = "fade_blacktored"
 	await EffectAnim.animation_finished
 	
 func fade_red():
 	EffectAnim.play("FadeRed")
 	last_fade = "red"
+	Global.data_dict["active_fade"] = "fade_red"
 	await EffectAnim.animation_finished
 	
 func fade_redtowhite():
 	EffectAnim.play("FadeRedToWhite")
 	last_fade = "white"
+	Global.data_dict["active_fade"] = "fade_redtowhite"
 	await EffectAnim.animation_finished
 	
 func fade_redtoblack():
 	EffectAnim.play("FadeRedToBlack")
 	last_fade = "black"
+	Global.data_dict["active_fade"] = "fade_redtoblack"
 	await EffectAnim.animation_finished
 	
 func fade_white():
 	EffectAnim.play("FadeWhite")
 	last_fade = "white"
+	Global.data_dict["active_fade"] = "fade_white"
 	await EffectAnim.animation_finished
 	
 func fade_whitetoblack():
 	EffectAnim.play("FadeWhiteToBlack")
 	last_fade = "black"
+	Global.data_dict["active_fade"] = "fade_whitetoblack"
 	await EffectAnim.animation_finished
 
 func fade_whitetored():
 	EffectAnim.play("FadeWhiteToRed")
 	last_fade = "red"
+	Global.data_dict["active_fade"] = "fade_whitetored"
 	await EffectAnim.animation_finished
 	
 func fade_trans():
@@ -413,6 +423,7 @@ func fade_trans():
 			EffectAnim.play_backwards("FadeRed")
 		_:
 			print("no last fade")
+	Global.data_dict["active_fade"] = "fade_trans"
 	await EffectAnim.animation_finished
 	
 func flash_white():
@@ -538,6 +549,7 @@ func stop_overlay():
 	
 func cg_god_bg():
 	BUSY = true
+	Global.data_dict["god_bg_active"] = true
 	print("enter god")
 	var a = create_tween()
 	$AnimGod/Textures.modulate.a = 0
@@ -550,6 +562,7 @@ func cg_god_bg():
 func cg_god_neutral():
 	print("GOD NEUTRAL")
 	anim_god.stop(false)
+	Global.data_dict["last_god"] = "cg_god_neutral"
 	#anim_god.play("RESET")
 	#await anim_god.animation_finished
 	anim_god.play("NeutralStatic")
@@ -557,6 +570,7 @@ func cg_god_neutral():
 func cg_god_neutral_talk():
 	print("GOD NEUTRAL TALK")
 	anim_god.stop(false)
+	Global.data_dict["last_god"] = "cg_god_neutral_talk"
 	#anim_god.play("RESET")
 	#await anim_god.animation_finished
 	anim_god.play("NeutralSpeaking")
@@ -564,6 +578,7 @@ func cg_god_neutral_talk():
 func cg_god_serious():
 	print("GOD SERIOUS")
 	anim_god.stop(false)
+	Global.data_dict["last_god"] = "cg_god_serious"
 	#anim_god.play("RESET")
 	#await anim_god.animation_finished
 	anim_god.play("SeriousStatic")
@@ -571,6 +586,7 @@ func cg_god_serious():
 func cg_god_serious_talk():
 	print("GOD SERIOUS TALK")
 	anim_god.stop(false)
+	Global.data_dict["last_god"] = "cg_god_serious_talk"
 	#anim_god.play("RESET")
 	#await anim_god.animation_finished
 	anim_god.play("SeriousSpeaking")
@@ -578,6 +594,7 @@ func cg_god_serious_talk():
 func cg_god_smile():
 	print("GOD SMILE")
 	anim_god.stop(false)
+	Global.data_dict["last_god"] = "cg_god_smile"
 	#anim_god.play("RESET")
 	#await anim_god.animation_finished
 	anim_god.play("SmileStatic")
@@ -585,12 +602,14 @@ func cg_god_smile():
 func cg_god_smile_talk():
 	print("GOD SMILE TALK")
 	anim_god.stop(false)
+	Global.data_dict["last_god"] = "cg_god_smile_talk"
 	#anim_god.play("RESET")
 	#await anim_god.animation_finished
 	anim_god.play("SmileSpeaking")
 	
 func cg_god_glitch():
 	print("GOD GLITCH")
+	Global.data_dict["last_god"] = "cg_god_glitch"
 	anim_god.stop(false)
 	anim_god.play("Glitch")
 	
@@ -604,6 +623,7 @@ func cg_exit_god():
 	anim_god.stop()
 	anim_god_bg.stop()
 	BUSY = false
+	Global.data_dict["god_bg_active"] = false
 	emit_signal("NOT_BUSY")
 
 func player_name_screen():

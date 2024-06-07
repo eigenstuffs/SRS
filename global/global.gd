@@ -28,6 +28,13 @@ var effect_on = false
 
 var saved_date
 
+var god_bg_active : bool = false
+var last_god : String
+var active_fade : String
+var active_cg : String
+var active_music : String
+var active_looping : String
+
 ### DIALOGUE FILES 
 
 const ACT1_CHAPTER1_SCENE1 = "res://tools/dialogue/vn_scripts/Dialogue - a1c1_1.json"
@@ -184,7 +191,14 @@ var meta_data_path = save_dir + "meta_data.dat"
 	"player_max_mp" : 10,
 	"player_level" : 1,
 	"player_defense_ratio" : 1,
-	"player_offense_ratio" : 1
+	"player_offense_ratio" : 1,
+	
+	"god_bg_active" : false,
+	"last_god" : null,
+	"active_fade" : null,
+	"active_cg" : null,
+	"active_music" : null,
+	"active_looping" : null
 }
 
 @onready var data_dict = {
@@ -215,7 +229,14 @@ var meta_data_path = save_dir + "meta_data.dat"
 	"player_max_mp" : player_max_mp,
 	"player_level" : player_level,
 	"player_defense_ratio" : player_defense_ratio,
-	"player_offense_ratio" : player_offense_ratio
+	"player_offense_ratio" : player_offense_ratio,
+	
+	"god_bg_active" : god_bg_active,
+	"last_god" : last_god,
+	"active_fade" : active_fade,
+	"active_cg" : active_cg,
+	"active_music" : active_music,
+	"active_looping" : active_looping
 }
 
 @onready var meta_data_dict = {

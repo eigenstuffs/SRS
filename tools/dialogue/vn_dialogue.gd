@@ -2,6 +2,8 @@ extends Control
 
 class_name VisualNovelDialogue
 
+var current_key = 0
+
 signal fade_black
 signal fade_black_abrupt
 signal fade_blacktored
@@ -173,6 +175,8 @@ signal show_text
 signal show_empty
 signal show_next
 
+signal finished_speedrunning
+
 const CHARACTER_LIST : CharacterList = preload("res://resources/characters/character_list.tres")
 const CHOICE_BUTTON = preload("res://tools/dialogue/dialogue_choice.tscn")
 const GOD_CHOICE_BUTTON = preload("res://tools/dialogue/god_dialogue_choice.tscn")
@@ -217,6 +221,10 @@ signal finished_line
 var edgy_theme = false
 
 func _ready():
+	EffectAnim.MusicPlayer.stop()
+	EffectAnim.SfxPlayer.stop()
+	EffectAnim.LoopPlayer.stop()
+	
 	if text == null:
 		text = Global.return_current_text()
 	$EffectHandler.init()
@@ -254,12 +262,16 @@ func _ready():
 		next_anim()
 		
 		if Global.data_dict["current_line"] != 0:
-			speedrun_line()
-		read_line(Global.data_dict["current_line"])
+			load_key_data()
+			#await finished_speedrunning
+			read_line(Global.data_dict["current_line"])
+		else:
+			read_line(0)
 	else: print("Error: text doesn't exist within Dialogue node")
 
 func read_line(key : int):	
 	Global.data_dict["current_line"] = key
+	current_key = key
 	next.hide()
 	next.disabled = true
 	choice_ui.hide()
@@ -287,7 +299,13 @@ func read_line(key : int):
 	if current_line["emit"] != null:
 		var text = current_line["emit"].split("|")
 		for i in text.size():
-			print(text[i])
+			#print(text[i])
+			if text[i].contains("cg") and !text[i].contains("god"):
+				Global.data_dict["active_cg"] = text[i]
+			if text[i].contains("music"):
+				Global.data_dict["active_music"] = text[i]
+			if text[i].contains("looping") or text[i].contains("ambiance"):
+				Global.data_dict["active_looping"] = text[i]
 			self.emit_signal(text[i])
 	if current_line["set var"] != null:
 		var text = current_line["set var"].split("|")
@@ -318,7 +336,7 @@ func read_line(key : int):
 					button.connect("pressed", choice_pressed)
 					$Choice/Buttons.add_child(button)
 					button.get_node("Label").text = i
-					if Global.data_dict["remembered"].has(str(Global.data_dict["current_line"], "|", i)):
+					if Global.data_dict["remembered"].has(str(key, "|", i)):
 						button.disabled = true
 					button.position = Vector2(1140,-180)
 				match $Choice/Buttons.get_child_count():
@@ -405,7 +423,7 @@ func read_line(key : int):
 				for i in text:
 					var a = GOD_CHOICE_BUTTON.instantiate()
 					a.connect("pressed", choice_pressed)
-					if Global.data_dict["remembered"].has(str(Global.data_dict["current_line"], "|", i)):
+					if Global.data_dict["remembered"].has(str(key, "|", i)):
 						a.disabled = true
 					$GodChoice.add_child(a)
 					a.get_node("Label").text = i
@@ -639,20 +657,17 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
-		Global.data_dict["current_line"] = 0
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "menu_abrupt":
 		text_box.hide()
 		EffectAnim.play("FadeBlackAbrupt")
 		await EffectAnim.animation_finished
-		Global.data_dict["current_line"] = 0
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "menu_lace":
 		text_box.hide()
 		EffectAnim.play("FadeLace")
 		EffectAnim.speed_scale = 0.8
 		await EffectAnim.animation_finished
-		Global.data_dict["current_line"] = 0
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "free_zone_1":
 		text_box.hide()
@@ -660,7 +675,6 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
-		Global.data_dict["current_line"] = 0
 		get_tree().change_scene_to_file("res://scenes/places/free_zone_1.tscn")
 	elif current_line["flag"] == "free_zone_2":
 		text_box.hide()
@@ -668,7 +682,6 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
-		Global.data_dict["current_line"] = 0
 		get_tree().change_scene_to_file("res://scenes/places/free_zone_2.tscn")
 	elif current_line["flag"] == "quit":
 		get_tree().quit()
@@ -678,20 +691,17 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
-		Global.data_dict["current_line"] = 0
 		get_tree().reload_current_scene()
 	elif current_line["flag"] == "next_scene_lace":
 		text_box.hide()
 		EffectAnim.play("FadeLace")
 		EffectAnim.speed_scale = 0.8
 		await EffectAnim.animation_finished
-		Global.data_dict["current_line"] = 0
 		get_tree().reload_current_scene()
 	elif current_line["flag"] == "next_scene_abrupt":
 		text_box.hide()
 		EffectAnim.play("FadeBlackAbrupt")
 		await EffectAnim.animation_finished
-		Global.data_dict["current_line"] = 0
 		get_tree().reload_current_scene()
 	
 	if current_line["if remembered"] != null:
@@ -792,7 +802,7 @@ func choice_pressed():
 	for i in $Choice/Buttons.get_children():
 		if i.button_pressed:
 			Global.data_dict["remembered"].append(
-				str(Global.data_dict["current_line"], "|",
+				str(current_key, "|",
 				i.get_node("Label").text)
 			)
 			choice.emit(i.get_index())
@@ -800,7 +810,7 @@ func choice_pressed():
 	for i in $GodChoice.get_children():
 		if i.button_pressed:
 			Global.data_dict["remembered"].append(
-				str(Global.data_dict["current_line"], "|",
+				str(current_key, "|",
 				i.get_node("Label").text)
 			)
 			choice.emit(i.get_index())
@@ -846,39 +856,25 @@ func alternate_text_box(yes: bool):
 		box.scale = Vector2(1.5,2.5)
 		box.position = Vector2(-256, 320)
 
-func speedrun_line():
-	var god_bg_active : bool = false
-	var last_god : String
-	var active_fade : String
-	var active_cg : String
+func load_key_data():
+	print("-------------------")
+	print("Loading data...")
+	print(Global.data_dict["god_bg_active"])
+	print(Global.data_dict["last_god"])
+	print(Global.data_dict["active_cg"])
+	print(Global.data_dict["active_music"])
+	print(Global.data_dict["active_looping"])
+	print("-------------------")
 	
-	var cap = Global.data_dict["current_line"]
-	
-	for i in cap:
-		var current_line = result.get(result.keys()[i])
-		
-		if current_line["emit"]:
-			for k in current_line["emit"].split("|"):
-				if k.contains("music"):
-					emit_signal(k)
-				elif k.contains("looping") or k.contains("ambiance"):
-					emit_signal(k)
-				elif k.contains("fade"):
-					active_fade = k
-				elif k.contains("cg_god_bg"):
-					god_bg_active = true
-				elif k.contains("cg_exit_god"):
-					god_bg_active = false
-				elif k.contains("cg_god"):
-					last_god = k
-				elif k.contains("cg"):
-					active_cg = k
-	
-	if god_bg_active:
+	if Global.data_dict["god_bg_active"]:
 		emit_signal("cg_god_bg")
-		emit_signal(last_god)
-	if active_fade:
-		if active_fade != "fade_trans":
-			print(active_fade)
-			emit_signal(active_fade)
-	if active_cg: emit_signal(active_cg)
+		emit_signal(Global.data_dict["last_god"])
+	if Global.data_dict["active_fade"]:
+		if Global.data_dict["active_fade"] != "fade_trans":
+			emit_signal(Global.data_dict["active_fade"])
+	if Global.data_dict["active_cg"]:
+		emit_signal(Global.data_dict["active_cg"])
+	if Global.data_dict["active_music"]:
+		emit_signal(Global.data_dict["active_music"])
+	if Global.data_dict["active_looping"]:
+		emit_signal(Global.data_dict["active_looping"])
