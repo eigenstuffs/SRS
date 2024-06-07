@@ -178,8 +178,8 @@ theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_wkqq4")
 theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
 min_value = 0.001
 max_value = 0.1
-step = 0.001
-value = 0.001
+value = 0.01
+rounded = true
 
 [node name="EffectsButton" type="TextureButton" parent="."]
 process_mode = 3
