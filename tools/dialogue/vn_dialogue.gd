@@ -252,6 +252,9 @@ func _ready():
 		
 		#init_parameters(0)
 		next_anim()
+		
+		if Global.data_dict["current_line"] != 0:
+			speedrun_line()
 		read_line(Global.data_dict["current_line"])
 	else: print("Error: text doesn't exist within Dialogue node")
 
@@ -842,3 +845,40 @@ func alternate_text_box(yes: bool):
 		label["theme_override_colors/default_color"] = Color("ffffff")
 		box.scale = Vector2(1.5,2.5)
 		box.position = Vector2(-256, 320)
+
+func speedrun_line():
+	var god_bg_active : bool = false
+	var last_god : String
+	var active_fade : String
+	var active_cg : String
+	
+	var cap = Global.data_dict["current_line"]
+	
+	for i in cap:
+		var current_line = result.get(result.keys()[i])
+		
+		if current_line["emit"]:
+			for k in current_line["emit"].split("|"):
+				if k.contains("music"):
+					emit_signal(k)
+				elif k.contains("looping") or k.contains("ambiance"):
+					emit_signal(k)
+				elif k.contains("fade"):
+					active_fade = k
+				elif k.contains("cg_god_bg"):
+					god_bg_active = true
+				elif k.contains("cg_exit_god"):
+					god_bg_active = false
+				elif k.contains("cg_god"):
+					last_god = k
+				elif k.contains("cg"):
+					active_cg = k
+	
+	if god_bg_active:
+		emit_signal("cg_god_bg")
+		emit_signal(last_god)
+	if active_fade:
+		if active_fade != "fade_trans":
+			print(active_fade)
+			emit_signal(active_fade)
+	if active_cg: emit_signal(active_cg)
