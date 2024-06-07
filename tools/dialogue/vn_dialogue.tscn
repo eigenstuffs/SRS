@@ -1236,25 +1236,6 @@ stretch_mode = 3
 
 [node name="SaveButton" type="TextureButton" parent="TextBox/Settings"]
 layout_mode = 0
-offset_left = -172.0
-offset_top = -644.0
-offset_right = -74.0
-offset_bottom = -545.0
-texture_normal = ExtResource("49_pfnwr")
-texture_pressed = ExtResource("50_ubeo1")
-texture_hover = ExtResource("51_lth7m")
-texture_focused = ExtResource("51_lth7m")
-
-[node name="Save" type="TextureRect" parent="TextBox/Settings/SaveButton"]
-layout_mode = 0
-offset_right = 130.0
-offset_bottom = 120.0
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("53_eab1y")
-stretch_mode = 3
-
-[node name="LoadButton" type="TextureButton" parent="TextBox/Settings"]
-layout_mode = 0
 offset_left = -320.0
 offset_top = -644.0
 offset_right = -222.0
@@ -1264,7 +1245,52 @@ texture_pressed = ExtResource("50_ubeo1")
 texture_hover = ExtResource("51_lth7m")
 texture_focused = ExtResource("51_lth7m")
 
+[node name="Label2" type="Label" parent="TextBox/Settings/SaveButton"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 4.0
+offset_right = 101.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_font_sizes/font_size = 32
+text = "Save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save" type="TextureRect" parent="TextBox/Settings/SaveButton"]
+visible = false
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 120.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("53_eab1y")
+stretch_mode = 3
+
+[node name="LoadButton" type="TextureButton" parent="TextBox/Settings"]
+layout_mode = 0
+offset_left = -172.0
+offset_top = -644.0
+offset_right = -74.0
+offset_bottom = -545.0
+texture_normal = ExtResource("49_pfnwr")
+texture_pressed = ExtResource("50_ubeo1")
+texture_hover = ExtResource("51_lth7m")
+texture_focused = ExtResource("51_lth7m")
+
+[node name="Label" type="Label" parent="TextBox/Settings/LoadButton"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 4.0
+offset_right = 101.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_font_sizes/font_size = 32
+text = "Load"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Save" type="TextureRect" parent="TextBox/Settings/LoadButton"]
+visible = false
 layout_mode = 0
 offset_right = 130.0
 offset_bottom = 120.0

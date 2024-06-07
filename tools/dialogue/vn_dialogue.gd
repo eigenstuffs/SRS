@@ -861,6 +861,7 @@ func load_key_data():
 	print("Loading data...")
 	print(Global.data_dict["god_bg_active"])
 	print(Global.data_dict["last_god"])
+	print(Global.data_dict["active_fade"])
 	print(Global.data_dict["active_cg"])
 	print(Global.data_dict["active_music"])
 	print(Global.data_dict["active_looping"])
