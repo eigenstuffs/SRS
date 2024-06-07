@@ -226,7 +226,7 @@ func init():
 	vn.connect("sfx_whoosh_foam", play_sfx.bind(SFX_WHOOSH_FOAM))
 	vn.connect("sfx_happy", play_sfx.bind(SFX_HAPPY))
 	vn.connect("sfx_epiphany", play_sfx.bind(SFX_EPIPHANY))
-	vn.connect("sfx_heartbeat_loop", play_sfx_looping.bind(SFX_HEARTBEAT_LOOPING))
+	vn.connect("sfx_heartbeat_looping", play_sfx_looping.bind(SFX_HEARTBEAT_LOOPING))
 	vn.connect("sfx_bells_mystery", play_sfx.bind(SFX_BELLS_MYSTERY))
 	vn.connect("sfx_bells_countdown", play_sfx.bind(SFX_BELLS_COUNTDOWN))
 	vn.connect("sfx_bells_magic_chime", play_sfx.bind(SFX_BELLS_MAGIC_CHIME))

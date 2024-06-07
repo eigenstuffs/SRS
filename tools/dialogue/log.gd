@@ -6,7 +6,7 @@ signal log_closed
 
 @onready var vbox_height = $ScrollContainer/VBoxContainer.size.y
 
-func _ready():
+func init():
 	$VScrollBar.max_value = $ScrollContainer.get_v_scroll_bar().max_value
 	$VScrollBar.min_value = $ScrollContainer.get_v_scroll_bar().min_value
 

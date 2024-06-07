@@ -45,7 +45,7 @@ signal sfx_inquisitive
 signal sfx_whoosh_foam
 signal sfx_happy
 signal sfx_epiphany
-signal sfx_heartbeat_loop
+signal sfx_heartbeat_looping
 signal sfx_bells_mystery
 signal sfx_bells_countdown
 signal sfx_bells_magic_chime
