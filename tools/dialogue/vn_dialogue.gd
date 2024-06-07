@@ -657,17 +657,20 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
+		clear_log()
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "menu_abrupt":
 		text_box.hide()
 		EffectAnim.play("FadeBlackAbrupt")
 		await EffectAnim.animation_finished
+		clear_log()
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "menu_lace":
 		text_box.hide()
 		EffectAnim.play("FadeLace")
 		EffectAnim.speed_scale = 0.8
 		await EffectAnim.animation_finished
+		clear_log()
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "free_zone_1":
 		text_box.hide()
@@ -675,6 +678,7 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
+		clear_log()
 		get_tree().change_scene_to_file("res://scenes/places/free_zone_1.tscn")
 	elif current_line["flag"] == "free_zone_2":
 		text_box.hide()
@@ -682,8 +686,10 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
+		clear_log()
 		get_tree().change_scene_to_file("res://scenes/places/free_zone_2.tscn")
 	elif current_line["flag"] == "quit":
+		clear_log()
 		get_tree().quit()
 	elif current_line["flag"] == "next_scene":
 		text_box.hide()
@@ -691,17 +697,20 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.5
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
+		clear_log()
 		get_tree().reload_current_scene()
 	elif current_line["flag"] == "next_scene_lace":
 		text_box.hide()
 		EffectAnim.play("FadeLace")
 		EffectAnim.speed_scale = 0.8
 		await EffectAnim.animation_finished
+		clear_log()
 		get_tree().reload_current_scene()
 	elif current_line["flag"] == "next_scene_abrupt":
 		text_box.hide()
 		EffectAnim.play("FadeBlackAbrupt")
 		await EffectAnim.animation_finished
+		clear_log()
 		get_tree().reload_current_scene()
 	
 	if current_line["if remembered"] != null:
@@ -879,3 +888,22 @@ func load_key_data():
 		emit_signal(Global.data_dict["active_music"])
 	if Global.data_dict["active_looping"]:
 		emit_signal(Global.data_dict["active_looping"])
+
+func clear_log():
+	Global.data_dict["god_bg_active"] = false
+	Global.data_dict["last_god"] = null
+	Global.data_dict["active_fade"] = null
+	Global.data_dict["active_cg"] = null
+	Global.data_dict["active_music"] = null
+	Global.data_dict["active_looping"] = null
+	
+	
+	print("-------------------")
+	print("Loading data...")
+	print(Global.data_dict["god_bg_active"])
+	print(Global.data_dict["last_god"])
+	print(Global.data_dict["active_fade"])
+	print(Global.data_dict["active_cg"])
+	print(Global.data_dict["active_music"])
+	print(Global.data_dict["active_looping"])
+	print("-------------------")
