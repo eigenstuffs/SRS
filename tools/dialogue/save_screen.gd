@@ -49,6 +49,9 @@ func init():
 		dir.list_dir_end()
 	else:
 		print("Failed to open directory.")
+		
+	$VScrollBar.max_value = $ScrollContainer.get_v_scroll_bar().max_value
+	$VScrollBar.min_value = $ScrollContainer.get_v_scroll_bar().min_value
 
 func button_pressed():
 	print("pressed")
