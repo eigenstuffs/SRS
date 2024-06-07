@@ -2023,7 +2023,7 @@
 		"go to": 74,
 		"options": null,
 		"option ids": null,
-		"emit": "fade_trans",
+		"emit": null,
 		"delay": null,
 		"remember": null,
 		"if remembered": null,

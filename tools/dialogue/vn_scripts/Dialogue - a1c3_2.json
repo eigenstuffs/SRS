@@ -9,7 +9,7 @@
 		"go to": 2,
 		"options": null,
 		"option ids": null,
-		"emit": "cg_day|sfx_ambiance_carriage_1|show_next|bg_carriage_int|hide_text",
+		"emit": "cg_evening|sfx_ambiance_carriage_1|show_next|hide_text",
 		"delay": null,
 		"remember": null,
 		"if remembered": null,
@@ -845,7 +845,7 @@
 		"go to": null,
 		"options": null,
 		"option ids": null,
-		"emit": "stop_music",
+		"emit": "stop_looping_sfx",
 		"delay": null,
 		"remember": "a1c3_2",
 		"if remembered": null,
@@ -892,13 +892,13 @@
 		"flag": null,
 		"": null
 	},
-	"mavgaze": {
-		"id": "mavgaze",
+	"else_mav_1": {
+		"id": "else_mav_1",
 		"speaker": null,
 		"character": "Maverick",
 		"sprite": "talk11",
 		"cecilia": null,
-		"text": "(Maverick’s gaze softens, and as you look closer, you realize just how frazzled he is beneath the glitz and grandeur. His shoulders are tense and he chews on his bottom lip nervously.)",
+		"text": "(Maverick looks tense. More so than usual.)",
 		"go to": "resume1",
 		"options": null,
 		"option ids": null,
@@ -911,13 +911,13 @@
 		"flag": null,
 		"": null
 	},
-	"else_mav_1": {
-		"id": "else_mav_1",
+	"mavgaze": {
+		"id": "mavgaze",
 		"speaker": null,
 		"character": "Maverick",
 		"sprite": "talk11",
 		"cecilia": null,
-		"text": "(Maverick looks tense. More so than usual.)",
+		"text": "(Maverick’s gaze softens, and as you look closer, you realize just how frazzled he is beneath the glitz and grandeur. His shoulders are tense and he chews on his bottom lip nervously.)",
 		"go to": "resume1",
 		"options": null,
 		"option ids": null,

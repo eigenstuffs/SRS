@@ -693,7 +693,7 @@
 		"go to": 38,
 		"options": null,
 		"option ids": null,
-		"emit": "sfx_realization",
+		"emit": "sfx_realization|flash_white",
 		"delay": null,
 		"remember": null,
 		"if remembered": null,

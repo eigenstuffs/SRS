@@ -4271,7 +4271,7 @@
 		"if remembered": null,
 		"set var": null,
 		"check var": null,
-		"flag": "decision",
+		"flag": "decision_repeatable",
 		"": null
 	},
 	"silly": {

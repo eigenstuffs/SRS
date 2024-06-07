@@ -414,6 +414,7 @@ func fade_whitetored():
 	await EffectAnim.animation_finished
 	
 func fade_trans():
+	Global.data_dict["active_fade"] = "fade_trans"
 	match last_fade:
 		"white":
 			EffectAnim.play_backwards("FadeWhite")
@@ -423,7 +424,6 @@ func fade_trans():
 			EffectAnim.play_backwards("FadeRed")
 		_:
 			print("no last fade")
-	Global.data_dict["active_fade"] = "fade_trans"
 	await EffectAnim.animation_finished
 	
 func flash_white():
