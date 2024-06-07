@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://buyuq0kfr1tme"]
+[gd_scene load_steps=32 format=3 uid="uid://buyuq0kfr1tme"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="2_4dmdn"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://e50mcrpkh28u" path="res://assets/library/Screen_setto70%transparency.PNG" id="10_sb8oc"]
 [ext_resource type="Texture2D" uid="uid://bhnxu5xbw83e4" path="res://assets/library/Library_TopBanister.PNG" id="12_bqiee"]
 [ext_resource type="Texture2D" uid="uid://c6ep7gd34sa5v" path="res://assets/library/Overlay_setto35%transparency.PNG" id="13_wtd8x"]
+[ext_resource type="AudioStream" uid="uid://c01kuufd4defn" path="res://resources/effect/explosion_effect/explosion.mp3" id="19_ac088"]
 [ext_resource type="AudioStream" uid="uid://ka6xjq0a4pg" path="res://tools/minigames/library/sound/Villianess_Reborn_Library_Minigame_Music.mp3" id="20_lrgu2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
@@ -245,6 +246,11 @@ offset_bottom = 40.0
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_lrgu2")
 autoplay = true
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_ac088")
+volume_db = -13.0
+pitch_scale = 1.5
 
 [connection signal="stop_blinking" from="." to="Walls/Shelves" method="_on_library_stop_blinking"]
 [connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]

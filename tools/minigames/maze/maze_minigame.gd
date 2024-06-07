@@ -21,6 +21,7 @@ const FASTER_MUSIC = preload("res://tools/minigames/maze/sound/Villianess_Reborn
 @export var time_penalty : int = -3
 var point_get : int = 0
 var all_keys_got : bool = false
+var player_can_be_hurt : bool = true
 
 func _ready():
 	pause_all_movement()
@@ -76,13 +77,15 @@ func _on_goal_goal_touched():
 		end()
 
 func _on_maze_generator_enemy_met_player():
-	EffectReg.start_effect(self, "Flash", [$EffectNode, Color(0.6, 0, 0, 0.4)])
-	$MazePlayer.is_hurt = true
-	emit_signal("update_time", time_penalty)
-	$SfxPlayer.stream = HURT_SFX
-	$SfxPlayer.play()
-	await get_tree().create_timer(1).timeout
-	$MazePlayer.is_hurt = false
+	if player_can_be_hurt:
+		player_can_be_hurt = false
+		EffectReg.start_effect(self, "Flash", [$EffectNode, Color(0.6, 0, 0, 0.4)])
+		$MazePlayer.is_hurt = true
+		emit_signal("update_time", time_penalty)
+		$HurtPlayer.play()
+		await get_tree().create_timer(1.5).timeout
+		$MazePlayer.is_hurt = false
+		player_can_be_hurt = true
 
 func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)

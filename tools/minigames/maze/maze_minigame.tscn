@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://btxyikyec8li1"]
+[gd_scene load_steps=16 format=3 uid="uid://btxyikyec8li1"]
 
 [ext_resource type="Script" path="res://tools/minigames/maze/MazeGenerator.gd" id="1_wltr6"]
 [ext_resource type="Script" path="res://tools/minigames/maze/maze_minigame.gd" id="1_xvgb3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://tools/minigames/maze/Goal.gd" id="4_v5a44"]
 [ext_resource type="Texture2D" uid="uid://4b63ncjnbcpi" path="res://assets/maze/maze_grass.png" id="6_0aw61"]
 [ext_resource type="AudioStream" uid="uid://dfnighsb3ipip" path="res://tools/minigames/maze/sound/Villianess_Reborn_Minigame_Music_First_Stage.mp3" id="7_7pxdu"]
+[ext_resource type="AudioStream" uid="uid://cg6h2m5a8eyqx" path="res://tools/minigames/maze/sound/player_hurt.wav" id="10_k1wsb"]
 
 [sub_resource type="Environment" id="Environment_bncaf"]
 
@@ -107,6 +108,11 @@ max_polyphony = 2
 stream = ExtResource("7_7pxdu")
 volume_db = -8.0
 autoplay = true
+
+[node name="HurtPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_k1wsb")
+volume_db = 10.0
+pitch_scale = 1.2
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="goal_touched" from="Goal" to="." method="_on_goal_goal_touched"]
