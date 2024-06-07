@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcp5tgsnudaa8"
-path="res://.godot/imported/akatius_blush2.PNG-337a30230a3da839ff3bef5b2dfeb2b1.ctex"
+path="res://.godot/imported/akatius_blush2.png-a39160bb2fdcdc93cf3c566e520cc3ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Akatius/akatius_blush2.PNG"
-dest_files=["res://.godot/imported/akatius_blush2.PNG-337a30230a3da839ff3bef5b2dfeb2b1.ctex"]
+source_file="res://assets/vn/Akatius/akatius_blush2.png"
+dest_files=["res://.godot/imported/akatius_blush2.png-a39160bb2fdcdc93cf3c566e520cc3ed.ctex"]
 
 [params]
 

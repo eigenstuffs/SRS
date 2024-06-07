@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://pm82f2gos4ha"
-path="res://.godot/imported/seraphina_talk3.PNG-a0109b33f77ed698c81836903d861502.ctex"
+path="res://.godot/imported/seraphina_talk3.png-dd5ea01a726b9fbb903b357e69f1e65a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Seraphina/seraphina_talk3.PNG"
-dest_files=["res://.godot/imported/seraphina_talk3.PNG-a0109b33f77ed698c81836903d861502.ctex"]
+source_file="res://assets/vn/Seraphina/seraphina_talk3.png"
+dest_files=["res://.godot/imported/seraphina_talk3.png-dd5ea01a726b9fbb903b357e69f1e65a.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdhom3l0ijm13"
-path="res://.godot/imported/sera_blood2.PNG-bfe87cddd72794901e061ed7108e2408.ctex"
+path="res://.godot/imported/sera_blood2.png-1469fe2c8cb927ec71e9608e66b326b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Seraphina/depreciated/sera_blood2.PNG"
-dest_files=["res://.godot/imported/sera_blood2.PNG-bfe87cddd72794901e061ed7108e2408.ctex"]
+source_file="res://assets/vn/Seraphina/depreciated/sera_blood2.png"
+dest_files=["res://.godot/imported/sera_blood2.png-1469fe2c8cb927ec71e9608e66b326b2.ctex"]
 
 [params]
 

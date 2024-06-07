@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwu1w12i311kn"
-path="res://.godot/imported/sera_stressed3.PNG-0212580999773d8ec872dfb093cf45ed.ctex"
+path="res://.godot/imported/sera_stressed3.png-da4d477583e56be11ec67c941c71b0b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Seraphina/depreciated/sera_stressed3.PNG"
-dest_files=["res://.godot/imported/sera_stressed3.PNG-0212580999773d8ec872dfb093cf45ed.ctex"]
+source_file="res://assets/vn/Seraphina/depreciated/sera_stressed3.png"
+dest_files=["res://.godot/imported/sera_stressed3.png-da4d477583e56be11ec67c941c71b0b7.ctex"]
 
 [params]
 

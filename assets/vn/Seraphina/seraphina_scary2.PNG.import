@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cijrvpj7hwr4b"
-path="res://.godot/imported/seraphina_scary2.PNG-05412edbe488da31ed3e2337bd26ffa3.ctex"
+path="res://.godot/imported/seraphina_scary2.png-1320084bacac1f3f44524c264088e7ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Seraphina/seraphina_scary2.PNG"
-dest_files=["res://.godot/imported/seraphina_scary2.PNG-05412edbe488da31ed3e2337bd26ffa3.ctex"]
+source_file="res://assets/vn/Seraphina/seraphina_scary2.png"
+dest_files=["res://.godot/imported/seraphina_scary2.png-1320084bacac1f3f44524c264088e7ad.ctex"]
 
 [params]
 

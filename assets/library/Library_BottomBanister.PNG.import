@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blifv4cla6nqm"
-path="res://.godot/imported/Library_BottomBanister.PNG-da1fd37fcbe0e8a68b9a1fa3347569cc.ctex"
+path="res://.godot/imported/Library_BottomBanister.png-8641df9592f5c9642f2909ad1dedff60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/library/Library_BottomBanister.PNG"
-dest_files=["res://.godot/imported/Library_BottomBanister.PNG-da1fd37fcbe0e8a68b9a1fa3347569cc.ctex"]
+source_file="res://assets/library/Library_BottomBanister.png"
+dest_files=["res://.godot/imported/Library_BottomBanister.png-8641df9592f5c9642f2909ad1dedff60.ctex"]
 
 [params]
 

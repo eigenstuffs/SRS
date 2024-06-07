@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7ja3xc0tfjcu"
-path="res://.godot/imported/cassius_shock2.PNG-887c659da50ca430829d39868fbcfdd0.ctex"
+path="res://.godot/imported/cassius_shock2.png-88302db187464f842624fe8a48895395.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Cassius/cassius_shock2.PNG"
-dest_files=["res://.godot/imported/cassius_shock2.PNG-887c659da50ca430829d39868fbcfdd0.ctex"]
+source_file="res://assets/vn/Cassius/cassius_shock2.png"
+dest_files=["res://.godot/imported/cassius_shock2.png-88302db187464f842624fe8a48895395.ctex"]
 
 [params]
 

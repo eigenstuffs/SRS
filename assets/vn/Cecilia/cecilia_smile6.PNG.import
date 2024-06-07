@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpndpn2r0jj72"
-path="res://.godot/imported/cecilia_smile6.PNG-81f73e88cc5b8932a54fd98483ea4f0a.ctex"
+path="res://.godot/imported/cecilia_smile6.png-369bfe9af13116a7198ab6c0f678ce64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Cecilia/cecilia_smile6.PNG"
-dest_files=["res://.godot/imported/cecilia_smile6.PNG-81f73e88cc5b8932a54fd98483ea4f0a.ctex"]
+source_file="res://assets/vn/Cecilia/cecilia_smile6.png"
+dest_files=["res://.godot/imported/cecilia_smile6.png-369bfe9af13116a7198ab6c0f678ce64.ctex"]
 
 [params]
 

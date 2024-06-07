@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ci3k5ocu83ylo"
-path="res://.godot/imported/cassius_talk2.PNG-55ac81e56211625baa5c3c53297f69b0.ctex"
+path="res://.godot/imported/cassius_talk2.png-17f2468a8e827827912bd13ad1186a4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Cassius/cassius_talk2.PNG"
-dest_files=["res://.godot/imported/cassius_talk2.PNG-55ac81e56211625baa5c3c53297f69b0.ctex"]
+source_file="res://assets/vn/Cassius/cassius_talk2.png"
+dest_files=["res://.godot/imported/cassius_talk2.png-17f2468a8e827827912bd13ad1186a4c.ctex"]
 
 [params]
 

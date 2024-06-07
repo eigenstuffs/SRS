@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4ky66u35nik2"
-path="res://.godot/imported/bg_day_sky.PNG-26ab6244dc4a548cd970e2b95ce96538.ctex"
+path="res://.godot/imported/bg_day_sky.png-aa8c5798d2726326286aa0f2812b4c5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cgs/bg_day_sky.PNG"
-dest_files=["res://.godot/imported/bg_day_sky.PNG-26ab6244dc4a548cd970e2b95ce96538.ctex"]
+source_file="res://assets/cgs/bg_day_sky.png"
+dest_files=["res://.godot/imported/bg_day_sky.png-aa8c5798d2726326286aa0f2812b4c5a.ctex"]
 
 [params]
 

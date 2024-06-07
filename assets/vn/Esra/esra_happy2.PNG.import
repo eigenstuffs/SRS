@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3l7bm6fq7551"
-path="res://.godot/imported/esra_happy2.PNG-a00f255bbffe556f7521b8b731722801.ctex"
+path="res://.godot/imported/esra_happy2.png-acc83eb470be12756a16065c4f361bc8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Esra/esra_happy2.PNG"
-dest_files=["res://.godot/imported/esra_happy2.PNG-a00f255bbffe556f7521b8b731722801.ctex"]
+source_file="res://assets/vn/Esra/esra_happy2.png"
+dest_files=["res://.godot/imported/esra_happy2.png-acc83eb470be12756a16065c4f361bc8.ctex"]
 
 [params]
 

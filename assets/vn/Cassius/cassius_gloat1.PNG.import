@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clea0nm5r4b4h"
-path="res://.godot/imported/cassius_gloat1.PNG-726caf74b88cdd7939d25436039594c7.ctex"
+path="res://.godot/imported/cassius_gloat1.png-6c743e882297f42fbb65b98342c072c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Cassius/cassius_gloat1.PNG"
-dest_files=["res://.godot/imported/cassius_gloat1.PNG-726caf74b88cdd7939d25436039594c7.ctex"]
+source_file="res://assets/vn/Cassius/cassius_gloat1.png"
+dest_files=["res://.godot/imported/cassius_gloat1.png-6c743e882297f42fbb65b98342c072c2.ctex"]
 
 [params]
 

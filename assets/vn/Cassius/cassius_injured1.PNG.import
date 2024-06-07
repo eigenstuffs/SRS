@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rlfap7vee5b8"
-path="res://.godot/imported/cassius_injured1.PNG-b2992f2ffab8f90da3a784c7504e92c4.ctex"
+path="res://.godot/imported/cassius_injured1.png-75c14e4106269aa5e0ab64eb8f6d58e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Cassius/cassius_injured1.PNG"
-dest_files=["res://.godot/imported/cassius_injured1.PNG-b2992f2ffab8f90da3a784c7504e92c4.ctex"]
+source_file="res://assets/vn/Cassius/cassius_injured1.png"
+dest_files=["res://.godot/imported/cassius_injured1.png-75c14e4106269aa5e0ab64eb8f6d58e4.ctex"]
 
 [params]
 

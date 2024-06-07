@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbnijm7ldmaot"
-path="res://.godot/imported/cassius_happy2.PNG-915ab9f7114528639976486668ce6b45.ctex"
+path="res://.godot/imported/cassius_happy2.png-b56646d695d6b1d766f12d83c1906678.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Cassius/cassius_happy2.PNG"
-dest_files=["res://.godot/imported/cassius_happy2.PNG-915ab9f7114528639976486668ce6b45.ctex"]
+source_file="res://assets/vn/Cassius/cassius_happy2.png"
+dest_files=["res://.godot/imported/cassius_happy2.png-b56646d695d6b1d766f12d83c1906678.ctex"]
 
 [params]
 

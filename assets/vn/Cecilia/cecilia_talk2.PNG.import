@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://munr48dsprwq"
-path="res://.godot/imported/cecilia_talk2.PNG-d2329a3e1b9002db7af3cfa7552f9791.ctex"
+path="res://.godot/imported/cecilia_talk2.png-3e6acad2c1b33000c848988f6d725b31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Cecilia/cecilia_talk2.PNG"
-dest_files=["res://.godot/imported/cecilia_talk2.PNG-d2329a3e1b9002db7af3cfa7552f9791.ctex"]
+source_file="res://assets/vn/Cecilia/cecilia_talk2.png"
+dest_files=["res://.godot/imported/cecilia_talk2.png-3e6acad2c1b33000c848988f6d725b31.ctex"]
 
 [params]
 

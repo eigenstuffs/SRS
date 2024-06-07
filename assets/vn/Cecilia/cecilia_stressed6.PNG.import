@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqnjrvuh63sdb"
-path="res://.godot/imported/cecilia_stressed6.PNG-ed33d5067ea97c4d3563c2ace24e578a.ctex"
+path="res://.godot/imported/cecilia_stressed6.png-cbbd30935dc57390b7189eb7b730b4b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Cecilia/cecilia_stressed6.PNG"
-dest_files=["res://.godot/imported/cecilia_stressed6.PNG-ed33d5067ea97c4d3563c2ace24e578a.ctex"]
+source_file="res://assets/vn/Cecilia/cecilia_stressed6.png"
+dest_files=["res://.godot/imported/cecilia_stressed6.png-cbbd30935dc57390b7189eb7b730b4b3.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhnxu5xbw83e4"
-path.s3tc="res://.godot/imported/Library_TopBanister.PNG-a00eea73ed6e51af31f7e209adb24e81.s3tc.ctex"
+path.s3tc="res://.godot/imported/Library_TopBanister.png-32971180a72a0bfb41feb5274fbb1912.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/library/Library_TopBanister.PNG"
-dest_files=["res://.godot/imported/Library_TopBanister.PNG-a00eea73ed6e51af31f7e209adb24e81.s3tc.ctex"]
+source_file="res://assets/library/Library_TopBanister.png"
+dest_files=["res://.godot/imported/Library_TopBanister.png-32971180a72a0bfb41feb5274fbb1912.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d35sro4gk8glk"
-path.s3tc="res://.godot/imported/Library_shelves.PNG-3c7c256a4671e26dc67938ce5bf37377.s3tc.ctex"
+path.s3tc="res://.godot/imported/Library_shelves.png-f1fb5af8e61acdc0aa22baa5d0f5ad49.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/library/Library_shelves.PNG"
-dest_files=["res://.godot/imported/Library_shelves.PNG-3c7c256a4671e26dc67938ce5bf37377.s3tc.ctex"]
+source_file="res://assets/library/Library_shelves.png"
+dest_files=["res://.godot/imported/Library_shelves.png-f1fb5af8e61acdc0aa22baa5d0f5ad49.s3tc.ctex"]
 
 [params]
 

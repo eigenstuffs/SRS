@@ -119,12 +119,12 @@ const EMPTY_FOUNTAIN = preload("res://assets/cgs/emtpy_fountain.png")
 const CG_WINTER = preload("res://assets/cgs/cg_winter.png")
 const CG_WHITE = preload("res://assets/cgs/cg_white.png")
 
-const CG_DAY = preload("res://assets/cgs/bg_day_sky.PNG")
-const CG_NIGHT = preload("res://assets/cgs/bg_night_sky.PNG")
-const CG_EVENING = preload("res://assets/cgs/bg_sunset_sky.PNG")
+const CG_DAY = preload("res://assets/cgs/bg_day_sky.png")
+const CG_NIGHT = preload("res://assets/cgs/bg_night_sky.png")
+const CG_EVENING = preload("res://assets/cgs/bg_sunset_sky.png")
 const CG_BALLROOM = preload("res://assets/cgs/ballroom bg.png")
 const CG_TOWN = preload("res://assets/cgs/town bg.png")
-const CG_LIBRARY = preload("res://assets/library/Library_BG.PNG")
+const CG_LIBRARY = preload("res://assets/library/Library_BG.png")
 
 const OVERLAY_BLOOD_SPLATTER = preload("res://assets/vn/overlay/overlay_blood_splatter.png")
 

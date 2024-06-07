@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2vq5tfyk4oam"
-path="res://.godot/imported/akatius_stressed2.PNG-67d0dc8c8e298578a7a09dcafab3a75e.ctex"
+path="res://.godot/imported/akatius_stressed2.png-eb461ca73a3cf912d5a07c65d203c5b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Akatius/akatius_stressed2.PNG"
-dest_files=["res://.godot/imported/akatius_stressed2.PNG-67d0dc8c8e298578a7a09dcafab3a75e.ctex"]
+source_file="res://assets/vn/Akatius/akatius_stressed2.png"
+dest_files=["res://.godot/imported/akatius_stressed2.png-eb461ca73a3cf912d5a07c65d203c5b3.ctex"]
 
 [params]
 

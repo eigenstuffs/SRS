@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clo8h2rmltiaj"
-path="res://.godot/imported/isidora_sick3.PNG-4161ba2ac97128a20b9d9ab40bd5278d.ctex"
+path="res://.godot/imported/isidora_sick3.png-83b9f835ea8e621a973d3e4921d1d79b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Isidora/isidora_sick3.PNG"
-dest_files=["res://.godot/imported/isidora_sick3.PNG-4161ba2ac97128a20b9d9ab40bd5278d.ctex"]
+source_file="res://assets/vn/Isidora/isidora_sick3.png"
+dest_files=["res://.godot/imported/isidora_sick3.png-83b9f835ea8e621a973d3e4921d1d79b.ctex"]
 
 [params]
 

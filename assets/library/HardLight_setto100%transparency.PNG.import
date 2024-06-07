@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx86b5uxmivs2"
-path.s3tc="res://.godot/imported/HardLight_setto100%transparency.PNG-08f3d02e13ef6719d3cd67c361309a6c.s3tc.ctex"
+path.s3tc="res://.godot/imported/HardLight_setto100%transparency.png-1c8e93409b5eaf238d2548b69c01ffe7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/library/HardLight_setto100%transparency.PNG"
-dest_files=["res://.godot/imported/HardLight_setto100%transparency.PNG-08f3d02e13ef6719d3cd67c361309a6c.s3tc.ctex"]
+source_file="res://assets/library/HardLight_setto100%transparency.png"
+dest_files=["res://.godot/imported/HardLight_setto100%transparency.png-1c8e93409b5eaf238d2548b69c01ffe7.s3tc.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://e8linr8w5sfi"
-path="res://.godot/imported/maverick_talk5.PNG-843fd31887bc8845ba40d087332d9f12.ctex"
+path="res://.godot/imported/maverick_talk5.png-88e060fa5443352c10c617d794930675.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Maverick/maverick_talk5.PNG"
-dest_files=["res://.godot/imported/maverick_talk5.PNG-843fd31887bc8845ba40d087332d9f12.ctex"]
+source_file="res://assets/vn/Maverick/maverick_talk5.png"
+dest_files=["res://.godot/imported/maverick_talk5.png-88e060fa5443352c10c617d794930675.ctex"]
 
 [params]
 

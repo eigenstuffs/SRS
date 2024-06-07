@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://q1usf3s6egiy"
-path="res://.godot/imported/cecilia_thinking2.PNG-a0868dfba9878b544c427deb321b9596.ctex"
+path="res://.godot/imported/cecilia_thinking2.png-d77d73a3b3d7b074ef657696c0ad3a5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Cecilia/cecilia_thinking2.PNG"
-dest_files=["res://.godot/imported/cecilia_thinking2.PNG-a0868dfba9878b544c427deb321b9596.ctex"]
+source_file="res://assets/vn/Cecilia/cecilia_thinking2.png"
+dest_files=["res://.godot/imported/cecilia_thinking2.png-d77d73a3b3d7b074ef657696c0ad3a5d.ctex"]
 
 [params]
 

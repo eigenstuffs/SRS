@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://w0en6eqq74is"
-path="res://.godot/imported/isidora_happy5.PNG-d143410c3750fcc6bdac9e534154c3ec.ctex"
+path="res://.godot/imported/isidora_happy5.png-2225796af6a3a15d2257afe649295a3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Isidora/isidora_happy5.PNG"
-dest_files=["res://.godot/imported/isidora_happy5.PNG-d143410c3750fcc6bdac9e534154c3ec.ctex"]
+source_file="res://assets/vn/Isidora/isidora_happy5.png"
+dest_files=["res://.godot/imported/isidora_happy5.png-2225796af6a3a15d2257afe649295a3b.ctex"]
 
 [params]
 

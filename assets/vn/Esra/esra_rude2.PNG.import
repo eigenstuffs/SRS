@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bohdl4qapxine"
-path="res://.godot/imported/esra_rude2.PNG-80514c7aed0ef28b2ba1eb7859c45bdb.ctex"
+path="res://.godot/imported/esra_rude2.png-413886964baf3b1d87cfad833c7a6518.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Esra/esra_rude2.PNG"
-dest_files=["res://.godot/imported/esra_rude2.PNG-80514c7aed0ef28b2ba1eb7859c45bdb.ctex"]
+source_file="res://assets/vn/Esra/esra_rude2.png"
+dest_files=["res://.godot/imported/esra_rude2.png-413886964baf3b1d87cfad833c7a6518.ctex"]
 
 [params]
 

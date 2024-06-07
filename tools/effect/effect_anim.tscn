@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b1ydmq6opdxmo" path="res://assets/vn/fade_lace/row-1-column-19.png" id="15_eein2"]
 [ext_resource type="Script" path="res://tools/effect/effect_anim.gd" id="16_ie6vu"]
 [ext_resource type="Texture2D" uid="uid://1r15ajh0b1tn" path="res://assets/vn/fade_lace/row-1-column-20.png" id="16_rn038"]
-[ext_resource type="Texture2D" uid="uid://cmn4urcsrvsc" path="res://assets/vn/fade_lace/lacetransitionlogo.PNG" id="18_2mp2i"]
+[ext_resource type="Texture2D" uid="uid://cmn4urcsrvsc" path="res://assets/vn/fade_lace/lacetransitionlogo.png" id="18_2mp2i"]
 
 [sub_resource type="Animation" id="Animation_w53sw"]
 resource_name = "FadeBlack"

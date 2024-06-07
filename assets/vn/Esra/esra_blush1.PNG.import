@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7fn4tormcchl"
-path="res://.godot/imported/esra_blush1.PNG-62936c2b000fb89587cbe0f55c1fbb28.ctex"
+path="res://.godot/imported/esra_blush1.png-387a8c1f60ef8b25f7cfcddace0e6679.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Esra/esra_blush1.PNG"
-dest_files=["res://.godot/imported/esra_blush1.PNG-62936c2b000fb89587cbe0f55c1fbb28.ctex"]
+source_file="res://assets/vn/Esra/esra_blush1.png"
+dest_files=["res://.godot/imported/esra_blush1.png-387a8c1f60ef8b25f7cfcddace0e6679.ctex"]
 
 [params]
 

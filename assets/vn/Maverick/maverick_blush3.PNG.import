@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cg6h7so1b6kay"
-path="res://.godot/imported/maverick_blush3.PNG-382e8a2d0f0aee7481ead755094cc242.ctex"
+path="res://.godot/imported/maverick_blush3.png-89b697d736c36cca9581b97e4f86d29f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Maverick/maverick_blush3.PNG"
-dest_files=["res://.godot/imported/maverick_blush3.PNG-382e8a2d0f0aee7481ead755094cc242.ctex"]
+source_file="res://assets/vn/Maverick/maverick_blush3.png"
+dest_files=["res://.godot/imported/maverick_blush3.png-89b697d736c36cca9581b97e4f86d29f.ctex"]
 
 [params]
 

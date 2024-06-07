@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hhrt0cu3bjxp"
-path="res://.godot/imported/akatius_polite2.PNG-aba17db138401e55b1f0c38b5d063f95.ctex"
+path="res://.godot/imported/akatius_polite2.png-a3a83da29b71c8da40829c590544f9e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Akatius/akatius_polite2.PNG"
-dest_files=["res://.godot/imported/akatius_polite2.PNG-aba17db138401e55b1f0c38b5d063f95.ctex"]
+source_file="res://assets/vn/Akatius/akatius_polite2.png"
+dest_files=["res://.godot/imported/akatius_polite2.png-a3a83da29b71c8da40829c590544f9e8.ctex"]
 
 [params]
 

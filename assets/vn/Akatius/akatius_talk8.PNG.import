@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lir31nf0e0h7"
-path="res://.godot/imported/akatius_talk8.PNG-592fa5c0defa0205045574b73842bd3f.ctex"
+path="res://.godot/imported/akatius_talk8.png-6245904cc84fa8cffd5bdd02f4346334.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Akatius/akatius_talk8.PNG"
-dest_files=["res://.godot/imported/akatius_talk8.PNG-592fa5c0defa0205045574b73842bd3f.ctex"]
+source_file="res://assets/vn/Akatius/akatius_talk8.png"
+dest_files=["res://.godot/imported/akatius_talk8.png-6245904cc84fa8cffd5bdd02f4346334.ctex"]
 
 [params]
 

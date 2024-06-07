@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6734108s0jpo"
-path="res://.godot/imported/maverick_serious6.PNG-6a066e1df8aba54807a0556215653a2c.ctex"
+path="res://.godot/imported/maverick_serious6.png-3c3edf0b5f8560b6d8e31e91a1fd27b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vn/Maverick/maverick_serious6.PNG"
-dest_files=["res://.godot/imported/maverick_serious6.PNG-6a066e1df8aba54807a0556215653a2c.ctex"]
+source_file="res://assets/vn/Maverick/maverick_serious6.png"
+dest_files=["res://.godot/imported/maverick_serious6.png-3c3edf0b5f8560b6d8e31e91a1fd27b6.ctex"]
 
 [params]
 
