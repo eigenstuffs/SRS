@@ -25,37 +25,47 @@ func init_sprite(character_list : Array[String], sprite_list : Array[String]):
 		if sprite_list.size() == character_list.size():
 			prior_character_list = character_list
 			prior_sprite_list = sprite_list
-			for i : Character in CHARACTER_LIST.list:
-				var clean_character_list = character_list.duplicate(true)
-				for k in character_list.size():
-					clean_character_list[k] = character_list[k].replace("-", "")
-				if clean_character_list.has(i.name):
-					var a = CHARACTER_SPRITE.instantiate()
-					$HBoxContainer.add_child(a)
-					var texture : Texture
-					
-					## pick the texture
-					
-					for j in i.textures:
-						if j.resource_path.ends_with(sprite_list[
-							clean_character_list.find(i.name)
-						] + ".PNG") or j.resource_path.ends_with(sprite_list[
-							clean_character_list.find(i.name)
-						] + ".png"):
-							texture = j
-					
-					a.texture = texture
-				
-			## add nulls
 			
-			for i in character_list.size():
-				if character_list[i] == "null":
-					var a = CHARACTER_SPRITE.instantiate()
-					$HBoxContainer.add_child(a)
-					$HBoxContainer.move_child(
-						a, i
-					)
-					a.modulate.a = 0
+			var clean_character_list = character_list.duplicate(true)
+			for k in character_list.size():
+					clean_character_list[k] = character_list[k].replace("-", "")
+			print(CHARACTER_LIST.list)
+			for i in clean_character_list:
+				var current_resource : Character = CHARACTER_LIST.list[0]
+				for k in CHARACTER_LIST.list:
+					if i == k.name:
+						current_resource = k
+			
+			
+			#for i in CHARACTER_LIST.list.size():
+				#clean_character_list = character_list.duplicate(true)
+				#for k in character_list.size():
+					#clean_character_list[k] = character_list[k].replace("-", "")
+				#if clean_character_list.has(CHARACTER_LIST.list[i].name):
+					#var a = CHARACTER_SPRITE.instantiate()
+					#$HBoxContainer.add_child(a)
+					#a.name = str(i)
+					#var texture : Texture
+					#
+					### pick the texture
+					#
+					#for j in CHARACTER_LIST.list[i].textures:
+						#if j.resource_path.ends_with(sprite_list[
+							#clean_character_list.find(CHARACTER_LIST.list[i].name)
+						#] + ".PNG") or j.resource_path.ends_with(sprite_list[
+							#clean_character_list.find(CHARACTER_LIST.list[i].name)
+						#] + ".png"):
+							#texture = j
+					#
+					#a.texture = texture
+				#elif clean_character_list.has():
+					#var a = CHARACTER_SPRITE.instantiate()
+					#$HBoxContainer.add_child(a)
+					#a.name = CHARACTER_LIST.list[i].name
+					#a.modulate.a = 0
+			## add nulls
+
+				
 			for i in $HBoxContainer.get_child_count():
 				if character_list[i-1].contains("-"):
 					$HBoxContainer.get_child(i-1).modulate = Color("969696")

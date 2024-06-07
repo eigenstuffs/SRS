@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nsfsluvoulwy" path="res://assets/rhythm/key.png" id="4_r2rj6"]
 [ext_resource type="Script" path="res://tools/minigames/rhythm/play/key_light.gd" id="5_ijapg"]
 [ext_resource type="Texture2D" uid="uid://b4hn85ukrhk8v" path="res://assets/ui/Star.png" id="6_rfh2y"]
-[ext_resource type="AudioStream" uid="uid://dxvglaf21c3vo" path="res://tools/minigames/rhythm/assets/samples/hit.wav" id="7_tntqe"]
+[ext_resource type="AudioStream" uid="uid://btfl4g83dxxto" path="res://assets/normal-hitnormal.wav" id="7_trrbe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxuqm"]
 transparency = 1
@@ -107,6 +107,6 @@ draw_pass_1 = SubResource("QuadMesh_nua2l")
 [node name="Notes" type="Node3D" parent="."]
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_tntqe")
+stream = ExtResource("7_trrbe")
 volume_db = -12.0
 max_polyphony = 10

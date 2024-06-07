@@ -315,8 +315,8 @@ func read_line(key : int):
 					button.connect("pressed", choice_pressed)
 					$Choice/Buttons.add_child(button)
 					button.get_node("Label").text = i
-					if Global.data_dict["remembered"].has(i):
-						button["texture_normal"] = button["texture_disabled"]
+					if Global.data_dict["remembered"].has(str(Global.data_dict["current_line"], "|", i)):
+						button.disabled = true
 					button.position = Vector2(1140,-180)
 				match $Choice/Buttons.get_child_count():
 					1:
@@ -402,8 +402,8 @@ func read_line(key : int):
 				for i in text:
 					var a = GOD_CHOICE_BUTTON.instantiate()
 					a.connect("pressed", choice_pressed)
-					if Global.data_dict["remembered"].has(i):
-						a["texture_normal"] = a["texture_disabled"]
+					if Global.data_dict["remembered"].has(str(Global.data_dict["current_line"], "|", i)):
+						a.disabled = true
 					$GodChoice.add_child(a)
 					a.get_node("Label").text = i
 				var b = create_tween()
@@ -426,6 +426,133 @@ func read_line(key : int):
 				for i in $GodChoice.get_children():
 					i.queue_free()
 				print("god choice finished")
+		
+	elif current_line["flag"] == "decision_repeatable":
+		if current_line["options"] != null:
+			#var read_all = true
+			#for i in current_line["options"].split("|"):
+				#if !Global.data_dict["remembered"].has(i):
+					#read_all = false
+			if !edgy_theme:
+				$Choice/Backdrop.position = Vector2(1950,0)
+				choice_ui.show()
+				var text : Array = current_line["options"].split("|")
+				var a = create_tween()
+				a.tween_property($Choice/Backdrop, "position", Vector2(960,0), .5).set_trans(Tween.TRANS_EXPO)
+				await get_tree().create_timer(0.1).timeout
+				for i in text:
+					var button : TextureButton = CHOICE_BUTTON.instantiate()
+					button.connect("pressed", choice_pressed)
+					$Choice/Buttons.add_child(button)
+					button.get_node("Label").text = i
+					button.position = Vector2(1140,-180)
+				match $Choice/Buttons.get_child_count():
+					1:
+						var points = $Choice/Control/OneDecision.get_children()
+						var b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(0), "position", points[0].position, 0.5).set_trans(Tween.TRANS_EXPO)
+					2:
+						var points = $Choice/Control/TwoDecisions.get_children()
+						var b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(0), "position", points[0].position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.03).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(1), "position", points[1].position, 0.5).set_trans(Tween.TRANS_EXPO)
+					3:
+						var points = $Choice/Control/ThreeDecisions.get_children()
+						var b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(0), "position", points[0].position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.03).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(1), "position", points[1].position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.03).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(2), "position", points[2].position, 0.5).set_trans(Tween.TRANS_EXPO)
+					4:
+						var points = $Choice/Control/FourDecisions.get_children()
+						var b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(0), "position", points[0].position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.1).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(1), "position", points[1].position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.1).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(2), "position", points[2].position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.1).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(3), "position", points[3].position, 0.5).set_trans(Tween.TRANS_EXPO)
+				await choice
+				match $Choice/Buttons.get_child_count():
+					1:
+						var points = $Choice/AwayPos/OneDecision.get_children()
+						var b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(0), "position", points[0].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+					2:
+						var points = $Choice/AwayPos/TwoDecisions.get_children()
+						var b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(0), "position", points[0].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.03).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(1), "position", points[1].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+					3:
+						var points = $Choice/AwayPos/ThreeDecisions.get_children()
+						var b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(0), "position", points[0].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.03).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(1), "position", points[1].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.03).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(2), "position", points[2].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+					4:
+						var points = $Choice/AwayPos/FourDecisions.get_children()
+						var b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(0), "position", points[0].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.1).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(1), "position", points[1].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.1).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(2), "position", points[2].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+						await get_tree().create_timer(0.1).timeout
+						b = create_tween()
+						b.tween_property($Choice/Buttons.get_child(3), "position", points[3].global_position, 0.5).set_trans(Tween.TRANS_EXPO)
+				await get_tree().create_timer(0.1).timeout
+				a = create_tween()
+				a.tween_property($Choice/Backdrop, "position", Vector2(1950,0), .5).set_trans(Tween.TRANS_EXPO)
+				await a.finished
+				for i in $Choice/Buttons.get_children():
+					i.queue_free()
+			else:
+				$GodChoice.modulate.a = 0
+				$GodChoice.show()
+				var text : Array = current_line["options"].split("|")
+				for i in text:
+					var a = GOD_CHOICE_BUTTON.instantiate()
+					a.connect("pressed", choice_pressed)
+					$GodChoice.add_child(a)
+					a.get_node("Label").text = i
+				var b = create_tween()
+				b.tween_property(
+					$GodChoice,
+					"modulate:a",
+					1,
+					0.5
+				)
+				await b.finished
+				await choice
+				b = create_tween()
+				b.tween_property(
+					$GodChoice,
+					"modulate:a",
+					0,
+					0.5
+				)
+				await b.finished
+				for i in $GodChoice.get_children():
+					i.queue_free()
+				print("god choice finished")
+				
 	elif current_line["flag"] == "name_player":
 		$EffectHandler.player_name_screen()
 		await $EffectHandler.done
@@ -661,12 +788,18 @@ func choice_funnel(which : int):
 func choice_pressed():
 	for i in $Choice/Buttons.get_children():
 		if i.button_pressed:
-			Global.data_dict["remembered"].append(i.get_node("Label").text)
+			Global.data_dict["remembered"].append(
+				str(Global.data_dict["current_line"], "|",
+				i.get_node("Label").text)
+			)
 			choice.emit(i.get_index())
 			return
 	for i in $GodChoice.get_children():
 		if i.button_pressed:
-			Global.data_dict["remembered"].append(i.get_node("Label").text)
+			Global.data_dict["remembered"].append(
+				str(Global.data_dict["current_line"], "|",
+				i.get_node("Label").text)
+			)
 			choice.emit(i.get_index())
 			return
 
