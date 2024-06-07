@@ -1,12 +1,15 @@
 extends Control
 
 var save_dir = "user://villainess_saves/"
+var delete_confirmed : bool = false
 
 const SAVE_BLOCK = preload("res://tools/dialogue/save_block.tscn")
 
 signal exited_save
+signal delete_decision
 
 func init():
+	$confirm.visible = false
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		i.queue_free()
 	
@@ -36,6 +39,7 @@ func init():
 				)
 				a.save_path = file_path
 				a.connect("pressed", button_pressed)
+				a.connect("delete_save", delete_save)
 				
 				file.close()
 			file_name = dir.get_next()
@@ -53,9 +57,33 @@ func button_pressed():
 			EffectAnim.play("FlashWhite")
 			init()
 
+func delete_save():
+	$confirm.visible = true
+	await delete_decision
+	$confirm.visible = false
+	if delete_confirmed:
+		print("deleting save")
+		for i in $ScrollContainer/VBoxContainer.get_children():
+			if i.delete_button.button_pressed:
+				i.delete_button.button_pressed = false
+				print(str(i) + "is beling deleted")
+				Global.reset_data(i.save_path)
+				EffectAnim.play("FlashWhite")
+				init()
+	else:
+		print("deletion canceled")
+
 func _on_texture_button_pressed():
 	emit_signal("exited_save")
 	print("exiting save")
 
 func _ready():
 	init()
+
+func _on_yes_pressed():
+	delete_confirmed = true
+	emit_signal("delete_decision")
+	
+func _on_no_pressed():
+	delete_confirmed = false
+	emit_signal("delete_decision")
