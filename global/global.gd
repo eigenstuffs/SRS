@@ -230,7 +230,16 @@ func _ready():
 	if meta_data_dict["effect_on"]:
 		precompile_effects()
 	else: print("effect turned off")
-	
+
+func reset_data(dynamic_path : String):
+	var dir = DirAccess.open(save_dir)
+	if !dir:
+		DirAccess.make_dir_recursive_absolute(save_dir)
+	var file = FileAccess.open(dynamic_path, FileAccess.WRITE)
+	print("Saved data. " + dynamic_path)
+	file.store_var(original_data_dict)
+	file.close()
+
 func save_data(dynamic_path : String):
 	var dir = DirAccess.open(save_dir)
 	if !dir:

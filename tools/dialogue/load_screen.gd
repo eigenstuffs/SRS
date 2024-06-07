@@ -24,6 +24,7 @@ func init():
 				
 				var a = SAVE_BLOCK.instantiate()
 				$ScrollContainer/VBoxContainer.add_child(a)
+				a.delete_button.visible = false
 				a.get_node("Metadata").text = str(
 					get_var["player_name"], "\n",
 					get_var["current_scene"].replace(
