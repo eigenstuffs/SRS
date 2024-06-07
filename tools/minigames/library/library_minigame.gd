@@ -3,6 +3,7 @@ class_name LibraryMinigame extends Minigame
 @onready var BOOK_CAUGHT_SFX = preload("res://tools/minigames/library/sound/book_caught.mp3")
 @onready var SUBMIT_SFX = preload("res://tools/minigames/library/sound/submit_chime.mp3")
 @onready var FINISHED_SFX = preload("res://tools/minigames/maze/sound/maze_game_finished.wav")
+@onready var EXPLOSION_SFX = preload("res://resources/effect/explosion_effect/explosion.mp3")
 
 signal stop_blinking
 
@@ -47,15 +48,13 @@ func end():
 	#$BookInstancer.queue_free()
 
 func _on_library_player_book_collected(book : Book):
-	#if $LibraryPlayer/BookHolder.get_num_books() == 0:
-		#$Walls/Shelves.blinking()
 	if $LibraryPlayer/BookHolder.get_num_books() < 10: 
 		$LibraryPlayer/BookHolder.add_book_bone(book)
-		if $SfxPlayer.stream != FINISHED_SFX:
+		if $SfxPlayer.stream != FINISHED_SFX and $SfxPlayer.stream != SUBMIT_SFX:
 			$SfxPlayer.stream = BOOK_CAUGHT_SFX
 			$SfxPlayer.play()
 	elif $LibraryPlayer/BookHolder.get_num_books() == 10:
-		EffectReg.start_effect(self, "Vignette", [$EffectNode])
+		$Walls/Shelves.blinking()
 
 func _on_library_player_bomb_hit(bomb : Bomb):
 	lose_points(1)
@@ -82,6 +81,8 @@ func _on_library_player_bomb_hit(bomb : Bomb):
 func do_explosion(bomb : Bomb): 
 	var bomb_position := bomb.rigid_body.global_position
 	EffectReg.start_effect(self, 'Explosion', [self, EffectReg, bomb_position])
+	if !EffectReg.effect_on:
+		$ExplosionPlayer.play()
 		
 	for obj in $BookInstancer.get_children().slice(1):
 		if obj == bomb: continue
@@ -112,6 +113,7 @@ func _on_bookshelf_player_entered():
 		emit_signal("update_time", num_of_books)
 		$LibraryPlayer/BookHolder.clear_all_books()
 		$LibraryPlayer.move_hurtbox()
+		emit_signal("stop_blinking")
 
 func _physics_process(_delta: float) -> void:
 	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
