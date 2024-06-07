@@ -92,6 +92,7 @@ texture_hover = ExtResource("7_5a6ii")
 texture_focused = ExtResource("7_5a6ii")
 
 [node name="confirm" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="confirm"]
 offset_right = 1920.0

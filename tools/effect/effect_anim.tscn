@@ -382,14 +382,13 @@ z_as_relative = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="OneTimePlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="LoopPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -60.0
 
 [node name="Lace" type="Control" parent="."]
 layout_mode = 3

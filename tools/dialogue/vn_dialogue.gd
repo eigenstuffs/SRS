@@ -45,7 +45,7 @@ signal sfx_inquisitive
 signal sfx_whoosh_foam
 signal sfx_happy
 signal sfx_epiphany
-signal sfx_heartbeat_looping
+signal sfx_heartbeat_loop
 signal sfx_bells_mystery
 signal sfx_bells_countdown
 signal sfx_bells_magic_chime
@@ -658,12 +658,14 @@ func read_line(key : int):
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
 		clear_log()
+		Global.data_dict["current_line"] = 0
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "menu_abrupt":
 		text_box.hide()
 		EffectAnim.play("FadeBlackAbrupt")
 		await EffectAnim.animation_finished
 		clear_log()
+		Global.data_dict["current_line"] = 0
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "menu_lace":
 		text_box.hide()
@@ -671,6 +673,7 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.8
 		await EffectAnim.animation_finished
 		clear_log()
+		Global.data_dict["current_line"] = 0
 		get_tree().change_scene_to_file("res://scenes/menus/title.tscn")
 	elif current_line["flag"] == "free_zone_1":
 		text_box.hide()
@@ -679,6 +682,7 @@ func read_line(key : int):
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
 		clear_log()
+		Global.data_dict["current_line"] = 0
 		get_tree().change_scene_to_file("res://scenes/places/free_zone_1.tscn")
 	elif current_line["flag"] == "free_zone_2":
 		text_box.hide()
@@ -687,6 +691,7 @@ func read_line(key : int):
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
 		clear_log()
+		Global.data_dict["current_line"] = 0
 		get_tree().change_scene_to_file("res://scenes/places/free_zone_2.tscn")
 	elif current_line["flag"] == "quit":
 		clear_log()
@@ -698,6 +703,7 @@ func read_line(key : int):
 		await EffectAnim.animation_finished
 		EffectAnim.speed_scale = 1
 		clear_log()
+		Global.data_dict["current_line"] = 0
 		get_tree().reload_current_scene()
 	elif current_line["flag"] == "next_scene_lace":
 		text_box.hide()
@@ -705,12 +711,14 @@ func read_line(key : int):
 		EffectAnim.speed_scale = 0.8
 		await EffectAnim.animation_finished
 		clear_log()
+		Global.data_dict["current_line"] = 0
 		get_tree().reload_current_scene()
 	elif current_line["flag"] == "next_scene_abrupt":
 		text_box.hide()
 		EffectAnim.play("FadeBlackAbrupt")
 		await EffectAnim.animation_finished
 		clear_log()
+		Global.data_dict["current_line"] = 0
 		get_tree().reload_current_scene()
 	
 	if current_line["if remembered"] != null:

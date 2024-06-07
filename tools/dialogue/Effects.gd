@@ -226,7 +226,7 @@ func init():
 	vn.connect("sfx_whoosh_foam", play_sfx.bind(SFX_WHOOSH_FOAM))
 	vn.connect("sfx_happy", play_sfx.bind(SFX_HAPPY))
 	vn.connect("sfx_epiphany", play_sfx.bind(SFX_EPIPHANY))
-	vn.connect("sfx_heartbeat_looping", play_sfx_looping.bind(SFX_HEARTBEAT_LOOPING))
+	vn.connect("sfx_heartbeat_loop", play_sfx_looping.bind(SFX_HEARTBEAT_LOOPING))
 	vn.connect("sfx_bells_mystery", play_sfx.bind(SFX_BELLS_MYSTERY))
 	vn.connect("sfx_bells_countdown", play_sfx.bind(SFX_BELLS_COUNTDOWN))
 	vn.connect("sfx_bells_magic_chime", play_sfx.bind(SFX_BELLS_MAGIC_CHIME))
@@ -449,6 +449,7 @@ func stop_music():
 	await a.finished
 	EffectAnim.MusicPlayer.stop()
 	BUSY = false
+	EffectAnim.MusicPlayer.volume_db = -10
 	emit_signal("NOT_BUSY")
 	
 func pause_music():
@@ -458,6 +459,7 @@ func pause_music():
 	"volume_db", -100, 0.5)
 	await a.finished
 	BUSY = false
+	EffectAnim.MusicPlayer.volume_db = -10
 	emit_signal("NOT_BUSY")
 	
 func resume_music():
@@ -490,6 +492,7 @@ func stop_sfx_looping():
 	await a.finished
 	EffectAnim.LoopPlayer.stop()
 	BUSY = false
+	EffectAnim.LoopPlayer.volume_db = 0
 	emit_signal("NOT_BUSY")
 	
 ## CG
