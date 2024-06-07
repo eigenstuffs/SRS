@@ -21,3 +21,9 @@ func _on_delete_pressed():
 func toggle_delete_visibility(state):
 	$Delete/ColorRect.visible = state
 	$Delete/Label.visible = state
+#
+#func _on_mouse_entered():
+	#toggle_delete_visibility(true)
+#
+#func _on_mouse_exited():
+	#toggle_delete_visibility(false)

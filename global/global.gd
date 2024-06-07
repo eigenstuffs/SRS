@@ -329,3 +329,8 @@ func precompile_effects():
 	for effect_name in EffectReg.effects.keys(): EffectReg.free_effect(effect_name)
 	color_rect.queue_free()
 	print("all effect compiled")
+
+func _process(_delta):
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Master"), Global.data_dict["volume"]
+	)

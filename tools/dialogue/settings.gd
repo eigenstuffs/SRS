@@ -2,7 +2,12 @@ class_name SettingScene extends Control
 
 signal exit_settings
 
+@onready var vol_label = $VolumeLabel
+@onready var text_label = $TextSpeedLabel
+
 func init():
+	vol_label.text = str("Current volume: ", $MasterVolume.value, "db")
+	text_label.text = str("Seconds per character: ", $TextSpeed.value)
 	$MasterVolume.value = Global.data_dict["volume"]
 	$TextSpeed.value = Global.data_dict["text_speed"]
 	$EffectsButton.button_pressed = Global.meta_data_dict["effect_on"]
@@ -13,10 +18,12 @@ func init():
 			$Label6.text = "Disabled"
 
 func _on_master_volume_value_changed(value):
-	Global.data_dict["volume"] = $MasterVolume.value
+	Global.data_dict["volume"] = value
+	vol_label.text = str("Current volume: ", value, "db")
 
 func _on_text_speed_value_changed(value):
-	Global.data_dict["text_speed"] = $TextSpeed.value
+	Global.data_dict["text_speed"] = value
+	text_label.text = str("Seconds per character: ", value)
 
 func _on_texture_button_2_pressed():
 	Global.save_meta_data()

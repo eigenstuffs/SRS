@@ -96,8 +96,9 @@ theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_2sq6r")
 theme_override_styles/grabber = SubResource("StyleBoxTexture_wkqq4")
 theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_wkqq4")
 theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
-max_value = 1.0
-value = 0.5
+min_value = -72.0
+max_value = 10.0
+rounded = true
 
 [node name="Label3" type="Label" parent="."]
 process_mode = 3
@@ -139,6 +140,30 @@ run very poorly on older hardware.
 Save and reboot for this change to take effect."
 vertical_alignment = 1
 
+[node name="TextSpeedLabel" type="Label" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_left = 960.0
+offset_top = 448.0
+offset_right = 1344.0
+offset_bottom = 470.0
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/font_size = 16
+text = "Seconds per character: "
+vertical_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_left = 512.0
+offset_top = 448.0
+offset_right = 896.0
+offset_bottom = 470.0
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/font_size = 16
+text = "Current volume: "
+vertical_alignment = 1
+
 [node name="TextSpeed" type="HScrollBar" parent="."]
 process_mode = 3
 layout_mode = 0
@@ -154,6 +179,7 @@ theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
 min_value = 0.001
 max_value = 0.1
 value = 0.01
+rounded = true
 
 [node name="EffectsButton" type="TextureButton" parent="."]
 process_mode = 3

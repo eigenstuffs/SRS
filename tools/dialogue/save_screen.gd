@@ -29,15 +29,18 @@ func init():
 				$ScrollContainer/VBoxContainer.add_child(a)
 				a.get_node("Metadata").text = str(
 					get_var["player_name"], "\n",
-					get_var["current_scene"].replace(
+					(get_var["current_scene"].replace(
 						"res://tools/dialogue/vn_scripts/Dialogue - ",
 						""
+					)).replace(".json", "")
+				)
+				if get_var["saved_date"]:
+					a.get_node("SaveDate").text = str(
+						"Save created on:\n", get_var["saved_date"].replace("T", " ")
 					)
-				)
-				a.get_node("SaveDate").text = str(
-					"Save created on:\n", get_var["saved_date"]
-				)
 				a.save_path = file_path
+				if !get_var["saved_date"]:
+					a.modulate.a = 0.5
 				a.connect("pressed", button_pressed)
 				a.connect("delete_save", delete_save)
 				
