@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://be34lpcu247he" path="res://assets/misc/fish.png" id="6_ncctf"]
 [ext_resource type="Texture2D" uid="uid://f1bl0di56y1u" path="res://assets/misc/book.png" id="7_rfqxi"]
 [ext_resource type="Texture2D" uid="uid://x4lgsbode5j6" path="res://assets/misc/rhythm.png" id="8_u63tl"]
-[ext_resource type="Texture2D" uid="uid://c7fn4tormcchl" path="res://assets/vn/Esra/esra_blush1.PNG" id="9_7m7qd"]
-[ext_resource type="Texture2D" uid="uid://cp812hasta050" path="res://assets/maze/Maze_Fan.png" id="10_4ugxj"]
+[ext_resource type="Texture2D" uid="uid://c7pc4q1loggva" path="res://assets/ui/socialwarfare_icon.png" id="9_3vao3"]
+[ext_resource type="Texture2D" uid="uid://cbefry2l7p4fn" path="res://assets/ui/maze_icon.png" id="10_lf8db"]
 [ext_resource type="AudioStream" uid="uid://cwykh27ek1vmr" path="res://assets/music/Villianess Reborn Rose Type Beat.mp3" id="11_fjnq7"]
 
 [node name="Title" type="Control"]
@@ -63,6 +63,7 @@ offset_top = 720.0
 offset_right = 1953.0
 offset_bottom = 1994.0
 scale = Vector2(0.1, 0.1)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_ncctf")
 
 [node name="Fishing" type="TextureButton" parent="."]
@@ -72,6 +73,7 @@ offset_top = 720.0
 offset_right = 1793.0
 offset_bottom = 1994.0
 scale = Vector2(0.1, 0.1)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_rfqxi")
 
 [node name="Rhythm" type="TextureButton" parent="."]
@@ -81,25 +83,28 @@ offset_top = 720.0
 offset_right = 1633.0
 offset_bottom = 1994.0
 scale = Vector2(0.1, 0.1)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_u63tl")
 
 [node name="SocialWarfare" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 210.0
-offset_top = 840.0
-offset_right = 1878.0
-offset_bottom = 3474.0
+offset_left = 159.0
+offset_top = 831.0
+offset_right = 2547.0
+offset_bottom = 2499.0
 scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("9_7m7qd")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_3vao3")
 
 [node name="Maze" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 390.0
-offset_top = 840.0
-offset_right = 2058.0
-offset_bottom = 3474.0
+offset_left = 343.0
+offset_top = 829.0
+offset_right = 2731.0
+offset_bottom = 2497.0
 scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("10_4ugxj")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_lf8db")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

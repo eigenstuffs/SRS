@@ -28,6 +28,7 @@ func _process(_delta):
 		$Rhythm.disabled = true
 		$SocialWarfare.disabled = true
 		$Maze.disabled = true
+		$AudioStreamPlayer.stream_paused = true
 	else:
 		$TextureButton.disabled = false
 		$Library.disabled = false
@@ -35,6 +36,7 @@ func _process(_delta):
 		$Rhythm.disabled = false
 		$SocialWarfare.disabled = false
 		$Maze.disabled = false
+		$AudioStreamPlayer.stream_paused = false
 
 func _on_social_warfare_pressed():
 	get_tree().change_scene_to_file("res://tools/minigames/social_warfare/social_warfare_new.tscn")

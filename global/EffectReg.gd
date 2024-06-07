@@ -9,7 +9,7 @@ func _init() -> void:
 	pass
 
 func _ready():
-	if Global.data_dict["effect_on"]:
+	if Global.meta_data_dict["effect_on"]:
 		register_all_effects()
 		effect_on = true
 	else: effect_on = false

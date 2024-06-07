@@ -154,6 +154,7 @@ func get_main_stats() -> Array[int]:
 
 var save_dir = "user://villainess_saves/"
 var save_path = save_dir + "save.dat"
+var meta_data_path = save_dir + "meta_data.dat"
 
 @onready var original_data_dict = {
 	"remembered" : [],
@@ -165,7 +166,6 @@ var save_path = save_dir + "save.dat"
 	"og_ro" : "Nobody yet!",
 	"text_speed" : 0.01,
 	"volume" : 0.5,
-	"effect_on" : false,
 	"current_scene" : ACT1_CHAPTER1_SCENE1,
 	"current_line" : 0,
 	"saved_date": null,
@@ -197,7 +197,6 @@ var save_path = save_dir + "save.dat"
 	"og_ro" : og_ro,
 	"text_speed" : text_speed,
 	"volume" : volume,
-	"effect_on": effect_on,
 	"current_scene" : current_scene,
 	"current_line" : current_line,
 	"saved_date" : saved_date,
@@ -218,12 +217,17 @@ var save_path = save_dir + "save.dat"
 	"player_defense_ratio" : player_defense_ratio,
 	"player_offense_ratio" : player_offense_ratio
 }
-	
+
+@onready var meta_data_dict = {
+	"effect_on" : effect_on
+}
+
 func _ready():
+	load_meta_data()
 	for i in 100:
 		var dynamic_path = save_dir + "save_" + str(i) + ".dat"
 		load_data(dynamic_path)
-	if data_dict["effect_on"]:
+	if meta_data_dict["effect_on"]:
 		precompile_effects()
 	else: print("effect turned off")
 	
@@ -256,6 +260,26 @@ func load_data(dynamic_path : String):
 		print("Created and loaded new file. " + dynamic_path)
 		load_data(dynamic_path)
 
+func save_meta_data():
+	var dir = DirAccess.open(save_dir)
+	if !dir:
+		DirAccess.make_dir_recursive_absolute(save_dir)
+	var file = FileAccess.open(meta_data_path, FileAccess.WRITE)
+	print("Saved metadata." + meta_data_path)
+	file.store_var(meta_data_dict)
+	file.close()
+
+func load_meta_data():
+	var file = FileAccess.open(meta_data_path, FileAccess.READ)
+	if file:
+		meta_data_dict = file.get_var()
+		file.close()
+		print("Loaded meta data.")
+	else:
+		save_meta_data()
+		print("Created and loaded new file. " + meta_data_path)
+		load_meta_data()
+
 func precompile_effects():
 	# --- EFFECT SHADER PRECOMPILATION --- 
 	 # A black ColorRect is used to hide all the shaders drawn on the screen!
@@ -269,7 +293,7 @@ func precompile_effects():
 	var control := self.get_node('/root/EffectReg')
 	# We load all effects to the screen (ensuring they are *visible* i.e., rendered)
 	for effect_name in EffectReg.effects.keys(): EffectReg.start_effect(self, effect_name, [control])
-	control.get_children()[-1].add_child(color_rect)
+	control.add_child(color_rect)
 	await get_tree().create_timer(0.2).timeout # idk if this is needed
 	# ...then we remove all the loaded effects.
 	for effect_name in EffectReg.effects.keys(): EffectReg.free_effect(effect_name)

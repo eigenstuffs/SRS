@@ -15,7 +15,7 @@ func init():
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if file_name.ends_with(".dat") and file_name.contains("_"):
+			if file_name.ends_with(".dat") and file_name.contains("_") and !file_name.contains("meta_data"):
 				var file_path = save_dir + file_name
 				print("Processing file: " + file_path)
 				var file = FileAccess.open(file_path, FileAccess.READ)
