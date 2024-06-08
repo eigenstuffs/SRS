@@ -23,16 +23,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bsgjf")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.145098, 0.109804, 0.180392, 1)
-
-[node name="TitleScreenStackedButtons" type="Sprite2D" parent="."]
-position = Vector2(960, 544)
-scale = Vector2(0.575, 0.575)
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_igyh0")
+expand_mode = 2
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
@@ -112,6 +111,16 @@ texture_normal = ExtResource("10_lf8db")
 stream = ExtResource("11_fjnq7")
 volume_db = -10.0
 autoplay = true
+
+[node name="Overlay" type="ColorRect" parent="."]
+editor_description = "This is just used so that there isnt a flash to the clear color after the Godot loading screen!"
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Library" to="." method="_on_library_pressed"]

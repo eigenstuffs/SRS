@@ -14,6 +14,7 @@ config/name="Villainess x Reborn"
 run/main_scene="res://scenes/menus/title.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 run/max_fps=144
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://assets/misc/IMG_4946.jpeg"
 
 [autoload]
@@ -22,7 +23,7 @@ EffectAnim="*res://tools/effect/effect_anim.tscn"
 Global="*res://global/global.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 Util="*res://global/utilities.gd"
-WindowDimensionHelper="res://global/window_dimension_helper.gd"
+WindowDimensionHelper="*res://global/window_dimension_helper.gd"
 EffectReg="*res://global/EffectReg.gd"
 
 [debug]
@@ -37,6 +38,9 @@ gdscript/warnings/incompatible_ternary=0
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/energy_saving/keep_screen_on=false
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=3
 

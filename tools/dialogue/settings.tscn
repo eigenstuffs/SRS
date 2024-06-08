@@ -57,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_lyke2")
 
-[node name="Label" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="."]
 process_mode = 3
 layout_mode = 0
 offset_left = 750.0
@@ -71,139 +71,7 @@ text = "Settings
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 510.0
-offset_top = 390.0
-offset_right = 900.0
-offset_bottom = 458.0
-theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
-theme_override_font_sizes/font_size = 32
-text = "Master Volume
-"
-vertical_alignment = 1
-
-[node name="MasterVolume" type="HScrollBar" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 510.0
-offset_top = 480.0
-offset_right = 890.0
-offset_bottom = 512.0
-theme_override_styles/scroll = SubResource("StyleBoxTexture_yfjup")
-theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_2sq6r")
-theme_override_styles/grabber = SubResource("StyleBoxTexture_wkqq4")
-theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_wkqq4")
-theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
-min_value = -72.0
-max_value = 10.0
-rounded = true
-
-[node name="Label3" type="Label" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 960.0
-offset_top = 390.0
-offset_right = 1350.0
-offset_bottom = 458.0
-theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
-theme_override_font_sizes/font_size = 32
-text = "Text Speed
-"
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 512.0
-offset_top = 576.0
-offset_right = 1010.0
-offset_bottom = 704.0
-theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
-theme_override_font_sizes/font_size = 32
-text = "Enable Performance-heavy Visual Effects"
-vertical_alignment = 1
-
-[node name="Label5" type="Label" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 1024.0
-offset_top = 704.0
-offset_right = 1440.0
-offset_bottom = 801.0
-theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
-theme_override_font_sizes/font_size = 16
-text = "WARNING: Enabling this can drastically reduce performance 
-on older hardware!"
-vertical_alignment = 1
-
-[node name="TextSpeedLabel" type="Label" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 960.0
-offset_top = 448.0
-offset_right = 1344.0
-offset_bottom = 470.0
-theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
-theme_override_font_sizes/font_size = 16
-text = "Seconds per character: "
-vertical_alignment = 1
-
-[node name="VolumeLabel" type="Label" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 512.0
-offset_top = 448.0
-offset_right = 896.0
-offset_bottom = 470.0
-theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
-theme_override_font_sizes/font_size = 16
-text = "Current volume: "
-vertical_alignment = 1
-
-[node name="TextSpeed" type="HScrollBar" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 960.0
-offset_top = 480.0
-offset_right = 1340.0
-offset_bottom = 512.0
-theme_override_styles/scroll = SubResource("StyleBoxTexture_yfjup")
-theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_2sq6r")
-theme_override_styles/grabber = SubResource("StyleBoxTexture_wkqq4")
-theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_wkqq4")
-theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
-min_value = 0.001
-max_value = 0.1
-step = 0.001
-value = 0.001
-
-[node name="EffectsButton" type="TextureButton" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 512.0
-offset_top = 704.0
-offset_right = 997.0
-offset_bottom = 846.0
-toggle_mode = true
-texture_normal = ExtResource("9_64x2e")
-texture_pressed = ExtResource("10_jf3a4")
-
-[node name="Label6" type="Label" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 530.0
-offset_top = 731.0
-offset_right = 975.0
-offset_bottom = 821.0
-theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
-theme_override_font_sizes/font_size = 32
-text = "Disabled"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="BackButton" type="TextureButton" parent="."]
 process_mode = 3
 layout_mode = 0
 offset_left = 1590.0
@@ -215,8 +83,201 @@ texture_pressed = ExtResource("9_2n30h")
 texture_hover = ExtResource("10_h1850")
 texture_focused = ExtResource("10_h1850")
 
-[connection signal="value_changed" from="MasterVolume" to="." method="_on_master_volume_value_changed"]
-[connection signal="value_changed" from="TextSpeed" to="." method="_on_text_speed_value_changed"]
-[connection signal="mouse_entered" from="EffectsButton" to="." method="_on_effects_button_mouse_entered"]
-[connection signal="toggled" from="EffectsButton" to="." method="_on_effects_button_toggled"]
-[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 277.0
+offset_right = 1498.0
+offset_bottom = 448.0
+theme_override_constants/h_separation = 155
+theme_override_constants/v_separation = 25
+columns = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="GridContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 28
+text = "Master Volume
+"
+vertical_alignment = 1
+
+[node name="MasterVolumeControl" type="VBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="GridContainer/MasterVolumeControl"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/font_size = 16
+text = "Current Volume: 0db"
+vertical_alignment = 1
+
+[node name="Slider" type="HScrollBar" parent="GridContainer/MasterVolumeControl"]
+process_mode = 3
+custom_minimum_size = Vector2(380, 32)
+layout_mode = 2
+theme_override_styles/scroll = SubResource("StyleBoxTexture_yfjup")
+theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_2sq6r")
+theme_override_styles/grabber = SubResource("StyleBoxTexture_wkqq4")
+theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_wkqq4")
+theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
+min_value = -72.0
+max_value = 10.0
+rounded = true
+
+[node name="TextSpeedLabel" type="Label" parent="GridContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/font_size = 28
+text = "Text Speed
+"
+vertical_alignment = 1
+
+[node name="TextSpeedControl" type="VBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="GridContainer/TextSpeedControl"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/font_size = 16
+text = "Characters per Second: 0"
+vertical_alignment = 1
+
+[node name="Slider" type="HScrollBar" parent="GridContainer/TextSpeedControl"]
+process_mode = 3
+custom_minimum_size = Vector2(380, 32)
+layout_mode = 2
+theme_override_styles/scroll = SubResource("StyleBoxTexture_yfjup")
+theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_2sq6r")
+theme_override_styles/grabber = SubResource("StyleBoxTexture_wkqq4")
+theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_wkqq4")
+theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_wkqq4")
+min_value = 10.0
+max_value = 1000.0
+step = 10.0
+value = 500.0
+rounded = true
+
+[node name="FullscreenLabel" type="Label" parent="GridContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/font_size = 28
+text = "Toggle Fullscreen"
+vertical_alignment = 1
+
+[node name="FullscreenButton" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="TextureButton" parent="GridContainer/FullscreenButton"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -23.245
+offset_right = 504.0
+offset_bottom = 118.755
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+toggle_mode = true
+texture_normal = ExtResource("9_64x2e")
+texture_pressed = ExtResource("10_jf3a4")
+
+[node name="Label" type="Label" parent="GridContainer/FullscreenButton"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -9.175
+offset_right = 460.0
+offset_bottom = 33.825
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.48, 0.48)
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_font_sizes/font_size = 32
+text = "Disabled"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeavyVisualEffectsLabel" type="Label" parent="GridContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/font_size = 28
+text = "Toggle Performance-heavy Visual Effects"
+vertical_alignment = 1
+
+[node name="Warning" type="Label" parent="GridContainer/HeavyVisualEffectsLabel"]
+process_mode = 3
+layout_mode = 0
+offset_top = 35.815
+offset_right = 554.0
+offset_bottom = 57.815
+theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
+theme_override_font_sizes/font_size = 16
+text = "Enabling this can drastically reduce performance on older hardware!"
+vertical_alignment = 1
+
+[node name="HeavyVisualEffectsButton" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="TextureButton" parent="GridContainer/HeavyVisualEffectsButton"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -14.5
+offset_right = 504.0
+offset_bottom = 127.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+toggle_mode = true
+texture_normal = ExtResource("9_64x2e")
+texture_pressed = ExtResource("10_jf3a4")
+
+[node name="Label" type="Label" parent="GridContainer/HeavyVisualEffectsButton"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.00002
+offset_top = 0.499994
+offset_right = 460.0
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.48, 0.48)
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_font_sizes/font_size = 32
+text = "Disabled"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="BackButton" to="." method="_on_texture_button_2_pressed"]
+[connection signal="value_changed" from="GridContainer/MasterVolumeControl/Slider" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="GridContainer/TextSpeedControl/Slider" to="." method="_on_text_speed_value_changed"]
+[connection signal="toggled" from="GridContainer/FullscreenButton/Button" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="mouse_entered" from="GridContainer/HeavyVisualEffectsButton/Button" to="." method="_on_effects_button_mouse_entered"]
+[connection signal="toggled" from="GridContainer/HeavyVisualEffectsButton/Button" to="." method="_on_effects_button_toggled"]

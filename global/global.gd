@@ -244,15 +244,15 @@ var meta_data_path = save_dir + "meta_data.dat"
 }
 
 func _ready():
-	var window = get_window()
-	# And get the current screen the window's in
-	var screen = window.current_screen
-	# Get the usable rect for that screen
-	var screen_rect = DisplayServer.screen_get_usable_rect(screen)
-	# Get the window's size
-	var window_size = window.get_size_with_decorations()
-	# Set its position to the middle
-	window.position = screen_rect.position + (screen_rect.size / 2 - window_size / 2)
+	#var window = get_window()
+	## And get the current screen the window's in
+	#var screen = window.current_screen
+	## Get the usable rect for that screen
+	#var screen_rect = DisplayServer.screen_get_usable_rect(screen)
+	## Get the window's size
+	#var window_size = window.get_size_with_decorations()
+	## Set its position to the middle
+	#window.position = screen_rect.position + (screen_rect.size / 2 - window_size / 2)
 	
 	
 	load_meta_data()
