@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://byqqvw7rgw14n" path="res://resources/beatmap/fantaisie.tres" id="4_8hbdj"]
 [ext_resource type="Resource" uid="uid://dnbo1c8vcvwxb" path="res://resources/beatmap/escapsim.tres" id="4_xy04h"]
 [ext_resource type="Resource" uid="uid://qc6xfemnwspm" path="res://resources/beatmap/eden.tres" id="5_kr3uh"]
-[ext_resource type="AudioStream" uid="uid://d1querjbramsy" path="res://assets/sfx/whoosh_1.wav" id="7_1i8dd"]
+[ext_resource type="AudioStream" uid="uid://d1querjbramsy" path="res://assets/sfx/whoosh_1.ogg" id="7_1i8dd"]
 [ext_resource type="Shader" path="res://tools/minigames/rhythm/arrow.gdshader" id="7_ksbjf"]
 [ext_resource type="AudioStream" uid="uid://dfvvumy7n5b2b" path="res://assets/sfx/game_alert_2.mp3" id="8_5xqbm"]
 [ext_resource type="AudioStream" uid="uid://dd1wk4fpa4nyq" path="res://assets/sfx/game_alert_1.mp3" id="8_m1r3h"]

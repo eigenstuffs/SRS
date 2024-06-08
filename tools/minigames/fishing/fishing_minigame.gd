@@ -2,7 +2,7 @@ class_name FishingMinigame extends Minigame
 #extends Node3D #remember to change this back
 # signals and end() are already defined in Minigame class .. see minigame.gd
 
-const FINISHED_SFX = preload("res://tools/minigames/maze/sound/maze_game_finished.wav")
+const FINISHED_SFX = preload("res://tools/minigames/maze/sound/maze_game_finished.ogg")
 
 @onready var fishing_rod = $FishingPlayer/FishingRod
 @onready var bob_indicator = $BobIndicator

@@ -2,7 +2,7 @@ class_name LibraryMinigame extends Minigame
 
 @onready var BOOK_CAUGHT_SFX = preload("res://tools/minigames/library/sound/book_caught.mp3")
 @onready var SUBMIT_SFX = preload("res://tools/minigames/library/sound/submit_chime.mp3")
-@onready var FINISHED_SFX = preload("res://tools/minigames/maze/sound/maze_game_finished.wav")
+@onready var FINISHED_SFX = preload("res://tools/minigames/maze/sound/maze_game_finished.ogg")
 @onready var EXPLOSION_SFX = preload("res://resources/effect/explosion_effect/explosion.mp3")
 
 signal stop_blinking

@@ -13,7 +13,7 @@ signal water_entered
 @onready var CatchField : Area3D = $CatchField
 @onready var AttractionField: Area3D = $AttractionField
 
-const WATER_SPLASH = preload("res://tools/minigames/fishing/sounds/water_splash.wav")
+const WATER_SPLASH = preload("res://tools/minigames/fishing/sounds/water_splash.ogg")
 
 const water_height : float = 0.0
 

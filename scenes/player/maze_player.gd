@@ -2,7 +2,7 @@ extends Player
 
 class_name MazePlayer
 
-@onready var DASH_SFX = preload("res://tools/minigames/maze/sound/dash.wav")
+@onready var DASH_SFX = preload("res://tools/minigames/maze/sound/dash.ogg")
 
 var can_dash : bool = true
 var is_dashing : bool = false

@@ -10,11 +10,11 @@ class_name MazeMinigame extends Minigame
 #Medium: W = L = 10, NKey = 3, r = 3
 #Hard: W = L = 13, NKey = 5, r = 4
 @onready var maze_metadata : MazeMeta = preload("res://tools/minigames/maze/maze_metadata.tres")
-@onready var GAME_FINISHED_SFX = preload("res://tools/minigames/maze/sound/maze_game_finished.wav")
-@onready var HURT_SFX = preload("res://tools/minigames/maze/sound/player_hurt.wav")
-@onready var SPEED_UP_SFX = preload("res://tools/minigames/maze/sound/speed_up.wav")
-@onready var KEY_SFX = preload("res://tools/minigames/maze/sound/key_get.wav")
-@onready var DOOR_OPEN_SFX = preload("res://tools/minigames/maze/sound/door_open.wav")
+@onready var GAME_FINISHED_SFX = preload("res://tools/minigames/maze/sound/maze_game_finished.ogg")
+@onready var HURT_SFX = preload("res://tools/minigames/maze/sound/player_hurt.ogg")
+@onready var SPEED_UP_SFX = preload("res://tools/minigames/maze/sound/speed_up.ogg")
+@onready var KEY_SFX = preload("res://tools/minigames/maze/sound/key_get.ogg")
+@onready var DOOR_OPEN_SFX = preload("res://tools/minigames/maze/sound/door_open.ogg")
 const FIRST_STAGE_MUSIC = preload("res://tools/minigames/maze/sound/Villianess_Reborn_Minigame_Music_First_Stage.mp3")
 const FASTER_MUSIC = preload("res://tools/minigames/maze/sound/Villianess_Reborn_Minigame_Music_More_Intense.mp3")
 
