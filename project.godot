@@ -20,7 +20,7 @@ config/icon="res://assets/misc/IMG_4946.jpeg"
 
 EffectAnim="*res://tools/effect/effect_anim.tscn"
 Global="*res://global/global.gd"
-DebugMenu="res://addons/debug_menu/debug_menu.tscn"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 Util="*res://global/utilities.gd"
 WindowDimensionHelper="res://global/window_dimension_helper.gd"
 EffectReg="*res://global/EffectReg.gd"
@@ -42,7 +42,7 @@ window/vsync/vsync_mode=3
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/wigglebone/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/godotsize/plugin.cfg", "res://addons/wigglebone/plugin.cfg")
 
 [file_customization]
 

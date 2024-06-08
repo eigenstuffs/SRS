@@ -78,7 +78,7 @@ func init_cecilia(sprite):
 		get_node(cecilia_texture).modulate.a = 0
 		for i in CECILIA.textures:
 			if i.resource_path.ends_with(
-				clean_sprite + ".png"
+				clean_sprite + ".PNG"
 			) or i.resource_path.ends_with(
 				clean_sprite + ".png"
 			):
