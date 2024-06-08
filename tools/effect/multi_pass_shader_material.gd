@@ -74,6 +74,8 @@ func has_shader_pass(pass_name : StringName) -> bool:
 
 func enable_shader_pass(pass_name : StringName, uniforms : Dictionary={}):
 	assert(pass_name != BASE_SHADER_NAME, 'Shader pass name \'%s\' is reserved!' % BASE_SHADER_NAME)
+	if not Global.meta_data_dict["effect_on"]:
+		return
 	# Lazy initialization of bindings
 	if not is_initialized: initialize_passes()
 	_enable_shader_pass(pass_name, uniforms)
@@ -111,6 +113,8 @@ func _enable_shader_pass(pass_name : StringName, uniforms : Dictionary = {}):
 
 func disable_shader_pass(pass_name : StringName):
 	assert(pass_name != BASE_SHADER_NAME, 'Shader pass name \'%s\' is reserved!' % BASE_SHADER_NAME)
+	if not Global.meta_data_dict["effect_on"]:
+		return
 	assert(self.is_initialized and shader_map[pass_name])
 	var material : ShaderMaterial = shader_map[pass_name][0]
 	var shader_pass : ShaderPass = shader_map[pass_name][1]

@@ -122,7 +122,7 @@ offset_right = 1010.0
 offset_bottom = 704.0
 theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
 theme_override_font_sizes/font_size = 32
-text = "Better Minigame Visual Effects?"
+text = "Enable Performance-heavy Visual Effects"
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="."]
@@ -134,10 +134,8 @@ offset_right = 1440.0
 offset_bottom = 801.0
 theme_override_colors/font_color = Color(0.32549, 0.262745, 0.101961, 1)
 theme_override_font_sizes/font_size = 16
-text = "WARNING: Enabling these effects will make the game
-run very poorly on older hardware.
-
-Save and reboot for this change to take effect."
+text = "WARNING: Enabling this can drastically reduce performance 
+on older hardware!"
 vertical_alignment = 1
 
 [node name="TextSpeedLabel" type="Label" parent="."]

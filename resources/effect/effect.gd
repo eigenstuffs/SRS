@@ -18,6 +18,7 @@ var on_stop : Callable
 var on_queue_free : Callable
 
 var should_free_when_stopped := false
+var is_performance_heavy := false
 var timer : Timer
 
 func _init(name_ := 'NO_NAME', duration_ := 0.0, on_start_ := func(): pass, on_stop_ := func(): pass, on_queue_free_ := func(): pass) -> void:

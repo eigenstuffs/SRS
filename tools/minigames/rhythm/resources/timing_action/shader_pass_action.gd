@@ -20,6 +20,8 @@ func _init(time_ : float, target_ : MultiPassShaderMaterial, new_state_ : Shader
 				assert(len(passes_) == len(uniforms_))
 
 func run() -> void:
+	if not Global.meta_data_dict["effect_on"]:
+		return
 	match self.new_state:
 		ShaderPassAction.State.DISABLE:
 			for pass_name in passes:

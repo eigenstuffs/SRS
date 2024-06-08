@@ -44,6 +44,7 @@ class EffectBlurNew extends CanvasItemEffect:
 		render_passes.push_back(CanvasItemRenderPass.new(BLUR_SHADER)) # Horizontal pass
 		render_passes.push_back(CanvasItemRenderPass.new(BLUR_SHADER)) # Vertical pass
 		render_passes.push_back(CanvasItemRenderPass.new(SCREEN_NOISE_SHADER)) 
+		self.is_performance_heavy = true
 		
 		super('Blur', 0.2,
 			func(t0 := 0.0, t1 := 1.0):
@@ -82,6 +83,7 @@ class EffectKuwahara extends CanvasItemEffect:
 	func _init() -> void:
 		render_passes.push_back(CanvasItemRenderPass.new(KUWAHARA_FILTER))
 		
+		self.is_performance_heavy = true
 		super('Kuwahara', 0.0, 
 			func(radius := 10.0, offset := Vector2(0, 0)) -> void:
 				render_passes[0].enable({'radius' : radius, 'offset' : offset}))
@@ -162,6 +164,7 @@ class EffectSphereRaymarched extends CanvasItemEffect:
 	func _init() -> void:
 		render_passes.push_back(CanvasItemRenderPass.new(SPHERE_RAYMARCHED_SHADER))
 		
+		self.is_performance_heavy = true
 		super('SphereRaymarched', 0.0)
 		
 class EffectBloom extends CanvasItemEffect:
