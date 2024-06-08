@@ -112,6 +112,7 @@ mesh = SubResource("BoxMesh_ngvxs")
 
 [node name="Background" type="Sprite3D" parent="Walls/Shelves"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 2.08165e-12)
+pixel_size = 0.02
 texture = ExtResource("7_pg1qs")
 
 [node name="Hardlight" type="Sprite3D" parent="Walls/Shelves"]
@@ -121,6 +122,7 @@ texture = ExtResource("9_h2gwe")
 [node name="Screen" type="Sprite3D" parent="Walls/Shelves"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 0.04)
 modulate = Color(1, 1, 1, 0.3)
+pixel_size = 0.02
 texture = ExtResource("10_sb8oc")
 
 [node name="Shelves" type="Sprite3D" parent="Walls/Shelves"]

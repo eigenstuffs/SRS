@@ -137,6 +137,7 @@ shape = SubResource("SphereShape3D_x45a8")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-2.84124e-09, -0.065, -2.84124e-09, -9.90987e-25, -2.84124e-09, 0.065, -0.065, 2.84124e-09, 1.24195e-16, 0.277625, 0, 0)
+pixel_size = 0.0667
 texture = ExtResource("2_u4jqi")
 hframes = 6
 vframes = 2
