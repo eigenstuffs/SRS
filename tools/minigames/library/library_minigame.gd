@@ -81,8 +81,8 @@ func _on_library_player_bomb_hit(bomb : Bomb):
 func do_explosion(bomb : Bomb): 
 	var bomb_position := bomb.rigid_body.global_position
 	EffectReg.start_effect(self, 'Explosion', [self, EffectReg, bomb_position])
-	if !EffectReg.effect_on:
-		$ExplosionPlayer.play()
+	#if !EffectReg.effect_on:
+		#$ExplosionPlayer.play()
 		
 	for obj in $BookInstancer.get_children().slice(1):
 		if obj == bomb: continue

@@ -147,7 +147,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77746, 0, -1.80986)
 shape = SubResource("BoxShape3D_uoii5")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 7.11775, 0, -2.6008)
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 7.54548, -1.49186e-16, -2.6008)
 shape = SubResource("BoxShape3D_uoii5")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
@@ -282,6 +282,32 @@ script = ExtResource("13_o0gv8")
 minigame = "Rhythm"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC3"]
+libraries = {
+"": SubResource("AnimationLibrary_qbuaw")
+}
+autoplay = "Idle"
+
+[node name="NPC4" type="Area3D" parent="Actors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.813047, 0.540338, -2.38827)
+script = ExtResource("9_132j0")
+idle = ExtResource("10_6ptx6")
+selected = ExtResource("11_r875s")
+player_node = NodePath("../Player")
+
+[node name="Sprite3D" type="Sprite3D" parent="Actors/NPC4"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+texture = ExtResource("10_6ptx6")
+hframes = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Actors/NPC4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
+shape = SubResource("BoxShape3D_0hq8b")
+
+[node name="Interaction" parent="Actors/NPC4" instance=ExtResource("12_ng67i")]
+script = ExtResource("13_o0gv8")
+minigame = "Fishing"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC4"]
 libraries = {
 "": SubResource("AnimationLibrary_qbuaw")
 }
