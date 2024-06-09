@@ -1,8 +1,10 @@
 extends Node3D
 
+class_name FreeZone
+
 signal noTimeLeft
 
-@export var turns : int = 4
+@export var turns : int = 3
 
 @onready var interactor : Interactor = $Actors/Player.get_node("Interactor")
 @onready var overlay = $CanvasLayer/Overlay
