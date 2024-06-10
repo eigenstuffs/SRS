@@ -56,7 +56,24 @@ func end() -> void:
 		get_parent().get_parent().ui.sLabel.text = "Finished!"
 		get_parent().get_parent().ui.gameOver.emit()
 		
-		detailed_points = [playfield.scores, [1, 1, 0, 0]]
+		var combo_multiplier := 0.0
+		if playfield.max_combo != 0:
+			combo_multiplier = 1.5 if not playfield.combo_was_broken else lerpf(0.7, 1.0, min(1.0, playfield.max_combo / len(playfield.beatmap.objects)))
+		var score_sum : float = playfield.scores[0] + playfield.scores[1] + playfield.scores[2] + playfield.scores[3] + playfield.scores[4]
+		var type_multiplier := 1.0
+		type_multiplier -= 0.1 * playfield.scores[1] / score_sum
+		type_multiplier -= 0.3 * playfield.scores[2] / score_sum
+		type_multiplier -= 0.5 * playfield.scores[3] / score_sum
+		type_multiplier -= 0.8 * playfield.scores[4] / score_sum
+		
+		var beatmap := playfield.beatmap
+		var duration := beatmap.objects[-1].time + beatmap.objects[-1].duration
+		var difficulty := len(beatmap.objects)/(duration + 1e-8) # Difficulty is just note density LOL
+		var difficulty_multiplier := (log(difficulty+1) + 1)/log(10) # Ranges from 1 to 1.343 at 10 stars
+		print('Combo Multiplier (%d): %f, Type Multiplier: %f, Difficulty Multiplier: %f' % [playfield.max_combo, combo_multiplier, type_multiplier, difficulty_multiplier])
+		var multiplier := combo_multiplier*type_multiplier*difficulty_multiplier
+		
+		detailed_points = [playfield.scores, [ceili(8*multiplier), ceili(6*multiplier), 0, 0]]
 		minigame_finished.emit(detailed_points)
 
 func _on_playfield_report_score(score: int) -> void:
