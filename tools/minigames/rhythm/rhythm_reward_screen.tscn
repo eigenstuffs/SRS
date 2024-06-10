@@ -55,7 +55,7 @@ offset_left = 168.0
 offset_top = 272.0
 offset_right = 872.0
 offset_bottom = 592.0
-theme_override_constants/separation = 15
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Line" type="HBoxContainer" parent="ScoreTally"]
@@ -262,6 +262,7 @@ offset_top = -485.0
 offset_right = 872.0
 offset_bottom = -228.0
 grow_vertical = 0
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Line" type="HBoxContainer" parent="FinalScore"]

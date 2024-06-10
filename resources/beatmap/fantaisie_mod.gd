@@ -111,6 +111,8 @@ func get_timing_actions(playfield : RhythmPlayfield) -> Array[TimingAction]:
 	var actions : Array[TimingAction] = []
 	for action in TIMING_ACTIONS:
 		var target : Variant = playfield.screen_space_material if action[1] == 'screen' else playfield.backplane_material if action[1] == 'back' else playfield
+		if not Global.meta_data_dict["effect_on"] and action[1] == 'back':
+			continue
 		if action[2] is Callable:
 			actions.push_back(CallbackAction.new(action[0], action[2], [target]))
 		elif action[2] == 'enable':

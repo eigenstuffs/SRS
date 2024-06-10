@@ -243,6 +243,10 @@ var meta_data_path = save_dir + "meta_data.dat"
 	"effect_on" : effect_on
 }
 
+func _init() -> void:
+	# Sets **window** (like actual OS window) background to black
+	RenderingServer.set_default_clear_color(Color.BLACK)
+
 func _ready():
 	#var window = get_window()
 	## And get the current screen the window's in
@@ -262,6 +266,10 @@ func _ready():
 	if meta_data_dict["effect_on"]:
 		precompile_effects()
 	else: print("effect turned off")
+	
+	# FIXME: evil timer to wait for noise textures to generate i hate this but im too lazy to make a proper
+	await get_tree().create_timer(0.1).timeout
+	EffectReg.start_effect(self, 'FilmGrain', [self.get_node('/root/EffectReg')])
 
 func reset_data(dynamic_path : String):
 	var dir = DirAccess.open(save_dir)
@@ -323,7 +331,7 @@ func load_meta_data():
 
 func precompile_effects():
 	# --- EFFECT SHADER PRECOMPILATION --- 
-	 # A black ColorRect is used to hide all the shaders drawn on the screen!
+	# A black ColorRect is used to hide all the shaders drawn on the screen!
 	var color_rect := ColorRect.new()
 	color_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	color_rect.color = Color.BLACK

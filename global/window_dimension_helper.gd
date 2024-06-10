@@ -7,7 +7,7 @@ extends Node
 
 signal main_window_size_changed
 
-const INITIAL_SCALE_FACTOR : float = 0.8
+const INITIAL_SCALE_FACTOR : float = 0.7
 ## Whether or not the initial window size should scale with screen (monitor) resolution.
 const SHOULD_INIT_WITH_SCREEN_RESOLUTION : bool = true
 
@@ -19,38 +19,26 @@ var last_window_size : Vector2i
 var last_window_position : Vector2i
 var timer : Timer = Timer.new()
 
-@onready var aspect_ratio : float = \
-	_get_window_size_setting('viewport_width') as float / _get_window_size_setting('viewport_height')
+var aspect_ratio : float = float(_get_window_size_setting('viewport_width')) / _get_window_size_setting('viewport_height')
 
 func _ready() -> void:
-	var viewport = get_tree().root
-	var screen = DisplayServer.window_get_current_screen()
-	var screen_size = DisplayServer.screen_get_size(screen)
-	var size = screen_size if SHOULD_INIT_WITH_SCREEN_RESOLUTION else viewport.size
+	var screen := DisplayServer.window_get_current_screen()
+	var screen_size := DisplayServer.screen_get_size(screen)
+	var size := DisplayServer.window_get_size()
 
-	# --- Retina Screen Resolution Correction ---
-	# Source: https://forum.godotengine.org/t/is-there-some-mismatch-between-godot-window-size-pixels-and-os-x-window-size/40140/4
-	var retina_scale = 1.0 if SHOULD_INIT_WITH_SCREEN_RESOLUTION else DisplayServer.screen_get_scale(screen)
-	var relative_scale = 1.0
-	if viewport.content_scale_factor != retina_scale:
-		# We need to change, calculate the relative change in scale
-		relative_scale = retina_scale / viewport.content_scale_factor
-	# Apply the change, as well as resizing window based on previous scale and relative scale
-	#viewport.content_scale_factor = retina_scale
-	resize_window(size * relative_scale * INITIAL_SCALE_FACTOR)
-
+	resize_window(screen_size * DisplayServer.screen_get_scale(screen) * INITIAL_SCALE_FACTOR)
 	# Keep resized window centered if set in project settings
 	if _get_window_size_setting('initial_position_type') == 1:
-		var centered_position = (screen_size - viewport.size) * 0.5
+		var centered_position = (screen_size - DisplayServer.window_get_size()) * 0.5
 		DisplayServer.window_set_position(centered_position)
 
-	last_window_size = viewport.size
+	last_window_size = size
 	main_window_size_changed.connect(_on_main_window_size_changed)
 
-	add_child.call_deferred(timer)
+	add_child(timer)
 	timer.timeout.connect(_on_timeout)
 
-func _process(_delta : float) -> void:
+func _physics_process(_delta : float) -> void:
 	if last_window_size != DisplayServer.window_get_size() or last_window_position != DisplayServer.window_get_position():
 		last_window_size = DisplayServer.window_get_size();
 		last_window_position = DisplayServer.window_get_position()

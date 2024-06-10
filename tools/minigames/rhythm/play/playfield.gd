@@ -38,6 +38,8 @@ var beat : int = 0
 var scores = [0, 0, 0, 0, 0]
 var measure_bar_key : RhythmKey
 var combo := 0
+var max_combo := 0
+var combo_was_broken = false
 
 @onready var audio_synchronizer : AudioSynchronizer = $AudioSynchronizer
 @onready var screen_space_material : MultiPassShaderMaterial = $ScreenSpaceMesh.get_surface_override_material(0)
@@ -122,13 +124,12 @@ func _on_key_report_hit(timing_offset : Variant, hit_type : Note.HitType):
 	report_score.emit(scoring[2])
 
 func _update_combo(new_combo : int, new_score : String, score_color : Color) -> void:
-	if new_combo > combo:
-		pass
-	else: # Missed
-		pass
 	$Scores.update_combo_text(new_combo)
 	$Scores.update_score_text(new_score, score_color)
+	if new_combo < combo: 
+		combo_was_broken = true
 	combo = new_combo
+	max_combo = max(max_combo, combo)
 
 func _get_scoring(timing_offset : float, scoring : Array):
 	# Just so I can avoid the awful if..elif..elif.. chain...
