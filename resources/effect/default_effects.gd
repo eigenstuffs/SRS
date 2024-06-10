@@ -208,6 +208,53 @@ class EffectExplosion extends Effect:
 			func(): queue_free(),
 			func(): pass)
 
+class EffectFilmGrain extends CanvasItemEffect:
+	const FILM_GRAIN_SHADER := preload('../shaders/canvas_item/film_grain.gdshader')
+	
+	static var noise_textures : Texture2DArray
+	
+	static func _static_init() -> void:
+		noise_textures = await EffectFilmGrain.generate_film_grain_texture_array()
+	
+	func _init() -> void:
+		# Film grain effect will have maximum priority so that it is always on top
+		render_passes.push_back(CanvasItemRenderPass.new(FILM_GRAIN_SHADER, RenderingServer.CANVAS_ITEM_Z_MAX))
+		
+		super('FilmGrain', 0.0,
+			func(noise_strength := 0.055, updates_per_second := 24):
+				assert(noise_textures)
+				render_passes[0].enable({'noise_strength' : noise_strength, 'updates_per_second' : updates_per_second, 'noise_textures' : noise_textures}))
+	
+	static func generate_film_grain_texture_array(num_textures:=12, texture_size:=Vector2i(128, 128)) -> Texture2DArray:
+		# Reducing the number of textures or texture_size increases the chances of 
+		# perceptual pattern recognition in the noise (which could be distracting!)
+		var noise_textures : Array[NoiseTexture2D] = []
+		var noise_images : Array[Image] = []
+		var output := Texture2DArray.new()
+		
+		# Generate noise textures all at once (ideally in parallel)...
+		for i in range(num_textures):
+			var texture = NoiseTexture2D.new()
+			texture.width = texture_size.x
+			texture.height = texture_size.y
+			texture.noise = FastNoiseLite.new()
+			texture.noise.noise_type = FastNoiseLite.TYPE_VALUE_CUBIC
+			texture.noise.seed = i
+			texture.noise.frequency = 1.0
+			texture.noise.fractal_lacunarity = 0.2
+			texture.noise.fractal_weighted_strength = 0.8
+			noise_textures.push_back(texture)
+			
+		# Then await the generation of noise textures
+		for i in range(num_textures):
+			var texture = noise_textures[i]
+			await texture.changed
+			noise_images.push_back(texture.get_image())
+		output.create_from_images(noise_images)
+		assert(output.get_layers() == num_textures)
+		return output
+
+
 func _init() -> void:
 	effects.push_back(EffectImpactLines.new())  # Impact lines for zooming!
 	effects.push_back(EffectSlideWhistle.new()) # Transition for signed distance field
@@ -223,3 +270,4 @@ func _init() -> void:
 	effects.push_back(EffectSphereRaymarched.new())
 	effects.push_back(EffectBloom.new())
 	effects.push_back(EffectExplosion.new())
+	effects.push_back(EffectFilmGrain.new())

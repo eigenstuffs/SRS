@@ -8,10 +8,13 @@ const CLEAR_SHADER := preload('res://resources/shaders/canvas_item/clear_shader_
 var screen_space_color_rect : ColorRect
 
 func _init(shader_ : Shader, priority_ := 0) -> void:
+	assert(priority <= RenderingServer.CANVAS_ITEM_Z_MAX)
 	screen_space_color_rect = ColorRect.new()
 	screen_space_color_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	screen_space_color_rect.material = ShaderMaterial.new()
 	screen_space_color_rect.material.shader = shader_
+	screen_space_color_rect.z_index = priority_
+	screen_space_color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(screen_space_color_rect)
 	
 	self.shader = shader_
