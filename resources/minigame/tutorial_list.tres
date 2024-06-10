@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TutorialList" load_steps=8 format=3 uid="uid://ci2wx8d5hu6sg"]
+[gd_resource type="Resource" script_class="TutorialList" load_steps=9 format=3 uid="uid://ci2wx8d5hu6sg"]
 
 [ext_resource type="Script" path="res://resources/minigame/tutorial_list.gd" id="1_cpnaq"]
 [ext_resource type="Script" path="res://resources/minigame/tutorial_info.gd" id="2_jssjl"]
@@ -28,6 +28,11 @@ script = ExtResource("2_jssjl")
 name = "SocialWarfare"
 scene = "res://tools/minigames/social_warfare/SW_tutorial.tscn"
 
+[sub_resource type="Resource" id="Resource_h8qht"]
+script = ExtResource("2_jssjl")
+name = "FreeZone"
+scene = "res://scenes/places/free_time_tutorial.tscn"
+
 [resource]
 script = ExtResource("1_cpnaq")
-tutorial_scene_list = Array[ExtResource("2_jssjl")]([SubResource("Resource_75off"), SubResource("Resource_8yx5m"), SubResource("Resource_s2l3j"), SubResource("Resource_elihx"), SubResource("Resource_ca2ix")])
+tutorial_scene_list = Array[ExtResource("2_jssjl")]([SubResource("Resource_75off"), SubResource("Resource_8yx5m"), SubResource("Resource_s2l3j"), SubResource("Resource_elihx"), SubResource("Resource_ca2ix"), SubResource("Resource_h8qht")])

@@ -3,7 +3,6 @@ extends Control
 class_name Overlay
 
 @onready var PLAYER_STATS : PlayerStats = preload("res://resources/stats/player_stats.tres")
-@onready var SETTINGS = preload("res://tools/settings/settings.tscn")
 @onready var stats_container = $StatsContainer
 @onready var setting_button = $SettingButton
 

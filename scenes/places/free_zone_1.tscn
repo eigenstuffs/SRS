@@ -343,3 +343,5 @@ light_color = Color(0.992157, 0.74902, 0.454902, 1)
 environment = SubResource("Environment_cwgqk")
 
 [node name="SubViewportContainer" type="CanvasLayer" parent="."]
+
+[node name="TutorialHolder" type="CanvasLayer" parent="."]

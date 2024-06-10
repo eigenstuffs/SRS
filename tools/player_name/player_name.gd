@@ -1,5 +1,6 @@
 extends Control
 
+const MAX_LETTER_LENGTH = 12
 var uppercase : bool = false
 var input : String = ""
 
@@ -28,14 +29,15 @@ func _on_done_pressed():
 	queue_free()
 
 func button_pressed():
-	for i in buttons.get_children():
-		if i.button_pressed:
-			i.button_pressed = false
-			var _char = get_character(i)
-			if uppercase: _char = _char.to_upper()
-			input = input + _char
-			print(input)
-			update_name()
+	if input.length() < MAX_LETTER_LENGTH:
+		for i in buttons.get_children():
+			if i.button_pressed:
+				i.button_pressed = false
+				var _char = get_character(i)
+				if uppercase: _char = _char.to_upper()
+				input = input + _char
+				print(input)
+				update_name()
 
 func get_character(i):
 	match i.name:
@@ -76,10 +78,11 @@ func update_name():
 	var chars = input.split("")
 	print(input.split(""))
 	
-	for i in range(chars.size()):
+	for i in range(min(chars.size(), MAX_LETTER_LENGTH)):
 		var child = letters.get_child(i)
-		child.text = chars[i]
-		child.visible = true
+		if child != null:
+			child.text = chars[i]
+			child.visible = true
 		
 	for i in range(chars.size(), letters.get_child_count()):
 		var child = letters.get_child(i)

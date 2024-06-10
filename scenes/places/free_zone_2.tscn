@@ -322,3 +322,5 @@ environment = SubResource("Environment_cwgqk")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.906757, 0.421653, 0, -0.421653, 0.906757, 0, 1.97825, 2.32794)
 light_color = Color(0.992157, 0.74902, 0.454902, 1)
+
+[node name="TutorialHolder" type="CanvasLayer" parent="."]

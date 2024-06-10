@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnrlk4gyf7yev"]
+
+[ext_resource type="PackedScene" uid="uid://drw36phbx4vrj" path="res://tools/minigames/template/tutorial_screen.tscn" id="1_x2bjr"]
+
+[node name="TutorialScreen" instance=ExtResource("1_x2bjr")]
+
+[node name="Title" parent="." index="2"]
+text = "Info"
+
+[node name="Description" parent="." index="4"]
+offset_left = -512.0
+offset_top = -196.0
+offset_right = 552.0
+offset_bottom = 131.0
+text = "Welcome to the free time zone!
+Here you can play different minigames that help improve your various stats.
+You get to play X minigames (indicated on the left upper corner) before the story continues.
+
+Use [W], [A], [S], [D] to walk around and press [Space] to interact with the NPCs to play a minigame. Have fun!"
+horizontal_alignment = 0
+autowrap_mode = 2

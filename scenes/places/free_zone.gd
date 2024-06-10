@@ -14,6 +14,8 @@ func _ready():
 	EffectAnim.play_backwards("FadeBlack")
 	turn_label.text = str(turns) + " turns left"
 	interactor.connect("started_interaction", interacted)
+	if !Global.data_dict["remembered"].has("FreeZone"):
+		Util.show_tutorial("FreeZone", $TutorialHolder)
 	
 func interacted():
 	overlay.hide()

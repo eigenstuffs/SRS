@@ -1,17 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://cvtxj6bgvwaq1"]
+[gd_scene load_steps=21 format=3 uid="uid://cvtxj6bgvwaq1"]
 
-[ext_resource type="Script" path="res://scenes/places/space.gd" id="1_j16wi"]
-[ext_resource type="PackedScene" uid="uid://dx0l077ip533b" path="res://tools/overlay/overlay.tscn" id="1_q8h7h"]
-[ext_resource type="Texture2D" path="res://assets/placeholder.png" id="1_vfnrs"]
-[ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="2_3pibv"]
-[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="3_j6c6d"]
-[ext_resource type="Script" path="res://scenes/actors/npc.gd" id="4_mkrlg"]
-[ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/misc/spritesheet_mini_npc_idle.png" id="5_ufflc"]
-[ext_resource type="Texture2D" uid="uid://304qv7q1hedd" path="res://assets/misc/spritesheet_mini_selected_idle.png" id="6_s1c72"]
-[ext_resource type="PackedScene" uid="uid://bgh3a41nfgulr" path="res://tools/interaction/interaction.tscn" id="7_a7ypq"]
-[ext_resource type="Script" path="res://tools/interaction/interaction_minigame.gd" id="8_k2fmi"]
-[ext_resource type="PackedScene" uid="uid://dq7piist510w8" path="res://tools/minigames/social_warfare/social_warfare.tscn" id="9_aipco"]
-[ext_resource type="Script" path="res://tools/interaction/interaction_dialogue.gd" id="10_vttiy"]
+[ext_resource type="Script" path="res://scenes/places/free_zone.gd" id="1_vhgap"]
+[ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="3_iqbv6"]
+[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="4_uv2bm"]
+[ext_resource type="Script" path="res://scenes/actors/npc.gd" id="5_ebkoy"]
+[ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/misc/spritesheet_mini_npc_idle.png" id="6_fcqmx"]
+[ext_resource type="Texture2D" uid="uid://304qv7q1hedd" path="res://assets/misc/spritesheet_mini_selected_idle.png" id="7_7pcs5"]
+[ext_resource type="PackedScene" uid="uid://bgh3a41nfgulr" path="res://tools/interaction/interaction.tscn" id="8_p31wn"]
+[ext_resource type="Script" path="res://tools/interaction/interaction_minigame.gd" id="9_rtcug"]
+[ext_resource type="Script" path="res://tools/interaction/interaction_dialogue.gd" id="10_ny3ap"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uoii5"]
 size = Vector3(10, 10, 0.1)
@@ -79,7 +76,7 @@ glow_enabled = true
 glow_intensity = 0.07
 
 [node name="Space" type="Node3D"]
-script = ExtResource("1_j16wi")
+script = ExtResource("1_vhgap")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -94,8 +91,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Overlay" parent="CanvasLayer" instance=ExtResource("1_q8h7h")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63337, 0.1089)
@@ -128,11 +123,10 @@ skeleton = NodePath("../..")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Colliders"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.08165e-12, 0.757636, -3.05799)
-texture = ExtResource("1_vfnrs")
 
 [node name="Sprite3D" type="Sprite3D" parent="Colliders"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.08165e-12, 0.757636, -3)
-texture = ExtResource("2_3pibv")
+texture = ExtResource("3_iqbv6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders/Sprite3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 3.59039)
@@ -148,28 +142,28 @@ skeleton = NodePath("../..")
 
 [node name="Actors" type="Node3D" parent="."]
 
-[node name="Player" parent="Actors" instance=ExtResource("3_j6c6d")]
+[node name="Player" parent="Actors" instance=ExtResource("4_uv2bm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.10098)
 
 [node name="NPC" type="Area3D" parent="Actors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37429, 0.540338, -2)
-script = ExtResource("4_mkrlg")
-idle = ExtResource("5_ufflc")
-selected = ExtResource("6_s1c72")
+script = ExtResource("5_ebkoy")
+idle = ExtResource("6_fcqmx")
+selected = ExtResource("7_7pcs5")
 player_node = NodePath("../Player")
 
 [node name="Sprite3D" type="Sprite3D" parent="Actors/NPC"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-texture = ExtResource("5_ufflc")
+texture = ExtResource("6_fcqmx")
 hframes = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Actors/NPC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
 shape = SubResource("BoxShape3D_0hq8b")
 
-[node name="Interaction" parent="Actors/NPC" instance=ExtResource("7_a7ypq")]
-script = ExtResource("8_k2fmi")
-minigame = ExtResource("9_aipco")
+[node name="Interaction" parent="Actors/NPC" instance=ExtResource("8_p31wn")]
+script = ExtResource("9_rtcug")
+minigame = ""
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC"]
 libraries = {
@@ -179,23 +173,23 @@ autoplay = "Idle"
 
 [node name="NPC2" type="Area3D" parent="Actors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.841715, 0.540338, -2)
-script = ExtResource("4_mkrlg")
-idle = ExtResource("5_ufflc")
-selected = ExtResource("6_s1c72")
+script = ExtResource("5_ebkoy")
+idle = ExtResource("6_fcqmx")
+selected = ExtResource("7_7pcs5")
 player_node = NodePath("../Player")
 
 [node name="Sprite3D" type="Sprite3D" parent="Actors/NPC2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-texture = ExtResource("5_ufflc")
+texture = ExtResource("6_fcqmx")
 hframes = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Actors/NPC2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
 shape = SubResource("BoxShape3D_0hq8b")
 
-[node name="Interaction" parent="Actors/NPC2" instance=ExtResource("7_a7ypq")]
-script = ExtResource("10_vttiy")
-file = "res://tools/dialogue/ft_scripts/Dialogue - Prototype.json"
+[node name="Interaction" parent="Actors/NPC2" instance=ExtResource("8_p31wn")]
+script = ExtResource("10_ny3ap")
+text = Array[String]([])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC2"]
 libraries = {
@@ -208,3 +202,5 @@ transform = Transform3D(1, 0, 0, 0, 0.906757, 0.421653, 0, -0.421653, 0.906757, 
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ujwhc")
+
+[node name="TutorialHolder" type="CanvasLayer" parent="."]
