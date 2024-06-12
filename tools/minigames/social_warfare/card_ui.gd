@@ -88,7 +88,7 @@ func run_fancy_animation() -> void:
 	tween_pos.tween_property(self, 'global_position', get_viewport_rect().size*0.5 - size*0.5, 1.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	tween_pos.tween_property(self, 'scale', base_scale*1.5, 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	# After moving to center, we 'drop' the card before exploding (from callback)
-	tween_pos.chain().tween_property(self, 'scale', base_scale*0.75, 0.2).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+	tween_pos.chain().tween_property(self, 'scale', base_scale*0.4, 0.27).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 	tween_pos.chain().tween_callback(func(): 
 		# Screen space effects
 		EffectReg.start_effect(EffectReg, 'RadialShockwave', [EffectReg])
