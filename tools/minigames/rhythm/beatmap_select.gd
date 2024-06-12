@@ -52,9 +52,6 @@ func _process(delta: float) -> void:
 		
 	has_registered_input_this_frame = false
 
-func _physics_process(delta: float) -> void:
-	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
-
 func _reorient_bubbles() -> void:
 	for bubble in $Bubbles.get_children(): bubble.queue_free()
 	

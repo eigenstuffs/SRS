@@ -5,6 +5,6 @@
 [node name="CardDeck" type="HBoxContainer"]
 offset_right = 1920.0
 offset_bottom = 512.0
-theme_override_constants/separation = -60
+theme_override_constants/separation = 100
 alignment = 1
 script = ExtResource("1_lc1f1")

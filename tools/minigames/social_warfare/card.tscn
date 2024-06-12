@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsx0i2yqh5py"]
+[gd_scene load_steps=12 format=3 uid="uid://dsx0i2yqh5py"]
 
 [ext_resource type="Texture2D" uid="uid://ccejxo85mtnpy" path="res://assets/socialwarfare/Card_Blank.png" id="1_ndodj"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/card_ui.gd" id="2_2l568"]
@@ -6,18 +6,40 @@
 [ext_resource type="Texture2D" uid="uid://cfwqm5gqrmd2o" path="res://assets/socialwarfare/card_middle.png" id="3_ygxub"]
 [ext_resource type="FontFile" uid="uid://c6jcbn16yd4pq" path="res://assets/ui/ttf/CourierPrime-Regular.ttf" id="6_7mubt"]
 [ext_resource type="FontFile" uid="uid://b3r7lbrdr6ibw" path="res://assets/ui/ttf/CourierPrime-Bold.ttf" id="7_2nh5x"]
+[ext_resource type="Shader" path="res://tools/minigames/social_warfare/card_body.gdshader" id="7_jiype"]
+[ext_resource type="Texture2D" uid="uid://cwlm7n67b1wci" path="res://assets/socialwarfare/card_alpha_mask.png" id="8_siljk"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3tbad"]
+size = Vector2(0.776, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jvvig"]
+load_path = "res://.godot/imported/IMG_3376.png-112baf0566f2f1412733b25ca1b59c57.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0xy3r"]
+render_priority = 0
+shader = ExtResource("7_jiype")
+shader_parameter/clearcoat_factor = 2.0
+shader_parameter/background_texture = ExtResource("3_ygxub")
+shader_parameter/card_texture = ExtResource("1_ndodj")
+shader_parameter/card_alpha_mask = ExtResource("8_siljk")
+shader_parameter/face_texture = SubResource("CompressedTexture2D_jvvig")
 
 [node name="Card" type="TextureButton"]
-offset_right = 323.0
-offset_bottom = 440.0
-texture_normal = ExtResource("3_ygxub")
-texture_pressed = ExtResource("3_ygxub")
-texture_hover = ExtResource("3_ygxub")
-texture_disabled = ExtResource("3_ygxub")
-texture_focused = ExtResource("3_ygxub")
+custom_minimum_size = Vector2(323, 416)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1597.0
+offset_bottom = -664.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(161, 208)
+mouse_filter = 1
+mouse_default_cursor_shape = 2
 script = ExtResource("2_2l568")
 
 [node name="Elements" type="Node2D" parent="."]
+visible = false
 
 [node name="TextureButton" type="TextureButton" parent="Elements"]
 offset_right = 40.0
@@ -80,4 +102,67 @@ text = "Slap"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 0
+offset_left = -197.0
+offset_top = -151.0
+offset_right = 523.0
+offset_bottom = 569.0
+scale = Vector2(0.71, 0.71)
+pivot_offset = Vector2(360, 360)
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 1
+size = Vector2i(720, 720)
+render_target_update_mode = 4
+
+[node name="Elements" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Card" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Elements"]
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3tbad")
+surface_material_override/0 = SubResource("ShaderMaterial_0xy3r")
+
+[node name="Text" type="Node3D" parent="SubViewportContainer/SubViewport/Elements"]
+
+[node name="Title" type="Label3D" parent="SubViewportContainer/SubViewport/Elements/Text"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.39, 0.001)
+sorting_offset = 0.25
+pixel_size = 0.0024
+text = "Slap"
+font = ExtResource("7_2nh5x")
+outline_size = 0
+
+[node name="Type" type="Label3D" parent="SubViewportContainer/SubViewport/Elements/Text"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.26, 0.001)
+sorting_offset = 0.25
+pixel_size = 0.0024
+modulate = Color(0.105882, 0.0470588, 0.109804, 1)
+text = "asdasd"
+font = ExtResource("7_2nh5x")
+outline_size = 0
+
+[node name="Description" type="Label3D" parent="SubViewportContainer/SubViewport/Elements/Text"]
+transform = Transform3D(0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, 0, -0.38, 0.001)
+sorting_offset = 0.25
+pixel_size = 0.0024
+modulate = Color(0.105882, 0.0470588, 0.109804, 1)
+outline_modulate = Color(0.105882, 0.0470588, 0.109804, 1)
+text = "STOP POSTING ABOUT AMONG US! I'M TIRED OF SEEING IT! My friends on TikTok send me memes, on Discord its fucking m"
+font = ExtResource("6_7mubt")
+outline_size = 2
+line_spacing = -5.0
+autowrap_mode = 3
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.76)
+fov = 25.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="mouse_entered" from="SubViewportContainer" to="." method="_on_sub_viewport_container_mouse_entered"]

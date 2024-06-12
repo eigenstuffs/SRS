@@ -87,9 +87,6 @@ func _on_maze_generator_enemy_met_player():
 		$MazePlayer.is_hurt = false
 		player_can_be_hurt = true
 
-func _physics_process(_delta: float) -> void:
-	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
-
 func calculate_stats(time : int, multiplier : int) -> Array[int]:
 	var wis_gained := roundi((time)/10) * multiplier
 	var well_gained := roundi((time)/10 + 1) * multiplier

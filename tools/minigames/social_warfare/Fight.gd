@@ -1,6 +1,7 @@
 class_name SocialWarfareFight extends Control
 
 @onready var card_deck = $CardDeck
+@onready var base_position := position
 
 signal action
 

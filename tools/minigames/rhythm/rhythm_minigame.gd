@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 		$Playfield/Camera3D.fov = move_toward(fov, 75, 4.0*abs(fov - 75)*delta)
 
 func _physics_process(delta: float) -> void:
-	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
 	if not has_ended and playfield.audio_synchronizer.time > last_note_time:
 		end()
 	# FIXME: cursed hack into minigame_holder

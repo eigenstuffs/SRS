@@ -24,12 +24,13 @@ func initiate():
 		for i in 4:
 			var j = CARD_LIST.card_list[i]
 			var a = CARD.instantiate()
+			a.rotation = lerpf(-0.1, 0.1, i/4.0)
 			add_child(a)
 			a.card_data = j
 			a.apply_assets()
 			a.connect("chosen", card_chosen)
 			current_hand.append(j)
-		
+
 func card_chosen(card : Card):
 	current_card = card
 	load_saved_hand = false

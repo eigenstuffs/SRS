@@ -349,6 +349,9 @@ func precompile_effects():
 	color_rect.queue_free()
 	print("all effect compiled")
 
+func _physics_process(delta: float) -> void:
+	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
+
 func _process(_delta):
 	AudioServer.set_bus_volume_db(
 		AudioServer.get_bus_index("Master"), Global.data_dict["volume"]

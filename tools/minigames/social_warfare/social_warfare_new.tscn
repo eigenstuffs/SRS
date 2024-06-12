@@ -818,9 +818,10 @@ texture_focused = ExtResource("9_d3rgy")
 [node name="CardDeck" parent="Holder/Fight" instance=ExtResource("8_m254v")]
 layout_mode = 0
 offset_left = 640.0
-offset_top = 640.0
+offset_top = 800.0
 offset_right = 1856.0
-offset_bottom = 1152.0
+offset_bottom = 1312.0
+theme_override_constants/separation = -100
 
 [node name="Cards" type="Control" parent="Holder/Fight"]
 anchors_preset = 0

@@ -254,6 +254,16 @@ class EffectFilmGrain extends CanvasItemEffect:
 		assert(output.get_layers() == num_textures)
 		return output
 
+class EffectRadialShockwave extends CanvasItemEffect:
+	const RADIAL_SHOCKWAVE_SHADER := preload('../shaders/canvas_item/radial_shockwave.gdshader')
+
+	func _init() -> void:
+		render_passes.push_back(CanvasItemRenderPass.new(RADIAL_SHOCKWAVE_SHADER, RenderingServer.CANVAS_ITEM_Z_MAX))
+		
+		super('RadialShockwave', 1.0,
+			func():
+				self.should_free_when_stopped = true
+				render_passes[0].enable())
 
 func _init() -> void:
 	effects.push_back(EffectImpactLines.new())  # Impact lines for zooming!
@@ -271,3 +281,4 @@ func _init() -> void:
 	effects.push_back(EffectBloom.new())
 	effects.push_back(EffectExplosion.new())
 	effects.push_back(EffectFilmGrain.new())
+	effects.push_back(EffectRadialShockwave.new())

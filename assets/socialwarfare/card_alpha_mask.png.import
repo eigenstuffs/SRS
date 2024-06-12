@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn282mfgbv8ui"
-path.s3tc="res://.godot/imported/IMG_3376.png-112baf0566f2f1412733b25ca1b59c57.s3tc.ctex"
+uid="uid://cwlm7n67b1wci"
+path.s3tc="res://.godot/imported/card_alpha_mask.png-61abd51fe7c94fe976adc19e58542782.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/socialwarfare/faces/IMG_3376.png"
-dest_files=["res://.godot/imported/IMG_3376.png-112baf0566f2f1412733b25ca1b59c57.s3tc.ctex"]
+source_file="res://assets/socialwarfare/card_alpha_mask.png"
+dest_files=["res://.godot/imported/card_alpha_mask.png-61abd51fe7c94fe976adc19e58542782.s3tc.ctex"]
 
 [params]
 

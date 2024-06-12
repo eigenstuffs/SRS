@@ -115,9 +115,6 @@ func _on_bookshelf_player_entered():
 		$LibraryPlayer.move_hurtbox()
 		emit_signal("stop_blinking")
 
-func _physics_process(_delta: float) -> void:
-	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
-
 func music_fade_out():
 	var a = create_tween()
 	a.tween_property($MusicPlayer, "volume_db", -80, 2.0)

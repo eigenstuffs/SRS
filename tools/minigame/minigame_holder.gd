@@ -99,9 +99,6 @@ func game_end_early(): #assuming that game calls its own end early
 
 func set_game_remaining_time():
 	game.remaining_time = get_remaining_time()
-	
-func _physics_process(delta: float) -> void:
-	RenderingServer.global_shader_parameter_set('cpu_sync_time', Time.get_ticks_usec()*1e-6)
 
 func pause_time():
 	$UI.pause_game_time()
