@@ -23,6 +23,7 @@ var start
 func initiate_minigame(which : String):	
 	if MinigameRegistry.has_key(which):
 		var metadata : MinigameInfo = MinigameRegistry.get_metadata(which)
+		print(str(metadata.scene))
 		var minigame : Minigame = load(metadata.scene).instantiate()
 		minigame.size = MINIGAME_VIEWPORT_DIMS
 		$Game.add_child(minigame)

@@ -258,18 +258,12 @@ func _ready():
 	## Set its position to the middle
 	#window.position = screen_rect.position + (screen_rect.size / 2 - window_size / 2)
 	
-	
 	load_meta_data()
+	meta_data_dict["effect_on"] = false
 	for i in 100:
 		var dynamic_path = save_dir + "save_" + str(i) + ".dat"
 		load_data(dynamic_path)
-	if meta_data_dict["effect_on"]:
-		precompile_effects()
-	else: print("effect turned off")
-	
-	# FIXME: evil timer to wait for noise textures to generate i hate this but im too lazy to make a proper
-	await get_tree().create_timer(0.1).timeout
-	EffectReg.start_effect(self, 'FilmGrain', [self.get_node('/root/EffectReg')])
+	print("effect is disabled in compatibility build")
 
 func reset_data(dynamic_path : String):
 	var dir = DirAccess.open(save_dir)

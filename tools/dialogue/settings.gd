@@ -17,6 +17,7 @@ func init():
 	master_volume_slider.value = Global.data_dict["volume"]
 	text_speed_slider.value = 1.0 / Global.data_dict["text_speed"] # text_speed is seconds per character
 	effects_button.button_pressed = Global.meta_data_dict["effect_on"]
+	effects_button.disabled = true
 	
 	vol_label.text = 'Current Volume: %ddb' % master_volume_slider.value
 	text_label.text = 'Characters per Second: %d' % text_speed_slider.value
