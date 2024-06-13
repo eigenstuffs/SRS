@@ -32,16 +32,18 @@ signal enemy_move_finished
 
 func _ready():
 	EffectAnim.SfxPlayer.volume_db = -10
+	$Holder/Opponent/BarHP.max_value = enemy_data.enemy_max_hp
+	$Holder/Opponent/BarMP.max_value = enemy_data.enemy_max_mp
+	$Holder/Player/BarHP.max_value = Global.data_dict["player_max_hp"]
+	$Holder/Player/BarMP.max_value = Global.data_dict["player_max_mp"]
+	Global.data_dict["player_hp"] = Global.data_dict["player_max_hp"]
+	Global.data_dict["player_mp"] = Global.data_dict["player_max_mp"]
 	if Global.data_dict["remembered"].has("SocialWarfare"):
 		turn_loop()
 	else:
 		Util.show_tutorial("SocialWarfare", $RewardHolder)
 		await Util.tutorial_finished
 		turn_loop()
-	$Holder/Opponent/BarHP.max_value = enemy_data.enemy_max_hp
-	$Holder/Opponent/BarMP.max_value = enemy_data.enemy_max_mp
-	$Holder/Player/BarHP.max_value = Global.data_dict["player_max_hp"]
-	$Holder/Player/BarMP.max_value = Global.data_dict["player_max_mp"]
 
 func game_start():
 	turn_loop()

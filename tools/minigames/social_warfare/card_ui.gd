@@ -8,7 +8,7 @@ class_name CardButton extends TextureButton
 signal chosen(data)
 
 const SFX_ERROR = preload("res://assets/sfx/switch_1.ogg")
-const DISPLACEMENT_FACTOR := 1.0 ## How much the card should rotation in 3D
+const DISPLACEMENT_FACTOR := 0.3 ## How much the card should rotation in 3D
 
 var card_data : Card
 var origin_viewport_space : Vector2
@@ -85,7 +85,7 @@ func run_fancy_animation() -> void:
 	tween_rot.tween_property($SubViewportContainer/SubViewport/Elements/Text, 'scale:x', -$SubViewportContainer/SubViewport/Elements/Text.scale.x, 0.25)
 	# This tween moves the the card to the center of the screen
 	var tween_pos = create_tween().set_parallel(true)
-	tween_pos.tween_property(self, 'global_position', get_viewport_rect().size*0.5 - size*0.5, 1.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tween_pos.tween_property(self, 'global_position', get_viewport_rect().size*0.5 - size*0.5, 0.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	tween_pos.tween_property(self, 'scale', base_scale*1.5, 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	# After moving to center, we 'drop' the card before exploding (from callback)
 	tween_pos.chain().tween_property(self, 'scale', base_scale*0.4, 0.27).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
