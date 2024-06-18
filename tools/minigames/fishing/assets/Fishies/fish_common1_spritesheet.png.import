@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d28td8njhv46f"
-path.s3tc="res://.godot/imported/fish_common1_spritesheet.png-54ac2d5f9001a141f2064b9411f63b99.s3tc.ctex"
+path="res://.godot/imported/fish_common1_spritesheet.png-54ac2d5f9001a141f2064b9411f63b99.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://tools/minigames/fishing/assets/Fishies/fish_common1_spritesheet.png"
-dest_files=["res://.godot/imported/fish_common1_spritesheet.png-54ac2d5f9001a141f2064b9411f63b99.s3tc.ctex"]
+dest_files=["res://.godot/imported/fish_common1_spritesheet.png-54ac2d5f9001a141f2064b9411f63b99.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
