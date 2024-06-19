@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_875a2")
-points_req = 0
+points_req = 2
 title = "Tsk."
 effect = 3
 target_stat = 0

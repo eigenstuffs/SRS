@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_4l12f")
-points_req = 0
+points_req = 5
 title = "Catch His Breath"
 effect = 1
 target_stat = 2

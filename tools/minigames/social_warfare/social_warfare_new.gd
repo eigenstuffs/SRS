@@ -6,14 +6,18 @@ const SFX_IMPACT_2 = preload("res://assets/sfx/impact_2.ogg")
 const SFX_IMPACT_3 = preload("res://assets/sfx/impact_3.mp3")
 
 enum STATES {
+	ROUND_START,
 	PLAYER,
-	OPPONENT
+	OPPONENT,
+	ROUND_END
 }
 
-var STATE : STATES = STATES.PLAYER
+var STATE : STATES = STATES.ROUND_START
+var FIRST_ACTOR : STATES = STATES.PLAYER #who goes first; maybe some opponents should go first?
 
 var battle_intensity : int = 0
 
+var enemy_action
 var buff_applied : bool = false
 
 var shake_strength = 0
@@ -55,7 +59,7 @@ func turn_loop():
 	fight.hide()
 	flee.hide()
 	match STATE:
-		STATES.PLAYER:
+		STATES.ROUND_START: #both sides make decision here
 			choose.show()
 			await choose.chosen
 			choose.hide()
@@ -63,15 +67,13 @@ func turn_loop():
 				"fight":
 					fight.show()
 					fight.initiate()
+					print("fight_initiated")
 					await fight.action
 					match fight.current_action:
 						"back":
 							fight.keep_current_hand()
 						"card":
-							card_action(fight.current_card, "Opponent")
-							await card_action_finished
-							print("action done")
-							STATE = STATES.OPPONENT
+							STATE = FIRST_ACTOR
 				"flee":
 					flee.show()
 					flee.initiate()
@@ -82,21 +84,44 @@ func turn_loop():
 						false:
 							print("failed flee")
 							STATE = STATES.OPPONENT
-							flee.hide()
+							flee.hide()	
+			enemy_action = enemy_move()
+			turn_loop()
+		STATES.PLAYER:
+			#execute cards here
+			card_action(fight.current_card, "Opponent")
+			await card_action_finished
+			print("action done")
+			if FIRST_ACTOR == STATES.PLAYER:
+				STATE = STATES.OPPONENT
+			else: STATE = STATES.ROUND_END
 			turn_loop()
 		STATES.OPPONENT:
 			card_action(
-				enemy_move(), "Player"
+				enemy_action, "Player"
 			)
 			await card_action_finished
 			
-			STATE = STATES.PLAYER
+			if FIRST_ACTOR == STATES.OPPONENT:
+				STATE = STATES.PLAYER
+			else: STATE = STATES.ROUND_END
 			turn_loop()
-	
+		STATES.ROUND_END:
+			Global.data_dict["player_mp"] += 3
+			enemy_data.enemy_mp += 3
+			STATE = STATES.ROUND_START
+			turn_loop()
+
 func card_action(card : Card, target : String):
 	print(card.title)
 	battle_intensity += card.intensity_mod
-	Global.data_dict["player_mp"] -= card.points_req
+	
+	#MP management
+	match target:
+		"Player":
+			enemy_data.enemy_mp -= card.points_req
+		"Opponent":
+			Global.data_dict["player_mp"] -= card.points_req
 	
 	## anim handler
 	
@@ -265,7 +290,6 @@ func card_action(card : Card, target : String):
 							)
 							await Util.util_finished
 					buff_applied = true
-			Global.data_dict["player_mp"] += 3
 		"Opponent":
 			match card.effect:
 				0: #attack
@@ -344,6 +368,11 @@ func card_action(card : Card, target : String):
 		Global.data_dict["player_defense_ratio"] = 1
 		enemy_data.enemy_offense_ratio = 1
 		enemy_data.enemy_defense_ratio = 1
+		Util.popup_dialogue(
+			$Holder/DialogueHolder,
+			["All buffs/debuffs have been reset!"],
+			["null"])
+		await Util.util_finished
 		
 	enemy_data.enemy_hp = clamp(enemy_data.enemy_hp, 0, enemy_data.enemy_max_hp)
 	enemy_data.enemy_mp = clamp(enemy_data.enemy_mp, 0, enemy_data.enemy_max_mp)
