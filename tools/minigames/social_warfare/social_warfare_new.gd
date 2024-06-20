@@ -118,57 +118,59 @@ func buff_tick():
 	#queue of all buffs; each element is an array of ["name", turns_remaining]
 	#2 -> buff, 3 -> debuff
 	#0 -> offense, 1 -> defense
+	var to_be_popped : Array = []
 	for index in active_buff.size():
-		active_buff[index][1] -= 1 #turn counter --
-	while !active_buff.is_empty() and active_buff[0][1] <= 0: #while first element turn <= 0
-		var first_item = active_buff[0][0]
-		print(first_item)
-		var stats_changed : String
-		#adjust stat and display relevant info
-		match first_item[0]:
-			"Opponent":
-				match first_item[1]:
-					2: #buff
-						match first_item[2]:
-							0: #offense
-								Global.data_dict["player_offense_ratio"] = 1
-								stats_changed = "Your offense"
-							1: #defense
-								Global.data_dict["player_defense_ratio"] = 1
-								stats_changed = "Your defense"
-					3: #debuff
-						match first_item[2]:
-							0: #offense
-								enemy_data.enemy_offense_ratio = 1
-								stats_changed = "Enemy offense"
-							1: #defense
-								enemy_data.enemy_defense_ratio = 1
-								stats_changed = "Enemy defense"
-			"Player":
-				match first_item[1]:
-					2: #buff
-						match first_item[2]:
-							0: #offense
-								enemy_data.enemy_offense_ratio = 1
-								stats_changed = "Enemy offense"
-							1: #defense
-								enemy_data.enemy_defense_ratio = 1
-								stats_changed = "Enemy defense"
-					3: #debuff
-						match first_item[2]:
-							0: #offense
-								Global.data_dict["player_offense_ratio"] = 1
-								stats_changed = "Your offense"
-							1: #defense
-								Global.data_dict["player_defense_ratio"] = 1
-								stats_changed = "Your defense"
-		Util.popup_dialogue(
-				$Holder/DialogueHolder,
-				[stats_changed + " has been reverted!"],
-				["null"]
-			)
-		await Util.util_finished
-		active_buff.pop_front()
+		active_buff[index][1] -= 1 #turn counter -= 1
+		if active_buff[index][1] <= 0:
+			var item = active_buff[index][0]
+			var stats_changed : String
+			#adjust stat and display relevant info
+			match item[0]:
+				"Opponent":
+					match item[1]:
+						2: #buff
+							match item[2]:
+								0: #offense
+									Global.data_dict["player_offense_ratio"] = 1
+									stats_changed = "Your offense"
+								1: #defense
+									Global.data_dict["player_defense_ratio"] = 1
+									stats_changed = "Your defense"
+						3: #debuff
+							match item[2]:
+								0: #offense
+									enemy_data.enemy_offense_ratio = 1
+									stats_changed = enemy_data.enemy_name + "\'s offense"
+								1: #defense
+									enemy_data.enemy_defense_ratio = 1
+									stats_changed = enemy_data.enemy_name + "\'s defense"
+				"Player":
+					match item[1]:
+						2: #buff
+							match item[2]:
+								0: #offense
+									enemy_data.enemy_offense_ratio = 1
+									stats_changed = enemy_data.enemy_name + "\'s offense"
+								1: #defense
+									enemy_data.enemy_defense_ratio = 1
+									stats_changed = enemy_data.enemy_name + "\'s defense"
+						3: #debuff
+							match item[2]:
+								0: #offense
+									Global.data_dict["player_offense_ratio"] = 1
+									stats_changed = "Your offense"
+								1: #defense
+									Global.data_dict["player_defense_ratio"] = 1
+									stats_changed = "Your defense"
+			Util.popup_dialogue(
+					$Holder/DialogueHolder,
+					[stats_changed + " has been reverted!"],
+					["null"]
+				)
+			await Util.util_finished
+			to_be_popped.append(index)
+	for index in to_be_popped:
+		active_buff.pop_at(index)
 	print(active_buff)
 
 func card_action(card : Card, target : String):
