@@ -19,6 +19,7 @@ var battle_intensity : int = 0
 
 var enemy_action
 var buff_applied : bool = false
+var active_buff : Array[Array]
 
 var shake_strength = 0
 var shake_decay = 0
@@ -60,6 +61,7 @@ func turn_loop():
 	flee.hide()
 	match STATE:
 		STATES.ROUND_START: #both sides make decision here
+			buff_tick()
 			choose.show()
 			await choose.chosen
 			choose.hide()
@@ -111,6 +113,63 @@ func turn_loop():
 			enemy_data.enemy_mp += 3
 			STATE = STATES.ROUND_START
 			turn_loop()
+
+func buff_tick():
+	#queue of all buffs; each element is an array of ["name", turns_remaining]
+	#2 -> buff, 3 -> debuff
+	#0 -> offense, 1 -> defense
+	for index in active_buff.size():
+		active_buff[index][1] -= 1 #turn counter --
+	while !active_buff.is_empty() and active_buff[0][1] <= 0: #while first element turn <= 0
+		var first_item = active_buff[0][0]
+		print(first_item)
+		var stats_changed : String
+		#adjust stat and display relevant info
+		match first_item[0]:
+			"Opponent":
+				match first_item[1]:
+					2: #buff
+						match first_item[2]:
+							0: #offense
+								Global.data_dict["player_offense_ratio"] = 1
+								stats_changed = "Your offense"
+							1: #defense
+								Global.data_dict["player_defense_ratio"] = 1
+								stats_changed = "Your defense"
+					3: #debuff
+						match first_item[2]:
+							0: #offense
+								enemy_data.enemy_offense_ratio = 1
+								stats_changed = "Enemy offense"
+							1: #defense
+								enemy_data.enemy_defense_ratio = 1
+								stats_changed = "Enemy defense"
+			"Player":
+				match first_item[1]:
+					2: #buff
+						match first_item[2]:
+							0: #offense
+								enemy_data.enemy_offense_ratio = 1
+								stats_changed = "Enemy offense"
+							1: #defense
+								enemy_data.enemy_defense_ratio = 1
+								stats_changed = "Enemy defense"
+					3: #debuff
+						match first_item[2]:
+							0: #offense
+								Global.data_dict["player_offense_ratio"] = 1
+								stats_changed = "Your offense"
+							1: #defense
+								Global.data_dict["player_defense_ratio"] = 1
+								stats_changed = "Your defense"
+		Util.popup_dialogue(
+				$Holder/DialogueHolder,
+				[stats_changed + " has been reverted!"],
+				["null"]
+			)
+		await Util.util_finished
+		active_buff.pop_front()
+	print(active_buff)
 
 func card_action(card : Card, target : String):
 	print(card.title)
@@ -250,7 +309,7 @@ func card_action(card : Card, target : String):
 					start_shake(card.effect_num, card.effect_num * 2)
 				1:
 					enemy_data.enemy_hp += card.effect_num * multiple
-				2:
+				2: #enemy buffs
 					match card.target_stat:
 						0:
 							enemy_data.enemy_offense_ratio *= (card.effect_num)
@@ -269,7 +328,7 @@ func card_action(card : Card, target : String):
 							)
 							await Util.util_finished
 					buff_applied = true
-				3:
+				3: #player debuffs
 					match card.target_stat:
 						0:
 							multiple = 1 + (1 - multiple)
@@ -302,7 +361,7 @@ func card_action(card : Card, target : String):
 							Global.data_dict["player_hp"] += (card.effect_num * multiple)
 						3: # mp
 							Global.data_dict["player_mp"] += (card.effect_num * multiple)
-				2: #buff
+				2: #player buff
 					print("buff")
 					match card.target_stat:
 						0: # attack
@@ -322,7 +381,7 @@ func card_action(card : Card, target : String):
 							)
 							await Util.util_finished
 					buff_applied = true
-				3: #debuff
+				3: #enemy debuff
 					print("debuff")
 					match card.target_stat:
 						0: # attack
@@ -361,18 +420,8 @@ func card_action(card : Card, target : String):
 		await Util.util_finished
 	
 	if buff_applied:
+		active_buff.push_back([[target, card.effect, card.target_stat], 3])
 		buff_applied = false
-	else:
-		print("Wiped buffs")
-		Global.data_dict["player_offense_ratio"] = 1
-		Global.data_dict["player_defense_ratio"] = 1
-		enemy_data.enemy_offense_ratio = 1
-		enemy_data.enemy_defense_ratio = 1
-		Util.popup_dialogue(
-			$Holder/DialogueHolder,
-			["All buffs/debuffs have been reset!"],
-			["null"])
-		await Util.util_finished
 		
 	enemy_data.enemy_hp = clamp(enemy_data.enemy_hp, 0, enemy_data.enemy_max_hp)
 	enemy_data.enemy_mp = clamp(enemy_data.enemy_mp, 0, enemy_data.enemy_max_mp)
