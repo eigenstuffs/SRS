@@ -6,15 +6,20 @@ const SFX_IMPACT_2 = preload("res://assets/sfx/impact_2.ogg")
 const SFX_IMPACT_3 = preload("res://assets/sfx/impact_3.mp3")
 
 enum STATES {
+	ROUND_START,
 	PLAYER,
-	OPPONENT
+	OPPONENT,
+	ROUND_END
 }
 
-var STATE : STATES = STATES.PLAYER
+var STATE : STATES = STATES.ROUND_START
+var FIRST_ACTOR : STATES = STATES.PLAYER #who goes first; maybe some opponents should go first?
 
 var battle_intensity : int = 0
 
+var enemy_action
 var buff_applied : bool = false
+var active_buff : Array[Array]
 
 var shake_strength = 0
 var shake_decay = 0
@@ -32,16 +37,18 @@ signal enemy_move_finished
 
 func _ready():
 	EffectAnim.SfxPlayer.volume_db = -10
+	$Holder/Opponent/BarHP.max_value = enemy_data.enemy_max_hp
+	$Holder/Opponent/BarMP.max_value = enemy_data.enemy_max_mp
+	$Holder/Player/BarHP.max_value = Global.data_dict["player_max_hp"]
+	$Holder/Player/BarMP.max_value = Global.data_dict["player_max_mp"]
+	Global.data_dict["player_hp"] = Global.data_dict["player_max_hp"]
+	Global.data_dict["player_mp"] = Global.data_dict["player_max_mp"]
 	if Global.data_dict["remembered"].has("SocialWarfare"):
 		turn_loop()
 	else:
 		Util.show_tutorial("SocialWarfare", $RewardHolder)
 		await Util.tutorial_finished
 		turn_loop()
-	$Holder/Opponent/BarHP.max_value = enemy_data.enemy_max_hp
-	$Holder/Opponent/BarMP.max_value = enemy_data.enemy_max_mp
-	$Holder/Player/BarHP.max_value = Global.data_dict["player_max_hp"]
-	$Holder/Player/BarMP.max_value = Global.data_dict["player_max_mp"]
 
 func game_start():
 	turn_loop()
@@ -53,7 +60,7 @@ func turn_loop():
 	fight.hide()
 	flee.hide()
 	match STATE:
-		STATES.PLAYER:
+		STATES.ROUND_START: #both sides make decision here
 			choose.show()
 			await choose.chosen
 			choose.hide()
@@ -61,15 +68,13 @@ func turn_loop():
 				"fight":
 					fight.show()
 					fight.initiate()
+					print("fight_initiated")
 					await fight.action
 					match fight.current_action:
 						"back":
 							fight.keep_current_hand()
 						"card":
-							card_action(fight.current_card, "Opponent")
-							await card_action_finished
-							print("action done")
-							STATE = STATES.OPPONENT
+							STATE = FIRST_ACTOR
 				"flee":
 					flee.show()
 					flee.initiate()
@@ -80,21 +85,107 @@ func turn_loop():
 						false:
 							print("failed flee")
 							STATE = STATES.OPPONENT
-							flee.hide()
+							flee.hide()	
+			enemy_action = enemy_move()
+			turn_loop()
+		STATES.PLAYER:
+			#execute cards here
+			card_action(fight.current_card, "Opponent")
+			await card_action_finished
+			print("action done")
+			if FIRST_ACTOR == STATES.PLAYER:
+				STATE = STATES.OPPONENT
+			else: STATE = STATES.ROUND_END
 			turn_loop()
 		STATES.OPPONENT:
 			card_action(
-				enemy_move(), "Player"
+				enemy_action, "Player"
 			)
 			await card_action_finished
 			
-			STATE = STATES.PLAYER
+			if FIRST_ACTOR == STATES.OPPONENT:
+				STATE = STATES.PLAYER
+			else: STATE = STATES.ROUND_END
 			turn_loop()
-	
+		STATES.ROUND_END:
+			Global.data_dict["player_mp"] += 2
+			enemy_data.enemy_mp += 2
+			buff_tick()
+			STATE = STATES.ROUND_START
+			turn_loop()
+
+func buff_tick():
+	#queue of all buffs; each element is an array of [[buff info], turns_remaining]
+	#2 -> buff, 3 -> debuff
+	#0 -> offense, 1 -> defense
+	for index in active_buff.size():
+		active_buff[index][1] -= 1 #turn counter -= 1
+		if active_buff[index][1] <= 0:
+			var item = active_buff[index][0]
+			var stats_changed : String
+			var magnitude = item[3]
+			#adjust stat and display relevant info
+			match item[0]:
+				"Opponent":
+					match item[1]:
+						2: #buff
+							match item[2]:
+								0: #offense
+									Global.data_dict["player_offense_ratio"] /= magnitude
+									stats_changed = "Your offense"
+								1: #defense
+									Global.data_dict["player_defense_ratio"] /= magnitude
+									stats_changed = "Your defense"
+						3: #debuff
+							match item[2]:
+								0: #offense
+									enemy_data.enemy_offense_ratio /= magnitude
+									stats_changed = enemy_data.enemy_name + "\'s offense"
+								1: #defense
+									enemy_data.enemy_defense_ratio /= magnitude
+									stats_changed = enemy_data.enemy_name + "\'s defense"
+				"Player":
+					match item[1]:
+						2: #buff
+							match item[2]:
+								0: #offense
+									enemy_data.enemy_offense_ratio /= magnitude
+									stats_changed = enemy_data.enemy_name + "\'s offense"
+								1: #defense
+									enemy_data.enemy_defense_ratio /= magnitude
+									stats_changed = enemy_data.enemy_name + "\'s defense"
+						3: #debuff
+							match item[2]:
+								0: #offense
+									Global.data_dict["player_offense_ratio"] /= magnitude
+									stats_changed = "Your offense"
+								1: #defense
+									Global.data_dict["player_defense_ratio"] /= magnitude
+									stats_changed = "Your defense"
+			Util.popup_dialogue(
+					$Holder/DialogueHolder,
+					[stats_changed + " has been reverted!"],
+					["null"]
+				)
+			await Util.util_finished
+	var index = 0
+	while index < active_buff.size():
+		if active_buff[index][1] <= 0:
+			active_buff.pop_at(index)
+		else: index += 1
+	refresh_stats()
+	print(active_buff)
+
 func card_action(card : Card, target : String):
 	print(card.title)
 	battle_intensity += card.intensity_mod
-	Global.data_dict["player_mp"] -= card.points_req
+	
+	#MP management
+	match target:
+		"Player":
+			enemy_data.enemy_mp -= card.points_req
+		"Opponent":
+			Global.data_dict["player_mp"] -= card.points_req
 	
 	## anim handler
 	
@@ -223,7 +314,7 @@ func card_action(card : Card, target : String):
 					start_shake(card.effect_num, card.effect_num * 2)
 				1:
 					enemy_data.enemy_hp += card.effect_num * multiple
-				2:
+				2: #enemy buffs
 					match card.target_stat:
 						0:
 							enemy_data.enemy_offense_ratio *= (card.effect_num)
@@ -242,7 +333,7 @@ func card_action(card : Card, target : String):
 							)
 							await Util.util_finished
 					buff_applied = true
-				3:
+				3: #player debuffs
 					match card.target_stat:
 						0:
 							multiple = 1 + (1 - multiple)
@@ -263,7 +354,6 @@ func card_action(card : Card, target : String):
 							)
 							await Util.util_finished
 					buff_applied = true
-			Global.data_dict["player_mp"] += 3
 		"Opponent":
 			match card.effect:
 				0: #attack
@@ -276,7 +366,7 @@ func card_action(card : Card, target : String):
 							Global.data_dict["player_hp"] += (card.effect_num * multiple)
 						3: # mp
 							Global.data_dict["player_mp"] += (card.effect_num * multiple)
-				2: #buff
+				2: #player buff
 					print("buff")
 					match card.target_stat:
 						0: # attack
@@ -296,7 +386,7 @@ func card_action(card : Card, target : String):
 							)
 							await Util.util_finished
 					buff_applied = true
-				3: #debuff
+				3: #enemy debuff
 					print("debuff")
 					match card.target_stat:
 						0: # attack
@@ -335,13 +425,8 @@ func card_action(card : Card, target : String):
 		await Util.util_finished
 	
 	if buff_applied:
+		active_buff.push_back([[target, card.effect, card.target_stat, card.effect_num*multiple], card.turn_dur])
 		buff_applied = false
-	else:
-		print("Wiped buffs")
-		Global.data_dict["player_offense_ratio"] = 1
-		Global.data_dict["player_defense_ratio"] = 1
-		enemy_data.enemy_offense_ratio = 1
-		enemy_data.enemy_defense_ratio = 1
 		
 	enemy_data.enemy_hp = clamp(enemy_data.enemy_hp, 0, enemy_data.enemy_max_hp)
 	enemy_data.enemy_mp = clamp(enemy_data.enemy_mp, 0, enemy_data.enemy_max_mp)
@@ -373,22 +458,32 @@ func refresh_stats():
 	#Global.data_dict["player_hp"] = snapped(Global.data_dict["player_hp"], 1)
 	Global.data_dict["player_mp"] = snapped(Global.data_dict["player_mp"], 1)
 	
-	var a = create_tween()
+	var a = create_tween().set_parallel()
 	a.tween_property(
 		$Holder/Player/BarHP, "value",
 		Global.data_dict["player_hp"], 0.5).set_trans(Tween.TRANS_EXPO)
-	a = create_tween()
 	a.tween_property(
 		$Holder/Player/BarMP, "value",
 		Global.data_dict["player_mp"], 0.5).set_trans(Tween.TRANS_EXPO)
-	a = create_tween()
 	a.tween_property(
 		$Holder/Opponent/BarHP, "value",
 		enemy_data.enemy_hp, 0.5).set_trans(Tween.TRANS_EXPO)
-	a = create_tween()
 	a.tween_property(
 		$Holder/Opponent/BarMP, "value",
 		enemy_data.enemy_mp, 0.5).set_trans(Tween.TRANS_EXPO)
+	
+	a.tween_property(
+		$Holder/Player/Modifiers/Offense, "value",
+		Global.data_dict["player_offense_ratio"], 0.5).set_trans(Tween.TRANS_EXPO)
+	a.tween_property(
+		$Holder/Player/Modifiers/Defense, "value",
+		Global.data_dict["player_defense_ratio"], 0.5).set_trans(Tween.TRANS_EXPO)
+	a.tween_property(
+		$Holder/Opponent/Modifiers/Offense, "value",
+		enemy_data.enemy_offense_ratio, 0.5).set_trans(Tween.TRANS_EXPO)
+	a.tween_property(
+		$Holder/Opponent/Modifiers/Defense, "value",
+		enemy_data.enemy_defense_ratio, 0.5).set_trans(Tween.TRANS_EXPO)
 
 func end_battle(won : bool):
 	match won:

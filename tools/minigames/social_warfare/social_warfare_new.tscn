@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://jsihguxhu4ri"]
+[gd_scene load_steps=51 format=3 uid="uid://jsihguxhu4ri"]
 
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/PlayerData.gd" id="2_t2gbr"]
@@ -17,9 +17,14 @@
 [ext_resource type="Texture2D" uid="uid://c1ggtt1meqgln" path="res://assets/socialwarfare/Button_Backplate_Click.png" id="8_vkh4x"]
 [ext_resource type="Texture2D" uid="uid://52akqjnkuqwa" path="res://assets/socialwarfare/Button_Backplate_Hover.png" id="9_d3rgy"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/Fight.gd" id="12_3d855"]
+[ext_resource type="Script" path="res://tools/minigames/social_warfare/Modifiers.gd" id="12_s1k71"]
+[ext_resource type="Texture2D" uid="uid://dbyldq1jk4j76" path="res://assets/socialwarfare/beigecircle.png" id="13_sqg5o"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="14_2nwvy"]
+[ext_resource type="Texture2D" uid="uid://c1cdk25y72ghx" path="res://assets/socialwarfare/circle.png" id="14_v7h48"]
 [ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="15_7j0p1"]
 [ext_resource type="Script" path="res://tools/minigames/social_warfare/Flee.gd" id="15_bsyil"]
+[ext_resource type="Texture2D" uid="uid://cixdhevnw5dtq" path="res://assets/socialwarfare/Icons/Attack.png" id="15_cupb0"]
+[ext_resource type="Texture2D" uid="uid://rlstokmcdldq" path="res://assets/socialwarfare/Icons/Restore.png" id="16_x8hdb"]
 [ext_resource type="AudioStream" uid="uid://coyghwfjx0wpo" path="res://assets/music/Villianess Reborn Battle Social Warfare Music 1.mp3" id="21_cadsa"]
 
 [sub_resource type="Animation" id="Animation_78qpp"]
@@ -704,96 +709,220 @@ mouse_filter = 1
 
 [node name="Player" type="Control" parent="Holder"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 736.0
-offset_top = 180.0
-offset_right = 1184.0
-offset_bottom = 372.0
-grow_horizontal = 2
+anchors_preset = 0
+offset_left = 1248.0
+offset_top = 581.0
+offset_right = 1916.0
+offset_bottom = 855.0
 
 [node name="Box" type="Sprite2D" parent="Holder/Player"]
-position = Vector2(845, 496)
+position = Vector2(333, 100)
 texture = ExtResource("3_wlxvx")
 
 [node name="BarHP" type="TextureProgressBar" parent="Holder/Player"]
 layout_mode = 0
-offset_left = 611.0
-offset_top = 495.0
-offset_right = 843.0
-offset_bottom = 515.0
+offset_left = 99.0
+offset_top = 99.0
+offset_right = 331.0
+offset_bottom = 119.0
 value = 100.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("6_wldyg")
 
 [node name="BarMP" type="TextureProgressBar" parent="Holder/Player"]
 layout_mode = 0
-offset_left = 924.0
-offset_top = 495.0
-offset_right = 1156.0
-offset_bottom = 515.0
+offset_left = 412.0
+offset_top = 99.0
+offset_right = 644.0
+offset_bottom = 119.0
 value = 100.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("7_j7171")
 
 [node name="Label2" type="Label" parent="Holder/Player"]
 layout_mode = 0
-offset_left = 562.0
-offset_top = 442.0
-offset_right = 1222.0
-offset_bottom = 485.0
+offset_left = 50.0
+offset_top = 46.0
+offset_right = 478.0
+offset_bottom = 89.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_2nwvy")
 theme_override_font_sizes/font_size = 32
 text = "CECILIA
 "
 
+[node name="Modifiers" type="HBoxContainer" parent="Holder/Player"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 186.0
+offset_right = 668.0
+offset_bottom = 275.0
+alignment = 1
+script = ExtResource("12_s1k71")
+
+[node name="Offense" type="TextureProgressBar" parent="Holder/Player/Modifiers"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.5
+step = 2.08165e-12
+value = 0.1
+fill_mode = 3
+texture_under = ExtResource("13_sqg5o")
+texture_progress = ExtResource("14_v7h48")
+
+[node name="TextureRect" type="TextureRect" parent="Holder/Player/Modifiers/Offense"]
+self_modulate = Color(0.313726, 0.313726, 0.313726, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.12, 1.12)
+texture = ExtResource("15_cupb0")
+
+[node name="Defense" type="TextureProgressBar" parent="Holder/Player/Modifiers"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.5
+step = 2.08165e-12
+fill_mode = 3
+texture_under = ExtResource("13_sqg5o")
+texture_progress = ExtResource("14_v7h48")
+
+[node name="TextureRect" type="TextureRect" parent="Holder/Player/Modifiers/Defense"]
+self_modulate = Color(0.313726, 0.313726, 0.313726, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.12, 1.12)
+texture = ExtResource("16_x8hdb")
+
 [node name="Opponent" type="Control" parent="Holder"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 736.0
-offset_top = 64.0
-offset_right = 1184.0
-offset_bottom = 256.0
+offset_left = 1.0
+offset_top = 100.0
+offset_right = 695.0
+offset_bottom = 324.0
 grow_horizontal = 2
 
 [node name="Box" type="Sprite2D" parent="Holder/Opponent"]
-position = Vector2(-397, 163)
+position = Vector2(338, 127)
 texture = ExtResource("4_vv8kx")
 
 [node name="BarHP" type="TextureProgressBar" parent="Holder/Opponent"]
 layout_mode = 0
-offset_left = -665.0
-offset_top = 169.0
-offset_right = -433.0
-offset_bottom = 189.0
+offset_left = 70.0
+offset_top = 133.0
+offset_right = 302.0
+offset_bottom = 153.0
 value = 100.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("6_wldyg")
 
 [node name="BarMP" type="TextureProgressBar" parent="Holder/Opponent"]
 layout_mode = 0
-offset_left = -352.0
-offset_top = 169.0
-offset_right = -120.0
-offset_bottom = 189.0
+offset_left = 383.0
+offset_top = 133.0
+offset_right = 615.0
+offset_bottom = 153.0
 value = 100.0
 texture_under = ExtResource("5_r0ovr")
 texture_progress = ExtResource("7_j7171")
 
 [node name="Label" type="Label" parent="Holder/Opponent"]
 layout_mode = 0
-offset_left = -713.0
-offset_top = 116.0
-offset_right = -53.0
-offset_bottom = 159.0
+offset_left = 22.0
+offset_top = 80.0
+offset_right = 682.0
+offset_bottom = 123.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_2nwvy")
 theme_override_font_sizes/font_size = 32
 text = "ESRA"
+
+[node name="Modifiers" type="HBoxContainer" parent="Holder/Opponent"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -44.0
+offset_right = 636.0
+offset_bottom = 45.0
+alignment = 1
+script = ExtResource("12_s1k71")
+
+[node name="Offense" type="TextureProgressBar" parent="Holder/Opponent/Modifiers"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.5
+step = 2.08165e-12
+fill_mode = 3
+texture_under = ExtResource("13_sqg5o")
+texture_progress = ExtResource("14_v7h48")
+
+[node name="TextureRect" type="TextureRect" parent="Holder/Opponent/Modifiers/Offense"]
+self_modulate = Color(0.313726, 0.313726, 0.313726, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.12, 1.12)
+texture = ExtResource("15_cupb0")
+
+[node name="Defense" type="TextureProgressBar" parent="Holder/Opponent/Modifiers"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.5
+step = 2.08165e-12
+fill_mode = 3
+texture_under = ExtResource("13_sqg5o")
+texture_progress = ExtResource("14_v7h48")
+
+[node name="TextureRect" type="TextureRect" parent="Holder/Opponent/Modifiers/Defense"]
+self_modulate = Color(0.313726, 0.313726, 0.313726, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.12, 1.12)
+texture = ExtResource("16_x8hdb")
 
 [node name="Fight" type="Control" parent="Holder"]
 visible = false
