@@ -61,7 +61,6 @@ func turn_loop():
 	flee.hide()
 	match STATE:
 		STATES.ROUND_START: #both sides make decision here
-			buff_tick()
 			choose.show()
 			await choose.chosen
 			choose.hide()
@@ -109,21 +108,22 @@ func turn_loop():
 			else: STATE = STATES.ROUND_END
 			turn_loop()
 		STATES.ROUND_END:
-			Global.data_dict["player_mp"] += 3
-			enemy_data.enemy_mp += 3
+			Global.data_dict["player_mp"] += 2
+			enemy_data.enemy_mp += 2
+			buff_tick()
 			STATE = STATES.ROUND_START
 			turn_loop()
 
 func buff_tick():
-	#queue of all buffs; each element is an array of ["name", turns_remaining]
+	#queue of all buffs; each element is an array of [[buff info], turns_remaining]
 	#2 -> buff, 3 -> debuff
 	#0 -> offense, 1 -> defense
-	var to_be_popped : Array = []
 	for index in active_buff.size():
 		active_buff[index][1] -= 1 #turn counter -= 1
 		if active_buff[index][1] <= 0:
 			var item = active_buff[index][0]
 			var stats_changed : String
+			var magnitude = item[3]
 			#adjust stat and display relevant info
 			match item[0]:
 				"Opponent":
@@ -131,36 +131,36 @@ func buff_tick():
 						2: #buff
 							match item[2]:
 								0: #offense
-									Global.data_dict["player_offense_ratio"] = 1
+									Global.data_dict["player_offense_ratio"] /= magnitude
 									stats_changed = "Your offense"
 								1: #defense
-									Global.data_dict["player_defense_ratio"] = 1
+									Global.data_dict["player_defense_ratio"] /= magnitude
 									stats_changed = "Your defense"
 						3: #debuff
 							match item[2]:
 								0: #offense
-									enemy_data.enemy_offense_ratio = 1
+									enemy_data.enemy_offense_ratio /= magnitude
 									stats_changed = enemy_data.enemy_name + "\'s offense"
 								1: #defense
-									enemy_data.enemy_defense_ratio = 1
+									enemy_data.enemy_defense_ratio /= magnitude
 									stats_changed = enemy_data.enemy_name + "\'s defense"
 				"Player":
 					match item[1]:
 						2: #buff
 							match item[2]:
 								0: #offense
-									enemy_data.enemy_offense_ratio = 1
+									enemy_data.enemy_offense_ratio /= magnitude
 									stats_changed = enemy_data.enemy_name + "\'s offense"
 								1: #defense
-									enemy_data.enemy_defense_ratio = 1
+									enemy_data.enemy_defense_ratio /= magnitude
 									stats_changed = enemy_data.enemy_name + "\'s defense"
 						3: #debuff
 							match item[2]:
 								0: #offense
-									Global.data_dict["player_offense_ratio"] = 1
+									Global.data_dict["player_offense_ratio"] /= magnitude
 									stats_changed = "Your offense"
 								1: #defense
-									Global.data_dict["player_defense_ratio"] = 1
+									Global.data_dict["player_defense_ratio"] /= magnitude
 									stats_changed = "Your defense"
 			Util.popup_dialogue(
 					$Holder/DialogueHolder,
@@ -168,9 +168,12 @@ func buff_tick():
 					["null"]
 				)
 			await Util.util_finished
-			to_be_popped.append(index)
-	for index in to_be_popped:
-		active_buff.pop_at(index)
+	var index = 0
+	while index < active_buff.size():
+		if active_buff[index][1] <= 0:
+			active_buff.pop_at(index)
+		else: index += 1
+	refresh_stats()
 	print(active_buff)
 
 func card_action(card : Card, target : String):
@@ -422,7 +425,7 @@ func card_action(card : Card, target : String):
 		await Util.util_finished
 	
 	if buff_applied:
-		active_buff.push_back([[target, card.effect, card.target_stat], 3])
+		active_buff.push_back([[target, card.effect, card.target_stat, card.effect_num*multiple], card.turn_dur])
 		buff_applied = false
 		
 	enemy_data.enemy_hp = clamp(enemy_data.enemy_hp, 0, enemy_data.enemy_max_hp)
@@ -455,22 +458,32 @@ func refresh_stats():
 	#Global.data_dict["player_hp"] = snapped(Global.data_dict["player_hp"], 1)
 	Global.data_dict["player_mp"] = snapped(Global.data_dict["player_mp"], 1)
 	
-	var a = create_tween()
+	var a = create_tween().set_parallel()
 	a.tween_property(
 		$Holder/Player/BarHP, "value",
 		Global.data_dict["player_hp"], 0.5).set_trans(Tween.TRANS_EXPO)
-	a = create_tween()
 	a.tween_property(
 		$Holder/Player/BarMP, "value",
 		Global.data_dict["player_mp"], 0.5).set_trans(Tween.TRANS_EXPO)
-	a = create_tween()
 	a.tween_property(
 		$Holder/Opponent/BarHP, "value",
 		enemy_data.enemy_hp, 0.5).set_trans(Tween.TRANS_EXPO)
-	a = create_tween()
 	a.tween_property(
 		$Holder/Opponent/BarMP, "value",
 		enemy_data.enemy_mp, 0.5).set_trans(Tween.TRANS_EXPO)
+	
+	a.tween_property(
+		$Holder/Player/Modifiers/Offense, "value",
+		Global.data_dict["player_offense_ratio"], 0.5).set_trans(Tween.TRANS_EXPO)
+	a.tween_property(
+		$Holder/Player/Modifiers/Defense, "value",
+		Global.data_dict["player_defense_ratio"], 0.5).set_trans(Tween.TRANS_EXPO)
+	a.tween_property(
+		$Holder/Opponent/Modifiers/Offense, "value",
+		enemy_data.enemy_offense_ratio, 0.5).set_trans(Tween.TRANS_EXPO)
+	a.tween_property(
+		$Holder/Opponent/Modifiers/Defense, "value",
+		enemy_data.enemy_defense_ratio, 0.5).set_trans(Tween.TRANS_EXPO)
 
 func end_battle(won : bool):
 	match won:

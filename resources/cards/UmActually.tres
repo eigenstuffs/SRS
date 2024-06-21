@@ -12,6 +12,7 @@ effect = 3
 target_stat = 0
 type = 2
 effect_num = 0.75
+turn_dur = 1
 desc = "Debate your opponent into lowering their attack for one turn."
 intensity_mod = 0
 move_dialogue = Array[String]([])

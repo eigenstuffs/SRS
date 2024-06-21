@@ -12,6 +12,7 @@ effect = 3
 target_stat = 0
 type = 1
 effect_num = 0.75
+turn_dur = 2
 desc = "It's a secret."
 intensity_mod = 0
 move_dialogue = Array[String]([])

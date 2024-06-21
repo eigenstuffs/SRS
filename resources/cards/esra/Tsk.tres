@@ -10,6 +10,7 @@ effect = 3
 target_stat = 0
 type = 0
 effect_num = 0.75
+turn_dur = 2
 desc = "Esra clicks his tongue to boost his standing."
 intensity_mod = -20
 move_dialogue = Array[String](["Tsk, you really piss me off.", "You little…!", "I’m just getting started.", "Are you even trying?", "I’ll make you choke on those words."])
