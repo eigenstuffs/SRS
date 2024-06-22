@@ -7,6 +7,7 @@ signal action
 
 var current_action
 var current_card : Card
+var redraw_chance : int = 5
 
 func _on_back_pressed():
 	current_action = "back"
@@ -30,3 +31,15 @@ func reset():
 
 func keep_current_hand():
 	card_deck.keep_current_hand()
+
+func _on_redraw_pressed():
+	card_deck.discard_current_hand()
+	reset()
+	initiate()
+	redraw_chance -= 1
+
+func _process(delta):
+	$Redraw/Label.text = "Redraw x " + str(redraw_chance)
+	if redraw_chance < 1:
+		$Redraw.disabled = true
+	else: $Redraw.disabled = false

@@ -22,21 +22,22 @@ func get_best_card():
 	var heal = []
 	var other = []
 	for i in enemy_cards:
-		if i.effect == 1:
-			heal.append(i)
-		else:
-			other.append(i)
+		if i.points_req <= enemy_mp:
+			if i.effect == 1:
+				heal.append(i)
+			else:
+				other.append(i)
 	if enemy_hp <= (enemy_max_hp * .2):
 		var num = randi_range(0, 10)
-		if num >= 1:
+		if num >= 1 and !heal.is_empty():
 			heal.shuffle()
-			return heal[0] 
+			return heal[0]
 		else:
 			other.shuffle()
 			return other[0]
 	elif enemy_hp <= (enemy_max_hp * .5):
 		var num = randi_range(0, 10)
-		if num >= 3:
+		if num >= 3 and !heal.is_empty():
 			heal.shuffle()
 			return heal[0] 
 		else:

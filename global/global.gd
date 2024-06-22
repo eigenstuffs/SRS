@@ -264,12 +264,13 @@ func _ready():
 		var dynamic_path = save_dir + "save_" + str(i) + ".dat"
 		load_data(dynamic_path)
 	if meta_data_dict["effect_on"]:
+		await get_tree().create_timer(0.1).timeout #evil timer here again
 		precompile_effects()
 	else: print("effect turned off")
-	
 	# FIXME: evil timer to wait for noise textures to generate i hate this but im too lazy to make a proper
 	await get_tree().create_timer(0.1).timeout
 	EffectReg.start_effect(self, 'FilmGrain', [self.get_node('/root/EffectReg')])
+
 
 func reset_data(dynamic_path : String):
 	var dir = DirAccess.open(save_dir)
@@ -342,10 +343,11 @@ func precompile_effects():
 	var control := self.get_node('/root/EffectReg')
 	# We load all effects to the screen (ensuring they are *visible* i.e., rendered)
 	for effect_name in EffectReg.effects.keys(): EffectReg.start_effect(self, effect_name, [control])
-	control.add_child(color_rect)
 	await get_tree().create_timer(0.2).timeout # idk if this is needed
+	control.add_child(color_rect) #FIXME: I can still see the effects :(
 	# ...then we remove all the loaded effects.
 	for effect_name in EffectReg.effects.keys(): EffectReg.free_effect(effect_name)
+	
 	color_rect.queue_free()
 	print("all effect compiled")
 
