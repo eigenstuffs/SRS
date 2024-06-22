@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 	if not note_queue.front(): return
 	# Handle note misses due to failing to release or never hitting at all.
 	var next_note = note_queue.front()
-	particle_emitter.emitting = next_note.is_held
+	#particle_emitter.emitting = next_note.is_held
 	if next_note.is_held:
 		$KeyMesh/HitLight.light_energy = 2.0
 	

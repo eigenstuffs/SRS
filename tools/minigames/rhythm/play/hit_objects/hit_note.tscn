@@ -25,9 +25,6 @@ priority_overwrite = 1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5n7ax"]
 render_priority = 1
 shader = ExtResource("3_7uq00")
-shader_parameter/miss_color = Color(0.25, 0.085, 0.05, 1)
-shader_parameter/fade_out_time = 0.35
-shader_parameter/tex = ExtResource("4_7ad0v")
 script = ExtResource("2_gm18e")
 is_canvas_item = false
 shader_passes = Array[ExtResource("5_7pr8j")]([SubResource("Resource_x1c01")])
