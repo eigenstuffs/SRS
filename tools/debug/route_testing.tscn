@@ -1,0 +1,207 @@
+[gd_scene load_steps=7 format=3 uid="uid://3wxklx4724q3"]
+
+[ext_resource type="Script" path="res://tools/debug/route_testing.gd" id="1_21gl5"]
+[ext_resource type="Texture2D" uid="uid://v04we14qbtll" path="res://assets/rewardscene/backplate.png" id="2_jti5e"]
+[ext_resource type="Texture2D" uid="uid://c2iw8bcynwrpk" path="res://assets/ui/Banner Icon Backplate_Default.png" id="3_07yhq"]
+[ext_resource type="Texture2D" uid="uid://k86e0v8fq77w" path="res://assets/ui/Banner Icon Backplate_Click.png" id="4_jy2y6"]
+[ext_resource type="Texture2D" uid="uid://wc2indpyjym5" path="res://assets/ui/Banner Icon Backplate_Hover.png" id="5_bx0w5"]
+[ext_resource type="Texture2D" uid="uid://dsmdmqjm1b5g6" path="res://assets/vn/Settings/Journal Icon.png" id="6_xnm6n"]
+
+[node name="RouteTesting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_21gl5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -538.0
+offset_right = 952.0
+offset_bottom = 548.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jti5e")
+
+[node name="AddTag" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -680.0
+offset_top = 316.0
+offset_right = -108.0
+offset_bottom = 425.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter Tag to Add"
+alignment = 1
+
+[node name="DeleteTag" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = 316.0
+offset_right = 684.0
+offset_bottom = 425.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter Tag to Delete"
+alignment = 1
+
+[node name="SaveButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -401.0
+offset_top = 61.0
+offset_right = -303.0
+offset_bottom = 160.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_07yhq")
+texture_pressed = ExtResource("4_jy2y6")
+texture_hover = ExtResource("5_bx0w5")
+texture_focused = ExtResource("5_bx0w5")
+metadata/_edit_group_ = true
+
+[node name="Label2" type="Label" parent="SaveButton"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 4.0
+offset_right = 101.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_font_sizes/font_size = 32
+text = "Save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save" type="TextureRect" parent="SaveButton"]
+visible = false
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 120.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_xnm6n")
+stretch_mode = 3
+
+[node name="LoadButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_top = 59.0
+offset_right = -166.0
+offset_bottom = 158.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_07yhq")
+texture_pressed = ExtResource("4_jy2y6")
+texture_hover = ExtResource("5_bx0w5")
+texture_focused = ExtResource("5_bx0w5")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="LoadButton"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 4.0
+offset_right = 101.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_font_sizes/font_size = 32
+text = "Load"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save" type="TextureRect" parent="LoadButton"]
+visible = false
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 120.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_xnm6n")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 192.0
+offset_right = 760.0
+offset_bottom = 262.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Remembered"
+
+[node name="RememberedDisplay" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 184.0
+offset_top = -284.0
+offset_right = 776.0
+offset_bottom = 244.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RememberedDisplay"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 1088.0
+offset_top = 192.0
+offset_right = 1664.0
+offset_bottom = 262.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Other Stats"
+
+[node name="OtherStats" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 136.0
+offset_top = -276.0
+offset_right = 664.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+metadata/_edit_group_ = true
+
+[node name="OOC" type="Label" parent="OtherStats"]
+layout_mode = 2
+text = "OOC: "
+
+[node name="OPP" type="Label" parent="OtherStats"]
+layout_mode = 2
+text = "OPP: "
+
+[node name="Type" type="Label" parent="OtherStats"]
+layout_mode = 2
+text = "Type: "
+
+[node name="OG_RO" type="Label" parent="OtherStats"]
+layout_mode = 2
+text = "OG_RO: "
+
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="LoadButton" to="." method="_on_load_button_pressed"]
