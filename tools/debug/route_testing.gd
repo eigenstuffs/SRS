@@ -27,8 +27,12 @@ func display_data():
 	#display other stats
 	$OtherStats/OOC.text = "OOC: " + str(Global.data_dict["ooc"])
 	$OtherStats/OPP.text = "OPP: " + str(Global.data_dict["opp"])
+	$OtherStats/PlayerName.text = "Player Name: " + str(Global.data_dict["player_name"])
+	$OtherStats/SeraphinaName.text = "Seraphina Name: " + str(Global.data_dict["seraphina_name"])
 	$OtherStats/Type.text = "Type: " + str(Global.data_dict["type"])
 	$OtherStats/OG_RO.text = "OG_RO: " + str(Global.data_dict["og_ro"])
+	$OtherStats/CurrentScene.text = "Current Scene: " + (Global.data_dict["current_scene"].replace("res://tools/dialogue/vn_scripts/Dialogue - ", "")).replace(".json", "")
+	$OtherStats/SavedDate.text = "Saved Date: " + str(Global.data_dict["saved_date"])
 
 func _on_save_button_pressed():
 	var a = SAVE_SCREEN.instantiate()
@@ -44,3 +48,21 @@ func _on_load_button_pressed():
 	await a.exited_load
 	a.queue_free()
 	display_data()
+
+func _on_add_tag_text_submitted(new_text):
+	if new_text != "":
+		var new_tag = new_text
+		$AddTag.text = ""
+		Global.data_dict["remembered"].append(new_tag)
+		display_data()
+		$StatusMessage.text = new_tag + " has been added."
+
+func _on_delete_tag_text_submitted(new_text):
+	if new_text != "":
+		var tbm_tag = new_text
+		$DeleteTag.text = ""
+		if Global.data_dict["remembered"].has(tbm_tag):
+			Global.data_dict["remembered"].erase(tbm_tag)
+			display_data()
+			$StatusMessage.text = tbm_tag + " has been removed."
+		else: $StatusMessage.text = "Tag " + tbm_tag + " does not exist."
