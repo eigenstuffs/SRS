@@ -38,3 +38,6 @@ func card_chosen(card : Card):
 
 func keep_current_hand():
 	load_saved_hand = true
+
+func discard_current_hand():
+	load_saved_hand = false

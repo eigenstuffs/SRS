@@ -944,6 +944,51 @@ texture_hover = ExtResource("9_d3rgy")
 texture_disabled = ExtResource("7_k28hl")
 texture_focused = ExtResource("9_d3rgy")
 
+[node name="Label" type="Label" parent="Holder/Fight/Back"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 12.0
+offset_right = 388.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_fonts/font = ExtResource("14_2nwvy")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Redraw" type="TextureButton" parent="Holder/Fight"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 839.0
+offset_right = 540.0
+offset_bottom = 953.0
+texture_normal = ExtResource("7_k28hl")
+texture_pressed = ExtResource("8_vkh4x")
+texture_hover = ExtResource("9_d3rgy")
+texture_disabled = ExtResource("7_k28hl")
+texture_focused = ExtResource("9_d3rgy")
+
+[node name="Label" type="Label" parent="Holder/Fight/Redraw"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -41.0
+offset_right = 167.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
+theme_override_fonts/font = ExtResource("14_2nwvy")
+theme_override_font_sizes/font_size = 32
+text = "Redraw x 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CardDeck" parent="Holder/Fight" instance=ExtResource("8_m254v")]
 layout_mode = 0
 offset_left = 640.0
@@ -956,19 +1001,6 @@ theme_override_constants/separation = -100
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Holder/Fight"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 720.0
-offset_right = 480.0
-offset_bottom = 810.0
-theme_override_colors/font_color = Color(0.898039, 0.858824, 0.760784, 1)
-theme_override_fonts/font = ExtResource("14_2nwvy")
-theme_override_font_sizes/font_size = 32
-text = "Back"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Choice" type="Control" parent="Holder"]
 visible = false
@@ -1093,6 +1125,7 @@ volume_db = -10.0
 autoplay = true
 
 [connection signal="pressed" from="Holder/Fight/Back" to="Holder/Fight" method="_on_back_pressed"]
+[connection signal="pressed" from="Holder/Fight/Redraw" to="Holder/Fight" method="_on_redraw_pressed"]
 [connection signal="selected_card" from="Holder/Fight/CardDeck" to="Holder/Fight" method="_on_card_deck_selected_card"]
 [connection signal="pressed" from="Holder/Choice/Fight" to="Holder/Choice" method="_on_fight_pressed"]
 [connection signal="pressed" from="Holder/Choice/Flee" to="Holder/Choice" method="_on_flee_pressed"]

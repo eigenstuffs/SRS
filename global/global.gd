@@ -265,6 +265,7 @@ func _ready():
 		load_data(dynamic_path)
 	print("effect is disabled in compatibility build")
 
+
 func reset_data(dynamic_path : String):
 	var dir = DirAccess.open(save_dir)
 	if !dir:
@@ -336,10 +337,11 @@ func precompile_effects():
 	var control := self.get_node('/root/EffectReg')
 	# We load all effects to the screen (ensuring they are *visible* i.e., rendered)
 	for effect_name in EffectReg.effects.keys(): EffectReg.start_effect(self, effect_name, [control])
-	control.add_child(color_rect)
 	await get_tree().create_timer(0.2).timeout # idk if this is needed
+	control.add_child(color_rect) #FIXME: I can still see the effects :(
 	# ...then we remove all the loaded effects.
 	for effect_name in EffectReg.effects.keys(): EffectReg.free_effect(effect_name)
+	
 	color_rect.queue_free()
 	print("all effect compiled")
 

@@ -33,14 +33,15 @@ func _process(delta: float) -> void:
 func _on_pressed():
 	if is_selected: return
 	is_selected = true
-	await run_fancy_animation() # FIXME: Prevents asynchronous game logic!?!!
 	
 	if not card_data: return # For running the scene independently
 	if Global.data_dict["player_mp"] >= card_data.points_req:
+		await run_fancy_animation() # FIXME: Prevents asynchronous game logic!?!!
 		emit_signal("chosen", card_data)
 	else:
 		EffectAnim.SfxPlayer.stream = SFX_ERROR
 		EffectAnim.SfxPlayer.play()
+		is_selected = false
 
 func run_3d_displacement(delta : float) -> void:
 	if is_selected: return
