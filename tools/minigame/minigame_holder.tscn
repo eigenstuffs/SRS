@@ -22,27 +22,59 @@ script = ExtResource("1_ddtpb")
 
 [node name="Game" type="SubViewportContainer" parent="."]
 layout_mode = 0
-offset_left = -800.0
-offset_top = -444.0
-offset_right = 800.0
-offset_bottom = 456.0
-script = ExtResource("2_e8036")
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -960.0
 offset_top = -540.0
 offset_right = 960.0
 offset_bottom = 540.0
+pivot_offset = Vector2(960, 540)
+script = ExtResource("2_e8036")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(960, 540)
 mouse_filter = 2
 script = ExtResource("2_bxee8")
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = -60.0
+offset_top = 988.0
+offset_right = 2022.0
+offset_bottom = 1114.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = -60.0
+offset_top = -14.0
+offset_right = 167.0
+offset_bottom = 1114.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 1758.0
+offset_top = -14.0
+offset_right = 2042.0
+offset_bottom = 1114.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = -139.0
+offset_top = -258.0
+offset_right = 2169.0
+offset_bottom = 104.0
+color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="UI"]
 layout_mode = 0

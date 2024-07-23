@@ -10,9 +10,112 @@ signal stop_blinking
 var started = false
 @export var player_health = 3
 var item_caught : Array[int] = [0, 0]
+var time := 0.0
+
+func _process(delta: float) -> void:
+	if not started: return
+	time += delta
+	var window_size := DisplayServer.window_get_size()
+	if window_size.x > 1440 and is_playing and $ApplePlayer.get_playback_position() > 1.0:
+		resize_window(Vector2i(lerpf(1920, 1440, min(($ApplePlayer.get_playback_position() - 1.0)*0.1, 1.0)), 1080))
+	get_parent().get_parent().get_child(1).scale += Vector2.ONE * pow(time, 12.0) * 0.025
+
+func resize_window(size : Vector2i) -> void:
+	var diff := absf(DisplayServer.window_get_size().x - size.x) * 0.5
+	$CanvasLayer2.offset.x += diff
+	DisplayServer.window_set_size(size)
+	DisplayServer.window_set_position(DisplayServer.window_get_position() + Vector2i(diff, 0))
+
+var images : Array
+var frames : Array
+var hit_previously : Dictionary
+var task_id : int
+
+var previous_frame_idx := 0
+var is_playing = false
+
+func _physics_process(delta: float) -> void:
+	if not started or time < 1.7: return
+	if not is_playing:
+		is_playing = true
+		$ApplePlayer.play()
+	
+	var frame_idx := mini(len(frames) - 1, roundi($ApplePlayer.get_playback_position() * 30.0))
+	if frame_idx == previous_frame_idx: return
+	previous_frame_idx = frame_idx
+	$CanvasLayer2/TextureRect.texture = images[frame_idx]
+	
+	var space_state = $Camera3D.get_world_3d().direct_space_state
+	var excluded_objects = [$'Walls/Colliders/Back Wall', $'Walls/Colliders/Front Wall2',  $'Walls/Colliders/Right Wall',  $'Walls/Colliders/Left Wall']
+	
+	for hit_object in hit_previously.keys():
+		hit_object.cover.set_instance_shader_parameter('white_factor', 0.0)
+	hit_previously.clear()
+	
+	var frame_pixels = frames[frame_idx]
+	for i in range(len(frame_pixels)):
+		var ro = $Camera3D.project_ray_origin(frame_pixels[i][0])
+		var rd = $Camera3D.project_ray_normal(frame_pixels[i][0])
+		var query := PhysicsRayQueryParameters3D.create(ro, ro + rd*100, 0xFFFFFFFF, excluded_objects)
+		var hit_info = space_state.intersect_ray(query)
+		if hit_info.is_empty() or hit_previously.has(hit_info.collider) or not hit_info.collider is RBApple: continue
+		hit_info.collider.cover.set_instance_shader_parameter('white_factor', frame_pixels[i][1])
+		hit_previously[hit_info.collider] = null
+		
+		#var excluded_temp = [hit_info.collider]
+		for j in range(5):
+			ro = hit_info.position
+			query = PhysicsRayQueryParameters3D.create(ro, ro + rd*100, 0xFFFFFFFF, [hit_info.collider])
+			hit_info = space_state.intersect_ray(query)
+			if hit_info.is_empty() or hit_previously.has(hit_info.collider) or not hit_info.collider is RBApple: break
+			hit_info.collider.cover.set_instance_shader_parameter('white_factor', frame_pixels[i][1])
+			hit_previously[hit_info.collider] = null
+			#excluded_temp += [hit_info.collider]
+
+func load_frames(frame_index):
+	images[frame_index] = load(images[frame_index]).get_image() as Image
+	print('Generated frame %d/%d!' % [frame_index, frames.size()-1])
+
+func process_frames(frame_index):
+	var image : Image = images[frame_index]
+	var pixels : Array[Array]
+	for i in range(0,image.get_width(),8):
+		for j in range(0,image.get_height(),8):
+			var col := 0.0
+			#for i0 in range(8):
+				#for j0 in range(8):
+					#col += image.get_pixel(i+i0, j+j0).r
+			col += image.get_pixel(i, j).r
+			#col /= 8.0*8.0
+			if col <= 0.01: continue
+			
+			var center := Vector2i(1440.0 * (i+4.0)/image.get_width() + 240.0, 1080.0 * (j+4.0)/image.get_height())
+			pixels.push_back([center, col])
+	frames[frame_index] = pixels
+	images[frame_index] = ImageTexture.create_from_image(image)
+	print('Processed frame %d/%d!' % [frame_index, frames.size()-1])
 
 func _ready():
-	pass
+	var dir := DirAccess.open('res://tools/minigames/library/frames/')
+	assert(dir)
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if file_name.get_extension() == 'png':
+			images.push_back('res://tools/minigames/library/frames/' + file_name)
+		file_name = dir.get_next()
+	images.sort_custom(func(a, b): return int(a) > int(b))
+	frames.resize(images.size())
+	task_id = WorkerThreadPool.add_group_task(load_frames, images.size(), 7)
+	while not WorkerThreadPool.is_group_task_completed(task_id): await get_tree().create_timer(0.1).timeout # HAHAHAHA
+	task_id = WorkerThreadPool.add_group_task(process_frames, images.size(), 2)
+	started = true
+	EffectReg.start_effect(self, 'Flash', [$EffectNode])
+	$SfxPlayer.play()
+	$SfxPlayer2.play()
+	
+func _exit_tree():
+	WorkerThreadPool.wait_for_group_task_completion(task_id)
 
 func game_start():
 	$NPCInstancer.active = true

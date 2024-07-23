@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://buyuq0kfr1tme"]
+[gd_scene load_steps=35 format=3 uid="uid://buyuq0kfr1tme"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="2_4dmdn"]
@@ -17,8 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://e50mcrpkh28u" path="res://assets/library/Screen_setto70%transparency.png" id="10_sb8oc"]
 [ext_resource type="Texture2D" uid="uid://bhnxu5xbw83e4" path="res://assets/library/Library_TopBanister.png" id="12_bqiee"]
 [ext_resource type="Texture2D" uid="uid://c6ep7gd34sa5v" path="res://assets/library/Overlay_setto35%transparency.png" id="13_wtd8x"]
+[ext_resource type="AudioStream" uid="uid://fjn0scqr3qp3" path="res://tools/minigames/library/magic_eye.mp3" id="18_6maty"]
 [ext_resource type="AudioStream" uid="uid://c01kuufd4defn" path="res://resources/effect/explosion_effect/explosion.mp3" id="19_ac088"]
-[ext_resource type="AudioStream" uid="uid://ka6xjq0a4pg" path="res://tools/minigames/library/sound/Villianess_Reborn_Library_Minigame_Music.mp3" id="20_lrgu2"]
+[ext_resource type="AudioStream" uid="uid://cjitm0rfmghmu" path="res://tools/minigames/library/bad_apple.mp3" id="19_byjns"]
+[ext_resource type="AudioStream" uid="uid://bbi140x4c14d7" path="res://tools/minigames/library/woosh.mp3" id="19_lfop1"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_iqmu0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
 size = Vector3(10, 1, 10)
@@ -45,10 +49,10 @@ material = SubResource("StandardMaterial3D_vnnu8")
 size = Vector3(10, 6, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxk7j"]
-size = Vector3(10, 5, 0.2)
+size = Vector3(10, 20, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uh7u6"]
-size = Vector3(0.2, 5, 10)
+size = Vector3(0.2, 20, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4t3gm"]
 size = Vector3(1, 1.71545, 3.31683)
@@ -60,7 +64,9 @@ albedo_color = Color(0.509804, 0.176471, 0.0588235, 0.345098)
 material = SubResource("StandardMaterial3D_h0ak3")
 
 [node name="Library" type="SubViewport"]
-size = Vector2i(1600, 900)
+msaa_2d = 2
+msaa_3d = 2
+size = Vector2i(1920, 1080)
 script = ExtResource("1_jnejo")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_7cbig")]
@@ -71,12 +77,23 @@ offset_bottom = 40.0
 texture = ExtResource("5_4ilel")
 expand_mode = 1
 
+[node name="CanvasLayer2" parent="." instance=ExtResource("2_7cbig")]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2"]
+offset_left = 20.0
+offset_top = 790.0
+offset_right = 500.0
+offset_bottom = 1150.0
+scale = Vector2(0.75, 0.75)
+texture = SubResource("ImageTexture_iqmu0")
+
 [node name="Walls" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 2.08165e-12, 2.08165e-12)
 
 [node name="Ground" type="Node3D" parent="Walls"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.985963, 0)
 collision_layer = 7
 collision_mask = 15
 
@@ -142,32 +159,32 @@ texture = ExtResource("13_wtd8x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
 
 [node name="Back Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.623937)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.68784)
 collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Back Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.261841)
 shape = SubResource("BoxShape3D_oxk7j")
 
 [node name="Front Wall2" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.87005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38135)
 collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Front Wall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.682683)
 shape = SubResource("BoxShape3D_oxk7j")
 
 [node name="Left Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45616, 0, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3172, 0, 2.08165e-12)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Left Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 shape = SubResource("BoxShape3D_uh7u6")
 
 [node name="Right Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57812, 0, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37354, 0, 2.08165e-12)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Right Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -193,7 +210,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 light_color = Color(1, 0.933333, 0.811765, 1)
 
 [node name="LibraryPlayer" parent="." instance=ExtResource("3_jyoxc")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1000, 0.748, 2.029)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1000, 0.190071, 2.029)
 collision_mask = 3
 
 [node name="Shadow" parent="LibraryPlayer" instance=ExtResource("4_q284v")]
@@ -214,7 +231,7 @@ transform = Transform3D(1, -2.99891e-30, 2.91303e-38, 0, -1.96701e-07, -1, 6.664
 visible = true
 
 [node name="BookInstancer" parent="." instance=ExtResource("6_8v8og")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.907, 1000, 5, 2.03)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 5, 2.03)
 
 [node name="Bookshelf" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 0.826, 2.09)
@@ -222,19 +239,19 @@ visible = false
 script = ExtResource("8_lbiij")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 0.0598755, 0.244781)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.95428, 0.0598755, 0.244781)
 shape = SubResource("BoxShape3D_4t3gm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, 3.7, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, 3.70325, -0.00468349, 0.000174999)
 mesh = SubResource("BoxMesh_h0o6u")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 0.0598755, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41003, 0.0598755, 0)
 shape = SubResource("BoxShape3D_4t3gm")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, -3.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, -3.79999, 0, 0)
 mesh = SubResource("BoxMesh_h0o6u")
 
 [node name="EffectNode" type="Control" parent="."]
@@ -244,15 +261,22 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_6maty")
+volume_db = -5.0
+pitch_scale = 0.95
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_lrgu2")
-autoplay = true
+[node name="SfxPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_lfop1")
+volume_db = -10.0
 
 [node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_ac088")
 volume_db = -13.0
 pitch_scale = 1.5
+
+[node name="ApplePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_byjns")
+volume_db = -5.0
 
 [connection signal="stop_blinking" from="." to="Walls/Shelves" method="_on_library_stop_blinking"]
 [connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]

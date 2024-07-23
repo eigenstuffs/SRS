@@ -77,11 +77,11 @@ func anim_handler():
 
 func _on_hurtbox_body_entered(body):
 	var parent = body.get_parent()
-	if parent is Book:
-		emit_signal("book_collected", parent)
-		parent.queue_free()
-		move_hurtbox($Hurtbox.position.y + collision_box_increment)
-		print([$Hurtbox.position.y, $Hurtbox/CollisionShape3D.position.y])
+	#if parent is Book:
+		#emit_signal("book_collected", parent)
+		#parent.queue_free()
+		#move_hurtbox($Hurtbox.position.y + collision_box_increment)
+		#print([$Hurtbox.position.y, $Hurtbox/CollisionShape3D.position.y])
 
 func _on_hurtbox_2_body_entered(body):
 	var parent = body.get_parent()

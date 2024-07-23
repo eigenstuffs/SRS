@@ -217,6 +217,7 @@ animations = [{
 }]
 
 [node name="LibraryPlayer" type="CharacterBody3D"]
+axis_lock_linear_y = true
 script = ExtResource("1_0wy6d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

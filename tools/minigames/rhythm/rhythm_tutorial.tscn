@@ -4,7 +4,7 @@
 
 [node name="TutorialScreen" instance=ExtResource("1_grl0q")]
 
-[node name="Description" parent="." index="3"]
+[node name="Description" parent="." index="4"]
 offset_left = -312.0
 offset_top = -84.0
 offset_right = 315.0

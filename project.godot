@@ -13,7 +13,6 @@ config_version=5
 config/name="Villainess x Reborn"
 run/main_scene="res://scenes/menus/title.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-run/max_fps=144
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://assets/misc/IMG_4946.jpeg"
 
@@ -23,7 +22,7 @@ EffectAnim="*res://tools/effect/effect_anim.tscn"
 Global="*res://global/global.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 Util="*res://global/utilities.gd"
-WindowDimensionHelper="*res://global/window_dimension_helper.gd"
+WindowDimensionHelper="res://global/window_dimension_helper.gd"
 EffectReg="*res://global/EffectReg.gd"
 
 [debug]
@@ -38,11 +37,10 @@ gdscript/warnings/incompatible_ternary=0
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/window_width_override=1920
+window/size/window_height_override=1080
 window/energy_saving/keep_screen_on=false
-window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=3
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 
@@ -146,6 +144,11 @@ rhythm_key_6={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":76,"key_label":0,"unicode":108,"echo":false,"script":null)
 ]
 }
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
+jolt_3d/collisions/report_all_kinematic_contacts=true
 
 [rendering]
 

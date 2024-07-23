@@ -1,6 +1,6 @@
 class_name MinigameHolder extends Control
 
-const MINIGAME_VIEWPORT_DIMS : Vector2 = Vector2(1600, 900)
+const MINIGAME_VIEWPORT_DIMS : Vector2 = Vector2(1920, 1080)
 const TUTORIAL_LIST = preload("res://resources/minigame/tutorial_list.tres")
 
 @onready var ui : Control = $UI
