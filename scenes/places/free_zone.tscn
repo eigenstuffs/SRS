@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/places/free_zone.gd" id="1_vhgap"]
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="3_iqbv6"]
-[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="4_uv2bm"]
+[ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/3D/player.tscn" id="4_uv2bm"]
 [ext_resource type="Script" path="res://scenes/actors/npc.gd" id="5_ebkoy"]
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/misc/spritesheet_mini_npc_idle.png" id="6_fcqmx"]
 [ext_resource type="Texture2D" uid="uid://304qv7q1hedd" path="res://assets/misc/spritesheet_mini_selected_idle.png" id="7_7pcs5"]

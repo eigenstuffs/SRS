@@ -29,7 +29,7 @@ void fragment() {
     float mix_factor = (greyscale.x < 0.5) ? 1.0 : ((greyscale.x < 0.95) ? 0.5 : 0.0);
 	ALBEDO = mix(pow(tex_color.rgb, vec3(2.2)), greyscale * color_overwrite.rgb, mix_factor * color_overwrite.a);
 	ALBEDO = pow(tex_color.rgb, vec3(2.2));
-	
+
 	ALBEDO = mix(ALBEDO, miss_color, fade_out_factor);
 	ALPHA *= tex_color.a * fade_in_factor * (1. - fade_out_factor) * alpha_overwrite;
 }

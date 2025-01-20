@@ -25,14 +25,14 @@ void fragment() {
 	fade_out_factor = smoothstep(0., 1., fade_out_factor);
 	//fade_in_factor = 1.0;
 	//vec4 color_overwrite2 = vec4(0.424, 0.851, 0.475, 1.0);
-	
+
 	// Color swap from luminance
     vec3 greyscale = vec3((tex_color.r + tex_color.g + tex_color.b) * 0.3333333);
     float mix_factor = (greyscale.x < 0.5) ? 1.0 : 0.0;
 	ALBEDO = mix(pow(tex_color.rgb, vec3(2.2)), greyscale * color_overwrite.rgb, mix_factor * color_overwrite.a);
 	if (greyscale.x > 0.5 && greyscale.x < 0.95) ALBEDO = vec3(0.6, 0.6, 0.6);
 	//ALBEDO = pow(tex_color.rgb, vec3(2.2));
-	
+
 	ALBEDO = mix(ALBEDO, miss_color, 1. - alpha_overwrite);
 	ALPHA *= tex_color.a * fade_in_factor * (1. - fade_out_factor) * alpha_overwrite;
 }

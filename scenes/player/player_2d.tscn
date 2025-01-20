@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c54r7lm21b27d"]
+
+[ext_resource type="Script" path="res://scenes/player/player_2d.gd" id="1_6mfni"]
+[ext_resource type="SpriteFrames" uid="uid://bour778bb1kbs" path="res://tools/minigames/library/library_player_anim.tres" id="2_iibfi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0rqh"]
+radius = 78.0
+height = 278.0
+
+[node name="Player2d" type="CharacterBody2D"]
+script = ExtResource("1_6mfni")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x0rqh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("2_iibfi")
+animation = &"Idle"

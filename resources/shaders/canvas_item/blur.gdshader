@@ -102,7 +102,7 @@ void fragment() {
              + texture(screen_texture, SCREEN_UV + sample_direction *  62.4961855f).rgb * 0.0112735f
              + texture(screen_texture, SCREEN_UV + sample_direction *  64.0000000f).rgb * 0.0055077f;
 	} else { // Dynamically compute weights and offsets
-        // Transition for radius and variance is non-linear 
+        // Transition for radius and variance is non-linear
 		float radius = floor(RADIUS*(1.-pow(1.-t, 2)));
 		float variance = max(1.0, VARIANCE*t*t*(2.-t));
 
@@ -116,7 +116,7 @@ void fragment() {
             float gm = g0 + g1;
             col += texture(screen_texture, SCREEN_UV + sample_direction * (j+g1/gm)).rgb * gm*n;
         }
-        col += texture(screen_texture, SCREEN_UV + sample_direction * radius).rgb * gaussian_sigma_corrected(radius, variance)*n;	
+        col += texture(screen_texture, SCREEN_UV + sample_direction * radius).rgb * gaussian_sigma_corrected(radius, variance)*n;
     }
     COLOR.rgb = col;
 }

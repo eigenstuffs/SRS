@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcbjohtps2ihf"]
+
+[ext_resource type="Texture2D" uid="uid://dfxsirtyw7lm" path="res://assets/library/Library_BG.png" id="1_mj34h"]
+[ext_resource type="Texture2D" uid="uid://c6ep7gd34sa5v" path="res://assets/library/Overlay_setto35%transparency.png" id="2_bxpaq"]
+[ext_resource type="PackedScene" uid="uid://b7jx0cur7xjvo" path="res://scenes/player/library_player_2d.tscn" id="3_y6xrn"]
+[ext_resource type="Script" path="res://tools/minigames/library/util/item_spawner.gd" id="4_d275m"]
+
+[node name="Library" type="Node2D"]
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BG" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = -420.0
+offset_right = 1955.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_mj34h")
+
+[node name="Overlay" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = -420.0
+offset_right = 1955.0
+offset_bottom = 1080.0
+texture = ExtResource("2_bxpaq")
+expand_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(932, 495)
+zoom = Vector2(1.05, 1.05)
+
+[node name="LibraryPlayer2D" parent="." instance=ExtResource("3_y6xrn")]
+position = Vector2(649, 708)
+
+[node name="ItemSpawner" type="Node2D" parent="."]
+position = Vector2(940, -73)
+script = ExtResource("4_d275m")
+
+[node name="LeftBound" type="Marker2D" parent="ItemSpawner"]
+position = Vector2(-773, 0)
+
+[node name="RightBound" type="Marker2D" parent="ItemSpawner"]
+position = Vector2(732, 0)
