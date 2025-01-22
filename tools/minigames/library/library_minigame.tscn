@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="2_4dmdn"]
 [ext_resource type="PackedScene" uid="uid://cnujinydfucuo" path="res://tools/minigames/library/canvas_layer.tscn" id="2_7cbig"]
 [ext_resource type="Script" path="res://tools/minigames/library/Shelves.gd" id="3_bn36f"]
-[ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/3D/library_player.tscn" id="3_jyoxc"]
-[ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/items/book/shadow.tscn" id="4_q284v"]
+[ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
+[ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="4_q284v"]
 [ext_resource type="Texture2D" uid="uid://blifv4cla6nqm" path="res://assets/library/Library_BottomBanister.png" id="5_4ilel"]
-[ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/items/book/wiggle/book_holder.tscn" id="5_4rr6e"]
-[ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/3D/npc_instancer.tscn" id="5_hbp12"]
-[ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/items/book/book_instancer.tscn" id="6_8v8og"]
+[ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/book/wiggle/book_holder.tscn" id="5_4rr6e"]
+[ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/npc_instancer.tscn" id="5_hbp12"]
+[ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="6_8v8og"]
 [ext_resource type="Texture2D" uid="uid://dfxsirtyw7lm" path="res://assets/library/Library_BG.png" id="7_pg1qs"]
 [ext_resource type="Script" path="res://tools/minigames/library/Bookshelf.gd" id="8_lbiij"]
 [ext_resource type="Texture2D" uid="uid://bx86b5uxmivs2" path="res://assets/library/HardLight_setto100%transparency.png" id="9_h2gwe"]
@@ -59,7 +59,8 @@ albedo_color = Color(0.509804, 0.176471, 0.0588235, 0.345098)
 [sub_resource type="BoxMesh" id="BoxMesh_h0o6u"]
 material = SubResource("StandardMaterial3D_h0ak3")
 
-[node name="Library" type="Node3D"]
+[node name="Library" type="SubViewport"]
+size = Vector2i(1600, 900)
 script = ExtResource("1_jnejo")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_7cbig")]
@@ -71,6 +72,7 @@ texture = ExtResource("5_4ilel")
 expand_mode = 1
 
 [node name="Walls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 2.08165e-12, 2.08165e-12)
 
 [node name="Ground" type="Node3D" parent="Walls"]
 
@@ -132,7 +134,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 0.0
 texture = ExtResource("12_bqiee")
 
 [node name="Overlay" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 0, 0.5)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 2.08165e-12)
 modulate = Color(1, 1, 1, 0.35)
 texture = ExtResource("13_wtd8x")
 

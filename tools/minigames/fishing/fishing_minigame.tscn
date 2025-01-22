@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://hq67rtu14odh" path="res://tools/minigames/fishing/fish/fish_instancer.tscn" id="2_cead1"]
 [ext_resource type="Script" path="res://tools/minigames/fishing/Water.gd" id="3_slp7l"]
 [ext_resource type="Texture2D" uid="uid://8vaoxu7b2g52" path="res://assets/misc/IMG_3408.png" id="4_fpl4c"]
-[ext_resource type="PackedScene" uid="uid://cac7s21gtcba8" path="res://scenes/player/3D/fishing_player.tscn" id="4_y1r0s"]
+[ext_resource type="PackedScene" uid="uid://cac7s21gtcba8" path="res://scenes/player/fishing_player.tscn" id="4_y1r0s"]
 [ext_resource type="Material" uid="uid://dcgy7qsnns5qf" path="res://tools/minigames/fishing/water/water.tres" id="6_7is7m"]
 [ext_resource type="Shader" path="res://tools/minigames/fishing/water/sea_floor.gdshader" id="7_kygv1"]
 [ext_resource type="Texture2D" uid="uid://bqmn70ufrh38s" path="res://assets/misc/IMG_3410.png" id="9_46vtv"]

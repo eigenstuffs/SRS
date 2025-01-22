@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5hrfmiuluhko"]
 
-[ext_resource type="Script" path="res://tools/minigames/library/items/book/book_instancer.gd" id="1_j0y2o"]
-[ext_resource type="PackedScene" uid="uid://b7p7lonykqjdv" path="res://tools/minigames/library/util/3D/spawn_area.tscn" id="2_4nklh"]
+[ext_resource type="Script" path="res://tools/minigames/library/book/book_instancer.gd" id="1_j0y2o"]
+[ext_resource type="PackedScene" uid="uid://b7p7lonykqjdv" path="res://tools/minigames/library/util/spawn_area.tscn" id="2_4nklh"]
 
 [node name="BookInstancer" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)

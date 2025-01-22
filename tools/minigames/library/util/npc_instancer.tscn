@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://2pcpge0najq0"]
 
-[ext_resource type="Script" path="res://tools/minigames/library/util/3D/npc_instancer.gd" id="1_a06au"]
-[ext_resource type="PackedScene" uid="uid://b7p7lonykqjdv" path="res://tools/minigames/library/util/3D/spawn_area.tscn" id="2_7d1ey"]
+[ext_resource type="Script" path="res://tools/minigames/library/util/npc_instancer.gd" id="1_a06au"]
+[ext_resource type="PackedScene" uid="uid://b7p7lonykqjdv" path="res://tools/minigames/library/util/spawn_area.tscn" id="2_7d1ey"]
 
 [node name="NpcInstancer" type="Node3D"]
 script = ExtResource("1_a06au")

@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dut8banp5gtcn" path="res://tools/minigames/maze/sound/door_open.ogg" id="3_ar6l6"]
 [ext_resource type="Texture2D" uid="uid://bpn4jhabr04lh" path="res://assets/maze/maze bench.png" id="3_l6eoi"]
 [ext_resource type="Script" path="res://tools/minigames/maze/FollowingCamera.gd" id="4_ohvxp"]
-[ext_resource type="PackedScene" uid="uid://dhyrf6dyl1s8c" path="res://scenes/player/3D/maze_player.tscn" id="4_pj1vw"]
+[ext_resource type="PackedScene" uid="uid://dhyrf6dyl1s8c" path="res://scenes/player/maze_player.tscn" id="4_pj1vw"]
 [ext_resource type="Script" path="res://tools/minigames/maze/Goal.gd" id="4_v5a44"]
 [ext_resource type="Texture2D" uid="uid://4b63ncjnbcpi" path="res://assets/maze/maze_grass.png" id="6_0aw61"]
 [ext_resource type="AudioStream" uid="uid://dfnighsb3ipip" path="res://tools/minigames/maze/sound/Villianess_Reborn_Minigame_Music_First_Stage.mp3" id="7_7pxdu"]
