@@ -5,6 +5,8 @@ extends Node
 ### UTILITIES
 
 var can_move = true
+var last_free_zone : String = ""
+var minigames_played_this_zone: int = 0
 
 ### GAME
 

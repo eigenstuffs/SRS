@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkkta3uslyuhp"]
 
 [ext_resource type="Script" path="res://tools/minigames/library/items/bomb/bomb.gd" id="1_48fmn"]
-[ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/items/book/shadow.tscn" id="2_ko3ke"]
+[ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/items/book/3D/shadow.tscn" id="2_ko3ke"]
 [ext_resource type="PackedScene" uid="uid://bxyu5wc6tgciw" path="res://assets/misc/bombwcelusingcycle.glb" id="3_2dybn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ygqc5"]

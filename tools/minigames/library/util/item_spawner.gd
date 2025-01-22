@@ -10,7 +10,7 @@ const BOMB = preload("res://tools/minigames/library/items/bomb/bomb_2d.tscn")
 
 var time : float = 0
 var spawn_time_next : float = 0
-var active = true
+var active = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

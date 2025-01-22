@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://1a8mq3xnbl4y"]
+[gd_scene load_steps=5 format=3 uid="uid://1a8mq3xnbl4y"]
 
 [ext_resource type="PackedScene" uid="uid://dqfm8lr1ibu1v" path="res://tools/minigames/library/items/fall_item2d.tscn" id="1_1rxjg"]
+[ext_resource type="Script" path="res://tools/minigames/library/items/book/3D/book_2d.gd" id="2_4e2f7"]
 [ext_resource type="Texture2D" uid="uid://byrkxuh1sndd8" path="res://assets/library/book_placeholder.png" id="2_8w843"]
 
-[node name="FallItem2D" instance=ExtResource("1_1rxjg")]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8vsot"]
+bounce = 0.15
+
+[node name="Book2D" instance=ExtResource("1_1rxjg")]
+physics_material_override = SubResource("PhysicsMaterial_8vsot")
+script = ExtResource("2_4e2f7")
 
 [node name="Sprite2D" parent="." index="1"]
-scale = Vector2(0.056342, 0.056342)
+scale = Vector2(0.025, 0.025)
 texture = ExtResource("2_8w843")

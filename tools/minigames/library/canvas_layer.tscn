@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://tools/minigames/library/canvas_layer.gd" id="1_wvlk1"]
 [ext_resource type="Texture2D" uid="uid://bsg642hjtctj2" path="res://assets/library/Heart_Filled.png" id="2_eka5j"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="LibraryCanvas" type="CanvasLayer"]
 script = ExtResource("1_wvlk1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

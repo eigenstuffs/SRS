@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3upc0lvavjxn"]
+
+[ext_resource type="Script" path="res://tools/minigames/library/items/book/static_book.gd" id="1_mm8pj"]
+[ext_resource type="Texture2D" uid="uid://byrkxuh1sndd8" path="res://assets/library/book_placeholder.png" id="3_p1nq3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01efq"]
+size = Vector2(153, 70)
+
+[node name="StaticBook" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_mm8pj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_01efq")
+debug_color = Color(0.867926, 0.34522, 0.200489, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("3_p1nq3")

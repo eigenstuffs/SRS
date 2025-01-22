@@ -1,11 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcbjohtps2ihf"]
+[gd_scene load_steps=10 format=3 uid="uid://bcbjohtps2ihf"]
 
+[ext_resource type="Script" path="res://tools/minigames/library/library_minigame_2d.gd" id="1_k16uc"]
 [ext_resource type="Texture2D" uid="uid://dfxsirtyw7lm" path="res://assets/library/Library_BG.png" id="1_mj34h"]
 [ext_resource type="Texture2D" uid="uid://c6ep7gd34sa5v" path="res://assets/library/Overlay_setto35%transparency.png" id="2_bxpaq"]
 [ext_resource type="PackedScene" uid="uid://b7jx0cur7xjvo" path="res://scenes/player/library_player_2d.tscn" id="3_y6xrn"]
 [ext_resource type="Script" path="res://tools/minigames/library/util/item_spawner.gd" id="4_d275m"]
+[ext_resource type="AudioStream" uid="uid://ka6xjq0a4pg" path="res://tools/minigames/library/sound/Villianess_Reborn_Library_Minigame_Music.mp3" id="5_0nmap"]
+[ext_resource type="PackedScene" uid="uid://ckptl1peou61" path="res://tools/minigames/library/library_canvas_2D.tscn" id="6_2v208"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vdqtu"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x6f8"]
+size = Vector2(1988, 69)
 
 [node name="Library" type="Node2D"]
+script = ExtResource("1_k16uc")
+reward_scene = "res://tools/minigames/library/library_reward_scene.tscn"
+
+[node name="LibraryCanvas" parent="." instance=ExtResource("6_2v208")]
+
+[node name="RewardLayer" type="CanvasLayer" parent="."]
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
@@ -37,14 +52,30 @@ position = Vector2(932, 495)
 zoom = Vector2(1.05, 1.05)
 
 [node name="LibraryPlayer2D" parent="." instance=ExtResource("3_y6xrn")]
-position = Vector2(649, 708)
+position = Vector2(649, 517)
+collision_layer = 3
 
 [node name="ItemSpawner" type="Node2D" parent="."]
 position = Vector2(940, -73)
 script = ExtResource("4_d275m")
+floor_position_y = 891.0
 
 [node name="LeftBound" type="Marker2D" parent="ItemSpawner"]
 position = Vector2(-773, 0)
 
 [node name="RightBound" type="Marker2D" parent="ItemSpawner"]
 position = Vector2(732, 0)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(798, 891)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_vdqtu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(156, -17)
+shape = SubResource("RectangleShape2D_4x6f8")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0nmap")
+autoplay = true

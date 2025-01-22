@@ -24,5 +24,5 @@ func _input(event):
 		if current_interaction:
 			current_interaction.action()
 			emit_signal("started_interaction")
-			await(current_interaction.end_interaction)
-			emit_signal("finished_interaction")
+			#await(current_interaction.end_interaction)
+			#emit_signal("finished_interaction")

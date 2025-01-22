@@ -276,6 +276,8 @@ shape = SubResource("BoxShape3D_0hq8b")
 [node name="Interaction" parent="Actors/NPC" instance=ExtResource("9_csk0s")]
 script = ExtResource("15_a0gab")
 minigame = "Fishing"
+minigame_scene = null
+current_zone = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC"]
 libraries = {
@@ -302,6 +304,8 @@ shape = SubResource("BoxShape3D_0hq8b")
 [node name="Interaction" parent="Actors/NPC2" instance=ExtResource("9_csk0s")]
 script = ExtResource("15_a0gab")
 minigame = "Library"
+minigame_scene = null
+current_zone = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC2"]
 libraries = {
@@ -328,6 +332,8 @@ shape = SubResource("BoxShape3D_0hq8b")
 [node name="Interaction" parent="Actors/NPC3" instance=ExtResource("9_csk0s")]
 script = ExtResource("15_a0gab")
 minigame = "Maze"
+minigame_scene = null
+current_zone = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/NPC3"]
 libraries = {

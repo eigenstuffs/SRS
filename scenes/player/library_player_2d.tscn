@@ -1,14 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7jx0cur7xjvo"]
+[gd_scene load_steps=5 format=3 uid="uid://b7jx0cur7xjvo"]
 
 [ext_resource type="PackedScene" uid="uid://c54r7lm21b27d" path="res://scenes/player/player_2d.tscn" id="1_obi12"]
 [ext_resource type="Script" path="res://scenes/player/library_player_2d.gd" id="2_e4mb4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlct1"]
-size = Vector2(155, 100)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aidd1"]
+size = Vector2(197, 87)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnkqe"]
+radius = 73.0
+height = 334.0
 
 [node name="LibraryPlayer2D" instance=ExtResource("1_obi12")]
 script = ExtResource("2_e4mb4")
 
-[node name="Catchbox" type="CollisionShape2D" parent="." index="2"]
+[node name="Catchbox" type="Area2D" parent="." index="2"]
 position = Vector2(1, -127)
-shape = SubResource("RectangleShape2D_dlct1")
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Catchbox" index="0"]
+shape = SubResource("RectangleShape2D_aidd1")
+
+[node name="Hurtbox" type="Area2D" parent="." index="3"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(7, -27)
+shape = SubResource("CapsuleShape2D_bnkqe")
+
+[node name="BookStack" type="Node2D" parent="." index="4"]
+position = Vector2(0, -132)
+
+[connection signal="body_entered" from="Catchbox" to="." method="_on_catchbox_body_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -7,11 +7,18 @@ const SPEED: float = 500
 
 @onready var sprite = $AnimatedSprite2D
 
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var can_move: bool = true
 var dir = Vector2.RIGHT
 var turning = false
 
+func _ready():
+	custom_ready()
+	
 func _physics_process(delta):
-	if Global.can_move:
+	if Global.can_move and can_move:
+		if not is_on_floor():
+			velocity.y += gravity * delta
 		
 		var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		var direction = Vector2(input_dir.x, input_dir.y).normalized()
@@ -42,14 +49,21 @@ func _physics_process(delta):
 					turning = false
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-			
+		
+		custom_movement()
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
 	anim_handler()
 
-func anim_handler():
+func anim_handler(): #can be overwritten based on the need of different player type
 	if velocity != Vector2.ZERO:
 		sprite.play("Walk")
 	else:
 		sprite.play("Idle")
+
+func custom_movement(): #virtual function
+	pass
+
+func custom_ready(): #virtual function
+	pass
