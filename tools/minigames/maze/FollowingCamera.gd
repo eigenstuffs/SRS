@@ -1,5 +1,6 @@
 extends Camera3D
 
+#TODO: Solve clipping issues when animated sprite 3d is at the "correct" angle
 @export var MIN_X : float
 @export var MAX_X : float
 @export var MIN_Z : float
@@ -7,7 +8,7 @@ extends Camera3D
 @export var maze_generator : MazeGenerator
 @export var following_player : Node
 
-var ORIGINAL_ROT : Vector3 = Vector3(-51.2, 0, 0)
+var ORIGINAL_ROT : Vector3
 var BIRD_VIEW_ROT : Vector3 = Vector3(-80, 0, 0)
 var GOAL_POS : Vector3
 var curr_pos : Vector3
@@ -17,13 +18,8 @@ func _ready():
 
 func _process(delta):
 	global_position.x = clamp(global_position.x, MIN_X, MAX_X)
-	#if following_player.global_position.z < MIN_Z:
-		#global_position.z = MIN_Z
-	#elif following_player.global_position.z > MAX_Z:
-		#global_position.z = MAX_Z
-	#global_position.z = following_player.global_position.z + 2.4
 
-func bird_view():
+func bird_view(): #TODO: fix camera position after bird-view
 	curr_pos = global_position
 	var a = create_tween().set_parallel()
 	a.tween_property(self, "rotation_degrees", BIRD_VIEW_ROT, 0.5)
@@ -39,3 +35,5 @@ func set_goal_pos():
 	MAX_X = maze_generator.mazeWidth + maze_generator.my_x
 	MAX_Z = maze_generator.mazeLength + maze_generator.my_z
 	GOAL_POS = Vector3(MAX_X-1, 7, MAX_Z-1)
+	
+	ORIGINAL_ROT = rotation_degrees

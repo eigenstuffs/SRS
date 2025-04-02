@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://qrlhg3h6lgs7" path="res://assets/maze/maze top.png" id="1_863rp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n414t"]
-transparency = 4
+render_priority = 1
 albedo_texture = ExtResource("1_863rp")
 
 [resource]

@@ -16,7 +16,7 @@ void fragment() {
 	vec3 view_world = (INV_VIEW_MATRIX * vec4(VIEW, 0.0)).xyz;
 	vec3 normal_world = (INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).xyz;
 	float fresnel = 1.0 - abs(dot(view_world, normal_world));
-	
+
 	ROUGHNESS = mix(0.05, 0.1, 1.0 - height);
 	ALPHA = mix(0.0, 0.5, fresnel);
 	ALBEDO = vec3(0.6,0.8,1.0);

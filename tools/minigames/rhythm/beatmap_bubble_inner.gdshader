@@ -18,9 +18,9 @@ mat2 rotate(float theta) {
 void vertex() {
 	vec3 view = normalize(NODE_POSITION_WORLD - CAMERA_POSITION_WORLD);
 	float cos_theta = dot(view, normalize(CAMERA_DIRECTION_WORLD));
-	
+
 	VERTEX.xz = rotate(acos(cos_theta)) * VERTEX.xz;
-	
+
 	float height = texture(noise_texture, VERTEX.xz * displacement_scale + TIME * animation_speed).r - 0.5;
 	VERTEX += NORMAL * height * displacement_factor;
 	vertex_world = VERTEX;

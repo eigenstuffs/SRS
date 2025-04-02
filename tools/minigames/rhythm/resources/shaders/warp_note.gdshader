@@ -16,7 +16,7 @@ uniform float fade_out_time = 0.35;
 
 void vertex() {
     world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-		
+
     VERTEX = (VIEW_MATRIX * vec4(world_pos, 1.0)).xyz;
 	VERTEX.x += (pow(2.2, -(world_pos.z + 3.0)*0.75) * sin(world_pos.z*0.75)) * 0.05;
 }

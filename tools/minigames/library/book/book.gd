@@ -6,6 +6,10 @@ class_name Book extends Node3D
 ##   1, it will switch its layer mask to also be 1. This is so that falling books
 ##   can never interact with other falling books, while grounded books can.
 
+const BOOK1 = preload("res://assets/library/book1-1.png")
+const BOOK2 = preload("res://assets/library/book2-1.png")
+const BOOK3 = preload("res://assets/library/book3-1.png")
+
 @export var floor_position_y : float = 0.0
 @export var fall_speed : float = 1.0
 
@@ -19,6 +23,13 @@ var fade_time_seconds : float = 0.5
 var fade_alpha_start : float
 
 func _ready() -> void:
+	var rand_int = randi_range(0, 3)
+	match rand_int:
+		0: $RigidBody/Sprite3D.texture = BOOK1
+		1: $RigidBody/Sprite3D.texture = BOOK2
+		2: $RigidBody/Sprite3D.texture = BOOK3
+		_: $RigidBody/Sprite3D.texture = BOOK1
+	$RigidBody/Sprite3D.rotation_degrees = Vector3(randf_range(0, 45), randf_range(0, 45), randf_range(0, 45))
 	shadow.radius = 0
 	shadow.alpha = 0
 

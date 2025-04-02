@@ -82,8 +82,8 @@ float get_water_depth(vec2 uv, in mat4 proj, in float vert_dist, in float frag_d
 
 vec3 get_water_refraction_normal(in vec2 uv, in float time) {
 	// We mix two normal maps to create a cross wave-like uv pattern
-	vec3 refract0 = texture(refract_normal, uv*refract_scale.xy + time*refract_scale.z).xyz; 
-	vec3 refract1 = texture(refract_normal, uv*refract_scale.xy - time*refract_scale.z).xyz; 
+	vec3 refract0 = texture(refract_normal, uv*refract_scale.xy + time*refract_scale.z).xyz;
+	vec3 refract1 = texture(refract_normal, uv*refract_scale.xy - time*refract_scale.z).xyz;
 	return normalize(vec3(refract0.rg + refract1.rg, refract0.b * refract1.b));
 }
 
@@ -92,7 +92,7 @@ void fragment() {
 #ifdef USE_FRESNEL
 	float fresnel = min(sqrt(1.0 - dot(NORMAL, VIEW)), 1.0); // Fresnel reflectance approximation
 #endif
-	
+
 	// --- REFRACTION ---
 	// Refraction artifacts will still appear at sharp depth transitions, but because
 	// the deep->shallow colors are more similar, the artifacting is less prnounced.
@@ -100,12 +100,12 @@ void fragment() {
 	// FIXME: idk why a corrective factor is needed
 	vec2 refract_uv = ((water_refraction.xy - 0.56)*refract_factor);
 	vec4 refract_color = texture(screen_texture, SCREEN_UV + refract_uv*0.2);
-	
+
 	// --- COLOR ---
 	float water_depth = get_water_depth(SCREEN_UV + refract_uv*0.2, PROJECTION_MATRIX, VERTEX.z, FRAGCOORD.z);
 	float depth_fade = clamp(water_depth / depth_factor, 0., 1.);
 	vec4 water_color = mix(shallow_color, deep_color, depth_fade);
-	
+
 	// --- FOAM ---
 	// Sample depth buffer at a lower distortion to remove glaring foam outline artifacts.
 	float foam_depth = get_water_depth(SCREEN_UV + refract_uv*0.02, PROJECTION_MATRIX, VERTEX.z, FRAGCOORD.z) + 0.7;
@@ -116,8 +116,8 @@ void fragment() {
 #ifdef USE_FRESNEL
 	ALBEDO += fresnel*0.1;
 #endif
-	
-	// --- NORMAL ---	
+
+	// --- NORMAL ---
 #ifdef SIMPLE_WAVES
 	float depth_corrected_normal_strength = mix(0.0, normal_strength, depth_fade);
 	NORMAL = vec3(water_refraction.rg * depth_corrected_normal_strength, mix(1., water_refraction.b, depth_corrected_normal_strength));

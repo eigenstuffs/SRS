@@ -1,24 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs0oo1dolca08"]
+[gd_scene load_steps=11 format=3 uid="uid://cs0oo1dolca08"]
 
 [ext_resource type="Script" path="res://tools/minigames/maze/MazeCell.gd" id="1_ixgp1"]
-[ext_resource type="Texture2D" uid="uid://c2sq6stmivvob" path="res://assets/maze/maze front.png" id="2_k4dgj"]
+[ext_resource type="Material" uid="uid://g7ajxckrni0u" path="res://tools/minigames/maze/maze_cell_material.tres" id="2_8dn27"]
 [ext_resource type="PlaneMesh" uid="uid://d44uolewqfys" path="res://tools/minigames/maze/maze_side.tres" id="6_df0y8"]
 [ext_resource type="PlaneMesh" uid="uid://c3fb2ugt4el5m" path="res://tools/minigames/maze/maze_top.tres" id="7_jty6u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kbuiq"]
 size = Vector3(0.2, 1, 1.2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rnyvc"]
-transparency = 4
-albedo_texture = ExtResource("2_k4dgj")
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_ev4io"]
-lightmap_size_hint = Vector2i(7, 8)
-material = SubResource("StandardMaterial3D_rnyvc")
+material = ExtResource("2_8dn27")
 size = Vector2(1, 1.2)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l3cwr"]
-material = SubResource("StandardMaterial3D_rnyvc")
+material = ExtResource("2_8dn27")
 size = Vector2(1, 1.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nk48q"]

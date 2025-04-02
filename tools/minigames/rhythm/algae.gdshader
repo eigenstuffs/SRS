@@ -2,7 +2,7 @@ shader_type spatial;
 // Source: https://www.shadertoy.com/view/cscyDf
 // CC0: Saturday hacking
 //  Wanted to make the previous shader look a bit more like underwater travelling
-//  through glowing abstract "algae" 
+//  through glowing abstract "algae"
 //  Some glitches remains but now I need a break
 
 #define ROT(a)      (mat2(vec2(cos(a), sin(a)), vec2(-sin(a), cos(a))))
@@ -19,20 +19,20 @@ const float
 , furthest  = 6.
 , fadeFrom  = 4.
 ;
-const vec3  
+const vec3
   L  = vec3(0.299, 0.587, 0.114)
 , LD = normalize(vec3(0.0, 1.8, 1.0))
 ;
 
-const vec2 
+const vec2
   pathA = vec2(.31, .41)
 , pathB = vec2(1.0,sqrt(0.5))
 ;
 
-const vec4 
+const vec4
   U = vec4(0, 1, 2, 3)
   ;
-  
+
 const vec2 off6[6] = vec2[6](
     OFF6(0.)
   , OFF6(1.)
@@ -40,7 +40,7 @@ const vec2 off6[6] = vec2[6](
   , OFF6(3.)
   , OFF6(4.)
   , OFF6(5.)
-  ); 
+  );
 
 const vec2 noff6[6] = vec2[6](
     vec2(-1.0, 0.0)
@@ -49,7 +49,7 @@ const vec2 noff6[6] = vec2[6](
   , vec2( 1.0, 0.0)
   , vec2( 0.5,-0.5)
   , vec2(-0.5,-0.5)
-  ); 
+  );
 
 // License: Unknown, author: Matt Taylor (https://github.com/64), found: https://64.github.io/tonemapping/
 vec3 aces_approx(vec3 v) {
@@ -132,7 +132,7 @@ float dot2(vec2 p) {
 }
 
 // License: MIT, author: Inigo Quilez, found: https://iquilezles.org/www/articles/distfunctions2d/distfunctions2d.htm
-float bezier(vec2 pos, vec2 A, vec2 B, vec2 C) {    
+float bezier(vec2 pos, vec2 A, vec2 B, vec2 C) {
     vec2 a = B - A;
     vec2 b = A - 2.0*B + C;
     vec2 c = a * 2.0;
@@ -140,14 +140,14 @@ float bezier(vec2 pos, vec2 A, vec2 B, vec2 C) {
     float kk = 1.0/dot(b,b);
     float kx = kk * dot(a,b);
     float ky = kk * (2.0*dot(a,a)+dot(d,b)) / 3.0;
-    float kz = kk * dot(d,a);      
+    float kz = kk * dot(d,a);
     float res = 0.0;
     float p = ky - kx*kx;
     float p3 = p*p*p;
     float q = kx*(2.0*kx*kx-3.0*ky) + kz;
     float h = q*q + 4.0*p3;
-    if( h >= 0.0) 
-    { 
+    if( h >= 0.0)
+    {
         h = sqrt(h);
         vec2 x = (vec2(h,-h)-q)/2.0;
         vec2 uv = sign(x)*pow(abs(x), vec2(1.0/3.0));
@@ -173,26 +173,26 @@ float bezier(vec2 pos, vec2 A, vec2 B, vec2 C) {
 // License: CC BY-NC-SA 3.0, author: BigWings, found: https://www.shadertoy.com/view/4sXBRn
 vec3 godray(vec3 bg, vec3 r) {
   // Godrays "borrowed" from BigWings amazing Luminescence: https://www.shadertoy.com/view/4sXBRn
-  float x = atan_approx(r.x, r.z); 
-  float y = pi*0.5-acos_approx(r.y);   
-    
+  float x = atan_approx(r.x, r.z);
+  float y = pi*0.5-acos_approx(r.y);
+
   x *= 0.5;
   y *= 0.5;
-    
+
   vec3 col = bg*(1.+y);
-    
+
   float t = TIME;
-    
+
   float a = sin(r.x);
-    
+
   float beam = SAT(sin(10.*x+a*y*5.+t));
   beam *= SAT(sin(7.*x+a*y*3.5-t));
-    
+
   float beam2 = SAT(sin(42.*x+a*y*21.-t));
   beam2 *= SAT(sin(34.*x+a*y*17.+t));
-    
+
   beam += beam2;
-  
+
   col += beam*.25*sqrt(bg);
   return col;
 }
@@ -209,9 +209,9 @@ vec3 plane(vec3 ro, vec3 rd, vec3 pp, float pd, vec3 off, float n) {
   vec2 p = (pp-off*U.yyx).xy;
   float hh = hash(n);
   p *= mix(1.125, 1.5, hh*hh);
-  
+
   vec2 p2 = p;
-  mat2 rot = ROT(tau*0.125*n+0.0005*TIME); 
+  mat2 rot = ROT(tau*0.125*n+0.0005*TIME);
   p2 *= rot;
   p2 += -vec2(0.0, hh*0.25*(ro.z-pp.z))*rot;
   vec2 hp = p2;
@@ -220,21 +220,21 @@ vec3 plane(vec3 ro, vec3 rd, vec3 pp, float pd, vec3 off, float n) {
   const float z = 1.0/3.0;
   hp /= z;
   vec2 hn = hextile(hp);
-  
+
   float h0 = hash2(hn+n);
   vec2 p0 = coff(h0);
-  
-  vec3 bcol = (1.0/3.0)*(1.0+cos(vec3(0.0, 1.0, 2.0) + 2.0*(p2.x+p2.x)-+0.33*n)); 
+
+  vec3 bcol = (1.0/3.0)*(1.0+cos(vec3(0.0, 1.0, 2.0) + 2.0*(p2.x+p2.x)-+0.33*n));
   vec3 col = vec3(0.0);
 
   float mx = 0.00025+0.0005*max(pd- 1.5, 0.0);
-  
+
   for (int i = 0; i < 6; ++i) {
     float h1 = hash2(hn+noff6[i]+n);
     vec2 p1 = off6[i]+coff(h1);
-    
+
     float h2 = h0+h1;
-    float fade = smoothstep(1.05, 0.85, distance(p0, p1)); 
+    float fade = smoothstep(1.05, 0.85, distance(p0, p1));
 
     if (fade < 0.0125) continue;
 
@@ -247,7 +247,7 @@ vec3 plane(vec3 ro, vec3 rd, vec3 pp, float pd, vec3 off, float n) {
     col += fade*0.002*bcol/(gd);
   }
 
-  {  
+  {
     float cd = length(hp-p0);
     float gd = abs(cd);
     gd *= (gd);
@@ -257,8 +257,8 @@ vec3 plane(vec3 ro, vec3 rd, vec3 pp, float pd, vec3 off, float n) {
     float fade = hash(floor(TIME*5.0+123.0*h0))>(fd+length(hn)) ? 1.0 : 0.125;
     col += 0.0025*fade*sqrt(bcol)/(gd);
   }
-  
-  col *= 1.25;  
+
+  col *= 1.25;
   return col;
 }
 
@@ -290,12 +290,12 @@ vec3 nf(vec2 p, vec2 resolution) {
   vec2 v;
   vec2 w;
   vec2 e = vec2(4.0/resolution.y, 0);
-  
+
   vec3 n;
   n.x = hf(p + e.xy) - hf(p - e.xy);
   n.y = hf(p + e.yx) - hf(p - e.yx);
   n.z = -2.0*e.x;
-  
+
   return normalize(n);
 }
 
@@ -304,7 +304,7 @@ vec3 color(vec3 ww, vec3 uu, vec3 vv, vec3 ro, vec2 p, vec2 resolution) {
   float lp = length(p);
   vec2 np = p + 1.0/resolution.y;
   float rdd = 2.0-0.25;
-  
+
   vec3 rd = normalize(p.x*uu + p.y*vv + rdd*ww);
 
   float nz = floor(ro.z / planeDist);
@@ -344,7 +344,7 @@ vec3 color(vec3 ww, vec3 uu, vec3 vv, vec3 ro, vec2 p, vec2 resolution) {
       aro = pp;
       ard = refr;
     }
-    
+
   }
 
   float lf = 1.001-dot(ard, LD);
@@ -367,7 +367,7 @@ void fragment() {
   vec3 ww = normalize(dro);
   vec3 uu = normalize(cross(U.xyx+ddro, ww));
   vec3 vv = cross(ww, uu);
-  
+
   vec3 col = color(ww, uu, vv, ro, p, VIEWPORT_SIZE);
   col -= (1.0/30.0)*U.zwx*(length(pp)+0.125);
   float fade = min(-0.5*abs(pp.y)+0.125*TIME-1.5, 0.0);
@@ -376,5 +376,3 @@ void fragment() {
   col = sqrt(col);
   ALBEDO = col*0.45;
 }
-
-

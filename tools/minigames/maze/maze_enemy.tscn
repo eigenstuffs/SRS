@@ -20,7 +20,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0979008, 0.140029, 0)
 shape = SubResource("BoxShape3D_wpcfu")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-no_depth_test = true
 texture = ExtResource("2_whn68")
 hframes = 7
 
@@ -32,7 +31,6 @@ shape = SubResource("BoxShape3D_hacuu")
 
 [node name="Indicator" type="Sprite3D" parent="Hurtbox"]
 transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0)
-no_depth_test = true
 render_priority = -1
 texture = ExtResource("3_2ryuh")
 
