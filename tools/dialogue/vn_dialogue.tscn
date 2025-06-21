@@ -2,20 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="3_02rei"]
 [ext_resource type="Animation" uid="uid://bll7q7uatwhgb" path="res://tools/dialogue/God_BG.res" id="3_y7ey7"]
-[ext_resource type="Script" path="res://tools/dialogue/vn_dialogue.gd" id="4_g1vbp"]
+[ext_resource type="Script" uid="uid://cn75qdxpewpt7" path="res://tools/dialogue/vn_dialogue.gd" id="4_g1vbp"]
 [ext_resource type="Texture2D" uid="uid://vuwpph6vx6un" path="res://assets/cgs/god.jpg" id="4_ng0gx"]
 [ext_resource type="Texture2D" uid="uid://bd3vg40yeb7ym" path="res://assets/ui/Next Default.png" id="7_fpcsy"]
 [ext_resource type="Texture2D" uid="uid://d4m4ksb40jto2" path="res://assets/cgs/God_Neutral_Static_Sheet.png" id="7_yl28d"]
 [ext_resource type="Texture2D" uid="uid://d02y3ome74of1" path="res://assets/ui/Character Background_Choice.png" id="8_5rtyy"]
-[ext_resource type="Script" path="res://tools/dialogue/SpriteHandler.gd" id="8_6jfjc"]
+[ext_resource type="Script" uid="uid://dqeeqii5h72ac" path="res://tools/dialogue/SpriteHandler.gd" id="8_6jfjc"]
 [ext_resource type="Texture2D" uid="uid://cvjaxwe6l0cqa" path="res://assets/cgs/God_Neutral_Speaking_Sheet.png" id="8_7f2oi"]
 [ext_resource type="Texture2D" uid="uid://bgckgxbrsnswb" path="res://assets/cgs/God_Serious_Static_Sheet.png" id="9_k754x"]
 [ext_resource type="Texture2D" uid="uid://0fx6q38jj3dv" path="res://assets/cgs/God_Serious_Speaking_Sheet.png" id="10_d1d5c"]
 [ext_resource type="Texture2D" uid="uid://dy63g7pmdlg7v" path="res://assets/cgs/God_Smile_Static_Sheet.png" id="11_i7dpf"]
 [ext_resource type="Texture2D" uid="uid://cs0nthvmjnh3o" path="res://assets/vn/god_glitch/image0.png" id="11_ygtw6"]
 [ext_resource type="Texture2D" uid="uid://b00cc64t4gc0f" path="res://assets/cgs/God_Smile_Speaking_Sheet.png" id="12_14uqi"]
-[ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="12_17eel"]
-[ext_resource type="PackedScene" path="res://tools/dialogue/camera_anim.tscn" id="12_csetl"]
+[ext_resource type="Script" uid="uid://dgjjcykapdjrn" path="res://tools/dialogue/Effects.gd" id="12_17eel"]
+[ext_resource type="PackedScene" uid="uid://c56vc03el0ny1" path="res://tools/dialogue/camera_anim.tscn" id="12_csetl"]
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/vn/Dialogue/Dialogue Box.png" id="14_483pf"]
 [ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/ttf/Galdeano-Regular.ttf" id="16_v8kk6"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="17_elvhv"]
@@ -26,11 +26,11 @@
 [ext_resource type="FontFile" uid="uid://blo7ft3ovj4yy" path="res://assets/ui/ttf/Volkhov-Italic.ttf" id="19_p2ivp"]
 [ext_resource type="Texture2D" uid="uid://df1gx2derxy74" path="res://assets/vn/Settings/Autoplay_Hover.png" id="20_evjav"]
 [ext_resource type="FontFile" uid="uid://b5ootysr42ce3" path="res://assets/ui/ttf/Volkhov-BoldItalic.ttf" id="20_n52nn"]
-[ext_resource type="Script" path="res://tools/dialogue/DropDown.gd" id="20_xsen7"]
+[ext_resource type="Script" uid="uid://7mxhp26xioks" path="res://tools/dialogue/DropDown.gd" id="20_xsen7"]
 [ext_resource type="Texture2D" uid="uid://cxks3xttgv28h" path="res://assets/vn/Settings/Hide.png" id="21_unksq"]
 [ext_resource type="Texture2D" uid="uid://db1yt0oia8vd6" path="res://assets/vn/Settings/Hide_Click.png" id="22_4513m"]
 [ext_resource type="Texture2D" uid="uid://8gwntda51sxc" path="res://assets/vn/Settings/Hide_Hover.png" id="23_aycvg"]
-[ext_resource type="Script" path="res://tools/dialogue/MouseBlocker.gd" id="24_7rwyl"]
+[ext_resource type="Script" uid="uid://b63tfxy4jt6xy" path="res://tools/dialogue/MouseBlocker.gd" id="24_7rwyl"]
 [ext_resource type="Texture2D" uid="uid://cfrru3bgk1jrx" path="res://assets/vn/Settings/History.png" id="24_28eyj"]
 [ext_resource type="Texture2D" uid="uid://dugsdj4vxrpt1" path="res://assets/vn/Settings/History_Click.png" id="25_0o1no"]
 [ext_resource type="Texture2D" uid="uid://cldjo05au0es8" path="res://assets/vn/Settings/History_Hover.png" id="26_a1ldb"]
@@ -41,7 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://dxkuxdwxibop5" path="res://assets/vn/Settings/drop-down_clicked.png" id="31_14bfd"]
 [ext_resource type="Texture2D" uid="uid://clu5ma2xjxd5t" path="res://assets/vn/Settings/History-Pop Up Background.png" id="31_yesph"]
 [ext_resource type="Texture2D" uid="uid://bgsmuiltt2yms" path="res://assets/vn/Settings/Scrolly Button Circle Slider.png" id="42_q0jhi"]
-[ext_resource type="Script" path="res://tools/dialogue/log.gd" id="43_hwvsm"]
+[ext_resource type="Script" uid="uid://bohcsbneemn0f" path="res://tools/dialogue/log.gd" id="43_hwvsm"]
 [ext_resource type="Texture2D" uid="uid://dn7cdu0wh1hya" path="res://assets/vn/Settings/Vertical Scroll Bar.png" id="44_3lngh"]
 [ext_resource type="Texture2D" uid="uid://bbpx7huvpjk82" path="res://assets/vn/Settings/Back (2).png" id="45_jt7ol"]
 [ext_resource type="Texture2D" uid="uid://cgt25px5ytk02" path="res://assets/vn/Settings/Back_Click.png" id="46_jpgrq"]
@@ -803,14 +803,14 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6r53"]
 _data = {
-"Glitch": SubResource("Animation_salsw"),
-"NeutralSpeaking": SubResource("Animation_l673d"),
-"NeutralStatic": SubResource("Animation_8vsie"),
-"RESET": SubResource("Animation_cgb7d"),
-"SeriousSpeaking": SubResource("Animation_6rut7"),
-"SeriousStatic": SubResource("Animation_6nn36"),
-"SmileSpeaking": SubResource("Animation_uq83c"),
-"SmileStatic": SubResource("Animation_7msbh")
+&"Glitch": SubResource("Animation_salsw"),
+&"NeutralSpeaking": SubResource("Animation_l673d"),
+&"NeutralStatic": SubResource("Animation_8vsie"),
+&"RESET": SubResource("Animation_cgb7d"),
+&"SeriousSpeaking": SubResource("Animation_6rut7"),
+&"SeriousStatic": SubResource("Animation_6nn36"),
+&"SmileSpeaking": SubResource("Animation_uq83c"),
+&"SmileStatic": SubResource("Animation_7msbh")
 }
 
 [sub_resource type="Animation" id="Animation_u3l61"]
@@ -842,8 +842,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_abflm"]
 _data = {
-"God_BG": ExtResource("3_y7ey7"),
-"RESET": SubResource("Animation_u3l61")
+&"God_BG": ExtResource("3_y7ey7"),
+&"RESET": SubResource("Animation_u3l61")
 }
 
 [sub_resource type="BitMap" id="BitMap_3kbno"]

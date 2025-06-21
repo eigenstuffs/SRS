@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=37 format=3 uid="uid://dyjmwqypk8p1b"]
 
-[ext_resource type="Script" path="res://resources/characters/character.gd" id="1_uitrv"]
+[ext_resource type="Script" uid="uid://cunlukntn01jm" path="res://resources/characters/character.gd" id="1_uitrv"]
 [ext_resource type="Texture2D" uid="uid://s2hnoivf3ccv" path="res://assets/vn/Maverick/maverick_blush1.png" id="2_grpa1"]
 [ext_resource type="Texture2D" uid="uid://fd6ipny620tk" path="res://assets/vn/Maverick/maverick_blush2.png" id="3_pjgom"]
 [ext_resource type="Texture2D" uid="uid://cg6h7so1b6kay" path="res://assets/vn/Maverick/maverick_blush3.png" id="4_5uw4f"]

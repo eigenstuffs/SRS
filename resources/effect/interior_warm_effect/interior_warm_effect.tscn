@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://eduvc4orfyn5"]
 
-[ext_resource type="Shader" path="res://resources/shaders/canvas_item/fake_glow.gdshader" id="1_17uf4"]
+[ext_resource type="Shader" uid="uid://cv2bbvgg758lp" path="res://resources/shaders/canvas_item/fake_glow.gdshader" id="1_17uf4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_scvf0"]
 shader = ExtResource("1_17uf4")

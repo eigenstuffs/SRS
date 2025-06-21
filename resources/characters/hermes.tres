@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=26 format=3 uid="uid://rphmiq0ax6l6"]
 
-[ext_resource type="Script" path="res://resources/characters/character.gd" id="1_chc16"]
+[ext_resource type="Script" uid="uid://cunlukntn01jm" path="res://resources/characters/character.gd" id="1_chc16"]
 [ext_resource type="Texture2D" uid="uid://dkkg0bruvqkkq" path="res://assets/vn/Hermes/hermes_eyes1.png" id="2_plaws"]
 [ext_resource type="Texture2D" uid="uid://xaoak60ew8hq" path="res://assets/vn/Hermes/hermes_eyes2.png" id="3_s4hr4"]
 [ext_resource type="Texture2D" uid="uid://dq77neb0sisg3" path="res://assets/vn/Hermes/hermes_eyes3.png" id="4_hjieg"]

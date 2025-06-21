@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://brycpktvj4pf3"]
 
-[ext_resource type="Script" path="res://resources/effect/explosion_effect/explosion_effect.gd" id="1_8wj1q"]
+[ext_resource type="Script" uid="uid://ca38sphir5eih" path="res://resources/effect/explosion_effect/explosion_effect.gd" id="1_8wj1q"]
 [ext_resource type="Texture2D" uid="uid://dvwwrvxwoii71" path="res://resources/effect/explosion_effect/explosion_flare0.png" id="1_i7h3n"]
 [ext_resource type="Texture2D" uid="uid://iaddnipkxo1k" path="res://resources/effect/explosion_effect/explosion_flare1.png" id="2_c3jfk"]
 [ext_resource type="Material" uid="uid://w8rjo3x02t3g" path="res://resources/effect/explosion_effect/mat_explosion_flare0.tres" id="3_wlnvm"]
@@ -19,7 +19,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_kcttk"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0yrs6nh2bv7e"]
 
-[ext_resource type="Script" path="res://tools/debug/debug_minigame.gd" id="1_n8757"]
+[ext_resource type="Script" uid="uid://dbv4uo8ss683t" path="res://tools/debug/debug_minigame.gd" id="1_n8757"]
 
 [node name="DebugMinigames" type="Control"]
 layout_mode = 3

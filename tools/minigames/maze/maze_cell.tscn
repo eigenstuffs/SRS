@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cs0oo1dolca08"]
 
-[ext_resource type="Script" path="res://tools/minigames/maze/MazeCell.gd" id="1_ixgp1"]
+[ext_resource type="Script" uid="uid://dtb7vv6c33hjv" path="res://tools/minigames/maze/MazeCell.gd" id="1_ixgp1"]
 [ext_resource type="Material" uid="uid://g7ajxckrni0u" path="res://tools/minigames/maze/maze_cell_material.tres" id="2_8dn27"]
 [ext_resource type="PlaneMesh" uid="uid://d44uolewqfys" path="res://tools/minigames/maze/maze_side.tres" id="6_df0y8"]
 [ext_resource type="PlaneMesh" uid="uid://c3fb2ugt4el5m" path="res://tools/minigames/maze/maze_top.tres" id="7_jty6u"]

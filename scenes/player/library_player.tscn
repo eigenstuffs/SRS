@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://cifju81wyjjw4"]
 
-[ext_resource type="Script" path="res://scenes/player/library_player.gd" id="1_0wy6d"]
+[ext_resource type="Script" uid="uid://req7k5b6nmtc" path="res://scenes/player/library_player.gd" id="1_0wy6d"]
 [ext_resource type="Texture2D" uid="uid://bwoykkxtcwxcs" path="res://assets/cecelia_spritesheets/Cecilia_Idle_Sheet.png" id="2_7w2t8"]
 [ext_resource type="Texture2D" uid="uid://bbmghnsaolthq" path="res://assets/cecelia_spritesheets/Cecilia_Library_Fail_Sheet.png" id="2_gn5hl"]
 [ext_resource type="Texture2D" uid="uid://deyxjtpwdgsxu" path="res://assets/cecelia_spritesheets/Cecilia_Damage_Sheet.png" id="2_vk51n"]

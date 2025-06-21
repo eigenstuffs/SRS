@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://5ybyvtcypf1c"]
+[gd_scene load_steps=6 format=3 uid="uid://5ybyvtcypf1c"]
 
-[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_material.gd" id="1_i25up"]
-[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_rect.gd" id="1_myhny"]
-[ext_resource type="Shader" path="res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader" id="2_gsr1a"]
+[ext_resource type="Script" uid="uid://b1cju46s8b1it" path="res://tools/effect/multi_pass_shader_material.gd" id="1_i25up"]
+[ext_resource type="Script" uid="uid://c5pa2xloc7umm" path="res://tools/effect/multi_pass_shader_rect.gd" id="1_myhny"]
+[ext_resource type="Shader" uid="uid://o8rgaoeq4mxt" path="res://resources/shaders/canvas_item/clear_shader_canvas_item.gdshader" id="2_gsr1a"]
+[ext_resource type="Script" uid="uid://7bgl213ah83o" path="res://resources/shaders/shader_pass.gd" id="3_4sjrt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nh1ng"]
 shader = ExtResource("2_gsr1a")
 script = ExtResource("1_i25up")
 is_canvas_item = true
-shader_passes = Array[Resource("res://resources/shaders/shader_pass.gd")]([])
+shader_passes = Array[ExtResource("3_4sjrt")]([])
 
 [node name="MultiPassShaderRect" type="ColorRect"]
 material = SubResource("ShaderMaterial_nh1ng")

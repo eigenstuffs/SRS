@@ -1,10 +1,17 @@
 [gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://vwonb5t67loq"]
 
-[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_yfrsq"]
+[ext_resource type="Script" uid="uid://dbo7ah17nj8s3" path="res://resources/cards/card.gd" id="1_yfrsq"]
 
 [resource]
 script = ExtResource("1_yfrsq")
 points_req = 0
 title = ""
+effect = null
+target_stat = null
 type = null
+effect_num = 0.0
+turn_dur = 0
 desc = ""
+intensity_mod = 0
+move_dialogue = Array[String]([])
+name_dialogue = Array[String]([])

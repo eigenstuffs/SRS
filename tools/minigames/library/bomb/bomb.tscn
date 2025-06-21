@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://dkkta3uslyuhp"]
 
-[ext_resource type="Script" path="res://tools/minigames/library/bomb/bomb.gd" id="1_48fmn"]
+[ext_resource type="Script" uid="uid://0xtgiou6dtnk" path="res://tools/minigames/library/bomb/bomb.gd" id="1_48fmn"]
 [ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="2_ko3ke"]
 [ext_resource type="PackedScene" uid="uid://bxyu5wc6tgciw" path="res://assets/misc/bombwcelusingcycle.glb" id="3_2dybn"]
 [ext_resource type="Texture2D" uid="uid://b5piu62rxvgem" path="res://assets/library/bomb_sprites.png" id="4_07vks"]
-[ext_resource type="Script" path="res://tools/minigames/library/bomb/sprite_3d.gd" id="5_187w7"]
+[ext_resource type="Script" uid="uid://csk2fhooouxnk" path="res://tools/minigames/library/bomb/sprite_3d.gd" id="5_187w7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ygqc5"]
 friction = 0.25

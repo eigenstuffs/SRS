@@ -1,6 +1,31 @@
 [gd_resource type="Resource" script_class="FishingRodTypes" load_steps=2 format=3 uid="uid://dg3ec88n3xtxy"]
 
-[ext_resource type="Script" path="res://tools/minigames/fishing/Inventory/types_of_rod.gd" id="1_g0vsu"]
+[ext_resource type="Script" uid="uid://cspdlvfrfopnq" path="res://tools/minigames/fishing/Inventory/types_of_rod.gd" id="1_g0vsu"]
 
 [resource]
 script = ExtResource("1_g0vsu")
+rod_one = {
+"description": "a poor fishing rod. it catches fish.",
+"name": "Poor Fishing Rod",
+"reel_size": 1.0,
+"reel_strength": 1.0
+}
+rod_two = {
+"description": "a fishing rod, but cooler.",
+"name": "Cooler Fishing Rod",
+"reel_size": 1.3,
+"reel_strength": 1.1
+}
+rod_three = {
+"description": "they say that this is the rod of the masters.",
+"name": "Superior Fishing Rod",
+"reel_size": 1.5,
+"reel_strength": 1.3
+}
+rod_four = {
+"description": "a rod with faded lettering on the handle. 'Cult de Poisson'...?",
+"name": "BEST Fishing Rod",
+"reel_size": 1.7,
+"reel_strength": 2
+}
+rod_list = null

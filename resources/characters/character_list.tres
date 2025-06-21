@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterList" load_steps=11 format=3 uid="uid://bc5c4s52s0g6n"]
 
-[ext_resource type="Script" path="res://resources/characters/character_list.gd" id="1_525xs"]
+[ext_resource type="Script" uid="uid://6xl4vmo3veb" path="res://resources/characters/character_list.gd" id="1_525xs"]
 [ext_resource type="Resource" uid="uid://b0siqsngdqoj2" path="res://resources/characters/akatius.tres" id="1_p6ugo"]
 [ext_resource type="Resource" uid="uid://bdk3upb5tas66" path="res://resources/characters/cassius.tres" id="2_imrp4"]
 [ext_resource type="Resource" uid="uid://c18yslw5nw67g" path="res://resources/characters/cecilia.tres" id="3_d04rf"]

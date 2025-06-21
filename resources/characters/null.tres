@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=39 format=3 uid="uid://cjadlsd31vuyu"]
 
-[ext_resource type="Script" path="res://resources/characters/character.gd" id="1_bo1i3"]
+[ext_resource type="Script" uid="uid://cunlukntn01jm" path="res://resources/characters/character.gd" id="1_bo1i3"]
 [ext_resource type="Texture2D" uid="uid://b846uae636evm" path="res://assets/vn/Cecilia/cecilia_default2.png" id="2_xlw8h"]
 [ext_resource type="Texture2D" uid="uid://ci41tcx7plgf3" path="res://assets/vn/Cecilia/cecilia_default.png" id="3_hep5o"]
 [ext_resource type="Texture2D" uid="uid://fg38re8dgawd" path="res://assets/vn/Cecilia/cecilia_sad1.png" id="4_28iya"]

@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://dsx0i2yqh5py"]
 
 [ext_resource type="Texture2D" uid="uid://ccejxo85mtnpy" path="res://assets/socialwarfare/Card_Blank.png" id="1_ndodj"]
-[ext_resource type="Script" path="res://tools/minigames/social_warfare/card_ui.gd" id="2_2l568"]
+[ext_resource type="Script" uid="uid://dffbvjsyf581h" path="res://tools/minigames/social_warfare/card_ui.gd" id="2_2l568"]
 [ext_resource type="Texture2D" uid="uid://dn282mfgbv8ui" path="res://assets/socialwarfare/faces/IMG_3376.png" id="3_sbvdy"]
 [ext_resource type="Texture2D" uid="uid://cfwqm5gqrmd2o" path="res://assets/socialwarfare/card_middle.png" id="3_ygxub"]
 [ext_resource type="FontFile" uid="uid://c6jcbn16yd4pq" path="res://assets/ui/ttf/CourierPrime-Regular.ttf" id="6_7mubt"]
 [ext_resource type="FontFile" uid="uid://b3r7lbrdr6ibw" path="res://assets/ui/ttf/CourierPrime-Bold.ttf" id="7_2nh5x"]
-[ext_resource type="Shader" path="res://tools/minigames/social_warfare/card_body.gdshader" id="7_jiype"]
+[ext_resource type="Shader" uid="uid://bwdylqavbwb6g" path="res://tools/minigames/social_warfare/card_body.gdshader" id="7_jiype"]
 [ext_resource type="Texture2D" uid="uid://cwlm7n67b1wci" path="res://assets/socialwarfare/card_alpha_mask.png" id="8_siljk"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3tbad"]

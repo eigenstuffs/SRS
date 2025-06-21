@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://chx5kyyd232y5"]
 
-[ext_resource type="Script" path="res://tools/dialogue/effect_test_scene.gd" id="1_1eiwq"]
-[ext_resource type="Script" path="res://tools/dialogue/Effects.gd" id="2_c5de5"]
+[ext_resource type="Script" uid="uid://deckqul1bfvgy" path="res://tools/dialogue/effect_test_scene.gd" id="1_1eiwq"]
+[ext_resource type="Script" uid="uid://dgjjcykapdjrn" path="res://tools/dialogue/Effects.gd" id="2_c5de5"]
 [ext_resource type="Texture2D" uid="uid://e83c35i6e8tu" path="res://assets/cgs/image0-2.jpg" id="3_qsgy1"]
 
 [node name="EffectTestScene" type="Control"]

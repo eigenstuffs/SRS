@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://lmg6p4vssmpw"]
 
-[ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_minigame.gd" id="1_pb007"]
+[ext_resource type="Script" uid="uid://den046vj7xbcp" path="res://tools/minigames/rhythm/rhythm_minigame.gd" id="1_pb007"]
 [ext_resource type="PackedScene" uid="uid://cr62xw6ofifyl" path="res://tools/minigames/rhythm/play/playfield.tscn" id="2_2af6n"]
 [ext_resource type="Texture2D" uid="uid://bjw21ivp62bgd" path="res://tools/minigames/rhythm/assets/skybox_exterior.png" id="2_tusgb"]
 [ext_resource type="PackedScene" uid="uid://d4cwmpkhjgayy" path="res://tools/minigames/rhythm/beatmap_select.tscn" id="4_vgyc2"]

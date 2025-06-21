@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgh3a41nfgulr"]
 
-[ext_resource type="Script" path="res://tools/interaction/interaction.gd" id="1_qklf0"]
+[ext_resource type="Script" uid="uid://kbrdyidqgrib" path="res://tools/interaction/interaction.gd" id="1_qklf0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_y5c71"]
 

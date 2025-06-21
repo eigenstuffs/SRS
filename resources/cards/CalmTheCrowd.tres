@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://dmyqbve6hnuty"]
 
 [ext_resource type="Texture2D" uid="uid://bspfrgtbt2b4s" path="res://assets/socialwarfare/faces/IMG_3377.png" id="1_mdahg"]
-[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_y2wwo"]
+[ext_resource type="Script" uid="uid://dbo7ah17nj8s3" path="res://resources/cards/card.gd" id="1_y2wwo"]
 
 [resource]
 script = ExtResource("1_y2wwo")
@@ -12,6 +12,7 @@ effect = 1
 target_stat = 3
 type = 0
 effect_num = 5.0
+turn_dur = 0
 desc = "Bring down the intensity of the battle and boost your MP."
 intensity_mod = -20
 move_dialogue = Array[String]([])

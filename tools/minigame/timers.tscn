@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cb52htbmp1ae8"]
 
-[ext_resource type="Script" path="res://tools/minigame/timers.gd" id="1_sqio3"]
+[ext_resource type="Script" uid="uid://chibtvgu7vt2c" path="res://tools/minigame/timers.gd" id="1_sqio3"]
 [ext_resource type="Texture2D" uid="uid://bs54kw4ef5h21" path="res://assets/ui/Mini Game Frame.png" id="2_ajkn4"]
 [ext_resource type="Texture2D" uid="uid://dki4a7c8ecavm" path="res://assets/ui/Score and Timer.png" id="3_8x31i"]
 [ext_resource type="Texture2D" uid="uid://c875qeheydn86" path="res://assets/ui/goldcircle.png" id="4_7aruq"]

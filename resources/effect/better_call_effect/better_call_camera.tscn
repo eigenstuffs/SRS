@@ -51,7 +51,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ukce4"]
 _data = {
-"better_call": SubResource("Animation_sewx2")
+&"better_call": SubResource("Animation_sewx2")
 }
 
 [node name="Camera3D" type="Camera3D"]

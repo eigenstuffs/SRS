@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://c3qyy0wd0d7uf"]
 
-[ext_resource type="Script" path="res://tools/minigames/maze/maze_reward_scene.gd" id="1_tqxpr"]
+[ext_resource type="Script" uid="uid://bo5qnans7jsj4" path="res://tools/minigames/maze/maze_reward_scene.gd" id="1_tqxpr"]
 [ext_resource type="Texture2D" uid="uid://kjxx6hef0fgh" path="res://assets/rewardscene/Results Frame.png" id="2_1k2jh"]
 [ext_resource type="FontFile" uid="uid://c6556g6be4xw6" path="res://assets/ui/ttf/Halant-Regular.ttf" id="3_j57t0"]
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/ttf/Volkhov-Bold.ttf" id="4_bh0hx"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=51 format=3 uid="uid://jsihguxhu4ri"]
 
-[ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
-[ext_resource type="Script" path="res://tools/minigames/social_warfare/PlayerData.gd" id="2_t2gbr"]
+[ext_resource type="Script" uid="uid://bl2fjksuo83yk" path="res://tools/minigames/social_warfare/social_warfare_new.gd" id="1_vycxu"]
+[ext_resource type="Script" uid="uid://c3el8o6b3ry8y" path="res://tools/minigames/social_warfare/PlayerData.gd" id="2_t2gbr"]
 [ext_resource type="Texture2D" uid="uid://b0jmur30yi5il" path="res://assets/socialwarfare/Level_HP_MP_UI.png" id="3_wlxvx"]
 [ext_resource type="Texture2D" uid="uid://be0aofp6torag" path="res://assets/socialwarfare/esra/Esra_Idle_Sheet.png" id="3_y4if1"]
 [ext_resource type="Texture2D" uid="uid://cuibfl2jfmk0s" path="res://assets/socialwarfare/esra/Esra_Damage_Sheet.png" id="4_j317y"]
@@ -12,17 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://c8he0ci40rd5s" path="res://assets/socialwarfare/bar_green.png" id="6_wldyg"]
 [ext_resource type="Texture2D" uid="uid://dync2rp1v4bs4" path="res://assets/socialwarfare/bar_mp.png" id="7_j7171"]
 [ext_resource type="Texture2D" uid="uid://cgaksh8qj6kb0" path="res://assets/socialwarfare/SW_Button_Backplate.png" id="7_k28hl"]
-[ext_resource type="Script" path="res://tools/minigames/social_warfare/Choice.gd" id="7_sbmwb"]
+[ext_resource type="Script" uid="uid://d242yhhj6gkdl" path="res://tools/minigames/social_warfare/Choice.gd" id="7_sbmwb"]
 [ext_resource type="PackedScene" uid="uid://bbcvsc3odiorw" path="res://tools/minigames/social_warfare/card_deck_new.tscn" id="8_m254v"]
 [ext_resource type="Texture2D" uid="uid://c1ggtt1meqgln" path="res://assets/socialwarfare/Button_Backplate_Click.png" id="8_vkh4x"]
 [ext_resource type="Texture2D" uid="uid://52akqjnkuqwa" path="res://assets/socialwarfare/Button_Backplate_Hover.png" id="9_d3rgy"]
-[ext_resource type="Script" path="res://tools/minigames/social_warfare/Fight.gd" id="12_3d855"]
-[ext_resource type="Script" path="res://tools/minigames/social_warfare/Modifiers.gd" id="12_s1k71"]
+[ext_resource type="Script" uid="uid://dxxauwkse1oq7" path="res://tools/minigames/social_warfare/Fight.gd" id="12_3d855"]
+[ext_resource type="Script" uid="uid://b6j5s7t1svxbf" path="res://tools/minigames/social_warfare/Modifiers.gd" id="12_s1k71"]
 [ext_resource type="Texture2D" uid="uid://dbyldq1jk4j76" path="res://assets/socialwarfare/beigecircle.png" id="13_sqg5o"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="14_2nwvy"]
 [ext_resource type="Texture2D" uid="uid://c1cdk25y72ghx" path="res://assets/socialwarfare/circle.png" id="14_v7h48"]
 [ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="15_7j0p1"]
-[ext_resource type="Script" path="res://tools/minigames/social_warfare/Flee.gd" id="15_bsyil"]
+[ext_resource type="Script" uid="uid://c1uobb7yjjs2d" path="res://tools/minigames/social_warfare/Flee.gd" id="15_bsyil"]
 [ext_resource type="Texture2D" uid="uid://cixdhevnw5dtq" path="res://assets/socialwarfare/Icons/Attack.png" id="15_cupb0"]
 [ext_resource type="Texture2D" uid="uid://rlstokmcdldq" path="res://assets/socialwarfare/Icons/Restore.png" id="16_x8hdb"]
 [ext_resource type="AudioStream" uid="uid://coyghwfjx0wpo" path="res://assets/music/Villianess Reborn Battle Social Warfare Music 1.mp3" id="21_cadsa"]
@@ -160,9 +160,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t1wax"]
 _data = {
-"Damage": SubResource("Animation_78qpp"),
-"Idle": SubResource("Animation_dwyf7"),
-"RESET": SubResource("Animation_8chkj")
+&"Damage": SubResource("Animation_78qpp"),
+&"Idle": SubResource("Animation_dwyf7"),
+&"RESET": SubResource("Animation_8chkj")
 }
 
 [sub_resource type="Animation" id="Animation_gcnir"]
@@ -298,9 +298,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_po36k"]
 _data = {
-"Damage": SubResource("Animation_gcnir"),
-"Idle": SubResource("Animation_v34wt"),
-"RESET": SubResource("Animation_d7xgc")
+&"Damage": SubResource("Animation_gcnir"),
+&"Idle": SubResource("Animation_v34wt"),
+&"RESET": SubResource("Animation_d7xgc")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpmps"]
@@ -362,6 +362,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_qfjrt"]
 resource_name = "ExitFail"
+capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -551,10 +552,10 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q7apf"]
 _data = {
-"Enter": SubResource("Animation_aclgi"),
-"ExitFail": SubResource("Animation_qfjrt"),
-"ExitWon": SubResource("Animation_g7tsf"),
-"RESET": SubResource("Animation_y03o5")
+&"Enter": SubResource("Animation_aclgi"),
+&"ExitFail": SubResource("Animation_qfjrt"),
+&"ExitWon": SubResource("Animation_g7tsf"),
+&"RESET": SubResource("Animation_y03o5")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hi1qw"]

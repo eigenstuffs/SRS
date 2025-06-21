@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://btp06nsjls81w"]
+[gd_scene load_steps=5 format=3 uid="uid://btp06nsjls81w"]
 
-[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_material.gd" id="1_48y1b"]
+[ext_resource type="Script" uid="uid://b1cju46s8b1it" path="res://tools/effect/multi_pass_shader_material.gd" id="1_48y1b"]
+[ext_resource type="Script" uid="uid://7bgl213ah83o" path="res://resources/shaders/shader_pass.gd" id="2_mqs38"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6tccy"]
 flip_faces = true
@@ -9,7 +10,7 @@ size = Vector2(2, 2)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sbk6d"]
 script = ExtResource("1_48y1b")
 is_canvas_item = false
-shader_passes = Array[Resource("res://resources/shaders/shader_pass.gd")]([])
+shader_passes = Array[ExtResource("2_mqs38")]([])
 
 [node name="ScreenSpaceMesh" type="MeshInstance3D"]
 cast_shadow = 0

@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://d4cwmpkhjgayy"]
+[gd_scene load_steps=19 format=3 uid="uid://d4cwmpkhjgayy"]
 
-[ext_resource type="Script" path="res://tools/minigames/rhythm/beatmap_select.gd" id="1_28cak"]
+[ext_resource type="Script" uid="uid://c7jxsh2ph1xta" path="res://tools/minigames/rhythm/beatmap_select.gd" id="1_28cak"]
+[ext_resource type="Script" uid="uid://cpto6083lsru" path="res://resources/beatmap/beatmap.gd" id="2_iohtn"]
 [ext_resource type="Resource" uid="uid://u2v6to2msmoe" path="res://resources/beatmap/black_key.tres" id="2_w3ady"]
 [ext_resource type="Resource" uid="uid://v7u4nlrosc66" path="res://resources/beatmap/touhou.tres" id="3_e4nf1"]
 [ext_resource type="Texture2D" uid="uid://4yblrqe1shl6" path="res://assets/ui/arrow.png" id="3_kmr4s"]
@@ -8,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://dnbo1c8vcvwxb" path="res://resources/beatmap/escapsim.tres" id="4_xy04h"]
 [ext_resource type="Resource" uid="uid://qc6xfemnwspm" path="res://resources/beatmap/eden.tres" id="5_kr3uh"]
 [ext_resource type="AudioStream" uid="uid://d1querjbramsy" path="res://assets/sfx/whoosh_1.ogg" id="7_1i8dd"]
-[ext_resource type="Shader" path="res://tools/minigames/rhythm/arrow.gdshader" id="7_ksbjf"]
+[ext_resource type="Shader" uid="uid://b2eprne74lq8i" path="res://tools/minigames/rhythm/arrow.gdshader" id="7_ksbjf"]
 [ext_resource type="AudioStream" uid="uid://dfvvumy7n5b2b" path="res://assets/sfx/game_alert_2.mp3" id="8_5xqbm"]
 [ext_resource type="AudioStream" uid="uid://dd1wk4fpa4nyq" path="res://assets/sfx/game_alert_1.mp3" id="8_m1r3h"]
 [ext_resource type="AudioStream" uid="uid://cv1rv3aovce3j" path="res://assets/sfx/boom_1.mp3" id="10_5jkuj"]
@@ -30,7 +31,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="BeatmapSelect" type="Node3D"]
 script = ExtResource("1_28cak")
-beatmaps = Array[Resource("res://resources/beatmap/beatmap.gd")]([ExtResource("2_w3ady"), ExtResource("3_e4nf1"), ExtResource("4_xy04h"), ExtResource("4_8hbdj"), ExtResource("5_kr3uh")])
+beatmaps = Array[ExtResource("2_iohtn")]([ExtResource("2_w3ady"), ExtResource("3_e4nf1"), ExtResource("4_xy04h"), ExtResource("4_8hbdj"), ExtResource("5_kr3uh")])
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)

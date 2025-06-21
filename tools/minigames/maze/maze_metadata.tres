@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MazeMeta" load_steps=2 format=3 uid="uid://cspkx3i4ckmhn"]
 
-[ext_resource type="Script" path="res://tools/minigames/maze/maze_metadata.gd" id="1_v2rmy"]
+[ext_resource type="Script" uid="uid://c7t5flusedq83" path="res://tools/minigames/maze/maze_metadata.gd" id="1_v2rmy"]
 
 [resource]
 script = ExtResource("1_v2rmy")

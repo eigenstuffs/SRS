@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dm18anwr0e8qc"]
 
-[ext_resource type="Script" path="res://tools/minigames/maze/maze_enemy.gd" id="1_4egut"]
+[ext_resource type="Script" uid="uid://7q8iqnmp10ei" path="res://tools/minigames/maze/maze_enemy.gd" id="1_4egut"]
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/misc/spritesheet_mini_npc_idle.png" id="2_whn68"]
 [ext_resource type="Texture2D" uid="uid://bntur1bf2hnkx" path="res://assets/maze/maze thorn circle.png" id="3_2ryuh"]
 

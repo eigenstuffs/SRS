@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=30 format=3 uid="uid://bhxluphieft1c"]
 
-[ext_resource type="Script" path="res://resources/characters/character.gd" id="1_64vy1"]
+[ext_resource type="Script" uid="uid://cunlukntn01jm" path="res://resources/characters/character.gd" id="1_64vy1"]
 [ext_resource type="Texture2D" uid="uid://d0nscjglpw3s8" path="res://assets/vn/Isidora/isidora_angry1.png" id="2_mosuu"]
 [ext_resource type="Texture2D" uid="uid://cxfgsdprwlyvd" path="res://assets/vn/Isidora/isidora_angry2.png" id="3_06f1l"]
 [ext_resource type="Texture2D" uid="uid://cprukpaw5lm6w" path="res://assets/vn/Isidora/isidora_angry3.png" id="4_q56kx"]

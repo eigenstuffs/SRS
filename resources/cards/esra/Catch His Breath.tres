@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://3t21ogoehw7x"]
 
-[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_4l12f"]
+[ext_resource type="Script" uid="uid://dbo7ah17nj8s3" path="res://resources/cards/card.gd" id="1_4l12f"]
 
 [resource]
 script = ExtResource("1_4l12f")
@@ -10,6 +10,7 @@ effect = 1
 target_stat = 2
 type = 0
 effect_num = 5.0
+turn_dur = 0
 desc = "Esra takes a moment to stare up at the ceiling while running his hands through his hair."
 intensity_mod = 0
 move_dialogue = Array[String](["…", "I don’t have to listen to this.", "How stupid.", "Cram it.", "[Esra furiously runs his hand through his hair, mussing up his bangs.]"])

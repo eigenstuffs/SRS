@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=34 format=3 uid="uid://bvwdg4btn4rug"]
 
-[ext_resource type="Script" path="res://resources/characters/character.gd" id="1_uqdyt"]
+[ext_resource type="Script" uid="uid://cunlukntn01jm" path="res://resources/characters/character.gd" id="1_uqdyt"]
 [ext_resource type="Texture2D" uid="uid://c7fn4tormcchl" path="res://assets/vn/Esra/esra_blush1.png" id="2_pwusk"]
 [ext_resource type="Texture2D" uid="uid://cuma5r386pj10" path="res://assets/vn/Esra/esra_blush2.png" id="3_6784r"]
 [ext_resource type="Texture2D" uid="uid://ce0oerabx2v0d" path="res://assets/vn/Esra/esra_happy1.png" id="4_7snbb"]

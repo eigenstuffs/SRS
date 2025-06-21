@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0obt0ysdxga4"]
 
-[ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/fishing_rod.gd" id="1_7vvl0"]
+[ext_resource type="Script" uid="uid://cr2d0okxw60cj" path="res://tools/minigames/fishing/fishing_rod/fishing_rod.gd" id="1_7vvl0"]
 
 [node name="FishingRod" type="MeshInstance3D"]
 transform = Transform3D(1, 1.32815e-09, 1.51808e-08, 1.5197e-08, -0.0131592, -0.999915, -1.12827e-09, 0.999915, -0.0131591, 0.270332, 0.337995, 0.0667055)

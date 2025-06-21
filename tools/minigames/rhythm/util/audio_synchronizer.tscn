@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1qbfbxp0ditp"]
 
-[ext_resource type="Script" path="res://tools/minigames/rhythm/util/audio_synchronizer.gd" id="1_lbd1m"]
+[ext_resource type="Script" uid="uid://dts78qu7d2xni" path="res://tools/minigames/rhythm/util/audio_synchronizer.gd" id="1_lbd1m"]
 [ext_resource type="AudioStream" uid="uid://cxyhwvdovsluw" path="res://tools/minigames/rhythm/assets/samples/metronome.mp3" id="2_om135"]
 
 [node name="AudioSynchronizer" type="Node3D"]

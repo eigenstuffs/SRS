@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bmw62qqsgbpg7"]
 
-[ext_resource type="Script" path="res://tools/minigames/rhythm/play/hit_objects/measure_bar.gd" id="1_fwrvk"]
-[ext_resource type="Shader" path="res://tools/minigames/rhythm/resources/shaders/note.gdshader" id="3_gtpxo"]
+[ext_resource type="Script" uid="uid://bo5ylrxbrk3tp" path="res://tools/minigames/rhythm/play/hit_objects/measure_bar.gd" id="1_fwrvk"]
+[ext_resource type="Shader" uid="uid://duxpxqfl485hx" path="res://tools/minigames/rhythm/resources/shaders/note.gdshader" id="3_gtpxo"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_7fr1q"]
 size = Vector2(0.7, 6.5)
@@ -16,9 +16,9 @@ gradient = SubResource("Gradient_i4u5b")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ygfsj"]
 render_priority = 0
 shader = ExtResource("3_gtpxo")
+shader_parameter/tex = SubResource("GradientTexture1D_xj01a")
 shader_parameter/miss_color = Color(0.25, 0.085, 0.05, 1)
 shader_parameter/fade_out_time = 0.1
-shader_parameter/tex = SubResource("GradientTexture1D_xj01a")
 
 [node name="MeasureBar" type="Node3D"]
 script = ExtResource("1_fwrvk")

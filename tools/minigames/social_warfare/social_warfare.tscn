@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dq7piist510w8"]
 
-[ext_resource type="Script" path="res://tools/minigames/social_warfare/social_warfare.gd" id="1_62gtl"]
-[ext_resource type="Script" path="res://tools/minigames/social_warfare/move_button.gd" id="4_rio6d"]
+[ext_resource type="Script" uid="uid://bd6bqg7hedmpm" path="res://tools/minigames/social_warfare/social_warfare.gd" id="1_62gtl"]
+[ext_resource type="Script" uid="uid://vehsh5yiomq0" path="res://tools/minigames/social_warfare/move_button.gd" id="4_rio6d"]
 
 [sub_resource type="Animation" id="Animation_5fi3a"]
 resource_name = "Attack"
@@ -141,14 +141,14 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_raqpv"]
 _data = {
-"EnemyAttack": SubResource("Animation_5fi3a"),
-"EnemyDamaged": SubResource("Animation_xiaip"),
-"EnemyIdle": SubResource("Animation_s4wx0"),
-"EnemyTalk": SubResource("Animation_3w8e3"),
-"PlayerAttack": SubResource("Animation_julew"),
-"PlayerDamaged": SubResource("Animation_n23jt"),
-"PlayerIdle": SubResource("Animation_j760y"),
-"PlayerTalk": SubResource("Animation_1v1gg")
+&"EnemyAttack": SubResource("Animation_5fi3a"),
+&"EnemyDamaged": SubResource("Animation_xiaip"),
+&"EnemyIdle": SubResource("Animation_s4wx0"),
+&"EnemyTalk": SubResource("Animation_3w8e3"),
+&"PlayerAttack": SubResource("Animation_julew"),
+&"PlayerDamaged": SubResource("Animation_n23jt"),
+&"PlayerIdle": SubResource("Animation_j760y"),
+&"PlayerTalk": SubResource("Animation_1v1gg")
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x4i56"]

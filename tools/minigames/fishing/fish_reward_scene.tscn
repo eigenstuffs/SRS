@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bvi5w7r00seip"]
 
-[ext_resource type="Script" path="res://tools/minigames/fishing/fish_reward_scene.gd" id="1_j7q2r"]
+[ext_resource type="Script" uid="uid://dceaob25wsr0b" path="res://tools/minigames/fishing/fish_reward_scene.gd" id="1_j7q2r"]
 [ext_resource type="Texture2D" uid="uid://kjxx6hef0fgh" path="res://assets/rewardscene/Results Frame.png" id="2_kv0vn"]
 [ext_resource type="FontFile" uid="uid://c6556g6be4xw6" path="res://assets/ui/ttf/Halant-Regular.ttf" id="3_orxvu"]
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/ttf/Volkhov-Bold.ttf" id="4_1o7ys"]

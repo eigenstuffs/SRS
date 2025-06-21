@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c6uxnwf0f4eke"]
 
-[ext_resource type="Script" path="res://tools/dialogue/util_dialogue.gd" id="1_s5ujg"]
+[ext_resource type="Script" uid="uid://23fcs1yc0lhy" path="res://tools/dialogue/util_dialogue.gd" id="1_s5ujg"]
 [ext_resource type="Texture2D" uid="uid://dx7lnux0hm0km" path="res://assets/vn/Dialogue/Dialogue Box.png" id="13_qvw8c"]
 [ext_resource type="Texture2D" uid="uid://dwhnuxkb8ke1c" path="res://assets/ui/Name.png" id="14_2m0w4"]
 [ext_resource type="FontFile" uid="uid://5dv6lpvm4hm6" path="res://assets/ui/ttf/Galdeano-Regular.ttf" id="15_klgac"]

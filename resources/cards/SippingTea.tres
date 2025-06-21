@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://drsej55dkajmo"]
 
 [ext_resource type="Texture2D" uid="uid://chegxy5mvx30b" path="res://assets/socialwarfare/faces/IMG_3375.png" id="1_0w2xw"]
-[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_hyeb5"]
+[ext_resource type="Script" uid="uid://dbo7ah17nj8s3" path="res://resources/cards/card.gd" id="1_hyeb5"]
 
 [resource]
 script = ExtResource("1_hyeb5")
@@ -12,6 +12,7 @@ effect = 1
 target_stat = 2
 type = 0
 effect_num = 6.0
+turn_dur = 0
 desc = "Take a refreshing sip of tea to heal yourself."
 intensity_mod = 0
 move_dialogue = Array[String]([])

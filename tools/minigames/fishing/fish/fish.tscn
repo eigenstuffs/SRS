@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://04kx0ue4t11g"]
 
-[ext_resource type="Script" path="res://tools/minigames/fishing/fish/Fish.gd" id="1_e25ly"]
+[ext_resource type="Script" uid="uid://ct2qe8f2ek2oa" path="res://tools/minigames/fishing/fish/Fish.gd" id="1_e25ly"]
 [ext_resource type="Texture2D" uid="uid://d28td8njhv46f" path="res://tools/minigames/fishing/assets/Fishies/fish_common1_spritesheet.png" id="2_u4jqi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x45a8"]
@@ -111,10 +111,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bebly"]
 _data = {
-"RESET": SubResource("Animation_q0huh"),
-"pursue": SubResource("Animation_1di1a"),
-"stop": SubResource("Animation_w76f8"),
-"wander": SubResource("Animation_n8pk3")
+&"RESET": SubResource("Animation_q0huh"),
+&"pursue": SubResource("Animation_1di1a"),
+&"stop": SubResource("Animation_w76f8"),
+&"wander": SubResource("Animation_n8pk3")
 }
 
 [node name="Fish" type="CharacterBody3D"]

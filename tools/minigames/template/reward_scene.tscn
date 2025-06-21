@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://daom8pfxkxqmw"]
 
-[ext_resource type="Script" path="res://tools/minigames/template/reward_scene.gd" id="1_p1o4n"]
+[ext_resource type="Script" uid="uid://dxhqk2x2v8qng" path="res://tools/minigames/template/reward_scene.gd" id="1_p1o4n"]
 [ext_resource type="Texture2D" uid="uid://kjxx6hef0fgh" path="res://assets/rewardscene/Results Frame.png" id="2_2bua5"]
 [ext_resource type="FontFile" uid="uid://do4h18m68ecu8" path="res://assets/ui/ttf/Volkhov-Regular.ttf" id="3_vkyv0"]
 

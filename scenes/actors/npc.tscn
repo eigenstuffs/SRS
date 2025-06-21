@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://0ttabng4vst4"]
 
-[ext_resource type="Script" path="res://scenes/actors/npc.gd" id="1_vbktf"]
+[ext_resource type="Script" uid="uid://bjr8ibeyjrcvl" path="res://scenes/actors/npc.gd" id="1_vbktf"]
 [ext_resource type="PackedScene" uid="uid://bgh3a41nfgulr" path="res://tools/interaction/interaction.tscn" id="3_6waqm"]
 [ext_resource type="Texture2D" uid="uid://304qv7q1hedd" path="res://assets/misc/spritesheet_mini_selected_idle.png" id="3_xu2c4"]
-[ext_resource type="Script" path="res://tools/interaction/interaction_dialogue.gd" id="4_4xfcs"]
+[ext_resource type="Script" uid="uid://cqjd5vek7dmnm" path="res://tools/interaction/interaction_dialogue.gd" id="4_4xfcs"]
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/misc/spritesheet_mini_npc_idle.png" id="5_xi6n1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hq8b"]
@@ -43,8 +43,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbuaw"]
 _data = {
-"Idle": SubResource("Animation_rl8og"),
-"RESET": SubResource("Animation_5th0q")
+&"Idle": SubResource("Animation_rl8og"),
+&"RESET": SubResource("Animation_5th0q")
 }
 
 [node name="NPC" type="Area3D"]

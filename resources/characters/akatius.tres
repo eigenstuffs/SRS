@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=37 format=3 uid="uid://b0siqsngdqoj2"]
 
-[ext_resource type="Script" path="res://resources/characters/character.gd" id="1_yfmem"]
+[ext_resource type="Script" uid="uid://cunlukntn01jm" path="res://resources/characters/character.gd" id="1_yfmem"]
 [ext_resource type="Texture2D" uid="uid://6tem5lr8echn" path="res://assets/vn/Akatius/akatius_blush1.png" id="2_pb5pb"]
 [ext_resource type="Texture2D" uid="uid://bcp5tgsnudaa8" path="res://assets/vn/Akatius/akatius_blush2.png" id="3_aehoo"]
 [ext_resource type="Texture2D" uid="uid://byk3xf3lhsib6" path="res://assets/vn/Akatius/akatius_lab1.png" id="4_6h8xm"]

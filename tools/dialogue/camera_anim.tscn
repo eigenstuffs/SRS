@@ -33,8 +33,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qldr1"]
 _data = {
-"RESET": SubResource("Animation_d6tyx"),
-"screen_shake": SubResource("Animation_fkq21")
+&"RESET": SubResource("Animation_d6tyx"),
+&"screen_shake": SubResource("Animation_fkq21")
 }
 
 [node name="CameraAnim" type="AnimationPlayer"]

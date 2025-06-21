@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://75bedpy5j0at"]
 
-[ext_resource type="Script" path="res://tools/minigames/shark_tank/shark_tank_ui.gd" id="1_iawdj"]
+[ext_resource type="Script" uid="uid://w3gnj7di32f2" path="res://tools/minigames/shark_tank/shark_tank_ui.gd" id="1_iawdj"]
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/misc/spritesheet_mini_npc_idle.png" id="2_bequw"]
-[ext_resource type="Script" path="res://tools/minigames/shark_tank/pitch_handler.gd" id="2_xxcir"]
+[ext_resource type="Script" uid="uid://c552lcv114e67" path="res://tools/minigames/shark_tank/pitch_handler.gd" id="2_xxcir"]
 [ext_resource type="PackedScene" uid="uid://c4gv04lv2486q" path="res://tools/minigames/shark_tank/document.tscn" id="4_05llp"]
 [ext_resource type="Texture2D" uid="uid://b2ed0lhpepjev" path="res://assets/sharktank/Invest Button Default.png" id="5_q1qqf"]
 [ext_resource type="Texture2D" uid="uid://dt1s71rgic50h" path="res://assets/sharktank/Invest_Click.png" id="6_mrbxa"]
@@ -99,9 +99,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jcd5v"]
 _data = {
-"RESET": SubResource("Animation_cjcn3"),
-"WalkIn": SubResource("Animation_0jvab"),
-"WalkOut": SubResource("Animation_1rjpq")
+&"RESET": SubResource("Animation_cjcn3"),
+&"WalkIn": SubResource("Animation_0jvab"),
+&"WalkOut": SubResource("Animation_1rjpq")
 }
 
 [node name="SharkTank" type="Control"]

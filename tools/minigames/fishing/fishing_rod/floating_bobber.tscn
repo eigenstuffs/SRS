@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bridjlku0m8mg"]
 
-[ext_resource type="Script" path="res://tools/minigames/fishing/fishing_rod/FloatingBobber.gd" id="1_lnayo"]
+[ext_resource type="Script" uid="uid://chtxx8ee1rud8" path="res://tools/minigames/fishing/fishing_rod/FloatingBobber.gd" id="1_lnayo"]
 [ext_resource type="Texture2D" uid="uid://chbw40rkc3heq" path="res://tools/minigames/fishing/assets/hook.png" id="2_f0jyk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rxajj"]

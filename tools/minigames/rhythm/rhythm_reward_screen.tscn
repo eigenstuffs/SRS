@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dwmk1jhaqixhd"]
 
-[ext_resource type="Script" path="res://tools/minigames/rhythm/rhythm_reward_scene.gd" id="1_xs214"]
+[ext_resource type="Script" uid="uid://buam3chn3y2kh" path="res://tools/minigames/rhythm/rhythm_reward_scene.gd" id="1_xs214"]
 [ext_resource type="Texture2D" uid="uid://kjxx6hef0fgh" path="res://assets/rewardscene/Results Frame.png" id="2_u2d77"]
 [ext_resource type="FontFile" uid="uid://c6556g6be4xw6" path="res://assets/ui/ttf/Halant-Regular.ttf" id="3_vye8i"]
 [ext_resource type="FontFile" uid="uid://bnolguos6pb4x" path="res://assets/ui/ttf/Volkhov-Bold.ttf" id="4_i0mr2"]

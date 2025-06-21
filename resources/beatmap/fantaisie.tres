@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Beatmap" load_steps=6 format=3 uid="uid://byqqvw7rgw14n"]
 
-[ext_resource type="Script" path="res://resources/beatmap/beatmap.gd" id="1_14irr"]
-[ext_resource type="Script" path="res://resources/beatmap/fantaisie_mod.gd" id="1_tfnjb"]
+[ext_resource type="Script" uid="uid://cpto6083lsru" path="res://resources/beatmap/beatmap.gd" id="1_14irr"]
+[ext_resource type="Script" uid="uid://tfbgjwx7vhbm" path="res://resources/beatmap/fantaisie_mod.gd" id="1_tfnjb"]
 [ext_resource type="Texture2D" uid="uid://clhny6y00v61i" path="res://assets/beatmaps/fantaisie.jpg" id="1_y5vtj"]
 [ext_resource type="AudioStream" uid="uid://f6gr5tbaymt4" path="res://assets/beatmaps/fantaisie.mp3" id="3_gyds7"]
 

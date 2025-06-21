@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqtfbqwfencar"]
 
-[ext_resource type="Script" path="res://tools/minigames/rhythm/util/physics_text.gd" id="1_2k5il"]
+[ext_resource type="Script" uid="uid://b6sc6f6b7tdyr" path="res://tools/minigames/rhythm/util/physics_text.gd" id="1_2k5il"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i1i3y"]
 font_size = 35

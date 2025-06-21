@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bql34wij4xw6e"]
 
-[ext_resource type="Script" path="res://tools/dialogue/save_block.gd" id="1_7ntfo"]
+[ext_resource type="Script" uid="uid://b7twdxgob7wyx" path="res://tools/dialogue/save_block.gd" id="1_7ntfo"]
 
 [node name="SaveBlock" type="Button"]
 custom_minimum_size = Vector2(960, 120)

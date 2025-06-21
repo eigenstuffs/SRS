@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dnl73vi1jnodd" path="res://assets/vn/fade_lace/row-1-column-17.png" id="13_umlb7"]
 [ext_resource type="Texture2D" uid="uid://m1bdx51fdrud" path="res://assets/vn/fade_lace/row-1-column-18.png" id="14_3wj17"]
 [ext_resource type="Texture2D" uid="uid://b1ydmq6opdxmo" path="res://assets/vn/fade_lace/row-1-column-19.png" id="15_eein2"]
-[ext_resource type="Script" path="res://tools/effect/effect_anim.gd" id="16_ie6vu"]
+[ext_resource type="Script" uid="uid://s61pcgy2bmrj" path="res://tools/effect/effect_anim.gd" id="16_ie6vu"]
 [ext_resource type="Texture2D" uid="uid://1r15ajh0b1tn" path="res://assets/vn/fade_lace/row-1-column-20.png" id="16_rn038"]
 [ext_resource type="Texture2D" uid="uid://cmn4urcsrvsc" path="res://assets/vn/fade_lace/lacetransitionlogo.png" id="18_2mp2i"]
 
@@ -353,19 +353,19 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_303pa"]
 _data = {
-"FadeBlack": SubResource("Animation_w53sw"),
-"FadeBlackAbrupt": SubResource("Animation_17esn"),
-"FadeBlackToRed": SubResource("Animation_sk3hg"),
-"FadeBlackToWhite": SubResource("Animation_8cbux"),
-"FadeLace": SubResource("Animation_xpqti"),
-"FadeRed": SubResource("Animation_c0lhi"),
-"FadeRedToBlack": SubResource("Animation_6h71b"),
-"FadeRedToWhite": SubResource("Animation_vvxfo"),
-"FadeWhite": SubResource("Animation_kbmje"),
-"FadeWhiteToBlack": SubResource("Animation_wia8j"),
-"FadeWhiteToRed": SubResource("Animation_o0fni"),
-"FlashWhite": SubResource("Animation_qi816"),
-"RESET": SubResource("Animation_bsm8s")
+&"FadeBlack": SubResource("Animation_w53sw"),
+&"FadeBlackAbrupt": SubResource("Animation_17esn"),
+&"FadeBlackToRed": SubResource("Animation_sk3hg"),
+&"FadeBlackToWhite": SubResource("Animation_8cbux"),
+&"FadeLace": SubResource("Animation_xpqti"),
+&"FadeRed": SubResource("Animation_c0lhi"),
+&"FadeRedToBlack": SubResource("Animation_6h71b"),
+&"FadeRedToWhite": SubResource("Animation_vvxfo"),
+&"FadeWhite": SubResource("Animation_kbmje"),
+&"FadeWhiteToBlack": SubResource("Animation_wia8j"),
+&"FadeWhiteToRed": SubResource("Animation_o0fni"),
+&"FlashWhite": SubResource("Animation_qi816"),
+&"RESET": SubResource("Animation_bsm8s")
 }
 
 [node name="EffectAnim" type="AnimationPlayer"]

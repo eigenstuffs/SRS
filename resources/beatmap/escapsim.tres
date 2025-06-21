@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Beatmap" load_steps=4 format=3 uid="uid://dnbo1c8vcvwxb"]
 
-[ext_resource type="Script" path="res://resources/beatmap/beatmap.gd" id="1_sy347"]
+[ext_resource type="Script" uid="uid://cpto6083lsru" path="res://resources/beatmap/beatmap.gd" id="1_sy347"]
 [ext_resource type="Texture2D" uid="uid://cu407mamhnwbp" path="res://assets/beatmaps/eden.jpg" id="1_wlrfy"]
 [ext_resource type="AudioStream" uid="uid://dsv0lco8584t2" path="res://assets/beatmaps/escapism.mp3" id="3_rhvfc"]
 

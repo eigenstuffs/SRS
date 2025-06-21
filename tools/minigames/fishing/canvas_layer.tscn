@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cj57sfea8xmsy"]
 
-[ext_resource type="Script" path="res://tools/minigames/fishing/CanvasLayer.gd" id="1_6fbr5"]
+[ext_resource type="Script" uid="uid://bd3hy8yfxk32n" path="res://tools/minigames/fishing/CanvasLayer.gd" id="1_6fbr5"]
 [ext_resource type="Texture2D" uid="uid://1rdv05kpp023" path="res://tools/minigames/fishing/assets/Bar.png" id="2_rtpc0"]
 [ext_resource type="Texture2D" uid="uid://j8wjgtciyh5s" path="res://tools/minigames/fishing/assets/Horizontal Bar Colored.png" id="3_aqixm"]
 [ext_resource type="Texture2D" uid="uid://cg3wlamwhwx87" path="res://tools/minigames/fishing/assets/Foreground bar Vertical Non-Colored.png" id="4_6wew6"]

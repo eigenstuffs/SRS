@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://omy50xdo0so6"]
 
-[ext_resource type="Script" path="res://tools/minigames/fishing/Inventory/Inventory.gd" id="1_h4uek"]
+[ext_resource type="Script" uid="uid://dxv7wl3w2d6i2" path="res://tools/minigames/fishing/Inventory/Inventory.gd" id="1_h4uek"]
 [ext_resource type="PackedScene" uid="uid://bjt4skwe1eu5h" path="res://tools/minigames/fishing/fishing_minigame.tscn" id="2_r10mk"]
 [ext_resource type="PackedScene" uid="uid://vbalxcrqrwg" path="res://tools/minigames/fishing/Inventory/inventory_item.tscn" id="3_7al3k"]
 

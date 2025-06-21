@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bipcdrehn87d4"]
 
 [ext_resource type="Texture2D" uid="uid://clu5ma2xjxd5t" path="res://assets/vn/Settings/History-Pop Up Background.png" id="1_lyke2"]
-[ext_resource type="Script" path="res://tools/dialogue/settings.gd" id="1_vesns"]
+[ext_resource type="Script" uid="uid://bptpq6vyg7c8j" path="res://tools/dialogue/settings.gd" id="1_vesns"]
 [ext_resource type="Texture2D" uid="uid://cy5yxqgl0t2bt" path="res://assets/vn/Settings/Scroll Bar Fill.png" id="2_v7hia"]
 [ext_resource type="Texture2D" uid="uid://dt4qybjwvigbh" path="res://assets/vn/Settings/Scroll Bar.png" id="3_i2y6q"]
 [ext_resource type="Texture2D" uid="uid://bgsmuiltt2yms" path="res://assets/vn/Settings/Scrolly Button Circle Slider.png" id="4_rk0jf"]

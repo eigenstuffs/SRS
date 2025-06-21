@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c13k41j6siwhm"]
 
-[ext_resource type="Script" path="res://tools/debug/debug_effect.gd" id="1_tm86f"]
+[ext_resource type="Script" uid="uid://q3sn8jksu2l6" path="res://tools/debug/debug_effect.gd" id="1_tm86f"]
 [ext_resource type="Texture2D" uid="uid://dp1iix2ox4vvj" path="res://assets/cgs/IMG_0552.png" id="2_fm4sv"]
 [ext_resource type="Texture2D" uid="uid://ba2qlsbxrfbmv" path="res://assets/misc/panorama.png" id="3_acmwf"]
 [ext_resource type="PackedScene" uid="uid://00mg2rogbacn" path="res://tools/debug/editor/player_character.tscn" id="4_wtdbt"]

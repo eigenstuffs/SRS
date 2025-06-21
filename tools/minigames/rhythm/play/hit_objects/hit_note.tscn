@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://ck4bh1qdwj76a"]
 
-[ext_resource type="Script" path="res://tools/minigames/rhythm/play/hit_objects/hit_note.gd" id="1_ct2xr"]
-[ext_resource type="Script" path="res://tools/effect/multi_pass_shader_material.gd" id="2_gm18e"]
-[ext_resource type="Shader" path="res://tools/minigames/rhythm/resources/shaders/note.gdshader" id="3_7uq00"]
+[ext_resource type="Script" uid="uid://bco76wcpv5qao" path="res://tools/minigames/rhythm/play/hit_objects/hit_note.gd" id="1_ct2xr"]
+[ext_resource type="Script" uid="uid://b1cju46s8b1it" path="res://tools/effect/multi_pass_shader_material.gd" id="2_gm18e"]
+[ext_resource type="Shader" uid="uid://duxpxqfl485hx" path="res://tools/minigames/rhythm/resources/shaders/note.gdshader" id="3_7uq00"]
 [ext_resource type="Texture2D" uid="uid://b8c8u6ytdjtlj" path="res://assets/rhythm/hit.png" id="4_7ad0v"]
-[ext_resource type="Script" path="res://resources/shaders/shader_pass.gd" id="5_7pr8j"]
-[ext_resource type="Shader" path="res://tools/minigames/rhythm/resources/shaders/warp_note.gdshader" id="6_x1asd"]
+[ext_resource type="Script" uid="uid://7bgl213ah83o" path="res://resources/shaders/shader_pass.gd" id="5_7pr8j"]
+[ext_resource type="Shader" uid="uid://cxn1aeu6t6uvs" path="res://tools/minigames/rhythm/resources/shaders/warp_note.gdshader" id="6_x1asd"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_7fr1q"]
 
@@ -25,9 +25,9 @@ priority_overwrite = 1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5n7ax"]
 render_priority = 1
 shader = ExtResource("3_7uq00")
+shader_parameter/tex = ExtResource("4_7ad0v")
 shader_parameter/miss_color = Color(0.25, 0.085, 0.05, 1)
 shader_parameter/fade_out_time = 0.35
-shader_parameter/tex = ExtResource("4_7ad0v")
 script = ExtResource("2_gm18e")
 is_canvas_item = false
 shader_passes = Array[ExtResource("5_7pr8j")]([SubResource("Resource_x1c01")])

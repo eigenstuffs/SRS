@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b274o4jlip3rw"]
 
-[ext_resource type="Script" path="res://tools/minigames/maze/difficulty_select.gd" id="1_t68w4"]
+[ext_resource type="Script" uid="uid://c7xr7qudccrhr" path="res://tools/minigames/maze/difficulty_select.gd" id="1_t68w4"]
 
 [node name="DifficultySelect" type="Control"]
 layout_mode = 3

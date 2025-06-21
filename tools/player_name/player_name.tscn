@@ -1,6 +1,6 @@
 [gd_scene load_steps=91 format=3 uid="uid://dlpu2i71abst8"]
 
-[ext_resource type="Script" path="res://tools/player_name/player_name.gd" id="1_vy0jl"]
+[ext_resource type="Script" uid="uid://dcepccaqwswem" path="res://tools/player_name/player_name.gd" id="1_vy0jl"]
 [ext_resource type="FontFile" uid="uid://c6556g6be4xw6" path="res://assets/ui/ttf/Halant-Regular.ttf" id="2_3xp42"]
 [ext_resource type="Texture2D" uid="uid://dbk3jlklom6v1" path="res://assets/ui/Player Input UI/Lower case keyboard.png" id="3_oyvw6"]
 [ext_resource type="Texture2D" uid="uid://ctwfafu5tsgto" path="res://assets/ui/Player Input UI/Uppercase Keyboard.png" id="4_jc2ka"]

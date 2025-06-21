@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://drw36phbx4vrj"]
 
-[ext_resource type="Script" path="res://tools/minigames/template/tutorial_screen.gd" id="1_g30yo"]
+[ext_resource type="Script" uid="uid://kdcy4343wrj2" path="res://tools/minigames/template/tutorial_screen.gd" id="1_g30yo"]
 [ext_resource type="Texture2D" uid="uid://v04we14qbtll" path="res://assets/rewardscene/backplate.png" id="2_14j2n"]
 [ext_resource type="FontFile" uid="uid://c6556g6be4xw6" path="res://assets/ui/ttf/Halant-Regular.ttf" id="2_tc2m4"]
 [ext_resource type="Texture2D" uid="uid://cgaksh8qj6kb0" path="res://assets/socialwarfare/SW_Button_Backplate.png" id="3_1sr5p"]

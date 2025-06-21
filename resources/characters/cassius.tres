@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=38 format=3 uid="uid://bdk3upb5tas66"]
 
-[ext_resource type="Script" path="res://resources/characters/character.gd" id="1_wgses"]
+[ext_resource type="Script" uid="uid://cunlukntn01jm" path="res://resources/characters/character.gd" id="1_wgses"]
 [ext_resource type="Texture2D" uid="uid://eorwqy5ob80t" path="res://assets/vn/Cassius/cassius_earnest1.png" id="2_3e2rd"]
 [ext_resource type="Texture2D" uid="uid://ckwbgdqbkl5np" path="res://assets/vn/Cassius/cassius_earnest2.png" id="3_63e7l"]
 [ext_resource type="Texture2D" uid="uid://dnmf6532vocnx" path="res://assets/vn/Cassius/cassius_earnest3.png" id="4_reelp"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://dhyrf6dyl1s8c"]
 
-[ext_resource type="Script" path="res://scenes/player/maze_player.gd" id="1_kkc1h"]
-[ext_resource type="Script" path="res://scenes/player/interactor.gd" id="2_7y6ge"]
+[ext_resource type="Script" uid="uid://vdg7jhsp5plr" path="res://scenes/player/maze_player.gd" id="1_kkc1h"]
+[ext_resource type="Script" uid="uid://dmtaj2n53iy4a" path="res://scenes/player/interactor.gd" id="2_7y6ge"]
 [ext_resource type="Texture2D" uid="uid://bwoykkxtcwxcs" path="res://assets/cecelia_spritesheets/Cecilia_Idle_Sheet.png" id="3_df5tl"]
 [ext_resource type="Texture2D" uid="uid://deyxjtpwdgsxu" path="res://assets/cecelia_spritesheets/Cecilia_Damage_Sheet.png" id="3_rkp73"]
 [ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="4_bvcv3"]

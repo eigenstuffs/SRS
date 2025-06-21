@@ -1,18 +1,18 @@
 [gd_scene load_steps=27 format=3 uid="uid://cxgp75potouv6"]
 
-[ext_resource type="Script" path="res://scenes/places/free_zone_1.gd" id="1_7rvru"]
+[ext_resource type="Script" uid="uid://dkhfdxukugwtl" path="res://scenes/places/free_zone_1.gd" id="1_7rvru"]
 [ext_resource type="Texture2D" uid="uid://7m700boxprsh" path="res://assets/ui/Score backplate.png" id="3_awc3h"]
 [ext_resource type="Texture2D" uid="uid://wejxkxnk6rsi" path="res://assets/location/Location_Mockup-3.png" id="4_yig84"]
 [ext_resource type="PackedScene" uid="uid://ci1t3lpmt68a2" path="res://scenes/player/player.tscn" id="5_nbsw3"]
 [ext_resource type="Texture2D" uid="uid://ndj0t4vwxi3t" path="res://assets/location/Location_Mockup-7.png" id="5_wd8ku"]
 [ext_resource type="Texture2D" uid="uid://b5ytkm22qhk8" path="res://assets/location/Location_Mockup-5.png" id="6_3frex"]
 [ext_resource type="Texture2D" uid="uid://b6sfdglhcfmp2" path="res://assets/location/Location_Mockup-9.png" id="6_5epdj"]
-[ext_resource type="Script" path="res://scenes/actors/npc.gd" id="6_eorbl"]
+[ext_resource type="Script" uid="uid://bjr8ibeyjrcvl" path="res://scenes/actors/npc.gd" id="6_eorbl"]
 [ext_resource type="Texture2D" uid="uid://bdd8v3gclh8mm" path="res://assets/location/Location_Mockup-10.png" id="6_j4ld3"]
 [ext_resource type="Texture2D" uid="uid://bw7psbkr0rhw2" path="res://assets/misc/spritesheet_mini_npc_idle.png" id="7_11k2p"]
 [ext_resource type="Texture2D" uid="uid://304qv7q1hedd" path="res://assets/misc/spritesheet_mini_selected_idle.png" id="8_q2j1r"]
 [ext_resource type="PackedScene" uid="uid://bgh3a41nfgulr" path="res://tools/interaction/interaction.tscn" id="9_csk0s"]
-[ext_resource type="Script" path="res://tools/interaction/interaction_minigame.gd" id="15_a0gab"]
+[ext_resource type="Script" uid="uid://ikr5ui4oxcu6" path="res://tools/interaction/interaction_minigame.gd" id="15_a0gab"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uoii5"]
 size = Vector3(10, 10, 0.1)
@@ -77,8 +77,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbuaw"]
 _data = {
-"Idle": SubResource("Animation_rl8og"),
-"RESET": SubResource("Animation_5th0q")
+&"Idle": SubResource("Animation_rl8og"),
+&"RESET": SubResource("Animation_5th0q")
 }
 
 [sub_resource type="Environment" id="Environment_cwgqk"]
