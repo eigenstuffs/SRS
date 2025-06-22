@@ -16,12 +16,14 @@ func apply_random_texture():
 
 func _ready():
 	apply_random_texture()
-	#contact_monitor = true
-	#max_contacts_reported = 1
+	contact_monitor = true
+	max_contacts_reported = 2
 
-#func _on_body_entered(body: Node) -> void:
-	#if body.is_in_group("Ground"):
-		#destruct_timer.start()
-#
-#func _on_destruct_timer_timeout() -> void:
-	#queue_free()
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("Ground"):
+		destruct_timer.start()
+	elif body.is_in_group("Player"):
+		queue_free()
+
+func _on_destruct_timer_timeout() -> void:
+	queue_free()

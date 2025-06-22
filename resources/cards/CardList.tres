@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardList" load_steps=18 format=3 uid="uid://dy47yxw0calrg"]
 
-[ext_resource type="Script" uid="uid://dbo7ah17nj8s3" path="res://resources/cards/card.gd" id="1_7l5pw"]
+[ext_resource type="Script" uid="uid://biufhnxdbvbnm" path="res://resources/cards/card.gd" id="1_7l5pw"]
 [ext_resource type="Resource" uid="uid://cmorefbnj7gir" path="res://resources/cards/ApatheticLook.tres" id="1_b7pwe"]
-[ext_resource type="Script" uid="uid://bkq14jqbuow1t" path="res://resources/cards/card_list.gd" id="1_pemig"]
+[ext_resource type="Script" uid="uid://c4gw022x2okkb" path="res://resources/cards/card_list.gd" id="1_pemig"]
 [ext_resource type="Resource" uid="uid://dmyqbve6hnuty" path="res://resources/cards/CalmTheCrowd.tres" id="2_eku48"]
 [ext_resource type="Resource" uid="uid://esbkpcm0reay" path="res://resources/cards/Gaslight.tres" id="3_unqhm"]
 [ext_resource type="Resource" uid="uid://bhkx8n7aqsp7b" path="res://resources/cards/Gatekeep.tres" id="4_0hsgn"]

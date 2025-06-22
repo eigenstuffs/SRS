@@ -47,3 +47,9 @@ scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_naf61")
 autoplay = "default"
 frame_progress = 0.678206
+
+[node name="DestructTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DestructTimer" to="." method="_on_destruct_timer_timeout"]

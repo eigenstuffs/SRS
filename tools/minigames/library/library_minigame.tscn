@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cabh8vapnxrr5"]
+[gd_scene load_steps=9 format=3 uid="uid://cabh8vapnxrr5"]
 
 [ext_resource type="PackedScene" uid="uid://cgt0muqvh6o3p" path="res://tools/minigame_new/minigame_base.tscn" id="1_jkhqc"]
+[ext_resource type="Script" uid="uid://r3jijgxquy0b" path="res://tools/minigames/library/library_game_manager.gd" id="2_rvjpm"]
 [ext_resource type="Texture2D" uid="uid://canoybacfkdhk" path="res://assets/library/library minigame COLOR DODGE overlay.png" id="3_5523u"]
 [ext_resource type="Texture2D" uid="uid://b5tb2e7l3k0ff" path="res://assets/library/library minigame MULTIPLY overlay.png" id="4_3wrc8"]
 [ext_resource type="PackedScene" uid="uid://cmhijqulpc5o4" path="res://scenes/player/library_player.tscn" id="5_ufc1j"]
@@ -24,6 +25,10 @@ offset_top = -51.0
 offset_right = 270.0
 offset_bottom = 51.0
 grow_vertical = 2
+
+[node name="GameManager" parent="." index="3" node_paths=PackedStringArray("ui_manager")]
+script = ExtResource("2_rvjpm")
+ui_manager = NodePath("../UIManager")
 
 [node name="Background" type="Sprite2D" parent="GameManager" index="0"]
 position = Vector2(955, 332)

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RewardList" load_steps=8 format=3 uid="uid://cyduh5tusug7w"]
 
-[ext_resource type="Script" uid="uid://b7t40mc80o2d7" path="res://resources/minigame/reward_scene_list.gd" id="1_2l0mq"]
-[ext_resource type="Script" uid="uid://dy0rmx8ajjtdg" path="res://resources/minigame/reward_scene_info.gd" id="1_flj3g"]
+[ext_resource type="Script" uid="uid://d7m3rsie5jgb" path="res://resources/minigame/reward_scene_list.gd" id="1_2l0mq"]
+[ext_resource type="Script" uid="uid://dgsmkvel2r1mg" path="res://resources/minigame/reward_scene_info.gd" id="1_flj3g"]
 
 [sub_resource type="Resource" id="Resource_i6p0o"]
 script = ExtResource("1_flj3g")

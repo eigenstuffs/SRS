@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name BasePlayer
 
-@onready var timer : Timer = $Timer
+#@onready var timer : Timer = $Timer
 const SPEED = 350
 const JUMP_VELOCITY = 1.5
 

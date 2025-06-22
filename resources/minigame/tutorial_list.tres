@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TutorialList" load_steps=9 format=3 uid="uid://ci2wx8d5hu6sg"]
 
 [ext_resource type="Script" uid="uid://b1mm0382md576" path="res://resources/minigame/tutorial_list.gd" id="1_cpnaq"]
-[ext_resource type="Script" uid="uid://bixyflfdxdafy" path="res://resources/minigame/tutorial_info.gd" id="2_jssjl"]
+[ext_resource type="Script" uid="uid://dd3dcg658il7v" path="res://resources/minigame/tutorial_info.gd" id="2_jssjl"]
 
 [sub_resource type="Resource" id="Resource_75off"]
 script = ExtResource("2_jssjl")
