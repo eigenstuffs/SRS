@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://blrp45cxj2smo"]
+
+[ext_resource type="Script" uid="uid://3a2whyko7rb6" path="res://tools/minigames/library/items/bomb.gd" id="1_1lpqk"]
+[ext_resource type="Texture2D" uid="uid://b5piu62rxvgem" path="res://assets/library/bomb_sprites.png" id="1_gp5m3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lpqk"]
+size = Vector2(124, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcnex"]
+atlas = ExtResource("1_gp5m3")
+region = Rect2(0, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqmsp"]
+atlas = ExtResource("1_gp5m3")
+region = Rect2(1600, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e5ok"]
+atlas = ExtResource("1_gp5m3")
+region = Rect2(3200, 0, 1600, 1600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_naf61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcnex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqmsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e5ok")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Bomb" type="RigidBody2D"]
+script = ExtResource("1_1lpqk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -5)
+shape = SubResource("RectangleShape2D_1lpqk")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_naf61")
+autoplay = "default"
+frame_progress = 0.678206

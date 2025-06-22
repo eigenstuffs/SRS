@@ -1,263 +1,66 @@
-[gd_scene load_steps=32 format=3 uid="uid://buyuq0kfr1tme"]
+[gd_scene load_steps=8 format=3 uid="uid://cabh8vapnxrr5"]
 
-[ext_resource type="Script" uid="uid://dnthwg5rl5c1w" path="res://tools/minigames/library/library_minigame.gd" id="1_jnejo"]
-[ext_resource type="Texture2D" uid="uid://3ig7k3kf4uhq" path="res://assets/misc/background layer.png" id="2_4dmdn"]
-[ext_resource type="PackedScene" uid="uid://cnujinydfucuo" path="res://tools/minigames/library/canvas_layer.tscn" id="2_7cbig"]
-[ext_resource type="Script" uid="uid://cy2ktp238fmde" path="res://tools/minigames/library/Shelves.gd" id="3_bn36f"]
-[ext_resource type="PackedScene" uid="uid://cifju81wyjjw4" path="res://scenes/player/library_player.tscn" id="3_jyoxc"]
-[ext_resource type="PackedScene" uid="uid://bu870ui04lo32" path="res://tools/minigames/library/book/shadow.tscn" id="4_q284v"]
-[ext_resource type="Texture2D" uid="uid://blifv4cla6nqm" path="res://assets/library/Library_BottomBanister.png" id="5_4ilel"]
-[ext_resource type="PackedScene" uid="uid://uxj7rmmh1l6b" path="res://tools/minigames/library/book/wiggle/book_holder.tscn" id="5_4rr6e"]
-[ext_resource type="PackedScene" uid="uid://2pcpge0najq0" path="res://tools/minigames/library/util/npc_instancer.tscn" id="5_hbp12"]
-[ext_resource type="PackedScene" uid="uid://c5hrfmiuluhko" path="res://tools/minigames/library/book/book_instancer.tscn" id="6_8v8og"]
+[ext_resource type="PackedScene" uid="uid://cgt0muqvh6o3p" path="res://tools/minigame_new/minigame_base.tscn" id="1_jkhqc"]
+[ext_resource type="Texture2D" uid="uid://canoybacfkdhk" path="res://assets/library/library minigame COLOR DODGE overlay.png" id="3_5523u"]
+[ext_resource type="Texture2D" uid="uid://b5tb2e7l3k0ff" path="res://assets/library/library minigame MULTIPLY overlay.png" id="4_3wrc8"]
+[ext_resource type="PackedScene" uid="uid://cmhijqulpc5o4" path="res://scenes/player/library_player.tscn" id="5_ufc1j"]
 [ext_resource type="Texture2D" uid="uid://dfxsirtyw7lm" path="res://assets/library/Library_BG.png" id="7_pg1qs"]
-[ext_resource type="Script" uid="uid://cf7vythtx37f8" path="res://tools/minigames/library/Bookshelf.gd" id="8_lbiij"]
-[ext_resource type="Texture2D" uid="uid://bx86b5uxmivs2" path="res://assets/library/HardLight_setto100%transparency.png" id="9_h2gwe"]
-[ext_resource type="Texture2D" uid="uid://d35sro4gk8glk" path="res://assets/library/Library_shelves.png" id="10_ff1hf"]
-[ext_resource type="Texture2D" uid="uid://e50mcrpkh28u" path="res://assets/library/Screen_setto70%transparency.png" id="10_sb8oc"]
-[ext_resource type="Texture2D" uid="uid://bhnxu5xbw83e4" path="res://assets/library/Library_TopBanister.png" id="12_bqiee"]
-[ext_resource type="Texture2D" uid="uid://c6ep7gd34sa5v" path="res://assets/library/Overlay_setto35%transparency.png" id="13_wtd8x"]
-[ext_resource type="AudioStream" uid="uid://c01kuufd4defn" path="res://resources/effect/explosion_effect/explosion.mp3" id="19_ac088"]
-[ext_resource type="AudioStream" uid="uid://ka6xjq0a4pg" path="res://tools/minigames/library/sound/Villianess_Reborn_Library_Minigame_Music.mp3" id="20_lrgu2"]
+[ext_resource type="Script" uid="uid://cnutw7hbcldva" path="res://tools/minigames/library/spawner.gd" id="7_rvjpm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_o262n"]
-size = Vector3(10, 1, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i38vk"]
+size = Vector2(2048, 187)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jsdi"]
-albedo_color = Color(0.0862745, 0.0627451, 0.0588235, 1)
+[node name="MinigameBase" instance=ExtResource("1_jkhqc")]
+minigame_name = "Library"
+game_duration = 60.0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_krp85"]
-material = SubResource("StandardMaterial3D_3jsdi")
-size = Vector2(10, 10)
+[node name="PointLabel" parent="UIManager/TimeBar" index="2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 78.0
+offset_top = -51.0
+offset_right = 270.0
+offset_bottom = 51.0
+grow_vertical = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0qot"]
-albedo_texture = ExtResource("2_4dmdn")
-
-[sub_resource type="BoxMesh" id="BoxMesh_eo85j"]
-material = SubResource("StandardMaterial3D_m0qot")
-size = Vector3(0.5, 6, 8.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnnu8"]
-albedo_texture = ExtResource("2_4dmdn")
-
-[sub_resource type="BoxMesh" id="BoxMesh_ngvxs"]
-material = SubResource("StandardMaterial3D_vnnu8")
-size = Vector3(10, 6, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_oxk7j"]
-size = Vector3(10, 5, 0.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_uh7u6"]
-size = Vector3(0.2, 5, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4t3gm"]
-size = Vector3(1, 1.71545, 3.31683)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0ak3"]
-albedo_color = Color(0.509804, 0.176471, 0.0588235, 0.345098)
-
-[sub_resource type="BoxMesh" id="BoxMesh_h0o6u"]
-material = SubResource("StandardMaterial3D_h0ak3")
-
-[node name="Library" type="SubViewport"]
-size = Vector2i(1600, 900)
-script = ExtResource("1_jnejo")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("2_7cbig")]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("5_4ilel")
-expand_mode = 1
-
-[node name="Walls" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 2.08165e-12, 2.08165e-12)
-
-[node name="Ground" type="Node3D" parent="Walls"]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Ground"]
-collision_layer = 7
-collision_mask = 15
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Ground/StaticBody3D"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.510077, 0)
-shape = SubResource("BoxShape3D_o262n")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Ground"]
-visible = false
-layers = 3
-mesh = SubResource("PlaneMesh_krp85")
-
-[node name="Shelves" type="Node3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.48397, 0)
-script = ExtResource("3_bn36f")
-
-[node name="Right Shelf" type="MeshInstance3D" parent="Walls/Shelves"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0.5)
-visible = false
-mesh = SubResource("BoxMesh_eo85j")
-skeleton = NodePath("../Facing Shelf")
-
-[node name="Left Shelf" type="MeshInstance3D" parent="Walls/Shelves"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0.5)
-visible = false
-mesh = SubResource("BoxMesh_eo85j")
-skeleton = NodePath("../Facing Shelf")
-
-[node name="Facing Shelf" type="MeshInstance3D" parent="Walls/Shelves"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
-visible = false
-mesh = SubResource("BoxMesh_ngvxs")
-
-[node name="Background" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 2.08165e-12)
-pixel_size = 0.02
+[node name="Background" type="Sprite2D" parent="GameManager" index="0"]
+position = Vector2(955, 332)
 texture = ExtResource("7_pg1qs")
 
-[node name="Hardlight" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 0.04)
-texture = ExtResource("9_h2gwe")
+[node name="Lighting" type="Sprite2D" parent="GameManager/Background" index="0"]
+texture = ExtResource("3_5523u")
 
-[node name="Screen" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 0.04)
-modulate = Color(1, 1, 1, 0.3)
-pixel_size = 0.02
-texture = ExtResource("10_sb8oc")
+[node name="LightingDark" type="Sprite2D" parent="GameManager/Background" index="1"]
+texture = ExtResource("4_3wrc8")
 
-[node name="Shelves" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 0, 0.2)
-texture = ExtResource("10_ff1hf")
+[node name="Ground" type="StaticBody2D" parent="GameManager" index="1" groups=["Ground"]]
 
-[node name="TopBanister" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 0.045)
-texture = ExtResource("12_bqiee")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/Ground" index="0"]
+position = Vector2(953, 994.5)
+shape = SubResource("RectangleShape2D_i38vk")
 
-[node name="Overlay" type="Sprite3D" parent="Walls/Shelves"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 2.08165e-12, 2.08165e-12)
-modulate = Color(1, 1, 1, 0.35)
-texture = ExtResource("13_wtd8x")
+[node name="Spawner" type="Node2D" parent="GameManager" index="2"]
+position = Vector2(961, -41)
+script = ExtResource("7_rvjpm")
 
-[node name="Colliders" type="Node3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48397, 0)
+[node name="LeftLimit" type="Marker2D" parent="GameManager/Spawner" index="0"]
+position = Vector2(-826, 0)
 
-[node name="Back Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.623937)
-collision_layer = 7
-collision_mask = 7
+[node name="RightLimit" type="Marker2D" parent="GameManager/Spawner" index="1"]
+position = Vector2(826, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Back Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shape = SubResource("BoxShape3D_oxk7j")
+[node name="Timer" type="Timer" parent="GameManager/Spawner" index="2"]
+wait_time = 2.0
 
-[node name="Front Wall2" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.87005)
-collision_layer = 7
-collision_mask = 7
+[node name="ItemFolder" type="Node2D" parent="GameManager/Spawner" index="3"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Front Wall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shape = SubResource("BoxShape3D_oxk7j")
+[node name="PowerupManager" type="Node2D" parent="GameManager" index="3"]
 
-[node name="Left Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45616, 0, 2.08165e-12)
+[node name="LibraryPlayer" parent="GameManager" index="4" instance=ExtResource("5_ufc1j")]
+position = Vector2(943, 699)
+scale = Vector2(0.25, 0.25)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Left Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shape = SubResource("BoxShape3D_uh7u6")
-
-[node name="Right Wall" type="StaticBody3D" parent="Walls/Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57812, 0, 2.08165e-12)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Colliders/Right Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shape = SubResource("BoxShape3D_uh7u6")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 4.92944e-16, 0.995699, 0.0926489, -3.49231e-16, -0.0926489, 0.995699, 1000, 2.616, 14.337)
-current = true
-fov = 20.0
-size = 73.377
-frustum_offset = Vector2(0, 50)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 2, 2)
-light_color = Color(1, 0.913725, 0.807843, 1)
-light_energy = 3.01
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-omni_range = 11.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 1000, 1.978, 6.93)
-light_color = Color(1, 0.933333, 0.811765, 1)
-
-[node name="LibraryPlayer" parent="." instance=ExtResource("3_jyoxc")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1000, 0.748, 2.029)
-collision_mask = 3
-
-[node name="Shadow" parent="LibraryPlayer" instance=ExtResource("4_q284v")]
-size = Vector3(1, 100, 1)
-
-[node name="BookHolder" parent="LibraryPlayer" instance=ExtResource("5_4rr6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575, 0)
-
-[node name="NPCInstancer" parent="." instance=ExtResource("5_hbp12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 2.08165e-12, 2.5)
-
-[node name="SpawnAreaLeft" parent="NPCInstancer" index="0"]
-transform = Transform3D(1, -2.99891e-30, 2.91303e-38, 0, -1.96701e-07, -1, 6.66424e-31, 4.5, -4.37114e-08, -5.10274, 2.08165e-12, 2.8374)
-visible = true
-
-[node name="SpawnAreaRight" parent="NPCInstancer" index="1"]
-transform = Transform3D(1, -2.99891e-30, 2.91303e-38, 0, -1.96701e-07, -1, 6.66424e-31, 4.5, -4.37114e-08, 5.35962, 2.08165e-12, 2.8374)
-visible = true
-
-[node name="BookInstancer" parent="." instance=ExtResource("6_8v8og")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.907, 1000, 5, 2.03)
-
-[node name="Bookshelf" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 0.826, 2.09)
-visible = false
-script = ExtResource("8_lbiij")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 0.0598755, 0.244781)
-shape = SubResource("BoxShape3D_4t3gm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, 3.7, 0, 0)
-mesh = SubResource("BoxMesh_h0o6u")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 0.0598755, 0)
-shape = SubResource("BoxShape3D_4t3gm")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Bookshelf"]
-transform = Transform3D(1, 0, 0, 0, 1.79493, 0, 0, 0, 1, -3.8, 0, 0)
-mesh = SubResource("BoxMesh_h0o6u")
-
-[node name="EffectNode" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_lrgu2")
-autoplay = true
-
-[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_ac088")
-volume_db = -13.0
-pitch_scale = 1.5
-
-[connection signal="stop_blinking" from="." to="Walls/Shelves" method="_on_library_stop_blinking"]
-[connection signal="bomb_hit" from="LibraryPlayer" to="." method="_on_library_player_bomb_hit"]
-[connection signal="book_collected" from="LibraryPlayer" to="." method="_on_library_player_book_collected"]
-[connection signal="body_entered" from="Bookshelf" to="Bookshelf" method="_on_body_entered"]
-[connection signal="player_entered" from="Bookshelf" to="." method="_on_bookshelf_player_entered"]
-
-[editable path="NPCInstancer"]
+[connection signal="bomb_caught" from="GameManager/LibraryPlayer" to="GameManager" method="_on_library_player_bomb_caught"]
+[connection signal="book_caught" from="GameManager/LibraryPlayer" to="GameManager" method="_on_library_player_book_caught"]

@@ -61,6 +61,11 @@ folder_colors={
 "res://tools/minigames/template/": "gray"
 }
 
+[global_group]
+
+Player="Group of Nodes that are Characters controlled by the Player"
+Ground=""
+
 [gui]
 
 theme/custom_font="res://assets/ui/ttf/Volkhov-Regular.ttf"

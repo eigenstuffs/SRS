@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d11ym8acmsg5t"]
+
+[ext_resource type="Script" uid="uid://mncsx7ti11nn" path="res://tools/minigames/library/items/book.gd" id="1_g1l0i"]
+[ext_resource type="Texture2D" uid="uid://dafwx7bmk23ce" path="res://assets/library/book1-1.png" id="1_tjb77"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1l0i"]
+size = Vector2(116, 146)
+
+[node name="Book" type="RigidBody2D"]
+script = ExtResource("1_g1l0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_tjb77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_g1l0i")
+
+[node name="DestructTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DestructTimer" to="." method="_on_destruct_timer_timeout"]

@@ -122,7 +122,7 @@ hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_phpi8")
+&"": SubResource("AnimationLibrary_phpi8")
 }
 
 [connection signal="area_entered" from="Interactor" to="Interactor" method="_on_area_entered"]

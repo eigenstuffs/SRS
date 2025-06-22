@@ -221,7 +221,7 @@ var meta_data_path = save_dir + "meta_data.dat"
 	"player_wellness" : player_wellness,
 	"player_money" : player_money,
 	"player_prestige" : player_prestige,
-	"player_cards" : card_list.card_list,
+	"player_cards" : card_list.card_list, #Potential arbitrary execution
 	
 	"player_hp" : player_hp,
 	"player_mp" : player_mp,
@@ -302,6 +302,7 @@ func create_save(dynamic_path : String):
 func load_data(dynamic_path : String):
 	var file = FileAccess.open(dynamic_path, FileAccess.READ)
 	if file:
+		# TODO: turn off object decoding or make sure that arbitrary code doesn't get executed
 		data_dict = file.get_var()
 		file.close()
 		print("Loaded data.")

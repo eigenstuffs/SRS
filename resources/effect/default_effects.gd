@@ -119,21 +119,6 @@ class EffectVignette extends CanvasItemEffect:
 		super('Vignette', 0.0, 
 			func(): render_passes[0].enable(),
 			func(): queue_free())
-			
-class EffectBetterCallNew extends Effect:
-	const BETTER_CALL_EFFECT := preload('./better_call_effect/better_call_effect.tscn')
-		
-	var effect_node : Node
-		
-	func _init() -> void:
-		super('BetterCall', 0.0, 
-			func(parent : Node3D):
-				self.effect_node = BETTER_CALL_EFFECT.instantiate()
-				parent.add_child(self.effect_node),
-			func(): 
-				queue_free(),
-			func():
-				if effect_node: self.effect_node.queue_free())
 				
 class EffectInteriorWarm extends Effect:
 	const INTERIOR_WARM_EFFECT := preload('./interior_warm_effect/interior_warm_effect.tscn')
@@ -271,7 +256,6 @@ func _init() -> void:
 	effects.push_back(EffectBlurNew.new())         # Blurs everything behind
 	effects.push_back(EffectColorFadeNew.new())    # Fades to a chosen color
 	effects.push_back(EffectFlashNew.new())        # Flash!
-	effects.push_back(EffectBetterCallNew.new())
 	effects.push_back(EffectKuwahara.new())     # Emulates a 'painted' appearance (good for blending 3D objects with 2D art)
 	effects.push_back(EffectSepia.new())        # Adds a sepia filter
 	effects.push_back(EffectVignette.new())     # Adds a vignette (goes well with sepia filter)

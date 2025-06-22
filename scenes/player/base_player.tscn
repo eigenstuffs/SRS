@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct80oxtteghvt"]
+
+[ext_resource type="Script" uid="uid://req7k5b6nmtc" path="res://scenes/player/base_player.gd" id="1_loluv"]
+[ext_resource type="SpriteFrames" uid="uid://h80xc30wj5o7" path="res://scenes/player/player_anim.tres" id="2_rwnqm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qghe7"]
+radius = 273.0
+height = 1044.0
+
+[node name="BasePlayer" type="CharacterBody2D"]
+script = ExtResource("1_loluv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qghe7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_rwnqm")
+animation = &"Idle"
+frame_progress = 0.120389

@@ -1,255 +1,28 @@
-[gd_scene load_steps=36 format=3 uid="uid://cifju81wyjjw4"]
+[gd_scene load_steps=5 format=3 uid="uid://cmhijqulpc5o4"]
 
-[ext_resource type="Script" uid="uid://req7k5b6nmtc" path="res://scenes/player/library_player.gd" id="1_0wy6d"]
-[ext_resource type="Texture2D" uid="uid://bwoykkxtcwxcs" path="res://assets/cecelia_spritesheets/Cecilia_Idle_Sheet.png" id="2_7w2t8"]
-[ext_resource type="Texture2D" uid="uid://bbmghnsaolthq" path="res://assets/cecelia_spritesheets/Cecilia_Library_Fail_Sheet.png" id="2_gn5hl"]
-[ext_resource type="Texture2D" uid="uid://deyxjtpwdgsxu" path="res://assets/cecelia_spritesheets/Cecilia_Damage_Sheet.png" id="2_vk51n"]
-[ext_resource type="Texture2D" uid="uid://ckicxyf516ceo" path="res://assets/cecelia_spritesheets/Cecilia_Walk_Sheet.png" id="3_lbixs"]
+[ext_resource type="PackedScene" uid="uid://ct80oxtteghvt" path="res://scenes/player/base_player.tscn" id="1_05dot"]
+[ext_resource type="Script" uid="uid://cs7jwys6q2r8v" path="res://scenes/player/library_player.gd" id="2_qghe7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0hq8b"]
-size = Vector3(0.5, 1, 0.02)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05dot"]
+size = Vector2(602, 362)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pduae"]
-size = Vector3(0.6, 0.4, 1.39307)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qghe7"]
+size = Vector2(597, 854)
 
-[sub_resource type="BoxMesh" id="BoxMesh_elno2"]
-size = Vector3(0.6, 0.4, 1)
+[node name="LibraryPlayer" groups=["Player"] instance=ExtResource("1_05dot")]
+script = ExtResource("2_qghe7")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y6bqc"]
-size = Vector3(0.5, 1, 0.3)
+[node name="CatchBox" type="Area2D" parent="." index="2"]
+position = Vector2(0, -439)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qtkxq"]
-atlas = ExtResource("2_gn5hl")
-region = Rect2(0, 0, 1920, 2000)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchBox" index="0"]
+position = Vector2(21, -77)
+shape = SubResource("RectangleShape2D_05dot")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3246e"]
-atlas = ExtResource("2_gn5hl")
-region = Rect2(1920, 0, 1920, 2000)
+[node name="PushArea" type="Area2D" parent="." index="3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqfjc"]
-atlas = ExtResource("2_gn5hl")
-region = Rect2(3840, 0, 1920, 2000)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushArea" index="0"]
+position = Vector2(6.5, 104)
+shape = SubResource("RectangleShape2D_qghe7")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rn4ix"]
-atlas = ExtResource("2_gn5hl")
-region = Rect2(5760, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8mk2m"]
-atlas = ExtResource("2_gn5hl")
-region = Rect2(7680, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dagac"]
-atlas = ExtResource("2_gn5hl")
-region = Rect2(9600, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aji14"]
-atlas = ExtResource("2_vk51n")
-region = Rect2(0, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8yjas"]
-atlas = ExtResource("2_vk51n")
-region = Rect2(1920, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xlm4w"]
-atlas = ExtResource("2_vk51n")
-region = Rect2(3840, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ure6"]
-atlas = ExtResource("2_7w2t8")
-region = Rect2(0, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m02o3"]
-atlas = ExtResource("2_7w2t8")
-region = Rect2(1920, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a6j5q"]
-atlas = ExtResource("2_7w2t8")
-region = Rect2(3840, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jlrub"]
-atlas = ExtResource("2_7w2t8")
-region = Rect2(5760, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cc3sx"]
-atlas = ExtResource("2_7w2t8")
-region = Rect2(7680, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0e1p"]
-atlas = ExtResource("2_7w2t8")
-region = Rect2(9600, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_662ol"]
-atlas = ExtResource("2_7w2t8")
-region = Rect2(11520, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yy3fv"]
-atlas = ExtResource("2_7w2t8")
-region = Rect2(13440, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iib05"]
-atlas = ExtResource("3_lbixs")
-region = Rect2(0, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pkr4i"]
-atlas = ExtResource("3_lbixs")
-region = Rect2(1920, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jlr7f"]
-atlas = ExtResource("3_lbixs")
-region = Rect2(3840, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g014w"]
-atlas = ExtResource("3_lbixs")
-region = Rect2(5760, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gxtvg"]
-atlas = ExtResource("3_lbixs")
-region = Rect2(7680, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uxwo6"]
-atlas = ExtResource("3_lbixs")
-region = Rect2(9600, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ydmo4"]
-atlas = ExtResource("3_lbixs")
-region = Rect2(11520, 0, 1920, 2000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6s20c"]
-atlas = ExtResource("3_lbixs")
-region = Rect2(13440, 0, 1920, 2000)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xw15x"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qtkxq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3246e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gqfjc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rn4ix")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8mk2m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dagac")
-}],
-"loop": true,
-"name": &"Fail",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aji14")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8yjas")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xlm4w")
-}],
-"loop": true,
-"name": &"Hurt",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ure6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m02o3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a6j5q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jlrub")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cc3sx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j0e1p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_662ol")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yy3fv")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iib05")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pkr4i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jlr7f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g014w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gxtvg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uxwo6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ydmo4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6s20c")
-}],
-"loop": true,
-"name": &"Walk",
-"speed": 8.0
-}]
-
-[node name="LibraryPlayer" type="CharacterBody3D"]
-script = ExtResource("1_0wy6d")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 2.16602e-07, 0, -2.08616e-07, 1, 0, -0.047, 0)
-shape = SubResource("BoxShape3D_0hq8b")
-
-[node name="Hurtbox" type="Area3D" parent="."]
-collision_mask = 9
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.0034668)
-shape = SubResource("BoxShape3D_pduae")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.4, 2.08165e-12)
-visible = false
-mesh = SubResource("BoxMesh_elno2")
-
-[node name="Hurtbox2" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0472371, 0)
-shape = SubResource("BoxShape3D_y6bqc")
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0182938, -0.0168544, 0)
-sprite_frames = SubResource("SpriteFrames_xw15x")
-animation = &"Idle"
-frame = 7
-frame_progress = 0.519376
-
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
-[connection signal="body_entered" from="Hurtbox2" to="." method="_on_hurtbox_2_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="CatchBox" to="." method="_on_catch_box_body_entered"]
