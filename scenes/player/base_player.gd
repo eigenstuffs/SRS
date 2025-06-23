@@ -4,9 +4,9 @@ class_name BasePlayer
 
 #@onready var timer : Timer = $Timer
 const SPEED = 350
-const JUMP_VELOCITY = 1.5
+const JUMP_FORCE = -550
+const default_scale = Vector2(1, 1)
 
-var default_scale: Vector2
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dir = Vector2.RIGHT
 var turning = false
@@ -14,20 +14,19 @@ var can_move = true
 var speed_multiplier : float = 1
 var hurt : bool = false
 var fail : bool = false
-
-func _ready():
-	default_scale = $AnimatedSprite2D.scale
-	pass
+var can_jump: bool = false
 
 func _physics_process(delta):
 	if can_move:
 		if not is_on_floor():
 			velocity.y += gravity * delta
+		elif can_jump and Input.is_action_just_pressed("ui_up"):
+			velocity.y = JUMP_FORCE
 		
 		var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		var direction = input_dir.normalized()
 		
-		if direction:
+		if abs(direction.x):
 			velocity.x = direction.x * SPEED * speed_multiplier
 			
 			var last_dir = dir

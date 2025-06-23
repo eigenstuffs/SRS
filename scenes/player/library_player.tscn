@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cs7jwys6q2r8v" path="res://scenes/player/library_player.gd" id="2_qghe7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05dot"]
-size = Vector2(602, 362)
+size = Vector2(602, 272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qghe7"]
 size = Vector2(597, 854)
@@ -16,7 +16,7 @@ script = ExtResource("2_qghe7")
 position = Vector2(0, -439)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CatchBox" index="0"]
-position = Vector2(21, -77)
+position = Vector2(21, -32)
 shape = SubResource("RectangleShape2D_05dot")
 
 [node name="PushArea" type="Area2D" parent="." index="3"]

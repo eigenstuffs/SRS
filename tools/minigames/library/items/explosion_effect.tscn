@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnxcxbv48i28b"]
+
+[ext_resource type="Script" uid="uid://dnuwpkx61euy" path="res://tools/minigames/library/items/explosion_effect.gd" id="1_uqbou"]
+
+[sub_resource type="Gradient" id="Gradient_ag41b"]
+colors = PackedColorArray(0.905882, 0.313726, 0.00392157, 1, 1, 0.905882, 0.341176, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uqbou"]
+gradient = SubResource("Gradient_ag41b")
+
+[sub_resource type="Curve" id="Curve_k4b7q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gbftj"]
+curve = SubResource("Curve_k4b7q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5iqc7"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 1500.0
+initial_velocity_max = 2000.0
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_gbftj")
+color_ramp = SubResource("GradientTexture1D_uqbou")
+
+[node name="ExplosionEffect" type="Node2D"]
+script = ExtResource("1_uqbou")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -6)
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_5iqc7")

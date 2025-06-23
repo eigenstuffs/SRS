@@ -12,13 +12,22 @@ const BOMB := preload("res://tools/minigames/library/items/bomb.tscn")
 @onready var timer: Timer = $Timer
 @onready var item_folder: Node2D = $ItemFolder
 
+var active: bool = false:
+	set(value):
+		active = value
+		if active:
+			start_countdown()
+		else:
+			stop_countdown()
+
 func start_countdown():
 	timer.start()
 
+func stop_countdown():
+	timer.stop()
+
 func _ready():
 	timer.timeout.connect(_on_timer_timeout)
-	start_countdown()
-	pass
 	
 func _on_timer_timeout():
 	var random_x = randi_range(left_limit.position.x, right_limit.position.x)

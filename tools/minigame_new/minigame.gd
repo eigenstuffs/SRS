@@ -18,7 +18,7 @@ func _ready():
 	_show_tutorial()
 	ui_manager.set_ready_timer_source(timer_manager.ready_timer)
 	timer_manager.start_ready_timer(ready_time)
-	timer_manager.ready_timer.timeout.connect(_on_ready_timer_timeout)
+	timer_manager.ready_timer_done.connect(_on_ready_timer_timeout)
 	timer_manager.game_timer.timeout.connect(_on_game_timer_timeout)
 
 func _on_ready_timer_timeout():
@@ -38,6 +38,9 @@ func _on_game_timer_timeout():
 
 func _end_game():
 	is_game_running = false
+	if game_manager.has_method("end_game"):
+		game_manager.end_game()
+	await timer_manager.game_timer_done # await for the "times up" message to show up and be read
 	ui_manager.clear_timers()
 	var rough_score = get_rough_score()
 	var stats_gained = calculate_stats_gained()

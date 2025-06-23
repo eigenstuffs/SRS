@@ -35,7 +35,7 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="Bomb" type="RigidBody2D"]
+[node name="Bomb" type="RigidBody2D" groups=["FallingItems"]]
 script = ExtResource("1_1lpqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -49,7 +49,7 @@ autoplay = "default"
 frame_progress = 0.678206
 
 [node name="DestructTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DestructTimer" to="." method="_on_destruct_timer_timeout"]

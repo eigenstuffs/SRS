@@ -38,9 +38,23 @@ func _process(_delta):
 	if ready_timer_source and not ready_timer_source.is_stopped():
 		countdown_label.text = str(int(ceil(ready_timer_source.time_left)))
 	elif countdown_label.visible:
-		countdown_label.visible = false
+		countdown_label_show_text("Go!")
 
 	if game_timer_source and not game_timer_source.is_stopped():
 		time_label.text = str(int(ceil(game_timer_source.time_left)))
 	elif time_label.visible:
 		time_label.visible = false
+		if !countdown_label.visible:
+			countdown_label_show_text("Times up!")
+
+var is_busy: bool = false
+
+func countdown_label_show_text(text: String):
+	if is_busy:
+		return
+	is_busy = true
+	countdown_label.text = text
+	countdown_label.visible = true
+	await get_tree().create_timer(1).timeout
+	countdown_label.visible = false
+	is_busy = false

@@ -114,3 +114,6 @@ vertical_alignment = 1
 [node name="ResultsLayer" type="CanvasLayer" parent="."]
 
 [node name="GameManager" type="Node" parent="."]
+
+[connection signal="timeout" from="TimerManager/ReadyTimer" to="TimerManager" method="_on_ready_timer_timeout"]
+[connection signal="timeout" from="TimerManager/GameTimer" to="TimerManager" method="_on_game_timer_timeout"]

@@ -10,8 +10,10 @@ signal bomb_caught()
 func _on_catch_box_body_entered(body: Node2D) -> void:
 	if body is Book:
 		emit_signal("book_caught", 1)
-		print("book caught!")
+		get_parent().spawn_background_book(global_position)
+		body.queue_free()
 	elif body is Bomb:
+		body.trigger_explosion()
 		emit_signal("bomb_caught")
 		set_hurt(1)
 

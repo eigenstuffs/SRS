@@ -21,9 +21,15 @@ func _ready():
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Ground"):
-		destruct_timer.start()
+		# maybe it's a good idea not to remove the books?
+		pass
+		#destruct_timer.start()
 	elif body.is_in_group("Player"):
-		queue_free()
+		pass
 
 func _on_destruct_timer_timeout() -> void:
+	var a = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	a.tween_property(self, "modulate:a", 0, 0.5)
+	await a.finished
 	queue_free()
+	
